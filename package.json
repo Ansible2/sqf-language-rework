@@ -1,25 +1,138 @@
 {
-  "name": "sqf-language-rework",
-  "displayName": "SQF Language Rework",
-  "description": "",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.69.0"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "contributes": {
-    "languages": [{
-      "id": "sqf",
-      "aliases": ["SQF", "sqf"],
-      "extensions": [".sqf"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "sqf",
-      "scopeName": "source.sqf",
-      "path": "./syntaxes/sqf.min.json"
-    }]
-  }
+    "name": "sqf-language-rework",
+    "displayName": "SQF Language Rework",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.69.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "main": "./client/out/extension",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w",
+        "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+        "postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
+        "test": "sh ./scripts/e2e.sh"
+    },
+    "devDependencies": {
+        "@types/mocha": "^9.1.0",
+        "@types/node": "^16.11.7",
+        "@typescript-eslint/eslint-plugin": "^5.30.0",
+        "@typescript-eslint/parser": "^5.30.0",
+        "eslint": "^8.13.0",
+        "mocha": "^9.2.1",
+        "typescript": "^4.7.2"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "sqf",
+                "aliases": [
+                    "SQF",
+                    "sqf",
+                    "Status Quo Function"
+                ],
+                "extensions": [
+                    ".sqf",
+                    ".sqm"
+                ],
+                "configuration": "./sqf-language-rework/configs/sqf.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "sqf",
+                "scopeName": "source.sqf",
+                "path": "./syntaxes/sqf.min.json"
+            },
+            {
+                "language": "ext",
+                "scopeName": "description.ext",
+                "path": "./syntaxes/ext.min.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "sqf.browseCommandDocs",
+                "title": "SQF: Open Command Documentation",
+                "category": "Documentation"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "SQF Language",
+            "properties": {
+                "sqf.enableOFP": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable commands introduced with Operation Flashpoint"
+                },
+                "sqf.enableTOH": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable commands introduced with Take on Helicopter"
+                },
+                "sqf.enableARMA": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable commands introduced with ArmA (1)"
+                },
+                "sqf.enableARMA2": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable commands introduced with ArmA 2"
+                },
+                "sqf.enableARMA3": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable commands introduced with ArmA 3"
+                },
+                "sqf.enableCBA": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable CBA (Community Based Addons) library"
+                },
+                "sqf.enableACE3": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable ACE3 library"
+                },
+                "sqf.maxNumberOfProblems": {
+                    "type": "number",
+                    "default": 100,
+                    "description": "Controls the maximum number of problems produced by the server."
+                }
+            }
+        },
+        "configurationDefaults": {
+            "[sqf]": {
+                "editor.quickSuggestions": {
+                    "other": true,
+                    "comments": true,
+                    "strings": true
+                },
+                "editor.tabSize": 4,
+                "editor.insertSpaces": false,
+                "editor.detectIndentation": true,
+                "editor.trimAutoWhitespace": true,
+                "editor.autoClosingBrackets": "always"
+            },
+            "[ext]": {
+                "editor.quickSuggestions": {
+                    "other": true,
+                    "comments": true,
+                    "strings": true
+                },
+                "editor.tabSize": 4,
+                "editor.insertSpaces": false,
+                "editor.detectIndentation": true,
+                "editor.trimAutoWhitespace": true,
+                "editor.autoClosingBrackets": "always"
+            }
+        }
+    }
 }
