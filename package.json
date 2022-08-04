@@ -1,0 +1,25 @@
+{
+  "name": "sqf-language-rework",
+  "displayName": "SQF Language Rework",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.69.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "sqf",
+      "aliases": ["SQF", "sqf"],
+      "extensions": [".sqf"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "sqf",
+      "scopeName": "source.sqf",
+      "path": "./syntaxes/sqf.min.json"
+    }]
+  }
+}
