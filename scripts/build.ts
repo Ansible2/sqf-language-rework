@@ -12,10 +12,10 @@ const sqfConfigFilePathOut = `${outConfigFolderPath}/sqf.configuration.json`;
 
 // copy configuration.json's to .out folder
 const build = async () => {
-	// const copyExtConfig = fs.copyFile(extConfigFilePath,outConfigFolderPath, (error) => console.error(error));
 	const copyExtConfig = fsPromises.copyFile(extConfigFilePath,extConfigFilePathOut);
-	// const copySqfConfig = fs.copyFile(sqfConfigFilePath,outConfigFolderPath, (error) => console.error(error));
 	const copySqfConfig = fsPromises.copyFile(sqfConfigFilePath,sqfConfigFilePathOut);
+
+	
 	await Promise.all([copyExtConfig, copySqfConfig])
 }
 
