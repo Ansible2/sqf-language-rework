@@ -15,7 +15,7 @@
 		".vscode-test"
 	],
 	"references": [
-		{ "path": "./client" },
-		{ "path": "./server" }
+		{ "path": "./extension/client" },
+		{ "path": "./extension/server" }
 	]
 }

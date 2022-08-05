@@ -1,4 +1,4 @@
 node_modules/**
-client/node_modules/**
+extension/client/node_modules/**
 .out/**
-server/node_modules/**
+extension/server/node_modules/**
