@@ -6,9 +6,6 @@
     "engines": {
         "vscode": "^1.69.0"
     },
-    "categories": [
-        "Programming Languages"
-    ],
     "main": "./client/out/extension",
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -27,6 +24,17 @@
         "mocha": "^9.2.1",
         "typescript": "^4.7.2"
     },
+	"categories": [
+        "Programming Languages",
+        "Snippets",
+        "Themes",
+        "Linters",
+        "Debuggers"
+    ],
+    "activationEvents": [
+        "onLanguage:sqf",
+        "onLanguage:ext"
+    ],
     "contributes": {
         "languages": [
             {
