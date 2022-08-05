@@ -1,21 +1,16 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es2022",
-		"lib": ["es2022"],
-		"outDir": ".out",
-		"rootDir": "src",
-		"sourceMap": true
-	},
-	"include": [
-		"src"
-	],
-	"exclude": [
-		"node_modules",
-		".vscode-test"
-	],
-	"references": [
-		{ "path": "./extension/client" },
-		{ "path": "./extension/server" }
-	]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2022",
+        "lib": ["es2022"],
+        "outDir": ".out",
+        "rootDir": "src",
+        "sourceMap": true
+    },
+    "include": ["extension"],
+    "exclude": [".vscode-test", "node_modules", "scripts"],
+    "references": [
+        { "path": "./extension/client" },
+        { "path": "./extension/server" }
+    ]
 }
