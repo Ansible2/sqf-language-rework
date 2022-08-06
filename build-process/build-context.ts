@@ -24,8 +24,7 @@ const languageConfigDir = `${configurationDir}/language-configs`;
 const languageConfigDir_out = `${outDir}/${languageConfigDir}`;
 
 const syntaxesDir = `${configurationDir}/syntaxes`;
-const syntaxesDir_out = `${outDir}/${languageConfigDir}`;
-
+const syntaxesDir_out = `${outDir}/${syntaxesDir}`;
 
 const extConfigFilePath = `${languageConfigDir}/ext.configuration.json`;
 const extConfigFilePath_out = `${languageConfigDir_out}/ext.configuration.json`;
@@ -66,6 +65,7 @@ export class BuildContext {
 
 	static readonly out: BuildPaths = {
 		directories: {
+			top: outDir,
 			configuration: configurationDir_out,
 			languageConfigs: languageConfigDir_out,
 			syntaxes: syntaxesDir_out
