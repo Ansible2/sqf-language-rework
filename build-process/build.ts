@@ -1,52 +1,66 @@
 import * as fs from "fs";
 import * as fsPromises from "fs/promises";
+import { BuildContext, BuildPaths } from "./build-context";
 
-const languageConfigFolderPath = "configuration/language-configs";
-const outFolderPath = ".out";
-const outConfigFolderPath = `${outFolderPath}/language-configs`;
-
-const extConfigFilePath = `${languageConfigFolderPath}/ext.configuration.json`;
-const extConfigFilePathOut = `${outConfigFolderPath}/ext.configuration.json`;
-const sqfConfigFilePath = `${languageConfigFolderPath}/sqf.configuration.json`;
-const sqfConfigFilePathOut = `${outConfigFolderPath}/sqf.configuration.json`;
-
-// copy configuration.json's to .out folder
 const build = async () => {
-	console.log("\nExecuting build process...");
+    const paths: BuildPaths = BuildContext.paths;
+    const outPaths: BuildPaths = BuildContext.outPaths;
+    console.log("\nExecuting build process...");
 	
-	const outDirectoryExitsts: boolean = fs.existsSync(outFolderPath);
-	if (!outDirectoryExitsts) {
-		console.log("Out directory does not exist...");
-		console.log(`Creating at: ${outFolderPath}`);
+	/* ----------------------------------------------------------------------------
+		Create .out Directory
+	---------------------------------------------------------------------------- */
+    const outDirectoryExitsts: boolean = fs.existsSync(outPaths.topDir);
+    if (!outDirectoryExitsts) {
+        console.log("Out directory does not exist...");
+        console.log(`Creating directory at: ${outPaths.topDir}`);
 
-		fs.mkdirSync(outFolderPath);
-	}
-
-	const outConfigsDirectoryExitsts: boolean = fs.existsSync(outConfigFolderPath);
-	if (!outConfigsDirectoryExitsts) {
-		console.log("Out configs directory does not exist...");
-		console.log(`Creating at: ${outConfigFolderPath}`);
-		
-		fs.mkdirSync(outConfigFolderPath);
-	}
+        fs.mkdirSync(outPaths.topDir);
+    }
 	
-	console.log();
 
-	const copyExtConfig: Promise<void> = fsPromises.copyFile(extConfigFilePath,extConfigFilePathOut);
-	console.log("Copying .ext language configuration json file...");
-	const copySqfConfig: Promise<void> = fsPromises.copyFile(sqfConfigFilePath,sqfConfigFilePathOut);
-	console.log("Copying .sqf language configuration json file...");
+	/* ----------------------------------------------------------------------------
+		Create language configs out Directory
+	---------------------------------------------------------------------------- */
+    const outConfigsDirectoryExitsts: boolean = fs.existsSync(
+        outPaths.languageConfigDir
+    );
+    if (!outConfigsDirectoryExitsts) {
+        console.log("Out configs directory does not exist...");
+        console.log(`Creating directory at: ${outPaths.languageConfigDir}`);
+
+        fs.mkdirSync(outPaths.configurationDir);
+        fs.mkdirSync(outPaths.languageConfigDir);
+    }
 	
-	await Promise.all([copyExtConfig, copySqfConfig])
-}
+	// empty space
+    console.log();
+	
+
+	/* ----------------------------------------------------------------------------
+		copy configuration.json's to .out folder
+	---------------------------------------------------------------------------- */
+    const copyExtConfig: Promise<void> = fsPromises.copyFile(
+        paths.extLanguageConfigFile,
+        outPaths.extLanguageConfigFile
+    );
+    console.log("Copying .ext language configuration json file...");
+    const copySqfConfig: Promise<void> = fsPromises.copyFile(
+        paths.sqfLanguageConfigFile,
+        outPaths.sqfLanguageConfigFile
+    );
+    console.log("Copying .sqf language configuration json file...");
+	
+    await Promise.all([copyExtConfig, copySqfConfig]);
+};
+
+
 
 const buildTopLevel = async () => {
-	await build();
+    await build();
 };
 try {
-	buildTopLevel();
+    buildTopLevel();
 } catch (error) {
-	console.log(error);
+    console.log(error);
 }
-
-
