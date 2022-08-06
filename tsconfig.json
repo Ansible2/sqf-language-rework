@@ -4,11 +4,10 @@
         "target": "es2022",
         "lib": ["es2022"],
         "outDir": ".out",
-        "rootDir": "src",
+        "rootDir": "extension",
         "sourceMap": true
     },
-    "include": ["extension"],
-    "exclude": [".vscode-test", "node_modules", "scripts"],
+    "exclude": [".vscode-test", "node_modules", "build-process"],
     "references": [
         { "path": "./extension/client" },
         { "path": "./extension/server" }

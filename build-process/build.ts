@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import * as fsPromises from "fs/promises";
 
-const languageConfigFolderPath = "configuration/configs";
+const languageConfigFolderPath = "configuration/language-configs";
 const outFolderPath = ".out";
-const outConfigFolderPath = `${outFolderPath}/configs`;
+const outConfigFolderPath = `${outFolderPath}/language-configs`;
 
 const extConfigFilePath = `${languageConfigFolderPath}/ext.configuration.json`;
 const extConfigFilePathOut = `${outConfigFolderPath}/ext.configuration.json`;
