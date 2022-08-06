@@ -1,16 +1,30 @@
 export interface BuildPaths {
-	topDir?: string,
-	languageConfigDir: string,
-	configurationDir: string,
-	extLanguageConfigFile: string,
-	sqfLanguageConfigFile: string,
+	directories: {
+		top?: string,
+		configuration: string,
+		languageConfigs: string,
+		syntaxes: string
+	},
+	files: {
+		extLanguageConfig: string,
+		sqfLanguageConfig: string,
+		packageJson: string,
+		readme_file: string,
+		vscodeIgnore: string,
+		changelog: string
+	}
 }
 
-const configurationDir = "configuration";
-const languageConfigDir = `${configurationDir}/language-configs`;
 const outDir = ".out";
+
+const configurationDir = "configuration";
+const configurationDir_out = `${outDir}/${configurationDir}`;
+
+const languageConfigDir = `${configurationDir}/language-configs`;
 const languageConfigDir_out = `${outDir}/${languageConfigDir}`;
-const configurationDir_out = `${outDir}/configuration`;
+
+const syntaxesDir = `${configurationDir}/syntaxes`;
+const syntaxesDir_out = `${outDir}/${languageConfigDir}`;
 
 
 const extConfigFilePath = `${languageConfigDir}/ext.configuration.json`;
@@ -19,22 +33,51 @@ const extConfigFilePath_out = `${languageConfigDir_out}/ext.configuration.json`;
 const sqfConfigFilePath = `${languageConfigDir}/sqf.configuration.json`;
 const sqfConfigFilePath_out = `${languageConfigDir_out}/sqf.configuration.json`;
 
+const packageJsonFilePath = "package.json";
+const packageJsonFilePath_out = `${outDir}/${packageJsonFilePath}`;
+
+const readmeFilePath = "README.md";
+const readmeFilePath_out = `${outDir}/${readmeFilePath}`;
+
+const vscodeIgnoreFilePath = ".vscodeignore";
+const vscodeIgnoreFilePath_out = `${outDir}/${vscodeIgnoreFilePath}`;
+
+const changelogFilePath = "CHANGELOG.md";
+const changelogFilePath_out = `${outDir}/${changelogFilePath}`;
+
 export class BuildContext {
 	constructor() {}
 	
-	static readonly paths: BuildPaths = {
-		languageConfigDir: languageConfigDir,
-		extLanguageConfigFile: extConfigFilePath,
-		sqfLanguageConfigFile: sqfConfigFilePath,
-		configurationDir: configurationDir
+	static readonly in: BuildPaths = {
+		directories: {
+			configuration: configurationDir,
+			languageConfigs: languageConfigDir,
+			syntaxes: syntaxesDir
+		},
+		files: {
+			extLanguageConfig: extConfigFilePath,
+			sqfLanguageConfig: sqfConfigFilePath,
+			packageJson: packageJsonFilePath,
+			readme_file: readmeFilePath,
+			vscodeIgnore: vscodeIgnoreFilePath,
+			changelog: changelogFilePath
+		},
 	};
 
-	static readonly outPaths: BuildPaths = {
-		topDir: outDir,
-		languageConfigDir: languageConfigDir_out,
-		extLanguageConfigFile: extConfigFilePath_out,
-		sqfLanguageConfigFile: sqfConfigFilePath_out,
-		configurationDir: configurationDir_out
+	static readonly out: BuildPaths = {
+		directories: {
+			configuration: configurationDir_out,
+			languageConfigs: languageConfigDir_out,
+			syntaxes: syntaxesDir_out
+		},
+		files: {
+			extLanguageConfig: extConfigFilePath_out,
+			sqfLanguageConfig: sqfConfigFilePath_out,
+			packageJson: packageJsonFilePath_out,
+			readme_file: readmeFilePath_out,
+			vscodeIgnore: vscodeIgnoreFilePath_out,
+			changelog: changelogFilePath_out
+		},
 	};
 
 }

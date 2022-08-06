@@ -52,19 +52,30 @@
                     ".sqf",
                     ".sqm"
                 ],
-                "configuration": "./sqf-language-rework/configs/sqf.configuration.json"
+                "configuration": "./configuration/language-configs/sqf.configuration.json"
+            },
+            {
+                "id": "ext",
+                "aliases": [
+                    "Arma header file"
+                ],
+                "extensions": [
+                    ".ext",
+                    ".hpp"
+                ],
+                "configuration": "./configuration/language-configs/ext.configuration.json"
             }
         ],
         "grammars": [
             {
                 "language": "sqf",
                 "scopeName": "source.sqf",
-                "path": "./syntaxes/sqf.min.json"
+                "path": "./configuration/syntaxes/sqf.min.json"
             },
             {
                 "language": "ext",
                 "scopeName": "description.ext",
-                "path": "./syntaxes/ext.min.json"
+                "path": "./configuration/syntaxes/ext.min.json"
             }
         ],
         "commands": [
