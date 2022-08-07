@@ -3,15 +3,23 @@ export interface BuildPaths {
 		top?: string,
 		configuration: string,
 		languageConfigs: string,
-		syntaxes: string
+		syntaxes: string,
+		extension: string,
+		server: string,
+		client: string
 	},
 	files: {
 		extLanguageConfig: string,
 		sqfLanguageConfig: string,
 		packageJson: string,
-		readme_file: string,
+		packageLockJson: string,
+		readme: string,
 		vscodeIgnore: string,
-		changelog: string
+		changelog: string,
+		serverPackageJson: string,
+		serverPackageLockJson: string,
+		clientPackageJson: string,
+		clientPackageLockJson: string
 	}
 }
 
@@ -26,6 +34,15 @@ const languageConfigDir_out = `${outDir}/${languageConfigDir}`;
 const syntaxesDir = `${configurationDir}/syntaxes`;
 const syntaxesDir_out = `${outDir}/${syntaxesDir}`;
 
+const extensionDir = "extension";
+const extensionDir_out = `${outDir}/${extensionDir}`;
+
+const serverDir = `${extensionDir}/server`;
+const serverDir_out = `${extensionDir_out}/server`;
+
+const clientDir = `${extensionDir}/client`;;
+const clientDir_out = `${extensionDir_out}/client`;
+
 const extConfigFilePath = `${languageConfigDir}/ext.configuration.json`;
 const extConfigFilePath_out = `${languageConfigDir_out}/ext.configuration.json`;
 
@@ -34,6 +51,18 @@ const sqfConfigFilePath_out = `${languageConfigDir_out}/sqf.configuration.json`;
 
 const packageJsonFilePath = "package.json";
 const packageJsonFilePath_out = `${outDir}/${packageJsonFilePath}`;
+const packageLockJsonFilePath = "package-lock.json";
+const packageLockJsonFilePath_out = `${outDir}/${packageLockJsonFilePath}`;
+
+const packageJsonFilePath_server = `${serverDir}/${packageJsonFilePath}`;
+const packageJsonFilePath_server_out = `${serverDir_out}/${packageJsonFilePath}`;
+const packageLockJsonFilePath_server = `${serverDir}/${packageLockJsonFilePath}`;
+const packageLockJsonFilePath_server_out = `${serverDir_out}/${packageLockJsonFilePath}`;
+
+const packageJsonFilePath_client = `${clientDir}/${packageJsonFilePath}`;
+const packageJsonFilePath_client_out = `${clientDir_out}/${packageJsonFilePath}`;
+const packageLockJsonFilePath_client = `${clientDir}/${packageLockJsonFilePath}`;
+const packageLockJsonFilePath_client_out = `${clientDir_out}/${packageLockJsonFilePath}`;
 
 const readmeFilePath = "README.md";
 const readmeFilePath_out = `${outDir}/${readmeFilePath}`;
@@ -51,15 +80,23 @@ export class BuildContext {
 		directories: {
 			configuration: configurationDir,
 			languageConfigs: languageConfigDir,
-			syntaxes: syntaxesDir
+			syntaxes: syntaxesDir,
+			extension: extensionDir,
+			server: serverDir,
+			client: clientDir
 		},
 		files: {
 			extLanguageConfig: extConfigFilePath,
 			sqfLanguageConfig: sqfConfigFilePath,
 			packageJson: packageJsonFilePath,
-			readme_file: readmeFilePath,
+			packageLockJson: packageLockJsonFilePath,
+			readme: readmeFilePath,
 			vscodeIgnore: vscodeIgnoreFilePath,
-			changelog: changelogFilePath
+			changelog: changelogFilePath,
+			serverPackageJson: packageJsonFilePath_server,
+			serverPackageLockJson: packageLockJsonFilePath_server,
+			clientPackageJson: packageJsonFilePath_client,
+			clientPackageLockJson: packageLockJsonFilePath_client
 		},
 	};
 
@@ -68,15 +105,23 @@ export class BuildContext {
 			top: outDir,
 			configuration: configurationDir_out,
 			languageConfigs: languageConfigDir_out,
-			syntaxes: syntaxesDir_out
+			syntaxes: syntaxesDir_out,
+			extension: extensionDir_out,
+			server: serverDir_out,
+			client: clientDir_out
 		},
 		files: {
 			extLanguageConfig: extConfigFilePath_out,
 			sqfLanguageConfig: sqfConfigFilePath_out,
 			packageJson: packageJsonFilePath_out,
-			readme_file: readmeFilePath_out,
+			packageLockJson: packageLockJsonFilePath_out,
+			readme: readmeFilePath_out,
 			vscodeIgnore: vscodeIgnoreFilePath_out,
-			changelog: changelogFilePath_out
+			changelog: changelogFilePath_out,
+			serverPackageJson: packageJsonFilePath_server_out,
+			serverPackageLockJson: packageLockJsonFilePath_server_out,
+			clientPackageJson: packageJsonFilePath_client_out,
+			clientPackageLockJson: packageLockJsonFilePath_client_out
 		},
 	};
 

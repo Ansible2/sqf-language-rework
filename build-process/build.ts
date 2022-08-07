@@ -30,6 +30,9 @@ const build = async () => {
     createDirectory(outPaths.directories.configuration);
     createDirectory(outPaths.directories.languageConfigs);
     createDirectory(outPaths.directories.syntaxes);
+    createDirectory(outPaths.directories.extension);
+    createDirectory(outPaths.directories.client);
+    createDirectory(outPaths.directories.server);
 
     // empty space
     console.log();
@@ -53,9 +56,29 @@ const build = async () => {
         inPaths.files.packageJson,
         outPaths.files.packageJson
     );
+    const copyPackageLockJSON: Promise<void> = copyTo(
+        inPaths.files.packageLockJson,
+        outPaths.files.packageLockJson
+    );
+    const copyPackageJSON_server: Promise<void> = copyTo(
+        inPaths.files.serverPackageJson,
+        outPaths.files.serverPackageJson
+    );
+    const copyPackageLockJSON_server: Promise<void> = copyTo(
+        inPaths.files.serverPackageLockJson,
+        outPaths.files.serverPackageLockJson
+    );
+    const copyPackageJSON_client: Promise<void> = copyTo(
+        inPaths.files.clientPackageJson,
+        outPaths.files.clientPackageJson
+    );
+    const copyPackageLockJSON_client: Promise<void> = copyTo(
+        inPaths.files.clientPackageLockJson,
+        outPaths.files.clientPackageLockJson
+    );
     const copyReadMe: Promise<void> = copyTo(
-        inPaths.files.readme_file,
-        outPaths.files.readme_file
+        inPaths.files.readme,
+        outPaths.files.readme
     );
     const copyVscodeIgnore: Promise<void> = copyTo(
         inPaths.files.vscodeIgnore,
@@ -75,6 +98,11 @@ const build = async () => {
         copyReadMe,
         copyVscodeIgnore,
         copyChangelog,
+		copyPackageLockJSON,
+		copyPackageJSON_server,
+		copyPackageLockJSON_server,
+		copyPackageJSON_client,
+		copyPackageLockJSON_client
     ]);
 };
 

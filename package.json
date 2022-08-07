@@ -6,7 +6,7 @@
     "engines": {
         "vscode": "^1.69.0"
     },
-    "main": "./extension/client/src/extension",
+    "main": "./.out/extension/client/src/extension",
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -b",
@@ -14,8 +14,9 @@
         "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
 		"ts-node": "ts-node",
-		"build": "ts-node ./build-process/build && npm run compile", 
-		"build:nocomp": "ts-node ./build-process/build"
+		"build": "ts-node ./build-process/build && npm run compile && npm run install:prod", 
+		"build:nocomp": "ts-node ./build-process/build",
+		"install:prod": "cd .out && npm ci --production"
     },
     "devDependencies": {
         "@types/mocha": "^9.1.0",
