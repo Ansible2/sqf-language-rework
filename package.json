@@ -6,7 +6,7 @@
     "engines": {
         "vscode": "^1.69.0"
     },
-    "main": "./.out/client/extension",
+    "main": "./extension/client/src/extension",
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -b",
