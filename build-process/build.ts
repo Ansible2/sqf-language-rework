@@ -50,6 +50,7 @@ const build = async () => {
     );
 
 	// TODO: write syntaxes to json files in syntax folder
+	// bring in official package to write to json files https://www.npmjs.com/package/jsonfile
 
     /* ----------------------------------------------------------------------------
 		copy main static files
