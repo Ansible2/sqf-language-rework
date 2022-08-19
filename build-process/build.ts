@@ -25,7 +25,7 @@ const build = async () => {
 
     /* ----------------------------------------------------------------------------
 		Create .out Directories
-	---------------------------------------------------------------------------- */
+    ---------------------------------------------------------------------------- */
     createDirectory(outPaths.directories.top);
     createDirectory(outPaths.directories.configuration);
     createDirectory(outPaths.directories.languageConfigs);
@@ -39,7 +39,7 @@ const build = async () => {
 
     /* ----------------------------------------------------------------------------
 		copy configuration.json's to .out folder
-	---------------------------------------------------------------------------- */
+    ---------------------------------------------------------------------------- */
     const copyExtConfig: Promise<void> = copyTo(
         inPaths.files.extLanguageConfig,
         outPaths.files.extLanguageConfig
@@ -49,9 +49,11 @@ const build = async () => {
         outPaths.files.sqfLanguageConfig
     );
 
+	// TODO: write syntaxes to json files in syntax folder
+
     /* ----------------------------------------------------------------------------
 		copy main static files
-	---------------------------------------------------------------------------- */
+    ---------------------------------------------------------------------------- */
     const copyPackageJSON: Promise<void> = copyTo(
         inPaths.files.packageJson,
         outPaths.files.packageJson
@@ -98,11 +100,11 @@ const build = async () => {
         copyReadMe,
         copyVscodeIgnore,
         copyChangelog,
-		copyPackageLockJSON,
-		copyPackageJSON_server,
-		copyPackageLockJSON_server,
-		copyPackageJSON_client,
-		copyPackageLockJSON_client
+        copyPackageLockJSON,
+        copyPackageJSON_server,
+        copyPackageLockJSON_server,
+        copyPackageJSON_client,
+        copyPackageLockJSON_client
     ]);
 };
 
