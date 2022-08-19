@@ -4,13 +4,12 @@
     "description": "",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.69.0"
+        "vscode": "^1.70.0"
     },
-    "main": "./.out/extension/client/src/extension",
+    "main": "extension/client/src/extension",
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -b",
-        "watch": "tsc -b -w",
         "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
 		"ts-node": "ts-node",
