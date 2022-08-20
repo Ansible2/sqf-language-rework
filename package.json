@@ -72,12 +72,12 @@
             {
                 "language": "sqf",
                 "scopeName": "source.sqf",
-                "path": "./configuration/syntaxes/sqf.syntax.json"
+                "path": "./configuration/grammars/sqf.grammar.json"
             },
             {
                 "language": "ext",
                 "scopeName": "source.ext",
-                "path": "./configuration/syntaxes/ext.syntax.json"
+                "path": "./configuration/grammars/ext.grammar.json"
             }
         ],
         "commands": [

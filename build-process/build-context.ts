@@ -3,7 +3,7 @@ export interface BuildPaths {
 		top?: string,
 		configuration: string,
 		languageConfigs: string,
-		syntaxes: string,
+		grammars: string,
 		extension: string,
 		server: string,
 		client: string
@@ -33,8 +33,8 @@ const configurationDir_out = `${outDir}/${configurationDir}`;
 const languageConfigDir = `${configurationDir}/language-configs`;
 const languageConfigDir_out = `${outDir}/${languageConfigDir}`;
 
-const syntaxesDir = `${configurationDir}/syntaxes`;
-const syntaxesDir_out = `${outDir}/${syntaxesDir}`;
+const grammarsDir = `${configurationDir}/grammars`;
+const grammarsDir_out = `${outDir}/${grammarsDir}`;
 
 const extensionDir = "extension";
 const extensionDir_out = `${outDir}/${extensionDir}`;
@@ -47,11 +47,11 @@ const clientDir_out = `${extensionDir_out}/client`;
 
 const extConfigFilePath = `${languageConfigDir}/ext.configuration.json`;
 const extConfigFilePath_out = `${languageConfigDir_out}/ext.configuration.json`;
-const extGrammarFilePath_out = `${syntaxesDir_out}/ext.syntax.json`;
+const extGrammarFilePath_out = `${grammarsDir_out}/ext.grammar.json`;
 
 const sqfConfigFilePath = `${languageConfigDir}/sqf.configuration.json`;
 const sqfConfigFilePath_out = `${languageConfigDir_out}/sqf.configuration.json`;
-const sqfGrammarFilePath_out = `${syntaxesDir_out}/sqf.syntax.json`;
+const sqfGrammarFilePath_out = `${grammarsDir_out}/sqf.grammar.json`;
 
 const packageJsonFilePath = "package.json";
 const packageJsonFilePath_out = `${outDir}/${packageJsonFilePath}`;
@@ -84,7 +84,7 @@ export class BuildContext {
 		directories: {
 			configuration: configurationDir,
 			languageConfigs: languageConfigDir,
-			syntaxes: syntaxesDir,
+			grammars: grammarsDir,
 			extension: extensionDir,
 			server: serverDir,
 			client: clientDir
@@ -111,7 +111,7 @@ export class BuildContext {
 			top: outDir,
 			configuration: configurationDir_out,
 			languageConfigs: languageConfigDir_out,
-			syntaxes: syntaxesDir_out,
+			grammars: grammarsDir_out,
 			extension: extensionDir_out,
 			server: serverDir_out,
 			client: clientDir_out

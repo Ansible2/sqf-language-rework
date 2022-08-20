@@ -2,7 +2,8 @@ import * as fs from "fs";
 import * as fsPromises from "fs/promises";
 import * as jsonFile from "jsonfile";
 import { BuildContext, BuildPaths } from "./build-context";
-import { sqfGrammar } from "../configuration/syntaxes/sqf.syntax";
+import { sqfGrammar } from "../configuration/grammars/sqf.grammar";
+
 
 const copyTo = (origin: string, destination: string): Promise<void> => {
 	console.log(`Copying [${origin}] to [${destination}]`);
@@ -31,7 +32,7 @@ const build = async () => {
     createDirectory(outPaths.directories.top);
     createDirectory(outPaths.directories.configuration);
     createDirectory(outPaths.directories.languageConfigs);
-    createDirectory(outPaths.directories.syntaxes);
+    createDirectory(outPaths.directories.grammars);
     createDirectory(outPaths.directories.extension);
     createDirectory(outPaths.directories.client);
     createDirectory(outPaths.directories.server);
@@ -51,8 +52,13 @@ const build = async () => {
         outPaths.files.sqfLanguageConfig
     );
 
-	// TODO: write syntaxes to json files in syntax folder
-	const writeSqfGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.sqfGrammar, sqfGrammar);
+	// TODO: write grammars to json files in grammar folder
+	/* ----------------------------------------------------------------------------
+		Compile grammar files
+    ---------------------------------------------------------------------------- */
+	console.log("Writing Grammar files...");
+	const jsonWriteOptions: jsonFile.JFWriteOptions = { spaces: 4, EOL: '\r\n' };
+	const writeSqfGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.sqfGrammar, sqfGrammar, jsonWriteOptions);
 	// const writeExtGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.extGrammar, extGrammar);
 
 
