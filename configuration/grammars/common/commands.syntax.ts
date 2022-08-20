@@ -25,7 +25,6 @@ export interface SQFSyntax {
 
 export const sqfSyntaxes: { [key: string]: SQFSyntax } = {
     apply: {
-        label: "apply",
         detail: "Applies the given code to each element of the given data structure and collects the results in an array.",
         labelDetails: {
             detail: "",
@@ -44,7 +43,6 @@ export const sqfSyntaxes: { [key: string]: SQFSyntax } = {
         data: {},
     },
     forEach: {
-        label: "",
         detail: "Executes the given command(s) on every item of an Array or a HashMap.",
         labelDetails: {
             detail: "",

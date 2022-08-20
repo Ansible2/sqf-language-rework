@@ -4,6 +4,8 @@ import {
     CompletionItemLabelDetails,
     CompletionItemTag,
     createConnection,
+    HandlerResult,
+    HoverParams,
     InitializeParams,
     InitializeResult,
     MarkupKind,
@@ -28,6 +30,7 @@ connection.onInitialize((params: InitializeParams) => {
 	const result: InitializeResult = {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
+			hoverProvider: true,
 			// Tell the client that this server supports code completion.
 			completionProvider: {
 				resolveProvider: true
@@ -37,6 +40,15 @@ connection.onInitialize((params: InitializeParams) => {
 
 	return result;
 });
+
+connection.onHover((params: HoverParams) => {
+	console.log("Hover: ",params);
+	
+	return {
+		language: "sqf",
+		contents: "hello world"
+	}
+})
 
 
 // This handler provides the initial list of the completion items.
