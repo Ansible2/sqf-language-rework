@@ -1,9 +1,12 @@
 import {
 	CompletionItem,
 	CompletionItemKind,
+    CompletionItemLabelDetails,
+    CompletionItemTag,
     createConnection,
     InitializeParams,
     InitializeResult,
+    MarkupKind,
     ProposedFeatures,
     TextDocumentPositionParams,
     TextDocuments,
@@ -43,9 +46,19 @@ connection.onCompletion(
 		// info and always provide the same completion items.
 		return [
 			{
-				label: 'TypeScript',
-				kind: CompletionItemKind.Text,
-				data: 1
+				label: 'apply',
+				labelDetails: {
+					detail: "",
+					description: ""
+				},
+				documentation: {
+					kind: MarkupKind.Markdown,
+					value: "```sqf\n [1,2,3] apply {systemChat _x};\n```"
+				},
+				kind: CompletionItemKind.Method,
+				data: {
+
+				}
 			},
 			{
 				label: 'JavaScript',
@@ -61,8 +74,8 @@ connection.onCompletion(
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
 		if (item.data === 1) {
-			item.detail = 'TypeScript details';
-			item.documentation = 'TypeScript documentation';
+			// item.detail = 'TypeScript details';
+			// item.documentation = 'TypeScript documentation';
 		} else if (item.data === 2) {
 			item.detail = 'JavaScript details';
 			item.documentation = 'JavaScript documentation';
