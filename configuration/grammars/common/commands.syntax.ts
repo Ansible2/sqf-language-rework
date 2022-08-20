@@ -8,7 +8,7 @@ export enum SQFDocType {
     stringArray = 3,
 }
 
-export interface SQFCommand {
+export interface SQFSyntax {
     label?: string;
     detail: string;
     labelDetails: {
@@ -23,7 +23,7 @@ export interface SQFCommand {
     data?: any;
 }
 
-export const commands: { [key: string]: SQFCommand } = {
+export const sqfSyntaxes: { [key: string]: SQFSyntax } = {
     apply: {
         label: "apply",
         detail: "Applies the given code to each element of the given data structure and collects the results in an array.",
@@ -60,8 +60,8 @@ export const commands: { [key: string]: SQFCommand } = {
 };
 
 
-export const commandsAsCompletionItems: CompletionItem[] = [];
-for (const [commandKey, sqfCommandInfo] of Object.entries(commands)) {
+export const sqfCompletionItems: CompletionItem[] = [];
+for (const [commandKey, sqfCommandInfo] of Object.entries(sqfSyntaxes)) {
 	let label = commandKey
 	if (sqfCommandInfo.label) {
 		label = sqfCommandInfo.label;
@@ -99,7 +99,7 @@ for (const [commandKey, sqfCommandInfo] of Object.entries(commands)) {
 		}
 	}
 
-	commandsAsCompletionItems.push({
+	sqfCompletionItems.push({
 		label: label,
 		documentation: documentation,
 		kind: sqfCommandInfo.kind,

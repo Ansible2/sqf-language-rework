@@ -12,7 +12,7 @@ import {
     TextDocuments,
 	TextDocumentSyncKind,
 } from "vscode-languageserver/node";
-import { commandsAsCompletionItems } from "../../../configuration/grammars/common/commands.syntax";
+import { sqfCompletionItems } from "../../../configuration/grammars/common/commands.syntax";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -45,7 +45,7 @@ connection.onCompletion(
 		// The pass parameter contains the position of the text document in
 		// which code complete got requested. For the example we ignore this
 		// info and always provide the same completion items.
-		return commandsAsCompletionItems;
+		return sqfCompletionItems;
 		// return [
 		// 	{
 		// 		label: 'apply',
