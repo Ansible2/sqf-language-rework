@@ -6,7 +6,8 @@ export interface BuildPaths {
 		grammars: string,
 		extension: string,
 		server: string,
-		client: string
+		client: string,
+		grammarDocs: string,
 	},
 	files: {
 		extLanguageConfig: string,
@@ -53,6 +54,9 @@ const sqfConfigFilePath = `${languageConfigDir}/sqf.configuration.json`;
 const sqfConfigFilePath_out = `${languageConfigDir_out}/sqf.configuration.json`;
 const sqfGrammarFilePath_out = `${grammarsDir_out}/sqf.grammar.json`;
 
+const grammarDocsDir = `${grammarsDir}/docs`;
+const grammarDocsDir_out = `${grammarsDir_out}/docs`;
+
 const packageJsonFilePath = "package.json";
 const packageJsonFilePath_out = `${outDir}/${packageJsonFilePath}`;
 const packageLockJsonFilePath = "package-lock.json";
@@ -87,7 +91,8 @@ export class BuildContext {
 			grammars: grammarsDir,
 			extension: extensionDir,
 			server: serverDir,
-			client: clientDir
+			client: clientDir,
+			grammarDocs: grammarDocsDir
 		},
 		files: {
 			extLanguageConfig: extConfigFilePath,
@@ -114,7 +119,8 @@ export class BuildContext {
 			grammars: grammarsDir_out,
 			extension: extensionDir_out,
 			server: serverDir_out,
-			client: clientDir_out
+			client: clientDir_out,
+			grammarDocs: grammarDocsDir_out
 		},
 		files: {
 			extLanguageConfig: extConfigFilePath_out,

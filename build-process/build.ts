@@ -1,11 +1,12 @@
 import * as fs from "fs";
+import * as fse from "fs-extra";
 import * as fsPromises from "fs/promises";
 import * as jsonFile from "jsonfile";
 import { BuildContext, BuildPaths } from "./build-context";
 import { sqfGrammar } from "../configuration/grammars/sqf.grammar";
 
 
-const copyTo = (origin: string, destination: string): Promise<void> => {
+const copyFileTo = (origin: string, destination: string): Promise<void> => {
 	console.log(`Copying [${origin}] to [${destination}]`);
 
 	return fsPromises.copyFile(
@@ -13,6 +14,15 @@ const copyTo = (origin: string, destination: string): Promise<void> => {
         destination
     );
 };
+const copyDirectoryTo = (origin: string, destination: string): Promise<void> => {
+	console.log(`Copying Directory [${origin}] to [${destination}]`);
+
+	return fse.copy(
+        origin,
+        destination
+    );
+};
+
 const createDirectory = (path: string): void => {
 	const directoryExitsts: boolean = fs.existsSync(path);
     if (!directoryExitsts) {
@@ -36,6 +46,7 @@ const build = async () => {
     createDirectory(outPaths.directories.extension);
     createDirectory(outPaths.directories.client);
     createDirectory(outPaths.directories.server);
+    createDirectory(outPaths.directories.grammarDocs);
 
     // empty space
     console.log();
@@ -43,11 +54,11 @@ const build = async () => {
     /* ----------------------------------------------------------------------------
 		copy configuration.json's to .out folder
     ---------------------------------------------------------------------------- */
-    const copyExtConfig: Promise<void> = copyTo(
+    const copyExtConfig: Promise<void> = copyFileTo(
         inPaths.files.extLanguageConfig,
         outPaths.files.extLanguageConfig
     );
-    const copySqfConfig: Promise<void> = copyTo(
+    const copySqfConfig: Promise<void> = copyFileTo(
         inPaths.files.sqfLanguageConfig,
         outPaths.files.sqfLanguageConfig
     );
@@ -65,39 +76,44 @@ const build = async () => {
     /* ----------------------------------------------------------------------------
 		copy main static files
     ---------------------------------------------------------------------------- */
-    const copyPackageJSON: Promise<void> = copyTo(
+	const copyGrammarDocsDir: Promise<void> = copyDirectoryTo(
+		inPaths.directories.grammarDocs,
+		outPaths.directories.grammarDocs
+	);
+
+    const copyPackageJSON: Promise<void> = copyFileTo(
         inPaths.files.packageJson,
         outPaths.files.packageJson
     );
-    const copyPackageLockJSON: Promise<void> = copyTo(
+    const copyPackageLockJSON: Promise<void> = copyFileTo(
         inPaths.files.packageLockJson,
         outPaths.files.packageLockJson
     );
-    const copyPackageJSON_server: Promise<void> = copyTo(
+    const copyPackageJSON_server: Promise<void> = copyFileTo(
         inPaths.files.serverPackageJson,
         outPaths.files.serverPackageJson
     );
-    const copyPackageLockJSON_server: Promise<void> = copyTo(
+    const copyPackageLockJSON_server: Promise<void> = copyFileTo(
         inPaths.files.serverPackageLockJson,
         outPaths.files.serverPackageLockJson
     );
-    const copyPackageJSON_client: Promise<void> = copyTo(
+    const copyPackageJSON_client: Promise<void> = copyFileTo(
         inPaths.files.clientPackageJson,
         outPaths.files.clientPackageJson
     );
-    const copyPackageLockJSON_client: Promise<void> = copyTo(
+    const copyPackageLockJSON_client: Promise<void> = copyFileTo(
         inPaths.files.clientPackageLockJson,
         outPaths.files.clientPackageLockJson
     );
-    const copyReadMe: Promise<void> = copyTo(
+    const copyReadMe: Promise<void> = copyFileTo(
         inPaths.files.readme,
         outPaths.files.readme
     );
-    const copyVscodeIgnore: Promise<void> = copyTo(
+    const copyVscodeIgnore: Promise<void> = copyFileTo(
         inPaths.files.vscodeIgnore,
         outPaths.files.vscodeIgnore
     );
-    const copyChangelog: Promise<void> = copyTo(
+    const copyChangelog: Promise<void> = copyFileTo(
         inPaths.files.changelog,
         outPaths.files.changelog
     );
@@ -105,6 +121,7 @@ const build = async () => {
 
 
     await Promise.all([
+		copyGrammarDocsDir,
         copyExtConfig,
         copySqfConfig,
         copyPackageJSON,

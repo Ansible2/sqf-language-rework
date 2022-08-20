@@ -12,6 +12,7 @@ import {
     TextDocuments,
 	TextDocumentSyncKind,
 } from "vscode-languageserver/node";
+import { commandsAsCompletionItems } from "../../../configuration/grammars/common/commands.syntax";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -44,28 +45,30 @@ connection.onCompletion(
 		// The pass parameter contains the position of the text document in
 		// which code complete got requested. For the example we ignore this
 		// info and always provide the same completion items.
-		return [
-			{
-				label: 'apply',
-				labelDetails: {
-					detail: "",
-					description: ""
-				},
-				documentation: {
-					kind: MarkupKind.Markdown,
-					value: "```sqf\n [1,2,3] apply {systemChat _x};\n```"
-				},
-				kind: CompletionItemKind.Method,
-				data: {
+		return commandsAsCompletionItems;
+		// return [
+		// 	{
+		// 		label: 'apply',
+		// 		labelDetails: {
+		// 			detail: "",
+		// 			description: ""
+		// 		},
+		// 		documentation: {
+		// 			kind: MarkupKind.Markdown,
+		// 			value: "```sqf\n [1,2,3] apply {systemChat _x};\n```"
+		// 		},
+		// 		kind: CompletionItemKind.Method,
+		// 		data: {
 
-				}
-			},
-			{
-				label: 'JavaScript',
-				kind: CompletionItemKind.Text,
-				data: 2
-			}
-		];
+		// 		},
+		// 		detail: "test detail"
+		// 	},
+		// 	{
+		// 		label: 'JavaScript',
+		// 		kind: CompletionItemKind.Text,
+		// 		data: 2
+		// 	}
+		// ];
 	}
 );
 
