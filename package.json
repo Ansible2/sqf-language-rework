@@ -18,6 +18,7 @@
         "install:prod": "cd .out && npm ci --production"
     },
     "devDependencies": {
+        "@types/jsonfile": "^6.1.0",
         "@types/mocha": "^9.1.0",
         "@types/node": "^16.11.47",
         "@typescript-eslint/eslint-plugin": "^5.30.0",
@@ -71,12 +72,12 @@
             {
                 "language": "sqf",
                 "scopeName": "source.sqf",
-                "path": "./configuration/syntaxes/sqf.min.json"
+                "path": "./configuration/syntaxes/sqf.syntax.json"
             },
             {
                 "language": "ext",
-                "scopeName": "description.ext",
-                "path": "./configuration/syntaxes/ext.min.json"
+                "scopeName": "source.ext",
+                "path": "./configuration/syntaxes/ext.syntax.json"
             }
         ],
         "commands": [

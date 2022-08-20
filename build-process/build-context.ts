@@ -20,6 +20,8 @@ export interface BuildPaths {
 		serverPackageLockJson: string,
 		clientPackageJson: string,
 		clientPackageLockJson: string
+		sqfGrammar: string,
+		extGrammar: string
 	}
 }
 
@@ -45,9 +47,11 @@ const clientDir_out = `${extensionDir_out}/client`;
 
 const extConfigFilePath = `${languageConfigDir}/ext.configuration.json`;
 const extConfigFilePath_out = `${languageConfigDir_out}/ext.configuration.json`;
+const extGrammarFilePath_out = `${syntaxesDir_out}/ext.syntax.json`;
 
 const sqfConfigFilePath = `${languageConfigDir}/sqf.configuration.json`;
 const sqfConfigFilePath_out = `${languageConfigDir_out}/sqf.configuration.json`;
+const sqfGrammarFilePath_out = `${syntaxesDir_out}/sqf.syntax.json`;
 
 const packageJsonFilePath = "package.json";
 const packageJsonFilePath_out = `${outDir}/${packageJsonFilePath}`;
@@ -88,6 +92,8 @@ export class BuildContext {
 		files: {
 			extLanguageConfig: extConfigFilePath,
 			sqfLanguageConfig: sqfConfigFilePath,
+			sqfGrammar: "",
+			extGrammar: "",
 			packageJson: packageJsonFilePath,
 			packageLockJson: packageLockJsonFilePath,
 			readme: readmeFilePath,
@@ -113,6 +119,8 @@ export class BuildContext {
 		files: {
 			extLanguageConfig: extConfigFilePath_out,
 			sqfLanguageConfig: sqfConfigFilePath_out,
+			sqfGrammar: sqfGrammarFilePath_out,
+			extGrammar: extGrammarFilePath_out,
 			packageJson: packageJsonFilePath_out,
 			packageLockJson: packageLockJsonFilePath_out,
 			readme: readmeFilePath_out,

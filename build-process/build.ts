@@ -1,6 +1,8 @@
 import * as fs from "fs";
 import * as fsPromises from "fs/promises";
+import * as jsonFile from "jsonfile";
 import { BuildContext, BuildPaths } from "./build-context";
+import { sqfGrammar } from "../configuration/syntaxes/sqf.syntax";
 
 const copyTo = (origin: string, destination: string): Promise<void> => {
 	console.log(`Copying [${origin}] to [${destination}]`);
@@ -50,7 +52,9 @@ const build = async () => {
     );
 
 	// TODO: write syntaxes to json files in syntax folder
-	// bring in official package to write to json files https://www.npmjs.com/package/jsonfile
+	const writeSqfGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.sqfGrammar, sqfGrammar);
+	// const writeExtGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.extGrammar, extGrammar);
+
 
     /* ----------------------------------------------------------------------------
 		copy main static files
@@ -105,7 +109,8 @@ const build = async () => {
         copyPackageJSON_server,
         copyPackageLockJSON_server,
         copyPackageJSON_client,
-        copyPackageLockJSON_client
+        copyPackageLockJSON_client,
+		writeSqfGrammar
     ]);
 };
 

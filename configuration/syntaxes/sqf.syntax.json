@@ -57,7 +57,7 @@
             "name": "keyword.operator.condition.sqf"
         },
         "control-statement": {
-            "match": "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|return|switch|case|default|while|from|to|step|forEachMember|forEachMemberAgent|forEachMemberTeam)\\b",
+            "match": "\\s*(?i)(apply|then|do|else|exit|exitWith|for|forEach|if|return|switch|case|default|while|from|to|step|forEachMember|forEachMemberAgent|forEachMemberTeam)\\b",
             "name": "keyword.control.sqf"
         },
         "decl-block": {
