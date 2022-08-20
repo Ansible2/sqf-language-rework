@@ -17,9 +17,11 @@ const copyFileTo = (origin: string, destination: string): Promise<void> => {
 const copyDirectoryTo = (origin: string, destination: string): Promise<void> => {
 	console.log(`Copying Directory [${origin}] to [${destination}]`);
 
+	fse.emptyDirSync(destination);
 	return fse.copy(
         origin,
-        destination
+        destination,
+		{overwrite: true}
     );
 };
 
