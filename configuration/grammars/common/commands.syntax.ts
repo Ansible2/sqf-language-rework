@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
-import { CompletionItem, CompletionItemKind } from "vscode-languageserver/node";
+import path = require("path");
+import { CompletionItem, CompletionItemKind, MarkupKind, MarkupContent } from "vscode-languageserver/node";
 
 export enum SQFDocType {
     MarkdownFile = 1,
@@ -61,20 +62,22 @@ export const commands: { [key: string]: SQFCommand } = {
 
 export const commandsAsCompletionItems: CompletionItem[] = [];
 for (const [commandKey, sqfCommandInfo] of Object.entries(commands)) {
-	
 	let label = commandKey
 	if (sqfCommandInfo.label) {
 		label = sqfCommandInfo.label;
 	}
 
-	let documentation = "";
+	let documentation: string | MarkupContent = "";
 	if (sqfCommandInfo.documentation) {
 		const sqfDoc = sqfCommandInfo.documentation;
 		switch (sqfCommandInfo.documentation.type) {
 			case SQFDocType.MarkdownFile: {
-				const filePath = `../../../configuration/grammars/docs/${sqfDoc.value}`;
+				const filePath = path.resolve(__dirname, `../docs/${sqfDoc.value}`);;
 				const markdownAsString = readFileSync(filePath).toString();
-				documentation = markdownAsString;
+				documentation = {
+					kind: MarkupKind.Markdown,
+					value: markdownAsString
+				};
 				break;
 			}
 			case SQFDocType.string: {
@@ -82,7 +85,11 @@ for (const [commandKey, sqfCommandInfo] of Object.entries(commands)) {
 				break;
 			}
 			case SQFDocType.stringArray: {
-				documentation = sqfDoc.value.toString()
+				const value = sqfDoc.value as string[];
+				documentation = {
+					kind: MarkupKind.Markdown,
+					value: value.join('')
+				};
 				break;
 			}
 			default: {
