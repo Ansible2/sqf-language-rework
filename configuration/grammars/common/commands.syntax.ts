@@ -8,10 +8,21 @@ export enum SQFDocType {
     stringArray = 3,
 }
 
+export enum SQFGrammarType {
+	Function = 1,
+	ConrolStatement = 2,
+	ConditionOperator = 3,
+	ComparisonOperator = 4,
+	ReservedLiteral = 5,
+	NullLiteral = 6,
+	PropertyAccessor = 7,
+	Command = 8,
+}
+
 export interface SQFSyntax {
     label?: string;
     detail: string;
-    labelDetails: {
+    labelDetails?: {
         detail: string;
         description: string;
     };
@@ -20,16 +31,13 @@ export interface SQFSyntax {
         value: string | string[];
     };
     kind: CompletionItemKind;
+	grammarType: SQFGrammarType;
     data?: any;
 }
 
 export const sqfSyntaxes: { [key: string]: SQFSyntax } = {
     apply: {
         detail: "Applies the given code to each element of the given data structure and collects the results in an array.",
-        labelDetails: {
-            detail: "",
-            description: "",
-        },
         documentation: {
             type: SQFDocType.stringArray,
             value: [
@@ -40,20 +48,16 @@ export const sqfSyntaxes: { [key: string]: SQFSyntax } = {
             ],
         },
         kind: CompletionItemKind.Method,
-        data: {},
+		grammarType: SQFGrammarType.Command,
     },
     forEach: {
-        detail: "Executes the given command(s) on every item of an Array or a HashMap.",
-        labelDetails: {
-            detail: "",
-            description: "",
-        },
+		detail: "Executes the given command(s) on every item of an Array or a HashMap.",
         documentation: {
-            type: SQFDocType.MarkdownFile,
+			type: SQFDocType.MarkdownFile,
             value: "foreach.md",
         },
+		grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Method,
-        data: {},
     },
 };
 
