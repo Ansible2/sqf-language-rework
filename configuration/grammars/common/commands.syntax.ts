@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import path = require("path");
+import * as path from "path";
 import { CompletionItem, CompletionItemKind, MarkupKind, MarkupContent } from "vscode-languageserver/node";
 
 export enum SQFDocType {
