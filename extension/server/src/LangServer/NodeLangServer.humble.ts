@@ -16,26 +16,31 @@ import { ILangServer } from "./ILangServer";
 import { sqfCompletionItems } from "../../../../configuration/grammars/common/commands.syntax";
 
 export class NodeLangServer implements ILangServer {
-    private connection: _Connection;
-    private documents: TextDocuments<TextDocument>;
+    private static connection: _Connection;
+    private static documents: TextDocuments<TextDocument>;
+	private static _instance: NodeLangServer;
 
-    constructor() {
-        this.connection = createConnection(ProposedFeatures.all);
+	public static getInstance(): NodeLangServer {
+		return this._instance ?? (this._instance = new NodeLangServer());
+	}
+
+    private constructor() {
+        NodeLangServer.connection = createConnection(ProposedFeatures.all);
         // Create a simple text document manager.
-        this.documents = new TextDocuments(TextDocument);
-
+        NodeLangServer.documents = new TextDocuments(TextDocument);
+		
         // Create a connection for the server, using Node's IPC as a transport.
         // Also include all preview / proposed LSP features.
-        this.connection.onInitialize(this.initializeConnection);
-        this.connection.onHover(this.onHover);
-        this.connection.onCompletion(this.onCompletion);
+        NodeLangServer.connection.onInitialize(this.initializeConnection);
+        NodeLangServer.connection.onHover(this.onHover);
+        NodeLangServer.connection.onCompletion(this.onCompletion);
+		NodeLangServer.connection.onCompletionResolve(this.onCompletionResolve);
 
         // Make the text document manager listen on the connection
         /// for open, change and close text document events
-        this.documents.listen(this.connection);
-
+		NodeLangServer.documents.listen(NodeLangServer.connection);
         // Listen on the connection
-        this.connection.listen();
+        NodeLangServer.connection.listen();
     }
 
     public initializeConnection(params: InitializeParams): InitializeResult {
@@ -53,8 +58,8 @@ export class NodeLangServer implements ILangServer {
         return init;
     }
 
-    private parseHoveredWord(position: Position, documentUri: string): string {
-        const document = this.documents.get(documentUri);
+    private static parseHoveredWord(document: TextDocument, position: Position): string {
+        
         const start = {
             line: position.line,
             character: 0,
@@ -78,7 +83,10 @@ export class NodeLangServer implements ILangServer {
         const documentUri = params.textDocument.uri;
         if (!documentUri) return {} as Hover;
 
-        const word = this.parseHoveredWord(params.position, documentUri);
+		const document = NodeLangServer.documents.get(documentUri);
+		if (!document) return {} as Hover;
+
+        const word = NodeLangServer.parseHoveredWord(document, params.position);
         console.log("Found word:", word);
 
         // need to parse files into readable words and discern what words are at certain lines/columns
@@ -92,5 +100,8 @@ export class NodeLangServer implements ILangServer {
     }
 
     // can be used to make further edits to a completion item once selected in the list
-    // public onCompletionResolve(params: CompletionItem): CompletionItem {}
+	// must be implemented
+    public onCompletionResolve(item: CompletionItem): CompletionItem {
+		return item;
+	}
 }
