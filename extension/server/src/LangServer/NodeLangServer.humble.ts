@@ -11,7 +11,7 @@ import {
     TextDocumentSyncKind,
     _Connection,
 } from "vscode-languageserver/node";
-import { Position, TextDocument } from "vscode-languageserver-textdocument";
+import { Position, Range, TextDocument } from "vscode-languageserver-textdocument";
 import { ILangServer } from "./ILangServer";
 import { sqfCompletionItems } from "../../../../configuration/grammars/common/commands.syntax";
 
@@ -58,24 +58,85 @@ export class NodeLangServer implements ILangServer {
         return init;
     }
 
-    private static parseHoveredWord(document: TextDocument, position: Position): string {
-        
-        const start = {
-            line: position.line,
-            character: 0,
-        };
-        const end = {
-            line: position.line + 1,
-            character: 0,
-        };
-        const text = document!.getText({ start, end });
-        const index = document!.offsetAt(position) - document!.offsetAt(start);
+	private static parseHoveredWord2(document: TextDocument, positionOfHover: Position, allowedRegex?: string): string | null {
+        const hoveredLineNumber: number = positionOfHover.line;
+		// this will get the whole range from the first character of
+		/// the line being hovered on to the first character (non-inclusive)
+		/// of the next line down (hence hoveredLineNumber + 1)
+		const hoveredLineStartingPosition: Position = {
+			line: hoveredLineNumber,
+			character: 0,
+		};
+		const fullRangeOfLineBeingHovered: Range = {
+			start: hoveredLineStartingPosition,
+			end: {
+				line: hoveredLineNumber + 1,
+				character: 0,
+			}
+		};
+        const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
+		
+        if (!allowedRegex) {
+			allowedRegex = "[a-z0-9_]";
+        }
+		
+		// TODO: figure out how to make this more readable
+        const matchChar = new RegExp(allowedRegex, "i");
+        const matchAll = new RegExp("(" + allowedRegex + "*)", "i");
+		
+		const hoverCharacterIndex: number = positionOfHover.character;
+		let indexOfCurrentCharacter: number = hoverCharacterIndex;
+		let currentCharacterIsNOTStartOfLine: boolean = indexOfCurrentCharacter > 0;
+        while(currentCharacterIsNOTStartOfLine) {
+			indexOfCurrentCharacter--;
+            if (!matchChar.test(textOnLineHovered.substring(indexOfCurrentCharacter, indexOfCurrentCharacter + 1))) {
+                indexOfCurrentCharacter++;
+                break;
+            }
+			
+			currentCharacterIsNOTStartOfLine = indexOfCurrentCharacter > 0;
+        }
 
-        const first = text.lastIndexOf(" ", index);
-        const last = text.indexOf(" ", index);
-        return text.substring(
+        const def = textOnLineHovered.substring(hoverCharacterIndex);
+        let match: RegExpExecArray | null = null;
+
+        if ((match = matchAll.exec(def))) {
+            return match[1];
+        }
+
+        return null;
+    }
+
+    private static parseHoveredWord(document: TextDocument, positionOfHover: Position): string {
+        const hoveredLineNumber: number = positionOfHover.line;
+		// this will get the whole range from the first character of
+		/// the line being hovered on to the first character (non-inclusive)
+		/// of the next line down (hence hoveredLineNumber + 1)
+		const hoveredLineStartingPosition: Position = {
+			line: hoveredLineNumber,
+			character: 0,
+		};
+		const fullRangeOfLineBeingHovered: Range = {
+			start: hoveredLineStartingPosition,
+			end: {
+				line: hoveredLineNumber + 1,
+				character: 0,
+			}
+		};
+        const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
+
+		console.log("parseHoveredWord:textOnLineHovered:",textOnLineHovered);
+		const hoveredLineWords = textOnLineHovered.match(/\w+/g);
+		console.log("parseHoveredWord:hoveredLineWords:",hoveredLineWords);
+		
+		// textOnLineHovered.indexOf()
+
+        const index = document.offsetAt(positionOfHover) - document.offsetAt(hoveredLineStartingPosition);
+        const first = textOnLineHovered.lastIndexOf(" ", index);
+        const last = textOnLineHovered.indexOf(" ", index);
+        return textOnLineHovered.substring(
             first !== -1 ? first : 0,
-            last !== -1 ? last : text.length - 1
+            last !== -1 ? last : textOnLineHovered.length - 1
         );
     }
 
@@ -86,12 +147,13 @@ export class NodeLangServer implements ILangServer {
 		const document = NodeLangServer.documents.get(documentUri);
 		if (!document) return {} as Hover;
 
-        const word = NodeLangServer.parseHoveredWord(document, params.position);
+        const word = NodeLangServer.parseHoveredWord2(document, params.position);
         console.log("Found word:", word);
 
         // need to parse files into readable words and discern what words are at certain lines/columns
         return {
-            contents: "hello world",
+			// contents: "hello world",
+            contents: sqfCompletionItems[0].documentation!,
         };
     }
 
