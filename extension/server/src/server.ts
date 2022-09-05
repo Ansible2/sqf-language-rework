@@ -43,7 +43,7 @@ connection.onInitialize((params: InitializeParams) => {
 
 connection.onHover((params: HoverParams) => {
 	console.log("Hover: ",params);
-	
+	// need to parse files into readable words and discern what words are at certain lines/columns
 	return {
 		language: "sqf",
 		contents: "hello world"
