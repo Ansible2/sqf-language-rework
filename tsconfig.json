@@ -14,6 +14,6 @@
         "strictFunctionTypes": true,
         "strictPropertyInitialization": true
     },
-    "include": ["extension", "configuration/grammars/common"],
+    "include": ["extension", "configuration/grammars/syntaxes"],
     "exclude": [".vscode-test", "node_modules", "build-process"]
 }
