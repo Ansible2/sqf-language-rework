@@ -12,45 +12,42 @@ import {
     _Connection,
 } from "vscode-languageserver/node";
 import { Position, Range, TextDocument } from "vscode-languageserver-textdocument";
-import { ILangServer } from "./ILangServer";
-import { sqfCompletionItems } from "../../../../configuration/grammars/common/commands.syntax";
+import { sqfCompletionItems } from "../../../configuration/grammars/common/commands.syntax";
 
-export class NodeLangServer implements ILangServer {
+export class NodeSqfLangServer {
     private static connection: _Connection;
     private static documents: TextDocuments<TextDocument>;
-	private static _instance: NodeLangServer;
+	private static serverCreated: boolean = false;
 
-	public static getInstance(): NodeLangServer {
-		return this._instance ?? (this._instance = new NodeLangServer());
-	}
-
-    private constructor() {
-        NodeLangServer.connection = createConnection(ProposedFeatures.all);
+	public static createServer(): void {
+		if (this.serverCreated) return;
+		
+		NodeSqfLangServer.connection = createConnection(ProposedFeatures.all);
         // Create a simple text document manager.
-        NodeLangServer.documents = new TextDocuments(TextDocument);
+        NodeSqfLangServer.documents = new TextDocuments(TextDocument);
 		
         // Create a connection for the server, using Node's IPC as a transport.
         // Also include all preview / proposed LSP features.
-        NodeLangServer.connection.onInitialize(this.initializeConnection);
-        NodeLangServer.connection.onHover(this.onHover);
-        NodeLangServer.connection.onCompletion(this.onCompletion);
-		NodeLangServer.connection.onCompletionResolve(this.onCompletionResolve);
+        NodeSqfLangServer.connection.onInitialize(this.initializeConnection);
+        NodeSqfLangServer.connection.onHover(this.onHover);
+        NodeSqfLangServer.connection.onCompletion(this.onCompletion);
+		// NodeSqfLangServer.connection.onCompletionResolve(this.onCompletionResolve);
 
         // Make the text document manager listen on the connection
         /// for open, change and close text document events
-		NodeLangServer.documents.listen(NodeLangServer.connection);
+		NodeSqfLangServer.documents.listen(NodeSqfLangServer.connection);
         // Listen on the connection
-        NodeLangServer.connection.listen();
-    }
+        NodeSqfLangServer.connection.listen();
+	}
 
-    public initializeConnection(params: InitializeParams): InitializeResult {
+    public static initializeConnection(params: InitializeParams): InitializeResult {
         const init: InitializeResult = {
             capabilities: {
                 textDocumentSync: TextDocumentSyncKind.Incremental,
                 hoverProvider: true,
                 // Tell the client that this server supports code completion.
                 completionProvider: {
-                    resolveProvider: true,
+                    resolveProvider: false,
                 },
             },
         };
@@ -140,14 +137,14 @@ export class NodeLangServer implements ILangServer {
         );
     }
 
-    public onHover(params: HoverParams): Hover {
+    public static onHover(params: HoverParams): Hover {
         const documentUri = params.textDocument.uri;
         if (!documentUri) return {} as Hover;
 
-		const document = NodeLangServer.documents.get(documentUri);
+		const document = NodeSqfLangServer.documents.get(documentUri);
 		if (!document) return {} as Hover;
 
-        const word = NodeLangServer.parseHoveredWord2(document, params.position);
+        const word = NodeSqfLangServer.parseHoveredWord2(document, params.position);
         console.log("Found word:", word);
 
         // need to parse files into readable words and discern what words are at certain lines/columns
@@ -157,13 +154,13 @@ export class NodeLangServer implements ILangServer {
         };
     }
 
-    public onCompletion(params: CompletionParams): CompletionItem[] {
+    public static onCompletion(params: CompletionParams): CompletionItem[] {
         return sqfCompletionItems;
     }
 
     // can be used to make further edits to a completion item once selected in the list
 	// must be implemented
-    public onCompletionResolve(item: CompletionItem): CompletionItem {
-		return item;
-	}
+    // public static onCompletionResolve(item: CompletionItem): CompletionItem {
+	// 	return item;
+	// }
 }
