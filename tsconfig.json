@@ -15,5 +15,5 @@
         "strictPropertyInitialization": true
     },
     "include": ["extension", "configuration/grammars/syntaxes"],
-    "exclude": [".vscode-test", "node_modules", "build-process"]
+    "exclude": [".vscode-test", "node_modules", "build-process", "scripts"]
 }

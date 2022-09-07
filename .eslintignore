@@ -2,3 +2,4 @@ node_modules/**
 extension/client/node_modules/**
 .out/**
 extension/server/node_modules/**
+/scripts
