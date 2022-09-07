@@ -6,7 +6,6 @@ import {
     HoverParams,
     InitializeParams,
     InitializeResult,
-    MarkupContent,
     ProposedFeatures,
     TextDocuments,
     TextDocumentSyncKind,
@@ -214,9 +213,5 @@ export class NodeSqfLangServer {
     public static loadSqfSyntaxItems() {
         NodeSqfLangServer.sqfSyntaxItems = getSqfSyntaxItems();
     }
-    // can be used to make further edits to a completion item once selected in the list
-    // must be implemented
-    // public static onCompletionResolve(item: CompletionItem): CompletionItem {
-    // 	return item;
-    // }
+
 }
