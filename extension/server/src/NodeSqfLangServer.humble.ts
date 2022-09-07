@@ -190,16 +190,16 @@ export class NodeSqfLangServer {
 		getHoverItem
 	---------------------------------------------------------------------------- */
     public static getHoverItem(syntaxItemName: string): Hover | undefined {
-        const syntaxItem: CompiledSQFSyntax = NodeSqfLangServer.sqfSyntaxItems[syntaxItemName];
+        const syntaxItem: CompiledSQFSyntax = NodeSqfLangServer.sqfSyntaxItems[syntaxItemName.toLowerCase()];
         if (!syntaxItem) return;
+		console.log("hello");
 		
         const hoverItem: Hover = {
             contents: {
 				...syntaxItem.documentation,
 				value: [
 					syntaxItem.detail,
-					"", // little space
-					'___', // Shows as a separating line in hover window
+					'___', // Shows as a sepaofrating line in hover window
 					syntaxItem.documentation.value
 				].join('\n')
 			},

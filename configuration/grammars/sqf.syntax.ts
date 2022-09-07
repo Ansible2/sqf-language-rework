@@ -78,7 +78,7 @@ export const getSqfSyntaxItems = (): IJSON<CompiledSQFSyntax> => {
 	syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFSyntax>) => {
 		const compiledSyntaxObject: IJSON<CompiledSQFSyntax> = Object.fromEntries(
 			Object.entries(preSyntaxObject).map(
-				([syntaxItemName, syntaxItem]) => [syntaxItemName, compileDocumentation(syntaxItem)]
+				([syntaxItemName, syntaxItem]) => [syntaxItemName.toLowerCase(), compileDocumentation(syntaxItem)]
 			)
 		);
 
