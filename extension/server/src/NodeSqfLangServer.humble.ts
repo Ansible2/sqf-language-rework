@@ -6,6 +6,7 @@ import {
     HoverParams,
     InitializeParams,
     InitializeResult,
+    MarkupContent,
     ProposedFeatures,
     TextDocuments,
     TextDocumentSyncKind,
@@ -79,9 +80,9 @@ export class NodeSqfLangServer {
     }
 
     /* ----------------------------------------------------------------------------
-		parseHoveredWord2
+		parseHoveredWord
 	---------------------------------------------------------------------------- */
-    private static parseHoveredWord2(
+    private static parseHoveredWord(
         document: TextDocument,
         positionOfHover: Position,
         allowedRegex?: string
@@ -109,75 +110,33 @@ export class NodeSqfLangServer {
 
         // TODO: figure out how to make this more readable
         const matchChar = new RegExp(allowedRegex, "i");
-        const matchAll = new RegExp("(" + allowedRegex + "*)", "i");
+        const matchAll = new RegExp(`(${allowedRegex}*)`, "i");
 
         const hoverCharacterIndex: number = positionOfHover.character;
         let indexOfCurrentCharacter: number = hoverCharacterIndex;
-        let currentCharacterIsNOTStartOfLine: boolean =
-            indexOfCurrentCharacter > 0;
-        while (currentCharacterIsNOTStartOfLine) {
+
+        while (indexOfCurrentCharacter > 0) {
             indexOfCurrentCharacter--;
-            if (
-                !matchChar.test(
-                    textOnLineHovered.substring(
-                        indexOfCurrentCharacter,
-                        indexOfCurrentCharacter + 1
-                    )
-                )
-            ) {
+            let subStringToMatch = textOnLineHovered.substring(
+                indexOfCurrentCharacter,
+                indexOfCurrentCharacter + 1
+            );
+			
+            if (!matchChar.test(subStringToMatch)) {
                 indexOfCurrentCharacter++;
                 break;
             }
-
-            currentCharacterIsNOTStartOfLine = indexOfCurrentCharacter > 0;
         }
-
-        const def = textOnLineHovered.substring(hoverCharacterIndex);
+		
+		if (indexOfCurrentCharacter < 0) indexOfCurrentCharacter = 0;
+        const def = textOnLineHovered.substring(indexOfCurrentCharacter);
+	
         let match: RegExpExecArray | null = null;
-
         if ((match = matchAll.exec(def))) {
             return match[1];
         }
 
         return "";
-    }
-
-    private static parseHoveredWord(
-        document: TextDocument,
-        positionOfHover: Position
-    ): string {
-        const hoveredLineNumber: number = positionOfHover.line;
-        // this will get the whole range from the first character of
-        /// the line being hovered on to the first character (non-inclusive)
-        /// of the next line down (hence hoveredLineNumber + 1)
-        const hoveredLineStartingPosition: Position = {
-            line: hoveredLineNumber,
-            character: 0,
-        };
-        const fullRangeOfLineBeingHovered: Range = {
-            start: hoveredLineStartingPosition,
-            end: {
-                line: hoveredLineNumber + 1,
-                character: 0,
-            },
-        };
-        const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
-
-        console.log("parseHoveredWord:textOnLineHovered:", textOnLineHovered);
-        const hoveredLineWords = textOnLineHovered.match(/\w+/g);
-        console.log("parseHoveredWord:hoveredLineWords:", hoveredLineWords);
-
-        // textOnLineHovered.indexOf()
-
-        const index =
-            document.offsetAt(positionOfHover) -
-            document.offsetAt(hoveredLineStartingPosition);
-        const first = textOnLineHovered.lastIndexOf(" ", index);
-        const last = textOnLineHovered.indexOf(" ", index);
-        return textOnLineHovered.substring(
-            first !== -1 ? first : 0,
-            last !== -1 ? last : textOnLineHovered.length - 1
-        );
     }
 
     /* ----------------------------------------------------------------------------
@@ -190,7 +149,7 @@ export class NodeSqfLangServer {
         const document = NodeSqfLangServer.documents.get(documentUri);
         if (!document) return {} as Hover;
 
-        const word = NodeSqfLangServer.parseHoveredWord2(
+        const word = NodeSqfLangServer.parseHoveredWord(
             document,
             params.position
         );
@@ -232,11 +191,19 @@ export class NodeSqfLangServer {
 		getHoverItem
 	---------------------------------------------------------------------------- */
     public static getHoverItem(syntaxItemName: string): Hover | undefined {
-        const syntaxItem = NodeSqfLangServer.sqfSyntaxItems[syntaxItemName];
+        const syntaxItem: CompiledSQFSyntax = NodeSqfLangServer.sqfSyntaxItems[syntaxItemName];
         if (!syntaxItem) return;
-
+		
         const hoverItem: Hover = {
-            contents: syntaxItem.documentation,
+            contents: {
+				...syntaxItem.documentation,
+				value: [
+					syntaxItem.detail,
+					"", // little space
+					'___', // Shows as a separating line in hover window
+					syntaxItem.documentation.value
+				].join('\n')
+			},
         };
         return hoverItem;
     }

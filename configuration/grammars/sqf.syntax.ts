@@ -46,7 +46,7 @@ const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFS
 		try {
 			const filePath = path.resolve(
 				__dirname,
-				`../docs/${itemDocumentation}`
+				`./docs/${itemDocumentation}`
 			);
 			const markdownAsString =
 				readFileSync(filePath).toString();
@@ -54,7 +54,7 @@ const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFS
 
 		} catch (error) {
 			console.log(
-				`Unable to retrieve markdown file for docs at ../docs/${itemDocumentation}`
+				`Unable to retrieve markdown file for doc at ${__dirname}/docs/${itemDocumentation}`
 			);
 		}
 		
