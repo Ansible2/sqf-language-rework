@@ -22,13 +22,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFSyntax> = {
     },
 	or: {
 		detail: "Returns true if one or both conditions are true. In case of the alternative syntax, lazy evaluation is used. That means that if left operand is true, evaluation of the right side is skipped completely.",
-		documentation: `
-	// without lazy evaluation, select would throw an error in the event of an empty array
-	if ((count _array == 0) or { (_array select 0) != player }) then
-	{
-		hint "It works!";
-	};
-		`,
+		documentation: "or.md",
 		grammarType: SQFGrammarType.ComparisonOperator,
 		kind: CompletionItemKind.Operator
 	}

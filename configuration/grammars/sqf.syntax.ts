@@ -8,7 +8,7 @@ const syntaxes: IJSON<PreCompiledSQFSyntax>[] = [
 	sqfCommandSyntaxes
 ];
 
-const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFSyntax => {
+const compileDocumentation = (syntaxItemName: string, sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFSyntax => {
 	const documentation: MarkupContent = {
 		kind: MarkupKind.Markdown,
 		value: "",
@@ -17,6 +17,7 @@ const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFS
 	const itemDocumentation = sqfSyntaxItem.documentation;
 	if (!itemDocumentation) {
 		return {
+			label: syntaxItemName,
 			...sqfSyntaxItem,
 			documentation: documentation
 		}
@@ -33,6 +34,7 @@ const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFS
 		const value = itemDocumentation as string[];
 		documentation.value = value.join("\n");
 		return {
+			label: syntaxItemName,
 			...sqfSyntaxItem,
 			documentation: documentation
 		}
@@ -59,6 +61,7 @@ const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFS
 		}
 		
 		return {
+			label: syntaxItemName,
 			...sqfSyntaxItem,
 			documentation: documentation
 		}
@@ -66,6 +69,7 @@ const compileDocumentation = (sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFS
 	
 	documentation.value = itemDocumentation as string;
 	return {
+		label: syntaxItemName,
 		...sqfSyntaxItem,
 		documentation: documentation
 	}
@@ -78,7 +82,7 @@ export const getSqfSyntaxItems = (): IJSON<CompiledSQFSyntax> => {
 	syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFSyntax>) => {
 		const compiledSyntaxObject: IJSON<CompiledSQFSyntax> = Object.fromEntries(
 			Object.entries(preSyntaxObject).map(
-				([syntaxItemName, syntaxItem]) => [syntaxItemName.toLowerCase(), compileDocumentation(syntaxItem)]
+				([syntaxItemName, syntaxItem]) => [syntaxItemName.toLowerCase(), compileDocumentation(syntaxItemName,syntaxItem)]
 			)
 		);
 

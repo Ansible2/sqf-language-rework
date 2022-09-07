@@ -17,7 +17,6 @@ import {
     TextDocument,
 } from "vscode-languageserver-textdocument";
 import { getSqfSyntaxItems } from "../../../configuration/grammars/sqf.syntax";
-import path = require("path");
 import {
     IJSON,
     CompiledSQFSyntax,
@@ -174,12 +173,9 @@ export class NodeSqfLangServer {
         NodeSqfLangServer.completionItems = Object.entries(
             NodeSqfLangServer.sqfSyntaxItems
         ).map((item) => {
-            const [nameOfSqfItem, sqfSyntaxItem] = item;
+            const sqfSyntaxItem = item[1];
             const completionItem = {
-                label: nameOfSqfItem,
-                documentation: sqfSyntaxItem.documentation,
-                kind: sqfSyntaxItem.kind,
-                detail: sqfSyntaxItem.detail,
+                ...sqfSyntaxItem
             };
 
             return completionItem;
@@ -192,7 +188,6 @@ export class NodeSqfLangServer {
     public static getHoverItem(syntaxItemName: string): Hover | undefined {
         const syntaxItem: CompiledSQFSyntax = NodeSqfLangServer.sqfSyntaxItems[syntaxItemName.toLowerCase()];
         if (!syntaxItem) return;
-		console.log("hello");
 		
         const hoverItem: Hover = {
             contents: {
