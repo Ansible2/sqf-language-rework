@@ -11,6 +11,48 @@ export enum SQFGrammarType {
     Command = "command",
 }
 
+export enum SQFDataType {
+	Array = "ARRAY",
+	Boolean = "BOOLEAN",
+	Code = "CODE",
+	Config = "CONFIG",
+	Control = "CONTROL",
+	DiaryRecord = "DIARY RECORD",
+	Display = "DISPLAY",
+	EdenEntity = "EDEN ENTITY",
+	EdenId = "EDEN ID",
+	EditorObject = "EDITOR OBJECT",
+	Group = "GROUP",
+	HashMap = "HASHMAP",
+	Location = "LOCATION",
+	Namespace = "NAMESPACE",
+	Number = "NUMBER",
+	Object = "OBJECT",
+	ScriptHandle = "SCRIPT HANDLE",
+	Side = "SIDE",
+	String = "STRING",
+	StructuredText = "STRUCTURED TEXT",
+	Task = "TASK",
+	Team = "TEAM",
+	TeamMember = "TEAM MEMBER",
+	NaN = "NAN",
+	Any = "ANYTHING",
+	Nothing = "NOTHING",
+	Void = "VOID",
+	IfType = "IF TYPE",
+	SwitchType = "SWITCH TYPE",
+	WhileType = "WHILE TYPE",
+	WithType = "WITH TYPE",
+	ForType = "FOR TYPE",
+}
+
+export enum SQFSyntaxType {
+	Function = 0,
+	NularOperator = 1,
+	UnaryOperator = 2,
+	BinaryOperator = 3,
+}
+
 interface SQFSyntax {
     labelDetails?: {
         detail: string;
@@ -18,9 +60,10 @@ interface SQFSyntax {
     };
     kind: CompletionItemKind;
     grammarType: SQFGrammarType;
-	syntaxes: string[];
+	syntaxes: any[];
     data?: any;
 }
+
 
 export interface CompiledSQFSyntax extends SQFSyntax {
     // in order to search without case sensetivity

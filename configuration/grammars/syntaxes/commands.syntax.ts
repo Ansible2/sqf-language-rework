@@ -5,6 +5,9 @@ import { SQFGrammarType, IJSON, PreCompiledSQFSyntax } from "../sqf.types";
 export const sqfCommandSyntaxes: IJSON<PreCompiledSQFSyntax> = {
     apply: {
         syntaxes: [
+			{
+				
+			},
 			"<ARRAY<ANY>> = <ARRAY> apply <CODE>",
 			"<ARRAY<ANY>> = <HASHMAP> apply <CODE>",
 		],
