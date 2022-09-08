@@ -182,7 +182,7 @@ export class NodeSqfLangServer {
             const sqfSyntaxItem = item[1];
             const completionItem: CompletionItem = {
                 ...sqfSyntaxItem,
-				documentation: NodeSqfLangServer.getDocumentation(
+				documentation: NodeSqfLangServer.createFinalDocAppearance(
 					sqfSyntaxItem.documentation,
 					sqfSyntaxItem.syntaxes,
 					DocumentationType.CompletionItem
@@ -204,7 +204,7 @@ export class NodeSqfLangServer {
         console.log("doc value:", syntaxItem.documentation.value);
 
         const hoverItem: Hover = {
-            contents: NodeSqfLangServer.getDocumentation(
+            contents: NodeSqfLangServer.createFinalDocAppearance(
 				syntaxItem.documentation,
 				syntaxItem.syntaxes,
 				DocumentationType.HoverItem
@@ -220,7 +220,7 @@ export class NodeSqfLangServer {
         NodeSqfLangServer.sqfSyntaxItems = getSqfSyntaxItems();
     }
 
-    private static getDocumentation(
+    private static createFinalDocAppearance(
         documentation: MarkupContent,
         syntaxes: string[],
         docType: DocumentationType
