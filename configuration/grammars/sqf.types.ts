@@ -53,7 +53,7 @@ export enum SQFSyntaxType {
 	BinaryOperator = 3,
 }
 
-interface SQFSyntax {
+interface SQFItem {
     labelDetails?: {
         detail: string;
         description: string;
@@ -65,7 +65,7 @@ interface SQFSyntax {
 }
 
 
-export interface CompiledSQFSyntax extends SQFSyntax {
+export interface CompiledSQFItem extends SQFItem {
     // in order to search without case sensetivity
     // but still display properly cased names in menus
     // a label is created when compiled so that the key can
@@ -75,7 +75,7 @@ export interface CompiledSQFSyntax extends SQFSyntax {
     detail?: string; // detail should probably be avoided
 }
 
-export interface PreCompiledSQFSyntax extends SQFSyntax {
+export interface PreCompiledSQFItem extends SQFItem {
     // label?: string;
     documentation: string | string[] | MarkupContent;
 	detail?: string; // detail should probably be avoided

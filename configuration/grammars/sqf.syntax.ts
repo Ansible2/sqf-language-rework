@@ -1,10 +1,10 @@
 import { readFileSync } from "fs-extra";
 import path = require("path");
 import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
-import { IJSON, CompiledSQFSyntax, PreCompiledSQFSyntax } from "./sqf.types";
+import { IJSON, CompiledSQFItem, PreCompiledSQFItem } from "./sqf.types";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 
-const syntaxes: IJSON<PreCompiledSQFSyntax>[] = [sqfCommandSyntaxes];
+const syntaxes: IJSON<PreCompiledSQFItem>[] = [sqfCommandSyntaxes];
 
 const compileDocumentation = (
     preCompiledDoc: string | string[] | MarkupContent | undefined
@@ -57,28 +57,28 @@ const compileDocumentation = (
 };
 
 
-const compileSQFSyntax = (
+const compileSQFItems = (
     syntaxItemName: string,
-    sqfSyntaxItem: PreCompiledSQFSyntax
-): CompiledSQFSyntax => {
-    const compiledDocumentation = compileDocumentation(sqfSyntaxItem.documentation);
+    sqfItem: PreCompiledSQFItem
+): CompiledSQFItem => {
+    const compiledDocumentation = compileDocumentation(sqfItem.documentation);
     return {
         label: syntaxItemName,
-        ...sqfSyntaxItem,
+        ...sqfItem,
         documentation: compiledDocumentation,
     };
 };
 
-export const getSqfSyntaxItems = (): IJSON<CompiledSQFSyntax> => {
-    let syntaxItems: IJSON<CompiledSQFSyntax> = {};
+export const getSqfItems = (): IJSON<CompiledSQFItem> => {
+    let syntaxItems: IJSON<CompiledSQFItem> = {};
 
-    syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFSyntax>) => {
-        const compiledSyntaxObject: IJSON<CompiledSQFSyntax> =
+    syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFItem>) => {
+        const compiledSyntaxObject: IJSON<CompiledSQFItem> =
             Object.fromEntries(
                 Object.entries(preSyntaxObject).map(
                     ([syntaxItemName, syntaxItem]) => [
                         syntaxItemName.toLowerCase(),
-                        compileSQFSyntax(syntaxItemName, syntaxItem),
+                        compileSQFItems(syntaxItemName, syntaxItem),
                     ]
                 )
             );

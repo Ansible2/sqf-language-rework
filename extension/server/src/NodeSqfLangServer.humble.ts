@@ -18,10 +18,10 @@ import {
     Range,
     TextDocument,
 } from "vscode-languageserver-textdocument";
-import { getSqfSyntaxItems } from "../../../configuration/grammars/sqf.syntax";
+import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
 import {
     IJSON,
-    CompiledSQFSyntax,
+    CompiledSQFItem,
 } from "../../../configuration/grammars/sqf.types";
 
 enum DocumentationType {
@@ -33,7 +33,7 @@ export class NodeSqfLangServer {
     private static documents: TextDocuments<TextDocument>;
     private static serverCreated: boolean = false;
     private static completionItems: CompletionItem[] = [];
-    private static sqfSyntaxItems: IJSON<CompiledSQFSyntax>;
+    private static sqfItems: IJSON<CompiledSQFItem>;
 
     /* ----------------------------------------------------------------------------
 		CreateServer
@@ -41,7 +41,7 @@ export class NodeSqfLangServer {
     public static CreateServer(): void {
         if (NodeSqfLangServer.serverCreated) return;
 
-        NodeSqfLangServer.loadSqfSyntaxItems();
+        NodeSqfLangServer.loadSqfItems();
         NodeSqfLangServer.loadCompletionItems();
 
         NodeSqfLangServer.connection = createConnection(ProposedFeatures.all);
@@ -177,14 +177,14 @@ export class NodeSqfLangServer {
 	---------------------------------------------------------------------------- */
     private static loadCompletionItems(): void {
         NodeSqfLangServer.completionItems = Object.entries(
-            NodeSqfLangServer.sqfSyntaxItems
+            NodeSqfLangServer.sqfItems
         ).map((item) => {
-            const sqfSyntaxItem = item[1];
+            const sqfItem = item[1];
             const completionItem: CompletionItem = {
-                ...sqfSyntaxItem,
+                ...sqfItem,
 				documentation: NodeSqfLangServer.createFinalDocAppearance(
-					sqfSyntaxItem.documentation,
-					sqfSyntaxItem.syntaxes,
+					sqfItem.documentation,
+					sqfItem.syntaxes,
 					DocumentationType.CompletionItem
 				)
             };
@@ -197,8 +197,8 @@ export class NodeSqfLangServer {
 		getHoverItem
 	---------------------------------------------------------------------------- */
     public static getHoverItem(syntaxItemName: string): Hover | undefined {
-        const syntaxItem: CompiledSQFSyntax =
-            NodeSqfLangServer.sqfSyntaxItems[syntaxItemName.toLowerCase()];
+        const syntaxItem: CompiledSQFItem =
+            NodeSqfLangServer.sqfItems[syntaxItemName.toLowerCase()];
         if (!syntaxItem) return;
 
         console.log("doc value:", syntaxItem.documentation.value);
@@ -214,10 +214,10 @@ export class NodeSqfLangServer {
     }
 
     /* ----------------------------------------------------------------------------
-		loadSqfSyntaxItems
+		loadSqfItems
 	---------------------------------------------------------------------------- */
-    public static loadSqfSyntaxItems() {
-        NodeSqfLangServer.sqfSyntaxItems = getSqfSyntaxItems();
+    public static loadSqfItems() {
+        NodeSqfLangServer.sqfItems = getSqfItems();
     }
 
     private static createFinalDocAppearance(

@@ -1,8 +1,8 @@
 import { CompletionItemKind } from "vscode-languageserver/node";
-import { SQFGrammarType, IJSON, PreCompiledSQFSyntax } from "../sqf.types";
+import { SQFGrammarType, IJSON, PreCompiledSQFItem } from "../sqf.types";
 
 // does not need to be alphabetical, however, you should still try to keep it as
-export const sqfCommandSyntaxes: IJSON<PreCompiledSQFSyntax> = {
+export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
         syntaxes: [
 			{
