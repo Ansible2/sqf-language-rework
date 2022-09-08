@@ -1,12 +1,19 @@
 import { CompletionItemKind } from "vscode-languageserver/node";
-import { SQFGrammarType, IJSON, PreCompiledSQFItem } from "../sqf.types";
+import { SQFGrammarType, IJSON, PreCompiledSQFItem, SQFSyntaxType, SQFDataType } from "../sqf.namespace";
 
 // does not need to be alphabetical, however, you should still try to keep it as
 export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
         syntaxes: [
 			{
-				
+				// TODO: Can represent a sepecific array syntax
+				/// e.g. [ANY,STRING,ARRAY<ANY>] in that order for the array
+				// TODO: Be able to represent array of single type
+				/// e.g. ARRAY<STRING> = array of strings
+				type: SQFSyntaxType.BinaryOperator,
+				returnTypes: [SQFDataType.Any],
+				leftOperandTypes: [[SQFDataType.Any], SQFDataType.HashMap],
+				rightOperandTypes: SQFDataType.Code,
 			},
 			"<ARRAY<ANY>> = <ARRAY> apply <CODE>",
 			"<ARRAY<ANY>> = <HASHMAP> apply <CODE>",

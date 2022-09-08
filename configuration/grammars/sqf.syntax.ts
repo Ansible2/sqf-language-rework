@@ -1,7 +1,7 @@
 import { readFileSync } from "fs-extra";
 import path = require("path");
 import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
-import { IJSON, CompiledSQFItem, PreCompiledSQFItem } from "./sqf.types";
+import { IJSON, CompiledSQFItem, PreCompiledSQFItem } from "./sqf.namespace";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [sqfCommandSyntaxes];

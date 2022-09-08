@@ -22,7 +22,7 @@ import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
 import {
     IJSON,
     CompiledSQFItem,
-} from "../../../configuration/grammars/sqf.types";
+} from "../../../configuration/grammars/sqf.namespace";
 
 enum DocumentationType {
     CompletionItem = 1,
