@@ -6,6 +6,8 @@ import {
     HoverParams,
     InitializeParams,
     InitializeResult,
+    MarkupContent,
+    MarkupKind,
     ProposedFeatures,
     TextDocuments,
     TextDocumentSyncKind,
@@ -22,6 +24,10 @@ import {
     CompiledSQFSyntax,
 } from "../../../configuration/grammars/sqf.types";
 
+enum DocumentationType {
+    CompletionItem = 1,
+    HoverItem = 2,
+}
 export class NodeSqfLangServer {
     private static connection: _Connection;
     private static documents: TextDocuments<TextDocument>;
@@ -119,16 +125,16 @@ export class NodeSqfLangServer {
                 indexOfCurrentCharacter,
                 indexOfCurrentCharacter + 1
             );
-			
+
             if (!matchChar.test(subStringToMatch)) {
                 indexOfCurrentCharacter++;
                 break;
             }
         }
-		
-		if (indexOfCurrentCharacter < 0) indexOfCurrentCharacter = 0;
+
+        if (indexOfCurrentCharacter < 0) indexOfCurrentCharacter = 0;
         const def = textOnLineHovered.substring(indexOfCurrentCharacter);
-	
+
         let match: RegExpExecArray | null = null;
         if ((match = matchAll.exec(def))) {
             return match[1];
@@ -175,7 +181,12 @@ export class NodeSqfLangServer {
         ).map((item) => {
             const sqfSyntaxItem = item[1];
             const completionItem: CompletionItem = {
-                ...sqfSyntaxItem
+                ...sqfSyntaxItem,
+				documentation: NodeSqfLangServer.getDocumentation(
+					sqfSyntaxItem.documentation,
+					sqfSyntaxItem.syntaxes,
+					DocumentationType.CompletionItem
+				)
             };
 
             return completionItem;
@@ -186,27 +197,87 @@ export class NodeSqfLangServer {
 		getHoverItem
 	---------------------------------------------------------------------------- */
     public static getHoverItem(syntaxItemName: string): Hover | undefined {
-        const syntaxItem: CompiledSQFSyntax = NodeSqfLangServer.sqfSyntaxItems[syntaxItemName.toLowerCase()];
+        const syntaxItem: CompiledSQFSyntax =
+            NodeSqfLangServer.sqfSyntaxItems[syntaxItemName.toLowerCase()];
         if (!syntaxItem) return;
-		
+
+        console.log("doc value:", syntaxItem.documentation.value);
+
         const hoverItem: Hover = {
-            contents: {
-				...syntaxItem.documentation,
-				value: [
-					syntaxItem.detail,
-					'___', // Shows as a sepaofrating line in hover window
-					syntaxItem.documentation.value
-				].join('\n')
-			},
+            contents: NodeSqfLangServer.getDocumentation(
+				syntaxItem.documentation,
+				syntaxItem.syntaxes,
+				DocumentationType.HoverItem
+			),
         };
         return hoverItem;
     }
 
     /* ----------------------------------------------------------------------------
-		getHoverItem
+		loadSqfSyntaxItems
 	---------------------------------------------------------------------------- */
     public static loadSqfSyntaxItems() {
         NodeSqfLangServer.sqfSyntaxItems = getSqfSyntaxItems();
     }
 
+    private static getDocumentation(
+        documentation: MarkupContent,
+        syntaxes: string[],
+        docType: DocumentationType
+    ): MarkupContent {
+		const markupKind: MarkupKind = documentation.kind;
+		let docValue = '';
+
+        switch (docType) {
+            case DocumentationType.CompletionItem: {
+				if (markupKind === MarkupKind.PlainText) {
+					docValue = [
+						...syntaxes,
+						documentation.value
+					].join('\n')
+
+				} else {
+					docValue = [
+						"```sqf",
+						...syntaxes,
+						"```",
+						documentation.value
+					].join('\n')
+				}
+
+                break;
+            }
+            case DocumentationType.HoverItem: {
+				if (markupKind === MarkupKind.PlainText) {
+					const syntaxSections = syntaxes.join('\n ___ \n');
+					docValue = [
+						syntaxSections,
+						documentation.value
+					].join('\n')
+
+				} else {
+					const syntaxesAsMarkdown: string[] = syntaxes.map((syntax: string) => {
+						return [
+							"```sqf",
+							syntax,
+							"```",
+							"___"
+						].join('\n');
+					});
+					docValue = [
+						...syntaxesAsMarkdown,
+						documentation.value
+					].join('\n')
+				}
+                break;
+            }
+            default:
+                break;
+        }
+
+		return {
+			kind: markupKind,
+			value: docValue
+		}
+    }
 }

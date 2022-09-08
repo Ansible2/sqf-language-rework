@@ -6,6 +6,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFSyntax> = {
     apply: {
         syntaxes: [
 			"<ARRAY<ANY>> = <ARRAY> apply <CODE>",
+			"<ARRAY<ANY>> = <HASHMAP> apply <CODE>",
 		],
         documentation: [
 			"Applies the given code to each element of the given data structure and collects the results in an array.",

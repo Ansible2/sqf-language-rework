@@ -18,23 +18,24 @@ interface SQFSyntax {
     };
     kind: CompletionItemKind;
     grammarType: SQFGrammarType;
+	syntaxes: string[];
     data?: any;
 }
 
 export interface CompiledSQFSyntax extends SQFSyntax {
-	// in order to search without case sensetivity
-	// but still display properly cased names in menus
-	// a label is created when compiled so that the key can
-	// be made lowercase
-	label: string,
+    // in order to search without case sensetivity
+    // but still display properly cased names in menus
+    // a label is created when compiled so that the key can
+    // be made lowercase
+    label: string;
     documentation: MarkupContent;
-	detail: string;
+    detail?: string; // detail should probably be avoided
 }
 
-export interface PreCompiledSQFSyntax extends SQFSyntax{
-	label?: string,
+export interface PreCompiledSQFSyntax extends SQFSyntax {
+    // label?: string;
     documentation: string | string[] | MarkupContent;
-	syntaxes: string[];
+	detail?: string; // detail should probably be avoided
 }
 
 export interface IJSON<T> {

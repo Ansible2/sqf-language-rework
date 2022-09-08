@@ -1,96 +1,93 @@
 import { readFileSync } from "fs-extra";
 import path = require("path");
 import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
-import { IJSON, CompiledSQFSyntax as CompiledSQFSyntax, PreCompiledSQFSyntax } from "./sqf.types";
+import { IJSON, CompiledSQFSyntax, PreCompiledSQFSyntax } from "./sqf.types";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 
-const syntaxes: IJSON<PreCompiledSQFSyntax>[] = [
-	sqfCommandSyntaxes
-];
+const syntaxes: IJSON<PreCompiledSQFSyntax>[] = [sqfCommandSyntaxes];
 
-const compileDocumentation = (syntaxItemName: string, sqfSyntaxItem: PreCompiledSQFSyntax): CompiledSQFSyntax => {
-	const documentation: MarkupContent = {
-		kind: MarkupKind.Markdown,
-		value: "",
-	};
-	
-	const itemDocumentation = sqfSyntaxItem.documentation;
-	if (!itemDocumentation) {
-		return {
-			label: syntaxItemName,
-			...sqfSyntaxItem,
-			documentation: documentation
-		}
-	};
-	
-	const docIsArray = Array.isArray(itemDocumentation);
-	const itemDocIsMarkup: boolean = typeof itemDocumentation === 'object' && 
-		!docIsArray &&
-		'value' in itemDocumentation &&
-		'kind' in itemDocumentation;
-	if (itemDocIsMarkup) return sqfSyntaxItem as CompiledSQFSyntax;
+const compileDocumentation = (
+    preCompiledDoc: string | string[] | MarkupContent | undefined
+): MarkupContent => {
+    const compiledDocumentation: MarkupContent = {
+        kind: MarkupKind.Markdown,
+        value: "",
+    };
 
-	if (docIsArray) {
-		const value = itemDocumentation as string[];
-		documentation.value = value.join("\n");
-		return {
-			label: syntaxItemName,
-			...sqfSyntaxItem,
-			documentation: documentation
-		}
-	}
+    if (!preCompiledDoc) return compiledDocumentation;
 
-	// doc is string
-	const docIsMarkdownFile = (
-		itemDocumentation as string
-	).endsWith(".md");
-	if (docIsMarkdownFile) {
-		try {
-			const filePath = path.resolve(
-				__dirname,
-				`./docs/${itemDocumentation}`
-			);
-			const markdownAsString =
-				readFileSync(filePath).toString();
-			documentation.value = markdownAsString;
+    const preCompiledDocIsArray: boolean = Array.isArray(preCompiledDoc);
+    const preCompiledDocIsMarkup: boolean =
+        typeof preCompiledDoc === "object" &&
+        !preCompiledDocIsArray &&
+        "value" in preCompiledDoc &&
+        "kind" in preCompiledDoc;
+    if (preCompiledDocIsMarkup) return (preCompiledDoc as MarkupContent);
 
-		} catch (error) {
-			console.log(
-				`Unable to retrieve markdown file for doc at ${__dirname}/docs/${itemDocumentation}`
-			);
-		}
-		
-		return {
-			label: syntaxItemName,
-			...sqfSyntaxItem,
-			documentation: documentation
-		}
-	}
-	
-	documentation.value = itemDocumentation as string;
-	return {
-		label: syntaxItemName,
-		...sqfSyntaxItem,
-		documentation: documentation
-	}
-}
+    if (preCompiledDocIsArray) {
+        preCompiledDoc = preCompiledDoc as string[];
+        const compiledDoc = preCompiledDoc.join("\n");
+		compiledDocumentation.value = compiledDoc;
+
+        return compiledDocumentation;
+    }
+
+    const docIsMarkdownFile: boolean = (preCompiledDoc as string).endsWith(".md");
+    if (docIsMarkdownFile) {
+        try {
+            const filePath = path.resolve(
+                __dirname,
+                `./docs/${preCompiledDoc}`
+            );
+            const markdownAsString = readFileSync(filePath).toString();
+			compiledDocumentation.value = markdownAsString;
+
+        } catch (error) {
+            console.log(
+                `Unable to retrieve markdown file for doc at ${__dirname}/docs/${preCompiledDoc}`
+            );
+        }
+
+		return compiledDocumentation;
+    }
+
+	preCompiledDoc = preCompiledDoc as string;
+	compiledDocumentation.value = preCompiledDoc;
+	return compiledDocumentation;
+};
+
+
+const compileSQFSyntax = (
+    syntaxItemName: string,
+    sqfSyntaxItem: PreCompiledSQFSyntax
+): CompiledSQFSyntax => {
+    const compiledDocumentation = compileDocumentation(sqfSyntaxItem.documentation);
+    return {
+        label: syntaxItemName,
+        ...sqfSyntaxItem,
+        documentation: compiledDocumentation,
+    };
+};
 
 export const getSqfSyntaxItems = (): IJSON<CompiledSQFSyntax> => {
-	let syntaxItems: IJSON<CompiledSQFSyntax> = {
-	};
+    let syntaxItems: IJSON<CompiledSQFSyntax> = {};
 
-	syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFSyntax>) => {
-		const compiledSyntaxObject: IJSON<CompiledSQFSyntax> = Object.fromEntries(
-			Object.entries(preSyntaxObject).map(
-				([syntaxItemName, syntaxItem]) => [syntaxItemName.toLowerCase(), compileDocumentation(syntaxItemName,syntaxItem)]
-			)
-		);
+    syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFSyntax>) => {
+        const compiledSyntaxObject: IJSON<CompiledSQFSyntax> =
+            Object.fromEntries(
+                Object.entries(preSyntaxObject).map(
+                    ([syntaxItemName, syntaxItem]) => [
+                        syntaxItemName.toLowerCase(),
+                        compileSQFSyntax(syntaxItemName, syntaxItem),
+                    ]
+                )
+            );
 
-		syntaxItems = {
-			...syntaxItems,
-			...compiledSyntaxObject
-		}
-	})
+        syntaxItems = {
+            ...syntaxItems,
+            ...compiledSyntaxObject,
+        };
+    });
 
     return syntaxItems;
 };
