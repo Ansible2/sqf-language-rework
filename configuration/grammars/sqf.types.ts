@@ -1,18 +1,17 @@
 import { CompletionItemKind, MarkupContent } from "vscode-languageserver/node";
 
 export enum SQFGrammarType {
-    Function = 1,
-    ConrolStatement = 2,
-    ConditionOperator = 3,
-    ComparisonOperator = 4,
-    ReservedLiteral = 5,
-    NullLiteral = 6,
-    PropertyAccessor = 7,
-    Command = 8,
+    Function = "function",
+    ConrolStatement = "control statement",
+    ConditionOperator = "condition operator",
+    ComparisonOperator = "comparison operator",
+    ReservedLiteral = "reserved literal",
+    NullLiteral = "null literal",
+    PropertyAccessor = "property accessor",
+    Command = "command",
 }
 
 interface SQFSyntax {
-	detail: string;
     labelDetails?: {
         detail: string;
         description: string;
@@ -29,11 +28,13 @@ export interface CompiledSQFSyntax extends SQFSyntax {
 	// be made lowercase
 	label: string,
     documentation: MarkupContent;
+	detail: string;
 }
 
 export interface PreCompiledSQFSyntax extends SQFSyntax{
 	label?: string,
     documentation: string | string[] | MarkupContent;
+	syntaxes: string[];
 }
 
 export interface IJSON<T> {

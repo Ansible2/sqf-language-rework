@@ -4,8 +4,11 @@ import { SQFGrammarType, IJSON, PreCompiledSQFSyntax } from "../sqf.types";
 // does not need to be alphabetical, however, you should still try to keep it as
 export const sqfCommandSyntaxes: IJSON<PreCompiledSQFSyntax> = {
     apply: {
-        detail: "Applies the given code to each element of the given data structure and collects the results in an array.",
+        syntaxes: [
+			"<ARRAY<ANY>> = <ARRAY> apply <CODE>",
+		],
         documentation: [
+			"Applies the given code to each element of the given data structure and collects the results in an array.",
             "```sqf",
             "// will systemChat '1', '2', and '3'",
             "[1,2,3] apply {systemChat _x};",
@@ -15,13 +18,17 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFSyntax> = {
         grammarType: SQFGrammarType.Command,
     },
     forEach: {
-        detail: "Executes the given command(s) on every item of an Array or a HashMap.",
+        syntaxes: [
+			"<ARRAY<ANY>> = <ARRAY> apply <CODE>"
+		],
         documentation: "foreach.md",
         grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Method,
     },
 	or: {
-		detail: "Returns true if one or both conditions are true. In case of the alternative syntax, lazy evaluation is used. That means that if left operand is true, evaluation of the right side is skipped completely.",
+		syntaxes: [
+			"<BOOLEAN> = <BOOLEAN> or <BOOLEAN>"
+		],
 		documentation: "or.md",
 		grammarType: SQFGrammarType.ComparisonOperator,
 		kind: CompletionItemKind.Operator

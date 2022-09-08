@@ -174,7 +174,7 @@ export class NodeSqfLangServer {
             NodeSqfLangServer.sqfSyntaxItems
         ).map((item) => {
             const sqfSyntaxItem = item[1];
-            const completionItem = {
+            const completionItem: CompletionItem = {
                 ...sqfSyntaxItem
             };
 
