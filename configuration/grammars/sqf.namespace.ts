@@ -11,9 +11,10 @@ export enum SQFGrammarType {
     Command = "command",
 }
 export enum SQFDataType {
-    Array = "ARRAY",
+    Empty = "EMPTY",
+    // Array = "ARRAY",
     Boolean = "BOOLEAN",
-    Code = "CODE",
+    // Code = "CODE",
     Config = "CONFIG",
     Control = "CONTROL",
     DiaryRecord = "DIARY RECORD",
@@ -52,60 +53,18 @@ export enum SQFSyntaxType {
     BinaryOperator = 3,
 }
 
-class SQFArray {
-    public structure: Array<SQFDataType | SQFArray | SQFCode>;
-    constructor(
-        structure:
-            | SQFDataType
-            | SQFArray
-            | SQFCode
-            | Array<SQFDataType | SQFArray | SQFCode>
-    ) {
-        if (Array.isArray(structure)) {
-            this.structure = structure;
-        } else {
-            this.structure = [structure];
-        }
-    }
+export enum SQFArrayComparator {
+    And = "AND",
+    Or = "OR",
+	AnyOf = "ANY"
+}
+interface SQFArray {
+    types: SQFDataType | SQFArray | Array<SQFDataType | SQFArray>;
+    operation: SQFArrayComparator;
 }
 
-class SQFCode {
-    public returnTypes: Array<SQFDataType | SQFArray | SQFCode>;
-    constructor(
-        returnTypes:
-            | SQFDataType
-            | SQFArray
-            | SQFCode
-            | Array<SQFDataType | SQFArray | SQFCode>
-    ) {
-        if (Array.isArray(returnTypes)) {
-            this.returnTypes = returnTypes;
-        } else {
-            this.returnTypes = [returnTypes];
-        }
-    }
-}
-
-export namespace SQFSyntax {
-    export const ArrayOfType = (
-        dataType:
-            | SQFDataType
-            | SQFArray
-            | SQFCode
-            | Array<SQFDataType | SQFArray | SQFCode>
-    ) => {
-        return new SQFArray(dataType);
-    };
-
-    export const CodeThatReturns = (
-        dataType:
-            | SQFDataType
-            | SQFArray
-            | SQFCode
-            | Array<SQFDataType | SQFArray | SQFCode>
-    ) => {
-        return new SQFCode(dataType);
-    };
+interface SQFCode {
+	returns: SQFDataType | SQFArray | SQFCode
 }
 
 export interface SQFSyntax {

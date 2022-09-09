@@ -22,6 +22,7 @@ import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
 import {
     IJSON,
     CompiledSQFItem,
+	SQFSyntax,
 } from "../../../configuration/grammars/sqf.namespace";
 
 enum DocumentationType {
@@ -286,6 +287,9 @@ export class NodeSqfLangServer {
 
 
 	/* ----------------------------------------------------------------------------
-		parseSyntaxes
+		parseSqfSyntax
 	---------------------------------------------------------------------------- */
+	public static parseSQFSyntax(syntaxes: SQFSyntax[]): string[] {
+		return [''];
+	}
 }
