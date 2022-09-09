@@ -52,11 +52,79 @@ export enum SQFSyntaxType {
     BinaryOperator = 3,
 }
 
+class SQFArray {
+    public structure: Array<SQFDataType | SQFArray | SQFCode>;
+    constructor(
+        structure:
+            | SQFDataType
+            | SQFArray
+            | SQFCode
+            | Array<SQFDataType | SQFArray | SQFCode>
+    ) {
+        if (Array.isArray(structure)) {
+            this.structure = structure;
+        } else {
+            this.structure = [structure];
+        }
+    }
+}
+
+class SQFCode {
+    public returnTypes: Array<SQFDataType | SQFArray | SQFCode>;
+    constructor(
+        returnTypes:
+            | SQFDataType
+            | SQFArray
+            | SQFCode
+            | Array<SQFDataType | SQFArray | SQFCode>
+    ) {
+        if (Array.isArray(returnTypes)) {
+            this.returnTypes = returnTypes;
+        } else {
+            this.returnTypes = [returnTypes];
+        }
+    }
+}
+
+export namespace SQFSyntax {
+    export const ArrayOfType = (
+        dataType:
+            | SQFDataType
+            | SQFArray
+            | SQFCode
+            | Array<SQFDataType | SQFArray | SQFCode>
+    ) => {
+        return new SQFArray(dataType);
+    };
+
+    export const CodeThatReturns = (
+        dataType:
+            | SQFDataType
+            | SQFArray
+            | SQFCode
+            | Array<SQFDataType | SQFArray | SQFCode>
+    ) => {
+        return new SQFCode(dataType);
+    };
+}
+
 export interface SQFSyntax {
     type: SQFSyntaxType;
-    returnTypes: SQFDataType | Array<SQFDataType[] | SQFDataType>;
-    leftOperandTypes?: SQFDataType | Array<SQFDataType[] | SQFDataType>;
-    rightOperandTypes?: SQFDataType | Array<SQFDataType[] | SQFDataType>;
+    returnTypes:
+        | SQFDataType
+        | SQFArray
+        | SQFCode
+        | Array<SQFDataType | SQFArray | SQFCode>;
+    leftOperandTypes?:
+        | SQFDataType
+        | SQFArray
+        | SQFCode
+        | Array<SQFDataType | SQFArray | SQFCode>;
+    rightOperandTypes?:
+        | SQFDataType
+        | SQFArray
+        | SQFCode
+        | Array<SQFDataType | SQFArray | SQFCode>;
 }
 
 interface SQFItem {
@@ -67,7 +135,7 @@ interface SQFItem {
     kind: CompletionItemKind;
     grammarType: SQFGrammarType;
     data?: any;
-	syntaxes: SQFSyntax[] | SQFSyntax;
+    syntaxes: SQFSyntax[] | SQFSyntax;
 }
 
 export interface CompiledSQFItem extends SQFItem {

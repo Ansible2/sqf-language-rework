@@ -1,5 +1,5 @@
 import { CompletionItemKind } from "vscode-languageserver/node";
-import { SQFGrammarType, IJSON, PreCompiledSQFItem, SQFSyntaxType, SQFDataType } from "../sqf.namespace";
+import { SQFGrammarType, IJSON, PreCompiledSQFItem, SQFSyntaxType, SQFDataType, SQFSyntax } from "../sqf.namespace";
 
 // does not need to be alphabetical, however, you should still try to keep it as
 export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
@@ -11,12 +11,12 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 				// TODO: Be able to represent array of single type
 				/// e.g. ARRAY<STRING> = array of strings
 				type: SQFSyntaxType.BinaryOperator,
-				returnTypes: [SQFDataType.Any],
-				leftOperandTypes: [[SQFDataType.Any], SQFDataType.HashMap],
+				returnTypes: SQFSyntax.ArrayOfType(SQFDataType.Any),
+				leftOperandTypes: [SQFSyntax.ArrayOfType(SQFDataType.Any), SQFDataType.HashMap], // either an array of type any or a hashmap
 				rightOperandTypes: SQFDataType.Code,
 			},
-			"<ARRAY<ANY>> = <ARRAY> apply <CODE>",
-			"<ARRAY<ANY>> = <HASHMAP> apply <CODE>",
+			// "<ARRAY<ANY>> = <ARRAY> apply <CODE>",
+			// "<ARRAY<ANY>> = <HASHMAP> apply <CODE>",
 		],
         documentation: [
 			"Applies the given code to each element of the given data structure and collects the results in an array.",
@@ -30,7 +30,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     forEach: {
         syntaxes: [
-			"<ARRAY<ANY>> = <ARRAY> apply <CODE>"
+			// "<ARRAY<ANY>> = <ARRAY> apply <CODE>"
 		],
         documentation: "foreach.md",
         grammarType: SQFGrammarType.Command,
@@ -38,7 +38,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
 	or: {
 		syntaxes: [
-			"<BOOLEAN> = <BOOLEAN> or <BOOLEAN>"
+			// "<BOOLEAN> = <BOOLEAN> or <BOOLEAN>"
 		],
 		documentation: "or.md",
 		grammarType: SQFGrammarType.ComparisonOperator,

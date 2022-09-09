@@ -219,7 +219,10 @@ export class NodeSqfLangServer {
     public static loadSqfItems() {
         NodeSqfLangServer.sqfItems = getSqfItems();
     }
-
+	
+	/* ----------------------------------------------------------------------------
+		createFinalDocAppearance
+	---------------------------------------------------------------------------- */
     private static createFinalDocAppearance(
         documentation: MarkupContent,
         syntaxes: string[],
@@ -280,4 +283,9 @@ export class NodeSqfLangServer {
 			value: docValue
 		}
     }
+
+
+	/* ----------------------------------------------------------------------------
+		parseSyntaxes
+	---------------------------------------------------------------------------- */
 }
