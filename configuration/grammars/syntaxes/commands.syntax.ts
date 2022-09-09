@@ -14,10 +14,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
         syntaxes: [
             {
-                // TODO: Can represent a sepecific array syntax
-                /// e.g. [ANY,STRING,ARRAY<ANY>] in that order for the array
-                // TODO: Be able to represent array of single type
-                /// e.g. ARRAY<STRING> = array of strings
                 type: SQFSyntaxType.BinaryOperator,
                 returnTypes: {
                     types: SQFDataType.Any,

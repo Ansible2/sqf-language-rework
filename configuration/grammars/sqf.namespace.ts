@@ -58,12 +58,20 @@ export enum SQFArrayComparator {
     Or = "OR",
 	AnyOf = "ANY"
 }
-interface SQFArray {
-    types: SQFDataType | SQFArray | Array<SQFDataType | SQFArray>;
+export interface SQFArray {
+    types: SQFDataType | SQFArray | SQFCode | Array<SQFDataType | SQFArray | SQFCode>;
     operation: SQFArrayComparator;
 }
 
-interface SQFCode {
+export function isSQFArray(object: unknown): object is SQFArray {
+    return Object.prototype.hasOwnProperty.call(object, "types")
+        && Object.prototype.hasOwnProperty.call(object, "operation");
+}
+export function isSQFCode(object: unknown): object is SQFCode {
+    return Object.prototype.hasOwnProperty.call(object, "returns");
+}
+
+export interface SQFCode {
 	returns: SQFDataType | SQFArray | SQFCode
 }
 

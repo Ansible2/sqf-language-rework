@@ -22,7 +22,12 @@ import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
 import {
     IJSON,
     CompiledSQFItem,
-	SQFSyntax,
+    SQFSyntax,
+    SQFSyntaxType,
+    SQFArray,
+    SQFDataType,
+    SQFCode,
+	isSQFArray,
 } from "../../../configuration/grammars/sqf.namespace";
 
 enum DocumentationType {
@@ -183,11 +188,11 @@ export class NodeSqfLangServer {
             const sqfItem = item[1];
             const completionItem: CompletionItem = {
                 ...sqfItem,
-				documentation: NodeSqfLangServer.createFinalDocAppearance(
-					sqfItem.documentation,
-					sqfItem.syntaxes,
-					DocumentationType.CompletionItem
-				)
+                documentation: NodeSqfLangServer.createFinalDocAppearance(
+                    sqfItem.documentation,
+                    sqfItem.syntaxes,
+                    DocumentationType.CompletionItem
+                ),
             };
 
             return completionItem;
@@ -206,10 +211,10 @@ export class NodeSqfLangServer {
 
         const hoverItem: Hover = {
             contents: NodeSqfLangServer.createFinalDocAppearance(
-				syntaxItem.documentation,
-				syntaxItem.syntaxes,
-				DocumentationType.HoverItem
-			),
+                syntaxItem.documentation,
+                syntaxItem.syntaxes,
+                DocumentationType.HoverItem
+            ),
         };
         return hoverItem;
     }
@@ -220,8 +225,8 @@ export class NodeSqfLangServer {
     public static loadSqfItems() {
         NodeSqfLangServer.sqfItems = getSqfItems();
     }
-	
-	/* ----------------------------------------------------------------------------
+
+    /* ----------------------------------------------------------------------------
 		createFinalDocAppearance
 	---------------------------------------------------------------------------- */
     private static createFinalDocAppearance(
@@ -229,67 +234,92 @@ export class NodeSqfLangServer {
         syntaxes: string[],
         docType: DocumentationType
     ): MarkupContent {
-		const markupKind: MarkupKind = documentation.kind;
-		let docValue = '';
+        const markupKind: MarkupKind = documentation.kind;
+        let docValue = "";
 
         switch (docType) {
             case DocumentationType.CompletionItem: {
-				if (markupKind === MarkupKind.PlainText) {
-					docValue = [
-						...syntaxes,
-						documentation.value
-					].join('\n')
-
-				} else {
-					docValue = [
-						"```sqf",
-						...syntaxes,
-						"```",
-						documentation.value
-					].join('\n')
-				}
+                if (markupKind === MarkupKind.PlainText) {
+                    docValue = [...syntaxes, documentation.value].join("\n");
+                } else {
+                    docValue = [
+                        "```sqf",
+                        ...syntaxes,
+                        "```",
+                        documentation.value,
+                    ].join("\n");
+                }
 
                 break;
             }
             case DocumentationType.HoverItem: {
-				if (markupKind === MarkupKind.PlainText) {
-					const syntaxSections = syntaxes.join('\n ___ \n');
-					docValue = [
-						syntaxSections,
-						documentation.value
-					].join('\n')
-
-				} else {
-					const syntaxesAsMarkdown: string[] = syntaxes.map((syntax: string) => {
-						return [
-							"```sqf",
-							syntax,
-							"```",
-							"___"
-						].join('\n');
-					});
-					docValue = [
-						...syntaxesAsMarkdown,
-						documentation.value
-					].join('\n')
-				}
+                if (markupKind === MarkupKind.PlainText) {
+                    const syntaxSections = syntaxes.join("\n ___ \n");
+                    docValue = [syntaxSections, documentation.value].join("\n");
+                } else {
+                    const syntaxesAsMarkdown: string[] = syntaxes.map(
+                        (syntax: string) => {
+                            return ["```sqf", syntax, "```", "___"].join("\n");
+                        }
+                    );
+                    docValue = [
+                        ...syntaxesAsMarkdown,
+                        documentation.value,
+                    ].join("\n");
+                }
                 break;
             }
             default:
                 break;
         }
 
-		return {
-			kind: markupKind,
-			value: docValue
-		}
+        return {
+            kind: markupKind,
+            value: docValue,
+        };
     }
 
-
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		parseSqfSyntax
 	---------------------------------------------------------------------------- */
-	public static parseSQFSyntax(syntaxes: SQFSyntax[]): string[] {
-		return [''];
-	}
+    public static parseSQFSyntax(syntaxes: SQFSyntax[]): string[] {
+        if (syntaxes.length < 1) return [];
+
+        const parsedSyntaxes: string[] = syntaxes.map((syntax: SQFSyntax) => {
+            const type: SQFSyntaxType = syntax.type;
+            switch (type) {
+                case SQFSyntaxType.BinaryOperator: {
+                    ``;
+                    break;
+                }
+                case SQFSyntaxType.UnaryOperator: {
+                    break;
+                }
+                case SQFSyntaxType.NularOperator: {
+                    break;
+                }
+                default:
+                    break;
+            }
+        });
+        return parsedSyntaxes;
+    }
+
+    private static parseSyntaxEntry(
+        syntax:
+            | SQFDataType
+            | SQFArray
+            | SQFCode
+            | Array<SQFDataType | SQFArray | SQFCode>
+    ): string {
+        const dataTypes: SQFDataType[] = Object.values(SQFDataType);
+        const isSqfDataType: boolean = dataTypes.includes(syntax as SQFDataType);
+        if (isSqfDataType) {
+            return `${syntax}`;
+        }
+
+		if (isSQFArray(syntax)) {
+			const seperator = 
+		}
+    }
 }
