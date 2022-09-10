@@ -82,7 +82,16 @@ export interface SQFArray {
     operation: SQFArrayComparator;
 }
 export interface SQFCode {
-    returns: SQFDataType | SQFArray | SQFCode;
+    params?:
+        | SQFDataType
+        | SQFArray
+        | SQFCode
+        | Array<SQFDataType | SQFArray | SQFCode>;
+    returns:
+        | SQFDataType
+        | SQFArray
+        | SQFCode
+        | Array<SQFDataType | SQFArray | SQFCode>;
 }
 
 export interface SQFSyntax {

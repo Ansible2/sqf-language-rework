@@ -194,7 +194,11 @@ export class NodeSqfLangServer {
                 ...sqfItem,
                 documentation: NodeSqfLangServer.createFinalDocAppearance(
                     sqfItem.documentation,
-                    sqfItem.syntaxes,
+                    NodeSqfLangServer.parseSQFSyntaxes(
+                        sqfItem.grammarType,
+                        sqfItem.label,
+                        sqfItem.syntaxes
+                    ),
                     DocumentationType.CompletionItem
                 ),
             };
@@ -216,7 +220,11 @@ export class NodeSqfLangServer {
         const hoverItem: Hover = {
             contents: NodeSqfLangServer.createFinalDocAppearance(
                 syntaxItem.documentation,
-                syntaxItem.syntaxes,
+                NodeSqfLangServer.parseSQFSyntaxes(
+                    syntaxItem.grammarType,
+                    syntaxItem.label,
+                    syntaxItem.syntaxes
+                ),
                 DocumentationType.HoverItem
             ),
         };
@@ -289,8 +297,11 @@ export class NodeSqfLangServer {
     public static parseSQFSyntaxes(
         grammarType: SQFGrammarType,
         SQFItemName: string,
-        syntaxes: SQFSyntax[]
+        syntaxes: SQFSyntax[] | SQFSyntax
     ): string[] {
+        if (!Array.isArray(syntaxes)) {
+            syntaxes = [syntaxes];
+        }
         if (syntaxes.length < 1) return [];
 
         const parsedSyntaxes: string[] = syntaxes.map((syntax: SQFSyntax) => {
@@ -310,6 +321,10 @@ export class NodeSqfLangServer {
                     syntax.rightOperandTypes
                 );
             switch (type) {
+                case SQFSyntaxType.Function: {
+                    syntaxString = `${returnType} = ${leftOperand} -> ${SQFItemName}`;
+                    break;
+                }
                 case SQFSyntaxType.BinaryOperator: {
                     syntaxString = `${returnType} = ${leftOperand} ${SQFItemName} ${rightOperand}`;
                     break;
@@ -355,18 +370,17 @@ export class NodeSqfLangServer {
             return operatorAsString;
         }
 
-        // can return any of the types in this
         if (Array.isArray(operator)) {
-			// ["HASMAP","<Number, >[]"]
             const syntaxStrings: string[] = operator.map((operatorInArray) =>
-                NodeSqfLangServer.parseSyntaxReturnOrOperands(operatorInArray, true)
+                NodeSqfLangServer.parseSyntaxReturnOrOperands(
+                    operatorInArray,
+                    true
+                )
             );
 
-            // TODO: test join here
-			// "HASHMAP | <Number, >[]"
             let syntaxesCombined: string = syntaxStrings.join(" | ");
             if (!isInBlock) {
-                syntaxesCombined = `<${syntaxesCombined}>`;
+                syntaxesCombined = `(${syntaxesCombined})`;
             }
             console.log("syntaxesCombined:", syntaxesCombined);
 
@@ -380,12 +394,9 @@ export class NodeSqfLangServer {
 
             switch (arrayOperation) {
                 case SQFArrayComparator.Exact: {
-
                     break;
                 }
-                case SQFArrayComparator.OneOf: {
-                    break;
-                }
+                case SQFArrayComparator.OneOf:
                 case SQFArrayComparator.AnyOf: {
                     const types = operator.types;
                     if (Array.isArray(types)) {
@@ -395,15 +406,26 @@ export class NodeSqfLangServer {
                                 true
                             )
                         );
-                        arrayAsString = typesAsString.join(", ");
-                        operatorAsString = `<${arrayAsString}>[]`;
+
+                        if (arrayOperation === SQFArrayComparator.AnyOf) {
+                            arrayAsString = typesAsString.join(", ");
+                            operatorAsString = `<${arrayAsString}>[]`;
+                        } else if (
+                            arrayOperation === SQFArrayComparator.OneOf
+                        ) {
+                            const typesAsArrays = typesAsString.map(
+                                (type) => `${type}[]`
+                            );
+                            arrayAsString = typesAsArrays.join(", ");
+                            operatorAsString = `(${arrayAsString})`;
+                        }
                     } else if (isSqfDataType(types)) {
                         operatorAsString = `${types}[]`;
                     } else if (isSQFArray(types) || isSQFCode(types)) {
                         operatorAsString =
                             NodeSqfLangServer.parseSyntaxReturnOrOperands(
                                 types,
-								true
+                                true
                             );
                     }
 
@@ -412,47 +434,26 @@ export class NodeSqfLangServer {
                 default:
                     break;
             }
+
+            return operatorAsString;
+        }
+
+        if (isSQFCode(operator)) {
+            operator = operator as SQFCode;
+
+            const paramsParsed = NodeSqfLangServer.parseSyntaxReturnOrOperands(
+                operator.params,
+                true
+            );
+            const returnParsed = NodeSqfLangServer.parseSyntaxReturnOrOperands(
+                operator.returns,
+                true
+            );
+
+            operatorAsString = `( ${paramsParsed} ) -> { ${returnParsed} }`;
+            return operatorAsString;
         }
 
         return operatorAsString;
-    }
-
-    private static parseSyntaxEntry(
-        syntax:
-            | SQFDataType
-            | SQFArray
-            | SQFCode
-            | Array<SQFDataType | SQFArray | SQFCode>,
-        isInBlock: boolean = false
-    ): string {
-        // if (isSQFArray(syntax)) {
-        //     syntax = syntax as SQFArray;
-        //     const arrayOperation = syntax.operation;
-        //     let seperator: string = "";
-        //     let arrayAsString = "";
-        //     switch (arrayOperation) {
-        //         case SQFArrayComparator.And: {
-        //             seperator = ", ";
-        //             break;
-        //         }
-        //         case SQFArrayComparator.Or: {
-        //             seperator = " | ";
-        //             break;
-        //         }
-        //         case SQFArrayComparator.AnyOf: {
-        //             let types = syntax.types;
-        //             if (Array.isArray(types)) {
-        //             } else if (isSqfDataType(types)) {
-        //                 arrayAsString = `[${types}]`;
-        //             } else if (isSQFArray(types) || isSQFCode(types)) {
-        //                 arrayAsString =
-        //                     NodeSqfLangServer.parseSyntaxEntry(types);
-        //             }
-        //             break;
-        //         }
-        //         default:
-        //             break;
-        //     }
-        // }
     }
 }
