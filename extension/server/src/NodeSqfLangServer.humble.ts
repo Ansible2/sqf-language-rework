@@ -328,10 +328,12 @@ export class NodeSqfLangServer {
             let syntaxString: string = "";
 
             const type: SQFSyntaxType = syntax.type;
-            const returnType: string =
-                NodeSqfLangServer.parseSyntaxReturnOrOperands(
+            let returnType: string = "";
+			if (syntax.returnTypes !== SQFDataType.Nothing) {
+                returnType = NodeSqfLangServer.parseSyntaxReturnOrOperands(
                     syntax.returnTypes
                 );
+			}
             const leftOperand: string =
                 NodeSqfLangServer.parseSyntaxReturnOrOperands(
                     syntax.leftOperandTypes
@@ -342,24 +344,28 @@ export class NodeSqfLangServer {
                 );
             switch (type) {
                 case SQFSyntaxType.Function: {
-                    syntaxString = `${returnType} = ${leftOperand} -> ${SQFItemName}`;
+                    syntaxString = `${leftOperand} -> ${SQFItemName}`;
                     break;
                 }
                 case SQFSyntaxType.BinaryOperator: {
-                    syntaxString = `${returnType} = ${leftOperand} ${SQFItemName} ${rightOperand}`;
+                    syntaxString = `${leftOperand} ${SQFItemName} ${rightOperand}`;
                     break;
                 }
                 case SQFSyntaxType.UnaryOperator: {
-                    syntaxString = `${returnType} = ${SQFItemName} ${rightOperand}`;
+                    syntaxString = `${SQFItemName} ${rightOperand}`;
                     break;
                 }
                 case SQFSyntaxType.NularOperator: {
-                    syntaxString = `${returnType} = ${SQFItemName}`;
+                    syntaxString = `${SQFItemName}`;
                     break;
                 }
                 default:
                     break;
             }
+			
+			if (returnType) {
+				syntaxString = `${returnType} = ${syntaxString}`;
+			}
 
             return `(${grammarType}) ${syntaxString}`;
         });
