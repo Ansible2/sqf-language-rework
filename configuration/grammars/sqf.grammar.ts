@@ -1,4 +1,73 @@
 import { IRawGrammar } from "vscode-textmate/release/types";
+import { CompiledSQFItem, IJSON, SQFGrammarType } from "./sqf.namespace";
+import { getSqfItems } from "./sqf.syntax";
+
+const accessModifiers: string[] = [];
+const manipulativeOperators: string[] = [];
+const functions: string[] = [];
+const controlStatements: string[] = [];
+const conditionOperators: string[] = [];
+const comparisonOperators: string[] = [];
+const reservedLiterals: string[] = [];
+const booleanLiterals: string[] = [];
+const nullLiterals: string[] = [];
+const propertyAccessors: string[] = [];
+const commands: string[] = [];
+
+const sqfItems: IJSON<CompiledSQFItem> = getSqfItems();
+Object.entries(sqfItems).forEach(item => {
+	const [itemName, sqfItem] = item;
+
+	switch (sqfItem.grammarType) {
+		case SQFGrammarType.AccessModifier: {
+			accessModifiers.push(itemName);
+			break;
+		}
+		case SQFGrammarType.ManipulativeOperator: {
+			manipulativeOperators.push(itemName);
+			break;
+		}
+		case SQFGrammarType.Function: {
+			functions.push(itemName);
+			break;
+		}
+		case SQFGrammarType.ConrolStatement: {
+			controlStatements.push(itemName);
+			break;
+		}
+		case SQFGrammarType.ConditionOperator: {
+			conditionOperators.push(itemName);
+			break;
+		}
+		case SQFGrammarType.ComparisonOperator: {
+			comparisonOperators.push(itemName);
+			break;
+		}
+		case SQFGrammarType.ReservedLiteral: {
+			reservedLiterals.push(itemName);
+			break;
+		}
+		case SQFGrammarType.BooleanLiteral: {
+			booleanLiterals.push(itemName);
+			break;
+		}
+		case SQFGrammarType.NullLiteral: {
+			nullLiterals.push(itemName);
+			break;
+		}
+		case SQFGrammarType.PropertyAccessor: {
+			propertyAccessors.push(itemName);
+			break;
+		}
+		case SQFGrammarType.Command: {
+			commands.push(itemName);
+			break;
+		}
+		default:
+			break;
+	}
+});
+
 
 export const sqfGrammar: IRawGrammar = {
     scopeName: "source.sqf",
@@ -9,7 +78,7 @@ export const sqfGrammar: IRawGrammar = {
         $base: {},
         $self: {},
         "access-modifier": {
-            match: "\\s*(?i)(private)\\b",
+            match: `\\s*(?i)(${accessModifiers.join('|')})\\b`,
             name: "storage.modifier.sqf",
         },
         "array-literal": {
@@ -52,7 +121,7 @@ export const sqfGrammar: IRawGrammar = {
             ],
         },
         "boolean-literal": {
-            match: "(\\s*)(false|true)\\b",
+            match: `(\\s*)(${booleanLiterals.join('|')})\\b`,
             name: "constant.language.boolean.sqf",
         },
         comment: {
@@ -72,15 +141,16 @@ export const sqfGrammar: IRawGrammar = {
             name: "comment.line.sqf",
         },
         "comparison-operator": {
-            match: "==|!=|>|<|greater|greater=|less|less=|not",
+            match: `${comparisonOperators.join('|')}`,
             name: "keyword.operator.comparison.sqf",
         },
         "condition-operator": {
-            match: "!|&&|\\|\\||:|([^A-Za-z0-9]|\\b)and([^A-Za-z0-9]|\\b)|([^A-Za-z0-9])or([^A-Za-z0-9])",
+            // match: "!|&&|\\|\\||:|([^A-Za-z0-9]|\\b)and([^A-Za-z0-9]|\\b)|([^A-Za-z0-9])or([^A-Za-z0-9])",
+			match: `${conditionOperators.join('|')}`,
             name: "keyword.operator.condition.sqf",
         },
         "control-statement": {
-            match: "\\s*(?i)(apply|then|do|else|exit|exitWith|for|forEach|if|switch|case|default|while|from|to|step|forEachMember|forEachMemberAgent|forEachMemberTeam)\\b",
+            match: `\\s*(?i)(${controlStatements.join('|')})\\b`,
             name: "keyword.control.sqf",
         },
         "decl-block": {
@@ -91,8 +161,16 @@ export const sqfGrammar: IRawGrammar = {
             name: "meta.decl.block.sqf",
             patterns: [{ include: "#expression" }],
         },
-        "vObject-statements": {
-            match: "\\s*(?i)(player|cursorTarget|cursorObject)\\b",
+        // "vObject-statements": {
+        //     match: "\\s*(?i)(player|cursorTarget|cursorObject)\\b",
+        //     name: "variable.language.vobject.sqf",
+        // },
+        functions: {
+            match: `\\s*(?i)(${functions.join('|')})\\b`,
+            name: "variable.language.vobject.sqf",
+        },
+        commands: {
+            match: `\\s*(?i)(${commands.join('|')})\\b`,
             name: "variable.language.vobject.sqf",
         },
         other: {
@@ -121,14 +199,17 @@ export const sqfGrammar: IRawGrammar = {
                 { include: "#declaration" },
             ],
         },
+
         statements: {
             name: "meta.expression.sqf",
             patterns: [
-                { include: "#vObject-statements" },
-                { include: "#OFP" },
-                { include: "#ARMA" },
-                { include: "#ARMA2" },
-                { include: "#ARMA3" },
+                // { include: "#vObject-statements" },
+                // { include: "#OFP" },
+                // { include: "#ARMA" },
+                // { include: "#ARMA2" },
+                // { include: "#ARMA3" },
+				{ include: "#commands" },
+				{ include: "#functions" },
             ],
         },
         declaration: {
@@ -227,11 +308,12 @@ export const sqfGrammar: IRawGrammar = {
             ],
         },
         "manipulative-operator": {
-            match: "\\*|/|\\-|\\+|%|\\^|plus|\\%",
+            match: `${manipulativeOperators.join('|')}`,
             name: "keyword.operator.manipulative.sqf",
         },
         "null-literal": {
-            match: "\\b(nil|controlNull|displayNull|diaryRecordNull|grpNull|locationNull|netObjNull|objNull|scriptNull|taskNull|teamMemberNull|configNull)\\b",
+            // match: "\\b(nil|controlNull|displayNull|diaryRecordNull|grpNull|locationNull|netObjNull|objNull|scriptNull|taskNull|teamMemberNull|configNull)\\b",
+            match: `\\b(${nullLiterals.join('|')})\\b`,
             name: "constant.language.null.sqf",
         },
         "numeric-literal": {
@@ -246,7 +328,8 @@ export const sqfGrammar: IRawGrammar = {
             patterns: [{ include: "#expression" }],
         },
         "property-accessor": {
-            match: "\\s*(?i)(get|set|select|getOrDefault|#|insert)\\b",
+            // match: "\\s*(?i)(get|set|select|getOrDefault|#|insert)\\b",
+            match: `\\s*(?i)(${propertyAccessors.join('|')})\\b`,
             name: "storage.type.property.sqf",
         },
         "qstring-double": {
@@ -267,7 +350,8 @@ export const sqfGrammar: IRawGrammar = {
             ],
         },
         "reserved-literal": {
-            match: "\\s*(?i)(this|_this|_x|_y|_forEachIndex|_exception|_thisScript|_thisFSM|thisList|thisTrigger|west|east|resistance|civilian|independent|blufor|opfor)\\b",
+            // match: `\\s*(?i)(this|_this|_x|_y|_forEachIndex|_exception|_thisScript|_thisFSM|thisList|thisTrigger|west|east|resistance|civilian|independent|blufor|opfor)\\b`,
+            match: `\\s*(?i)(${reservedLiterals.join('|')})\\b`,
             name: "variable.language.reserved.sqf",
         },
     },

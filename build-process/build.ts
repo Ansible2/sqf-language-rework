@@ -14,17 +14,16 @@ const copyFileTo = (origin: string, destination: string): Promise<void> => {
         destination
     );
 };
-const copyDirectoryTo = (origin: string, destination: string): Promise<void> => {
+const copyDirectoryTo = async (origin: string, destination: string): Promise<void> => {
 	console.log(`Copying Directory [${origin}] to [${destination}]`);
 
 	
-	return fse.emptyDir(destination).then(() => {
-		fse.copy(
-			origin,
-			destination,
-			{overwrite: true}
-		)
-	});
+	await fse.emptyDir(destination);
+	fse.copy(
+		origin,
+		destination,
+		{ overwrite: true }
+	);
 };
 
 const createDirectory = (path: string): void => {

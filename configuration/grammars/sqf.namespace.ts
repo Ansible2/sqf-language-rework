@@ -2,10 +2,13 @@ import { CompletionItemKind, MarkupContent } from "vscode-languageserver/node";
 
 export enum SQFGrammarType {
     Function = "function",
+	AccessModifier = "access modifier",
+	ManipulativeOperator = "manipulative operator",
     ConrolStatement = "control statement",
     ConditionOperator = "condition operator",
     ComparisonOperator = "comparison operator",
     ReservedLiteral = "reserved literal",
+	BooleanLiteral = "boolean literal",
     NullLiteral = "null literal",
     PropertyAccessor = "property accessor",
     Command = "command",
