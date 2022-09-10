@@ -53,26 +53,36 @@ export enum SQFSyntaxType {
     BinaryOperator = 3,
 }
 
-export enum SQFArrayComparator {
-    And = "AND",
-    Or = "OR",
-	AnyOf = "ANY"
-}
-export interface SQFArray {
-    types: SQFDataType | SQFArray | SQFCode | Array<SQFDataType | SQFArray | SQFCode>;
-    operation: SQFArrayComparator;
-}
-
 export function isSQFArray(object: unknown): object is SQFArray {
-    return Object.prototype.hasOwnProperty.call(object, "types")
-        && Object.prototype.hasOwnProperty.call(object, "operation");
+    return (
+        Object.prototype.hasOwnProperty.call(object, "types") &&
+        Object.prototype.hasOwnProperty.call(object, "operation")
+    );
 }
 export function isSQFCode(object: unknown): object is SQFCode {
     return Object.prototype.hasOwnProperty.call(object, "returns");
 }
 
+export function isSqfDataType(object: unknown): object is string {
+    const dataTypes: SQFDataType[] = Object.values(SQFDataType);
+    return dataTypes.includes(object as SQFDataType);
+}
+
+export enum SQFArrayComparator {
+    Exact = "EXACT",
+    OneOf = "ONE OF",
+    AnyOf = "ANY",
+}
+export interface SQFArray {
+    types:
+        | SQFDataType
+        | SQFArray
+        | SQFCode
+        | Array<SQFDataType | SQFArray | SQFCode>;
+    operation: SQFArrayComparator;
+}
 export interface SQFCode {
-	returns: SQFDataType | SQFArray | SQFCode
+    returns: SQFDataType | SQFArray | SQFCode;
 }
 
 export interface SQFSyntax {
