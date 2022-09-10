@@ -12,9 +12,9 @@ export enum SQFGrammarType {
 }
 export enum SQFDataType {
     Empty = "EMPTY",
-    // Array = "ARRAY",
+    Array = "ARRAY",
     Boolean = "BOOLEAN",
-    // Code = "CODE",
+    Code = "CODE",
     Config = "CONFIG",
     Control = "CONTROL",
     DiaryRecord = "DIARY RECORD",

@@ -450,7 +450,7 @@ export class NodeSqfLangServer {
                 true
             );
 
-            operatorAsString = `( ${paramsParsed} ) -> { ${returnParsed} }`;
+            operatorAsString = `(${paramsParsed}) -> { ${returnParsed} }`;
             return operatorAsString;
         }
 

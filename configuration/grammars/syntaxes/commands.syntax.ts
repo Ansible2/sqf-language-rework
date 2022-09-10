@@ -5,7 +5,6 @@ import {
     PreCompiledSQFItem,
     SQFSyntaxType,
     SQFDataType,
-    SQFSyntax,
     SQFArrayComparator,
 } from "../sqf.namespace";
 
@@ -14,6 +13,16 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
         syntaxes: [
             {
+                type: SQFSyntaxType.BinaryOperator,
+                returnTypes: SQFDataType.Array,
+                leftOperandTypes: [
+                    // either an array of type any or a hashmap
+                    SQFDataType.Array,
+                    SQFDataType.HashMap,
+                ],
+                rightOperandTypes: SQFDataType.Code,
+            },
+			{
                 type: SQFSyntaxType.BinaryOperator,
                 returnTypes: {
                     types: SQFDataType.Any,
@@ -37,7 +46,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             "Applies the given code to each element of the given data structure and collects the results in an array.",
             "```sqf",
             "// will systemChat '1', '2', and '3'",
-            "[1,2,3] apply {systemChat _x};",
+            "['1','2','3'] apply {systemChat _x};",
             "```",
         ],
         kind: CompletionItemKind.Method,
