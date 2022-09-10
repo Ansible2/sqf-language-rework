@@ -8,6 +8,10 @@ import {
     SQFArrayComparator,
 } from "../sqf.namespace";
 
+const getBISWikiLink = (itemName: string): string => {
+	return `https://community.bistudio.com/wiki/${itemName}`;
+}
+
 // does not need to be alphabetical, however, you should still try to keep it as
 export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
@@ -50,6 +54,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             "['1','2','3'] apply {systemChat _x};",
             "```",
         ],
+		getDocLink: getBISWikiLink,
         kind: CompletionItemKind.Method,
         grammarType: SQFGrammarType.Command,
     },
@@ -69,6 +74,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         documentation: "foreach.md",
         grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Method,
+		getDocLink: getBISWikiLink,
     },
     or: {
         syntaxes: [
@@ -82,5 +88,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         documentation: "or.md",
         grammarType: SQFGrammarType.ComparisonOperator,
         kind: CompletionItemKind.Operator,
+		getDocLink: getBISWikiLink,
     },
 };

@@ -190,6 +190,11 @@ export class NodeSqfLangServer {
             NodeSqfLangServer.sqfItems
         ).map((item) => {
             const sqfItem = item[1];
+
+            let docLink;
+            if (sqfItem.getDocLink) {
+                docLink = sqfItem.getDocLink(sqfItem.label);
+            }
             const completionItem: CompletionItem = {
                 ...sqfItem,
                 documentation: NodeSqfLangServer.createFinalDocAppearance(
@@ -199,7 +204,8 @@ export class NodeSqfLangServer {
                         sqfItem.label,
                         sqfItem.syntaxes
                     ),
-                    DocumentationType.CompletionItem
+                    DocumentationType.CompletionItem,
+                    docLink
                 ),
             };
 
@@ -215,7 +221,10 @@ export class NodeSqfLangServer {
             NodeSqfLangServer.sqfItems[syntaxItemName.toLowerCase()];
         if (!syntaxItem) return;
 
-        console.log("doc value:", syntaxItem.documentation.value);
+        let docLink;
+        if (syntaxItem.getDocLink) {
+            docLink = syntaxItem.getDocLink(syntaxItemName);
+        }
 
         const hoverItem: Hover = {
             contents: NodeSqfLangServer.createFinalDocAppearance(
@@ -225,7 +234,8 @@ export class NodeSqfLangServer {
                     syntaxItem.label,
                     syntaxItem.syntaxes
                 ),
-                DocumentationType.HoverItem
+                DocumentationType.HoverItem,
+                docLink
             ),
         };
         return hoverItem;
@@ -244,20 +254,26 @@ export class NodeSqfLangServer {
     private static createFinalDocAppearance(
         documentation: MarkupContent,
         syntaxes: string[],
-        docType: DocumentationType
+        docType: DocumentationType,
+        documentationLink?: string
     ): MarkupContent {
         const markupKind: MarkupKind = documentation.kind;
         let docValue = "";
-
+        let docLinkFormatted: string;
+        let docArray: string[] = [];
         switch (docType) {
             case DocumentationType.CompletionItem: {
                 if (markupKind === MarkupKind.PlainText) {
-                    docValue = [...syntaxes, documentation.value].join("\n");
+                    docArray = [...syntaxes, documentation.value];
+                    docLinkFormatted = `Link To Documenation: ${documentationLink}`;
                 } else {
-                    docValue = [
-                        ...(syntaxes.map(syntaxString => `\n\`${syntaxString}\`\n\n---\n`)),
+                    docArray = [
+                        ...syntaxes.map(
+                            (syntaxString) => `\n\`${syntaxString}\`\n\n---\n`
+                        ),
                         documentation.value,
-                    ].join("\n");
+                    ];
+                    docLinkFormatted = `*[Open Documentation](${documentationLink})*`;
                 }
 
                 break;
@@ -265,22 +281,28 @@ export class NodeSqfLangServer {
             case DocumentationType.HoverItem: {
                 if (markupKind === MarkupKind.PlainText) {
                     const syntaxSections = syntaxes.join("\n ___ \n");
-                    docValue = [syntaxSections, documentation.value].join("\n");
+                    docArray = [syntaxSections, documentation.value];
+                    docLinkFormatted = `Link To Documenation: ${documentationLink}`;
                 } else {
                     const syntaxesAsMarkdown: string[] = syntaxes.map(
-                        (syntax: string) => {
-                            return ["```sqf", syntax, "```", "___"].join("\n");
-                        }
+                        (syntax: string) =>
+                            ["```sqf", syntax, "```", "___"].join("\n")
                     );
-                    docValue = [
-                        ...syntaxesAsMarkdown,
-                        documentation.value,
-                    ].join("\n");
+                    docArray = [...syntaxesAsMarkdown, documentation.value];
+                    docLinkFormatted = `*[Open Documentation](${documentationLink})*`;
                 }
                 break;
             }
             default:
                 break;
+        }
+
+        if (docArray.length > 0) {
+            if (documentationLink) {
+                docArray.unshift(docLinkFormatted!);
+            }
+
+            docValue = docArray.join("\n");
         }
 
         return {

@@ -122,6 +122,7 @@ interface SQFItem {
     grammarType: SQFGrammarType;
     data?: any;
     syntaxes: SQFSyntax[] | SQFSyntax;
+	getDocLink?: (itemName: string) => string;
 }
 
 export interface CompiledSQFItem extends SQFItem {
