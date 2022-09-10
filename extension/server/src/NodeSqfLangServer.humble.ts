@@ -255,7 +255,7 @@ export class NodeSqfLangServer {
                     docValue = [...syntaxes, documentation.value].join("\n");
                 } else {
                     docValue = [
-                        ...(syntaxes.map(syntaxString => `\n\`${syntaxString}\`\n`)),
+                        ...(syntaxes.map(syntaxString => `\n\`${syntaxString}\`\n\n---\n`)),
                         documentation.value,
                     ].join("\n");
                 }
