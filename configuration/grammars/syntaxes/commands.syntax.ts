@@ -22,23 +22,24 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 ],
                 rightOperandTypes: SQFDataType.Code,
             },
-			{
-                type: SQFSyntaxType.BinaryOperator,
-                returnTypes: {
-                    types: SQFDataType.Any,
-                    operation: SQFArrayComparator.AnyOf,
-                },
-                leftOperandTypes: [ // either an array of type any or a hashmap
-                    {
-                        types: SQFDataType.Any,
-                        operation: SQFArrayComparator.AnyOf,
-                    },
-                    SQFDataType.HashMap,
-                ], 
-                rightOperandTypes: {
-					returns: SQFDataType.Any
-				},
-            },
+			// verbose version
+			// {
+            //     type: SQFSyntaxType.BinaryOperator,
+            //     returnTypes: {
+            //         types: SQFDataType.Any,
+            //         operation: SQFArrayComparator.AnyOf,
+            //     },
+            //     leftOperandTypes: [
+            //         {
+            //             types: SQFDataType.Any,
+            //             operation: SQFArrayComparator.AnyOf,
+            //         },
+            //         SQFDataType.HashMap,
+            //     ], 
+            //     rightOperandTypes: {
+			// 		returns: SQFDataType.Any
+			// 	},
+            // },
             // "<ARRAY<ANY>> = <ARRAY> apply <CODE>",
             // "<ARRAY<ANY>> = <HASHMAP> apply <CODE>",
         ],
@@ -54,6 +55,15 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     forEach: {
         syntaxes: [
+			{
+                type: SQFSyntaxType.BinaryOperator,
+                returnTypes: SQFDataType.Array,
+                rightOperandTypes: [
+                    SQFDataType.Array,
+                    SQFDataType.HashMap,
+                ],
+                leftOperandTypes: SQFDataType.Code,
+            },
             // "<ARRAY<ANY>> = <ARRAY> apply <CODE>"
         ],
         documentation: "foreach.md",
@@ -62,7 +72,12 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     or: {
         syntaxes: [
-            // "<BOOLEAN> = <BOOLEAN> or <BOOLEAN>"
+			{
+				type: SQFSyntaxType.BinaryOperator,
+				rightOperandTypes: SQFDataType.Boolean,
+				leftOperandTypes: SQFDataType.Boolean,
+				returnTypes: SQFDataType.Boolean
+			}
         ],
         documentation: "or.md",
         grammarType: SQFGrammarType.ComparisonOperator,
