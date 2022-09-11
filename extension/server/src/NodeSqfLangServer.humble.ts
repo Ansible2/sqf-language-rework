@@ -417,34 +417,41 @@ export class NodeSqfLangServer {
             operator = operator as SQFArray;
             const arrayOperation = operator.operation;
             let arrayAsString = "";
+			const types = operator.types;
+			let typesAsString: string[];
+			const typesIsArray = Array.isArray(types);
+			if (typesIsArray) {
+				typesAsString = types.map((type) =>
+					NodeSqfLangServer.parseSyntaxReturnOrOperands(
+						type,
+						true
+					)
+				);
+
+			};
 
             switch (arrayOperation) {
                 case SQFArrayComparator.Exact: {
+					arrayAsString = typesAsString!.join(", ");
+					operatorAsString = `[${arrayAsString}]`;
                     break;
                 }
                 case SQFArrayComparator.OneOf:
                 case SQFArrayComparator.AnyOf: {
-                    const types = operator.types;
-                    if (Array.isArray(types)) {
-                        const typesAsString: string[] = types.map((type) =>
-                            NodeSqfLangServer.parseSyntaxReturnOrOperands(
-                                type,
-                                true
-                            )
-                        );
-
+                    if (typesIsArray) {
                         if (arrayOperation === SQFArrayComparator.AnyOf) {
-                            arrayAsString = typesAsString.join(", ");
+                            arrayAsString = typesAsString!.join(", ");
                             operatorAsString = `<${arrayAsString}>[]`;
                         } else if (
                             arrayOperation === SQFArrayComparator.OneOf
                         ) {
-                            const typesAsArrays = typesAsString.map(
+                            const typesAsArrays = typesAsString!.map(
                                 (type) => `${type}[]`
                             );
                             arrayAsString = typesAsArrays.join(", ");
                             operatorAsString = `(${arrayAsString})`;
                         }
+
                     } else if (isSqfDataType(types)) {
                         operatorAsString = `${types}[]`;
                     } else if (isSQFArray(types) || isSQFCode(types)) {
