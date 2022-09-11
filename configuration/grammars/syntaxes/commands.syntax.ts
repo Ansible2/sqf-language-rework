@@ -15,7 +15,6 @@ const getBISWikiLink = (itemName: string): string => {
 // TODO:  create a function to convert an SQFGrammarType to a
 /// "kind" during compilation so that you do not have to add in a kind for precompiled syntax
 
-const bisCommandsFolder = "./commands";
 // does not need to be alphabetical, however, you should still try to keep it as
 const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
@@ -94,7 +93,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     ["=="]: {
-        documentation: bisCommandsFolder,
         getDocLink: () => getBISWikiLink("a_%3D%3D_b"),
         grammarType: SQFGrammarType.ComparisonOperator,
         kind: CompletionItemKind.Operator,
@@ -252,7 +250,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 rightOperandTypes: SQFDataType.HashMap,
             },
         ],
-        documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Method,
     },
@@ -276,7 +273,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 leftOperandTypes: SQFDataType.Any,
             },
         ],
-        documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Constructor,
     },
@@ -294,7 +290,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 operation: SQFArrayComparator.Exact,
             },
         },
-        documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.PropertyAccessor,
         kind: CompletionItemKind.Method,
     },
@@ -308,6 +303,7 @@ Object.keys(sqfCommandSyntaxes).forEach((command: string) => {
 	}
 
 	if (!item.documentation) {
+		const bisCommandsFolder = "./commands";
 		item.documentation = bisCommandsFolder;
 	}
 });
