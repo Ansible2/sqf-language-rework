@@ -15,87 +15,55 @@ const getBISWikiLink = (itemName: string): string => {
 // TODO:  create a function to convert an SQFGrammarType to a 
 /// "kind" during compilation so that you do not have to add in a kind for precompiled syntax
 
-
+const bisCommandsFolder = "/commands";
+const bisFunctionsFolder = "/BIS Functions";
 // does not need to be alphabetical, however, you should still try to keep it as
 export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
-        syntaxes: [
-            {
-                type: SQFSyntaxType.BinaryOperator,
-                returnTypes: SQFDataType.Array,
-                leftOperandTypes: [
-                    // either an array of type any or a hashmap
-                    SQFDataType.Array,
-                    SQFDataType.HashMap,
-                ],
-                rightOperandTypes: SQFDataType.Code,
-            },
-			// verbose version
-			// {
-            //     type: SQFSyntaxType.BinaryOperator,
-            //     returnTypes: {
-            //         types: SQFDataType.Any,
-            //         operation: SQFArrayComparator.AnyOf,
-            //     },
-            //     leftOperandTypes: [
-            //         {
-            //             types: SQFDataType.Any,
-            //             operation: SQFArrayComparator.AnyOf,
-            //         },
-            //         SQFDataType.HashMap,
-            //     ], 
-            //     rightOperandTypes: {
-			// 		returns: SQFDataType.Any
-			// 	},
-            // },
-            // "<ARRAY<ANY>> = <ARRAY> apply <CODE>",
-            // "<ARRAY<ANY>> = <HASHMAP> apply <CODE>",
-        ],
-        documentation: [
-            "Applies the given code to each element of the given data structure and collects the results in an array.",
-            "```sqf",
-            "// will systemChat '1', '2', and '3'",
-            "['1','2','3'] apply {systemChat _x};",
-            "```",
-        ],
+        syntaxes: {
+			type: SQFSyntaxType.BinaryOperator,
+			returnTypes: SQFDataType.Array,
+			leftOperandTypes: [
+				// either an array of type any or a hashmap
+				SQFDataType.Array,
+				SQFDataType.HashMap,
+			],
+			rightOperandTypes: SQFDataType.Code,
+		},
+        documentation: bisCommandsFolder,
 		getDocLink: getBISWikiLink,
         kind: CompletionItemKind.Method,
         grammarType: SQFGrammarType.ConrolStatement,
     },
     forEach: {
-        syntaxes: [
-			{
-                type: SQFSyntaxType.BinaryOperator,
-                returnTypes: SQFDataType.Array,
-                rightOperandTypes: [
-                    SQFDataType.Array,
-                    SQFDataType.HashMap,
-                ],
-                leftOperandTypes: SQFDataType.Code,
-            },
-            // "<ARRAY<ANY>> = <ARRAY> apply <CODE>"
-        ],
-        documentation: "foreach.md",
-        grammarType: SQFGrammarType.Command,
+        syntaxes: {
+			type: SQFSyntaxType.BinaryOperator,
+			returnTypes: SQFDataType.Array,
+			rightOperandTypes: [
+				SQFDataType.Array,
+				SQFDataType.HashMap,
+			],
+			leftOperandTypes: SQFDataType.Code,
+		},
+        documentation: bisCommandsFolder,
+        grammarType: SQFGrammarType.ConrolStatement,
         kind: CompletionItemKind.Method,
 		getDocLink: getBISWikiLink,
     },
     or: {
-        syntaxes: [
-			{
-				type: SQFSyntaxType.BinaryOperator,
-				rightOperandTypes: SQFDataType.Boolean,
-				leftOperandTypes: SQFDataType.Boolean,
-				returnTypes: SQFDataType.Boolean
-			}
-        ],
-        documentation: "or.md",
+        syntaxes: {
+			type: SQFSyntaxType.BinaryOperator,
+			rightOperandTypes: SQFDataType.Boolean,
+			leftOperandTypes: SQFDataType.Boolean,
+			returnTypes: SQFDataType.Boolean
+		},
+        documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.ConditionOperator,
         kind: CompletionItemKind.Operator,
 		getDocLink: getBISWikiLink,
     },
 	private: {
-		documentation: "private.md",
+		documentation: bisCommandsFolder,
 		getDocLink: getBISWikiLink,
 		grammarType: SQFGrammarType.AccessModifier,
 		kind: CompletionItemKind.Keyword,
@@ -138,13 +106,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 		}
 	},
 	BIS_fnc_pow: {
-		documentation: [
-			"Return value1 raised to the power of value2. Identical to a ^ b",
-			"\nNOTE: **Use a ^ b as it is 5 times faster.**",
-			"```sqf",
-			"[2, 10] call BIS_fnc_pow; // returns 2^10 = 1024",
-			"```"
-		],
+		documentation: bisFunctionsFolder,
 		getDocLink: getBISWikiLink,
 		grammarType: SQFGrammarType.Function,
 		kind: CompletionItemKind.Function,
@@ -159,7 +121,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 		}
 	},
 	['==']: {
-		documentation: "==.md",
+		documentation: "123",
 		getDocLink: () => getBISWikiLink('a_%3D%3D_b'),
 		grammarType: SQFGrammarType.ComparisonOperator,
 		kind: CompletionItemKind.Operator,
@@ -191,7 +153,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 		}
 	},
 	configNull: {
-		documentation: "configNull.md",
+		documentation: bisCommandsFolder,
 		getDocLink: getBISWikiLink,
 		grammarType: SQFGrammarType.NullLiteral,
 		kind: CompletionItemKind.Constant,
@@ -201,7 +163,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 		}
 	},
 	select: {
-		documentation: "select.md",
+		documentation: bisCommandsFolder,
 		getDocLink: getBISWikiLink,
 		grammarType: SQFGrammarType.PropertyAccessor,
 		kind: CompletionItemKind.Method,
@@ -252,5 +214,5 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 				returnTypes: SQFDataType.Array
 			},
 		]
-	}
+	},
 };

@@ -7,6 +7,7 @@ import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [sqfCommandSyntaxes];
 
 const compileDocumentation = (
+	itemName: string,
     preCompiledDoc: string | string[] | MarkupContent | undefined
 ): MarkupContent => {
     const compiledDocumentation: MarkupContent = {
@@ -32,19 +33,23 @@ const compileDocumentation = (
         return compiledDocumentation;
     }
 
-    const docIsMarkdownFile: boolean = (preCompiledDoc as string).endsWith(".md");
+    const docIsMarkdownFile: boolean = (preCompiledDoc as string).startsWith("/");
     if (docIsMarkdownFile) {
         try {
             const filePath = path.resolve(
                 __dirname,
-                `./docs/${preCompiledDoc}`
+                `./docs`,
+				(preCompiledDoc as string).substring(1), // get rid of leading slash
+				`${itemName}.md`
             );
+			console.log("Filepath",filePath);
+			
             const markdownAsString = readFileSync(filePath).toString();
 			compiledDocumentation.value = markdownAsString;
 
         } catch (error) {
             console.log(
-                `Unable to retrieve markdown file for doc at ${__dirname}/docs/${preCompiledDoc}`
+                `Unable to retrieve markdown file for ${itemName} doc at ${__dirname}/docs/${preCompiledDoc}`
             );
         }
 
@@ -61,7 +66,7 @@ const compileSQFItems = (
     syntaxItemName: string,
     sqfItem: PreCompiledSQFItem
 ): CompiledSQFItem => {
-    const compiledDocumentation = compileDocumentation(sqfItem.documentation);
+    const compiledDocumentation = compileDocumentation(syntaxItemName,sqfItem.documentation);
     return {
         label: syntaxItemName,
         ...sqfItem,
