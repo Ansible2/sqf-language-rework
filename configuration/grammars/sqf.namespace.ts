@@ -1,4 +1,4 @@
-import { CompletionItemKind, MarkupContent } from "vscode-languageserver/node";
+import { CompletionItemKind, CompletionItemTag, MarkupContent } from "vscode-languageserver/node";
 
 export enum SQFGrammarType {
     Function = "function",
@@ -42,6 +42,7 @@ export enum SQFDataType {
     Any = "ANYTHING",
     Nothing = "NOTHING",
     Void = "VOID",
+    Variable = "VARIABLE",
     IfType = "IF TYPE",
     SwitchType = "SWITCH TYPE",
     WhileType = "WHILE TYPE",
@@ -124,6 +125,7 @@ interface SQFItem {
     kind: CompletionItemKind;
     grammarType: SQFGrammarType;
     data?: any;
+	tags?: CompletionItemTag[];
     syntaxes: SQFSyntax[] | SQFSyntax;
 	getDocLink?: (itemName: string) => string;
 }

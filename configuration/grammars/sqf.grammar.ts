@@ -2,17 +2,17 @@ import { IRawGrammar } from "vscode-textmate/release/types";
 import { CompiledSQFItem, IJSON, SQFGrammarType } from "./sqf.namespace";
 import { getSqfItems } from "./sqf.syntax";
 
-const accessModifiers: string[] = [];
-const manipulativeOperators: string[] = [];
-const functions: string[] = [];
-const controlStatements: string[] = [];
-const conditionOperators: string[] = [];
-const comparisonOperators: string[] = [];
-const reservedLiterals: string[] = [];
-const booleanLiterals: string[] = [];
-const nullLiterals: string[] = [];
-const propertyAccessors: string[] = [];
-const commands: string[] = [];
+const accessModifiers: string[] = [];//
+const manipulativeOperators: string[] = []; //
+const functions: string[] = []; //
+const controlStatements: string[] = []; //
+const conditionOperators: string[] = []; //
+const comparisonOperators: string[] = []; //
+const reservedLiterals: string[] = []; //
+const booleanLiterals: string[] = []; //
+const nullLiterals: string[] = []; //
+const propertyAccessors: string[] = []; //
+const commands: string[] = []; //
 
 const sqfItems: IJSON<CompiledSQFItem> = getSqfItems();
 Object.entries(sqfItems).forEach(item => {
