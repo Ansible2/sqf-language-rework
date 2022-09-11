@@ -1,5 +1,4 @@
-import { CompletionItemTag } from "vscode";
-import { CompletionItemKind } from "vscode-languageserver/node";
+import { CompletionItemKind,CompletionItemTag } from "vscode-languageserver/node";
 import {
     SQFGrammarType,
     IJSON,
