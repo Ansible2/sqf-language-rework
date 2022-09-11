@@ -2,9 +2,10 @@ import { readFileSync } from "fs-extra";
 import path = require("path");
 import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
 import { IJSON, CompiledSQFItem, PreCompiledSQFItem } from "./sqf.namespace";
+import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 
-const syntaxes: IJSON<PreCompiledSQFItem>[] = [sqfCommandSyntaxes];
+const syntaxes: IJSON<PreCompiledSQFItem>[] = [sqfCommandSyntaxes, bisFunctionSyntaxes];
 
 const compileDocumentation = (
 	itemName: string,
@@ -33,13 +34,13 @@ const compileDocumentation = (
         return compiledDocumentation;
     }
 
-    const docIsMarkdownFile: boolean = (preCompiledDoc as string).startsWith("/");
+    const docIsMarkdownFile: boolean = (preCompiledDoc as string).startsWith("./");
     if (docIsMarkdownFile) {
         try {
             const filePath = path.resolve(
                 __dirname,
                 `./docs`,
-				(preCompiledDoc as string).substring(1), // get rid of leading slash
+				(preCompiledDoc as string).substring(2), // get rid of leading './'
 				`${itemName}.md`
             );
 			console.log("Filepath",filePath);

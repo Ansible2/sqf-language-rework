@@ -48,6 +48,9 @@ export enum SQFDataType {
     WhileType = "WHILE TYPE",
     WithType = "WITH TYPE",
     ForType = "FOR TYPE",
+	Position2d = "POS_2D",
+	Position3d = "POS_3D",
+	HashMapKey = "HASHMAP_KEY"
 }
 
 export enum SQFSyntaxType {
