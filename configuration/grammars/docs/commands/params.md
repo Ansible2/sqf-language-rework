@@ -8,7 +8,6 @@ In addition to simple parsing directly into variables, input can be tested in ca
 
 **NOTE:** *It is a good practice to make your local variables private (through `private` or `params`) in order to avoid overwriting a local variable of the same name.*
 
-
 ---
 
 Replace `private` with `params` example:

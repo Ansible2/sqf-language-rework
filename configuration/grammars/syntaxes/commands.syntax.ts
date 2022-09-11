@@ -17,7 +17,7 @@ const getBISWikiLink = (itemName: string): string => {
 
 const bisCommandsFolder = "./commands";
 // does not need to be alphabetical, however, you should still try to keep it as
-export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
+const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     apply: {
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
@@ -29,8 +29,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             ],
             rightOperandTypes: SQFDataType.Code,
         },
-        documentation: bisCommandsFolder,
-        getDocLink: getBISWikiLink,
         kind: CompletionItemKind.Method,
         grammarType: SQFGrammarType.ConrolStatement,
     },
@@ -41,10 +39,8 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             rightOperandTypes: [SQFDataType.Array, SQFDataType.HashMap],
             leftOperandTypes: SQFDataType.Code,
         },
-        documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.ConrolStatement,
         kind: CompletionItemKind.Method,
-        getDocLink: getBISWikiLink,
     },
     or: {
         syntaxes: {
@@ -53,14 +49,10 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Boolean,
             returnTypes: SQFDataType.Boolean,
         },
-        documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.ConditionOperator,
         kind: CompletionItemKind.Operator,
-        getDocLink: getBISWikiLink,
     },
     private: {
-        documentation: bisCommandsFolder,
-        getDocLink: getBISWikiLink,
         grammarType: SQFGrammarType.AccessModifier,
         kind: CompletionItemKind.Keyword,
         syntaxes: [
@@ -102,7 +94,7 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     ["=="]: {
-        documentation: "123",
+        documentation: bisCommandsFolder,
         getDocLink: () => getBISWikiLink("a_%3D%3D_b"),
         grammarType: SQFGrammarType.ComparisonOperator,
         kind: CompletionItemKind.Operator,
@@ -110,6 +102,27 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.BinaryOperator,
             rightOperandTypes: SQFDataType.Any,
             leftOperandTypes: SQFDataType.Any,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    ["!"]: {
+        documentation: "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa.",
+        getDocLink: () => getBISWikiLink("!_a"),
+        grammarType: SQFGrammarType.ConditionOperator,
+        kind: CompletionItemKind.Operator,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Boolean,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    not: {
+        documentation: "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa. (`not a` is exactly the same as `!a`.)",
+        grammarType: SQFGrammarType.ConditionOperator,
+        kind: CompletionItemKind.Operator,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Boolean,
             returnTypes: SQFDataType.Boolean,
         },
     },
@@ -126,7 +139,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     true: {
         documentation: "Always true",
-        getDocLink: getBISWikiLink,
         grammarType: SQFGrammarType.BooleanLiteral,
         kind: CompletionItemKind.Constant,
         syntaxes: {
@@ -135,8 +147,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     configNull: {
-        documentation: bisCommandsFolder,
-        getDocLink: getBISWikiLink,
         grammarType: SQFGrammarType.NullLiteral,
         kind: CompletionItemKind.Constant,
         syntaxes: {
@@ -145,8 +155,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     select: {
-        documentation: bisCommandsFolder,
-        getDocLink: getBISWikiLink,
         grammarType: SQFGrammarType.PropertyAccessor,
         kind: CompletionItemKind.Method,
         syntaxes: [
@@ -247,7 +255,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Method,
-        getDocLink: getBISWikiLink,
     },
     params: {
         syntaxes: [
@@ -272,7 +279,6 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.Command,
         kind: CompletionItemKind.Constructor,
-        getDocLink: getBISWikiLink,
     },
     getOrDefault: {
         syntaxes: {
@@ -291,6 +297,19 @@ export const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         documentation: bisCommandsFolder,
         grammarType: SQFGrammarType.PropertyAccessor,
         kind: CompletionItemKind.Method,
-        getDocLink: getBISWikiLink,
     },
 };
+
+
+Object.keys(sqfCommandSyntaxes).forEach((command: string) => {
+	const item = sqfCommandSyntaxes[command];
+	if (!item.getDocLink) {
+		item.getDocLink = getBISWikiLink;
+	}
+
+	if (!item.documentation) {
+		item.documentation = bisCommandsFolder;
+	}
+});
+
+export {sqfCommandSyntaxes};
