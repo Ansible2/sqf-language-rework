@@ -337,6 +337,22 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 			returnTypes: SQFDataType.Number
 		}
 	},
+	action: {
+		grammarType: SQFGrammarType.Command,
+		syntaxes: [
+			{
+				type: SQFSyntaxType.BinaryOperator,
+				leftOperandTypes: SQFDataType.Object,
+				rightOperandTypes: SQFDataType.Array,
+				returnTypes: SQFDataType.Nothing
+			},
+			{
+				type: SQFSyntaxType.UnaryOperator,
+				rightOperandTypes: SQFDataType.Array,
+				returnTypes: SQFDataType.Nothing
+			}
+		]
+	},
 };
 
 
