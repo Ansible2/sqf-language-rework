@@ -3,9 +3,13 @@ Sets the cowardice level (the lack of courage or bravery) of a group or unit.
 
 1 is maximum cowardice and 0 minimum. A value of 0 will disable fleeing all together.
 
+---
+
 ```sqf
 _group1 allowFleeing 0;
 ```
+
+---
 
 **NOTES:**
 - Fleeing only affects AI led groups.
