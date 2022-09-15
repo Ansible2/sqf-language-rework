@@ -293,6 +293,25 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.PropertyAccessor,
         kind: CompletionItemKind.Method,
     },
+	fleeing: {
+		syntaxes: {
+			type: SQFSyntaxType.UnaryOperator,
+			returnTypes: SQFDataType.Boolean,
+			rightOperandTypes: SQFDataType.Object,
+		},
+		grammarType: SQFGrammarType.Command,
+		kind: CompletionItemKind.Method,
+	},
+	allowFleeing: {
+		syntaxes: {
+			type: SQFSyntaxType.BinaryOperator,
+			returnTypes: SQFDataType.Nothing,
+			leftOperandTypes: [SQFDataType.Object,SQFDataType.Group],
+			rightOperandTypes: SQFDataType.Number,
+		},
+		grammarType: SQFGrammarType.Command,
+		kind: CompletionItemKind.Method,
+	},
 };
 
 

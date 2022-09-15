@@ -63,7 +63,7 @@ const compileDocumentation = (
 };
 
 
-const compileSQFItems = (
+const compileSQFItem = (
     syntaxItemName: string,
     sqfItem: PreCompiledSQFItem
 ): CompiledSQFItem => {
@@ -84,7 +84,7 @@ export const getSqfItems = (): IJSON<CompiledSQFItem> => {
                 Object.entries(preSyntaxObject).map(
                     ([syntaxItemName, syntaxItem]) => [
                         syntaxItemName.toLowerCase(),
-                        compileSQFItems(syntaxItemName, syntaxItem),
+                        compileSQFItem(syntaxItemName, syntaxItem),
                     ]
                 )
             );
