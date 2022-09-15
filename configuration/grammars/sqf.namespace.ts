@@ -125,11 +125,11 @@ interface SQFItem {
         detail: string;
         description: string;
     };
-    kind: CompletionItemKind;
     grammarType: SQFGrammarType;
     data?: any;
 	tags?: CompletionItemTag[];
     syntaxes: SQFSyntax[] | SQFSyntax;
+    kind?: CompletionItemKind;
 	getDocLink?: (itemName: string) => string;
 }
 
@@ -141,6 +141,7 @@ export interface CompiledSQFItem extends SQFItem {
     label: string;
     documentation: MarkupContent;
     detail?: string; // detail should probably be avoided
+	kind: CompletionItemKind;
 }
 
 export interface PreCompiledSQFItem extends SQFItem {

@@ -1,7 +1,7 @@
 import { readFileSync } from "fs-extra";
 import path = require("path");
-import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
-import { IJSON, CompiledSQFItem, PreCompiledSQFItem } from "./sqf.namespace";
+import { MarkupContent, MarkupKind, CompletionItemKind } from "vscode-languageserver/node";
+import { IJSON, CompiledSQFItem, PreCompiledSQFItem, SQFGrammarType } from "./sqf.namespace";
 import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 
@@ -63,16 +63,65 @@ const compileDocumentation = (
 };
 
 
+// TODO make into static hashmap possibly
+const getCompletionItemKind = (grammarType: SQFGrammarType): CompletionItemKind => {
+	switch (grammarType) {
+		case SQFGrammarType.AccessModifier: {
+			return CompletionItemKind.Keyword
+		}
+		case SQFGrammarType.BooleanLiteral: {
+			return CompletionItemKind.Constant
+		}
+		case SQFGrammarType.Command: {
+			return CompletionItemKind.Method
+		}
+		case SQFGrammarType.ComparisonOperator: {
+			return CompletionItemKind.Operator
+		}
+		case SQFGrammarType.ConditionOperator: {
+			return CompletionItemKind.Operator
+		}
+		case SQFGrammarType.ConrolStatement: {
+			return CompletionItemKind.Keyword
+		}
+		case SQFGrammarType.Function: {
+			return CompletionItemKind.Function
+		}
+		case SQFGrammarType.ManipulativeOperator: {
+			return CompletionItemKind.Operator
+		}
+		case SQFGrammarType.NullLiteral: {
+			return CompletionItemKind.Constant
+		}
+		case SQFGrammarType.PropertyAccessor: {
+			return CompletionItemKind.Property
+		}
+		case SQFGrammarType.ReservedLiteral: {
+			return CompletionItemKind.Keyword
+		}
+		default: {
+			return CompletionItemKind.Method;
+		}
+	}
+}
+
+
 const compileSQFItem = (
     syntaxItemName: string,
     sqfItem: PreCompiledSQFItem
 ): CompiledSQFItem => {
     const compiledDocumentation = compileDocumentation(syntaxItemName,sqfItem.documentation);
-    return {
-        label: syntaxItemName,
+    const compiledItem = {
+		label: syntaxItemName,
         ...sqfItem,
         documentation: compiledDocumentation,
     };
+
+	if (!compiledItem.kind) {
+		compiledItem.kind = getCompletionItemKind(sqfItem.grammarType);
+	}
+
+	return (compiledItem as CompiledSQFItem);
 };
 
 export const getSqfItems = (): IJSON<CompiledSQFItem> => {

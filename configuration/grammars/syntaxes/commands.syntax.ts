@@ -28,7 +28,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             ],
             rightOperandTypes: SQFDataType.Code,
         },
-        kind: CompletionItemKind.Method,
         grammarType: SQFGrammarType.ConrolStatement,
     },
     forEach: {
@@ -39,7 +38,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Code,
         },
         grammarType: SQFGrammarType.ConrolStatement,
-        kind: CompletionItemKind.Method,
     },
     or: {
         syntaxes: {
@@ -49,11 +47,9 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Boolean,
         },
         grammarType: SQFGrammarType.ConditionOperator,
-        kind: CompletionItemKind.Operator,
     },
     private: {
         grammarType: SQFGrammarType.AccessModifier,
-        kind: CompletionItemKind.Keyword,
         syntaxes: [
             {
                 type: SQFSyntaxType.UnaryOperator,
@@ -84,7 +80,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         ],
         getDocLink: () => getBISWikiLink("a_%25_b"),
         grammarType: SQFGrammarType.ManipulativeOperator,
-        kind: CompletionItemKind.Operator,
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
             rightOperandTypes: SQFDataType.Number,
@@ -95,7 +90,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     ["=="]: {
         getDocLink: () => getBISWikiLink("a_%3D%3D_b"),
         grammarType: SQFGrammarType.ComparisonOperator,
-        kind: CompletionItemKind.Operator,
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
             rightOperandTypes: SQFDataType.Any,
@@ -107,7 +101,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         documentation: "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa.",
         getDocLink: () => getBISWikiLink("!_a"),
         grammarType: SQFGrammarType.ConditionOperator,
-        kind: CompletionItemKind.Operator,
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
             rightOperandTypes: SQFDataType.Boolean,
@@ -117,7 +110,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     not: {
         documentation: "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa. (`not a` is exactly the same as `!a`.)",
         grammarType: SQFGrammarType.ConditionOperator,
-        kind: CompletionItemKind.Operator,
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
             rightOperandTypes: SQFDataType.Boolean,
@@ -129,7 +121,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
         getDocLink: () => getBISWikiLink("Magic_Variables#this"),
         grammarType: SQFGrammarType.ReservedLiteral,
-        kind: CompletionItemKind.Keyword,
         syntaxes: {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Any,
@@ -138,7 +129,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     true: {
         documentation: "Always true",
         grammarType: SQFGrammarType.BooleanLiteral,
-        kind: CompletionItemKind.Constant,
         syntaxes: {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Boolean,
@@ -146,7 +136,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     configNull: {
         grammarType: SQFGrammarType.NullLiteral,
-        kind: CompletionItemKind.Constant,
         syntaxes: {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Config,
@@ -154,7 +143,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     select: {
         grammarType: SQFGrammarType.PropertyAccessor,
-        kind: CompletionItemKind.Method,
         syntaxes: [
             {
                 type: SQFSyntaxType.BinaryOperator,
@@ -251,7 +239,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
         grammarType: SQFGrammarType.Command,
-        kind: CompletionItemKind.Method,
     },
     params: {
         syntaxes: [
@@ -291,7 +278,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         },
         grammarType: SQFGrammarType.PropertyAccessor,
-        kind: CompletionItemKind.Method,
     },
 	fleeing: {
 		syntaxes: {
@@ -300,7 +286,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 			rightOperandTypes: SQFDataType.Object,
 		},
 		grammarType: SQFGrammarType.Command,
-		kind: CompletionItemKind.Method,
 	},
 	allowFleeing: {
 		syntaxes: {
@@ -310,7 +295,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 			rightOperandTypes: SQFDataType.Number,
 		},
 		grammarType: SQFGrammarType.Command,
-		kind: CompletionItemKind.Method,
 	},
 };
 
