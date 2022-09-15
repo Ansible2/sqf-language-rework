@@ -296,6 +296,47 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
 		},
 		grammarType: SQFGrammarType.Command,
 	},
+	['#']: {
+		documentation: [
+			"Selects an element from an array, same as select command for arrays, but has higher precedence",
+			"**NOTE:** # has higher precedence than all binary operators, but it has lower precedence than unary operators",
+			"```sqf",
+			"[1,2,3,4] # 2;	// result is 3",
+			"```",
+		],
+		getDocLink: () => getBISWikiLink("a_hash_b"),
+		grammarType: SQFGrammarType.PropertyAccessor,
+		syntaxes: {
+			type: SQFSyntaxType.BinaryOperator,
+			leftOperandTypes: SQFDataType.Array,
+			rightOperandTypes: SQFDataType.Number,
+			returnTypes: SQFDataType.Any,
+		},
+	},
+	abs: {
+		grammarType: SQFGrammarType.Command,
+		syntaxes: {
+			type: SQFSyntaxType.UnaryOperator,
+			rightOperandTypes: SQFDataType.Number,
+			returnTypes: SQFDataType.Number
+		}
+	},
+	accTime: {
+		grammarType: SQFGrammarType.Command,
+		syntaxes: {
+			type: SQFSyntaxType.UnaryOperator,
+			rightOperandTypes: SQFDataType.Number,
+			returnTypes: SQFDataType.Number
+		}
+	},
+	acos: {
+		grammarType: SQFGrammarType.Command,
+		syntaxes: {
+			type: SQFSyntaxType.UnaryOperator,
+			rightOperandTypes: SQFDataType.Number,
+			returnTypes: SQFDataType.Number
+		}
+	},
 };
 
 
