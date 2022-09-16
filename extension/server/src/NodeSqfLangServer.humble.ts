@@ -32,6 +32,8 @@ import {
     isSqfDataType,
     isSQFCode,
     SQFGrammarType,
+	SQFEffect,
+	SQFArgument,
 } from "../../../configuration/grammars/sqf.namespace";
 
 enum DocumentationType {
@@ -205,7 +207,9 @@ export class NodeSqfLangServer {
                         sqfItem.syntaxes
                     ),
                     DocumentationType.CompletionItem,
-                    docLink
+                    docLink,
+					sqfItem.effect,
+					sqfItem.argument,
                 ),
             };
 
@@ -235,7 +239,9 @@ export class NodeSqfLangServer {
                     syntaxItem.syntaxes
                 ),
                 DocumentationType.HoverItem,
-                docLink
+                docLink,
+				syntaxItem.effect,
+				syntaxItem.argument,
             ),
         };
         return hoverItem;
@@ -255,7 +261,9 @@ export class NodeSqfLangServer {
         documentation: MarkupContent,
         syntaxes: string[],
         docType: DocumentationType,
-        documentationLink?: string
+        documentationLink?: string,
+		effect?: SQFEffect,
+		argument?: SQFArgument,
     ): MarkupContent {
         const markupKind: MarkupKind = documentation.kind;
         let docValue = "";
@@ -298,10 +306,25 @@ export class NodeSqfLangServer {
         }
 
         if (docArray.length > 0) {
-            if (documentationLink) {
+			let effectAndArg: string = "";
+			if (argument) {
+				effectAndArg = `[${argument}]`;
+			}
+			if (effect) {
+				if (effectAndArg) {
+					effectAndArg += ` [${effect}]`;
+				} else {
+					effectAndArg = `[${effect}]`;
+				}
+			}
+
+			if (effectAndArg) {
+				docArray.unshift(`\n${effectAndArg}`);
+			}
+
+			if (documentationLink) {
                 docArray.unshift(docLinkFormatted!);
             }
-
             docValue = docArray.join("\n");
         }
 
@@ -418,7 +441,7 @@ export class NodeSqfLangServer {
             const arrayOperation = operator.operation;
             let arrayAsString = "";
 			const types = operator.types;
-			let typesAsString: string[];
+			let typesAsString: string[] = [];
 			const typesIsArray = Array.isArray(types);
 			if (typesIsArray) {
 				typesAsString = types.map((type) =>
@@ -428,11 +451,19 @@ export class NodeSqfLangServer {
 					)
 				);
 
-			};
+			}
 
             switch (arrayOperation) {
                 case SQFArrayComparator.Exact: {
-					arrayAsString = typesAsString!.join(", ");
+					if (typesAsString.length == 0) {
+						arrayAsString = NodeSqfLangServer.parseSyntaxReturnOrOperands(
+							types,
+							true
+						)
+					} else {
+						arrayAsString = typesAsString!.join(", ");
+					}
+
 					operatorAsString = `[${arrayAsString}]`;
                     break;
                 }

@@ -6,6 +6,8 @@ import {
     SQFSyntaxType,
     SQFDataType,
     SQFArrayComparator,
+    SQFArgument,
+    SQFEffect,
 } from "../sqf.namespace";
 
 const getBISWikiLink = (itemName: string): string => {
@@ -98,7 +100,8 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     ["!"]: {
-        documentation: "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa.",
+        documentation:
+            "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa.",
         getDocLink: () => getBISWikiLink("!_a"),
         grammarType: SQFGrammarType.ConditionOperator,
         syntaxes: {
@@ -108,7 +111,8 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     not: {
-        documentation: "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa. (`not a` is exactly the same as `!a`.)",
+        documentation:
+            "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa. (`not a` is exactly the same as `!a`.)",
         grammarType: SQFGrammarType.ConditionOperator,
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
@@ -279,93 +283,133 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
         grammarType: SQFGrammarType.PropertyAccessor,
     },
-	fleeing: {
-		syntaxes: {
-			type: SQFSyntaxType.UnaryOperator,
-			returnTypes: SQFDataType.Boolean,
-			rightOperandTypes: SQFDataType.Object,
-		},
-		grammarType: SQFGrammarType.Command,
-	},
-	allowFleeing: {
-		syntaxes: {
-			type: SQFSyntaxType.BinaryOperator,
-			returnTypes: SQFDataType.Nothing,
-			leftOperandTypes: [SQFDataType.Object,SQFDataType.Group],
-			rightOperandTypes: SQFDataType.Number,
-		},
-		grammarType: SQFGrammarType.Command,
-	},
-	['#']: {
-		documentation: [
-			"Selects an element from an array, same as select command for arrays, but has higher precedence",
-			"**NOTE:** # has higher precedence than all binary operators, but it has lower precedence than unary operators",
-			"```sqf",
-			"[1,2,3,4] # 2;	// result is 3",
-			"```",
-		],
-		getDocLink: () => getBISWikiLink("a_hash_b"),
-		grammarType: SQFGrammarType.PropertyAccessor,
-		syntaxes: {
-			type: SQFSyntaxType.BinaryOperator,
-			leftOperandTypes: SQFDataType.Array,
-			rightOperandTypes: SQFDataType.Number,
-			returnTypes: SQFDataType.Any,
-		},
-	},
-	abs: {
-		grammarType: SQFGrammarType.Command,
-		syntaxes: {
-			type: SQFSyntaxType.UnaryOperator,
-			rightOperandTypes: SQFDataType.Number,
-			returnTypes: SQFDataType.Number
-		}
-	},
-	accTime: {
-		grammarType: SQFGrammarType.Command,
-		syntaxes: {
-			type: SQFSyntaxType.UnaryOperator,
-			rightOperandTypes: SQFDataType.Number,
-			returnTypes: SQFDataType.Number
-		}
-	},
-	acos: {
-		grammarType: SQFGrammarType.Command,
-		syntaxes: {
-			type: SQFSyntaxType.UnaryOperator,
-			rightOperandTypes: SQFDataType.Number,
-			returnTypes: SQFDataType.Number
-		}
-	},
-	action: {
-		grammarType: SQFGrammarType.Command,
-		syntaxes: [
-			{
-				type: SQFSyntaxType.BinaryOperator,
-				leftOperandTypes: SQFDataType.Object,
-				rightOperandTypes: SQFDataType.Array,
-				returnTypes: SQFDataType.Nothing
-			},
-			{
-				type: SQFSyntaxType.UnaryOperator,
-				rightOperandTypes: SQFDataType.Array,
-				returnTypes: SQFDataType.Nothing
-			}
-		]
-	},
+    fleeing: {
+        argument: SQFArgument.GLOBAL,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            returnTypes: SQFDataType.Boolean,
+            rightOperandTypes: SQFDataType.Object,
+        },
+        grammarType: SQFGrammarType.Command,
+    },
+    allowFleeing: {
+        argument: SQFArgument.LOCAL,
+        effect: SQFEffect.GLOBAL,
+        syntaxes: {
+            type: SQFSyntaxType.BinaryOperator,
+            returnTypes: SQFDataType.Nothing,
+            leftOperandTypes: [SQFDataType.Object, SQFDataType.Group],
+            rightOperandTypes: SQFDataType.Number,
+        },
+        grammarType: SQFGrammarType.Command,
+    },
+    ["#"]: {
+        documentation: [
+            "Selects an element from an array, same as select command for arrays, but has higher precedence",
+            "**NOTE:** # has higher precedence than all binary operators, but it has lower precedence than unary operators",
+            "```sqf",
+            "[1,2,3,4] # 2;	// result is 3",
+            "```",
+        ],
+        getDocLink: () => getBISWikiLink("a_hash_b"),
+        grammarType: SQFGrammarType.PropertyAccessor,
+        syntaxes: {
+            type: SQFSyntaxType.BinaryOperator,
+            leftOperandTypes: SQFDataType.Array,
+            rightOperandTypes: SQFDataType.Number,
+            returnTypes: SQFDataType.Any,
+        },
+    },
+    abs: {
+        grammarType: SQFGrammarType.Command,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Number,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    accTime: {
+        grammarType: SQFGrammarType.Command,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Number,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    acos: {
+        grammarType: SQFGrammarType.Command,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Number,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    action: {
+        grammarType: SQFGrammarType.Command,
+        effect: SQFEffect.GLOBAL,
+        syntaxes: [
+            {
+                type: SQFSyntaxType.BinaryOperator,
+                leftOperandTypes: SQFDataType.Object,
+                rightOperandTypes: SQFDataType.Array,
+                returnTypes: SQFDataType.Nothing,
+            },
+            {
+                type: SQFSyntaxType.UnaryOperator,
+                rightOperandTypes: SQFDataType.Array,
+                returnTypes: SQFDataType.Nothing,
+            },
+        ],
+    },
+    actionIDs: {
+        grammarType: SQFGrammarType.Command,
+        effect: SQFEffect.LOCAL,
+        argument: SQFArgument.GLOBAL,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Object,
+            returnTypes: {
+                types: SQFDataType.Number,
+                operation: SQFArrayComparator.AnyOf,
+            },
+        },
+    },
+    actionKeys: {
+        grammarType: SQFGrammarType.Command,
+        syntaxes: [
+            {
+                type: SQFSyntaxType.UnaryOperator,
+                returnTypes: {
+                    operation: SQFArrayComparator.AnyOf,
+                    types: SQFDataType.Number,
+                },
+                rightOperandTypes: SQFDataType.String,
+            },
+            {
+                type: SQFSyntaxType.UnaryOperator,
+                returnTypes: {
+                    operation: SQFArrayComparator.AnyOf,
+                    types: SQFDataType.String,
+                },
+                rightOperandTypes: {
+                    operation: SQFArrayComparator.Exact,
+                    types: SQFDataType.String,
+                },
+            },
+        ],
+    },
 };
 
-
 Object.keys(sqfCommandSyntaxes).forEach((command: string) => {
-	const item = sqfCommandSyntaxes[command];
-	if (!item.getDocLink) {
-		item.getDocLink = getBISWikiLink;
-	}
+    const item = sqfCommandSyntaxes[command];
+    if (!item.getDocLink) {
+        item.getDocLink = getBISWikiLink;
+    }
 
-	if (!item.documentation) {
-		const bisCommandsFolder = "./commands";
-		item.documentation = bisCommandsFolder;
-	}
+    if (!item.documentation) {
+        const bisCommandsFolder = "./commands";
+        item.documentation = bisCommandsFolder;
+    }
 });
 
-export {sqfCommandSyntaxes};
+export { sqfCommandSyntaxes };

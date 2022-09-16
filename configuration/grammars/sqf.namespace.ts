@@ -120,6 +120,15 @@ export interface SQFSyntax {
         | Array<SQFDataType | SQFArray | SQFCode>;
 }
 
+export enum SQFEffect {
+	LOCAL = "Local Effect",
+	GLOBAL = "Global Effect",
+}
+export enum SQFArgument {
+	LOCAL = "Local Argument",
+	GLOBAL = "Global Argument",
+}
+
 interface SQFItem {
     labelDetails?: {
         detail: string;
@@ -130,6 +139,8 @@ interface SQFItem {
 	tags?: CompletionItemTag[];
     syntaxes: SQFSyntax[] | SQFSyntax;
     kind?: CompletionItemKind;
+	effect?: SQFEffect,
+	argument?: SQFArgument, 
 	getDocLink?: (itemName: string) => string;
 }
 
