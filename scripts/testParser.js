@@ -25,8 +25,10 @@ function parseExamples() {
 // \|(\s*|\S*)(\=)(.\S*[^|])
 // \|(\s*|\S*)(\=)(.*?)[^|]* Works
 // \|(\s*|\S*)(\=)(.*?)[^|}}]* // Works for "string"
-const array = string.split(/\|\S+=/);
-console.log(array);
+// /\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm full version
+const regexMatches = string.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
+// const array = string.split(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
+console.log(regexMatches);
 let description = "";
 let syntax;
 // array.forEach((split) => {
