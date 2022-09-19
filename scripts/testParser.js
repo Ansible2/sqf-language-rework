@@ -26,8 +26,9 @@ function parseExamples() {
 // \|(\s*|\S*)(\=)(.*?)[^|]* Works
 // \|(\s*|\S*)(\=)(.*?)[^|}}]* // Works for "string"
 // /\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm full version
+// TODO fill in gaps of thing matches at regex101
+// const regexMatches = thing.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
 const regexMatches = string.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
-// const array = string.split(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
 console.log(regexMatches);
 let description = "";
 let syntax;
