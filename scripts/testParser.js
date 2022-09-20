@@ -26,10 +26,13 @@ function parseExamples() {
 
 
 // (\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|$) WORKS on THING
+// (\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))
+// /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gi
 
 // TODO fill in gaps of thing matches at regex101
 // const regexMatches = thing.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
-const regexMatches = string.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
+
+const regexMatches = thing.match(/(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gi);
 console.log(regexMatches);
 let description = "";
 let syntax;
