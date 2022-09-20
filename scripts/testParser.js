@@ -19,13 +19,14 @@ function parseExamples() {
     // example is: x(number)= <sqf>*</sqf>
 }
 // https://regex101.com/
-// \|\S+=(\s*\S*)
-// (\|\s*|\S*)\=
-// \|(\s*|\S*)(\=)
-// \|(\s*|\S*)(\=)(.\S*[^|])
-// \|(\s*|\S*)(\=)(.*?)[^|]* Works
-// \|(\s*|\S*)(\=)(.*?)[^|}}]* // Works for "string"
 // /\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm full version
+// \|(?!seealso)(\s*|\S*)(\=)(.*?)[^|]*
+// \|(?!seealso)(\s*|\S*)(\=)
+// (\|(\s*|\S*)\=)
+
+
+// (\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|$) WORKS on THING
+
 // TODO fill in gaps of thing matches at regex101
 // const regexMatches = thing.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
 const regexMatches = string.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
