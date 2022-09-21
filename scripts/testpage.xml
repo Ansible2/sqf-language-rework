@@ -1,0 +1,207 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+	<siteinfo>
+		<sitename>Bohemia Interactive Community</sitename>
+		<dbname>community</dbname>
+		<base>https://community.bistudio.com/wiki/Main_Page</base>
+		<generator>MediaWiki 1.35.1</generator>
+		<case>case-sensitive</case>
+		<namespaces>
+			<namespace key="-2" case="case-sensitive">Media</namespace>
+			<namespace key="-1" case="first-letter">Special</namespace>
+			<namespace key="0" case="case-sensitive" />
+			<namespace key="1" case="case-sensitive">Talk</namespace>
+			<namespace key="2" case="first-letter">User</namespace>
+			<namespace key="3" case="first-letter">User talk</namespace>
+			<namespace key="4" case="case-sensitive">Bohemia Interactive Community</namespace>
+			<namespace key="5" case="case-sensitive">Bohemia Interactive Community talk</namespace>
+			<namespace key="6" case="case-sensitive">File</namespace>
+			<namespace key="7" case="case-sensitive">File talk</namespace>
+			<namespace key="8" case="first-letter">MediaWiki</namespace>
+			<namespace key="9" case="first-letter">MediaWiki talk</namespace>
+			<namespace key="10" case="case-sensitive">Template</namespace>
+			<namespace key="11" case="case-sensitive">Template talk</namespace>
+			<namespace key="12" case="case-sensitive">Help</namespace>
+			<namespace key="13" case="case-sensitive">Help talk</namespace>
+			<namespace key="14" case="case-sensitive">Category</namespace>
+			<namespace key="15" case="case-sensitive">Category talk</namespace>
+			<namespace key="110" case="case-sensitive">Forum</namespace>
+			<namespace key="111" case="case-sensitive">Forum talk</namespace>
+			<namespace key="460" case="case-sensitive">Campaign</namespace>
+			<namespace key="461" case="case-sensitive">Campaign talk</namespace>
+			<namespace key="5020" case="case-sensitive">DayZ</namespace>
+			<namespace key="5021" case="case-sensitive">DayZ talk</namespace>
+			<namespace key="5030" case="case-sensitive">Ylands</namespace>
+			<namespace key="5031" case="case-sensitive">Ylands talk</namespace>
+			<namespace key="5050" case="case-sensitive">Arma Reforger</namespace>
+			<namespace key="5051" case="case-sensitive">Arma Reforger talk</namespace>
+			<namespace key="5060" case="case-sensitive">Arma 4</namespace>
+			<namespace key="5061" case="case-sensitive">Arma 4 talk</namespace>
+		</namespaces>
+	</siteinfo>
+	<page>
+		<title>action</title>
+		<ns>0</ns>
+		<id>1363</id>
+		<revision>
+			<id>325167</id>
+			<parentid>308706</parentid>
+			<timestamp>2022-07-01T14:08:00Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>325167</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="3031" sha1="e0d1quvkithzqyj614ca9uc8mwi04l2" xml:space="preserve">{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+	|eff= global
+
+|gr1= Interaction
+
+|descr= Make a unit perform an action. See [[:Category:Actions]] for action names and syntaxes.
+{{Feature | informative |
+* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, &lt;sqf inline&gt;player action ["GetInDriver", car];&lt;/sqf&gt; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This doesn't happen in Multiplayer.
+* the alternative syntax creates a temporary Logic entity in place of ''unit''.
+}}
+
+|mp= {{Feature|important|The argument's [[Multiplayer Scripting#Locality|locality]] is '''usually''' local, but some actions can take a global argument (e.g "Eject", "GetOut", "GetInXXXX", "MoveToXXXX"). See [[:Category:Actions]] for more details.}}
+
+|s1= unit [[action]] actionArray
+
+|p1= unit: [[Object]]
+|p2= actionArray: [[Array]]
+|r1= [[Nothing]]
+
+|s2= [[action]] actionArray
+|s2since= Arma3 2.10
+
+|p21= actionArray: [[Array]]
+
+|r2= [[Nothing]]
+
+|x1= &lt;sqf&gt;player action ["SitDown", player];&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;_soldier action ["Eject", vehicle _soldier];&lt;/sqf&gt;
+
+|x3= &lt;sqf&gt;
+player action ["UseWeapon", player, player, 7]; // plays pick up animation before throwing grenade
+action ["UseWeapon", player, player, 7]; // normal grenade throw
+&lt;/sqf&gt;
+
+|seealso= [[actionIDs]] [[actionParams]] [[addAction]] [[setUserActionText]] [[inGameUISetEventHandler]] [[showHUD]] [[inputAction]] [[removeAction]] [[removeAllActions]] [[weaponsInfo]]
+}}
+
+{{Note
+|user= Tom_48_97
+|timestamp= 20090828092600
+|text= In {{arma2}}, you can place a unique unit (for example a boat, far of all combats) and use it for all command lines with action.
+}}
+
+{{Note
+|user= DreadedEntity
+|timestamp= 20150327175700
+|text= This command has no effect when a dead unit is used as input.
+}}
+
+{{Note
+|user= DrSova
+|timestamp= 20170627021500
+|text= &lt;sqf&gt;player action ["SWITCHWEAPON", player, player, -1]&lt;/sqf&gt;
+Switching weapon to the back.
+}}
+
+{{Note
+|user= Yuval
+|timestamp= 20170720122200
+|text= Some of the actions (such as "DropWeapon") do not always execute, and there should be a set of conditions for them to run.
+The unit must be able to perform the dropping animation in order for the action to properly execute.
+So, if for example we spawn a unit at [0,0,0] and make it perform a "DropWeapon" action - it won't work if [0,0,0] is water (which it is, if the current map is an island) because the unit will be swimming.&lt;br&gt;
+&lt;br&gt;
+Also, you cannot stack up actions right after the other. If you run a "DropWeapon" action when the current action animation is still going - it will not perform.
+There are a few more conditions for an action to perform, but relying on a hundred percent success of the action is not a good practice.
+}}</text>
+			<sha1>e0d1quvkithzqyj614ca9uc8mwi04l2</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>acos</title>
+		<ns>0</ns>
+		<id>1361</id>
+		<revision>
+			<id>318728</id>
+			<parentid>314199</parentid>
+			<timestamp>2022-05-13T09:21:23Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Text replacement - "\|x([0-9])= *&lt;code&gt;([^&lt;]*)&lt;\/code&gt;" to "|x$1= &lt;sqf&gt;$2&lt;/sqf&gt;"</comment>
+			<origin>318728</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="486" sha1="fofmgowobky3bidk7e8fs8v5zaehoo2" xml:space="preserve">{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Math - Geometry
+
+|descr= ArcCosine of a number, result in [[Number#Degrees|Degrees]]
+
+|s1= [[acos]] x
+
+|p1= x: [[Number]]
+
+|r1= [[Number]]
+
+|x1= &lt;sqf&gt;_degrees = acos 0.5; // Returns 60&lt;/sqf&gt;
+
+|seealso= [[atan]] [[asin]] [[sin]] [[cos]] [[tan]]
+}}</text>
+			<sha1>fofmgowobky3bidk7e8fs8v5zaehoo2</sha1>
+		</revision>
+	</page>
+</mediawiki>
