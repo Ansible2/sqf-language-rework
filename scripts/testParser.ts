@@ -90,10 +90,8 @@ try {
 }
 
 
-
-
-
-
+// use supportInfo command in arma to export syntaxes for commands into json and then add to parse here
+// https://community.bistudio.com/wiki/supportInfo
 
 
 
