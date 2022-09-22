@@ -11,6 +11,30 @@ import {
 } from "../sqf.namespace";
 
 const getBISWikiLink = (itemName: string): string => {
+	const convertUrlMap: IJSON<string> = {
+		"||": "a_or_b", 
+		"!": "!_a",
+		"!=": "a_!=_b",
+		"#": "a_hash_b", 
+		"%": "a_%25_b",
+		"&&": "a_&&_b",
+		"*": "a_*_b",
+		"/": "a_/_b",
+		":": "a_:_b",
+		"<": "a_less_b",
+		">": "a_greater_b",
+		"<=": "a_less=_b",
+		">=": "a_greater=_b",
+		"==": "a_==_b",
+		">>": "config_greater_greater_name",
+		"^": "a_^_b",
+		"_this": "Magic_Variables#this",
+	};
+
+	if (itemName in Object.keys(convertUrlMap)) {
+		itemName = convertUrlMap[itemName];
+	}
+
     return `https://community.bistudio.com/wiki/${itemName}`;
 };
 
@@ -80,7 +104,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             "4.5 % 3 // result is 1.5",
             "```",
         ],
-        getDocLink: () => getBISWikiLink("a_%25_b"),
         grammarType: SQFGrammarType.ManipulativeOperator,
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
@@ -90,7 +113,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     ["=="]: {
-        getDocLink: () => getBISWikiLink("a_%3D%3D_b"),
         grammarType: SQFGrammarType.ComparisonOperator,
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
@@ -102,7 +124,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     ["!"]: {
         documentation:
             "Returns the negation of a Boolean expression. This means `true` becomes `false` and vice versa.",
-        getDocLink: () => getBISWikiLink("!_a"),
         grammarType: SQFGrammarType.ConditionOperator,
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
@@ -123,7 +144,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     _this: {
         documentation:
             "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
-        getDocLink: () => getBISWikiLink("Magic_Variables#this"),
         grammarType: SQFGrammarType.ReservedLiteral,
         syntaxes: {
             type: SQFSyntaxType.NularOperator,
@@ -311,7 +331,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             "[1,2,3,4] # 2;	// result is 3",
             "```",
         ],
-        getDocLink: () => getBISWikiLink("a_hash_b"),
         grammarType: SQFGrammarType.PropertyAccessor,
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,

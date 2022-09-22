@@ -22,6 +22,7 @@ export enum SQFDataType {
     Control = "CONTROL",
     DiaryRecord = "DIARY RECORD",
     Display = "DISPLAY",
+	Exception = "EXCEPTION",
     EdenEntity = "EDEN ENTITY",
     EdenId = "EDEN ID",
     EditorObject = "EDITOR OBJECT",
@@ -30,6 +31,7 @@ export enum SQFDataType {
     Location = "LOCATION",
     Namespace = "NAMESPACE",
     Number = "NUMBER",
+    NetObject = "NetObject",
     Object = "OBJECT",
     ScriptHandle = "SCRIPT HANDLE",
     Side = "SIDE",
@@ -42,6 +44,7 @@ export enum SQFDataType {
     Any = "ANYTHING",
     Nothing = "NOTHING",
     Void = "VOID",
+	Vector = "VECTOR",
     Variable = "VARIABLE",
     IfType = "IF TYPE",
     SwitchType = "SWITCH TYPE",
@@ -50,7 +53,7 @@ export enum SQFDataType {
     ForType = "FOR TYPE",
 	Position2d = "POS_2D",
 	Position3d = "POS_3D",
-	HashMapKey = "HASHMAP_KEY"
+	HashMapKey = "HASHMAP_KEY",
 }
 
 export enum SQFSyntaxType {
