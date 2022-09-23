@@ -15,6 +15,11 @@ _commands apply {
 	};
 };
 
+_commandInfoArray
+
+
+
+
 private _getSyntaxType = {
 	params ["_inGameType"];
 
@@ -68,7 +73,32 @@ private _parseExample = {
 	_newExample
 };
 
+private _getSyntaxId = {
+	_x params [
+		"_camelCaseName",
+		"_syntaxType",
+		"_resultType",
+		"_rightArgType"
+	];
+		
+	private _syntaxIdArray = [
+		_camelCaseName,
+		toLowerANSI _syntaxType, 
+		toLowerANSI _resultType
+	];
+
+	// private _isUnary = _syntaxType == "u";
+	private _isBinary = _syntaxType == "b";
+	if (_isBinary) then {
+		_syntaxIdArray pushBack (toLowerANSI _rightArgType);
+	};
+
+	private _syntaxId = _syntaxIdArray joinString ":";
+	_syntaxId
+};
+
 // _commandInfoArray apply {
+private _commandSyntaxeMap = createHashMap;
 private _formattedArray = (supportInfo "i:apply") apply {
 	_x params [
 		["_syntaxType","",[""]],
@@ -82,29 +112,58 @@ private _formattedArray = (supportInfo "i:apply") apply {
 		["_rightArgType","",[""]]
 	];
 
-	_syntaxType = [_syntaxType] call _getSyntaxType;
-	_example = [_example] call _parseExample;
-	_resultType = [_resultType] call _parseType;
-	_leftArgType = [_leftArgType] call _parseType;
-	_rightArgType = [_rightArgType] call _parseType;
+	private _syntaxId = [
+		_camelCaseName,
+		_syntaxType,
+		_resultType,
+		_rightArgType
+	] call _getSyntaxId;
+
+	private _commandSyntaxArray = _commandSyntaxeMap getOrDefault [_syntaxId,[],true];
+	_commandSyntaxArray pushBackUnique [
+		_syntaxType,
+		_resultType,
+		_leftArgType,
+		_rightArgType,
+		_example
+	];
+
+	// private _output =
+	// 	"
+	// 	%1: {
+	// 		syntaxes: {
+	// 			type: %2,
+	// 			returnTypes: %3,
+	// 			leftOperandTypes: %4,
+	// 			rightOperandTypes: %5,
+	// 		},
+	// 		grammarType: SQFGrammarType.Command,
+	// 	},
+	// 	";
 	
-	private _output = "
-		%1: {
-			syntaxes: {
-				type: %2,
-				returnTypes: %3,
-				leftOperandTypes: %4,
-				rightOperandTypes: %5,
-			},
-			grammarType: SQFGrammarType.Command,
-		},
-	";
-	
-	private _formatted = format [_output,_camelCaseName,_syntaxType,_resultType,_leftArgType,_rightArgType];
-	_formatted
+	// private _formatted = format [_output,_camelCaseName,_syntaxType,_resultType,_leftArgType,_rightArgType];
+	// _formatted
 };
 
-copyToClipboard str _formattedArray;
+_commandSyntaxeMap apply {
+	private _commandSyntaxes = _x;
+	private _commandName = (_syntaxId splitString ":") select 0;
+
+	// TODO: determine how to parse these into syntax blocks and/or an array of syntax blocks
+	// parse into individual syntax object
+	_commandSyntaxes apply {
+		_syntaxType = [_syntaxType] call _getSyntaxType;
+		_example = [_example] call _parseExample;
+		_resultType = [_resultType] call _parseType;
+		_leftArgType = [_leftArgType] call _parseType;
+		_rightArgType = [_rightArgType] call _parseType;
+
+	};
+
+	_commandName
+};
+
+// copyToClipboard str _formattedArray;
 
 
 /*
