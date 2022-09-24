@@ -1,3 +1,6 @@
+import { Hash } from "crypto";
+import { Duplex } from "stream";
+
 const exampleText =
     "{{RV|type=command |game1= ofp |version1= 1.00 |game2= ofpe |version2= 1.00 |game3= arma1 |version3= 1.00 |game4= arma2 |version4= 1.00 |game5= arma2oa |version5= 1.50 |game6= tkoh |version6= 1.00 |game7= arma3 |version7= 0.50 |gr1= Math |descr= Returns absolute (positive) value of a real number. |s1= [[abs]] x |p1= x: [[Number]] |r1= [[Number]] |x1= <sqf>_n = abs -3; // Returns 3</sqf> |seealso= [[+]] [[-]] }}";
 
@@ -65,8 +68,8 @@ function isEffectLocality(stringToCheck: string): boolean {
 }
 
 const fromStringToSyntaxTypeString = (unParsedType: string): string => {
-	console.log("Game Type: ",unParsedType);
-	
+    console.log("Game Type: ", unParsedType);
+
     unParsedType = unParsedType.toUpperCase();
     if (unParsedType === "SCALAR" || unParsedType === "NUMBER")
         return "SQFDataType.Number";
@@ -103,13 +106,14 @@ const fromStringToSyntaxTypeString = (unParsedType: string): string => {
 };
 
 function parseType(unParsedString: string): string {
-	const typeMatches: RegExpMatchArray | null = unParsedString.match(/\[\[(\w*?)\]\]/);
-	if (!typeMatches) {
-		throw `Could not type in string: ${unParsedString}`;
-	}
-	
-	const parsed = fromStringToSyntaxTypeString(typeMatches[1]);
-	return parsed;
+    const typeMatches: RegExpMatchArray | null =
+        unParsedString.match(/\[\[(\w*?)\]\]/);
+    if (!typeMatches) {
+        throw `Could not type in string: ${unParsedString}`;
+    }
+
+    const parsed = fromStringToSyntaxTypeString(typeMatches[1]);
+    return parsed;
 }
 
 enum SyntaxMatchDifference {
@@ -119,18 +123,111 @@ enum SyntaxMatchDifference {
 }
 
 enum SyntaxType {
-    binary = "binary",
-    unary = "unary",
-    nular = "nular",
+    binary = "SQFSyntaxType.BinaryOperator",
+    unary = "SQFSyntaxType.UnaryOperator",
+    nular = "SQFSyntaxType.NularOperator",
 }
 
 interface ParsedSyntax {
     commandName: string;
-    leftArgType?: string;
-    rightArgType?: string;
+    leftArgType?: string | string[];
+    rightArgType?: string | string[];
     returnType: string;
     type: SyntaxType;
 }
+
+
+
+function createParsedSyntaxWithParams(
+    inputSyntax: ParsedSyntax,
+    parameters: string[]
+): ParsedSyntax {
+    switch (parameters.length) {
+        case 0: {
+            inputSyntax.type = SyntaxType.nular;
+            break;
+        }
+        case 1: {
+            inputSyntax.type = SyntaxType.unary;
+            inputSyntax.rightArgType = parameters[0];
+            break;
+        }
+        case 2: {
+            inputSyntax.leftArgType = parameters[0];
+            inputSyntax.rightArgType = parameters[1];
+            inputSyntax.type = SyntaxType.binary;
+            break;
+        }
+        default: {
+            inputSyntax.type = SyntaxType.nular;
+            break;
+        }
+    }
+
+    return inputSyntax;
+}
+
+function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
+    const parsedSyntaxes: ParsedSyntax[] = [];
+    try {
+        const regexMatches: RegExpMatchArray | null = page.match(regex);
+        if (!regexMatches) {
+            throw "No regex matches found";
+        }
+
+        let currentSyntax: ParsedSyntax | undefined;
+        let parameters: string[] = [];
+        regexMatches.forEach((match: string) => {
+            const matchTrimmed = match.trim();
+            if (isDescription(matchTrimmed)) {
+            } else if (isExample(matchTrimmed)) {
+            } else if (isSyntax(matchTrimmed)) {
+                if (currentSyntax) {
+                    const fullSyntax = createParsedSyntaxWithParams(
+                        currentSyntax,
+                        parameters
+                    );
+                    parsedSyntaxes.push(fullSyntax);
+                }
+
+                currentSyntax = {
+                    commandName: command,
+                } as ParsedSyntax;
+                parameters = [];
+            } else if (isArgLocality(matchTrimmed)) {
+            } else if (isEffectLocality(matchTrimmed)) {
+            } else if (isParameter(matchTrimmed)) {
+                const parameterType: string = parseType(matchTrimmed);
+                parameters.push(parameterType);
+            } else if (isReturnType(matchTrimmed)) {
+                const returnType: string = parseType(matchTrimmed);
+                currentSyntax!.returnType = returnType;
+            }
+        });
+
+        if (currentSyntax) {
+            const fullSyntax = createParsedSyntaxWithParams(
+                currentSyntax,
+                parameters
+            );
+            parsedSyntaxes.push(fullSyntax);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    return parsedSyntaxes;
+}
+
+// function getSyntaxId(syntax: ParsedSyntax): string {
+// 	return [
+// 		syntax.commandName,
+// 		syntax.returnType,
+// 		syntax.type,
+// 		syntax.leftArgType,
+// 		syntax.rightArgType,
+// 	].join(":");
+// }
 
 function syntaxMatch(
     syntax1: ParsedSyntax,
@@ -172,87 +269,102 @@ function syntaxMatch(
     return SyntaxMatchDifference.NoMatch;
 }
 
-function createParsedSyntax(inputSyntax: ParsedSyntax, parameters: string[]): ParsedSyntax {
-	switch (parameters.length) {
-		case 0: {
-			inputSyntax.type = SyntaxType.nular;
-			break;
-		}
-		case 1: {
-			inputSyntax.type = SyntaxType.unary;
-			inputSyntax.rightArgType = parameters[0];
-			break;
-		}
-		case 2: {
-			inputSyntax.leftArgType = parameters[0];
-			inputSyntax.rightArgType = parameters[1];
-			inputSyntax.type = SyntaxType.binary;
-			break;
-		}
-		default: {
-			inputSyntax.type = SyntaxType.nular;
-			break;
-		}
-	}
-
-	return inputSyntax;
-}
-
-function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
-    const parsedSyntaxes: ParsedSyntax[] = [];
-    try {
-        const regexMatches: RegExpMatchArray | null = page.match(regex);
-        if (!regexMatches) {
-            throw "No regex matches found";
-        }
+function consolidateSyntaxes(command: string,parsedSyntaxes: ParsedSyntax[]): string {
+    const usedIndexes: number[] = [];
+	const consolidatedSyntaxes: ParsedSyntax[] = [];
+    for (let i = 0; i < parsedSyntaxes.length; i++) {
+		if (i in usedIndexes) continue;
+		usedIndexes.push(i);
+        const mainSyntax = parsedSyntaxes[i];
 		
-		let currentSyntax: ParsedSyntax | undefined;
-		let parameters: string[] = [];
-        regexMatches.forEach((match: string) => {
-            const matchTrimmed = match.trim();
-            if (isDescription(matchTrimmed)) {
-            } else if (isExample(matchTrimmed)) {
-            } else if (isSyntax(matchTrimmed)) {
-				if (currentSyntax) {
-					const fullSyntax = createParsedSyntax(currentSyntax,parameters);
-					parsedSyntaxes.push(fullSyntax);
+        for (let j = i + 1; j < parsedSyntaxes.length; j++) {
+			if (j in usedIndexes) continue;
+			const compareSyntax = parsedSyntaxes[j];
+			const syntaxMatchDiff: SyntaxMatchDifference = syntaxMatch(mainSyntax,compareSyntax);
+
+			switch (syntaxMatchDiff) {
+				case SyntaxMatchDifference.NoMatch: {
+					continue;
 				}
-				
-				currentSyntax = {
-					commandName: command,
-				} as ParsedSyntax;
-				parameters = [];
-            } else if (isArgLocality(matchTrimmed)) {
-            } else if (isEffectLocality(matchTrimmed)) {
-            } else if (isParameter(matchTrimmed)) {
-				const parameterType: string = parseType(matchTrimmed);
-				parameters.push(parameterType);
-            } else if (isReturnType(matchTrimmed)) {
-				const returnType: string = parseType(matchTrimmed);
-				currentSyntax!.returnType = returnType;
-            }
-        });
+				case SyntaxMatchDifference.leftArg: {
+					const syntaxToAdd = compareSyntax.leftArgType as string;
+					if (Array.isArray(mainSyntax.leftArgType)) {
+						const syntaxAsArray = mainSyntax.leftArgType as string[]
+						mainSyntax.leftArgType = [...syntaxAsArray,syntaxToAdd];
+					} else {
+						mainSyntax.leftArgType = [mainSyntax.leftArgType!,syntaxToAdd];
+					}
+					
+					break;
+				}
+				case SyntaxMatchDifference.rightArg: {
+					const syntaxToAdd = compareSyntax.rightArgType as string;
+					if (Array.isArray(mainSyntax.rightArgType)) {
+						const syntaxAsArray = mainSyntax.rightArgType as string[]
+						mainSyntax.rightArgType = [...syntaxAsArray,syntaxToAdd];
+					} else {
+						mainSyntax.rightArgType = [mainSyntax.rightArgType!,syntaxToAdd];
+					}
+					break;
+				}
+				default:
+					continue;
+			}
+
+			usedIndexes.push(i);
+        }
+
+		consolidatedSyntaxes.push(mainSyntax);
+    }
+	
+	let syntaxesAsString: string[] | string = consolidatedSyntaxes.map((syntax: ParsedSyntax) => {
+		const syntaxArray = [
+			'{',
+			`\t\ttype: ${syntax.type},`,
+			`\t\treturnTypes: ${syntax.returnType},`,
+		];
 		
-		if (currentSyntax) {
-			const fullSyntax = createParsedSyntax(currentSyntax,parameters);
-			parsedSyntaxes.push(fullSyntax);
+		if (syntax.leftArgType) {
+			let insertSyntax = syntax.leftArgType;
+			if (Array.isArray(syntax.leftArgType)) {
+				insertSyntax = `[${insertSyntax}]`
+			}
+			syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax}`);
+		}
+		if (syntax.rightArgType) {
+			let insertSyntax = syntax.rightArgType;
+			if (Array.isArray(syntax.rightArgType)) {
+				insertSyntax = `[${insertSyntax}]`
+			}
+			syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax}`);
 		}
 
-    } catch (error) {
-        console.log(error);
-    }
+		syntaxArray.push('\t}',);
+		return syntaxArray.join("\n");
+	});
 
-    return parsedSyntaxes;
+	const moreThanOneSyntax = consolidatedSyntaxes.length > 1;
+	if (!moreThanOneSyntax) {
+		syntaxesAsString = syntaxesAsString[0]
+	}
+	const syntaxArray: string[] = [
+		`${command}: {`,
+		`\tsyntaxes: ${syntaxesAsString},`,
+		`\tgrammarType: SQFGrammarType.Command,`,
+		'},'
+	];
+
+    return syntaxArray.join("\n");
 }
-
 
 try {
-    const parsedSyntaxes: ParsedSyntax[] = parsePageIntoSyntaxes("apply",applyCommand);
-	console.table(parsedSyntaxes);
-	
-	// const preCompiledSyntaxesAsString: string[] = consolidateSyntaxes(parsedSyntaxes);
-	// console.table(preCompiledSyntaxesAsString);
-	
+    const parsedSyntaxes: ParsedSyntax[] = parsePageIntoSyntaxes(
+        "apply",
+        applyCommand
+    );
+    console.table(parsedSyntaxes);
+    console.log(consolidateSyntaxes("apply",parsedSyntaxes));
+
     // const syntaxStartIndexes: number[] = [];
     // regexMatches.forEach((match: string,index: number) => {
     // 	const matchTrimmed = match.trim();
