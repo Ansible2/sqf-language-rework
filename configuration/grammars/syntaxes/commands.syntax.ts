@@ -10,6 +10,8 @@ import {
     SQFEffect,
 } from "../sqf.namespace";
 // ("{2,})([a-z0-9\s]*)("{2,})
+// TODO: adjust documentation to just be a string url
+// this function can jusut be called at paring time instead of compile time
 const getBISWikiLink = (itemName: string): string => {
 	const convertUrlMap: IJSON<string> = {
 		"||": "a_or_b", 

@@ -1,14 +1,18 @@
-import { CompletionItemKind, CompletionItemTag, MarkupContent } from "vscode-languageserver/node";
+import {
+    CompletionItemKind,
+    CompletionItemTag,
+    MarkupContent,
+} from "vscode-languageserver/node";
 
 export enum SQFGrammarType {
     Function = "function",
-	AccessModifier = "access modifier",
-	ManipulativeOperator = "manipulative operator",
+    AccessModifier = "access modifier",
+    ManipulativeOperator = "manipulative operator",
     ConrolStatement = "control statement",
     ConditionOperator = "condition operator",
     ComparisonOperator = "comparison operator",
     ReservedLiteral = "reserved literal",
-	BooleanLiteral = "boolean literal",
+    BooleanLiteral = "boolean literal",
     NullLiteral = "null literal",
     PropertyAccessor = "property accessor",
     Command = "command",
@@ -22,7 +26,7 @@ export enum SQFDataType {
     Control = "CONTROL",
     DiaryRecord = "DIARY RECORD",
     Display = "DISPLAY",
-	Exception = "EXCEPTION",
+    Exception = "EXCEPTION",
     EdenEntity = "EDEN ENTITY",
     EdenId = "EDEN ID",
     EditorObject = "EDITOR OBJECT",
@@ -44,16 +48,16 @@ export enum SQFDataType {
     Any = "ANYTHING",
     Nothing = "NOTHING",
     Void = "VOID",
-	Vector = "VECTOR",
+    Vector = "VECTOR",
     Variable = "VARIABLE",
     IfType = "IF TYPE",
     SwitchType = "SWITCH TYPE",
     WhileType = "WHILE TYPE",
     WithType = "WITH TYPE",
     ForType = "FOR TYPE",
-	Position2d = "POS_2D",
-	Position3d = "POS_3D",
-	HashMapKey = "HASHMAP_KEY",
+    Position2d = "POS_2D",
+    Position3d = "POS_3D",
+    HashMapKey = "HASHMAP_KEY",
 }
 
 export enum SQFSyntaxType {
@@ -83,53 +87,35 @@ export enum SQFArrayComparator {
     OneOf = "ONE OF",
     AnyOf = "ANY",
 }
+
+type SQFSyntaxTypes =
+    | SQFDataType
+    | SQFArray
+    | SQFCode
+    | Array<SQFDataType | SQFArray | SQFCode>;
 export interface SQFArray {
-    types:
-        | SQFDataType
-        | SQFArray
-        | SQFCode
-        | Array<SQFDataType | SQFArray | SQFCode>;
+    types: SQFSyntaxTypes;
     operation: SQFArrayComparator;
 }
 export interface SQFCode {
-    params?:
-        | SQFDataType
-        | SQFArray
-        | SQFCode
-        | Array<SQFDataType | SQFArray | SQFCode>;
-    returns:
-        | SQFDataType
-        | SQFArray
-        | SQFCode
-        | Array<SQFDataType | SQFArray | SQFCode>;
+    params?: SQFSyntaxTypes;
+    returns: SQFSyntaxTypes;
 }
 
 export interface SQFSyntax {
     type: SQFSyntaxType;
-    returnTypes:
-        | SQFDataType
-        | SQFArray
-        | SQFCode
-        | Array<SQFDataType | SQFArray | SQFCode>;
-    leftOperandTypes?:
-        | SQFDataType
-        | SQFArray
-        | SQFCode
-        | Array<SQFDataType | SQFArray | SQFCode>;
-    rightOperandTypes?:
-        | SQFDataType
-        | SQFArray
-        | SQFCode
-        | Array<SQFDataType | SQFArray | SQFCode>;
+    returnTypes: SQFSyntaxTypes;
+    leftOperandTypes?: SQFSyntaxTypes;
+    rightOperandTypes?: SQFSyntaxTypes;
 }
 
 export enum SQFEffect {
-	LOCAL = "Local Effect",
-	GLOBAL = "Global Effect",
+    LOCAL = "Local Effect",
+    GLOBAL = "Global Effect",
 }
 export enum SQFArgument {
-	LOCAL = "Local Argument",
-	GLOBAL = "Global Argument",
+    LOCAL = "Local Argument",
+    GLOBAL = "Global Argument",
 }
 
 interface SQFItem {
@@ -139,12 +125,12 @@ interface SQFItem {
     };
     grammarType: SQFGrammarType;
     data?: any;
-	tags?: CompletionItemTag[];
+    tags?: CompletionItemTag[];
     syntaxes: SQFSyntax[] | SQFSyntax;
     kind?: CompletionItemKind;
-	effect?: SQFEffect,
-	argument?: SQFArgument, 
-	getDocLink?: (itemName: string) => string;
+    effect?: SQFEffect;
+    argument?: SQFArgument;
+    getDocLink?: (itemName: string) => string;
 }
 
 export interface CompiledSQFItem extends SQFItem {
@@ -155,7 +141,7 @@ export interface CompiledSQFItem extends SQFItem {
     label: string;
     documentation: MarkupContent;
     detail?: string; // detail should probably be avoided
-	kind: CompletionItemKind;
+    kind: CompletionItemKind;
 }
 
 export interface PreCompiledSQFItem extends SQFItem {

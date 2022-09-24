@@ -1,6 +1,7 @@
 const exampleText =
     "{{RV|type=command |game1= ofp |version1= 1.00 |game2= ofpe |version2= 1.00 |game3= arma1 |version3= 1.00 |game4= arma2 |version4= 1.00 |game5= arma2oa |version5= 1.50 |game6= tkoh |version6= 1.00 |game7= arma3 |version7= 0.50 |gr1= Math |descr= Returns absolute (positive) value of a real number. |s1= [[abs]] x |p1= x: [[Number]] |r1= [[Number]] |x1= <sqf>_n = abs -3; // Returns 3</sqf> |seealso= [[+]] [[-]] }}";
 
+const applyCommand = `{{RV|type=command |game1= arma3 |version1= 1.56 |gr1= Arrays |gr2= HashMap |descr= Applies the given code to each element of the given data structure and collects the results in an array. |s1= array [[apply]] code |p1= array: [[Array]] - Array of [[Anything]] |p2= code: [[Code]] - code to be executed on each element of the array. The current element value is stored in the magic variable [[Magic Variables#x|_x]]. |r1= [[Array]] - resulting array |s2= hashmap [[apply]] code |s2since= arma3 2.04 |p21= hashmap: [[HashMap]] |p22= code: [[Code]] - Code to be executed on each key-value pair of the hashmap. The current key is stored in the magic variable [[Magic Variables#x|_x]], the corresponding value is stored in [[Magic Variables#y|_y]]. |r2= [[Array]] - resulting array |x1= <sqf>private _arr = [1,2,3,4,5,6,7,8,9,0] apply { [1,0] select (_x % 2 === 0) }; // [1,0,1,0,1,0,1,0,1,0]</sqf> |x2= <sqf>private _arr = [1,2,3,4,5,6,7,8,9,0] apply { _x ^ _x }; // [1,4,27,256,3125,46656,823543,16777216,387420480,1]</sqf> |x3= <sqf> private _arr1 = []; _arr1 resize 20; _arr2 = _arr1 apply { 0 }; // [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] </sqf> |x4= <sqf>[0,1,2,3,4] apply { str _x }; // ["0","1","2","3","4"]</sqf> |x5= <sqf> private _hashmap = createHashMapFromArray [["Key 1", "Value 1"], ["Key 2", "Value 2"]]; private _array = _hashmap apply { _y + " Test" }; // ["Value 2 Test","Value 1 Test"] </sqf> |seealso= [[set]] [[resize]] [[pushBack]] [[pushBackUnique]] [[select]] [[reverse]] [[count]] [[find]] [[in]] [[forEach]] [[deleteAt]] [[deleteRange]] [[append]] [[sort]] [[arrayIntersect]] }} {{Note |user= Fusselwurm |timestamp= 20160218110300 |text= (to anyone else wondering, I took a minute to get it) this is [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map Array.map()] in JavaScript }} {{Note |user= Lou Montana |timestamp= 20180211230200 |text= if performance really is an issue, [[apply]] seems to be (very) slightly faster than [[forEach]] (by more or less one percent, 0.7-1.5% in my tests to be precise). }}`;
 
 // https://community.bistudio.com/wiki/Special:Export/
 
@@ -42,69 +43,212 @@ const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gi;
 // 		- The end of the whole string the regex is being used on
 
 function isSyntax(stringToCheck: string): boolean {
-	return !!stringToCheck.match(/^\|s\d*\=/);
+    return !!stringToCheck.match(/^\|s\d*\=/);
+}
+function isParameter(stringToCheck: string): boolean {
+    return !!stringToCheck.match(/^\|p\d*=/);
+}
+function isReturnType(stringToCheck: string): boolean {
+    return !!stringToCheck.match(/^\|r\d*=/);
 }
 function isExample(stringToCheck: string): boolean {
-	return !!stringToCheck.match(/^\|x\d*\=/);
+    return !!stringToCheck.match(/^\|x\d*\=/);
 }
 function isDescription(stringToCheck: string): boolean {
-	return stringToCheck.startsWith('|descr');
+    return stringToCheck.startsWith("|descr");
 }
 function isArgLocality(stringToCheck: string): boolean {
-	return stringToCheck.startsWith('|arg');
+    return stringToCheck.startsWith("|arg");
 }
 function isEffectLocality(stringToCheck: string): boolean {
-	return stringToCheck.startsWith('|eff');
+    return stringToCheck.startsWith("|eff");
 }
 
-try {
-	const regexMatches: RegExpMatchArray | null = exampleText.match(regex);
-	// console.log(regexMatches);
-	if (!regexMatches) {
-		throw "No regex matches found";
+const fromStringToSyntaxTypeString = (unParsedType: string): string => {
+	console.log("Game Type: ",unParsedType);
+	
+    unParsedType = unParsedType.toUpperCase();
+    if (unParsedType === "SCALAR" || unParsedType === "NUMBER")
+        return "SQFDataType.Number";
+    if (unParsedType === "BOOL") return "SQFDataType.Bool";
+    if (unParsedType === "ARRAY") return "SQFDataType.Array";
+    if (unParsedType === "STRING") return "SQFDataType.String";
+    if (unParsedType === "NOTHING") return "SQFDataType.Nothing";
+    if (unParsedType === "ANY") return "SQFDataType.ANY";
+    if (unParsedType === "NAMESPACE") return "SQFDataType.Namespace";
+    if (unParsedType === "NAN") return "SQFDataType.NaN";
+    if (unParsedType === "IF") return "SQFDataType.IfType";
+    if (unParsedType === "WHILE") return "SQFDataType.WhileType";
+    if (unParsedType === "FOR") return "SQFDataType.ForType";
+    if (unParsedType === "SWITCH") return "SQFDataType.SwitchType";
+    if (unParsedType === "EXCEPTION") return "SQFDataType.Exception";
+    if (unParsedType === "WITH") return "SQFDataType.WithType";
+    if (unParsedType === "CODE") return "SQFDataType.Code";
+    if (unParsedType === "OBJECT") return "SQFDataType.Object";
+    if (unParsedType === "VECTOR") return "SQFDataType.Vector";
+    if (unParsedType === "SIDE") return "SQFDataType.Side";
+    if (unParsedType === "GROUP") return "SQFDataType.Group";
+    if (unParsedType === "TEXT") return "SQFDataType.StructuredText";
+    if (unParsedType === "SCRIPT") return "SQFDataType.ScriptHandle";
+    if (unParsedType === "CONFIG") return "SQFDataType.Config";
+    if (unParsedType === "DISPLAY") return "SQFDataType.Display";
+    if (unParsedType === "CONTROL") return "SQFDataType.Control";
+    if (unParsedType === "NETOBJECT") return "SQFDataType.NetObject";
+    if (unParsedType === "TEAM_MEMBER") return "SQFDataType.TeamMember";
+    if (unParsedType === "HASHMAP") return "SQFDataType.HashMap";
+    if (unParsedType === "TASK") return "SQFDataType.Task";
+    if (unParsedType === "DIARY_RECORD") return "SQFDataType.DiaryRecord";
+    if (unParsedType === "LOCATION") return "SQFDataType.Location";
+    return "SQFDataType.Empty";
+};
+
+function parseType(unParsedString: string): string {
+	const typeMatches: RegExpMatchArray | null = unParsedString.match(/\[\[(\w*?)\]\]/);
+	if (!typeMatches) {
+		throw `Could not type in string: ${unParsedString}`;
 	}
 	
-	regexMatches.forEach((match: string) => {
-		let matchType: string = "";
-		const matchTrimmed = match.trim();
-		if (isDescription(matchTrimmed)) {
-			matchType = "Description";
+	const parsed = fromStringToSyntaxTypeString(typeMatches[1]);
+	return parsed;
+}
 
-		} else if (isExample(matchTrimmed)) {
-			matchType = "Example";
-		} else if (isSyntax(matchTrimmed)) {
-			matchType = "Syntax";
-		} else if (isArgLocality(matchTrimmed)) {
-			matchType = "Arg";
-		} else if (isEffectLocality(matchTrimmed)) {
-			matchType = "Effect";
-		}
+enum SyntaxMatchDifference {
+    leftArg,
+    rightArg,
+    NoMatch,
+}
+
+enum SyntaxType {
+    binary = "binary",
+    unary = "unary",
+    nular = "nular",
+}
+
+interface ParsedSyntax {
+    commandName: string;
+    leftArgType?: string;
+    rightArgType?: string;
+    returnType: string;
+    type: SyntaxType;
+}
+
+function syntaxMatch(
+    syntax1: ParsedSyntax,
+    syntax2: ParsedSyntax
+): SyntaxMatchDifference {
+    const type: SyntaxType = syntax1.type;
+    if (
+        type === SyntaxType.nular ||
+        type !== syntax2.type ||
+        syntax1.returnType !== syntax2.returnType
+    )
+        return SyntaxMatchDifference.NoMatch;
+
+    const leftArgIsDefined: boolean = !!syntax1.leftArgType;
+    const rightArgIsDefined: boolean = !!syntax1.rightArgType;
+    const leftArgIsTheSame = syntax1.leftArgType === syntax2.leftArgType;
+    const rightArgIsTheSame = syntax1.rightArgType === syntax2.rightArgType;
+
+    if (type === SyntaxType.binary) {
+        if (leftArgIsDefined && !leftArgIsTheSame && rightArgIsTheSame) {
+            return SyntaxMatchDifference.leftArg;
+        } else if (
+            rightArgIsDefined &&
+            !rightArgIsTheSame &&
+            leftArgIsTheSame
+        ) {
+            return SyntaxMatchDifference.rightArg;
+        }
+    }
+
+    if (type === SyntaxType.unary) {
+        if (leftArgIsDefined && !leftArgIsTheSame) {
+            return SyntaxMatchDifference.leftArg;
+        } else if (rightArgIsDefined && !rightArgIsTheSame) {
+            return SyntaxMatchDifference.rightArg;
+        }
+    }
+
+    return SyntaxMatchDifference.NoMatch;
+}
+
+function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
+    const parsedSyntaxes: ParsedSyntax[] = [];
+    try {
+        const regexMatches: RegExpMatchArray | null = page.match(regex);
+        if (!regexMatches) {
+            throw "No regex matches found";
+        }
 		
-		if (matchType) {
-			console.log(`${matchType}: ${matchTrimmed}`);
-		}
-	});
+		let currentSyntax: ParsedSyntax;
+		let parameters: string[] = [];
+        regexMatches.forEach((match: string) => {
+            const matchTrimmed = match.trim();
+            if (isDescription(matchTrimmed)) {
+            } else if (isExample(matchTrimmed)) {
+            } else if (isSyntax(matchTrimmed)) {
+				if (currentSyntax) {
+					switch (parameters.length) {
+						case 0: {
+							currentSyntax.type = SyntaxType.nular;
+							break;
+						}
+						case 1: {
+							currentSyntax.type = SyntaxType.unary;
+							currentSyntax.rightArgType = parameters[0];
+							break;
+						}
+						case 2: {
+							currentSyntax.leftArgType = parameters[0];
+							currentSyntax.rightArgType = parameters[1];
+							currentSyntax.type = SyntaxType.binary;
+							break;
+						}
+						default: {
+							currentSyntax.type = SyntaxType.nular;
+							break;
+						}
+					}
 
-} catch(error) {
-	console.log(error);
+					parsedSyntaxes.push(currentSyntax);
+				}
+				
+				currentSyntax = {
+					commandName: command,
+				} as ParsedSyntax;
+				parameters = [];
+            } else if (isArgLocality(matchTrimmed)) {
+            } else if (isEffectLocality(matchTrimmed)) {
+            } else if (isParameter(matchTrimmed)) {
+				const parameterType: string = parseType(matchTrimmed);
+				parameters.push(parameterType);
+            } else if (isReturnType(matchTrimmed)) {
+				const returnType: string = parseType(matchTrimmed);
+				currentSyntax.returnType = returnType;
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+    return parsedSyntaxes;
 }
 
 
-// use supportInfo command in arma to export syntaxes for commands into json and then add to parse here
-// https://community.bistudio.com/wiki/supportInfo
-
-
-
-// https://regex101.com/
-// /\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm full version
-// \|(?!seealso)(\s*|\S*)(\=)(.*?)[^|]*
-// \|(?!seealso)(\s*|\S*)(\=)
-// (\|(\s*|\S*)\=)
-
-
-// (\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|$) WORKS on THING
-// (\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))
-// /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gi
-
-// TODO fill in gaps of thing matches at regex101
-// const regexMatches = thing.match(/\|(\s*|\S*)(\=)(.*?)[^|}}]*/gm);
+try {
+    const parsedSyntaxes: ParsedSyntax[] = parsePageIntoSyntaxes("apply",applyCommand);
+	console.table(parsedSyntaxes);
+	
+	// const preCompiledSyntaxesAsString: string[] = consolidateSyntaxes(parsedSyntaxes);
+	// console.table(preCompiledSyntaxesAsString);
+	
+    // const syntaxStartIndexes: number[] = [];
+    // regexMatches.forEach((match: string,index: number) => {
+    // 	const matchTrimmed = match.trim();
+    // 	if (isSyntax(matchTrimmed)) {
+    // 		syntaxStartIndexes.push(index);
+    // 	}
+    // });
+} catch (error) {
+    console.log(error);
+}
