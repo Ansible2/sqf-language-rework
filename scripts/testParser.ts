@@ -172,6 +172,32 @@ function syntaxMatch(
     return SyntaxMatchDifference.NoMatch;
 }
 
+function createParsedSyntax(inputSyntax: ParsedSyntax, parameters: string[]): ParsedSyntax {
+	switch (parameters.length) {
+		case 0: {
+			inputSyntax.type = SyntaxType.nular;
+			break;
+		}
+		case 1: {
+			inputSyntax.type = SyntaxType.unary;
+			inputSyntax.rightArgType = parameters[0];
+			break;
+		}
+		case 2: {
+			inputSyntax.leftArgType = parameters[0];
+			inputSyntax.rightArgType = parameters[1];
+			inputSyntax.type = SyntaxType.binary;
+			break;
+		}
+		default: {
+			inputSyntax.type = SyntaxType.nular;
+			break;
+		}
+	}
+
+	return inputSyntax;
+}
+
 function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
     const parsedSyntaxes: ParsedSyntax[] = [];
     try {
@@ -180,7 +206,7 @@ function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
             throw "No regex matches found";
         }
 		
-		let currentSyntax: ParsedSyntax;
+		let currentSyntax: ParsedSyntax | undefined;
 		let parameters: string[] = [];
         regexMatches.forEach((match: string) => {
             const matchTrimmed = match.trim();
@@ -188,29 +214,8 @@ function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
             } else if (isExample(matchTrimmed)) {
             } else if (isSyntax(matchTrimmed)) {
 				if (currentSyntax) {
-					switch (parameters.length) {
-						case 0: {
-							currentSyntax.type = SyntaxType.nular;
-							break;
-						}
-						case 1: {
-							currentSyntax.type = SyntaxType.unary;
-							currentSyntax.rightArgType = parameters[0];
-							break;
-						}
-						case 2: {
-							currentSyntax.leftArgType = parameters[0];
-							currentSyntax.rightArgType = parameters[1];
-							currentSyntax.type = SyntaxType.binary;
-							break;
-						}
-						default: {
-							currentSyntax.type = SyntaxType.nular;
-							break;
-						}
-					}
-
-					parsedSyntaxes.push(currentSyntax);
+					const fullSyntax = createParsedSyntax(currentSyntax,parameters);
+					parsedSyntaxes.push(fullSyntax);
 				}
 				
 				currentSyntax = {
@@ -224,9 +229,15 @@ function parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
 				parameters.push(parameterType);
             } else if (isReturnType(matchTrimmed)) {
 				const returnType: string = parseType(matchTrimmed);
-				currentSyntax.returnType = returnType;
+				currentSyntax!.returnType = returnType;
             }
         });
+		
+		if (currentSyntax) {
+			const fullSyntax = createParsedSyntax(currentSyntax,parameters);
+			parsedSyntaxes.push(fullSyntax);
+		}
+
     } catch (error) {
         console.log(error);
     }
