@@ -33,7 +33,11 @@ _allCommandNames apply {
 
 _commandInfoArray
 */
-// ("")([\w*\s*]*)("")
+// get rid of some nested double quotes
+//Find: ("")([\w*\s*]*)("")
+//replace: '$2'
+
+// find instances of new lines in string taken from arma and replace with \n
 [
     ["u", "!", "!", "not a", "!true", "false", "BOOL", "", "BOOL", "! a"],
     [
@@ -401,7 +405,7 @@ _commandInfoArray
         "/",
         "/",
         "a divided by b",
-        "enemyStrenght/3",
+        "enemyStrength/3",
         "",
         "SCALAR,NaN",
         "SCALAR,NaN",
@@ -25243,7 +25247,7 @@ _commandInfoArray
         "b",
         "say2d",
         "say2D",
-        "Functionally same as Say, only difference is sound played as 2D (mono) allways.",
+        "Functionally same as Say, only difference is sound played as 2D (mono) always.",
         "soldierOne say 'speechId'",
         "",
         "NOTHING",
@@ -25255,7 +25259,7 @@ _commandInfoArray
         "b",
         "say2d",
         "say2D",
-        "Functionally same as Say, only difference is sound played as 2D (mono) allways.",
+        "Functionally same as Say, only difference is sound played as 2D (mono) always.",
         "",
         "",
         "NOTHING",
@@ -25267,7 +25271,7 @@ _commandInfoArray
         "b",
         "say3d",
         "say3D",
-        "Functionally same as Say, only difference is sound played as 3D allways.",
+        "Functionally same as Say, only difference is sound played as 3D always.",
         "soldierOne say 'speechId'",
         "",
         "OBJECT",
@@ -25279,7 +25283,7 @@ _commandInfoArray
         "b",
         "say3d",
         "say3D",
-        "Functionally same as Say, only difference is sound played as 3D allways.",
+        "Functionally same as Say, only difference is sound played as 3D always.",
         "",
         "",
         "OBJECT",
@@ -28495,7 +28499,7 @@ _commandInfoArray
         "b",
         "setsimpletaskalwaysvisible",
         "setSimpleTaskAlwaysVisible",
-        "Makes the given task allways visiable or not.",
+        "Makes the given task always visiable or not.",
         "",
         "",
         "NOTHING",
