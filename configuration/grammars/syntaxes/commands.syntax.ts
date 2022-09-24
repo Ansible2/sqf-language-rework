@@ -9,7 +9,7 @@ import {
     SQFArgument,
     SQFEffect,
 } from "../sqf.namespace";
-
+// ("{2,})([a-z0-9\s]*)("{2,})
 const getBISWikiLink = (itemName: string): string => {
 	const convertUrlMap: IJSON<string> = {
 		"||": "a_or_b", 
@@ -59,7 +59,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     forEach: {
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
-            returnTypes: SQFDataType.Array,
+            returnTypes: SQFDataType.Any,
             rightOperandTypes: [SQFDataType.Array, SQFDataType.HashMap],
             leftOperandTypes: SQFDataType.Code,
         },

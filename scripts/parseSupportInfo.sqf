@@ -1,12 +1,22 @@
-private _commands = [];
-(supportInfo "" - supportInfo "t:*") apply {
-	private _commandSyntaxArray = (_x select [2]) splitString " ";
-	private _commandName = _commandSyntaxArray select 1;
-	_commands pushBackUnique _commandName;
+private _allCommandNames = [];
+supportInfo "" apply {
+	_x splitString ":" params ["_t", "_x"];
+	if (_t != "t") then {
+		_x = _x splitString " ";
+		_command = switch count _x do {
+			case 1;
+			case 2: { _x # 0 };
+			case 3: { _x # 1 };
+			default {nil};
+		};
+		_allCommandNames pushBackUnique _command;
+	};
 };
+_allCommandNames sort true;
+
 
 private _commandInfoArray = [];
-_commands apply {
+_allCommandNames apply {
 	private _command = _x;
 	private _supportInfoLookup = "i:" + _command;
 	private _syntaxes = supportInfo _supportInfoLookup;
@@ -78,27 +88,23 @@ private _getSyntaxId = {
 		"_camelCaseName",
 		"_syntaxType",
 		"_resultType",
-		"_rightArgType"
+		["_argType","",[""]]
 	];
 		
 	private _syntaxIdArray = [
 		_camelCaseName,
 		toLowerANSI _syntaxType, 
-		toLowerANSI _resultType
+		toLowerANSI _resultType,
+		toLowerANSI _argType
 	];
-
-	// private _isUnary = _syntaxType == "u";
-	private _isBinary = _syntaxType == "b";
-	if (_isBinary) then {
-		_syntaxIdArray pushBack (toLowerANSI _rightArgType);
-	};
 
 	private _syntaxId = _syntaxIdArray joinString ":";
 	_syntaxId
 };
 
 // _commandInfoArray apply {
-private _commandSyntaxeMap = createHashMap;
+private _syntaxMap = createHashMap;
+
 private _formattedArray = (supportInfo "i:apply") apply {
 	_x params [
 		["_syntaxType","",[""]],
@@ -112,14 +118,20 @@ private _formattedArray = (supportInfo "i:apply") apply {
 		["_rightArgType","",[""]]
 	];
 
+	private _commandSyntaxMap = _syntaxMap getOrDefault [_lowerCaseName,-1];
+	if (_commandSyntaxMap isEqualTo -1) then {
+		_commandSyntaxMap = createHashMap;
+		_syntaxMap set [_lowerCaseName,_commandSyntaxMap];
+	};
+
 	private _syntaxId = [
 		_camelCaseName,
 		_syntaxType,
-		_resultType,
-		_rightArgType
+		_resultType
+
 	] call _getSyntaxId;
 
-	private _commandSyntaxArray = _commandSyntaxeMap getOrDefault [_syntaxId,[],true];
+	private _commandSyntaxArray = _commandSyntaxMap getOrDefault [_syntaxId,[],true];
 	_commandSyntaxArray pushBackUnique [
 		_syntaxType,
 		_resultType,
@@ -145,9 +157,9 @@ private _formattedArray = (supportInfo "i:apply") apply {
 	// _formatted
 };
 
-_commandSyntaxeMap apply {
-	private _commandSyntaxes = _x;
-	private _commandName = (_syntaxId splitString ":") select 0;
+_syntaxMap apply {
+	private _commandName = _y;
+	private _commandSyntaxes = toArray _x;
 
 	// TODO: determine how to parse these into syntax blocks and/or an array of syntax blocks
 	// parse into individual syntax object
