@@ -366,8 +366,12 @@ export class NodeSqfLangServer {
                     syntax.rightOperandTypes
                 );
             switch (type) {
-                case SQFSyntaxType.Function: {
-                    syntaxString = `${leftOperand} -> ${SQFItemName}`;
+                case SQFSyntaxType.UnscheduledFunction: {
+                    syntaxString = `${leftOperand} call ${SQFItemName}`;
+                    break;
+                }
+                case SQFSyntaxType.ScheduledFunction: {
+                    syntaxString = `${leftOperand} spawn ${SQFItemName}`;
                     break;
                 }
                 case SQFSyntaxType.BinaryOperator: {

@@ -61,10 +61,11 @@ export enum SQFDataType {
 }
 
 export enum SQFSyntaxType {
-    Function = 0,
+    UnscheduledFunction = 0,
     NularOperator = 1,
     UnaryOperator = 2,
     BinaryOperator = 3,
+    ScheduledFunction = 4,
 }
 
 export function isSQFArray(object: unknown): object is SQFArray {

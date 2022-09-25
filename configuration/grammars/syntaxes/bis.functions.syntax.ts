@@ -30,7 +30,7 @@ export const bisFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 types: [SQFDataType.Number, SQFDataType.Number],
                 operation: SQFArrayComparator.Exact,
             },
-            type: SQFSyntaxType.Function,
+            type: SQFSyntaxType.UnscheduledFunction,
         },
     },
 };
