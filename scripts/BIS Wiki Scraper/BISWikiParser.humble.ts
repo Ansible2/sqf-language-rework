@@ -1,3 +1,7 @@
+import { XMLParser, XMLBuilder, XMLValidator} from "fast-xml-parser";
+import { readFileSync } from "fs";
+import * as path from "path";
+
 interface ParsedSyntax {
     commandName: string;
     leftArgType?: string | string[];
@@ -19,7 +23,7 @@ enum SyntaxType {
 }
 
 
-// const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gi;
+// const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 // group 1: Actual syntax for an entry
 // - match starts with a '|'
 // - followed by any amount of whitespace OR any amount of non-whitespace characters
@@ -34,9 +38,11 @@ enum SyntaxType {
 // 		- A set of closing '}}'
 // 		- The end of the whole string the regex is being used on
 
-
+interface IJSON<T> {
+    [key: string]: T;
+}
 class TextInterpreter {
-    private static readonly wikiTypeToDataTypeMap = {
+    private static readonly wikiTypeToDataTypeMap: IJSON<string> = {
         NUMBER: "SQFDataType.Number",
         SCALAR: "SQFDataType.Number",
         BOOLEAN: "SQFDataType.Bool",
@@ -151,10 +157,10 @@ export class BISWikiParser {
 	parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
 		const parsedSyntaxes: ParsedSyntax[] = [];
 		try {
-			const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gi;
+			const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 			const regexMatches: RegExpMatchArray | null = page.match(regex);
 			if (!regexMatches) {
-				throw "No regex matches found";
+				throw `No regex matches found for page: ${page}`;
 			}
 	
 			let currentSyntax: ParsedSyntax | undefined;
@@ -320,7 +326,7 @@ export class BISWikiParser {
 			syntaxesAsString = syntaxesAsString[0]
 		}
 		const syntaxArray: string[] = [
-			`${command}: {`,
+			`\n${command}: {`,
 			`\tsyntaxes: ${syntaxesAsString},`,
 			`\tgrammarType: SQFGrammarType.Command,`,
 			'},'
@@ -331,14 +337,28 @@ export class BISWikiParser {
 
     public parseWiki(): void {
 		// TODO: Implement xml parse and possibly get of pages
-
 		try {
-			const parsedSyntaxes: ParsedSyntax[] = this.parsePageIntoSyntaxes(
-				"select",
-				selectText
-			);
-			console.table(parsedSyntaxes);
-			console.log(this.consolidateSyntaxes("select",parsedSyntaxes));
+			const xmlParser = new XMLParser();
+			const xmlPath = path.resolve(__dirname,"../testpage.xml");
+			console.log("XML Path:",xmlPath);
+			
+			const xml = readFileSync(xmlPath);
+			const json = xmlParser.parse(xml);
+			console.table(json.mediawiki.page);
+			const pages: any[] = json.mediawiki.page;
+			const parsed: string[] = [];
+			pages.forEach((page: any) => {
+				const parsedSyntaxes: ParsedSyntax[] = this.parsePageIntoSyntaxes(
+					page.title,
+					page.revision.text
+				);
+				
+				parsed.push(
+					this.consolidateSyntaxes(page.title,parsedSyntaxes)
+				);
+			});
+			
+			console.log (parsed);
 		} catch (error) {
 			console.log(error);
 		}
