@@ -217,7 +217,7 @@ export class BISWikiParser {
 		return parsedSyntaxes;
 	}
 
-	private syntaxMatch(
+	private getSyntaxMatchDifference(
 		syntax1: ParsedSyntax,
 		syntax2: ParsedSyntax
 	): SyntaxMatchDifference {
@@ -226,8 +226,9 @@ export class BISWikiParser {
 			type === SyntaxType.nular ||
 			type !== syntax2.type ||
 			syntax1.returnType !== syntax2.returnType
-		)
+		) {
 			return SyntaxMatchDifference.NoMatch;
+		}
 	
 		const leftArgIsDefined: boolean = !!syntax1.leftArgType;
 		const rightArgIsDefined: boolean = !!syntax1.rightArgType;
@@ -257,18 +258,18 @@ export class BISWikiParser {
 		return SyntaxMatchDifference.NoMatch;
 	}
 
-	private consolidateSyntaxes(command: string,parsedSyntaxes: ParsedSyntax[]): string {
-		const usedIndexes: number[] = [];
+	private consolidateSyntaxes(command: string, parsedSyntaxes: ParsedSyntax[]): string {
+		const checkedSyntaxIndexes: number[] = [];
 		const consolidatedSyntaxes: ParsedSyntax[] = [];
 		for (let i = 0; i < parsedSyntaxes.length; i++) {
-			if (i in usedIndexes) continue;
-			usedIndexes.push(i);
+			if (i in checkedSyntaxIndexes) continue;
+			checkedSyntaxIndexes.push(i);
 			const mainSyntax = parsedSyntaxes[i];
 			
 			for (let j = i + 1; j < parsedSyntaxes.length; j++) {
-				if (j in usedIndexes) continue;
+				if (j in checkedSyntaxIndexes) continue;
 				const compareSyntax = parsedSyntaxes[j];
-				const syntaxMatchDiff: SyntaxMatchDifference = this.syntaxMatch(mainSyntax,compareSyntax);
+				const syntaxMatchDiff: SyntaxMatchDifference = this.getSyntaxMatchDifference(mainSyntax,compareSyntax);
 	
 				switch (syntaxMatchDiff) {
 					case SyntaxMatchDifference.NoMatch: {
@@ -299,7 +300,7 @@ export class BISWikiParser {
 						continue;
 				}
 	
-				usedIndexes.push(i);
+				checkedSyntaxIndexes.push(i);
 			}
 	
 			consolidatedSyntaxes.push(mainSyntax);
