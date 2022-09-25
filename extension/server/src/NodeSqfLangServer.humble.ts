@@ -459,7 +459,7 @@ export class NodeSqfLangServer {
 
             switch (arrayOperation) {
                 case SQFArrayComparator.Exact: {
-					if (typesAsString.length == 0) {
+					if (typesAsString.length === 0) {
 						arrayAsString = NodeSqfLangServer.parseSyntaxReturnOrOperands(
 							types,
 							true

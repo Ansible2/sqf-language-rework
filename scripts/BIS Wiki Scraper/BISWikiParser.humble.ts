@@ -317,7 +317,7 @@ export class BISWikiParser {
 				syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax}`);
 			}
 	
-			syntaxArray.push('\t}',);
+			syntaxArray.push('\t}\n',);
 			return syntaxArray.join("\n");
 		});
 	
