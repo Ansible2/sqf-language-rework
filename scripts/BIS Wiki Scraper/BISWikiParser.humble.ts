@@ -22,6 +22,13 @@ enum SyntaxType {
     nular = "SQFSyntaxType.NularOperator",
 }
 
+interface WikiPage {
+	title: string,
+	revision: {
+		text: string
+	}
+}
+
 
 // const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 // group 1: Actual syntax for an entry
@@ -41,6 +48,7 @@ enum SyntaxType {
 interface IJSON<T> {
     [key: string]: T;
 }
+
 class TextInterpreter {
     private static readonly wikiTypeToDataTypeMap: IJSON<string> = {
         NUMBER: "SQFDataType.Number",
@@ -104,7 +112,6 @@ class TextInterpreter {
         const typeParsed = TextInterpreter.wikiTypeToDataTypeMap[unParsedType.toUpperCase()];
 		if (typeParsed) return typeParsed;
 		throw `convertWikiTypeToSQFDataType: Did not find parse type for: ${unParsedType}`;
-        return "SQFDataType.Empty";
     }
 }
 
@@ -114,7 +121,7 @@ export class BISWikiParser {
         this.textInterpreter = new TextInterpreter();
     }
 
-	parseType(unParsedString: string): string {
+	private parseType(unParsedString: string): string {
 		const typeMatches: RegExpMatchArray | null =
 			unParsedString.match(/\[\[(\w*?)\]\]/);
 		if (!typeMatches) {
@@ -125,7 +132,7 @@ export class BISWikiParser {
 		return parsed;
 	}
 
-	createParsedSyntaxWithParams(
+	private createParsedSyntaxWithParams(
 		inputSyntax: ParsedSyntax,
 		parameters: string[]
 	): ParsedSyntax {
@@ -154,52 +161,55 @@ export class BISWikiParser {
 		return inputSyntax;
 	}
 	
-	parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
+	private parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
 		const parsedSyntaxes: ParsedSyntax[] = [];
+		const matchPageDetailsRegEx = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 		try {
-			const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
-			const regexMatches: RegExpMatchArray | null = page.match(regex);
-			if (!regexMatches) {
-				throw `No regex matches found for page: ${page}`;
+			const pageDetails: RegExpMatchArray | null = page.match(matchPageDetailsRegEx);
+			if (!pageDetails) {
+				throw `No pageDetails were found for command: ${command}, page: ${page}`;
 			}
 	
-			let currentSyntax: ParsedSyntax | undefined;
+			let syntaxBeingParsed: ParsedSyntax | undefined;
 			let parameters: string[] = [];
-			regexMatches.forEach((match: string) => {
-				const matchTrimmed = match.trim();
-				if (this.textInterpreter.isDescription(matchTrimmed)) {
-				} else if (this.textInterpreter.isExample(matchTrimmed)) {
-				} else if (this.textInterpreter.isSyntax(matchTrimmed)) {
-					if (currentSyntax) {
+			const numberOfDetailsIndexes = pageDetails.length - 1;
+			// loop through each page detail (|x1 = ...) for an example
+			pageDetails.forEach((pageDetail: string,index: number) => {
+				pageDetail = pageDetail.trim();
+				const isLastIndex = numberOfDetailsIndexes === index;
+
+				if (this.textInterpreter.isDescription(pageDetail)) {
+				} else if (this.textInterpreter.isExample(pageDetail)) {
+				} else if (this.textInterpreter.isSyntax(pageDetail) || isLastIndex) {
+					// If we come across another syntax detail (|s2=...)
+					/// and we have a syntax already being parsed
+					/// it means that the syntaxBeingParsed must be complete
+					const startingNewSyntax: boolean = !!syntaxBeingParsed; // check if truthy
+					if (startingNewSyntax || isLastIndex) {
 						const fullSyntax = this.createParsedSyntaxWithParams(
-							currentSyntax,
+							syntaxBeingParsed!,
 							parameters
 						);
 						parsedSyntaxes.push(fullSyntax);
 					}
-	
-					currentSyntax = {
-						commandName: command,
-					} as ParsedSyntax;
-					parameters = [];
-				} else if (this.textInterpreter.isArgLocality(matchTrimmed)) {
-				} else if (this.textInterpreter.isEffectLocality(matchTrimmed)) {
-				} else if (this.textInterpreter.isParameter(matchTrimmed)) {
-					const parameterType: string = this.parseType(matchTrimmed);
+					
+					if (!isLastIndex) {
+						syntaxBeingParsed = {
+							commandName: command,
+						} as ParsedSyntax;
+						parameters = [];
+					}
+				} else if (this.textInterpreter.isArgLocality(pageDetail)) {
+				} else if (this.textInterpreter.isEffectLocality(pageDetail)) {
+				} else if (this.textInterpreter.isParameter(pageDetail)) {
+					const parameterType: string = this.parseType(pageDetail);
 					parameters.push(parameterType);
-				} else if (this.textInterpreter.isReturnType(matchTrimmed)) {
-					const returnType: string = this.parseType(matchTrimmed);
-					currentSyntax!.returnType = returnType;
+				} else if (this.textInterpreter.isReturnType(pageDetail)) {
+					const returnType: string = this.parseType(pageDetail);
+					syntaxBeingParsed!.returnType = returnType;
 				}
 			});
-	
-			if (currentSyntax) {
-				const fullSyntax = this.createParsedSyntaxWithParams(
-					currentSyntax,
-					parameters
-				);
-				parsedSyntaxes.push(fullSyntax);
-			}
+			
 		} catch (error) {
 			console.log(error);
 		}
@@ -207,7 +217,7 @@ export class BISWikiParser {
 		return parsedSyntaxes;
 	}
 
-	syntaxMatch(
+	private syntaxMatch(
 		syntax1: ParsedSyntax,
 		syntax2: ParsedSyntax
 	): SyntaxMatchDifference {
@@ -247,7 +257,7 @@ export class BISWikiParser {
 		return SyntaxMatchDifference.NoMatch;
 	}
 
-	consolidateSyntaxes(command: string,parsedSyntaxes: ParsedSyntax[]): string {
+	private consolidateSyntaxes(command: string,parsedSyntaxes: ParsedSyntax[]): string {
 		const usedIndexes: number[] = [];
 		const consolidatedSyntaxes: ParsedSyntax[] = [];
 		for (let i = 0; i < parsedSyntaxes.length; i++) {
@@ -334,31 +344,31 @@ export class BISWikiParser {
 	
 		return syntaxArray.join("\n");
 	}
-
-    public parseWiki(): void {
-		// TODO: Implement xml parse and possibly get of pages
+	
+	
+    public parseWiki(xmlFilePath: string): void {
 		try {
-			const xmlParser = new XMLParser();
-			const xmlPath = path.resolve(__dirname,"../testpage.xml");
+			const xmlPath = path.resolve(xmlFilePath);
 			console.log("XML Path:",xmlPath);
-			
-			const xml = readFileSync(xmlPath);
-			const json = xmlParser.parse(xml);
-			console.table(json.mediawiki.page);
-			const pages: any[] = json.mediawiki.page;
-			const parsed: string[] = [];
-			pages.forEach((page: any) => {
+			const xmlFileAsString = readFileSync(xmlPath);
+
+			const xmlParser = new XMLParser();
+			const xmlAsJSON = xmlParser.parse(xmlFileAsString);
+
+			const pages: WikiPage[] = xmlAsJSON.mediawiki.page;
+			const parsedPages: string[] = [];
+			pages.forEach((page: WikiPage) => {
 				const parsedSyntaxes: ParsedSyntax[] = this.parsePageIntoSyntaxes(
 					page.title,
 					page.revision.text
 				);
 				
-				parsed.push(
-					this.consolidateSyntaxes(page.title,parsedSyntaxes)
+				parsedPages.push(
+					this.consolidateSyntaxes(page.title, parsedSyntaxes)
 				);
 			});
 			
-			console.log (parsed);
+			console.log (parsedPages);
 		} catch (error) {
 			console.log(error);
 		}
