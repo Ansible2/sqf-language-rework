@@ -1,0 +1,381 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+	<siteinfo>
+		<sitename>Bohemia Interactive Community</sitename>
+		<dbname>community</dbname>
+		<base>https://community.bistudio.com/wiki/Main_Page</base>
+		<generator>MediaWiki 1.35.1</generator>
+		<case>case-sensitive</case>
+		<namespaces>
+			<namespace key="-2" case="case-sensitive">Media</namespace>
+			<namespace key="-1" case="first-letter">Special</namespace>
+			<namespace key="0" case="case-sensitive" />
+			<namespace key="1" case="case-sensitive">Talk</namespace>
+			<namespace key="2" case="first-letter">User</namespace>
+			<namespace key="3" case="first-letter">User talk</namespace>
+			<namespace key="4" case="case-sensitive">Bohemia Interactive Community</namespace>
+			<namespace key="5" case="case-sensitive">Bohemia Interactive Community talk</namespace>
+			<namespace key="6" case="case-sensitive">File</namespace>
+			<namespace key="7" case="case-sensitive">File talk</namespace>
+			<namespace key="8" case="first-letter">MediaWiki</namespace>
+			<namespace key="9" case="first-letter">MediaWiki talk</namespace>
+			<namespace key="10" case="case-sensitive">Template</namespace>
+			<namespace key="11" case="case-sensitive">Template talk</namespace>
+			<namespace key="12" case="case-sensitive">Help</namespace>
+			<namespace key="13" case="case-sensitive">Help talk</namespace>
+			<namespace key="14" case="case-sensitive">Category</namespace>
+			<namespace key="15" case="case-sensitive">Category talk</namespace>
+			<namespace key="110" case="case-sensitive">Forum</namespace>
+			<namespace key="111" case="case-sensitive">Forum talk</namespace>
+			<namespace key="460" case="case-sensitive">Campaign</namespace>
+			<namespace key="461" case="case-sensitive">Campaign talk</namespace>
+			<namespace key="5020" case="case-sensitive">DayZ</namespace>
+			<namespace key="5021" case="case-sensitive">DayZ talk</namespace>
+			<namespace key="5030" case="case-sensitive">Ylands</namespace>
+			<namespace key="5031" case="case-sensitive">Ylands talk</namespace>
+			<namespace key="5050" case="case-sensitive">Arma Reforger</namespace>
+			<namespace key="5051" case="case-sensitive">Arma Reforger talk</namespace>
+			<namespace key="5060" case="case-sensitive">Arma 4</namespace>
+			<namespace key="5061" case="case-sensitive">Arma 4 talk</namespace>
+		</namespaces>
+	</siteinfo>
+	<page>
+		<title>addForce</title>
+		<ns>0</ns>
+		<id>21689</id>
+		<revision>
+			<id>310713</id>
+			<parentid>296386</parentid>
+			<timestamp>2022-05-07T18:17:26Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>310713</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1759" sha1="lc6bw1ewapqgww2l4l6oyh4jirasy70" xml:space="preserve">{{RV|type=command
+
+|game1= arma3
+|version1= 1.72
+
+|arg= global
+
+|eff= global
+
+|gr1= Object Manipulation
+
+|descr= Applies impulse force to given PhysX object at given position.
+{{Feature|informative|Since {{arma3}} v2.04 the command works on units as well:
+* the unit will be [[setUnconscious|set unconscious]] and will enter the ragdoll state
+* the unit has to be [[Multiplayer Scripting#Locality|local]]
+}}
+{{Feature|informative|For more information see [http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html NVIDIA docs].}}
+
+|s1= object [[addForce]]  [force, position]
+
+|p1= object: [[Object]] - PhysX object or unit
+
+|p2= force: [[Array]] - in format [x,y,z], force vector in '''world''' space. Force is in [https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/structPxForceMode.html Newton]
+
+|p3= position: [[Array]] - in format [x,y,z], in ''object''&lt;nowiki/&gt;'s [[Position#PositionRelative|relative position]]
+
+|r1= [[Nothing]]
+
+|x1= Apply force [0,1000,0] defined in world space (not factoring object actual positioning) to object position [1,0,0]:
+&lt;sqf&gt;_object addForce [[0,1000,0], [1,0,0]];&lt;/sqf&gt;
+
+|x2= Apply force [0,1000,0] defined in model space (relative to object) to object position [1,0,0]:
+&lt;sqf&gt;_object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];&lt;/sqf&gt;
+
+|x3= Can be used on units since {{arma3}} v2.04:
+&lt;sqf&gt;
+if (local bob) then
+{
+	[] spawn 
+	{
+		bob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition "rightfoot"];
+		sleep 5;
+		bob setUnconscious false;
+	};
+};
+&lt;/sqf&gt;
+
+|seealso= [[addTorque]] [[awake]] [[isAwake]] [[vectorModelToWorld]] [[vectorModelToWorldVisual]] [[selectionPosition]] [[disableBrakes]] [[brakesDisabled]]
+}}</text>
+			<sha1>lc6bw1ewapqgww2l4l6oyh4jirasy70</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>addTeamMember</title>
+		<ns>0</ns>
+		<id>8569</id>
+		<revision>
+			<id>310084</id>
+			<parentid>298990</parentid>
+			<timestamp>2022-05-05T12:25:11Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Text replacement - "&lt;code&gt;([a-zA-Z0-9_]+) +\[\[([a-zA-Z0-9_]+)\]\] +([a-zA-Z0-9_]+);?&lt;\/code&gt;" to "&lt;sqf&gt;$1 $2 $3;&lt;/sqf&gt;"</comment>
+			<origin>310084</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="775" sha1="qnmu9wor440ylmkama2bb3drlkppfxr" xml:space="preserve">{{RV|type=command
+
+|game1= arma2
+|version1= 1.00
+
+|game2= arma2oa
+|version2= 1.50
+
+|game3= tkoh
+|version3= 1.00
+
+|game4= arma3
+|version4= 0.50
+
+|arg= local
+
+|eff= local
+
+|gr1= Teams
+
+|descr= Add given member to given team. Effect is local, unless both member and team are local to PC on which command is executed, then effect is global.
+
+&lt;br&gt;&lt;br&gt; The same [[Team Member]] can be member of several different [[teams]] at the same time.
+
+|s1= team [[addTeamMember]] member
+
+|p1= team: [[Team Member]]
+
+|p2= member: [[Team Member]]
+
+|r1= [[Nothing]]
+
+|x1= &lt;sqf&gt;_team addTeamMember _teamMember;&lt;/sqf&gt;
+
+|seealso= [[createTeam]] [[deleteTeam]] [[forEachMemberTeam]] [[removeTeamMember]] [[teamMember]] [[teamName]] [[teams]] [[teamType]] [[forEachMember]] [[forEachMemberAgent]]
+}}</text>
+			<sha1>qnmu9wor440ylmkama2bb3drlkppfxr</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>select</title>
+		<ns>0</ns>
+		<id>1721</id>
+		<revision>
+			<id>329528</id>
+			<parentid>329229</parentid>
+			<timestamp>2022-07-29T22:07:34Z</timestamp>
+			<contributor>
+				<username>Leopard20</username>
+				<id>11163</id>
+			</contributor>
+			<origin>329528</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="6603" sha1="t88dxx44zprqqktgm4uznrvm5k3moul" xml:space="preserve">{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Arrays
+
+|gr2= Strings
+
+|gr3= Config
+
+|descr= Selects an element from an array, config entry from [[Config]] or substring from a string or a range from an array. 
+{{Feature | informative | Substring version of `select` operates with ANSI charset, if Unicode support is desired, see [[forceUnicode]]. }}
+{{Feature | informative | When select index &lt;nowiki&gt;==&lt;/nowiki&gt; size of the array, there is no error for out of range selection and [[nil]] is returned.}}
+
+|s1= array [[select]] index
+
+|p1= array: [[Array]]
+
+|p2= index: [[Number]] - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up. Since Arma 3 v2.11.149734 negative index can be used to select from the end of the array, i.e. -1 means last array element.
+
+|r1= [[Anything]] - a &lt;u&gt;reference&lt;/u&gt; to array element given by its index
+
+|s2= array [[select]] boolean
+
+|p21= array: [[Array]]
+
+|p22= boolean: [[Boolean]] - [[false]] selects the '''first''' element of the [[Array]], [[true]] the '''second''' one
+
+|r2= [[Anything]] - a &lt;u&gt;reference&lt;/u&gt; to the array element
+
+|s3= config [[select]] index
+
+|s3since= arma1 1.00
+
+|p41= config: [[Config]]
+
+|p42= index: [[Number]] - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
+
+|r3= [[Config]]
+
+|s4= string [[select]] [start, length]
+
+|s4since= arma3 1.28
+
+|p61= string: [[String]]
+
+|p62= start: [[Number]] - string position to start selection from. 0 denotes the first character of the string, 1 the second, etc. If passed number has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up
+
+|p63= length: [[Number]] - (Optional, default ''string''&lt;nowiki/&gt;'s length) number of characters to select
+
+|r4= [[String]]
+
+|s5= array [[select]] [start, count]
+
+|s5since= arma3 1.32
+
+|p81= array: [[Array]]
+
+|p82= start: [[Number]] - array index to start selection from
+
+|p83= count: [[Number]] - Number of array elements to select. If the selected range exceeds source array boundaries, selection will be made up to the last element of the array.
+
+|r5= [[Array]] - a &lt;u&gt;new array&lt;/u&gt; from selection
+
+|s6= array [[select]] expression
+
+|s6since= arma3 1.56
+
+|p101= array: [[Array]]
+
+|p102= expression: [[Code]] - expression that is expected to return [[Boolean]] or [[Nothing]]. If [[true]] is returned, the original array value of currently tested element [[Magic Variables#x|_x]] will be added to the output array
+
+|r6= [[Array]] - a &lt;u&gt;new array&lt;/u&gt; of all elements from the original array that satisfied expression condition
+
+|x1= &lt;sqf&gt;
+["a", "b", "c", "d"] select 2;	// result is "c"
+position player select 2;		// result is Z coordinate of player position
+&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;["", currentWeapon player] select alive player; // if player is dead, "" is selected&lt;/sqf&gt;
+
+|x3= &lt;sqf&gt;(configFile &gt;&gt; "cfgVehicles" &gt;&gt; typeOf vehicle player &gt;&gt; "Turrets") select 0 &gt;&gt; "gunnerAction";&lt;/sqf&gt;
+
+|x4= &lt;sqf&gt;
+hint str ("japa is the man!" select [8]);		// the man!
+hint str ("japa is the man!" select [0, 7]);	// japa is
+&lt;/sqf&gt;
+
+|x5= &lt;sqf&gt;hint str ([1,2,3,4,5,6] select [1, 4]); // [2,3,4,5]&lt;/sqf&gt;
+
+|x6= &lt;sqf&gt;_even = [1,2,3,4,5,6,7,8,9,0] select { _x % 2 == 0 }; // returns [2, 4, 6, 8, 0]&lt;/sqf&gt;
+
+|x7= JavaScript endsWith() alternative:
+&lt;sqf&gt;
+private _fnc_endsWith = 
+{
+	params ["_string", "_endswith"];
+	_string select [count _string - count _endswith] isEqualTo _endswith
+};
+
+["Arma 3", "3"] call _fnc_endsWith; // true
+["Arma 3", "4"] call _fnc_endsWith; // false
+&lt;/sqf&gt;
+
+|seealso= [[a hash b|#]] [[selectRandom]] [[selectRandomWeighted]] [[set]] [[resize]] [[reverse]] [[in]] [[find]] [[findIf]] [[toArray]] [[toString]] [[forEach]] [[count]] [[deleteAt]] [[deleteRange]] [[append]] [[sort]] [[param]] [[params]] [[splitString]] [[joinString]] [[pushBack]] [[pushBackUnique]] [[apply]] [[forceUnicode]]
+}}
+
+{{Note
+|user= General Barron
+|timestamp= 20090303020200
+|text= When combined with the [[count]] command, this can be used to read all entries out of a config; even when you don't know exactly how many entries there will be.
+See the notes under [[count]] for more info.
+}}
+
+{{Note
+|user= Killzone Kid
+|timestamp= 20130928005300
+|text= Rounding of fractions with [[select]] is not the same as when you use [[round]] command:
+&lt;sqf&gt;
+_roundThis = 0.5;
+hint str ([0,1] select _roundThis);			// 0
+hint str ([0,1] select round _roundThis);	// 1
+&lt;/sqf&gt;
+}}
+
+{{Note
+|user= Pierre MGI
+|timestamp= 20160714041800
+|text= You can substract array from array using select:
+&lt;sqf&gt;
+_array = [[1], [2], [3]];
+_sub = [2];
+_array - _sub; // [[1], [2], [3]]
+_array select { !(_x isEqualTo _sub) }; // [[1], [3]]
+[[1],[2],[2],[2],[2],[3]] select { !(_x isEqualTo _sub) }; // [[1], [3]]
+&lt;/sqf&gt;
+}}
+
+{{Note
+|user= Killzone Kid
+|timestamp= 20150622232300
+|text= Usually when select tries to pick up element out of range, Arma throws "division by zero" error. However there are exceptions. Basically as long as index of element you are selecting is less then or equal to array size, you will get no error.
+&lt;sqf&gt;
+[] select 0;		// ok, result is nil
+[1,2,3] select 3;	// ok, result is nil
+[1,2,3] select 4;	// division by zero
+&lt;/sqf&gt;
+}}
+
+{{Note
+|user= Commy2
+|timestamp= 20161112223600
+|text= It is not safe to escape the code block of alternative syntax #5 with [[exitWith]], [[breakOut]] etc:
+&lt;sqf&gt;
+x3 = [1,2,3,4,5] select {
+	if (_x == 3) exitWith
+	{
+		false;
+	};
+	true
+};
+// could be expected to be: x3 = [1,2,4,5]
+// actual result: x3 = false
+&lt;/sqf&gt;
+}}
+
+{{Note
+|user= Igneous01
+|timestamp= 20170214162600
+|text= {{HashLink|#Syntax 5}} is the equivalent of passing in a predicate that returns a boolean. In SQF, a piece of code will always return what the last executed command returned.
+&lt;sqf&gt;
+myAliveUnits = allUnits select { alive _x };	// alive returns a boolean, the last statement run was alive _x,
+												// therefore this piece of code will return a true/false to the select command
+myEastGroups = allGroups select { side _x == east };					// returns all east groups
+my4ManGroups = allGroups select { count units _x == 4 };				// returns all groups that have 4 men in them
+unitsThatDetectedMe = allUnits select { _x knowsAbout player &gt; 0.1 };	// returns a list of units that have detected the player
+&lt;/sqf&gt;
+}}</text>
+			<sha1>t88dxx44zprqqktgm4uznrvm5k3moul</sha1>
+		</revision>
+	</page>
+</mediawiki>

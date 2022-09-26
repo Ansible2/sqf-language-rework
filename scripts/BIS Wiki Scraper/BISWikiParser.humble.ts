@@ -1,5 +1,5 @@
 import { XMLParser, XMLBuilder, XMLValidator} from "fast-xml-parser";
-import { readFileSync } from "fs";
+import * as fs from "fs";
 import * as path from "path";
 
 interface ParsedSyntax {
@@ -49,12 +49,18 @@ interface IJSON<T> {
     [key: string]: T;
 }
 
+interface ParsedPage {
+	syntaxes: ParsedSyntax[],
+	argumentLocality?: string,
+	effectLocality?: string,
+}
+
 class TextInterpreter {
     private static readonly wikiTypeToDataTypeMap: IJSON<string> = {
         NUMBER: "SQFDataType.Number",
         SCALAR: "SQFDataType.Number",
-        BOOLEAN: "SQFDataType.Bool",
-        BOOL: "SQFDataType.Bool",
+        BOOLEAN: "SQFDataType.Boolean",
+        BOOL: "SQFDataType.Boolean",
 		ARRAY: "SQFDataType.Array",
 		STRING: "SQFDataType.String",
 		NOTHING: "SQFDataType.Nothing",
@@ -80,6 +86,7 @@ class TextInterpreter {
 		CONTROL: "SQFDataType.Control",
 		NETOBJECT: "SQFDataType.NetObject",
 		TEAM_MEMBER: "SQFDataType.TeamMember",
+		["TEAM MEMBER"]: "SQFDataType.TeamMember",
 		HASHMAP: "SQFDataType.HashMap",
 		TASK: "SQFDataType.Task",
 		DIARY_RECORD: "SQFDataType.DiaryRecord",
@@ -123,13 +130,35 @@ export class BISWikiParser {
 
 	private parseType(unParsedString: string): string {
 		const typeMatches: RegExpMatchArray | null =
-			unParsedString.match(/\[\[(\w*?)\]\]/);
+			unParsedString.match(/\[\[([\w\s]*?)\]\]/);
 		if (!typeMatches) {
 			throw `Could not type in string: ${unParsedString}`;
 		}
-	
+
 		const parsed = this.textInterpreter.convertWikiTypeToSQFDataType(typeMatches[1]);
 		return parsed;
+	}
+
+	private parseEffectLocality(unParsedString: string): string {
+		unParsedString = unParsedString.toLowerCase();
+		if (unParsedString.includes('global')) {
+			return "SQFEffect.GLOBAL"
+		} else if (unParsedString.includes('local')) {
+			return "SQFEffect.LOCAL"
+		} else {
+			return "";
+		}
+	}
+
+	private parseArgumentLocality(unParsedString: string): string {
+		unParsedString = unParsedString.toLowerCase();
+		if (unParsedString.includes('global')) {
+			return "SQFArgument.GLOBAL"
+		} else if (unParsedString.includes('local')) {
+			return "SQFArgument.LOCAL"
+		} else {
+			return "";
+		}
 	}
 
 	private createParsedSyntaxWithParams(
@@ -161,8 +190,11 @@ export class BISWikiParser {
 		return inputSyntax;
 	}
 	
-	private parsePageIntoSyntaxes(command: string, page: string): ParsedSyntax[] {
-		const parsedSyntaxes: ParsedSyntax[] = [];
+	private parsePageIntoSyntaxes(command: string, page: string): ParsedPage {
+		const parsedPage: ParsedPage = {
+			syntaxes: [],
+		}
+
 		const matchPageDetailsRegEx = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 		try {
 			const pageDetails: RegExpMatchArray | null = page.match(matchPageDetailsRegEx);
@@ -190,7 +222,7 @@ export class BISWikiParser {
 							syntaxBeingParsed!,
 							parameters
 						);
-						parsedSyntaxes.push(fullSyntax);
+						parsedPage.syntaxes.push(fullSyntax);
 					}
 					
 					if (!isLastIndex) {
@@ -200,7 +232,11 @@ export class BISWikiParser {
 						parameters = [];
 					}
 				} else if (this.textInterpreter.isArgLocality(pageDetail)) {
+					const locality: string = this.parseArgumentLocality(pageDetail);
+					parsedPage.argumentLocality = locality;
 				} else if (this.textInterpreter.isEffectLocality(pageDetail)) {
+					const locality: string = this.parseEffectLocality(pageDetail);
+					parsedPage.argumentLocality = locality;
 				} else if (this.textInterpreter.isParameter(pageDetail)) {
 					const parameterType: string = this.parseType(pageDetail);
 					parameters.push(parameterType);
@@ -214,10 +250,10 @@ export class BISWikiParser {
 			console.log(error);
 		}
 	
-		return parsedSyntaxes;
+		return parsedPage;
 	}
 
-	private getSyntaxMatchDifference(
+	private getSyntaxDifference(
 		syntax1: ParsedSyntax,
 		syntax2: ParsedSyntax
 	): SyntaxMatchDifference {
@@ -257,19 +293,30 @@ export class BISWikiParser {
 	
 		return SyntaxMatchDifference.NoMatch;
 	}
+	
 
-	private consolidateSyntaxes(command: string, parsedSyntaxes: ParsedSyntax[]): string {
+	// some syntaxes are virtually identical save for one difference
+	// e.g. "apply" can take a rightside arg of type ARRAY or HASHMAP
+	// however, the wiki considers these two different syntaxes
+	// the idea here is to combine these so that preCompiledSQFSyntax just has an array
+	// of right args that is [ARRAY, HASHMAP] instead of two full syntax entries
+	private consolidateSyntaxes(
+		command: string, 
+		parsedSyntaxes: ParsedSyntax[], 
+		effectLocality?: string, 
+		argurmentLocality?: string
+	): string {
 		const checkedSyntaxIndexes: number[] = [];
 		const consolidatedSyntaxes: ParsedSyntax[] = [];
-		for (let i = 0; i < parsedSyntaxes.length; i++) {
-			if (i in checkedSyntaxIndexes) continue;
-			checkedSyntaxIndexes.push(i);
-			const mainSyntax = parsedSyntaxes[i];
+		for (let mainIndex = 0; mainIndex < parsedSyntaxes.length; mainIndex++) {
+			if (mainIndex in checkedSyntaxIndexes) continue;
+			checkedSyntaxIndexes.push(mainIndex);
+			const mainSyntax = parsedSyntaxes[mainIndex];
 			
-			for (let j = i + 1; j < parsedSyntaxes.length; j++) {
-				if (j in checkedSyntaxIndexes) continue;
-				const compareSyntax = parsedSyntaxes[j];
-				const syntaxMatchDiff: SyntaxMatchDifference = this.getSyntaxMatchDifference(mainSyntax,compareSyntax);
+			for (let comparisonIndex = mainIndex + 1; comparisonIndex < parsedSyntaxes.length; comparisonIndex++) {
+				if (comparisonIndex in checkedSyntaxIndexes) continue;
+				const compareSyntax = parsedSyntaxes[comparisonIndex];
+				const syntaxMatchDiff: SyntaxMatchDifference = this.getSyntaxDifference(mainSyntax,compareSyntax);
 	
 				switch (syntaxMatchDiff) {
 					case SyntaxMatchDifference.NoMatch: {
@@ -300,13 +347,15 @@ export class BISWikiParser {
 						continue;
 				}
 	
-				checkedSyntaxIndexes.push(i);
+				checkedSyntaxIndexes.push(mainIndex);
 			}
 	
 			consolidatedSyntaxes.push(mainSyntax);
 		}
 		
-		let syntaxesAsString: string[] | string = consolidatedSyntaxes.map((syntax: ParsedSyntax) => {
+		// TODO: Fix formatting
+		// convert into final string
+		let syntaxesAsString: string[] = consolidatedSyntaxes.map((syntax: ParsedSyntax) => {
 			const syntaxArray = [
 				'{',
 				`\t\ttype: ${syntax.type},`,
@@ -316,16 +365,16 @@ export class BISWikiParser {
 			if (syntax.leftArgType) {
 				let insertSyntax = syntax.leftArgType;
 				if (Array.isArray(syntax.leftArgType)) {
-					insertSyntax = `[${insertSyntax}]`
+					insertSyntax = `[${syntax.leftArgType}]`
 				}
-				syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax}`);
+				syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
 			}
 			if (syntax.rightArgType) {
 				let insertSyntax = syntax.rightArgType;
 				if (Array.isArray(syntax.rightArgType)) {
-					insertSyntax = `[${insertSyntax}]`
+					insertSyntax = `[${syntax.rightArgType}]`
 				}
-				syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax}`);
+				syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax},`);
 			}
 	
 			syntaxArray.push('\t}\n',);
@@ -333,17 +382,30 @@ export class BISWikiParser {
 		});
 	
 		const moreThanOneSyntax = consolidatedSyntaxes.length > 1;
-		if (!moreThanOneSyntax) {
-			syntaxesAsString = syntaxesAsString[0]
+		let finalSyntaxString: string;
+		if (moreThanOneSyntax) {
+			finalSyntaxString = `[\n${syntaxesAsString.join('\t,')}\n]`;
+		} else {
+			finalSyntaxString = syntaxesAsString[0]
 		}
-		const syntaxArray: string[] = [
+
+		const finalSyntaxesAsArray: string[] = [
 			`\n${command}: {`,
-			`\tsyntaxes: ${syntaxesAsString},`,
+			`\tsyntaxes: ${finalSyntaxString},`,
 			`\tgrammarType: SQFGrammarType.Command,`,
-			'},'
 		];
+		
+		console.log(effectLocality,argurmentLocality);
+		
+		if (effectLocality) {
+			finalSyntaxesAsArray.push(`\teffect: ${effectLocality},`);
+		}
+		if (argurmentLocality) {
+			finalSyntaxesAsArray.push(`\targument: ${argurmentLocality},`);
+		}
+		finalSyntaxesAsArray.push('},');
 	
-		return syntaxArray.join("\n");
+		return finalSyntaxesAsArray.join("\n");
 	}
 	
 	
@@ -351,25 +413,31 @@ export class BISWikiParser {
 		try {
 			const xmlPath = path.resolve(xmlFilePath);
 			console.log("XML Path:",xmlPath);
-			const xmlFileAsString = readFileSync(xmlPath);
+			const xmlFileAsString = fs.readFileSync(xmlPath);
 
 			const xmlParser = new XMLParser();
 			const xmlAsJSON = xmlParser.parse(xmlFileAsString);
 
-			const pages: WikiPage[] = xmlAsJSON.mediawiki.page;
+			const pages: WikiPage[] = xmlAsJSON.mediawiki.page;		
 			const parsedPages: string[] = [];
 			pages.forEach((page: WikiPage) => {
-				const parsedSyntaxes: ParsedSyntax[] = this.parsePageIntoSyntaxes(
+				const parsedPage: ParsedPage = this.parsePageIntoSyntaxes(
 					page.title,
 					page.revision.text
 				);
 				
 				parsedPages.push(
-					this.consolidateSyntaxes(page.title, parsedSyntaxes)
+					this.consolidateSyntaxes(
+						page.title, 
+						parsedPage.syntaxes,
+						parsedPage.argumentLocality,
+						parsedPage.effectLocality,
+					)
 				);
 			});
 			
-			console.log (parsedPages);
+			// console.log (parsedPages);
+			fs.writeFileSync("./output.ts",`import {SQFDataType, SQFEffect, SQFArgument, SQFGrammarType, SQFSyntaxType} from "./configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join("")}}`);
 		} catch (error) {
 			console.log(error);
 		}
