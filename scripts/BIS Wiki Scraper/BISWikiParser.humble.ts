@@ -232,11 +232,12 @@ export class BISWikiParser {
 						parameters = [];
 					}
 				} else if (this.textInterpreter.isArgLocality(pageDetail)) {
+					
 					const locality: string = this.parseArgumentLocality(pageDetail);
 					parsedPage.argumentLocality = locality;
 				} else if (this.textInterpreter.isEffectLocality(pageDetail)) {
 					const locality: string = this.parseEffectLocality(pageDetail);
-					parsedPage.argumentLocality = locality;
+					parsedPage.effectLocality = locality;
 				} else if (this.textInterpreter.isParameter(pageDetail)) {
 					const parameterType: string = this.parseType(pageDetail);
 					parameters.push(parameterType);
