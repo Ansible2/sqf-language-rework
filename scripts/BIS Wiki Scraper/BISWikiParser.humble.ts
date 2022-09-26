@@ -396,8 +396,6 @@ export class BISWikiParser {
 			`\tgrammarType: SQFGrammarType.Command,`,
 		];
 		
-		console.log(effectLocality,argurmentLocality);
-		
 		if (effectLocality) {
 			finalSyntaxesAsArray.push(`\teffect: ${effectLocality},`);
 		}
