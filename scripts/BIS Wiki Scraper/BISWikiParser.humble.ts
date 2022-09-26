@@ -30,6 +30,16 @@ interface WikiPage {
 }
 
 
+// TODO:
+// - Diag commands come out as 'diag thing' instead of diag_thing
+// - Bulldozer commands have a similar output to diag
+// - several categories ended up in the print out
+// - several types are not properly parsed (ObjectRTD, Script Handle, Waypoint, For Type, etc.)
+// - '*' is repeated
+// - some commands are named 'a greater b' and these need a map to their proper names: (['>'])
+
+
+
 // const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 // group 1: Actual syntax for an entry
 // - match starts with a '|'
