@@ -68,6 +68,8 @@ export enum SQFDataType {
 	PositionASLW = "(Position ASLW) NUMBER[x,y,z]",
 	PositionConfig = "(Position Config) NUMBER[x,z,y]",
 	PositionRelative = "(Position Relative) NUMBER[x,z,y]",
+	Color = "(Color) NUMBER[R,G,B]",
+	ColorAlpha = "(Color) NUMBER[R,G,B,A]",
 }
 
 export enum SQFSyntaxType {
