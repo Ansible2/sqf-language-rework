@@ -37,6 +37,8 @@ interface WikiPage {
 // - several types are not properly parsed
 // - '*' is repeated
 // - some commands are named 'a greater b' and these need a map to their proper names: (['>'])
+// - Some commands (camSetDir) use bullet lists as params/lines, need to modify the main
+/// regex to be able to select these bullet lists beneath the main detail line
 
 
 
