@@ -68,6 +68,7 @@ export enum SQFDataType {
 	PositionASLW = "(Position ASLW) NUMBER[x,y,z]",
 	PositionConfig = "(Position Config) NUMBER[x,z,y]",
 	PositionRelative = "(Position Relative) NUMBER[x,z,y]",
+	ParticleArray = `(Particle) ARRAY`,
 	Color = "(Color) NUMBER[R,G,B]",
 	ColorAlpha = "(Color) NUMBER[R,G,B,A]",
 }
@@ -115,12 +116,33 @@ export interface SQFCode {
     returns: SQFSyntaxTypes;
 }
 
-export interface SQFSyntax {
-    type: SQFSyntaxType;
-    returnTypes: SQFSyntaxTypes;
-    leftOperandTypes?: SQFSyntaxTypes;
-    rightOperandTypes?: SQFSyntaxTypes;
+
+type BinarySyntax = {
+	type: SQFSyntaxType.BinaryOperator;
+	returnTypes: SQFSyntaxTypes;
+	leftOperandTypes: SQFSyntaxTypes;
+	rightOperandTypes: SQFSyntaxTypes;
 }
+
+type FunctionSyntax = {
+	type: SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction;
+	returnTypes: SQFSyntaxTypes;
+	leftOperandTypes: SQFSyntaxTypes;
+	rightOperandTypes: SQFSyntaxTypes;
+}
+
+type UnarySyntax = {
+	type: SQFSyntaxType.UnaryOperator;
+	returnTypes: SQFSyntaxTypes;
+	rightOperandTypes: SQFSyntaxTypes;
+}
+
+type NularSyntax = {
+	type: SQFSyntaxType.NularOperator;
+	returnTypes: SQFSyntaxTypes;
+}
+
+export type SQFSyntax = NularSyntax | UnarySyntax | BinarySyntax | FunctionSyntax;
 
 export enum SQFEffect {
     LOCAL = "Local Effect",
