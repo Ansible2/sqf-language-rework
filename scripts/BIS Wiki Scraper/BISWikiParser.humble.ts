@@ -34,7 +34,7 @@ interface WikiPage {
 // - Diag commands come out as 'diag thing' instead of diag_thing
 // - Bulldozer commands have a similar output to diag
 // - several categories ended up in the print out
-// - several types are not properly parsed (ObjectRTD, Script Handle, Waypoint, For Type, etc.)
+// - several types are not properly parsed
 // - '*' is repeated
 // - some commands are named 'a greater b' and these need a map to their proper names: (['>'])
 
@@ -69,6 +69,7 @@ class TextInterpreter {
     private static readonly wikiTypeToDataTypeMap: IJSON<string> = {
         NUMBER: "SQFDataType.Number",
         SCALAR: "SQFDataType.Number",
+		["DIARY RECORD"]: "DiaryRecord",
         BOOLEAN: "SQFDataType.Boolean",
         BOOL: "SQFDataType.Boolean",
 		ARRAY: "SQFDataType.Array",
@@ -79,18 +80,26 @@ class TextInterpreter {
 		NAMESPACE: "SQFDataType.Namespace",
 		NAN: "SQFDataType.NaN",
 		IF: "SQFDataType.IfType",
+		["IF TYPE"]: "SQFDataType.IfType",
 		WHILE: "SQFDataType.WhileType",
+		["WHILE TYPE"]: "SQFDataType.WhileType",
 		FOR: "SQFDataType.ForType",
+		["FOR TYPE"]: "SQFDataType.ForType",
 		SWITCH: "SQFDataType.SwitchType",
+		["SWITCH TYPE"]: "SQFDataType.SwitchType",
 		EXCEPTION: "SQFDataType.Exception",
+		["EXCEPTION TYPE"]: "SQFDataType.Exception",
+		["EXCEPTION HANDLING"]: "SQFDataType.Exception",
 		WITH: "SQFDataType.WithType",
 		CODE: "SQFDataType.Code",
 		OBJECT: "SQFDataType.Object",
+		OBJECTRTD: "SQFDataType.Object",
 		VECTOR: "SQFDataType.Vector",
 		SIDE: "SQFDataType.Side",
 		GROUP: "SQFDataType.Group",
 		TEXT: "SQFDataType.StructuredText",
 		SCRIPT: "SQFDataType.ScriptHandle",
+		["SCRIPT HANDLE"]: "SQFDataType.ScriptHandle",
 		CONFIG: "SQFDataType.Config",
 		DISPLAY: "SQFDataType.Display",
 		CONTROL: "SQFDataType.Control",
@@ -102,6 +111,7 @@ class TextInterpreter {
 		DIARY_RECORD: "SQFDataType.DiaryRecord",
 		LOCATION: "SQFDataType.Location",
 		HASHMAPKEY: "SQFDataType.HashMapKey",
+		WAYPOINT: "SQFDataType.Waypoint",
     };
     isSyntax(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|s\d*\=/);
@@ -258,7 +268,10 @@ export class BISWikiParser {
 			});
 			
 		} catch (error) {
+			console.log("Error with command: ",command);
 			console.log(error);
+			console.log();
+			
 		}
 	
 		return parsedPage;

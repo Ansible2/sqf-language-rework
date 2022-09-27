@@ -13,6 +13,7 @@
         "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
         "ts-node": "ts-node",
+		"parse:biki": "ts-node ./scripts/testParser.ts",
         "build": "ts-node ./build-process/build && npm run compile && npm run install:prod",
         "build:nocomp": "ts-node ./build-process/build",
         "install:prod": "cd .out && npm ci --production"
