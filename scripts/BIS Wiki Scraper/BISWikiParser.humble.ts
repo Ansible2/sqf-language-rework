@@ -228,7 +228,7 @@ export class BISWikiParser {
 		const parsedPage: ParsedPage = {
 			syntaxes: [],
 		}
-
+		// (\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$)) // new regex to try with bullet points
 		const matchPageDetailsRegEx = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 		try {
 			const pageDetails: RegExpMatchArray | null = page.match(matchPageDetailsRegEx);
