@@ -164,7 +164,7 @@ export class BISWikiParser {
 		const typeMatches: RegExpMatchArray | null =
 			unParsedString.match(/\[\[([\w\s]*?)\]\]/);
 		if (!typeMatches) {
-			throw `Could not type in string: ${unParsedString}`;
+			throw `Could not find type in string: ${unParsedString}`;
 		}
 
 		const parsed = this.textInterpreter.convertWikiTypeToSQFDataType(typeMatches[1]);
