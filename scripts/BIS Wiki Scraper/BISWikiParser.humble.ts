@@ -86,6 +86,8 @@ class TextInterpreter {
         "-": "'-'",
 		"false": "'false'",
 		"true": "'true'",
+		"toString": "'toString'",
+		"config greater greater name": "'>>'",
     };
 
     handleUniqueCommandNames(wikiName: string): string {
@@ -126,7 +128,7 @@ class TextInterpreter {
         WHILE: "SQFDataType.WhileType",
         "WHILE TYPE": "SQFDataType.WhileType",
         WITH: "SQFDataType.WithType",
-        "WITH TYPE": "SQFDataType.WhithType",
+        "WITH TYPE": "SQFDataType.WithType",
         FOR: "SQFDataType.ForType",
         "FOR TYPE": "SQFDataType.ForType",
         SWITCH: "SQFDataType.SwitchType",
@@ -539,30 +541,29 @@ export class BISWikiParser {
             const pages: WikiPage[] = xmlAsJSON.mediawiki.page;
             const parsedPages: string[] = [];
             pages.forEach((page: WikiPage) => {
+				if (!page.title) return;
+				
                 const parsedPage: ParsedPage = this.parsePageIntoSyntaxes(
-                    page.title,
-                    page.revision.text
-                );
-				let name;
+					page.title,
+					page.revision.text
+				);
+
 				try {
-					name = this.textInterpreter.handleUniqueCommandNames(page.title);
+					const name = this.textInterpreter.handleUniqueCommandNames(page.title);
+					if (name.startsWith('Category:')) return;
+					parsedPages.push(
+						this.consolidateSyntaxes(
+							name,
+							parsedPage.syntaxes,
+							parsedPage.argumentLocality,
+							parsedPage.effectLocality
+						)
+					);
 				} catch (error) {
-					console.log("Handle name fail");
+					console.log("parseWiki: Handle name fail");
 					console.log("Title:",page.title);
-					console.log(error);
-					if (name && name.includes('toString')) {
-						console.log("has tostring");
-					}
-					
+					console.log(error);						
 				}
-                parsedPages.push(
-                    this.consolidateSyntaxes(
-                        name,
-                        parsedPage.syntaxes,
-                        parsedPage.argumentLocality,
-                        parsedPage.effectLocality
-                    )
-                );
             });
 
             // console.log (parsedPages);
