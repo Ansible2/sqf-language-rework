@@ -115,9 +115,12 @@ class TextInterpreter {
         "DIARY RECORD": "SQFDataType.DiaryRecord",
         BOOLEAN: "SQFDataType.Boolean",
         BOOL: "SQFDataType.Boolean",
+        TRUE: "SQFDataType.Boolean",
+        FALSE: "SQFDataType.Boolean",
         ARRAY: "SQFDataType.Array",
         STRING: "SQFDataType.String",
         NOTHING: "SQFDataType.Nothing",
+        NIL: "SQFDataType.Nothing",
         ANY: "SQFDataType.Any",
         ANYTHING: "SQFDataType.Any",
         NAMESPACE: "SQFDataType.Namespace",
@@ -168,6 +171,7 @@ class TextInterpreter {
         POSITIONASL: "SQFDataType.PositionASL",
         POSITIONAGLS: "SQFDataType.PositionAGLS",
         POSITIONRelative: "SQFDataType.PositionRelative",
+        "PARTICLE ARRAY": "SQFDataType.ParticleArray",
     };
     isSyntax(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|s\d*\=/);
