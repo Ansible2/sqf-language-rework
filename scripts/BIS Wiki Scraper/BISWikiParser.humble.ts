@@ -30,14 +30,13 @@ interface WikiPage {
 }
 
 // TODO:
-// - Diag commands come out as 'diag thing' instead of diag_thing
-// - Bulldozer commands have a similar output to diag
-// - several categories ended up in the print out
-// - several types are not properly parsed
-// - '*' is repeated
-// - some commands are named 'a greater b' and these need a map to their proper names: (['>'])
+// - Multi-param arrays ([[Color|Color (RGBA)]]) are not parsed
+// - Some commands appear to not correctly be parsed with more in depth arrays
+/// (e.g.) "inAreaArray" has not all of its right operands for syntax 1 and is flat out wrong
+/// in being a nular command for syntax 2. Same thing with "entities" command
 // - Some commands (camSetDir) use bullet lists as params/lines, need to modify the main
-/// regex to be able to select these bullet lists beneath the main detail line
+
+
 
 // const regex = /(\|(\s*|\S*)\=).*?(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 // group 1: Actual syntax for an entry
