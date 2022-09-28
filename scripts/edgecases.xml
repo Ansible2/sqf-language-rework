@@ -1,0 +1,434 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+  <siteinfo>
+    <sitename>Bohemia Interactive Community</sitename>
+    <dbname>community</dbname>
+    <base>https://community.bistudio.com/wiki/Main_Page</base>
+    <generator>MediaWiki 1.35.1</generator>
+    <case>case-sensitive</case>
+    <namespaces>
+      <namespace key="-2" case="case-sensitive">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="case-sensitive" />
+      <namespace key="1" case="case-sensitive">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="case-sensitive">Bohemia Interactive Community</namespace>
+      <namespace key="5" case="case-sensitive">Bohemia Interactive Community talk</namespace>
+      <namespace key="6" case="case-sensitive">File</namespace>
+      <namespace key="7" case="case-sensitive">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="case-sensitive">Template</namespace>
+      <namespace key="11" case="case-sensitive">Template talk</namespace>
+      <namespace key="12" case="case-sensitive">Help</namespace>
+      <namespace key="13" case="case-sensitive">Help talk</namespace>
+      <namespace key="14" case="case-sensitive">Category</namespace>
+      <namespace key="15" case="case-sensitive">Category talk</namespace>
+      <namespace key="110" case="case-sensitive">Forum</namespace>
+      <namespace key="111" case="case-sensitive">Forum talk</namespace>
+      <namespace key="460" case="case-sensitive">Campaign</namespace>
+      <namespace key="461" case="case-sensitive">Campaign talk</namespace>
+      <namespace key="5020" case="case-sensitive">DayZ</namespace>
+      <namespace key="5021" case="case-sensitive">DayZ talk</namespace>
+      <namespace key="5030" case="case-sensitive">Ylands</namespace>
+      <namespace key="5031" case="case-sensitive">Ylands talk</namespace>
+      <namespace key="5050" case="case-sensitive">Arma Reforger</namespace>
+      <namespace key="5051" case="case-sensitive">Arma Reforger talk</namespace>
+      <namespace key="5060" case="case-sensitive">Arma 4</namespace>
+      <namespace key="5061" case="case-sensitive">Arma 4 talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>inAreaArray</title>
+    <ns>0</ns>
+    <id>18435</id>
+    <revision>
+      <id>330099</id>
+      <parentid>321412</parentid>
+      <timestamp>2022-08-20T18:42:35Z</timestamp>
+      <contributor>
+        <username>Leopard20</username>
+        <id>11163</id>
+      </contributor>
+      <origin>330099</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2056" sha1="jz0hudglc3cgx90a99ha39e6ue7n0ud" xml:space="preserve">{{RV|type=command
+
+|game1= arma3
+|version1= 1.66
+
+|gr1= Triggers
+
+|gr2= Markers
+
+|gr3= Locations
+
+|gr4= Positions
+
+|descr= Returns given list of [[Object]]s and/or [[Position]]s that are in the given area, area defined by a trigger, marker, location or array.
+
+|s1= positions [[inAreaArray]] area
+
+|p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
+
+|p2= area: [[Object]], [[Location]] or [[String]] - the defined area:
+* [[Object]] - trigger
+* [[Location]] - location
+* [[String]] - marker name
+
+|r1= [[Array]]: [[Object]]s and/or [[Position]]s inside the trigger area
+
+|s2= positions [[inAreaArray]]  [center, a, b, angle, isRectangle, c]
+
+|p21= positions: [[Array]] - [[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D
+
+|p22= center: [[Array]] - center of the area in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+
+|p23= a: [[Number]] - x axis (x / 2)
+
+|p24= b: [[Number]] - y axis (y / 2)
+
+|p25= angle: [[Number]] - (Optional, default 0) rotation angle
+
+|p26= isRectangle: [[Boolean]] - (Optional, default [[false]]) [[true]] if rectangle, [[false]] if ellipse
+
+|p27= c: [[Number]] - (Optional, default -1: unlimited) z axis (z / 2)
+
+|r2= [[Array]]: [[Object]]s and/or [[Position]]s inside the area
+
+|x1= &lt;sqf&gt;vehicles inAreaArray myTrigger;&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;allUnits inAreaArray "myMarker";&lt;/sqf&gt;
+
+|x3= &lt;sqf&gt;allPlayers inAreaArray myLocation;&lt;/sqf&gt;
+
+|x4= &lt;sqf&gt;allDead inAreaArray [[100, 100, 0], 20, 30, 45, false, 10];&lt;/sqf&gt;
+
+|seealso= [[inArea]] [[triggerArea]]
+}}
+
+&lt;dl class="command_description"&gt;
+
+&lt;dt&gt;&lt;/dt&gt;
+&lt;dd class="notedate"&gt;Posted on June 11, 2017 - 21:33 (UTC)&lt;/dd&gt;
+&lt;dt class="note"&gt;[[User:Tankbuster|Tankbuster]]&lt;/dt&gt;
+&lt;dd class="note"&gt;
+The array you send the command can be filtered. For example:
+&lt;sqf&gt;vehicles select { _x isKindOf "StaticWeapon" } inAreaArray "myMarker"&lt;/sqf&gt;
+Will return only the statics inside the given marker
+&lt;/dd&gt;
+
+&lt;/dl&gt;</text>
+      <sha1>jz0hudglc3cgx90a99ha39e6ue7n0ud</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>lbSetColor</title>
+    <ns>0</ns>
+    <id>1625</id>
+    <revision>
+      <id>319139</id>
+      <parentid>312385</parentid>
+      <timestamp>2022-05-13T09:23:14Z</timestamp>
+      <contributor>
+        <username>Lou Montana</username>
+        <id>10739</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - "\|x([0-9])= *&lt;code&gt;([^&lt;]*)&lt;\/code&gt;" to "|x$1= &lt;sqf&gt;$2&lt;/sqf&gt;"</comment>
+      <origin>319139</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1196" sha1="6uslzsjg0jtiorqk8o9mkoyal5oy2jf" xml:space="preserve">{{RV|type=command
+
+|game1= ofp
+|version1= 1.75
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|arg= local
+
+|eff= local
+
+|gr1= GUI Control - ListBox
+
+|descr= Sets the color of the item (left) with the given index of the listbox or combobox with id idc of the topmost user [[Dialog]] to color.
+
+|s1= [[lbSetColor]] [idc, index, color]
+
+|p1= idc: [[Number]] - control's IDC
+
+|p2= index: [[Number]]
+
+|p3= color: [[Color|Color (RGBA)]]
+
+|r1= [[Nothing]]
+
+|s2= control [[lbSetColor]] [index, color]
+
+|p21= control: [[Control]]
+
+|p22= index: [[Number]]
+
+|p23= color: [[Color|Color (RGBA)]]
+
+|r2= [[Nothing]]
+
+|x1= &lt;sqf&gt;lbSetColor [101, 0, [0, 1, 0, 0.5]];&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;_control lbSetColor [0, [0, 1, 0, 0.5]];&lt;/sqf&gt;
+
+|seealso= [[lbColor]] [[lbSetColorRight]] [[lbColorRight]]
+}}
+
+&lt;dl class="command_description"&gt;
+
+&lt;dt&gt;&lt;/dt&gt;
+&lt;dd class="notedate"&gt;Posted: Sep 10 2014&lt;/dd&gt;
+&lt;dt class="note"&gt;[[User:ffur2007slx2_5|ffur2007slx2_5]]&lt;/dt&gt;
+&lt;dd class="note"&gt;More information on the [[CT_LISTBOX]] command family can be found [[CT_LISTBOX#Scripting_Example|here]].
+&lt;/dl&gt;</text>
+      <sha1>6uslzsjg0jtiorqk8o9mkoyal5oy2jf</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>positionCameraToWorld</title>
+    <ns>0</ns>
+    <id>2544</id>
+    <revision>
+      <id>321249</id>
+      <parentid>320849</parentid>
+      <timestamp>2022-05-13T18:50:16Z</timestamp>
+      <contributor>
+        <username>Lou Montana</username>
+        <id>10739</id>
+      </contributor>
+      <minor/>
+      <comment>Some wiki formatting</comment>
+      <origin>321249</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="2095" sha1="rt2wiy2m9tl3t57qnurg3mmecpbzfw8" xml:space="preserve">{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= Camera Control
+
+|gr2= Positions
+
+|descr=[[File:PositionCameraToWorld.jpg|right|120x120px]]Transforms position from camera coordinate space to world coordinate space. 
+
+Camera axes are relative to camera orientation. x axis goes from left of the camera to right of the camera, z axis goes from underneath the camera to above the camera and y axis goes from back of the camera to where the camera is looking.
+
+|s1= [[positionCameraToWorld]] cameraPos
+
+|p1= cameraPos: [[Position#PositionRelative|PositionRelative]] - Relative camera position, format [x, z, y]{{Feature | important | Note that y and z for this command are swapped around, which is different from your usual model space coordinates format}}
+
+|r1= [[Array]] - Camera world position, format [[Position#PositionAGL|PositionAGL]]
+
+|x1= &lt;sqf&gt;_worldPos = positionCameraToWorld _cameraPos;&lt;/sqf&gt;
+
+|x2= Example demonstrating reversed y and z:
+&lt;sqf&gt;
+player setDir 0; // assuming player is looking forward
+hint str [positionCameraToWorld [0,0,0], positionCameraToWorld [0,0,1]];
+/*
+[
+	[2481.35, 5671.21, 1.51395],
+	[2481.35, 5672.21, 1.46955]
+]
+*/
+&lt;/sqf&gt;
+
+|seealso= [[modelToWorld]] [[modelToWorldVisual]] [[getCameraViewDirection]] [[weaponDirection]] [[eyeDirection]] [[vectorDir]] [[vectorDirVisual]]
+}}
+
+{{Note
+|user= Kronzky
+|timestamp= 20081017112500
+|text= By measuring the distance between the camera and the player one can determine whether 1st-person or 3rd-person view is being used:
+&lt;sqf&gt;if ((positionCameraToWorld [0,0,0] distance player)&gt;2) then { hint "3rd person" } else { hint "1st person" };&lt;/sqf&gt;
+}}
+
+{{Note
+|user= Worldeater
+|timestamp= 20101017224500
+|text= The camera coordinate system is different from the model coordinate system: when [[modelToWorld]] uses [x, y, z] then positionCameraToWorld uses [x, z, y]. So for a steady camera the following is true:
+&lt;sqf&gt;positionCameraToWorld [5,10,15] == _camera modelToWorld [5,15,10];&lt;/sqf&gt;
+}}</text>
+      <sha1>rt2wiy2m9tl3t57qnurg3mmecpbzfw8</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>vectorDistance</title>
+    <ns>0</ns>
+    <id>15370</id>
+    <revision>
+      <id>321351</id>
+      <parentid>319863</parentid>
+      <timestamp>2022-05-13T19:22:34Z</timestamp>
+      <contributor>
+        <username>Lou Montana</username>
+        <id>10739</id>
+      </contributor>
+      <minor/>
+      <comment>Some wiki formatting</comment>
+      <origin>321351</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1408" sha1="bvbcrmgf707trugkivbbdhpha8b8pgj" xml:space="preserve">{{RV|type=command
+
+|game1= arma3
+|version1= 1.22
+
+|gr2= Math - Vectors
+
+|descr= Returns {{Wikipedia|Euclidean_distance|Euclidean distance}} between two points.
+
+|s1= point1 [[vectorDistance]] point2
+
+|p1= point1: [[Position#Introduction|Position3D]] or [[Position#Introduction|Position2D]] - (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
+
+|p2= point2: [[Position#Introduction|Position3D]] or [[Position#Introduction|Position2D]] - (since {{GVI|arma3|2.00}}, z coordinate is defaulted to 0)
+
+|r1= [[Number]]
+
+|x1= &lt;sqf&gt;_euclideanDist = getPosASL player vectorDistance [0,0,0];&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;(getPosASL _a) vectorDistance (getPosASL _b);
+// same as
+(getPosATL _a) distance (getPosATL _b);&lt;/sqf&gt;
+
+|seealso= [[vectorAdd]] [[vectorDiff]] [[vectorCrossProduct]] [[vectorDotProduct]] [[vectorCos]] [[vectorMagnitude]] [[vectorMagnitudeSqr]] [[vectorMultiply]] [[vectorDistanceSqr]] [[vectorDir]] [[vectorUp]] [[setVectorDir]] [[setVectorUp]] [[setVectorDirAndUp]] [[distance]] [[vectorNormalized]] [[vectorFromTo]] [[distance2D]] [[matrixMultiply]] [[matrixTranspose]]
+}}
+
+&lt;dl class="command_description"&gt;
+
+&lt;dt&gt;&lt;/dt&gt;
+&lt;dd class="notedate"&gt;Posted on 28 Jun, 2014&lt;/dd&gt;
+&lt;dt class="note"&gt;[[User:ffur2007slx2_5| ffur2007slx2_5]]&lt;/dt&gt;
+&lt;dd class="note"&gt;
+{{GVI|arma3|1.22}} Algorithm:
+&lt;sqf&gt;Vector1 = [x1,y1,z1];
+Vector2 = [x2,y2,z2];
+Result = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);&lt;/sqf&gt;
+&lt;/dl&gt;</text>
+      <sha1>bvbcrmgf707trugkivbbdhpha8b8pgj</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>catch</title>
+    <ns>0</ns>
+    <id>2799</id>
+    <revision>
+      <id>321306</id>
+      <parentid>318667</parentid>
+      <timestamp>2022-05-13T19:08:15Z</timestamp>
+      <contributor>
+        <username>Lou Montana</username>
+        <id>10739</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - "&lt;code&gt;([^\[]+)&lt;\/code&gt;" to "&lt;sqf&gt;$1&lt;/sqf&gt;"</comment>
+      <origin>321306</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1323" sha1="7a8nj6mjsc1v9pgdj7njtqta2ihbprj" xml:space="preserve">{{RV|type=command
+
+|game1= arma1
+|version1= 1.00
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|gr1= Program Flow
+
+|descr= Processes code when an [[Exception handling|exception]] is thrown in a [[try]] block. The exception caught can be found in the ''_exception'' variable.
+
+|s1= tryBlock [[catch]] code
+
+|p1= tryBlock: [[Exception handling|Exception Type]]
+
+|p2= code: [[Code]]
+
+|r1= [[Anything]]
+
+|x1= &lt;sqf&gt;try {throw "invalid argument"} catch {hint str _exception};&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;123 try {if (_this != 123) throw "invalid argument"} catch {hint str _exception};&lt;/sqf&gt;
+
+|x3= The correct usage of shorthand alt syntax:
+&lt;sqf&gt;try {
+	if (a &gt; b) throw "Error: some error"; // OK
+	// The command argument is static
+} catch {
+	hint str _exception;
+};
+
+try {
+	_someFunc = {
+		.....
+	};
+	if (a &gt; b) throw (call _someFunc); // NOT OK
+	// The command argument is dynamic
+	// _someFunc is called first to get the value regardless of (a &gt; b) outcome
+} catch {
+	hint str _exception;
+};
+
+try {
+	_someFunc = {
+		.....
+	};
+	if (a &gt; b) then {throw (call _someFunc)}; /// OK
+	// The command argument is dynamic
+	// _someFunc is only called when (a &gt; b) is true
+} catch {
+	hint str _exception;
+};&lt;/sqf&gt;
+
+|seealso= [[Exception handling]] [[try]] [[throw]]
+}}</text>
+      <sha1>7a8nj6mjsc1v9pgdj7njtqta2ihbprj</sha1>
+    </revision>
+  </page>
+</mediawiki>
