@@ -210,11 +210,19 @@ export class BISWikiParser {
 
     private parseType(unParsedString: string): string {
         const typeMatches: RegExpMatchArray | null =
-            unParsedString.match(/\[\[([\w\s]*?)\]\]/);
+			unParsedString.match(/(?<=\[\[)(\D*?)(?=\]\])/gmi);
+            // unParsedString.match(/\[\[([\w\s]*?)\]\]/);
+			console.log("Matches:",typeMatches);
+			
         if (!typeMatches) {
             throw `Could not find type in string: ${unParsedString}`;
         }
-
+		
+		typeMatches.forEach(() => {
+			// TODO parse each possible match
+			// check each match for "|" to see if it's an array
+			// firgure out how to return multiple values
+		});
         const parsed = this.textInterpreter.convertWikiTypeToSQFDataType(
             typeMatches[1]
         );
