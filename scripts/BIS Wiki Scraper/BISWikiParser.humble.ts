@@ -241,14 +241,13 @@ export class BISWikiParser {
         const typeMatches: RegExpMatchArray | null = unParsedString.match(
             /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
         );
-        // console.log("Matches:", typeMatches);
+        console.log("Matches:", typeMatches);
 
         if (!typeMatches) {
             throw `Could not find type in string: ${unParsedString}`;
         }
 
         const matchesParsed = typeMatches.flatMap((match: string) => {
-            // TODO parse each possible match
             if (!match.includes("|")) {
                 const convertedType =
                     BISWikiParser.textInterpreter.convertWikiTypeToSQFDataType(match);
@@ -276,7 +275,6 @@ export class BISWikiParser {
         });
 
 		const filtered = matchesParsed.filter((item) => item)
-		
         return (filtered as string[]);
     }
 
@@ -327,10 +325,10 @@ export class BISWikiParser {
 			try {
 				if (BISWikiParser.textInterpreter.isParameter(detail)) {
 					const parameterTypes = BISWikiParser.parseType(detail);
-					if (parameters.leftArgTypes) {
-						parameters.rightArgTypes = parameterTypes;
-					} else {
+					if (parameters.rightArgTypes) {
 						parameters.leftArgTypes = parameterTypes;
+					} else {
+						parameters.rightArgTypes = parameterTypes;
 					}
 					
 				} else if (BISWikiParser.textInterpreter.isReturnType(detail)) {
