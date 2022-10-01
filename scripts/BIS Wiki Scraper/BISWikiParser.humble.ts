@@ -241,7 +241,7 @@ export class BISWikiParser {
         const typeMatches: RegExpMatchArray | null = unParsedString.match(
             /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
         );
-        console.log("Matches:", typeMatches);
+        // console.log("Matches:", typeMatches);
 
         if (!typeMatches) {
             throw `Could not find type in string: ${unParsedString}`;
@@ -320,15 +320,17 @@ export class BISWikiParser {
 			type: SyntaxType.nular
 		};
 	
-		const parameters: UnparsedParamTypes = {};
+		let parameters_1: string[] = [];
+		let parameters_2: string[] = [];
 		(item.details).forEach((detail: string) => {
 			try {
 				if (BISWikiParser.textInterpreter.isParameter(detail)) {
 					const parameterTypes = BISWikiParser.parseType(detail);
-					if (parameters.rightArgTypes) {
-						parameters.leftArgTypes = parameterTypes;
+					const parameters_1IsUsed = parameters_1.length > 0;
+					if (parameters_1IsUsed) {
+						parameters_2 = parameterTypes;
 					} else {
-						parameters.rightArgTypes = parameterTypes;
+						parameters_1 = parameterTypes;
 					}
 					
 				} else if (BISWikiParser.textInterpreter.isReturnType(detail)) {
@@ -342,13 +344,14 @@ export class BISWikiParser {
 			}
 		});
 
-		if (parameters.leftArgTypes && parameters.rightArgTypes) {
-			parsedSyntax.leftArgTypes = parameters.leftArgTypes;
-			parsedSyntax.rightArgTypes = parameters.rightArgTypes;
+
+		if (parameters_1.length && parameters_2.length) {
+			parsedSyntax.leftArgTypes = parameters_1;
+			parsedSyntax.rightArgTypes = parameters_2;
 			parsedSyntax.type = SyntaxType.binary;
 
-		} else if (parameters.rightArgTypes && !parameters.leftArgTypes) {
-			parsedSyntax.rightArgTypes = parameters.rightArgTypes;
+		} else if (parameters_1.length && !parameters_2.length) {
+			parsedSyntax.rightArgTypes = parameters_1;
 			parsedSyntax.type = SyntaxType.unary;
 
 		} else {
@@ -417,31 +420,62 @@ export class BISWikiParser {
 
         return parsedPage;
     }
+	
+	/* ------------------------------------
+		getSyntaxDifference
+	------------------------------------ */
+	private areTypesEqual(a?: string[] | string, b?: string[] | string): boolean {
+		if (a === b) return true;
+		if (!a && !b) return true;
+		if (!a && b) return false;
+		if (a && !b) return false;
 
+		const aIsArray = Array.isArray(a);
+		const bIsArray = Array.isArray(b);
+		if ((aIsArray && !bIsArray) || (!aIsArray && bIsArray)) return false;
+		
+		if (aIsArray && bIsArray) {
+			a = [...a!].sort();
+			b = [...b!].sort();
+
+			let i = a.length;
+			if (i != b.length) return false;
+			while (i--) {
+				if (a[i] !== b[i]) return false;
+			}
+			return true;
+		}
+		
+		return false;
+	}
 
     /* ------------------------------------
 		getSyntaxDifference
 	------------------------------------ */
     private getSyntaxDifference(
-        syntax1: ParsedSyntax,
-        syntax2: ParsedSyntax
+        mainSyntax: ParsedSyntax,
+        compareSyntax: ParsedSyntax
     ): SyntaxMatchDifference {
-        const type: SyntaxType = syntax1.type;
+        const mainSyntaxType: SyntaxType = mainSyntax.type;
         if (
-            type === SyntaxType.nular ||
-            type !== syntax2.type ||
-            syntax1.returnType !== syntax2.returnType
+            mainSyntaxType === SyntaxType.nular ||
+            mainSyntaxType !== compareSyntax.type ||
+            mainSyntax.returnType !== compareSyntax.returnType
         ) {
             return SyntaxMatchDifference.NoMatch;
         }
 
-        const leftArgIsDefined: boolean = !!syntax1.leftArgTypes;
-        const rightArgIsDefined: boolean = !!syntax1.rightArgTypes;
-        const leftArgIsTheSame = syntax1.leftArgTypes === syntax2.leftArgTypes;
-        const rightArgIsTheSame = syntax1.rightArgTypes === syntax2.rightArgTypes;
-
-        if (type === SyntaxType.binary) {
+        const leftArgIsDefined: boolean = !!mainSyntax.leftArgTypes;
+        const rightArgIsDefined: boolean = !!mainSyntax.rightArgTypes;
+        const leftArgIsTheSame = this.areTypesEqual(mainSyntax.leftArgTypes, compareSyntax.leftArgTypes);
+        const rightArgIsTheSame = this.areTypesEqual(mainSyntax.rightArgTypes, compareSyntax.rightArgTypes);
+	
+        if (mainSyntaxType === SyntaxType.binary) {
             if (leftArgIsDefined && !leftArgIsTheSame && rightArgIsTheSame) {
+				console.log(mainSyntax.commandName,"has left arg match difference");
+				console.log("Main:",mainSyntax.leftArgTypes);
+				console.log("Compare:",compareSyntax.leftArgTypes);
+				
                 return SyntaxMatchDifference.leftArg;
             } else if (
                 rightArgIsDefined &&
@@ -452,7 +486,7 @@ export class BISWikiParser {
             }
         }
 
-        if (type === SyntaxType.unary) {
+        if (mainSyntaxType === SyntaxType.unary) {
             if (leftArgIsDefined && !leftArgIsTheSame) {
                 return SyntaxMatchDifference.leftArg;
             } else if (rightArgIsDefined && !rightArgIsTheSame) {
