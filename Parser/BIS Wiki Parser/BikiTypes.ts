@@ -36,7 +36,7 @@ export interface ParsedSyntax {
     leftArgTypes?: SQFDataType | SQFDataType[];
     rightArgTypes?: SQFDataType | SQFDataType[];
     returnType: SQFDataType;
-    type: SQFSyntaxType;
+    syntaxType: SQFSyntaxType;
 }
 
 export interface ParsedWikiPage {

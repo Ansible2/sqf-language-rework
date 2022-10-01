@@ -74,6 +74,7 @@ export enum SQFSyntaxType {
     UnaryOperator = "SQFSyntaxType.UnaryOperator",
     BinaryOperator = "SQFSyntaxType.BinaryOperator",
     ScheduledFunction = "SQFSyntaxType.ScheduledFunction",
+	Empty = 'EMPTY',
 }
 
 export enum SQFEffect {
