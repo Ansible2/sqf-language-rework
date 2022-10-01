@@ -1,4 +1,10 @@
 import { IJSON, SQFGrammarType } from "../SQFParser.namespace";
+import { WikiPageDetailType } from "./BikiTypes";
+
+interface DetailTypeChecker {
+	checkFunction: (a: string) => boolean,
+	wikiType: WikiPageDetailType
+}
 
 export class BikiTextInterpreter {
 	/* ----------------------------------------------------------------------------
@@ -62,32 +68,50 @@ export class BikiTextInterpreter {
 	/* ----------------------------------------------------------------------------
 		Misc Type Checkers
 	---------------------------------------------------------------------------- */
-	private isSyntax(stringToCheck: string): boolean {
+	private static isSyntax(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|s\d*\=/);
     }
-    private isParameter(stringToCheck: string): boolean {
+    private static isParameter(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|p\d*=/);
     }
-    private isReturnType(stringToCheck: string): boolean {
+    private static isReturnType(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|r\d*=/);
     }
-    private isExample(stringToCheck: string): boolean {
+    private static isExample(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|x\d*\=/);
     }
-    private isDescription(stringToCheck: string): boolean {
+    private static isDescription(stringToCheck: string): boolean {
         return stringToCheck.startsWith("|descr");
     }
-    private isArgLocality(stringToCheck: string): boolean {
+    private static isArgLocality(stringToCheck: string): boolean {
         return stringToCheck.startsWith("|arg");
     }
-    private isEffectLocality(stringToCheck: string): boolean {
+    private static isEffectLocality(stringToCheck: string): boolean {
         return stringToCheck.startsWith("|eff");
     }
 
-	/* ----------------------------------------------------------------------------
-		getWikiPage
-	---------------------------------------------------------------------------- */
+	private static readonly detailTypeCheckers: DetailTypeChecker[] = [
+		{checkFunction: this.isSyntax, wikiType: WikiPageDetailType.Syntax,},
+		{checkFunction: this.isParameter, wikiType: WikiPageDetailType.Parameter,},
+		{checkFunction: this.isReturnType, wikiType: WikiPageDetailType.Return,},
+		{checkFunction: this.isExample, wikiType: WikiPageDetailType.Example,},
+		{checkFunction: this.isDescription, wikiType: WikiPageDetailType.Description,},
+		{checkFunction: this.isArgLocality, wikiType: WikiPageDetailType.ArgLocality,},
+		{checkFunction: this.isEffectLocality, wikiType: WikiPageDetailType.EffectLocality,},
+	];
 
+	/* ----------------------------------------------------------------------------
+		getDetailType
+	---------------------------------------------------------------------------- */
+	public getDetailType(detail: string): WikiPageDetailType {
+		for (const {checkFunction,wikiType} of BikiTextInterpreter.detailTypeCheckers) {
+			if (checkFunction(detail)) {
+				return wikiType;
+			}
+		}
+
+		return WikiPageDetailType.Unknown;
+	}
 
 	/* ----------------------------------------------------------------------------
 		getSQFGrammarType

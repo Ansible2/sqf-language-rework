@@ -20,14 +20,15 @@ export enum WikiPageDetailType {
 	ArgLocality,
 	EffectLocality,
 	Return,
+	Example,
+	Unknown,
 }
 
 export interface WikiPageDetail {
 	pageTitle: string,
 	index: number,
 	type: WikiPageDetailType,
-	detailContent: string,
-	detailFull: string,
+	detail: string,
 }
 
 export interface ParsedSyntax {
