@@ -578,8 +578,16 @@ export class BISWikiParser {
 
             consolidatedSyntaxes.push(mainSyntax);
         }
+		
+		const indexesWithoutReturnType: number[] = [];
+		let indexWithReturnType = -1;
+		consolidatedSyntaxes.forEach((syntax,index) => {
+			if (!syntax.returnType) {
+				indexesWithoutReturnType.push(index);
+			} else {
+				indexWithReturnType = index;
+			}
 
-		consolidatedSyntaxes.forEach((syntax) => {
 			// filter duplicates
 			if (syntax.leftArgTypes && Array.isArray(syntax.leftArgTypes)) {
 				syntax.leftArgTypes = [...new Set(syntax.leftArgTypes)];
@@ -588,6 +596,14 @@ export class BISWikiParser {
 				syntax.rightArgTypes = [...new Set(syntax.rightArgTypes)];
 			}	
 		});
+		
+		// some syntaxes reference an earlier or later syntax for their return types
+		if (indexesWithoutReturnType.length && (indexWithReturnType !== -1)) {
+			indexesWithoutReturnType.forEach((indexWithoutReturnType) => {
+				consolidatedSyntaxes[indexWithoutReturnType].returnType = 
+					consolidatedSyntaxes[indexWithReturnType].returnType;
+			})
+		}
 
         return consolidatedSyntaxes;
     }
