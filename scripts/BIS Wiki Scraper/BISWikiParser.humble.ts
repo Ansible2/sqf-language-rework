@@ -228,13 +228,20 @@ export class BISWikiParser {
     /* ------------------------------------
 		parseType
 	------------------------------------ */
-	// |p3= color: [[Color|Color (RGBA)]]
     private static parseType(unParsedString: string): string[] {
+		const edgeNothingMatch = unParsedString.match(/\|r\d*=\s*Nothing/);
+		if (edgeNothingMatch) {
+			const typeCovnerted = BISWikiParser.textInterpreter.convertWikiTypeToSQFDataType(
+				'Nothing'
+			);
+			
+			return [typeCovnerted];
+		}
+			
         const typeMatches: RegExpMatchArray | null = unParsedString.match(
             /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
         );
-        // unParsedString.match(/\[\[([\w\s]*?)\]\]/);
-        console.log("Matches:", typeMatches);
+        // console.log("Matches:", typeMatches);
 
         if (!typeMatches) {
             throw `Could not find type in string: ${unParsedString}`;
@@ -540,6 +547,16 @@ export class BISWikiParser {
             consolidatedSyntaxes.push(mainSyntax);
         }
 
+		consolidatedSyntaxes.forEach((syntax) => {
+			// filter duplicates
+			if (syntax.leftArgTypes && Array.isArray(syntax.leftArgTypes)) {
+				syntax.leftArgTypes = [...new Set(syntax.leftArgTypes)];
+			}	
+			if (syntax.rightArgTypes && Array.isArray(syntax.rightArgTypes)) {
+				syntax.rightArgTypes = [...new Set(syntax.rightArgTypes)];
+			}	
+		});
+
         return consolidatedSyntaxes;
     }
 
@@ -614,20 +631,26 @@ export class BISWikiParser {
 
         if (syntax.leftArgTypes) {
             let insertSyntax = '';
-            if (syntax.leftArgTypes.length > 1) {
+			const isArray = Array.isArray(syntax.leftArgTypes);
+            if (isArray && syntax.leftArgTypes.length > 1) {
                 insertSyntax = `[${syntax.leftArgTypes}]`;
-            } else {
+            } else if (isArray) {				
 				insertSyntax = syntax.leftArgTypes[0];
+			} else {
+				insertSyntax = (syntax.leftArgTypes as string)
 			}
 
             syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
         }
         if (syntax.rightArgTypes) {
             let insertSyntax = '';
-            if (syntax.rightArgTypes.length > 1) {
-                insertSyntax = `[${syntax.leftArgTypes}]`;
-            } else {
+            const isArray = Array.isArray(syntax.rightArgTypes);
+            if (isArray && syntax.rightArgTypes.length > 1) {
+                insertSyntax = `[${syntax.rightArgTypes}]`;
+            } else if (isArray) {				
 				insertSyntax = syntax.rightArgTypes[0];
+			} else {
+				insertSyntax = (syntax.rightArgTypes as string)
 			}
 			
             syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax},`);
