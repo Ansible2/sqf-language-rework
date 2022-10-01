@@ -626,4 +626,65 @@ private _array = _hashmap apply { _y + " Test" }; // ["Value 2 Test","Value 1 Te
 			<sha1>58mh4jo6wttsw5n9bufwi6m57kyumn8</sha1>
 		</revision>
 	</page>
+
+	<page>
+		<title>BIS fnc numberDigits</title>
+		<ns>0</ns>
+		<id>15863</id>
+		<revision>
+		  <id>328474</id>
+		  <parentid>327644</parentid>
+		  <timestamp>2022-07-13T16:11:10Z</timestamp>
+		  <contributor>
+			<username>Lou Montana</username>
+			<id>10739</id>
+		  </contributor>
+		  <minor/>
+		  <comment>Text replacement - "&lt;code&gt;([^&lt;]+)&lt;\/code&gt;" to "&lt;sqf&gt;$1&lt;/sqf&gt;"</comment>
+		  <origin>328474</origin>
+		  <model>wikitext</model>
+		  <format>text/x-wiki</format>
+		  <text bytes="1096" sha1="5oim3kqdanss2y5nqarfnjy41rnk5vb" xml:space="preserve">{{RV|type=function
+	
+	|game1= tkoh
+	|version1= 1.00
+	
+	|game2= arma3
+	|version2= 0.50
+	
+	|gr1= Arrays
+	
+	|gr2= Strings
+	
+	|descr= Break number into array of digits.
+	
+	|s1= number call [[BIS_fnc_numberDigits]]
+	
+	|p1= number: [[Number]] - Number that should be broken down. A float will be '''truncated''', not rounded
+	
+	|r1= [[Array]] of [[Number]]s - Array of ''number'' digits
+	
+	|x1= &lt;sqf&gt;12345678 call BIS_fnc_numberDigits; // returns [1,2,3,4,5,6,7,8]&lt;/sqf&gt;
+	
+	|x2= &lt;sqf&gt;123.9999 call BIS_fnc_numberDigits; // returns [1,2,3]&lt;/sqf&gt;
+	
+	|seealso= [[BIS_fnc_numberText]] [[BIS_fnc_cutDecimals]]
+	}}
+	|
+	
+	&lt;dl class="command_description"&gt;
+	
+	&lt;dt&gt;&lt;/dt&gt;
+	&lt;dd class="notedate"&gt;Posted on March 20, 2018 - 21:25 (UTC)&lt;/dd&gt;
+	&lt;dt class="note"&gt;[[User:vabene1111|vabene1111]]&lt;/dt&gt;
+	&lt;dd class="note"&gt;
+	Use this function with caution: Numbers with more than 8 digits will return wrong results
+	&lt;sqf&gt;[11111111]      call BIS_fnc_numberDigits; // returns [1,1,1,1,1,1,1,1]
+	[111111111]     call BIS_fnc_numberDigits; // returns [1,1,1,1,1,1,1,1,2]
+	[1111111111111] call BIS_fnc_numberDigits; // returns [1,1,1,1,1,1,1,1,0,6,5,6,0]&lt;/sqf&gt;
+	
+	&lt;/dl&gt;</text>
+		  <sha1>5oim3kqdanss2y5nqarfnjy41rnk5vb</sha1>
+		</revision>
+	  </page>
 </mediawiki>

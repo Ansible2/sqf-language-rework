@@ -111,13 +111,9 @@ class TextInterpreter {
         if (mappedName) {
             return mappedName;
         }
-        if (wikiName.startsWith("diag")) {
-            return wikiName.replace("diag ", "diag_");
-        }
-        if (wikiName.startsWith("buldozer")) {
-            return wikiName.replace("buldozer ", "buldozer_");
-        }
-
+		
+		// xml parser does not preserve underscores but replaces them with spaces
+		wikiName = wikiName.trim().replace(/\ /g,'_');
         return wikiName;
     }
 
@@ -186,6 +182,11 @@ class TextInterpreter {
         POSITIONRELATIVE: "SQFDataType.PositionRelative",
         "PARTICLE ARRAY": "SQFDataType.ParticleArray",
     };
+
+	private static readonly grammarTypeMap: IJSON<string> = {
+		// todo: implement
+	};	
+
     isSyntax(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|s\d*\=/);
     }
@@ -207,6 +208,18 @@ class TextInterpreter {
     isEffectLocality(stringToCheck: string): boolean {
         return stringToCheck.startsWith("|eff");
     }
+
+	getGrammarType(name: string): string {
+		if (name.includes('_fnc_')) {
+			return "SQFGrammarType.Function"
+		}
+
+		if (TextInterpreter.grammarTypeMap[name.toLowerCase()]) {
+			return TextInterpreter.grammarTypeMap[name.toLowerCase()];
+		}
+
+		return "SQFGrammarType.Command";
+	}
 
     convertWikiTypeToSQFDataType(unParsedType: string): string {
         const typeParsed =
@@ -712,7 +725,7 @@ export class BISWikiParser {
 		createFinalCommandSyntaxString
 	------------------------------------ */
     private createFinalCommandSyntaxString(
-        command: string | undefined,
+        command: string,
         consolidatedSyntaxes: ParsedSyntax[],
         effectLocality?: string,
         argurmentLocality?: string
@@ -729,11 +742,12 @@ export class BISWikiParser {
         } else {
             finalSyntaxString = syntaxesAsString[0];
         }
-
+		
+		const grammarType = BISWikiParser.textInterpreter.getGrammarType(command);
         const finalSyntaxesAsArray: string[] = [
             `\n${command}: {`,
             `\tsyntaxes: ${finalSyntaxString},`,
-            `\tgrammarType: SQFGrammarType.Command,`,
+            `\tgrammarType: ${grammarType},`,
         ];
 
         if (effectLocality) {
