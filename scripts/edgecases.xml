@@ -1,59 +1,59 @@
 <mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
-  <siteinfo>
-    <sitename>Bohemia Interactive Community</sitename>
-    <dbname>community</dbname>
-    <base>https://community.bistudio.com/wiki/Main_Page</base>
-    <generator>MediaWiki 1.35.1</generator>
-    <case>case-sensitive</case>
-    <namespaces>
-      <namespace key="-2" case="case-sensitive">Media</namespace>
-      <namespace key="-1" case="first-letter">Special</namespace>
-      <namespace key="0" case="case-sensitive" />
-      <namespace key="1" case="case-sensitive">Talk</namespace>
-      <namespace key="2" case="first-letter">User</namespace>
-      <namespace key="3" case="first-letter">User talk</namespace>
-      <namespace key="4" case="case-sensitive">Bohemia Interactive Community</namespace>
-      <namespace key="5" case="case-sensitive">Bohemia Interactive Community talk</namespace>
-      <namespace key="6" case="case-sensitive">File</namespace>
-      <namespace key="7" case="case-sensitive">File talk</namespace>
-      <namespace key="8" case="first-letter">MediaWiki</namespace>
-      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
-      <namespace key="10" case="case-sensitive">Template</namespace>
-      <namespace key="11" case="case-sensitive">Template talk</namespace>
-      <namespace key="12" case="case-sensitive">Help</namespace>
-      <namespace key="13" case="case-sensitive">Help talk</namespace>
-      <namespace key="14" case="case-sensitive">Category</namespace>
-      <namespace key="15" case="case-sensitive">Category talk</namespace>
-      <namespace key="110" case="case-sensitive">Forum</namespace>
-      <namespace key="111" case="case-sensitive">Forum talk</namespace>
-      <namespace key="460" case="case-sensitive">Campaign</namespace>
-      <namespace key="461" case="case-sensitive">Campaign talk</namespace>
-      <namespace key="5020" case="case-sensitive">DayZ</namespace>
-      <namespace key="5021" case="case-sensitive">DayZ talk</namespace>
-      <namespace key="5030" case="case-sensitive">Ylands</namespace>
-      <namespace key="5031" case="case-sensitive">Ylands talk</namespace>
-      <namespace key="5050" case="case-sensitive">Arma Reforger</namespace>
-      <namespace key="5051" case="case-sensitive">Arma Reforger talk</namespace>
-      <namespace key="5060" case="case-sensitive">Arma 4</namespace>
-      <namespace key="5061" case="case-sensitive">Arma 4 talk</namespace>
-    </namespaces>
-  </siteinfo>
-  <page>
-    <title>inAreaArray</title>
-    <ns>0</ns>
-    <id>18435</id>
-    <revision>
-      <id>330099</id>
-      <parentid>321412</parentid>
-      <timestamp>2022-08-20T18:42:35Z</timestamp>
-      <contributor>
-        <username>Leopard20</username>
-        <id>11163</id>
-      </contributor>
-      <origin>330099</origin>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="2056" sha1="jz0hudglc3cgx90a99ha39e6ue7n0ud" xml:space="preserve">{{RV|type=command
+	<siteinfo>
+		<sitename>Bohemia Interactive Community</sitename>
+		<dbname>community</dbname>
+		<base>https://community.bistudio.com/wiki/Main_Page</base>
+		<generator>MediaWiki 1.35.1</generator>
+		<case>case-sensitive</case>
+		<namespaces>
+			<namespace key="-2" case="case-sensitive">Media</namespace>
+			<namespace key="-1" case="first-letter">Special</namespace>
+			<namespace key="0" case="case-sensitive" />
+			<namespace key="1" case="case-sensitive">Talk</namespace>
+			<namespace key="2" case="first-letter">User</namespace>
+			<namespace key="3" case="first-letter">User talk</namespace>
+			<namespace key="4" case="case-sensitive">Bohemia Interactive Community</namespace>
+			<namespace key="5" case="case-sensitive">Bohemia Interactive Community talk</namespace>
+			<namespace key="6" case="case-sensitive">File</namespace>
+			<namespace key="7" case="case-sensitive">File talk</namespace>
+			<namespace key="8" case="first-letter">MediaWiki</namespace>
+			<namespace key="9" case="first-letter">MediaWiki talk</namespace>
+			<namespace key="10" case="case-sensitive">Template</namespace>
+			<namespace key="11" case="case-sensitive">Template talk</namespace>
+			<namespace key="12" case="case-sensitive">Help</namespace>
+			<namespace key="13" case="case-sensitive">Help talk</namespace>
+			<namespace key="14" case="case-sensitive">Category</namespace>
+			<namespace key="15" case="case-sensitive">Category talk</namespace>
+			<namespace key="110" case="case-sensitive">Forum</namespace>
+			<namespace key="111" case="case-sensitive">Forum talk</namespace>
+			<namespace key="460" case="case-sensitive">Campaign</namespace>
+			<namespace key="461" case="case-sensitive">Campaign talk</namespace>
+			<namespace key="5020" case="case-sensitive">DayZ</namespace>
+			<namespace key="5021" case="case-sensitive">DayZ talk</namespace>
+			<namespace key="5030" case="case-sensitive">Ylands</namespace>
+			<namespace key="5031" case="case-sensitive">Ylands talk</namespace>
+			<namespace key="5050" case="case-sensitive">Arma Reforger</namespace>
+			<namespace key="5051" case="case-sensitive">Arma Reforger talk</namespace>
+			<namespace key="5060" case="case-sensitive">Arma 4</namespace>
+			<namespace key="5061" case="case-sensitive">Arma 4 talk</namespace>
+		</namespaces>
+	</siteinfo>
+	<page>
+		<title>inAreaArray</title>
+		<ns>0</ns>
+		<id>18435</id>
+		<revision>
+			<id>330099</id>
+			<parentid>321412</parentid>
+			<timestamp>2022-08-20T18:42:35Z</timestamp>
+			<contributor>
+				<username>Leopard20</username>
+				<id>11163</id>
+			</contributor>
+			<origin>330099</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="2056" sha1="jz0hudglc3cgx90a99ha39e6ue7n0ud" xml:space="preserve">{{RV|type=command
 
 |game1= arma3
 |version1= 1.66
@@ -120,27 +120,27 @@ Will return only the statics inside the given marker
 &lt;/dd&gt;
 
 &lt;/dl&gt;</text>
-      <sha1>jz0hudglc3cgx90a99ha39e6ue7n0ud</sha1>
-    </revision>
-  </page>
-  <page>
-    <title>lbSetColor</title>
-    <ns>0</ns>
-    <id>1625</id>
-    <revision>
-      <id>319139</id>
-      <parentid>312385</parentid>
-      <timestamp>2022-05-13T09:23:14Z</timestamp>
-      <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
-      </contributor>
-      <minor/>
-      <comment>Text replacement - "\|x([0-9])= *&lt;code&gt;([^&lt;]*)&lt;\/code&gt;" to "|x$1= &lt;sqf&gt;$2&lt;/sqf&gt;"</comment>
-      <origin>319139</origin>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="1196" sha1="6uslzsjg0jtiorqk8o9mkoyal5oy2jf" xml:space="preserve">{{RV|type=command
+			<sha1>jz0hudglc3cgx90a99ha39e6ue7n0ud</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>lbSetColor</title>
+		<ns>0</ns>
+		<id>1625</id>
+		<revision>
+			<id>319139</id>
+			<parentid>312385</parentid>
+			<timestamp>2022-05-13T09:23:14Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Text replacement - "\|x([0-9])= *&lt;code&gt;([^&lt;]*)&lt;\/code&gt;" to "|x$1= &lt;sqf&gt;$2&lt;/sqf&gt;"</comment>
+			<origin>319139</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1196" sha1="6uslzsjg0jtiorqk8o9mkoyal5oy2jf" xml:space="preserve">{{RV|type=command
 
 |game1= ofp
 |version1= 1.75
@@ -205,27 +205,27 @@ Will return only the statics inside the given marker
 &lt;dt class="note"&gt;[[User:ffur2007slx2_5|ffur2007slx2_5]]&lt;/dt&gt;
 &lt;dd class="note"&gt;More information on the [[CT_LISTBOX]] command family can be found [[CT_LISTBOX#Scripting_Example|here]].
 &lt;/dl&gt;</text>
-      <sha1>6uslzsjg0jtiorqk8o9mkoyal5oy2jf</sha1>
-    </revision>
-  </page>
-  <page>
-    <title>positionCameraToWorld</title>
-    <ns>0</ns>
-    <id>2544</id>
-    <revision>
-      <id>321249</id>
-      <parentid>320849</parentid>
-      <timestamp>2022-05-13T18:50:16Z</timestamp>
-      <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
-      </contributor>
-      <minor/>
-      <comment>Some wiki formatting</comment>
-      <origin>321249</origin>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="2095" sha1="rt2wiy2m9tl3t57qnurg3mmecpbzfw8" xml:space="preserve">{{RV|type=command
+			<sha1>6uslzsjg0jtiorqk8o9mkoyal5oy2jf</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>positionCameraToWorld</title>
+		<ns>0</ns>
+		<id>2544</id>
+		<revision>
+			<id>321249</id>
+			<parentid>320849</parentid>
+			<timestamp>2022-05-13T18:50:16Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>321249</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="2095" sha1="rt2wiy2m9tl3t57qnurg3mmecpbzfw8" xml:space="preserve">{{RV|type=command
 
 |game1= arma1
 |version1= 1.00
@@ -286,27 +286,27 @@ hint str [positionCameraToWorld [0,0,0], positionCameraToWorld [0,0,1]];
 |text= The camera coordinate system is different from the model coordinate system: when [[modelToWorld]] uses [x, y, z] then positionCameraToWorld uses [x, z, y]. So for a steady camera the following is true:
 &lt;sqf&gt;positionCameraToWorld [5,10,15] == _camera modelToWorld [5,15,10];&lt;/sqf&gt;
 }}</text>
-      <sha1>rt2wiy2m9tl3t57qnurg3mmecpbzfw8</sha1>
-    </revision>
-  </page>
-  <page>
-    <title>vectorDistance</title>
-    <ns>0</ns>
-    <id>15370</id>
-    <revision>
-      <id>321351</id>
-      <parentid>319863</parentid>
-      <timestamp>2022-05-13T19:22:34Z</timestamp>
-      <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
-      </contributor>
-      <minor/>
-      <comment>Some wiki formatting</comment>
-      <origin>321351</origin>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="1408" sha1="bvbcrmgf707trugkivbbdhpha8b8pgj" xml:space="preserve">{{RV|type=command
+			<sha1>rt2wiy2m9tl3t57qnurg3mmecpbzfw8</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>vectorDistance</title>
+		<ns>0</ns>
+		<id>15370</id>
+		<revision>
+			<id>321351</id>
+			<parentid>319863</parentid>
+			<timestamp>2022-05-13T19:22:34Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>321351</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1408" sha1="bvbcrmgf707trugkivbbdhpha8b8pgj" xml:space="preserve">{{RV|type=command
 
 |game1= arma3
 |version1= 1.22
@@ -343,27 +343,27 @@ hint str [positionCameraToWorld [0,0,0], positionCameraToWorld [0,0,1]];
 Vector2 = [x2,y2,z2];
 Result = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);&lt;/sqf&gt;
 &lt;/dl&gt;</text>
-      <sha1>bvbcrmgf707trugkivbbdhpha8b8pgj</sha1>
-    </revision>
-  </page>
-  <page>
-    <title>catch</title>
-    <ns>0</ns>
-    <id>2799</id>
-    <revision>
-      <id>321306</id>
-      <parentid>318667</parentid>
-      <timestamp>2022-05-13T19:08:15Z</timestamp>
-      <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
-      </contributor>
-      <minor/>
-      <comment>Text replacement - "&lt;code&gt;([^\[]+)&lt;\/code&gt;" to "&lt;sqf&gt;$1&lt;/sqf&gt;"</comment>
-      <origin>321306</origin>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="1323" sha1="7a8nj6mjsc1v9pgdj7njtqta2ihbprj" xml:space="preserve">{{RV|type=command
+			<sha1>bvbcrmgf707trugkivbbdhpha8b8pgj</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>catch</title>
+		<ns>0</ns>
+		<id>2799</id>
+		<revision>
+			<id>321306</id>
+			<parentid>318667</parentid>
+			<timestamp>2022-05-13T19:08:15Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Text replacement - "&lt;code&gt;([^\[]+)&lt;\/code&gt;" to "&lt;sqf&gt;$1&lt;/sqf&gt;"</comment>
+			<origin>321306</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1323" sha1="7a8nj6mjsc1v9pgdj7njtqta2ihbprj" xml:space="preserve">{{RV|type=command
 
 |game1= arma1
 |version1= 1.00
@@ -428,7 +428,122 @@ try {
 
 |seealso= [[Exception handling]] [[try]] [[throw]]
 }}</text>
-      <sha1>7a8nj6mjsc1v9pgdj7njtqta2ihbprj</sha1>
-    </revision>
-  </page>
+			<sha1>7a8nj6mjsc1v9pgdj7njtqta2ihbprj</sha1>
+		</revision>
+	</page>
+
+	<page>
+		<title>isNull</title>
+		<ns>0</ns>
+		<id>4640</id>
+		<revision>
+			<id>322827</id>
+			<parentid>322585</parentid>
+			<timestamp>2022-06-24T23:38:49Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>322827</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="2276" sha1="6ysv57wcyqk4y8b8x9dv8w4jms3x1ey" xml:space="preserve">{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|arg= global
+
+|gr1= Variables
+
+|descr= Checks whether the tested item is null.&lt;br&gt;
+Which null type the item has to be equal to depends on the type of game entity tested:
+
+{{{!}} class="wikitable" style="text-align: center"
+! [[:Category:Data Types|Type]]
+{{!}} [[Object]]
+{{!}} [[Group]]
+{{!}} [[Control]]
+{{!}} [[Display]]
+{{!}} [[Location]]
+{{!}} [[Task]]
+{{!}} [[Script]]
+{{!}} [[Config]]
+{{!}} [[Diary Record]]
+{{!}} [[Team Member]]
+{{!}}-
+! Null value
+{{!}} [[objNull]]
+{{!}} [[grpNull]]
+{{!}} [[controlNull]]
+{{!}} [[displayNull]]
+{{!}} [[locationNull]]
+{{!}} [[taskNull]]
+{{!}} [[scriptNull]]
+{{!}} [[configNull]]
+{{!}} [[diaryRecordNull]]
+{{!}} [[teamMemberNull]]
+{{!}}- style="font-size: .85em"
+! Since
+{{!}} {{GVI|ofp|1.00}}
+{{!}} {{GVI|ofp|1.00}}
+{{!}} {{GVI|arma1|1.00}}
+{{!}} {{GVI|arma1|1.00}}
+{{!}} {{GVI|arma2|1.00}}
+{{!}} {{GVI|arma2|1.00}}
+{{!}} {{GVI|arma3|1.30}}
+{{!}} {{GVI|arma3|1.54}}
+{{!}} {{GVI|arma3|2.00}}
+{{!}} {{GVI|arma3|2.10}}
+{{!}}}
+
+{{Feature | important | A test via {{=}}{{=}} does '''not''' work, because a null value is not equal to anything, not even itself ([[configNull]] being the exception).
+See also [[isEqualTo]].}}
+
+|s1= [[isNull]] entity
+
+|p1= entity: [[Object]], [[Control]], [[Display]], [[Group]], [[Location]], [[Task]], [[Script]], [[Config]] or [[Diary Record]]
+
+|r1= [[Boolean]]
+
+|x1= &lt;sqf&gt;
+if (isNull obj) then
+{
+hint "obj variable is defined but obj is null";
+};
+&lt;/sqf&gt;
+
+|x2= [[Diary Record]] support before {{GVI|arma3|2.00}}:
+&lt;sqf&gt;private _nullRecord = objNull createDiaryRecord []; // wrong parameters = failure to create a record = null value
+private _createdRecord = player createDiaryRecord ["Diary", ["title", "description"]];
+if (_createdRecord isEqualTo _nullRecord) then { hint "Failed" };&lt;/sqf&gt;
+
+[[Team Member]] support before {{GVI|arma3|2.10}}:
+&lt;sqf&gt;private _isNull = _teamMember isEqualTo teamMemberNull;&lt;/sqf&gt;
+
+|seealso= [[controlNull]] [[displayNull]] [[grpNull]] [[locationNull]] [[objNull]] [[taskNull]] [[teamMemberNull]] [[scriptNull]] [[configNull]] [[typeName]]
+}}</text>
+			<sha1>6ysv57wcyqk4y8b8x9dv8w4jms3x1ey</sha1>
+		</revision>
+	</page>
 </mediawiki>
