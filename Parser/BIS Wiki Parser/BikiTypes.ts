@@ -1,4 +1,4 @@
-import { SQFSyntaxType } from "../SQFParser.namespace";
+import { SQFArgument, SQFDataType, SQFEffect, SQFSyntaxType } from "../SQFParser.namespace";
 
 export interface WikiPage {
     title?: string;
@@ -32,15 +32,15 @@ export interface WikiPageDetail {
 }
 
 export interface ParsedSyntax {
-    commandName: string;
-    leftArgTypes?: string | string[];
-    rightArgTypes?: string | string[];
-    returnType: string;
+    pageTitle: string;
+    leftArgTypes?: SQFDataType | SQFDataType[];
+    rightArgTypes?: SQFDataType | SQFDataType[];
+    returnType: SQFDataType;
     type: SQFSyntaxType;
 }
 
-export interface ParsedPage {
+export interface ParsedWikiPage {
     syntaxes: ParsedSyntax[];
-    argumentLocality?: string;
-    effectLocality?: string;
+    argumentLocality?: SQFArgument;
+    effectLocality?: SQFEffect;
 }

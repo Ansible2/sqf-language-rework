@@ -1,11 +1,26 @@
 import { text } from "stream/consumers";
 import { BikiTextInterpreter } from "./BikiTextInterpreter";
-import { WikiPage, ParsedPage, WikiPageDetail, WikiPageDetailType } from "./BikiTypes";
+import { WikiPage, ParsedWikiPage, WikiPageDetail, WikiPageDetailType, ParsedSyntax } from "./BikiTypes";
 
 export class MediaWikiConverter {
 	private textInterpreter: BikiTextInterpreter;
 	constructor() {
 		this.textInterpreter = new BikiTextInterpreter();
+	}
+	
+	/* ----------------------------------------------------------------------------
+		parseWikiPage
+	---------------------------------------------------------------------------- */
+	private getParsedSyntaxes(pageDetails: WikiPageDetail[]): ParsedSyntax[] {
+		const parsedSyntaxes = [];
+		pageDetails.forEach((wikiDetail: WikiPageDetail, index: number) => {
+			if (wikiDetail.type === WikiPageDetailType.Syntax) {
+				// TODO
+			}
+		});
+		
+
+		return parsedSyntaxes;
 	}
 
 	/* ----------------------------------------------------------------------------
@@ -22,15 +37,16 @@ export class MediaWikiConverter {
 		const pageDetails: WikiPageDetail[] = this.getWikiPageDetails(page);
 		if (pageDetails.length < 1) return '';
 
-
+		const parsedSyntaxes: ParsedSyntax[] = this.getParsedSyntaxes(pageDetails);
+		
 		return '';
 	}
 
 
 	/* ----------------------------------------------------------------------------
-		parseWikiPage
+		getWikiPageDetails
 	---------------------------------------------------------------------------- */
-	getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
+	private getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
 		const matchPageDetailsRegEx =
             /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 		const pageDetails: RegExpMatchArray | null | undefined = page.revision?.text?.match(
@@ -39,6 +55,7 @@ export class MediaWikiConverter {
 		if (!pageDetails || pageDetails.length < 1) return [];
 		
 		const detailsParsed: WikiPageDetail[] = pageDetails.map((detail: string, index: number) => {
+			detail = detail.trim();
 			return {
 				pageTitle: page.title!,
 				index: index,
