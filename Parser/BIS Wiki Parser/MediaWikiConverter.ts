@@ -53,7 +53,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		getSQFDataTypes
 	---------------------------------------------------------------------------- */
-    getSQFDataTypes(input: string): SQFDataType[] {
+    private getSQFDataTypes(input: string): SQFDataType[] {
         const edgeNothingMatch = input.match(/\|r\d*=\s*Nothing/);
         if (edgeNothingMatch) {
             const typeCovnerted =
@@ -99,7 +99,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		convertParsingSyntax
 	---------------------------------------------------------------------------- */
-    convertParsingSyntax(
+    private convertParsingSyntax(
         pageTitle: string,
         parsingSyntax: ParsingSyntax,
         functionSyntaxType?: SQFSyntaxType // TODO: implement means of getting this
@@ -151,7 +151,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		addPageDetailToSyntax
 	---------------------------------------------------------------------------- */
-    addPageDetailToSyntax(
+    private addPageDetailToSyntax(
         parsingSyntaxes: ParsingSyntax[],
         pageDetail: WikiPageDetail
     ) {
@@ -226,7 +226,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		parseWikiPage
 	---------------------------------------------------------------------------- */
-    parseWikiPage(page: WikiPage): string {
+    public parseWikiPage(page: WikiPage): string {
         if (!page.title || !page.revision || !page.revision.text) return "";
 
         const actualTitle = BikiTextInterpreter.getProperTitle(page.title);
