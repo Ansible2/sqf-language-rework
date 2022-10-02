@@ -10,7 +10,6 @@ import {
 import { BikiTextInterpreter } from "./BikiTextInterpreter";
 import {
     WikiPage,
-    ParsedWikiPage,
     WikiPageDetail,
     WikiPageDetailType,
     ParsedSyntax,
@@ -371,6 +370,7 @@ export class MediaWikiConverter {
     public static getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
         const matchPageDetailsRegEx =
             /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
+			// //(?<=^{{RV[.\s\S]*)(\|[\s\w]*\=(?!\=))(?=([.\s\S]*}}$))/ig; // New Regex for selecting multiline and getting rid of erran '==' select
         const pageDetails: RegExpMatchArray | null | undefined =
             page.revision?.text?.match(matchPageDetailsRegEx);
         if (!pageDetails || pageDetails.length < 1) return [];
