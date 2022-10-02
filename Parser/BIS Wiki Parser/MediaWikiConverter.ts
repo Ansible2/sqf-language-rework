@@ -68,7 +68,8 @@ export class MediaWikiConverter {
             /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
         );
         if (!typeMatches) {
-            throw `Could not find type in string: ${input}`;
+            console.log(`Could not find type in string: ${input}`);
+			return [];
         }
 
         const matchesParsed = typeMatches.flatMap((match: string) => {
@@ -112,14 +113,15 @@ export class MediaWikiConverter {
         let syntaxType: SQFSyntaxType = SQFSyntaxType.NularOperator;
         let leftArgTypes: SQFDataType[] | null = null;
         let rightArgTypes: SQFDataType[] | null = null;
-
-        if (!parsingSyntax.syntax.returnType) {
-            throw `${pageTitle} has no return type for syntax: ${parsingSyntax}`;
+		
+		let returnType = parsingSyntax.syntax.returnType;
+        if (!returnType) {
+            console.log(`${pageTitle} has no return type for syntax: ${parsingSyntax.syntax}`);
         }
 
         const parsedSyntax = {
             pageTitle: pageTitle,
-            returnType: parsingSyntax.syntax.returnType,
+            returnType: returnType,
         } as ParsedSyntax;
 
         if (MediaWikiConverter.currentParsedPageType !== SQFSyntaxType.Empty) {
@@ -169,7 +171,7 @@ export class MediaWikiConverter {
         const isParameter = pageDetail.type === WikiPageDetailType.Parameter;
         const isReturn = pageDetail.type === WikiPageDetailType.Return;
         if (!isParameter && !isReturn) return;
-
+		
         const typesParsed = MediaWikiConverter.getSQFDataTypes(pageDetail.detail);
         if (typesParsed.length < 1) {
             console.log(

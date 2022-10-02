@@ -1,16 +1,22 @@
-import { IJSON, SQFGrammarType, SQFDataType, SQFEffect, SQFArgument } from "../SQFParser.namespace";
+import {
+    IJSON,
+    SQFGrammarType,
+    SQFDataType,
+    SQFEffect,
+    SQFArgument,
+} from "../SQFParser.namespace";
 import { WikiPageDetailType, WikiPageType } from "./BikiTypes";
 
 interface DetailTypeChecker {
-	checkFunction: (a: string) => boolean,
-	wikiType: WikiPageDetailType
+    checkFunction: (a: string) => boolean;
+    wikiType: WikiPageDetailType;
 }
 
 export class BikiTextInterpreter {
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		wikiTypeToDataTypeMap
 	---------------------------------------------------------------------------- */
-	private static readonly wikiTypeToDataTypeMap: IJSON<SQFDataType> = {
+    private static readonly wikiTypeToDataTypeMap: IJSON<SQFDataType> = {
         NUMBER: SQFDataType.Number,
         SCALAR: SQFDataType.Number,
         "DIARY RECORD": SQFDataType.DiaryRecord,
@@ -26,6 +32,8 @@ export class BikiTextInterpreter {
         ANYTHING: SQFDataType.Any,
         NAMESPACE: SQFDataType.Namespace,
         "EDEN ENTITY": SQFDataType.EdenEntity,
+        EDITOROBJECT: SQFDataType.Object,
+        "EDITOR OBJECT": SQFDataType.Object,
         NAN: SQFDataType.NaN,
         IF: SQFDataType.IfType,
         "IF TYPE": SQFDataType.IfType,
@@ -74,13 +82,13 @@ export class BikiTextInterpreter {
         POSITIONAGL: SQFDataType.PositionAGL,
         POSITIONRELATIVE: SQFDataType.PositionRelative,
         "PARTICLE ARRAY": SQFDataType.ParticleArray,
+        PARTICLEARRAY: SQFDataType.ParticleArray,
     };
 
-
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		commandNameMap
 	---------------------------------------------------------------------------- */
-	public static readonly commandNameMap: IJSON<string> = {
+    public static readonly commandNameMap: IJSON<string> = {
         "a && b": "'&&'",
         "a or b": "'||'",
         "a hash b": "'#'",
@@ -105,54 +113,54 @@ export class BikiTextInterpreter {
         "config greater greater name": "'>>'",
     };
 
-
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		grammarTypeMap
 	---------------------------------------------------------------------------- */
-	private static readonly grammarTypeMap: IJSON<SQFGrammarType> = {
-		// todo: implement
-	};
+    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = {
+        // todo: implement
+    };
 
-
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		grammarTypeMap
 	---------------------------------------------------------------------------- */
-	public getSQFDataType(unParsedType: string): SQFDataType {
+    public getSQFDataType(unParsedType: string): SQFDataType {
         const typeParsed =
-			BikiTextInterpreter.wikiTypeToDataTypeMap[unParsedType.toUpperCase()];
-		if (!typeParsed) {
-			console.log(`getSQFDataType: Did not find parse type for: ${unParsedType}`);
-		}
+            BikiTextInterpreter.wikiTypeToDataTypeMap[
+                unParsedType.toUpperCase().trim()
+            ];
+        // if (!typeParsed) {
+        //     console.log(
+        //         `getSQFDataType: Did not find parse type for: ${unParsedType}`
+        //     );
+        // }
 
         return typeParsed;
     }
 
-
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getProperTitle
 	---------------------------------------------------------------------------- */
-	public static getProperTitle(wikiTitile: string): string {
-		wikiTitile = wikiTitile.trim();
-        if (typeof wikiTitile == "boolean") {
-			// ensuring it is not mistaken by JS for an actual bool value
-            wikiTitile = new Boolean(wikiTitile).toString();
+    public static getProperTitle(wikiTitle: string): string {
+        if (typeof wikiTitle == "boolean") {
+            // ensuring it is not mistaken by JS for an actual bool value
+            wikiTitle = new Boolean(wikiTitle).toString();
         }
-
-        const mappedName = BikiTextInterpreter.commandNameMap[wikiTitile];
+        
+		wikiTitle = wikiTitle.trim();
+        const mappedName = BikiTextInterpreter.commandNameMap[wikiTitle];
         if (mappedName) {
             return mappedName;
         }
-		
-		// xml does not preserve underscores but replaces them with spaces
-		const underscoredTitle = wikiTitile.replace(/\ /g,'_');
+
+        // xml does not preserve underscores but replaces them with spaces
+        const underscoredTitle = wikiTitle.replace(/\ /g, "_");
         return underscoredTitle;
     }
 
-	
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		Misc Type Checkers
 	---------------------------------------------------------------------------- */
-	private static isSyntax(stringToCheck: string): boolean {
+    private static isSyntax(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|s\d*\=/);
     }
     private static isParameter(stringToCheck: string): boolean {
@@ -180,50 +188,73 @@ export class BikiTextInterpreter {
         return !!stringToCheck.match(/^\|exec\s*\=/);
     }
 
-	private static readonly detailTypeCheckers: DetailTypeChecker[] = [
-		{checkFunction: this.isFunctionExecution, wikiType: WikiPageDetailType.FunctionExecution,},
-		{checkFunction: this.isPageType, wikiType: WikiPageDetailType.PageType,},
-		{checkFunction: this.isSyntax, wikiType: WikiPageDetailType.Syntax,},
-		{checkFunction: this.isParameter, wikiType: WikiPageDetailType.Parameter,},
-		{checkFunction: this.isReturnType, wikiType: WikiPageDetailType.Return,},
-		{checkFunction: this.isExample, wikiType: WikiPageDetailType.Example,},
-		{checkFunction: this.isDescription, wikiType: WikiPageDetailType.Description,},
-		{checkFunction: this.isArgLocality, wikiType: WikiPageDetailType.ArgLocality,},
-		{checkFunction: this.isEffectLocality, wikiType: WikiPageDetailType.EffectLocality,},
-	];
+    private static readonly detailTypeCheckers: DetailTypeChecker[] = [
+        {
+            checkFunction: this.isFunctionExecution,
+            wikiType: WikiPageDetailType.FunctionExecution,
+        },
+        {
+            checkFunction: this.isPageType,
+            wikiType: WikiPageDetailType.PageType,
+        },
+        { checkFunction: this.isSyntax, wikiType: WikiPageDetailType.Syntax },
+        {
+            checkFunction: this.isParameter,
+            wikiType: WikiPageDetailType.Parameter,
+        },
+        {
+            checkFunction: this.isReturnType,
+            wikiType: WikiPageDetailType.Return,
+        },
+        { checkFunction: this.isExample, wikiType: WikiPageDetailType.Example },
+        {
+            checkFunction: this.isDescription,
+            wikiType: WikiPageDetailType.Description,
+        },
+        {
+            checkFunction: this.isArgLocality,
+            wikiType: WikiPageDetailType.ArgLocality,
+        },
+        {
+            checkFunction: this.isEffectLocality,
+            wikiType: WikiPageDetailType.EffectLocality,
+        },
+    ];
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getDetailType
 	---------------------------------------------------------------------------- */
-	public getDetailType(detail: string): WikiPageDetailType {
-		for (const {checkFunction, wikiType} of BikiTextInterpreter.detailTypeCheckers) {
-			if (checkFunction(detail)) {
-				return wikiType;
-			}
-		}
+    public getDetailType(detail: string): WikiPageDetailType {
+        for (const {
+            checkFunction,
+            wikiType,
+        } of BikiTextInterpreter.detailTypeCheckers) {
+            if (checkFunction(detail)) {
+                return wikiType;
+            }
+        }
 
-		return WikiPageDetailType.Unknown;
-	}
+        return WikiPageDetailType.Unknown;
+    }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getSQFGrammarType
 	---------------------------------------------------------------------------- */
-	public getSQFGrammarType(name: string): SQFGrammarType {
-		name = name.toLowerCase();
-		if (name.includes('_fnc_')) {
-			return SQFGrammarType.Function;
-		}
-		
-		const type = BikiTextInterpreter.grammarTypeMap[name];
-		if (type) {
-			return type;
-		}
+    public getSQFGrammarType(name: string): SQFGrammarType {
+        name = name.toLowerCase();
+        if (name.includes("_fnc_")) {
+            return SQFGrammarType.Function;
+        }
 
-		return SQFGrammarType.Command;
-	}
+        const type = BikiTextInterpreter.grammarTypeMap[name];
+        if (type) {
+            return type;
+        }
 
+        return SQFGrammarType.Command;
+    }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getEffectLocality
 	---------------------------------------------------------------------------- */
     public getEffectLocality(pageDetail: string): SQFEffect | null {
@@ -234,11 +265,10 @@ export class BikiTextInterpreter {
             return SQFEffect.LOCAL;
         }
 
-		return null;
+        return null;
     }
 
-
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getEffectLocality
 	---------------------------------------------------------------------------- */
     public getArgumentLocality(pageDetail: string): SQFArgument | null {
@@ -249,24 +279,25 @@ export class BikiTextInterpreter {
             return SQFArgument.LOCAL;
         }
 
-		return null;
+        return null;
     }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getWikiPageType
 	---------------------------------------------------------------------------- */
-	public getWikiPageType(pageDetail: string): WikiPageType {
-		const match: RegExpMatchArray | null = pageDetail.match(/(?<=\|type\s*=)\w*/i);
-		if (match) {
-			const pageType = match[0].toLowerCase();
-			if (pageType === WikiPageType.Function) {
-				return WikiPageType.Function;
-			}
-			if (pageType === WikiPageType.Command) {
-				return WikiPageType.Function;
-			}
-		}
+    public getWikiPageType(pageDetail: string): WikiPageType {
+        const match: RegExpMatchArray | null =
+            pageDetail.match(/(?<=\|type\s*=)\w*/i);
+        if (match) {
+            const pageType = match[0].toLowerCase();
+            if (pageType === WikiPageType.Function) {
+                return WikiPageType.Function;
+            }
+            if (pageType === WikiPageType.Command) {
+                return WikiPageType.Function;
+            }
+        }
 
-		return WikiPageType.Unknown;
-	}
+        return WikiPageType.Unknown;
+    }
 }

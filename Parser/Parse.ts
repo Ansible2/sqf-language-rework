@@ -3,7 +3,7 @@ import { BikiParser } from "./BIS Wiki Parser/BikiParser";
 
 try {
 	const parser = new BikiParser();
-	const pages = parser.getPages(path.resolve(__dirname,"../scripts/edgecases.xml"));
+	const pages = parser.getPages(path.resolve(__dirname,"../scripts/fullPage.xml"));
 	const parsedPages = parser.parsePages(pages);
 	parser.doWithParsedPages(parsedPages);
 } catch (error) {
