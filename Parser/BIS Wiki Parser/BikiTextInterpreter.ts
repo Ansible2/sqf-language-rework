@@ -52,6 +52,7 @@ export class BikiTextInterpreter {
         OBJECT: SQFDataType.Object,
         TARGET: SQFDataType.Object,
         OBJECTRTD: SQFDataType.Object,
+		REMOTEEXEC: SQFDataType.String,
         VECTOR: SQFDataType.Vector,
         SIDE: SQFDataType.Side,
         GROUP: SQFDataType.Group,

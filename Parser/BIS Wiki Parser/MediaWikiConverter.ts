@@ -51,18 +51,41 @@ export class MediaWikiConverter {
         new BikiTextInterpreter();
     public static currentParsedPageType: SQFSyntaxType = SQFSyntaxType.Empty;
     constructor() {}
-
-    /* ----------------------------------------------------------------------------
+	/* ----------------------------------------------------------------------------
 		getSQFDataTypes
 	---------------------------------------------------------------------------- */
-    private static getSQFDataTypes(input: string): SQFDataType[] {
-        const edgeNothingMatch = input.match(/\|r\d*=\s*Nothing/);
+	private static findEdgeCaseMatches(input: string): SQFDataType[] {
+		const edgeNothingMatch = input.match(/\|r\d*=\s*Nothing/);
         if (edgeNothingMatch) {
             const typeCovnerted =
                 MediaWikiConverter.textInterpreter.getSQFDataType("Nothing");
 
             return [typeCovnerted];
         }
+
+		const nameSpaceEdgeMatch = input.includes("varspace: variable space in which variable can be set.");
+		if (nameSpaceEdgeMatch) {
+			const typeCovnerted = MediaWikiConverter.textInterpreter.getSQFDataType("Namespace");
+			return [typeCovnerted];
+		}
+
+		const edgeArrayMatch = input.includes("|r1= in format [x,y] in meters");
+		if (edgeArrayMatch) {
+			const typeCovnerted = MediaWikiConverter.textInterpreter.getSQFDataType("Array");
+			return [typeCovnerted];
+		}
+
+		return [];
+	}
+
+    /* ----------------------------------------------------------------------------
+		getSQFDataTypes
+	---------------------------------------------------------------------------- */
+    private static getSQFDataTypes(input: string): SQFDataType[] {
+        const edgeReturn = MediaWikiConverter.findEdgeCaseMatches(input);
+		if (edgeReturn.length > 0) {
+			return edgeReturn;
+		}
 
         const typeMatches: RegExpMatchArray | null = input.match(
             /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
