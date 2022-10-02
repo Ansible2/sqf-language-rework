@@ -1,4 +1,4 @@
-import { IJSON, SQFGrammarType, SQFDataType } from "../SQFParser.namespace";
+import { IJSON, SQFGrammarType, SQFDataType, SQFEffect, SQFArgument } from "../SQFParser.namespace";
 import { WikiPageDetailType } from "./BikiTypes";
 
 interface DetailTypeChecker {
@@ -213,4 +213,34 @@ export class BikiTextInterpreter {
 
 		return SQFGrammarType.Command;
 	}
+
+
+	/* ----------------------------------------------------------------------------
+		getEffectLocality
+	---------------------------------------------------------------------------- */
+    public getEffectLocality(pageDetail: string): SQFEffect | null {
+        pageDetail = pageDetail.toLowerCase();
+        if (pageDetail.includes("global")) {
+            return SQFEffect.GLOBAL;
+        } else if (pageDetail.includes("local")) {
+            return SQFEffect.LOCAL;
+        }
+
+		return null;
+    }
+
+
+	/* ----------------------------------------------------------------------------
+		getEffectLocality
+	---------------------------------------------------------------------------- */
+    public getArgumentLocality(pageDetail: string): SQFArgument | null {
+        pageDetail = pageDetail.toLowerCase();
+        if (pageDetail.includes("global")) {
+            return SQFArgument.GLOBAL;
+        } else if (pageDetail.includes("local")) {
+            return SQFArgument.LOCAL;
+        }
+
+		return null;
+    }
 }

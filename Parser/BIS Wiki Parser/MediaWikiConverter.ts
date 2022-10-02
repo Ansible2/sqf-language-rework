@@ -1,5 +1,7 @@
 import {
+    SQFArgument,
     SQFDataType,
+    SQFEffect,
     SQFGrammarType,
     SQFSyntaxType,
     SyntaxMatchDifference,
@@ -23,6 +25,14 @@ interface ParsingSyntax {
     };
 }
 
+interface ParsedPage {
+    title: string;
+    syntaxes: ParsedSyntax[];
+    argumentLocality?: SQFArgument;
+    effectLocality?: SQFEffect;
+    grammarType: SQFGrammarType;
+}
+
 function findLastIndex<T>(
     array: Array<T>,
     predicate: (value: T, index: number, obj: T[]) => boolean
@@ -39,7 +49,6 @@ export class MediaWikiConverter {
     constructor() {
         this.textInterpreter = new BikiTextInterpreter();
     }
-
 
     /* ----------------------------------------------------------------------------
 		getSQFDataTypes
@@ -86,7 +95,6 @@ export class MediaWikiConverter {
         const filtered = matchesParsed.filter((item) => item);
         return filtered as SQFDataType[];
     }
-
 
     /* ----------------------------------------------------------------------------
 		convertParsingSyntax
@@ -140,7 +148,6 @@ export class MediaWikiConverter {
         return parsedSyntax;
     }
 
-
     /* ----------------------------------------------------------------------------
 		addPageDetailToSyntax
 	---------------------------------------------------------------------------- */
@@ -184,7 +191,6 @@ export class MediaWikiConverter {
         }
     }
 
-
     /* ----------------------------------------------------------------------------
 		getParsedSyntaxes
 	---------------------------------------------------------------------------- */
@@ -217,7 +223,6 @@ export class MediaWikiConverter {
         return parsedSyntaxes;
     }
 
-
     /* ----------------------------------------------------------------------------
 		parseWikiPage
 	---------------------------------------------------------------------------- */
@@ -238,6 +243,40 @@ export class MediaWikiConverter {
             this.textInterpreter.getSQFGrammarType(page.title.toLowerCase());
         parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
 
+        const parsedPage: ParsedPage = {
+            title: page.title,
+            syntaxes: parsedSyntaxes,
+            grammarType: grammarType,
+        };
+
+        // handle misc details
+        pageDetails.forEach((pageDetail) => {
+            switch (pageDetail.type) {
+                case WikiPageDetailType.ArgLocality: {
+                    const argumentLocality =
+                        this.textInterpreter.getArgumentLocality(
+                            pageDetail.detail
+                        );
+                    if (argumentLocality) {
+                        parsedPage.argumentLocality = argumentLocality;
+                    }
+                    break;
+                }
+                case WikiPageDetailType.EffectLocality: {
+                    const effectLocality =
+                        this.textInterpreter.getEffectLocality(
+                            pageDetail.detail
+                        );
+                    if (effectLocality) {
+                        parsedPage.effectLocality = effectLocality;
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
+        });
+
         // TODO:
         // parse argument
         // parse effect
@@ -247,7 +286,6 @@ export class MediaWikiConverter {
 
         return "";
     }
-
 
     /* ----------------------------------------------------------------------------
 		getWikiPageDetails
@@ -274,7 +312,6 @@ export class MediaWikiConverter {
         return detailsParsed;
     }
 
-	
     /* ----------------------------------------------------------------------------
 		areSyntaxTypesEqual
 	---------------------------------------------------------------------------- */
@@ -306,7 +343,6 @@ export class MediaWikiConverter {
         return false;
     }
 
-
     /* ----------------------------------------------------------------------------
 		getSyntaxDifference
 	---------------------------------------------------------------------------- */
@@ -337,28 +373,27 @@ export class MediaWikiConverter {
         if (mainSyntaxType === SQFSyntaxType.BinaryOperator) {
             if (leftArgIsDefined && !leftArgIsTheSame && rightArgIsTheSame) {
                 return SyntaxMatchDifference.leftArg;
-
-            } else if (rightArgIsDefined && !rightArgIsTheSame && leftArgIsTheSame) {
+            } else if (
+                rightArgIsDefined &&
+                !rightArgIsTheSame &&
+                leftArgIsTheSame
+            ) {
                 return SyntaxMatchDifference.rightArg;
-
             }
         }
 
-		if (mainSyntaxType === SQFSyntaxType.UnaryOperator) {
+        if (mainSyntaxType === SQFSyntaxType.UnaryOperator) {
             if (leftArgIsDefined && !leftArgIsTheSame) {
                 return SyntaxMatchDifference.leftArg;
-
             } else if (rightArgIsDefined && !rightArgIsTheSame) {
                 return SyntaxMatchDifference.rightArg;
-
             }
         }
 
-		return SyntaxMatchDifference.NoMatch;
+        return SyntaxMatchDifference.NoMatch;
     }
 
-	
-	// some syntaxes are virtually identical save for one difference
+    // some syntaxes are virtually identical save for one difference
     // e.g. "apply" can take a rightside arg of type ARRAY or HASHMAP
     // however, the wiki considers these two different syntaxes
     // the idea here is to combine these so that preCompiledSQFSyntax just has an array
@@ -391,58 +426,57 @@ export class MediaWikiConverter {
                 const syntaxMatchDiff: SyntaxMatchDifference =
                     this.getSyntaxDifference(mainSyntax, compareSyntax);
 
-				if (syntaxMatchDiff === SyntaxMatchDifference.NoMatch) continue;
-				
+                if (syntaxMatchDiff === SyntaxMatchDifference.NoMatch) continue;
 
-				if (
-					syntaxMatchDiff === SyntaxMatchDifference.leftArg && 
-					mainSyntax.leftArgTypes
-				) {
-					mainSyntax.leftArgTypes = [
-						...mainSyntax.leftArgTypes,
-						...compareSyntax.leftArgTypes!,
-					];
-				} else if (
-					syntaxMatchDiff === SyntaxMatchDifference.rightArg &&
-					mainSyntax.rightArgTypes
-				) {
-					mainSyntax.rightArgTypes = [
-						...mainSyntax.rightArgTypes,
-						...compareSyntax.rightArgTypes!,
-					];
-				}
-				
-				checkedSyntaxIndexes.push(comparisonIndex);
+                if (
+                    syntaxMatchDiff === SyntaxMatchDifference.leftArg &&
+                    mainSyntax.leftArgTypes
+                ) {
+                    mainSyntax.leftArgTypes = [
+                        ...mainSyntax.leftArgTypes,
+                        ...compareSyntax.leftArgTypes!,
+                    ];
+                } else if (
+                    syntaxMatchDiff === SyntaxMatchDifference.rightArg &&
+                    mainSyntax.rightArgTypes
+                ) {
+                    mainSyntax.rightArgTypes = [
+                        ...mainSyntax.rightArgTypes,
+                        ...compareSyntax.rightArgTypes!,
+                    ];
+                }
+
+                checkedSyntaxIndexes.push(comparisonIndex);
             }
 
-			consolidatedSyntaxes.push(mainSyntax);
+            consolidatedSyntaxes.push(mainSyntax);
         }
-		
-		// some syntaxes reference an earlier or later syntax for their return types
-		const indexesWithoutReturnType: number[] = [];
-		let indexWithReturnType = -1;
-		consolidatedSyntaxes.forEach((syntax,index) => {
-			if (!syntax.returnType) {
-				indexesWithoutReturnType.push(index);
-			} else {
-				indexWithReturnType = index;
-			}
 
-			// filter duplicates
-			if (syntax.leftArgTypes && Array.isArray(syntax.leftArgTypes)) {
-				syntax.leftArgTypes = [...new Set(syntax.leftArgTypes)];
-			}	
-			if (syntax.rightArgTypes && Array.isArray(syntax.rightArgTypes)) {
-				syntax.rightArgTypes = [...new Set(syntax.rightArgTypes)];
-			}	
-		});
+        // some syntaxes reference an earlier or later syntax for their return types
+        const indexesWithoutReturnType: number[] = [];
+        let indexWithReturnType = -1;
+        consolidatedSyntaxes.forEach((syntax, index) => {
+            if (!syntax.returnType) {
+                indexesWithoutReturnType.push(index);
+            } else {
+                indexWithReturnType = index;
+            }
 
-		if (indexesWithoutReturnType.length && (indexWithReturnType !== -1)) {
-			indexesWithoutReturnType.forEach((indexWithoutReturnType) => {
-				consolidatedSyntaxes[indexWithoutReturnType].returnType = 
-					consolidatedSyntaxes[indexWithReturnType].returnType;
-			})
-		}
+            // filter duplicates
+            if (syntax.leftArgTypes && Array.isArray(syntax.leftArgTypes)) {
+                syntax.leftArgTypes = [...new Set(syntax.leftArgTypes)];
+            }
+            if (syntax.rightArgTypes && Array.isArray(syntax.rightArgTypes)) {
+                syntax.rightArgTypes = [...new Set(syntax.rightArgTypes)];
+            }
+        });
+
+        if (indexesWithoutReturnType.length && indexWithReturnType !== -1) {
+            indexesWithoutReturnType.forEach((indexWithoutReturnType) => {
+                consolidatedSyntaxes[indexWithoutReturnType].returnType =
+                    consolidatedSyntaxes[indexWithReturnType].returnType;
+            });
+        }
 
         return consolidatedSyntaxes;
     }
