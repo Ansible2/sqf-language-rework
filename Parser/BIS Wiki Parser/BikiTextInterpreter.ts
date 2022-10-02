@@ -1,5 +1,5 @@
 import { IJSON, SQFGrammarType, SQFDataType, SQFEffect, SQFArgument } from "../SQFParser.namespace";
-import { WikiPageDetailType } from "./BikiTypes";
+import { WikiPageDetailType, WikiPageType } from "./BikiTypes";
 
 interface DetailTypeChecker {
 	checkFunction: (a: string) => boolean,
@@ -173,8 +173,16 @@ export class BikiTextInterpreter {
     private static isEffectLocality(stringToCheck: string): boolean {
         return stringToCheck.startsWith("|eff");
     }
+    private static isPageType(stringToCheck: string): boolean {
+        return stringToCheck.startsWith("|function");
+    }
+    private static isFunctionExecution(stringToCheck: string): boolean {
+        return !!stringToCheck.match(/^\|exec\s*\=/);
+    }
 
 	private static readonly detailTypeCheckers: DetailTypeChecker[] = [
+		{checkFunction: this.isFunctionExecution, wikiType: WikiPageDetailType.FunctionExecution,},
+		{checkFunction: this.isPageType, wikiType: WikiPageDetailType.PageType,},
 		{checkFunction: this.isSyntax, wikiType: WikiPageDetailType.Syntax,},
 		{checkFunction: this.isParameter, wikiType: WikiPageDetailType.Parameter,},
 		{checkFunction: this.isReturnType, wikiType: WikiPageDetailType.Return,},
@@ -188,7 +196,7 @@ export class BikiTextInterpreter {
 		getDetailType
 	---------------------------------------------------------------------------- */
 	public getDetailType(detail: string): WikiPageDetailType {
-		for (const {checkFunction,wikiType} of BikiTextInterpreter.detailTypeCheckers) {
+		for (const {checkFunction, wikiType} of BikiTextInterpreter.detailTypeCheckers) {
 			if (checkFunction(detail)) {
 				return wikiType;
 			}
@@ -243,4 +251,22 @@ export class BikiTextInterpreter {
 
 		return null;
     }
+
+	/* ----------------------------------------------------------------------------
+		getWikiPageType
+	---------------------------------------------------------------------------- */
+	public getWikiPageType(pageDetail: string): WikiPageType {
+		const match: RegExpMatchArray | null = pageDetail.match(/(?<=\|type\s*=)\w*/i);
+		if (match) {
+			const pageType = match[0].toLowerCase();
+			if (pageType === WikiPageType.Function) {
+				return WikiPageType.Function;
+			}
+			if (pageType === WikiPageType.Command) {
+				return WikiPageType.Function;
+			}
+		}
+
+		return WikiPageType.Unknown;
+	}
 }

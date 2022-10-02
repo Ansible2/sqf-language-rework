@@ -10,10 +10,11 @@ export interface WikiPage {
 export enum WikiPageType {
 	Function = "function",
 	Command = "command",
+	Unknown = "unknown",
 }
 
 export enum WikiPageDetailType {
-	Type,
+	PageType,
 	Parameter,
 	Syntax,
 	Description,
@@ -22,6 +23,7 @@ export enum WikiPageDetailType {
 	Return,
 	Example,
 	Unknown,
+	FunctionExecution,
 }
 
 export interface WikiPageDetail {

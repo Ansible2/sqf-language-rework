@@ -13,6 +13,7 @@ import {
     WikiPageDetail,
     WikiPageDetailType,
     ParsedSyntax,
+	WikiPageType,
 } from "./BikiTypes";
 
 interface ParsingSyntax {
@@ -102,7 +103,8 @@ export class MediaWikiConverter {
     private convertParsingSyntax(
         pageTitle: string,
         parsingSyntax: ParsingSyntax,
-        functionSyntaxType?: SQFSyntaxType // TODO: implement means of getting this
+		// TODO: implement means of getting functionSyntaxType
+        functionSyntaxType?: SQFSyntaxType 
     ): ParsedSyntax {
         const parsingSyntaxDetails = parsingSyntax.syntax;
         let syntaxType: SQFSyntaxType = SQFSyntaxType.NularOperator;
@@ -235,6 +237,13 @@ export class MediaWikiConverter {
 
         const pageDetails: WikiPageDetail[] = this.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
+		
+		let wikiPageType: WikiPageType = WikiPageType.Unknown;
+		pageDetails.forEach((pageDetail) => {
+			if (pageDetail.type !== WikiPageDetailType.PageType) return;
+			wikiPageType = this.textInterpreter.getWikiPageType(pageDetail.detail);
+		});
+
 
         let parsedSyntaxes: ParsedSyntax[] =
             this.getParsedSyntaxes(pageDetails);
