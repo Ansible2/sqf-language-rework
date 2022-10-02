@@ -50,11 +50,18 @@ export class MediaWikiConverter {
         new BikiTextInterpreter();
     public static currentParsedPageType: SQFSyntaxType = SQFSyntaxType.Empty;
     constructor() {}
-	/* ----------------------------------------------------------------------------
-		getSQFDataTypes
+    /* ----------------------------------------------------------------------------
+		findEdgeCaseMatches
 	---------------------------------------------------------------------------- */
-	private static findEdgeCaseMatches(input: string): SQFDataType[] {
-		const edgeNothingMatch = input.match(/\|r\d*=\s*Nothing/);
+    private static findEdgeCaseMatches(input: string): SQFDataType[] {
+        const edgeIdenticalMatch = input.includes("b: identical to ''a''");
+        if (edgeIdenticalMatch) {
+            const identicalType =
+                MediaWikiConverter.textInterpreter.getSQFDataType("Identical");
+            return [identicalType];
+        }
+
+        const edgeNothingMatch = input.match(/\|r\d*=\s*Nothing/);
         if (edgeNothingMatch) {
             const typeCovnerted =
                 MediaWikiConverter.textInterpreter.getSQFDataType("Nothing");
@@ -62,36 +69,40 @@ export class MediaWikiConverter {
             return [typeCovnerted];
         }
 
-		const nameSpaceEdgeMatch = input.includes("varspace: variable space in which variable can be set.");
-		if (nameSpaceEdgeMatch) {
-			const typeCovnerted = MediaWikiConverter.textInterpreter.getSQFDataType("Namespace");
-			return [typeCovnerted];
-		}
+        const nameSpaceEdgeMatch = input.includes(
+            "varspace: variable space in which variable can be set."
+        );
+        if (nameSpaceEdgeMatch) {
+            const typeCovnerted =
+                MediaWikiConverter.textInterpreter.getSQFDataType("Namespace");
+            return [typeCovnerted];
+        }
 
-		const edgeArrayMatch = input.includes("|r1= in format [x,y] in meters");
-		if (edgeArrayMatch) {
-			const typeCovnerted = MediaWikiConverter.textInterpreter.getSQFDataType("Array");
-			return [typeCovnerted];
-		}
+        const edgeArrayMatch = input.includes("|r1= in format [x,y] in meters");
+        if (edgeArrayMatch) {
+            const typeCovnerted =
+                MediaWikiConverter.textInterpreter.getSQFDataType("Array");
+            return [typeCovnerted];
+        }
 
-		return [];
-	}
+        return [];
+    }
 
     /* ----------------------------------------------------------------------------
 		getSQFDataTypes
 	---------------------------------------------------------------------------- */
     private static getSQFDataTypes(input: string): SQFDataType[] {
         const edgeReturn = MediaWikiConverter.findEdgeCaseMatches(input);
-		if (edgeReturn.length > 0) {
-			return edgeReturn;
-		}
+        if (edgeReturn.length > 0) {
+            return edgeReturn;
+        }
 
         const typeMatches: RegExpMatchArray | null = input.match(
             /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
         );
         if (!typeMatches) {
             console.log(`Could not find type in string: ${input}`);
-			return [];
+            return [];
         }
 
         const matchesParsed = typeMatches.flatMap((match: string) => {
@@ -135,10 +146,12 @@ export class MediaWikiConverter {
         let syntaxType: SQFSyntaxType = SQFSyntaxType.NularOperator;
         let leftArgTypes: SQFDataType[] | null = null;
         let rightArgTypes: SQFDataType[] | null = null;
-		
-		let returnType = parsingSyntax.syntax.returnType;
+
+        let returnType = parsingSyntax.syntax.returnType;
         if (!returnType) {
-            console.log(`${pageTitle} has no return type for syntax: ${parsingSyntax.syntax}`);
+            console.log(
+                `${pageTitle} has no return type for syntax: ${parsingSyntax.syntax}`
+            );
         }
 
         const parsedSyntax = {
@@ -183,7 +196,6 @@ export class MediaWikiConverter {
         parsingSyntaxes: ParsingSyntax[],
         pageDetail: WikiPageDetail
     ) {
-
         const indexOfSyntax = findLastIndex(
             parsingSyntaxes,
             (syntax) => syntax.detailIndex < pageDetail.index
@@ -193,8 +205,10 @@ export class MediaWikiConverter {
         const isParameter = pageDetail.type === WikiPageDetailType.Parameter;
         const isReturn = pageDetail.type === WikiPageDetailType.Return;
         if (!isParameter && !isReturn) return;
-		
-        const typesParsed = MediaWikiConverter.getSQFDataTypes(pageDetail.detail);
+
+        const typesParsed = MediaWikiConverter.getSQFDataTypes(
+            pageDetail.detail
+        );
         if (typesParsed.length < 1) {
             console.log(
                 "Could not parse any types for a detail on command",
@@ -207,6 +221,27 @@ export class MediaWikiConverter {
         if (isParameter) {
             if (parsingSyntax.syntax.parameters_1) {
                 parsingSyntax.syntax.parameters_2 = typesParsed;
+				
+				// some commands (!= & == for example)
+				// list param 'b' as being identical to 'a'
+                const parameters_1IsIdentical =
+                    parsingSyntax.syntax.parameters_1.includes(
+                        SQFDataType.IDENTICAL
+                    ) && 
+					parsingSyntax.syntax.parameters_1.length === 1;
+
+                const parameters_2IsIdentical =
+                    parsingSyntax.syntax.parameters_2.includes(
+                        SQFDataType.IDENTICAL
+                    ) && 
+					parsingSyntax.syntax.parameters_2.length === 1;
+
+                if (parameters_1IsIdentical && !parameters_2IsIdentical) {
+					parsingSyntax.syntax.parameters_1 = [...parsingSyntax.syntax.parameters_2];
+				} else if (!parameters_1IsIdentical && parameters_2IsIdentical) {
+					parsingSyntax.syntax.parameters_2 = [...parsingSyntax.syntax.parameters_1];
+				}
+				
             } else {
                 parsingSyntax.syntax.parameters_1 = typesParsed;
             }
@@ -223,7 +258,9 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		getParsedSyntaxes
 	---------------------------------------------------------------------------- */
-    private static getParsedSyntaxes(pageDetails: WikiPageDetail[]): ParsedSyntax[] {
+    private static getParsedSyntaxes(
+        pageDetails: WikiPageDetail[]
+    ): ParsedSyntax[] {
         const parsingSyntaxes: ParsingSyntax[] = [];
 
         pageDetails.forEach((detail: WikiPageDetail) => {
@@ -242,12 +279,18 @@ export class MediaWikiConverter {
                 pageDetail.type === WikiPageDetailType.Return ||
                 pageDetail.type === WikiPageDetailType.Parameter
             ) {
-                MediaWikiConverter.addPageDetailToSyntax(parsingSyntaxes, pageDetail);
+                MediaWikiConverter.addPageDetailToSyntax(
+                    parsingSyntaxes,
+                    pageDetail
+                );
             }
         }
 
         const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
-            return MediaWikiConverter.convertParsingSyntax(pageDetails[0].pageTitle, syntax);
+            return MediaWikiConverter.convertParsingSyntax(
+                pageDetails[0].pageTitle,
+                syntax
+            );
         });
         return parsedSyntaxes;
     }
@@ -299,10 +342,10 @@ export class MediaWikiConverter {
         const pageDetails: WikiPageDetail[] =
             MediaWikiConverter.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
-		// console.log("\n\n",page.title);
-		// console.log(pageDetails);
-		// return ''
-		
+        // console.log("\n\n",page.title);
+        // console.log(pageDetails);
+        // return ''
+
         const functionType = MediaWikiConverter.getFunctionType(pageDetails);
         if (functionType !== SQFSyntaxType.Empty) {
             MediaWikiConverter.currentParsedPageType = functionType;
@@ -321,7 +364,10 @@ export class MediaWikiConverter {
             syntaxes: parsedSyntaxes,
             grammarType: grammarType,
         };
-        parsedPage = MediaWikiConverter.addMiscDetailsToParsedPage(parsedPage, pageDetails);
+        parsedPage = MediaWikiConverter.addMiscDetailsToParsedPage(
+            parsedPage,
+            pageDetails
+        );
 
         // TODO:
         // description
@@ -373,8 +419,8 @@ export class MediaWikiConverter {
     public static getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
         const matchPageDetailsRegEx =
             // /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
-			// New Regex for selecting multiline and getting rid of erran '==' select
-			/(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}})|(\|([\s\w]*)\=(?!\=)))/ig 
+            // New Regex for selecting multiline and getting rid of erran '==' select
+            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}})|(\|([\s\w]*)\=(?!\=)))/gi;
         const pageDetails: RegExpMatchArray | null | undefined =
             page.revision?.text?.match(matchPageDetailsRegEx);
         if (!pageDetails || pageDetails.length < 1) return [];
@@ -508,7 +554,10 @@ export class MediaWikiConverter {
                 if (comparisonIndex in checkedSyntaxIndexes) continue;
                 const compareSyntax = parsedSyntaxes[comparisonIndex];
                 const syntaxMatchDiff: SyntaxMatchDifference =
-                    MediaWikiConverter.getSyntaxDifference(mainSyntax, compareSyntax);
+                    MediaWikiConverter.getSyntaxDifference(
+                        mainSyntax,
+                        compareSyntax
+                    );
 
                 if (syntaxMatchDiff === SyntaxMatchDifference.NoMatch) continue;
 

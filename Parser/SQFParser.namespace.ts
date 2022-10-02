@@ -66,6 +66,7 @@ export enum SQFDataType {
     ParticleArray = "SQFDataType.ParticleArray",
     Color = "SQFDataType.Color",
     ColorAlpha = "SQFDataType.ColorAlpha",
+    IDENTICAL = "IDENTICAL",
 }
 
 export enum SQFSyntaxType {

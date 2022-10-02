@@ -84,6 +84,7 @@ export class BikiTextInterpreter {
         POSITIONRELATIVE: SQFDataType.PositionRelative,
         "PARTICLE ARRAY": SQFDataType.ParticleArray,
         PARTICLEARRAY: SQFDataType.ParticleArray,
+		IDENTICAL: SQFDataType.IDENTICAL,
     };
 
     /* ----------------------------------------------------------------------------
