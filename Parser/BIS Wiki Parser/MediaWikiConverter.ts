@@ -370,7 +370,8 @@ export class MediaWikiConverter {
     public static getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
         const matchPageDetailsRegEx =
             /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
-			// /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*}}$)|(\|([\s\w]*)\=(?!\=)))/ig // New Regex for selecting multiline and getting rid of erran '==' select
+			// New Regex for selecting multiline and getting rid of erran '==' select
+			// /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}})|(\|([\s\w]*)\=(?!\=)))/ig 
         const pageDetails: RegExpMatchArray | null | undefined =
             page.revision?.text?.match(matchPageDetailsRegEx);
         if (!pageDetails || pageDetails.length < 1) return [];
