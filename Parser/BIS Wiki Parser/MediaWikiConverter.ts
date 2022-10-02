@@ -13,7 +13,7 @@ import {
     WikiPageDetail,
     WikiPageDetailType,
     ParsedSyntax,
-	WikiPageType,
+    WikiPageType,
 } from "./BikiTypes";
 
 interface ParsingSyntax {
@@ -47,6 +47,7 @@ function findLastIndex<T>(
 
 export class MediaWikiConverter {
     private textInterpreter: BikiTextInterpreter;
+	private currentParsedPageType: SQFSyntaxType = SQFSyntaxType.Empty;
     constructor() {
         this.textInterpreter = new BikiTextInterpreter();
     }
@@ -103,8 +104,6 @@ export class MediaWikiConverter {
     private convertParsingSyntax(
         pageTitle: string,
         parsingSyntax: ParsingSyntax,
-		// TODO: implement means of getting functionSyntaxType
-        functionSyntaxType?: SQFSyntaxType 
     ): ParsedSyntax {
         const parsingSyntaxDetails = parsingSyntax.syntax;
         let syntaxType: SQFSyntaxType = SQFSyntaxType.NularOperator;
@@ -120,8 +119,8 @@ export class MediaWikiConverter {
             returnType: parsingSyntax.syntax.returnType,
         } as ParsedSyntax;
 
-        if (functionSyntaxType) {
-            syntaxType = functionSyntaxType;
+        if (this.currentParsedPageType !== SQFSyntaxType.Empty) {
+            syntaxType = this.currentParsedPageType;
             if (parsingSyntaxDetails.parameters_1) {
                 leftArgTypes = parsingSyntaxDetails.parameters_1;
             }
@@ -224,11 +223,42 @@ export class MediaWikiConverter {
         });
         return parsedSyntaxes;
     }
+		
+	/* ----------------------------------------------------------------------------
+		getFunctionType
+	---------------------------------------------------------------------------- */
+	private getFunctionType(pageDetails: WikiPageDetail[]): SQFSyntaxType {
+		let wikiPageType: WikiPageType = WikiPageType.Unknown;
+		for (const pageDetail of pageDetails) {
+			if (pageDetail.type !== WikiPageDetailType.PageType) continue;
+			wikiPageType = this.textInterpreter.getWikiPageType(
+				pageDetail.detail
+			);
+			break;
+		}
+
+		if (wikiPageType !== WikiPageType.Function) return SQFSyntaxType.Empty;		
+		
+		// is function
+		// functions are by default unscheduled in wiki export
+		let functionType: SQFSyntaxType = SQFSyntaxType.UnscheduledFunction;
+		for (const pageDetail of pageDetails) {
+			if (pageDetail.type !== WikiPageDetailType.FunctionExecution) continue;
+			if (pageDetail.detail.includes("spawn")) {
+				functionType = SQFSyntaxType.ScheduledFunction;
+			}
+
+			break;
+		}
+
+		return functionType;
+	}
 
     /* ----------------------------------------------------------------------------
 		parseWikiPage
 	---------------------------------------------------------------------------- */
     public parseWikiPage(page: WikiPage): string {
+		this.currentParsedPageType = SQFSyntaxType.Empty;
         if (!page.title || !page.revision || !page.revision.text) return "";
 
         const actualTitle = BikiTextInterpreter.getProperTitle(page.title);
@@ -237,13 +267,11 @@ export class MediaWikiConverter {
 
         const pageDetails: WikiPageDetail[] = this.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
-		
-		let wikiPageType: WikiPageType = WikiPageType.Unknown;
-		pageDetails.forEach((pageDetail) => {
-			if (pageDetail.type !== WikiPageDetailType.PageType) return;
-			wikiPageType = this.textInterpreter.getWikiPageType(pageDetail.detail);
-		});
 
+		const functionType = this.getFunctionType(pageDetails);
+		if (functionType !== SQFSyntaxType.Empty) {
+			this.currentParsedPageType = functionType;
+		}
 
         let parsedSyntaxes: ParsedSyntax[] =
             this.getParsedSyntaxes(pageDetails);
@@ -251,13 +279,12 @@ export class MediaWikiConverter {
             this.textInterpreter.getSQFGrammarType(page.title.toLowerCase());
         parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
 
-
         let parsedPage: ParsedPage = {
             title: page.title,
             syntaxes: parsedSyntaxes,
             grammarType: grammarType,
         };
-		parsedPage = this.addMiscDetailsToParsedPage(parsedPage,pageDetails);
+        parsedPage = this.addMiscDetailsToParsedPage(parsedPage, pageDetails);
 
         // TODO:
         // description
@@ -266,12 +293,15 @@ export class MediaWikiConverter {
 
         return "";
     }
-	
-	/* ----------------------------------------------------------------------------
+
+    /* ----------------------------------------------------------------------------
 		addMiscDetailsToParsedPage
 	---------------------------------------------------------------------------- */
-	private addMiscDetailsToParsedPage(parsedPage: ParsedPage, pageDetails: WikiPageDetail[]): ParsedPage {
-		pageDetails.forEach((pageDetail) => {
+    private addMiscDetailsToParsedPage(
+        parsedPage: ParsedPage,
+        pageDetails: WikiPageDetail[]
+    ): ParsedPage {
+        pageDetails.forEach((pageDetail) => {
             switch (pageDetail.type) {
                 case WikiPageDetailType.ArgLocality: {
                     const argumentLocality =
@@ -298,8 +328,8 @@ export class MediaWikiConverter {
             }
         });
 
-		return parsedPage;
-	}
+        return parsedPage;
+    }
 
     /* ----------------------------------------------------------------------------
 		getWikiPageDetails
