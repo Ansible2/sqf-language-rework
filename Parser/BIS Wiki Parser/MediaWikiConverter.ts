@@ -285,13 +285,13 @@ export class MediaWikiConverter {
             grammarType: grammarType,
         };
         parsedPage = this.addMiscDetailsToParsedPage(parsedPage, pageDetails);
+		
 
         // TODO:
         // description
         // examples
         // server
-
-        return "";
+        return this.convertParsedPage(parsedPage);
     }
 
     /* ----------------------------------------------------------------------------
@@ -524,4 +524,73 @@ export class MediaWikiConverter {
 
         return consolidatedSyntaxes;
     }
+
+	/* ----------------------------------------------------------------------------
+		convertSyntaxToString
+	---------------------------------------------------------------------------- */
+	private convertSyntaxToString(syntax: ParsedSyntax): string {
+		const syntaxArray = [
+			"\t{",
+			`\t\ttype: ${syntax.syntaxType}`,
+			`\t\treturnTypes: ${syntax.returnType}`,
+		];
+
+		if (syntax.leftArgTypes) {
+			let insertSyntax = '';
+            if (syntax.leftArgTypes.length > 1) {
+                insertSyntax = `[${syntax.leftArgTypes}]`;
+            } else {				
+				insertSyntax = syntax.leftArgTypes[0];
+			}
+
+            syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
+		}
+
+		if (syntax.rightArgTypes) {
+			let insertSyntax = '';
+            if (syntax.rightArgTypes.length > 1) {
+                insertSyntax = `[${syntax.rightArgTypes}]`;
+            } else {				
+				insertSyntax = syntax.rightArgTypes[0];
+			}
+
+            syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax},`);
+		}
+
+		syntaxArray.push("\t}");
+		return syntaxArray.join("\n");
+	}
+
+	/* ----------------------------------------------------------------------------
+		convertParsedPage
+	---------------------------------------------------------------------------- */
+	private convertParsedPage(parsedPage: ParsedPage): string {
+		const syntaxes = parsedPage.syntaxes;
+		const syntaxesAsString: string[] = syntaxes.map(
+			this.convertSyntaxToString
+		);
+	
+		let finalSyntaxString: string;
+        if (syntaxes.length > 1) {
+            finalSyntaxString = `[\n${syntaxesAsString.join("\t,")}\n]`;
+        } else {
+            finalSyntaxString = syntaxesAsString[0];
+        }
+
+		const finalSyntaxesAsArray: string[] = [
+            `${parsedPage.title}: {`,
+            `\tsyntaxes: ${finalSyntaxString},`,
+            `\tgrammarType: ${parsedPage.grammarType},`,
+        ];
+
+		if (parsedPage.effectLocality) {
+            finalSyntaxesAsArray.push(`\teffect: ${parsedPage.effectLocality},`);
+        }
+        if (parsedPage.argumentLocality) {
+            finalSyntaxesAsArray.push(`\targument: ${parsedPage.argumentLocality},`);
+        }
+		
+        finalSyntaxesAsArray.push("},");
+        return finalSyntaxesAsArray.join("\n");
+	}
 }
