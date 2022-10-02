@@ -241,7 +241,7 @@ export class MediaWikiConverter {
 				} else if (!parameters_1IsIdentical && parameters_2IsIdentical) {
 					parsingSyntax.syntax.parameters_2 = [...parsingSyntax.syntax.parameters_1];
 				}
-				
+
             } else {
                 parsingSyntax.syntax.parameters_1 = typesParsed;
             }
@@ -596,11 +596,21 @@ export class MediaWikiConverter {
             }
 
             // filter duplicates
-            if (syntax.leftArgTypes && Array.isArray(syntax.leftArgTypes)) {
-                syntax.leftArgTypes = [...new Set(syntax.leftArgTypes)];
+            if (syntax.leftArgTypes) {
+				const arrayAsSet = new Set(syntax.leftArgTypes);
+				if (arrayAsSet.has(SQFDataType.Any) && arrayAsSet.has(SQFDataType.Array)) {
+					// this typically means an array of Any rather than an Array OR Any
+					arrayAsSet.delete(SQFDataType.Any);
+				}
+                syntax.leftArgTypes = [...arrayAsSet];
             }
-            if (syntax.rightArgTypes && Array.isArray(syntax.rightArgTypes)) {
-                syntax.rightArgTypes = [...new Set(syntax.rightArgTypes)];
+            if (syntax.rightArgTypes) {
+				const arrayAsSet = new Set(syntax.rightArgTypes);
+				if (arrayAsSet.has(SQFDataType.Any) && arrayAsSet.has(SQFDataType.Array)) {
+					// this typically means an array of Any rather than an Array OR Any
+					arrayAsSet.delete(SQFDataType.Any);
+				}
+                syntax.rightArgTypes = [...arrayAsSet];
             }
         });
 
