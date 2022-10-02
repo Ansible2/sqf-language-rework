@@ -40,6 +40,7 @@ export class MediaWikiConverter {
         this.textInterpreter = new BikiTextInterpreter();
     }
 
+
     /* ----------------------------------------------------------------------------
 		getSQFDataTypes
 	---------------------------------------------------------------------------- */
@@ -85,6 +86,7 @@ export class MediaWikiConverter {
         const filtered = matchesParsed.filter((item) => item);
         return filtered as SQFDataType[];
     }
+
 
     /* ----------------------------------------------------------------------------
 		convertParsingSyntax
@@ -138,6 +140,7 @@ export class MediaWikiConverter {
         return parsedSyntax;
     }
 
+
     /* ----------------------------------------------------------------------------
 		addPageDetailToSyntax
 	---------------------------------------------------------------------------- */
@@ -181,6 +184,7 @@ export class MediaWikiConverter {
         }
     }
 
+
     /* ----------------------------------------------------------------------------
 		getParsedSyntaxes
 	---------------------------------------------------------------------------- */
@@ -213,6 +217,7 @@ export class MediaWikiConverter {
         return parsedSyntaxes;
     }
 
+
     /* ----------------------------------------------------------------------------
 		parseWikiPage
 	---------------------------------------------------------------------------- */
@@ -234,7 +239,6 @@ export class MediaWikiConverter {
         parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
 
         // TODO:
-        // consolidate syntaxes
         // parse argument
         // parse effect
         // description
@@ -243,6 +247,7 @@ export class MediaWikiConverter {
 
         return "";
     }
+
 
     /* ----------------------------------------------------------------------------
 		getWikiPageDetails
@@ -269,6 +274,7 @@ export class MediaWikiConverter {
         return detailsParsed;
     }
 
+	
     /* ----------------------------------------------------------------------------
 		areSyntaxTypesEqual
 	---------------------------------------------------------------------------- */
@@ -299,6 +305,7 @@ export class MediaWikiConverter {
 
         return false;
     }
+
 
     /* ----------------------------------------------------------------------------
 		getSyntaxDifference
@@ -349,7 +356,6 @@ export class MediaWikiConverter {
 
 		return SyntaxMatchDifference.NoMatch;
     }
-
 
 	
 	// some syntaxes are virtually identical save for one difference
@@ -411,6 +417,32 @@ export class MediaWikiConverter {
 
 			consolidatedSyntaxes.push(mainSyntax);
         }
+		
+		// some syntaxes reference an earlier or later syntax for their return types
+		const indexesWithoutReturnType: number[] = [];
+		let indexWithReturnType = -1;
+		consolidatedSyntaxes.forEach((syntax,index) => {
+			if (!syntax.returnType) {
+				indexesWithoutReturnType.push(index);
+			} else {
+				indexWithReturnType = index;
+			}
+
+			// filter duplicates
+			if (syntax.leftArgTypes && Array.isArray(syntax.leftArgTypes)) {
+				syntax.leftArgTypes = [...new Set(syntax.leftArgTypes)];
+			}	
+			if (syntax.rightArgTypes && Array.isArray(syntax.rightArgTypes)) {
+				syntax.rightArgTypes = [...new Set(syntax.rightArgTypes)];
+			}	
+		});
+
+		if (indexesWithoutReturnType.length && (indexWithReturnType !== -1)) {
+			indexesWithoutReturnType.forEach((indexWithoutReturnType) => {
+				consolidatedSyntaxes[indexWithoutReturnType].returnType = 
+					consolidatedSyntaxes[indexWithReturnType].returnType;
+			})
+		}
 
         return consolidatedSyntaxes;
     }
