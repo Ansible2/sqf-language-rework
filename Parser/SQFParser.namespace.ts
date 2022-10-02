@@ -93,6 +93,12 @@ export interface Parser {
     doWithParsedPages: (parsedPages: string[]) => any;
 }
 
+export enum SyntaxMatchDifference {
+    leftArg,
+    rightArg,
+    NoMatch,
+}
+
 export interface IJSON<T> {
     [key: string]: T;
 }

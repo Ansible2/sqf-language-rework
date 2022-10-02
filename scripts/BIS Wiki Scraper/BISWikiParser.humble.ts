@@ -435,7 +435,7 @@ export class BISWikiParser {
     }
 	
 	/* ------------------------------------
-		getSyntaxDifference
+		areTypesEqual
 	------------------------------------ */
 	private areTypesEqual(a?: string[] | string, b?: string[] | string): boolean {
 		if (a === b) return true;

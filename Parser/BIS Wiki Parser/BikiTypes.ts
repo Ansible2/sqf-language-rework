@@ -33,8 +33,8 @@ export interface WikiPageDetail {
 
 export interface ParsedSyntax {
     pageTitle: string;
-    leftArgTypes?: SQFDataType | SQFDataType[];
-    rightArgTypes?: SQFDataType | SQFDataType[];
+    leftArgTypes?: SQFDataType[];
+    rightArgTypes?: SQFDataType[];
     returnType: SQFDataType;
     syntaxType: SQFSyntaxType;
 }
