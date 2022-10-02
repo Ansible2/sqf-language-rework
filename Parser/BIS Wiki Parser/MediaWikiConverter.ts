@@ -238,19 +238,31 @@ export class MediaWikiConverter {
 
         let parsedSyntaxes: ParsedSyntax[] =
             this.getParsedSyntaxes(pageDetails);
-
         const grammarType: SQFGrammarType =
             this.textInterpreter.getSQFGrammarType(page.title.toLowerCase());
         parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
 
-        const parsedPage: ParsedPage = {
+
+        let parsedPage: ParsedPage = {
             title: page.title,
             syntaxes: parsedSyntaxes,
             grammarType: grammarType,
         };
+		parsedPage = this.addMiscDetailsToParsedPage(parsedPage,pageDetails);
 
-        // handle misc details
-        pageDetails.forEach((pageDetail) => {
+        // TODO:
+        // description
+        // examples
+        // server
+
+        return "";
+    }
+	
+	/* ----------------------------------------------------------------------------
+		addMiscDetailsToParsedPage
+	---------------------------------------------------------------------------- */
+	private addMiscDetailsToParsedPage(parsedPage: ParsedPage, pageDetails: WikiPageDetail[]): ParsedPage {
+		pageDetails.forEach((pageDetail) => {
             switch (pageDetail.type) {
                 case WikiPageDetailType.ArgLocality: {
                     const argumentLocality =
@@ -277,15 +289,8 @@ export class MediaWikiConverter {
             }
         });
 
-        // TODO:
-        // parse argument
-        // parse effect
-        // description
-        // examples
-        // server
-
-        return "";
-    }
+		return parsedPage;
+	}
 
     /* ----------------------------------------------------------------------------
 		getWikiPageDetails
