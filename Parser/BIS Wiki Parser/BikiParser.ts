@@ -7,9 +7,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 export class BikiParser implements Parser  {
-	private wikiConveter: MediaWikiConverter;
 	constructor() {
-		this.wikiConveter = new MediaWikiConverter()
 	}
 	
 	/* ----------------------------------------------------------------------------
@@ -29,7 +27,7 @@ export class BikiParser implements Parser  {
 		parsePages
 	---------------------------------------------------------------------------- */
 	public parsePages(pages: WikiPage[]): string[] {
-		const parsedPages: string[] = pages.map(this.wikiConveter.parseWikiPage);
+		const parsedPages: string[] = pages.map(MediaWikiConverter.parseWikiPage);
 		// filter undefined or empty returns
         return parsedPages.filter((page) => page);
 	};
@@ -39,6 +37,11 @@ export class BikiParser implements Parser  {
 		doWithParsedPages
 	---------------------------------------------------------------------------- */
 	public doWithParsedPages(parsedPages: string[]): void {
-		
+		fs.writeFileSync(
+			"./output.ts",
+			`import {SQFDataType, SQFEffect, SQFArgument, SQFGrammarType, SQFSyntaxType} from "./configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join(
+				""
+			)}}`
+		);
 	}
 }

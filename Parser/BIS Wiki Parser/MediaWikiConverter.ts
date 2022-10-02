@@ -1,3 +1,4 @@
+import { BISWikiParser } from "../../scripts/BIS Wiki Scraper/BISWikiParser.humble";
 import {
     SQFArgument,
     SQFDataType,
@@ -46,20 +47,19 @@ function findLastIndex<T>(
 }
 
 export class MediaWikiConverter {
-    private textInterpreter: BikiTextInterpreter;
-	private currentParsedPageType: SQFSyntaxType = SQFSyntaxType.Empty;
-    constructor() {
-        this.textInterpreter = new BikiTextInterpreter();
-    }
+    public static textInterpreter: BikiTextInterpreter =
+        new BikiTextInterpreter();
+    public static currentParsedPageType: SQFSyntaxType = SQFSyntaxType.Empty;
+    constructor() {}
 
     /* ----------------------------------------------------------------------------
 		getSQFDataTypes
 	---------------------------------------------------------------------------- */
-    private getSQFDataTypes(input: string): SQFDataType[] {
+    private static getSQFDataTypes(input: string): SQFDataType[] {
         const edgeNothingMatch = input.match(/\|r\d*=\s*Nothing/);
         if (edgeNothingMatch) {
             const typeCovnerted =
-                this.textInterpreter.getSQFDataType("Nothing");
+                MediaWikiConverter.textInterpreter.getSQFDataType("Nothing");
 
             return [typeCovnerted];
         }
@@ -74,7 +74,7 @@ export class MediaWikiConverter {
         const matchesParsed = typeMatches.flatMap((match: string) => {
             if (!match.includes("|")) {
                 const convertedType =
-                    this.textInterpreter.getSQFDataType(match);
+                    MediaWikiConverter.textInterpreter.getSQFDataType(match);
                 if (convertedType) {
                     return convertedType;
                 }
@@ -83,7 +83,10 @@ export class MediaWikiConverter {
             // check each match for "|" to see if it's an array
             const multipleTypes = match.split("|");
             const mappedTypes = multipleTypes.map((matchedType: string) => {
-                const type = this.textInterpreter.getSQFDataType(matchedType);
+                const type =
+                    MediaWikiConverter.textInterpreter.getSQFDataType(
+                        matchedType
+                    );
 
                 if (type) {
                     return type;
@@ -101,9 +104,9 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		convertParsingSyntax
 	---------------------------------------------------------------------------- */
-    private convertParsingSyntax(
+    private static convertParsingSyntax(
         pageTitle: string,
-        parsingSyntax: ParsingSyntax,
+        parsingSyntax: ParsingSyntax
     ): ParsedSyntax {
         const parsingSyntaxDetails = parsingSyntax.syntax;
         let syntaxType: SQFSyntaxType = SQFSyntaxType.NularOperator;
@@ -119,8 +122,8 @@ export class MediaWikiConverter {
             returnType: parsingSyntax.syntax.returnType,
         } as ParsedSyntax;
 
-        if (this.currentParsedPageType !== SQFSyntaxType.Empty) {
-            syntaxType = this.currentParsedPageType;
+        if (MediaWikiConverter.currentParsedPageType !== SQFSyntaxType.Empty) {
+            syntaxType = MediaWikiConverter.currentParsedPageType;
             if (parsingSyntaxDetails.parameters_1) {
                 leftArgTypes = parsingSyntaxDetails.parameters_1;
             }
@@ -152,7 +155,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		addPageDetailToSyntax
 	---------------------------------------------------------------------------- */
-    private addPageDetailToSyntax(
+    private static addPageDetailToSyntax(
         parsingSyntaxes: ParsingSyntax[],
         pageDetail: WikiPageDetail
     ) {
@@ -195,7 +198,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		getParsedSyntaxes
 	---------------------------------------------------------------------------- */
-    private getParsedSyntaxes(pageDetails: WikiPageDetail[]): ParsedSyntax[] {
+    private static getParsedSyntaxes(pageDetails: WikiPageDetail[]): ParsedSyntax[] {
         const parsingSyntaxes: ParsingSyntax[] = [];
 
         pageDetails.forEach((detail: WikiPageDetail) => {
@@ -214,69 +217,75 @@ export class MediaWikiConverter {
                 pageDetail.type === WikiPageDetailType.Return ||
                 pageDetail.type === WikiPageDetailType.Parameter
             ) {
-                this.addPageDetailToSyntax(parsingSyntaxes, pageDetail);
+                MediaWikiConverter.addPageDetailToSyntax(parsingSyntaxes, pageDetail);
             }
         }
 
         const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
-            return this.convertParsingSyntax(pageDetails[0].pageTitle, syntax);
+            return MediaWikiConverter.convertParsingSyntax(pageDetails[0].pageTitle, syntax);
         });
         return parsedSyntaxes;
     }
-		
-	/* ----------------------------------------------------------------------------
+
+    /* ----------------------------------------------------------------------------
 		getFunctionType
 	---------------------------------------------------------------------------- */
-	private getFunctionType(pageDetails: WikiPageDetail[]): SQFSyntaxType {
-		let wikiPageType: WikiPageType = WikiPageType.Unknown;
-		for (const pageDetail of pageDetails) {
-			if (pageDetail.type !== WikiPageDetailType.PageType) continue;
-			wikiPageType = this.textInterpreter.getWikiPageType(
-				pageDetail.detail
-			);
-			break;
-		}
+    private static getFunctionType(
+        pageDetails: WikiPageDetail[]
+    ): SQFSyntaxType {
+        let wikiPageType: WikiPageType = WikiPageType.Unknown;
+        for (const pageDetail of pageDetails) {
+            if (pageDetail.type !== WikiPageDetailType.PageType) continue;
+            wikiPageType = MediaWikiConverter.textInterpreter.getWikiPageType(
+                pageDetail.detail
+            );
+            break;
+        }
 
-		if (wikiPageType !== WikiPageType.Function) return SQFSyntaxType.Empty;		
-		
-		// is function
-		// functions are by default unscheduled in wiki export
-		let functionType: SQFSyntaxType = SQFSyntaxType.UnscheduledFunction;
-		for (const pageDetail of pageDetails) {
-			if (pageDetail.type !== WikiPageDetailType.FunctionExecution) continue;
-			if (pageDetail.detail.includes("spawn")) {
-				functionType = SQFSyntaxType.ScheduledFunction;
-			}
+        if (wikiPageType !== WikiPageType.Function) return SQFSyntaxType.Empty;
 
-			break;
-		}
+        // is function
+        // functions are by default unscheduled in wiki export
+        let functionType: SQFSyntaxType = SQFSyntaxType.UnscheduledFunction;
+        for (const pageDetail of pageDetails) {
+            if (pageDetail.type !== WikiPageDetailType.FunctionExecution)
+                continue;
+            if (pageDetail.detail.includes("spawn")) {
+                functionType = SQFSyntaxType.ScheduledFunction;
+            }
 
-		return functionType;
-	}
+            break;
+        }
+
+        return functionType;
+    }
 
     /* ----------------------------------------------------------------------------
 		parseWikiPage
 	---------------------------------------------------------------------------- */
-    public parseWikiPage(page: WikiPage): string {
-		this.currentParsedPageType = SQFSyntaxType.Empty;
+    public static parseWikiPage(page: WikiPage): string {
+        MediaWikiConverter.currentParsedPageType = SQFSyntaxType.Empty;
         if (!page.title || !page.revision || !page.revision.text) return "";
 
         const actualTitle = BikiTextInterpreter.getProperTitle(page.title);
         if (actualTitle.startsWith("Category:")) return "";
         page.title = actualTitle;
 
-        const pageDetails: WikiPageDetail[] = this.getWikiPageDetails(page);
+        const pageDetails: WikiPageDetail[] =
+            MediaWikiConverter.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
 
-		const functionType = this.getFunctionType(pageDetails);
-		if (functionType !== SQFSyntaxType.Empty) {
-			this.currentParsedPageType = functionType;
-		}
+        const functionType = MediaWikiConverter.getFunctionType(pageDetails);
+        if (functionType !== SQFSyntaxType.Empty) {
+            MediaWikiConverter.currentParsedPageType = functionType;
+        }
 
         let parsedSyntaxes: ParsedSyntax[] =
-            this.getParsedSyntaxes(pageDetails);
+            MediaWikiConverter.getParsedSyntaxes(pageDetails);
         const grammarType: SQFGrammarType =
-            this.textInterpreter.getSQFGrammarType(page.title.toLowerCase());
+            MediaWikiConverter.textInterpreter.getSQFGrammarType(
+                page.title.toLowerCase()
+            );
         parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
 
         let parsedPage: ParsedPage = {
@@ -285,7 +294,6 @@ export class MediaWikiConverter {
             grammarType: grammarType,
         };
         parsedPage = this.addMiscDetailsToParsedPage(parsedPage, pageDetails);
-		
 
         // TODO:
         // description
@@ -297,7 +305,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		addMiscDetailsToParsedPage
 	---------------------------------------------------------------------------- */
-    private addMiscDetailsToParsedPage(
+    private static addMiscDetailsToParsedPage(
         parsedPage: ParsedPage,
         pageDetails: WikiPageDetail[]
     ): ParsedPage {
@@ -305,7 +313,7 @@ export class MediaWikiConverter {
             switch (pageDetail.type) {
                 case WikiPageDetailType.ArgLocality: {
                     const argumentLocality =
-                        this.textInterpreter.getArgumentLocality(
+                        MediaWikiConverter.textInterpreter.getArgumentLocality(
                             pageDetail.detail
                         );
                     if (argumentLocality) {
@@ -315,7 +323,7 @@ export class MediaWikiConverter {
                 }
                 case WikiPageDetailType.EffectLocality: {
                     const effectLocality =
-                        this.textInterpreter.getEffectLocality(
+                        MediaWikiConverter.textInterpreter.getEffectLocality(
                             pageDetail.detail
                         );
                     if (effectLocality) {
@@ -334,7 +342,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		getWikiPageDetails
 	---------------------------------------------------------------------------- */
-    private getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
+    public static getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
         const matchPageDetailsRegEx =
             /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
         const pageDetails: RegExpMatchArray | null | undefined =
@@ -347,7 +355,9 @@ export class MediaWikiConverter {
                 return {
                     pageTitle: page.title!,
                     index: index,
-                    type: this.textInterpreter.getDetailType(detail),
+                    type: MediaWikiConverter.textInterpreter.getDetailType(
+                        detail
+                    ),
                     detail: detail,
                 };
             }
@@ -359,7 +369,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		areSyntaxTypesEqual
 	---------------------------------------------------------------------------- */
-    private areSyntaxTypesEqual(
+    private static areSyntaxTypesEqual(
         a?: string[] | string,
         b?: string[] | string
     ): boolean {
@@ -390,7 +400,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		getSyntaxDifference
 	---------------------------------------------------------------------------- */
-    private getSyntaxDifference(
+    private static getSyntaxDifference(
         mainSyntax: ParsedSyntax,
         compareSyntax: ParsedSyntax
     ): SyntaxMatchDifference {
@@ -445,7 +455,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		consolidateSyntaxes
 	---------------------------------------------------------------------------- */
-    private consolidateSyntaxes(
+    private static consolidateSyntaxes(
         parsedSyntaxes: ParsedSyntax[]
     ): ParsedSyntax[] {
         const consolidatedSyntaxes: ParsedSyntax[] = [];
@@ -525,72 +535,76 @@ export class MediaWikiConverter {
         return consolidatedSyntaxes;
     }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		convertSyntaxToString
 	---------------------------------------------------------------------------- */
-	private convertSyntaxToString(syntax: ParsedSyntax): string {
-		const syntaxArray = [
-			"\t{",
-			`\t\ttype: ${syntax.syntaxType}`,
-			`\t\treturnTypes: ${syntax.returnType}`,
-		];
+    private static convertSyntaxToString(syntax: ParsedSyntax): string {
+        const syntaxArray = [
+            "\t{",
+            `\t\ttype: ${syntax.syntaxType}`,
+            `\t\treturnTypes: ${syntax.returnType}`,
+        ];
 
-		if (syntax.leftArgTypes) {
-			let insertSyntax = '';
+        if (syntax.leftArgTypes) {
+            let insertSyntax = "";
             if (syntax.leftArgTypes.length > 1) {
                 insertSyntax = `[${syntax.leftArgTypes}]`;
-            } else {				
-				insertSyntax = syntax.leftArgTypes[0];
-			}
+            } else {
+                insertSyntax = syntax.leftArgTypes[0];
+            }
 
             syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
-		}
+        }
 
-		if (syntax.rightArgTypes) {
-			let insertSyntax = '';
+        if (syntax.rightArgTypes) {
+            let insertSyntax = "";
             if (syntax.rightArgTypes.length > 1) {
                 insertSyntax = `[${syntax.rightArgTypes}]`;
-            } else {				
-				insertSyntax = syntax.rightArgTypes[0];
-			}
+            } else {
+                insertSyntax = syntax.rightArgTypes[0];
+            }
 
             syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax},`);
-		}
+        }
 
-		syntaxArray.push("\t}");
-		return syntaxArray.join("\n");
-	}
+        syntaxArray.push("\t}");
+        return syntaxArray.join("\n");
+    }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		convertParsedPage
 	---------------------------------------------------------------------------- */
-	private convertParsedPage(parsedPage: ParsedPage): string {
-		const syntaxes = parsedPage.syntaxes;
-		const syntaxesAsString: string[] = syntaxes.map(
-			this.convertSyntaxToString
-		);
-	
-		let finalSyntaxString: string;
+    private static convertParsedPage(parsedPage: ParsedPage): string {
+        const syntaxes = parsedPage.syntaxes;
+        const syntaxesAsString: string[] = syntaxes.map(
+            this.convertSyntaxToString
+        );
+
+        let finalSyntaxString: string;
         if (syntaxes.length > 1) {
             finalSyntaxString = `[\n${syntaxesAsString.join("\t,")}\n]`;
         } else {
             finalSyntaxString = syntaxesAsString[0];
         }
 
-		const finalSyntaxesAsArray: string[] = [
+        const finalSyntaxesAsArray: string[] = [
             `${parsedPage.title}: {`,
             `\tsyntaxes: ${finalSyntaxString},`,
             `\tgrammarType: ${parsedPage.grammarType},`,
         ];
 
-		if (parsedPage.effectLocality) {
-            finalSyntaxesAsArray.push(`\teffect: ${parsedPage.effectLocality},`);
+        if (parsedPage.effectLocality) {
+            finalSyntaxesAsArray.push(
+                `\teffect: ${parsedPage.effectLocality},`
+            );
         }
         if (parsedPage.argumentLocality) {
-            finalSyntaxesAsArray.push(`\targument: ${parsedPage.argumentLocality},`);
+            finalSyntaxesAsArray.push(
+                `\targument: ${parsedPage.argumentLocality},`
+            );
         }
-		
+
         finalSyntaxesAsArray.push("},");
         return finalSyntaxesAsArray.join("\n");
-	}
+    }
 }
