@@ -160,19 +160,11 @@ export class MediaWikiConverter {
         pageDetail: WikiPageDetail
     ) {
 
-		// TODO: fix this
-		// proper syntax is not always selected and logically it is at least incomplete
         const indexOfSyntax = findLastIndex(
             parsingSyntaxes,
             (syntax) => syntax.detailIndex < pageDetail.index
         );
         const parsingSyntax = parsingSyntaxes[indexOfSyntax];
-		console.log("Detail index:",pageDetail.index);
-		//
-
-		if (!parsingSyntax) {
-			console.log("parsingSyntaxes:\n",parsingSyntaxes);
-		}
 
         const isParameter = pageDetail.type === WikiPageDetailType.Parameter;
         const isReturn = pageDetail.type === WikiPageDetailType.Return;
