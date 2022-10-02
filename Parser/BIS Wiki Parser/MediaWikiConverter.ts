@@ -159,17 +159,26 @@ export class MediaWikiConverter {
         parsingSyntaxes: ParsingSyntax[],
         pageDetail: WikiPageDetail
     ) {
+
+		// TODO: fix this
+		// proper syntax is not always selected and logically it is at least incomplete
         const indexOfSyntax = findLastIndex(
             parsingSyntaxes,
-            (syntax) => syntax.detailIndex > pageDetail.index
+            (syntax) => syntax.detailIndex < pageDetail.index
         );
         const parsingSyntax = parsingSyntaxes[indexOfSyntax];
+		console.log("Detail index:",pageDetail.index);
+		//
+
+		if (!parsingSyntax) {
+			console.log("parsingSyntaxes:\n",parsingSyntaxes);
+		}
 
         const isParameter = pageDetail.type === WikiPageDetailType.Parameter;
         const isReturn = pageDetail.type === WikiPageDetailType.Return;
         if (!isParameter && !isReturn) return;
 
-        const typesParsed = this.getSQFDataTypes(pageDetail.detail);
+        const typesParsed = MediaWikiConverter.getSQFDataTypes(pageDetail.detail);
         if (typesParsed.length < 1) {
             console.log(
                 "Could not parse any types for a detail on command",
@@ -286,20 +295,20 @@ export class MediaWikiConverter {
             MediaWikiConverter.textInterpreter.getSQFGrammarType(
                 page.title.toLowerCase()
             );
-        parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
+        parsedSyntaxes = MediaWikiConverter.consolidateSyntaxes(parsedSyntaxes);
 
         let parsedPage: ParsedPage = {
             title: page.title,
             syntaxes: parsedSyntaxes,
             grammarType: grammarType,
         };
-        parsedPage = this.addMiscDetailsToParsedPage(parsedPage, pageDetails);
+        parsedPage = MediaWikiConverter.addMiscDetailsToParsedPage(parsedPage, pageDetails);
 
         // TODO:
         // description
         // examples
         // server
-        return this.convertParsedPage(parsedPage);
+        return MediaWikiConverter.convertParsedPage(parsedPage);
     }
 
     /* ----------------------------------------------------------------------------
@@ -415,11 +424,11 @@ export class MediaWikiConverter {
 
         const leftArgIsDefined: boolean = !!mainSyntax.leftArgTypes;
         const rightArgIsDefined: boolean = !!mainSyntax.rightArgTypes;
-        const leftArgIsTheSame = this.areSyntaxTypesEqual(
+        const leftArgIsTheSame = MediaWikiConverter.areSyntaxTypesEqual(
             mainSyntax.leftArgTypes,
             compareSyntax.leftArgTypes
         );
-        const rightArgIsTheSame = this.areSyntaxTypesEqual(
+        const rightArgIsTheSame = MediaWikiConverter.areSyntaxTypesEqual(
             mainSyntax.rightArgTypes,
             compareSyntax.rightArgTypes
         );
@@ -478,7 +487,7 @@ export class MediaWikiConverter {
                 if (comparisonIndex in checkedSyntaxIndexes) continue;
                 const compareSyntax = parsedSyntaxes[comparisonIndex];
                 const syntaxMatchDiff: SyntaxMatchDifference =
-                    this.getSyntaxDifference(mainSyntax, compareSyntax);
+                    MediaWikiConverter.getSyntaxDifference(mainSyntax, compareSyntax);
 
                 if (syntaxMatchDiff === SyntaxMatchDifference.NoMatch) continue;
 
@@ -541,8 +550,8 @@ export class MediaWikiConverter {
     private static convertSyntaxToString(syntax: ParsedSyntax): string {
         const syntaxArray = [
             "\t{",
-            `\t\ttype: ${syntax.syntaxType}`,
-            `\t\treturnTypes: ${syntax.returnType}`,
+            `\t\ttype: ${syntax.syntaxType},`,
+            `\t\treturnTypes: ${syntax.returnType},`,
         ];
 
         if (syntax.leftArgTypes) {
@@ -577,7 +586,7 @@ export class MediaWikiConverter {
     private static convertParsedPage(parsedPage: ParsedPage): string {
         const syntaxes = parsedPage.syntaxes;
         const syntaxesAsString: string[] = syntaxes.map(
-            this.convertSyntaxToString
+            MediaWikiConverter.convertSyntaxToString
         );
 
         let finalSyntaxString: string;
@@ -588,7 +597,7 @@ export class MediaWikiConverter {
         }
 
         const finalSyntaxesAsArray: string[] = [
-            `${parsedPage.title}: {`,
+            `\n${parsedPage.title}: {`,
             `\tsyntaxes: ${finalSyntaxString},`,
             `\tgrammarType: ${parsedPage.grammarType},`,
         ];
