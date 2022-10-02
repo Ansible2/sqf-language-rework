@@ -299,7 +299,10 @@ export class MediaWikiConverter {
         const pageDetails: WikiPageDetail[] =
             MediaWikiConverter.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
-
+		// console.log("\n\n",page.title);
+		// console.log(pageDetails);
+		// return ''
+		
         const functionType = MediaWikiConverter.getFunctionType(pageDetails);
         if (functionType !== SQFSyntaxType.Empty) {
             MediaWikiConverter.currentParsedPageType = functionType;
@@ -369,9 +372,9 @@ export class MediaWikiConverter {
 	---------------------------------------------------------------------------- */
     public static getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
         const matchPageDetailsRegEx =
-            /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
+            // /(\|(\s*|\S*)\=)(.*?(\n*\*.*)*)(?=(\|(\s*|\S*)\=)|(?=}}$)|(?=$))/gim;
 			// New Regex for selecting multiline and getting rid of erran '==' select
-			// /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}})|(\|([\s\w]*)\=(?!\=)))/ig 
+			/(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}})|(\|([\s\w]*)\=(?!\=)))/ig 
         const pageDetails: RegExpMatchArray | null | undefined =
             page.revision?.text?.match(matchPageDetailsRegEx);
         if (!pageDetails || pageDetails.length < 1) return [];
@@ -609,7 +612,7 @@ export class MediaWikiConverter {
 
         let finalSyntaxString: string;
         if (syntaxes.length > 1) {
-            finalSyntaxString = `[\n${syntaxesAsString.join("\t,")}\n]`;
+            finalSyntaxString = `[\n${syntaxesAsString.join(",\n")}\n\t]`;
         } else {
             finalSyntaxString = syntaxesAsString[0];
         }

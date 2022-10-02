@@ -41,7 +41,8 @@ export class BikiParser implements Parser  {
 			"./output.ts",
 			`import {SQFDataType, SQFEffect, SQFArgument, SQFGrammarType, SQFSyntaxType} from "./configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join(
 				""
-			)}}`
+			)}\n}`
+			
 		);
 	}
 }
