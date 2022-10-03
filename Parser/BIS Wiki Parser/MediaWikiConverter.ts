@@ -373,6 +373,8 @@ export class MediaWikiConverter {
         // description
         // examples
         // server
+		// add check to any in side array handler that will only remove the Any if is proceeds an
+		/// Array entry so that is was definately parsed as Array of Any
         return MediaWikiConverter.convertParsedPage(parsedPage);
     }
 
