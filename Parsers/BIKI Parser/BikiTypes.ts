@@ -30,7 +30,10 @@ export interface WikiPageDetail {
 	pageTitle: string,
 	index: number,
 	type: WikiPageDetailType,
-	detail: string,
+	detailFull: string,
+	detailContent?: string,
+	detailNameFull?: string,
+	detailName?: string,
 }
 
 export interface ParsedSyntax {
