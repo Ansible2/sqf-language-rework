@@ -348,6 +348,8 @@ export class MediaWikiConverter {
             MediaWikiConverter.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
 
+		MediaWikiConverter.writeDocumentation(pageDetails);
+
         const functionType = MediaWikiConverter.getFunctionType(pageDetails);
         if (functionType !== SQFSyntaxType.Empty) {
             MediaWikiConverter.currentParsedPageType = functionType;
@@ -727,7 +729,7 @@ export class MediaWikiConverter {
             "../.ouput/Biki Parser/docs"
         );
         if (fs.existsSync(documentationFolderPath)) {
-            fs.mkdirSync(documentationFolderPath, { recursive: true });
+            // fs.mkdirSync(documentationFolderPath, { recursive: true });
         }
 
         const examples: string[] = [];
@@ -737,6 +739,8 @@ export class MediaWikiConverter {
 
             if (detail.type === WikiPageDetailType.Description) {
                 description = MediaWikiConverter.formatDescription(detail.detailContent);
+				console.log(description);
+				
                 return;
             }
 
