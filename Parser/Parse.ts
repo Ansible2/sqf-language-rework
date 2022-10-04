@@ -1,5 +1,5 @@
 import * as path from "path";
-import { BikiParser } from "./BIS Wiki Parser/BikiParser";
+import { BikiParser } from "./Biki Parser/BikiParser";
 
 try {
 	const parser = new BikiParser();

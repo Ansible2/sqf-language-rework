@@ -1,3 +1,7 @@
+// This was data taken using the script below and Arma 3's "supportInfo" command
+// While it is not used in the project, some may find it useful for their own means
+
+
 // SQF to get (still requires some manual handling of nested double quotes)
 /*
 private _allCommandNames = [];
