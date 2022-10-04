@@ -37,9 +37,19 @@ export class BikiParser implements Parser  {
 		doWithParsedPages
 	---------------------------------------------------------------------------- */
 	public doWithParsedPages(parsedPages: string[]): void {
+		const outputFolder = './Parsers/.output';
+		if (!fs.existsSync(outputFolder)) {
+			fs.mkdirSync(outputFolder);
+		}
+		
+		const BikiOutputFolder = `${outputFolder}/Biki Parser`
+		if (!fs.existsSync(BikiOutputFolder)) {
+			fs.mkdirSync(BikiOutputFolder);
+		}
+
 		fs.writeFileSync(
-			"./output.ts",
-			`import {SQFDataType, SQFEffect, SQFArgument, SQFGrammarType, SQFSyntaxType} from "./configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join(
+			`${BikiOutputFolder}/output.ts`,
+			`import {SQFDataType, SQFEffect, SQFArgument, SQFGrammarType, SQFSyntaxType} from "../../../configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join(
 				""
 			)}\n}`
 			

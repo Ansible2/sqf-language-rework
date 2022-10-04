@@ -3,7 +3,7 @@ import { BikiParser } from "./Biki Parser/BikiParser";
 
 try {
 	const parser = new BikiParser();
-	const pages = parser.getPages(path.resolve(__dirname,"../scripts/fullPage.xml"));
+	const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/commands.MediaWiki.xml"));
 	// const pages = parser.getPages(path.resolve(__dirname,"../scripts/edgecases.xml"));
 	const parsedPages = parser.parsePages(pages);
 	parser.doWithParsedPages(parsedPages);

@@ -1,4 +1,3 @@
-import { BISWikiParser } from "../../scripts/BIS Wiki Scraper/BISWikiParser.humble";
 import {
     SQFArgument,
     SQFDataType,
