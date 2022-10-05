@@ -786,7 +786,7 @@ export class MediaWikiConverter {
 		output = output.replace(/(\'\'+)(.*?)(\'\'+)/gi,"`$2`")
 		
 		// replace SQF wiki type links
-		output = output.replace(/(?<!\<sqf\>[\s\D]*?)(\[\[)([\S\D]*?)(\]\])(?![\s\S]*\<\/sqf\>)/gi,"`$2`");
+		output = output.replace(/(\[\[)([\s\w\d\|]*?)(\]\])/gi,"`$2`");
 
 		// remove tables
 		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
