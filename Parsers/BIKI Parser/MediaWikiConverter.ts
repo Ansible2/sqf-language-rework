@@ -348,7 +348,7 @@ export class MediaWikiConverter {
             MediaWikiConverter.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
 
-		MediaWikiConverter.writeDocumentation(pageDetails);
+		MediaWikiConverter.writeDocumentation(page.title,pageDetails);
 
         const functionType = MediaWikiConverter.getFunctionType(pageDetails);
         if (functionType !== SQFSyntaxType.Empty) {
@@ -723,7 +723,7 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		writeDocumentation
 	---------------------------------------------------------------------------- */
-    private static writeDocumentation(pageDetails: WikiPageDetail[]): void {
+    private static writeDocumentation(pageTitle: string, pageDetails: WikiPageDetail[]): void {
         const documentationFolderPath: string = path.resolve(
             __dirname,
             "../.output/Biki Parser/docs"
@@ -760,7 +760,8 @@ export class MediaWikiConverter {
 		// - need to parse game version references
 		// - some page names (<=) are not valid
 		if (final) {
-			fs.writeFileSync(`${documentationFolderPath}/${pageDetails[0].pageTitle}.md`,final);
+			const filename = this.textInterpreter.getFilename(pageTitle);
+			fs.writeFileSync(`${documentationFolderPath}/${filename}.md`,final);
 		}	
 
     }
@@ -775,6 +776,12 @@ export class MediaWikiConverter {
 		
 		// replace SQF wiki type links
 		output = output.replace(/(\[\[)([\S\D]*?)(\]\])/gi,"`$2`");
+
+		// remove tables
+		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
+
+		// remove notes
+		output = output.replace(/{{Feature[\s\S]*}}/gi,"");
 		
 		// handle external wiki links
 		const linkMatch = output.matchAll(/(\{\{)(([\s\w]+)(\|)*)(([\s\w]+)(\|)*)([\s\w]+)(\}\})/gi);
@@ -793,10 +800,10 @@ export class MediaWikiConverter {
 			output = output.replace(originalString,`[${linkTitle}](${siteBaseUrl}/${endpoint})`);
 		});
 
-		// remove tables
-		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
-		// remove notes
-		output = output.replace(/{{Feature[\s\S]*}}/gi,"");
+		output = output.replace(/\<sqf\>\n+/gi,"```sqf\n");
+		output = output.replace(/\<sqf\>/gi,"```sqf\n");
+		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
+		output = output.replace(/\<\/sqf\>/gi,"\n```");
 
 		// console.log(input);
 		// console.log(output.trim());
@@ -807,10 +814,7 @@ export class MediaWikiConverter {
 		// console.log('\n----------------------------------\n');
 		
 		let output: string = MediaWikiConverter.formatDescription(input);
-		output = output.replace(/\<sqf\>\n+/gi,"```sqf\n");
-		output = output.replace(/\<sqf\>/gi,"```sqf\n");
-		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
-		output = output.replace(/\<\/sqf\>/gi,"\n```");
+		
 		// console.log(output);
 		// console.log('\n----------------------------------\n');
 		return output.trim();

@@ -114,6 +114,28 @@ export class BikiTextInterpreter {
         toString: "'toString'",
         "config greater greater name": "'>>'",
     };
+    
+	/* ----------------------------------------------------------------------------
+		filenameMap
+	---------------------------------------------------------------------------- */
+    private static readonly filenameMap: IJSON<string> = ((obj: object) => {
+		return Object.fromEntries(
+			Object.entries(obj).map(([k, v]) => {
+				// TODO: cleanup into map
+				if (k === "a / b") {
+					k = "a divide b"
+				}
+				if (k === "a : b") {
+					k = "a switch b"
+				}
+				if (k === "a * b") {
+					k = "a times b"
+				}
+
+				return [v, k]
+			})
+		);
+	})(BikiTextInterpreter.commandNameMap);
 
     /* ----------------------------------------------------------------------------
 		grammarTypeMap
@@ -309,6 +331,18 @@ export class BikiTextInterpreter {
 
         return WikiPageType.Unknown;
     }
+
+	/* ----------------------------------------------------------------------------
+		getFilename
+	---------------------------------------------------------------------------- */
+	public getFilename(pageTitle: string): string {
+		const filename = BikiTextInterpreter.filenameMap[pageTitle];
+		if (filename) {
+			return filename;
+		}
+
+		return pageTitle;
+	}
 
 	/* ----------------------------------------------------------------------------
 		getWikiExternalUrl
