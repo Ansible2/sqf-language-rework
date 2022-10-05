@@ -761,9 +761,11 @@ export class MediaWikiConverter {
 		// - some page names (<=) are not valid
 		/*
 		regex selection needs to be able to get [[xxxx]] everywhere but between <sqf> block
+		// /(?<!<sqf>[\s\S]*?)(\[\[)([\s\S]*?)(\]\])/gi WIP
 		// /(?<!\<sqf\>[\s\D]*?)(\[\[)([\S\D]*?)(\]\])(?![\s\S]*\<\/sqf\>)/gi
 			To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
 			<sqf>
+			BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
 			BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
 			</sqf>
 			To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
