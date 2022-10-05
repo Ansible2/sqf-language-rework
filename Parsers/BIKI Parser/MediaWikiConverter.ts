@@ -759,6 +759,15 @@ export class MediaWikiConverter {
 		// - lots of small mistakes with link references
 		// - need to parse game version references
 		// - some page names (<=) are not valid
+		/*
+		regex selection needs to be able to get [[xxxx]] everywhere but between <sqf> block
+		// /(?<!\<sqf\>[\s\D]*?)(\[\[)([\S\D]*?)(\]\])(?![\s\S]*\<\/sqf\>)/gi
+			To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+			<sqf>
+			BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
+			</sqf>
+			To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+		*/
 		if (final) {
 			const filename = this.textInterpreter.getFilename(pageTitle);
 			fs.writeFileSync(`${documentationFolderPath}/${filename}.md`,final);
@@ -772,10 +781,10 @@ export class MediaWikiConverter {
 		output = output.replace(/\[\[File.*?\]\]/gi,"");
 
 		// replace code references
-		output = output.replace(/(\'+)(.*?)(\'+)/gi,"`$2`")
+		output = output.replace(/(\'\'+)(.*?)(\'\'+)/gi,"`$2`")
 		
 		// replace SQF wiki type links
-		output = output.replace(/(\[\[)([\S\D]*?)(\]\])/gi,"`$2`");
+		output = output.replace(/(?<!\<sqf\>[\s\D]*?)(\[\[)([\S\D]*?)(\]\])(?![\s\S]*\<\/sqf\>)/gi,"`$2`");
 
 		// remove tables
 		output = output.replace(/{{{![\s\S]*?}}}/gi,"");

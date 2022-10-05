@@ -687,4 +687,175 @@ private _array = _hashmap apply { _y + " Test" }; // ["Value 2 Test","Value 1 Te
 		  <sha1>5oim3kqdanss2y5nqarfnjy41rnk5vb</sha1>
 		</revision>
 	  </page>
+	  <page>
+		<title>setVectorDirAndUp</title>
+		<ns>0</ns>
+		<id>6823</id>
+		<revision>
+			<id>330368</id>
+			<parentid>321122</parentid>
+			<timestamp>2022-09-04T20:23:26Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>330368</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="6600" sha1="571jsjns3jsspntvrg559c08ssx3tzf" xml:space="preserve">{{RV|type=command
+
+|game1= arma1
+|version1= 1.09
+
+|game2= arma2
+|version2= 1.00
+
+|game3= arma2oa
+|version3= 1.50
+
+|game4= tkoh
+|version4= 1.00
+
+|game5= arma3
+|version5= 0.50
+
+|arg= local
+
+|eff= global
+
+|gr2= Math - Vectors
+
+|descr= [[File:Vectordirandup.jpg|right|300px]] Sets orientation of an object.
+The command takes 2 vector arrays, one for [[vectorDir]] and one for [[vectorUp]].
+Default object orientation will always have [[vectorDir]] pointing forward (North) along Y axis and [[vectorUp]] pointing up along Z axis - [[0,1,0],[0,0,1]], as shown on the diagram below (see also [[BIS_fnc_transformVectorDirAndUp]]).&lt;br&gt;
+
+When attaching object to an object the axes are relative to the object that gets the attachment.
+If it is player object for example, then X goes from left to right, Y goes from back to front, and Z goes from down up.&lt;br&gt;
+
+The [[setDir]] command is incompatible with [[setVectorDirAndUp]] and should not be used together on the same object.
+Using [[setVectorDirAndUp]] alone should be sufficient for any orientation.
+
+|s1= vehicle [[setVectorDirAndUp]] [vectorDir, vectorUp]
+
+|p1= vehicle: [[Object]]
+
+|p2= vectorDir: [[Array]] format [[Vector3D]] - [[vectorDir]]
+
+|p3= vectorUp: [[Array]] format [[Vector3D]] - [[vectorUp]]
+
+|r1= [[Nothing]]
+
+|x1= &lt;sqf&gt;
+// set exact yaw, pitch, and roll
+_y = 45; _p = -80; _r = 0;
+BRICK setVectorDirAndUp [
+	[sin _y * cos _p, cos _y * cos _p, sin _p],
+	[[sin _r, -sin _p, cos _r * cos _p], -_y] call BIS_fnc_rotateVector2D
+];
+&lt;/sqf&gt;
+
+|x2= To rotate BRICK on Z axis 90 degrees clockwise, change its [[vectorDir]] but leave [[vectorUp]] unchanged.
+&lt;sqf&gt;BRICK setVectorDirAndUp [[1,0,0], [0,0,1]];&lt;/sqf&gt;
+
+|x3= To rotate BRICK on Y axis 90 degrees clockwise, change its [[vectorUp]] but leave [[vectorDir]] unchanged.
+&lt;sqf&gt;BRICK setVectorDirAndUp [[0,1,0], [1,0,0]];&lt;/sqf&gt;
+
+|x4= To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+&lt;sqf&gt;BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];&lt;/sqf&gt;
+
+|x5= More complex orientations
+&lt;sqf&gt;
+// tilt forward 90 + rotate left 90
+BRICK setVectorDirAndUp [[1,0,0], [0,1,0]];
+// tilt backward 45 degrees
+BRICK setVectorDirAndUp [[0,0.5,0.5], [0,-0.5,0.5]];
+// tilt forward 30 degrees
+BRICK setVectorDirAndUp [[0,0.66,-0.33], [0,0.33,0.66]];
+&lt;/sqf&gt;
+
+|seealso= [[vectorDir]] [[vectorUp]] [[setVectorDir]] [[setVectorUp]] [[vectorDiff]] [[vectorAdd]] [[vectorMultiply]] [[vectorCrossProduct]] [[vectorDistance]] [[vectorMagnitudeSqr]] [[vectorDistanceSqr]] [[vectorCos]] [[vectorMagnitude]] [[vectorDotProduct]] [[vectorNormalized]] [[vectorFromTo]] [[BIS_fnc_transformVectorDirAndUp]]
+}}
+
+{{Note
+|user= Str
+|timestamp= 20080316095000
+|text= Command can be also used to rotate camera in all three axis (which also mean it is possible to set camera bank).
+}}
+
+{{Note
+|user= General Barron
+|timestamp= 20080509093200
+|text= The object's vectorDir can only control its pitch, while its vectorUp can only control its bank. To set an object's yaw (direction), use the setdir command, before using this command.
+You would think vectorUp would control pitch as well, but any pitch that would be set due to vectorUp is ignored. The same is true with vectorDir and yaw; any vectorDir that would adjust yaw is also ignored. If this doesn't make sense, try to visualize it with a box or soda can.
+This command does NOT work with values relative to a unit, but rather it works with world vectors (think world coordinates as opposed to model coordinates). As a result, this command can be difficult to use in many situations, because the input values needed to get a certain pitch / bank for an object vary, depending on what direction the object is facing (yaw).
+A function to set an object's pitch / bank can be found {{ExternalLink|link= http://www.flashpoint1985.com/cgi-bin/ikonboard311/ikonboard.cgi?s=e219d8da3fd34cabd2501a118a297257;act=ST;f=71;t=73312|text= here}}
+}}
+
+{{Note
+|user= Chris330
+|timestamp= 20091023183900
+|text= Note this odd command may now be better understood. There's a thread about it here:
+{{ExternalLink|link= http://forums.bistudio.com/showthread.php?p=1470985#post1470985|text= BI Studios Forum Thread}}
+}}
+
+{{Note
+|user= ffur2007slx2_5
+|timestamp= 20140601184500
+|text= {{GVI|arma3|1.20}} [[setDir]] overwrites [[setVectorDirAndUp]] (P.S. [[setVectorDirAndUp]] also affects [[setVelocity]].), so use [[setDir]] before [[BIS_fnc_setPitchBank]], which is an easier workaround on vector, if changing yaw, pitch and bank are needed. [[setVectorDirAndUp]] is CCW, so if we wanna to set an obj 40 degrees CW, 170 degrees pitch and 85 degrees bank:
+&lt;sqf&gt;_obj setDir (40 - 180); [_obj, 170, 85] call BIS_fnc_setPitchBank;&lt;/sqf&gt;
+Same as:
+&lt;sqf&gt;_obj setVectorDirAndUp [[0.63,0.75,0.17],[-0.75,0.65,-0.084]];&lt;/sqf&gt;
+Be aware that [[attachTo]] may flip [[vectorDir]] if pitch beyond 90 degrees and cause unexpected behavior to [[BIS_fnc_setPitchBank]], e.g.
+&lt;sqf&gt;[_obj, 100, 0] call BIS_fnc_setPitchBank; // vector: [-0.14,-0.09,0.98],[-0.83,-0.51,-0.17]&lt;/sqf&gt;
+&lt;sqf&gt;_obj attachTo [_logic,[0,0,2]];
+[_obj, 100, 0] call BIS_fnc_setPitchBank; // vector: [0.11,0.33,0.93],[-0.06,0.94,-0.32]
+&lt;/sqf&gt;
+compass direction algorithm failed if obj was attached at present.
+To overcome such limitation we can use fallowing function for a better workaround. (code originated from '''bapedibupa'', remodified)
+&lt;sqf&gt;_obj attachTo [_logic,[0,0,2]];
+[_obj,[120,-78,37]] call fnc_SetPitchBankYaw; // pitch: 120, bank: -78, yaw: 37&lt;/sqf&gt;
+&lt;sqf&gt;fnc_SetPitchBankYaw = {
+	private ["_object", "_rotations", "_aroundX", "_aroundY", "_aroundZ", "_dirX", "_dirY",
+	"_dirZ", "_upX", "_upY", "_upZ", "_dir", "_up", "_dirXTemp", "_upXTemp"];
+	_object = _this select 0;
+	_rotations = _this select 1;
+	_aroundX = _rotations select 0;
+	_aroundY = _rotations select 1;
+	_aroundZ = (360 - (_rotations select 2)) - 360;
+	_dirX = 0;
+	_dirY = 1;
+	_dirZ = 0;
+	_upX = 0;
+	_upY = 0;
+	_upZ = 1;
+	if (_aroundX != 0) then {
+		_dirY = cos _aroundX;
+		_dirZ = sin _aroundX;
+		_upY = -sin _aroundX;
+		_upZ = cos _aroundX;
+	};
+	if (_aroundY != 0) then {
+		_dirX = _dirZ * sin _aroundY;
+		_dirZ = _dirZ * cos _aroundY;
+		_upX = _upZ * sin _aroundY;
+		_upZ = _upZ * cos _aroundY;
+	};
+	if (_aroundZ != 0) then {
+		_dirXTemp = _dirX;
+		_dirX = (_dirXTemp* cos _aroundZ) - (_dirY * sin _aroundZ);
+		_dirY = (_dirY * cos _aroundZ) + (_dirXTemp * sin _aroundZ);
+		_upXTemp = _upX;
+		_upX = (_upXTemp * cos _aroundZ) - (_upY * sin _aroundZ);
+		_upY = (_upY * cos _aroundZ) + (_upXTemp * sin _aroundZ);
+	};
+	_dir = [_dirX,_dirY,_dirZ];
+	_up = [_upX,_upY,_upZ];
+	_object setVectorDirAndUp [_dir,_up];
+};&lt;/sqf&gt;
+}}</text>
+			<sha1>571jsjns3jsspntvrg559c08ssx3tzf</sha1>
+		</revision>
+	</page>
 </mediawiki>
