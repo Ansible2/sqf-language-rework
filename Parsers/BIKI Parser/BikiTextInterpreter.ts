@@ -122,8 +122,15 @@ export class BikiTextInterpreter {
         // todo: implement
     };
 
+	/* ----------------------------------------------------------------------------
+		siteUrlMap
+	---------------------------------------------------------------------------- */
+    private static readonly siteUrlMap: IJSON<string> = {
+        wikipedia: "https://en.wikipedia.org/wiki", // do not include trailing slash
+    };
+
     /* ----------------------------------------------------------------------------
-		grammarTypeMap
+		getSQFDataType
 	---------------------------------------------------------------------------- */
     public getSQFDataType(unParsedType: string): SQFDataType {
         const typeParsed =
@@ -302,4 +309,12 @@ export class BikiTextInterpreter {
 
         return WikiPageType.Unknown;
     }
+
+	/* ----------------------------------------------------------------------------
+		getWikiExternalUrl
+	---------------------------------------------------------------------------- */
+	public getWikiExternalUrl(nameOfSiteOnWiki: string): string | undefined {
+		return BikiTextInterpreter.siteUrlMap[nameOfSiteOnWiki.toLowerCase()];
+	}
+
 }

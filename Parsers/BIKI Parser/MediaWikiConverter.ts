@@ -99,7 +99,7 @@ export class MediaWikiConverter {
         }
 
         const typeMatches: RegExpMatchArray | null = input.match(
-            /(?<=\[\[)(\S*|\D*?)(?=\]\])/gim
+            /(?<=\[\[)([\S\D]*?)(?=\]\])/gi
         );
         if (!typeMatches) {
             console.log(`Could not find type in string: ${input}`);
@@ -726,20 +726,19 @@ export class MediaWikiConverter {
     private static writeDocumentation(pageDetails: WikiPageDetail[]): void {
         const documentationFolderPath: string = path.resolve(
             __dirname,
-            "../.ouput/Biki Parser/docs"
+            "../.output/Biki Parser/docs"
         );
-        if (fs.existsSync(documentationFolderPath)) {
-            // fs.mkdirSync(documentationFolderPath, { recursive: true });
+        if (!fs.existsSync(documentationFolderPath)) {
+            fs.mkdirSync(documentationFolderPath, { recursive: true });
         }
 
-        const examples: string[] = [];
+        let examples: string[] = [];
         let description: string = "";
         pageDetails.forEach((detail: WikiPageDetail) => {
             if (!detail.detailContent) return;
 
             if (detail.type === WikiPageDetailType.Description) {
                 description = MediaWikiConverter.formatDescription(detail.detailContent);
-				console.log(description);
 				
                 return;
             }
@@ -751,14 +750,65 @@ export class MediaWikiConverter {
 				return;
             }
         });
+		examples = examples.map((example,index) => {
+			return `*Example ${index + 1}:*\n${example}`
+		});
 
+		const final = `${description}\n\n\n---\n${examples.join("\n\n")}`
+		if (final) {
+			fs.writeFileSync(`${documentationFolderPath}/${pageDetails[0].pageTitle}.md`,final);
+		}	
 
     }
 
 	private static formatDescription(input: string): string {
-		return input;
+		let output = input;
+		// replace file links
+		output = output.replace(/\[\[File.*?\]\]/gi,"");
+
+		// replace code references
+		output = output.replace(/(\'+)(.*?)(\'+)/gi,"`$2`")
+		
+		// replace SQF wiki type links
+		output = output.replace(/(\[\[)([\S\D]*?)(\]\])/gi,"`$2`");
+		
+		// handle external wiki links
+		const linkMatch = output.matchAll(/(\{\{)(([\s\w]+)(\|)*)(([\s\w]+)(\|)*)([\s\w]+)(\}\})/gi);
+		const linkMatchArray = Array.from(linkMatch);
+		linkMatchArray.forEach((regexMatchArrayForLink) => {
+			const siteName = regexMatchArrayForLink[3];
+			const endpoint = regexMatchArrayForLink[6];
+			const linkTitle = regexMatchArrayForLink[8];
+			const originalString = regexMatchArrayForLink[0];
+			const siteBaseUrl = this.textInterpreter.getWikiExternalUrl(siteName);
+			if (!siteBaseUrl) {
+				output = output.replace(originalString,`<See ${siteName} Reference ${linkTitle}>`);
+				return;
+			}
+
+			output = output.replace(originalString,`[${linkTitle}](${siteBaseUrl}/${endpoint})`);
+		});
+
+		// remove tables
+		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
+		// remove notes
+		output = output.replace(/{{Feature[\s\S]*}}/gi,"");
+
+		// console.log(input);
+		// console.log(output.trim());
+		return output.trim();
 	}
+
 	private static formatExample(input: string): string {
-		return input;
+		// console.log('\n----------------------------------\n');
+		
+		let output: string = MediaWikiConverter.formatDescription(input);
+		output = output.replace(/\<sqf\>\n+/gi,"```sqf\n");
+		output = output.replace(/\<sqf\>/gi,"```sqf\n");
+		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
+		output = output.replace(/\<\/sqf\>/gi,"\n```");
+		// console.log(output);
+		// console.log('\n----------------------------------\n');
+		return output.trim();
 	}
 }
