@@ -754,7 +754,11 @@ export class MediaWikiConverter {
 			return `*Example ${index + 1}:*\n${example}`
 		});
 
-		const final = `${description}\n\n\n---\n${examples.join("\n\n")}`
+		const final = `${description}\n\n\n---\n${examples.join("\n\n")}`;
+		// TODO:
+		// - lots of small mistakes with link references
+		// - need to parse game version references
+		// - some page names (<=) are not valid
 		if (final) {
 			fs.writeFileSync(`${documentationFolderPath}/${pageDetails[0].pageTitle}.md`,final);
 		}	
