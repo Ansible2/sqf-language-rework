@@ -763,12 +763,23 @@ export class MediaWikiConverter {
 		regex selection needs to be able to get [[xxxx]] everywhere but between <sqf> block
 		// /(?<!<sqf>[\s\S]*?)(\[\[)([\s\S]*?)(\]\])/gi WIP
 		// /(?<!\<sqf\>[\s\D]*?)(\[\[)([\S\D]*?)(\]\])(?![\s\S]*\<\/sqf\>)/gi
-			To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
-			<sqf>
-			BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
-			BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
-			</sqf>
-			To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+		// /(?<!<sqf>[\s\S]*?)(\[\[)([\s\w\d\|]*?)(\]\])(?!(<sqf>)[\s\S]*?<\/sqf>)/gi wip
+To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+<sqf>
+BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
+BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
+BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
+</sqf>
+<sqf>
+_result = [0, [0], [[0]]] - [[0]];		// [0, [[0]]] - Since Arma 3
+_result = [0, [0], [[0]]] - [[[0]]];	// [0, [0]]   - Since Arma 3
+</sqf>
+To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
+<sqf>
+BRICK setVectorDirAndUp [[]] [[0,0,-1], [0,1,0]] [[global]];
+BRICK setVectorDirAndUp [[0,_var,global], [global]];
+BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
+</sqf>
 		*/
 		if (final) {
 			const filename = this.textInterpreter.getFilename(pageTitle);

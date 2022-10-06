@@ -858,4 +858,97 @@ To overcome such limitation we can use fallowing function for a better workaroun
 			<sha1>571jsjns3jsspntvrg559c08ssx3tzf</sha1>
 		</revision>
 	</page>
+	<page>
+		<title>-</title>
+		<ns>0</ns>
+		<id>16651</id>
+		<revision>
+			<id>311109</id>
+			<parentid>297475</parentid>
+			<timestamp>2022-05-10T14:37:54Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>311109</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1286" sha1="a76vzm68tc3de10vzwnnbpty2phr07j" xml:space="preserve">{{RV|type=command
+
+|sortKey= #
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Math 
+
+|gr2= Arrays
+
+|descr= Subtracts numbers or arrays from each another, negates a number. For arrays also see [[deleteAt]] and [[deleteRange]].
+{{Feature|arma3|In Arma 3 it is possible to subtract nested arrays.}}
+
+|s1= numberA [[-]] numberB
+
+|p1= numberA: [[Number]]
+
+|p2= numberB: [[Number]]
+
+|r1= [[Number]]
+
+|s2= [[-]] numberA
+
+|p21= numberA: [[Number]]
+
+|r2= [[Number]] - the negative of ''numberA''
+
+|s3= arrayA [[-]] arrayB
+
+|p41= arrayA: [[Array]]
+
+|p42= arrayB: [[Array]]
+
+|r3= [[Array]]
+
+|x1= &lt;sqf&gt;_result = 10 - 7; // result is 3&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;
+_numA = 4;
+_numB = -_numA; // result is -4
+_numB = -_numB; // result is  4
+&lt;/sqf&gt;
+
+|x3= &lt;sqf&gt;_result = [1, 2, 2, player, "String"] - [2, player, player, "String"]; // _result is [1]&lt;/sqf&gt;
+
+|x4= &lt;sqf&gt;_result = [0, [0], [[0]]] - [0]; // [[0], [[0]]]&lt;/sqf&gt;
+
+|x5= &lt;sqf&gt;
+_result = [0, [0], [[0]]] - [[0]];		// [0, [[0]]] - Since Arma 3
+_result = [0, [0], [[0]]] - [[[0]]];	// [0, [0]]   - Since Arma 3
+&lt;/sqf&gt;
+
+|seealso= [[Array]] [[Operators]] [[deleteAt]] [[deleteRange]]
+}}</text>
+			<sha1>a76vzm68tc3de10vzwnnbpty2phr07j</sha1>
+		</revision>
+	</page>
 </mediawiki>
