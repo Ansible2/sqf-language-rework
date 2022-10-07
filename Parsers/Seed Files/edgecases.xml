@@ -734,7 +734,7 @@ Default object orientation will always have [[vectorDir]] pointing forward (Nort
 When attaching object to an object the axes are relative to the object that gets the attachment.
 If it is player object for example, then X goes from left to right, Y goes from back to front, and Z goes from down up.&lt;br&gt;
 
-The [[setDir]] command is incompatible with [[setVectorDirAndUp]] and should not be used together on the same object.
+The [[setDir]] command is incompatible with [[Description.ext#Sound|Description.ext]] and should not be used together on the same object.
 Using [[setVectorDirAndUp]] alone should be sufficient for any orientation.
 
 |s1= vehicle [[setVectorDirAndUp]] [vectorDir, vectorUp]
@@ -949,6 +949,142 @@ _result = [0, [0], [[0]]] - [[[0]]];	// [0, [0]]   - Since Arma 3
 |seealso= [[Array]] [[Operators]] [[deleteAt]] [[deleteRange]]
 }}</text>
 			<sha1>a76vzm68tc3de10vzwnnbpty2phr07j</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>hintC</title>
+		<ns>0</ns>
+		<id>1510</id>
+		<revision>
+			<id>308949</id>
+			<parentid>295661</parentid>
+			<timestamp>2022-04-18T20:22:24Z</timestamp>
+			<contributor>
+				<username>Lou Montana</username>
+				<id>10739</id>
+			</contributor>
+			<minor />
+			<comment>Some wiki formatting</comment>
+			<origin>308949</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="3201" sha1="o4u6dgx53noiluub1hqiy3u3sjow7b3" xml:space="preserve">{{RV|type=command
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|eff= local
+
+|gr1= Interaction
+
+|gr2= Structured Text
+
+|gr3= Strings
+
+|descr= Displays a very basic message dialog in the center of the screen. Player control is taken away until "Continue" is pressed. The message dialog can be dragged around on the screen. After "Continue" has been pressed, the content of the [[hintC]] is repeated in a normal [[hint]].
+{{Feature | Informative | In Singleplayer, the game is paused while the message dialog is visible.}}
+
+|s1= [[hintC]] message
+
+|p1= message: [[String]]
+
+|r1= [[Nothing]]
+
+|s2= title [[hintC]] message
+
+|p21= title: [[String]] - message title
+
+|p22= message: [[String]], [[Structured Text]], [[Array]] of [[String]]s or [[Array]] of [[Structured Text]]
+
+|r2= [[Nothing]]
+
+|x1= &lt;sqf&gt;hintC "Press W to move forward";&lt;/sqf&gt;
+
+|x2= Same as the above in {{arma3}} but without second [[hint]] displayed:&lt;br&gt;[[Image:HintC.jpg|400px|right]]
+&lt;sqf&gt;
+hintC "Press W to move forward";
+hintC_EH = findDisplay 57 displayAddEventHandler ["Unload", {
+	_this spawn {
+		_this select 0 displayRemoveEventHandler ["Unload", hintC_EH];
+		hintSilent "";
+	};
+}];
+&lt;/sqf&gt;
+
+|x3= &lt;sqf&gt;
+"Instructions" hintC [
+	"Press W to move forward.",
+	"Press S to move backwards.",
+	"Use the mouse to turn right or left.",
+	"Press V for weapon sights."
+];
+&lt;/sqf&gt;
+
+|x4= Same as the above in {{arma3}} but without second [[hint]] displayed:&lt;br&gt;[[Image:HintC_array.jpg|400px|right]]
+&lt;sqf&gt;
+"Instructions" hintC [
+	"Press W to move forward.",
+	"Press S to move backwards.",
+	"Use the mouse to turn right or left.",
+	"Press V for weapon sights."
+];
+hintC_EH = findDisplay 72 displayAddEventHandler ["Unload", {
+	_this spawn {
+		_this select 0 displayRemoveEventHandler ["Unload", hintC_EH];
+		hintSilent "";
+	};
+}];
+&lt;/sqf&gt;
+
+|x5= &lt;sqf&gt;
+private _separator = parseText "&lt;br/&gt;------------------------&lt;br/&gt;";
+private _image = "\ca\ui\textures\aus_flag.paa";
+private _message = composeText [image _image, "Heading Text", _separator, "Content"];
+"" hintC _message;
+&lt;/sqf&gt;
+
+|seealso= [[hint]] [[hintCadet]] [[hintSilent]] [[BIS_fnc_guiMessage]]
+}}
+
+{{Note
+|user= Str
+|timestamp= 20060731181800
+|text= This command must be executed after mission start. If you place it into init.sqs or init field of some unit, it will not work. Just add a little delay (~0.001) and the place the command.
+}}
+
+{{Note
+|user= Worldeater
+|timestamp= 20090515234200
+|text= To display multiple messages after another you have to add a small delay in between. Otherwise only the first message will be displayed.
+&lt;sqf&gt;hintC "foo"; sleep 0.1; hintC "bar"&lt;/sqf&gt;
+Without a [[sleep]] statement [[hintC]] will not suspend the script it has been called from.
+}}
+
+{{Note
+|user= Killzone_Kid
+|timestamp= 20150319095200
+|text= "Titled" [[hintC]] uses {{hl|display #72}} while "untitled" one uses {{hl|display #57}}. If you are trying examples in Arma 3 debug console, add a little delay like this:
+&lt;sqf&gt;[] spawn { sleep 0.5; /* your example code goes here*/ };&lt;/sqf&gt; or no [[hintC]] will be displayed.
+}}</text>
+			<sha1>o4u6dgx53noiluub1hqiy3u3sjow7b3</sha1>
 		</revision>
 	</page>
 </mediawiki>

@@ -795,9 +795,30 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 
 		// replace code references
 		output = output.replace(/(\'\'+)(.*?)(\'\'+)/gi,"`$2`")
-		
+
+		const internalLinkMatches = output.matchAll(/(\[\[)([\s\D\|]*?)(\]\])/gi);
+		for (const match of internalLinkMatches) {
+			if (!match.input) continue;
+
+			const text = match[2];
+			const matchedText = match[0];
+			// console.log('\n----------------------------------\n');
+			// console.log("matchedText:",matchedText);
+			// console.log("text:",text);
+			// console.log("output:",output);
+			// console.log("match.input:",match.input);
+			// console.log('\n----------------------------------\n');
+			if (!text.includes('|')) {
+				output = output.replace(matchedText,`\`${text}\``);
+				continue;
+			};
+
+			const [ link, linkTitle ] = text.split('|');
+			output = output.replace(matchedText,`\`${linkTitle}\``);
+		}
+
 		// replace SQF wiki type links
-		output = output.replace(/(\[\[)([\s\w\d\|]*?)(\]\])/gi,"`$2`");
+		// output = output.replace(/(\[\[)([\s\D\|]*?)(\]\])/gi,"`$2`");
 
 		// remove tables
 		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
@@ -822,11 +843,6 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			output = output.replace(originalString,`[${linkTitle}](${siteBaseUrl}/${endpoint})`);
 		});
 
-		output = output.replace(/\<sqf\>\n+/gi,"```sqf\n");
-		output = output.replace(/\<sqf\>/gi,"```sqf\n");
-		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
-		output = output.replace(/\<\/sqf\>/gi,"\n```");
-
 		// console.log(input);
 		// console.log(output.trim());
 		return output.trim();
@@ -834,8 +850,26 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 
 	private static formatExample(input: string): string {
 		// console.log('\n----------------------------------\n');
+		let output: string = input;
+		const sqfCodeMatches = output.matchAll(/(<sqf>)([\s\S]*?)(<\/sqf>)/gi);
+		const savedCodeExamples: string[] = [];
+		for (const match of sqfCodeMatches) {
+			const matchString: string | undefined = match.input;
+			if (!matchString) continue;
+			savedCodeExamples.push(matchString);
+			output = output.replace(matchString,'<SQFCodeToReplace>');
+		}
+		// const sqfCodeMatchesArray = Array.from(sqfCodeMatches);
+		output = MediaWikiConverter.formatDescription(input);
 		
-		let output: string = MediaWikiConverter.formatDescription(input);
+		for (const sqfCode of savedCodeExamples) {
+			output = output.replace('<SQFCodeToReplace>',sqfCode);
+		}
+
+		output = output.replace(/\<sqf\>\n+/gi,"```sqf\n");
+		output = output.replace(/\<sqf\>/gi,"```sqf\n");
+		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
+		output = output.replace(/\<\/sqf\>/gi,"\n```");
 		
 		// console.log(output);
 		// console.log('\n----------------------------------\n');
