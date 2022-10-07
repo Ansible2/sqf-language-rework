@@ -1087,4 +1087,57 @@ Without a [[sleep]] statement [[hintC]] will not suspend the script it has been 
 			<sha1>o4u6dgx53noiluub1hqiy3u3sjow7b3</sha1>
 		</revision>
 	</page>
+	<page>
+		<title>awake</title>
+		<ns>0</ns>
+		<id>31904</id>
+		<revision>
+			<id>321003</id>
+			<parentid>321002</parentid>
+			<timestamp>2022-05-13T10:40:09Z</timestamp>
+			<contributor>
+				<username>killzone_kid</username>
+				<id>9533</id>
+			</contributor>
+			<origin>321003</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1525" sha1="a28lwcxsxil6qaxn0lujo1gdnag3cl8" xml:space="preserve">{{RV|type=command
+
+|game1= arma3
+|version1= 2.08
+
+|arg= global
+
+|eff= local
+
+|gr1= Object Manipulation
+
+|descr= Wakes up sleeping PhysX object or puts a PhysX object to sleep. In 2.10 this command can be used on corpses of type {{hl|Man}} and has no effect on [[alive]] units. When unit gets killed it goes into ragdoll state for a short while, then the units get frozen and any simulation and collision is removed to save system resources. As a result, corpses do not react to their surrounding any more. Using this command will temporarily re-enable ragdoll state of a corpse to the same state it was when unit died. If this command is used in "enable/disable" sequence on a dead body, it gives the corpse a visible nudge (See example 3).
+
+{{Feature|informative|This command won't have lasting effect on vehicles as vehicles are actively simulated, but it works rather well on smaller PhysX enabled objects.}}
+
+|s1= object [[awake]] awake
+
+|p1= object: [[Object]] - PhysX object or dead unit
+
+|p2= awake: [[Boolean]] - [[true]] to awake the object, [[false]] - to put it to sleep
+
+|r1= [[Nothing]]
+
+|x1= &lt;sqf&gt;_object awake false;&lt;/sqf&gt;
+|x2= Since 2.10: &lt;sqf&gt;_deadUnit awake true;&lt;/sqf&gt;
+|x3= Make corpse react to explosion (since 2.10): &lt;sqf&gt;_deadUnit addEventHandler ["Explosion", 
+{
+	params ["_unit", "_damage"];
+	if (_damage &lt; 0.01) exitWith {};
+	_unit awake true;
+	_unit awake false;
+}];&lt;/sqf&gt;
+
+|seealso= [[isAwake]] [[addTorque]] [[addForce]] [[vectorModelToWorld]] [[vectorModelToWorldVisual]] [[selectionPosition]]
+}}</text>
+			<sha1>a28lwcxsxil6qaxn0lujo1gdnag3cl8</sha1>
+		</revision>
+	</page>
 </mediawiki>

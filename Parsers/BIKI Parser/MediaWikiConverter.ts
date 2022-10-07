@@ -826,8 +826,11 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 		// remove notes
 		output = output.replace(/{{Feature[\s\S]*}}/gi,"");
 		
+		// replace emphasized text
+		output = output.replace(/({{hl\|)(.*)(}})/gi,"**$2**");
+
 		// handle external wiki links
-		const linkMatch = output.matchAll(/(\{\{)(([\s\w]+)(\|)*)(([\s\w]+)(\|)*)([\s\w]+)(\}\})/gi);
+		const linkMatch = output.matchAll(/(\{\{)(([\s\w\d]+)(\|)*)(([\s\w\d]+)(\|)*)([\s\w\d]+)(\}\})/gi);
 		const linkMatchArray = Array.from(linkMatch);
 		linkMatchArray.forEach((regexMatchArrayForLink) => {
 			const siteName = regexMatchArrayForLink[3];
@@ -866,8 +869,8 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			output = output.replace('<SQFCodeToReplace>',sqfCode);
 		}
 
-		output = output.replace(/\<sqf\>\n+/gi,"```sqf\n");
-		output = output.replace(/\<sqf\>/gi,"```sqf\n");
+		output = output.replace(/\<sqf\>\n+/gi,"\n```sqf\n");
+		output = output.replace(/\<sqf\>/gi,"\n```sqf\n");
 		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
 		output = output.replace(/\<\/sqf\>/gi,"\n```");
 		
