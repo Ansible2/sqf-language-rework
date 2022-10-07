@@ -6,6 +6,7 @@ import {
     SQFArgument,
 } from "../SQFParser.namespace";
 import { WikiPageDetailType, WikiPageType } from "./BikiTypes";
+import { SQFGrammarTypeMap } from "./SQFCommandsGrammarMap";
 
 interface DetailTypeChecker {
     checkFunction: (a: string) => boolean;
@@ -140,9 +141,7 @@ export class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
 		grammarTypeMap
 	---------------------------------------------------------------------------- */
-    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = {
-        // todo: implement
-    };
+    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = SQFGrammarTypeMap;
 
 	/* ----------------------------------------------------------------------------
 		siteUrlMap
@@ -159,11 +158,6 @@ export class BikiTextInterpreter {
             BikiTextInterpreter.wikiTypeToDataTypeMap[
                 unParsedType.toUpperCase().trim()
             ];
-        // if (!typeParsed) {
-        //     console.log(
-        //         `getSQFDataType: Did not find parse type for: ${unParsedType}`
-        //     );
-        // }
 
         return typeParsed;
     }
