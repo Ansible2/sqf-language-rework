@@ -102,7 +102,7 @@ export enum SQFArrayComparator {
     AnyOf = "ANY",
 }
 
-type SQFSyntaxTypes =
+export type SQFSyntaxTypes =
     | SQFDataType
     | SQFArray
     | SQFCode
@@ -127,8 +127,7 @@ type BinarySyntax = {
 type FunctionSyntax = {
 	type: SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction;
 	returnTypes: SQFSyntaxTypes;
-	leftOperandTypes: SQFSyntaxTypes;
-	rightOperandTypes: SQFSyntaxTypes;
+	leftOperandTypes?: SQFSyntaxTypes;
 }
 
 type UnarySyntax = {

@@ -34,6 +34,7 @@ import {
     SQFGrammarType,
 	SQFEffect,
 	SQFArgument,
+	SQFSyntaxTypes,
 } from "../../../configuration/grammars/sqf.namespace";
 
 enum DocumentationType {
@@ -359,11 +360,11 @@ export class NodeSqfLangServer {
 			}
             const leftOperand: string =
                 NodeSqfLangServer.parseSyntaxReturnOrOperands(
-                    syntax.leftOperandTypes
+                    (syntax as any).leftOperandTypes
                 );
             const rightOperand: string =
                 NodeSqfLangServer.parseSyntaxReturnOrOperands(
-                    syntax.rightOperandTypes
+                    (syntax as any).rightOperandTypes
                 );
             switch (type) {
                 case SQFSyntaxType.UnscheduledFunction: {
@@ -403,10 +404,7 @@ export class NodeSqfLangServer {
     private static parseSyntaxReturnOrOperands(
         operator:
             | undefined
-            | SQFDataType
-            | SQFArray
-            | SQFCode
-            | Array<SQFDataType | SQFArray | SQFCode>,
+            | SQFSyntaxTypes,
         isInBlock: boolean = false
     ): string {
         if (!operator) return "";
