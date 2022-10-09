@@ -419,6 +419,14 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
     },
+	compile: {
+		grammarType: SQFGrammarType.StringCompiler,
+		syntaxes: {
+			type: SQFSyntaxType.UnaryOperator,
+			returnTypes: SQFDataType.Code,
+			rightOperandTypes: SQFDataType.String,
+		}
+	}
 };
 
 Object.keys(sqfCommandSyntaxes).forEach((command: string) => {

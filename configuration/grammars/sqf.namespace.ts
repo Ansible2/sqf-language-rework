@@ -16,6 +16,8 @@ export enum SQFGrammarType {
     NullLiteral = "null literal",
     PropertyAccessor = "property accessor",
     Command = "command",
+	StringCompiler = "string compiler",
+	FileCompiler = "file compiler",
 }
 export enum SQFDataType {
     Empty = "EMPTY",
