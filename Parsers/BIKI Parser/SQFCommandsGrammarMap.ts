@@ -27,6 +27,8 @@ export const SQFGrammarTypeMap: IJSON<SQFGrammarType> = {
 	catch: SQFGrammarType.ConrolStatement,
 	case: SQFGrammarType.ConrolStatement,
 	for: SQFGrammarType.ConrolStatement,
+	step: SQFGrammarType.ConrolStatement,
+	default: SQFGrammarType.ConrolStatement,
 	while: SQFGrammarType.ConrolStatement,
 	do: SQFGrammarType.ConrolStatement,
 	from: SQFGrammarType.ConrolStatement,

@@ -13,29 +13,29 @@ import {
 // TODO: adjust documentation to just be a string url
 // this function can jusut be called at paring time instead of compile time
 const getBISWikiLink = (itemName: string): string => {
-	const convertUrlMap: IJSON<string> = {
-		"||": "a_or_b", 
-		"!": "!_a",
-		"!=": "a_!=_b",
-		"#": "a_hash_b", 
-		"%": "a_%25_b",
-		"&&": "a_&&_b",
-		"*": "a_*_b",
-		"/": "a_/_b",
-		":": "a_:_b",
-		"<": "a_less_b",
-		">": "a_greater_b",
-		"<=": "a_less=_b",
-		">=": "a_greater=_b",
-		"==": "a_==_b",
-		">>": "config_greater_greater_name",
-		"^": "a_^_b",
-		"_this": "Magic_Variables#this",
-	};
+    const convertUrlMap: IJSON<string> = {
+        "||": "a_or_b",
+        "!": "!_a",
+        "!=": "a_!=_b",
+        "#": "a_hash_b",
+        "%": "a_%25_b",
+        "&&": "a_&&_b",
+        "*": "a_*_b",
+        "/": "a_/_b",
+        ":": "a_:_b",
+        "<": "a_less_b",
+        ">": "a_greater_b",
+        "<=": "a_less=_b",
+        ">=": "a_greater=_b",
+        "==": "a_==_b",
+        ">>": "config_greater_greater_name",
+        "^": "a_^_b",
+        _this: "Magic_Variables#this",
+    };
 
-	if (itemName in Object.keys(convertUrlMap)) {
-		itemName = convertUrlMap[itemName];
-	}
+    if (itemName in Object.keys(convertUrlMap)) {
+        itemName = convertUrlMap[itemName];
+    }
 
     return `https://community.bistudio.com/wiki/${itemName}`;
 };
@@ -56,7 +56,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             ],
             rightOperandTypes: SQFDataType.Code,
         },
-        grammarType: SQFGrammarType.ConrolStatement,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     forEach: {
         syntaxes: {
@@ -65,7 +65,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             rightOperandTypes: [SQFDataType.Array, SQFDataType.HashMap],
             leftOperandTypes: SQFDataType.Code,
         },
-        grammarType: SQFGrammarType.ConrolStatement,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     or: {
         syntaxes: {
@@ -419,14 +419,30 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
     },
-	compile: {
-		grammarType: SQFGrammarType.StringCompiler,
-		syntaxes: {
-			type: SQFSyntaxType.UnaryOperator,
-			returnTypes: SQFDataType.Code,
-			rightOperandTypes: SQFDataType.String,
-		}
-	}
+    compile: {
+        grammarType: SQFGrammarType.StringCompiler,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            returnTypes: SQFDataType.Code,
+            rightOperandTypes: SQFDataType.String,
+        },
+    },
+    call: {
+        grammarType: SQFGrammarType.CodeExecutor,
+        syntaxes: [
+            {
+                type: SQFSyntaxType.UnaryOperator,
+                returnTypes: SQFDataType.Any,
+                rightOperandTypes: SQFDataType.Code,
+            },
+            {
+                type: SQFSyntaxType.BinaryOperator,
+                returnTypes: SQFDataType.Any,
+                rightOperandTypes: SQFDataType.Code,
+                leftOperandTypes: SQFDataType.Any,
+            },
+        ],
+    },
 };
 
 Object.keys(sqfCommandSyntaxes).forEach((command: string) => {

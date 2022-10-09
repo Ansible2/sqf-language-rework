@@ -36,7 +36,7 @@ Object.entries(sqfItems).forEach(item => {
 			functions.push(itemName);
 			break;
 		}
-		case SQFGrammarType.ConrolStatement: {
+		case SQFGrammarType.ControlStatement: {
 			controlStatements.push(itemName);
 			break;
 		}

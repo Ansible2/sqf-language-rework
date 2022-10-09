@@ -15,6 +15,7 @@ const propertyAccessors: string[] = [];
 const commands: string[] = [];
 const stringCompilerWords: string[] = [];
 const fileExecutors: string[] = [];
+const codeExecutors: string[] = [];
 
 const sqfItems: IJSON<CompiledSQFItem> = getSqfItems();
 Object.entries(sqfItems).forEach((item) => {
@@ -29,6 +30,10 @@ Object.entries(sqfItems).forEach((item) => {
             fileExecutors.push(itemName);
             break;
         }
+        case SQFGrammarType.CodeExecutor: {
+            codeExecutors.push(itemName);
+            break;
+        }
         case SQFGrammarType.StringCompiler: {
             stringCompilerWords.push(itemName);
             break;
@@ -41,7 +46,7 @@ Object.entries(sqfItems).forEach((item) => {
             functions.push(itemName);
             break;
         }
-        case SQFGrammarType.ConrolStatement: {
+        case SQFGrammarType.ControlStatement: {
             controlStatements.push(itemName);
             break;
         }
@@ -78,10 +83,9 @@ Object.entries(sqfItems).forEach((item) => {
     }
 });
 
-function getKeywordRegex(keywords: string | string[]): string {
-    let words: string = "";
-    if (Array.isArray(keywords)) {
-        words = keywords.join("|");
+function getSingleWordRegex(words: string | string[]): string {
+    if (Array.isArray(words)) {
+        words = words.join("|");
     }
 
     return `(?<=\\s+|^)(?i)(${words})\\b`;
@@ -102,16 +106,16 @@ const grammarRepo: IRawRepository = {
     expression: {
         name: "meta.expression.sqf",
         patterns: [
-			{ include: "#comment" },
+            { include: "#comment" },
             { include: "#literal" },
-			{ include: "#block" },
+            { include: "#other" },
+            { include: "#block" },
             { include: "#comparison-operator" },
             { include: "#condition-operator" },
             { include: "#assignment-operator" },
             { include: "#control-statement" },
-			{ include: "#fnc-file-execution" },
+            { include: "#fnc-file-execution" },
             { include: "#statements" },
-            { include: "#other" },
             { include: "#declaration" },
         ],
     },
@@ -131,20 +135,21 @@ const grammarRepo: IRawRepository = {
         name: "meta.block.sqf",
         patterns: [{ include: "#expression" }],
     },
-	"fnc-file-execution": {
-		match: getKeywordRegex(fileExecutors),
-		name: "keyword.control.call.string",
-	},
+	// TODO: add fileExecutors to uncomment
+    // "fnc-file-execution": {
+    //     match: getKeywordRegex(fileExecutors),
+    //     name: "keyword.control.call.string",
+    // },
     "comparison-operator": {
         match: `${comparisonOperators.join("|")}`,
         name: "keyword.operator.comparison.sqf",
     },
     "condition-operator": {
-        match: getKeywordRegex(conditionOperators),
+        match: getSingleWordRegex(conditionOperators),
         name: "keyword.operator.condition.sqf",
     },
     "control-statement": {
-        match: getKeywordRegex(controlStatements),
+        match: getSingleWordRegex(controlStatements),
         name: "keyword.control.sqf",
     },
     /* ------------------------------------
@@ -190,7 +195,7 @@ const grammarRepo: IRawRepository = {
         patterns: [{ include: "#expression" }],
     },
     "boolean-literal": {
-        match: getKeywordRegex(booleanLiterals),
+        match: getSingleWordRegex(booleanLiterals),
         name: "constant.language.boolean.sqf",
     },
 
@@ -199,14 +204,27 @@ const grammarRepo: IRawRepository = {
 	---------------------------------------------------------------------------- */
     statements: {
         name: "meta.expression.sqf",
-        patterns: [{ include: "#commands" }, { include: "#functions" }],
+        patterns: [
+			{ include: "#commands" }, 
+			{ include: "#functions" },
+			{ include: "#var-local" },
+			{ include: "#var-global" },
+		],
     },
+	"var-local": {
+		match: getSingleWordRegex("\\b(_+\\w+)"),
+		name: "variable.other.local"
+	},
+	"var-global": {
+		match: getSingleWordRegex("\\b([a-z]\\w+)"),
+		name: "variable.other.global"
+	},
     functions: {
-        match: getKeywordRegex(functions),
-        name: "variable.language.vobject.sqf",
+        match: getSingleWordRegex(functions),
+        name: "variable.language.knownFunction.sqf",
     },
     commands: {
-        match: getKeywordRegex(commands),
+        match: getSingleWordRegex(commands),
         name: "support.function.sqf",
     },
 
@@ -222,11 +240,11 @@ const grammarRepo: IRawRepository = {
     },
     // "#" may need extra backslashes to be literal (\\#)
     "property-accessor": {
-        match: getKeywordRegex(propertyAccessors),
+        match: getSingleWordRegex(propertyAccessors),
         name: "storage.type.property.sqf",
     },
     "access-modifier": {
-        match: getKeywordRegex(accessModifiers),
+        match: getSingleWordRegex(accessModifiers),
         name: "storage.modifier.sqf",
     },
 
@@ -236,6 +254,7 @@ const grammarRepo: IRawRepository = {
     declaration: {
         name: "meta.declaration.sqf",
         patterns: [
+            { include: "#fnc-execute" },
             { include: "#fnc-declaration" },
             { include: "#var-declaration-local" },
             { include: "#var-declaration-global" },
@@ -263,17 +282,28 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.object.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords.concat('{').join("|")})`,
+        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords
+            .concat("{")
+            .join("|")})`,
         beginCaptures: {
             "1": { name: "support.function.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
-            // "6": { name: "meta.brace.curly.sqf" },
+            "5": { name: "keyword.control.compileString.sqf" },
         },
         end: " |;|{|}|\t", // TODO: check if needed
         endCaptures: { "1": { name: "meta.brace.curly.sqf" } },
         name: "meta.declaration.object.sqf",
     },
-	
+    "fnc-execute": {
+        begin: `(\\s*)(${codeExecutors.join('|')})(\\s+)(\\w+|{)`, // TODO: check if s+ is needed
+        beginCaptures: {
+            "2": { name: "keyword.control.executeCode.sqf" },
+            "4": { name: "support.function.sqf" },
+        },
+        end: " |;|{|}|(|)",
+        endCaptures: { "1": { name: "keyword.operator.sqf" } },
+        name: "meta.declaration.object.sqf",
+    },
 
     /* ----------------------------------------------------------------------------
 		Misc Definitions

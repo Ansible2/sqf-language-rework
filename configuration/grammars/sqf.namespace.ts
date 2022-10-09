@@ -8,7 +8,7 @@ export enum SQFGrammarType {
     Function = "function",
     AccessModifier = "access modifier",
     ManipulativeOperator = "manipulative operator",
-    ConrolStatement = "control statement",
+    ControlStatement = "control statement",
     ConditionOperator = "condition operator",
     ComparisonOperator = "comparison operator",
     ReservedLiteral = "reserved literal",
@@ -19,6 +19,7 @@ export enum SQFGrammarType {
 	StringCompiler = "string compiler",
 	FileCompiler = "file compiler",
 	FileExecutor = "file executor",
+	CodeExecutor = "code executor",
 }
 export enum SQFDataType {
     Empty = "EMPTY",
