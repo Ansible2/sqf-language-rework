@@ -18,6 +18,7 @@ export enum SQFGrammarType {
     Command = "command",
 	StringCompiler = "string compiler",
 	FileCompiler = "file compiler",
+	FileExecutor = "file executor",
 }
 export enum SQFDataType {
     Empty = "EMPTY",

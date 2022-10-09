@@ -13,7 +13,8 @@ const booleanLiterals: string[] = [];
 const nullLiterals: string[] = [];
 const propertyAccessors: string[] = [];
 const commands: string[] = [];
-const stringCompiler: string[] = [];
+const stringCompilerWords: string[] = [];
+const fileExecutors: string[] = [];
 
 const sqfItems: IJSON<CompiledSQFItem> = getSqfItems();
 Object.entries(sqfItems).forEach((item) => {
@@ -24,8 +25,12 @@ Object.entries(sqfItems).forEach((item) => {
             accessModifiers.push(itemName);
             break;
         }
+        case SQFGrammarType.FileExecutor: {
+            fileExecutors.push(itemName);
+            break;
+        }
         case SQFGrammarType.StringCompiler: {
-            stringCompiler.push(itemName);
+            stringCompilerWords.push(itemName);
             break;
         }
         case SQFGrammarType.ManipulativeOperator: {
@@ -97,16 +102,17 @@ const grammarRepo: IRawRepository = {
     expression: {
         name: "meta.expression.sqf",
         patterns: [
-            { include: "#assignment-operator" },
-            { include: "#block" },
-            { include: "#comment" },
-            { include: "#declaration" },
+			{ include: "#comment" },
             { include: "#literal" },
+			{ include: "#block" },
             { include: "#comparison-operator" },
             { include: "#condition-operator" },
+            { include: "#assignment-operator" },
             { include: "#control-statement" },
-            { include: "#other" },
+			{ include: "#fnc-file-execution" },
             { include: "#statements" },
+            { include: "#other" },
+            { include: "#declaration" },
         ],
     },
     block: {
@@ -125,6 +131,10 @@ const grammarRepo: IRawRepository = {
         name: "meta.block.sqf",
         patterns: [{ include: "#expression" }],
     },
+	"fnc-file-execution": {
+		match: getKeywordRegex(fileExecutors),
+		name: "keyword.control.call.string",
+	},
     "comparison-operator": {
         match: `${comparisonOperators.join("|")}`,
         name: "keyword.operator.comparison.sqf",
@@ -253,7 +263,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.object.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompiler.concat('{').join("|")})`,
+        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords.concat('{').join("|")})`,
         beginCaptures: {
             "1": { name: "support.function.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
@@ -263,6 +273,7 @@ const grammarRepo: IRawRepository = {
         endCaptures: { "1": { name: "meta.brace.curly.sqf" } },
         name: "meta.declaration.object.sqf",
     },
+	
 
     /* ----------------------------------------------------------------------------
 		Misc Definitions
