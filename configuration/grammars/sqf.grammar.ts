@@ -107,6 +107,7 @@ const grammarRepo: IRawRepository = {
 			{ include: "#assignment-operator" },
 			{ include: "#block" },
 			{ include: "#comment" },
+			{ include: "#declaration" },
 			{ include: "#literal" },
 			{ include: "#comparison-operator" },
 			{ include: "#condition-operator" },
@@ -215,6 +216,7 @@ const grammarRepo: IRawRepository = {
 		name: "support.function.sqf",
 	},
 	
+
 	/* ----------------------------------------------------------------------------
 		Other
 	---------------------------------------------------------------------------- */
@@ -243,18 +245,31 @@ const grammarRepo: IRawRepository = {
 		name: "meta.declaration.sqf",
 		patterns: [
 			{ include: "#global-var-declaration" },
+			{ include: "#local-var-declaration" },
 		],
 	},
 	"global-var-declaration": {
-		begin: "(\\w+)(\\s*)(=+)",
+		// begin: "(?i)\\b([a-z][a-z0-9]+)( +)(=)",
+		begin: "(?i)\\b([a-z0-9_]+)( +)(=)",
 		beginCaptures: {
-			"1": { name: "variable.other.sqf" },
+			"1": { name: "variable.other.global.sqf" },
 			"3": { name: "keyword.operator.assignment.sqf" },
 		},
-		end: " |;|{|}|\t|=|(|)|[|]",
-		endCaptures: { "1": { name: "meta.brace.curly.sqf" } },
+		end: " |;|{|}|\t|=|(|)|[|]", // TODO: check if needed
+		endCaptures: { "1": { name: "meta.brace.curly.sqf" } }, // TODO: check if needed
+		name: "meta.declaration.object.sqf", 
+	},
+	"local-var-declaration": {
+		begin: "(?i)\\b(_+[a-z0-9_]+)( +)(=)",
+		beginCaptures: {
+			"1": { "name": "variable.other.local.sqf" },
+			"3": { "name": "keyword.operator.assignment.sqf" }
+		},
+		end: " |;|{|}|\t|=|(|)|[|]", // TODO: check if needed
+		endCaptures: { "1": { name: "meta.brace.curly.sqf" } }, // TODO: check if needed
 		name: "meta.declaration.object.sqf",
 	},
+
 
 
 	/* ----------------------------------------------------------------------------
