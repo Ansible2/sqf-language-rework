@@ -1,3 +1,3 @@
-import { NodeSqfLangServer } from "./NodeSqfLangServer.humble";
+import { NodeSQFServer } from "./NodeSQFServer";
 
-NodeSqfLangServer.CreateServer();
+new NodeSQFServer();
