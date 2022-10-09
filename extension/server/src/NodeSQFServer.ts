@@ -1,6 +1,7 @@
 import {
     CompletionItemLabelDetails,
     createConnection,
+    HoverParams,
     InitializeParams,
     InitializeResult,
     ProposedFeatures,
@@ -37,23 +38,25 @@ export class NodeSQFServer implements ISQFServer {
 		constructor
 	---------------------------------------------------------------------------- */
     constructor() {
-        this.connection = createConnection(ProposedFeatures.all);
+		this.sqfItems = getSqfItems();
+
+		this.connection = createConnection(ProposedFeatures.all);
 
         this.textDocuments = new TextDocuments(TextDocument);
-        this.hoverProvider = new HoverProvider(this);
         this.docProvider = new DocProvider(this);
+        this.hoverProvider = new HoverProvider(this);
         this.completionProvider = new CompletionProvider(this);
-
-        this.sqfItems = getSqfItems();
 
         // Create a connection for the server, using Node's IPC as a transport.
         // Also include all preview / proposed LSP features.
         this.connection.onInitialize(this.initializeConnection);
-        this.connection.onHover(this.hoverProvider.onHover);
-        this.connection.onCompletion(this.completionProvider.onCompletion);
+        this.connection.onHover(this.hoverProvider.onHover.bind(this.hoverProvider));
+        
+		this.connection.onCompletion(this.completionProvider.onCompletion.bind(this.completionProvider));
+
         const completionResolver = this.completionProvider.onCompletionResolve;
         if (completionResolver) {
-            this.connection.onCompletionResolve(completionResolver);
+            this.connection.onCompletionResolve(completionResolver.bind(this.completionProvider));
         }
 
         // Make the text document manager listen on the connection
@@ -67,15 +70,14 @@ export class NodeSQFServer implements ISQFServer {
 		initializeConnection
 	---------------------------------------------------------------------------- */
     public initializeConnection(params: InitializeParams): InitializeResult {
-        CompletionItemLabelDetails;
         const init: InitializeResult = {
             capabilities: {
                 textDocumentSync: TextDocumentSyncKind.Incremental,
                 hoverProvider: true,
                 // Tell the client that this server supports code completion.
                 completionProvider: {
-                    resolveProvider:
-                        !!this.completionProvider.onCompletionResolve,
+                    resolveProvider: false
+                        // !!this.completionProvider.onCompletionResolve,
                 },
             },
         };
