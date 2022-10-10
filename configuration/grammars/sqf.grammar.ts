@@ -115,8 +115,8 @@ const grammarRepo: IRawRepository = {
             { include: "#assignment-operator" },
             { include: "#control-statement" },
             { include: "#fnc-file-execution" },
-            { include: "#statements" },
             { include: "#declaration" },
+            { include: "#statements" },
         ],
     },
     block: {
@@ -176,6 +176,7 @@ const grammarRepo: IRawRepository = {
         patterns: [
             { include: "#array-literal" },
             { include: "#boolean-literal" },
+            { include: "#numeric-literal" },
         ],
     },
     "array-literal": {
@@ -198,6 +199,10 @@ const grammarRepo: IRawRepository = {
         match: getSingleWordRegex(booleanLiterals),
         name: "constant.language.boolean.sqf",
     },
+	"numeric-literal": {
+		match: "\\b\\d+\\b",
+		name: "constant.numeric.sqf",
+	},
 
     /* ----------------------------------------------------------------------------
 		Statements
