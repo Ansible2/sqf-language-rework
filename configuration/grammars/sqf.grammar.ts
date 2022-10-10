@@ -106,8 +106,10 @@ const grammarRepo: IRawRepository = {
     expression: {
         name: "meta.expression.sqf",
         patterns: [
-            { include: "#comment" },
+			{ include: "#comment" },
+            { include: "#string" },
             { include: "#literal" },
+            { include: "#paren-expression" },
             { include: "#other" },
             { include: "#block" },
             { include: "#comparison-operator" },
@@ -135,6 +137,13 @@ const grammarRepo: IRawRepository = {
         name: "meta.block.sqf",
         patterns: [{ include: "#expression" }],
     },
+	"paren-expression": {
+		begin: "\\(",
+		beginCaptures: { "0": { name: "meta.brace.paren.sqf" } },
+		end: "\\)",
+		endCaptures: { "0": { name: "meta.brace.paren.sqf" } },
+		patterns: [{ include: "#expression" }],
+	},
 	// TODO: add fileExecutors to uncomment
     // "fnc-file-execution": {
     //     match: getKeywordRegex(fileExecutors),
@@ -177,6 +186,7 @@ const grammarRepo: IRawRepository = {
             { include: "#array-literal" },
             { include: "#boolean-literal" },
             { include: "#numeric-literal" },
+            { include: "#reserved-literal" },
         ],
     },
     "array-literal": {
@@ -202,6 +212,10 @@ const grammarRepo: IRawRepository = {
 	"numeric-literal": {
 		match: "\\b\\d+\\b",
 		name: "constant.numeric.sqf",
+	},
+	"reserved-literal": {
+		match: getSingleWordRegex(reservedLiterals),
+		name: "variable.language.reserved.sqf",
 	},
 
     /* ----------------------------------------------------------------------------
@@ -313,7 +327,7 @@ const grammarRepo: IRawRepository = {
     /* ----------------------------------------------------------------------------
 		Misc Definitions
 	---------------------------------------------------------------------------- */
-    // "decl-block": {
+	// "decl-block": {
     // 	begin: "\\{",
     // 	beginCaptures: { "0": { name: "meta.brace.curly.sqf" } },
     // 	end: "\\}",
@@ -321,6 +335,34 @@ const grammarRepo: IRawRepository = {
     // 	name: "meta.decl.block.sqf",
     // 	patterns: [{ include: "#expression" }],
     // },
+
+    /* ----------------------------------------------------------------------------
+		String
+	---------------------------------------------------------------------------- */
+	string: {
+		name: "string.sqf",
+		patterns: [
+			{ include: "#qstring-single" },
+			{ include: "#qstring-double" },
+			{ include: "#qstring-triple" },
+		],
+	},
+	"qstring-triple": {
+		begin: '\"\"\"',
+		end: '\"\"\"',
+		name: "string.triple.sqf",
+	},
+	"qstring-double": {
+		begin: '"',
+		end: '"',
+		name: "string.double.sqf",
+	},
+	"qstring-single": {
+		begin: "'",
+		end: "'",
+		name: "string.single.sqf",
+	},
+    
 };
 
 export const sqfGrammar: IRawGrammar = {
