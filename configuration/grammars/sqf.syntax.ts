@@ -83,20 +83,15 @@ const getCompletionItemKind = (
 ): CompletionItemKind => {
     switch (grammarType) {
 		case SQFGrammarType.ReservedLiteral:
+		case SQFGrammarType.ControlStatement:
         case SQFGrammarType.AccessModifier: {
             return CompletionItemKind.Keyword;
-        }
-        case SQFGrammarType.Command: {
-            return CompletionItemKind.Method;
         }
         case SQFGrammarType.ComparisonOperator: {
             return CompletionItemKind.Operator;
         }
         case SQFGrammarType.ConditionOperator: {
             return CompletionItemKind.Operator;
-        }
-        case SQFGrammarType.ControlStatement: {
-            return CompletionItemKind.Keyword;
         }
         case SQFGrammarType.Function: {
             return CompletionItemKind.Function;
@@ -111,6 +106,7 @@ const getCompletionItemKind = (
         case SQFGrammarType.PropertyAccessor: {
             return CompletionItemKind.Property;
         }
+		case SQFGrammarType.Command:
         default: {
             return CompletionItemKind.Method;
         }

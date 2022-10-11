@@ -431,11 +431,6 @@ export class MediaWikiConverter {
         if (!pageDetails) return [];
 
         const pageDetailsArray = [...pageDetails];
-        for (const match of pageDetails) {
-            console.log("match:");
-            console.table(match[6]);
-        }
-
         if (pageDetailsArray.length < 1) return [];
 
         const detailsParsed: WikiPageDetail[] = pageDetailsArray.map(

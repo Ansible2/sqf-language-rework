@@ -144,11 +144,10 @@ const grammarRepo: IRawRepository = {
 		endCaptures: { "0": { name: "meta.brace.paren.sqf" } },
 		patterns: [{ include: "#expression" }],
 	},
-	// TODO: add fileExecutors to uncomment
-    // "fnc-file-execution": {
-    //     match: getKeywordRegex(fileExecutors),
-    //     name: "keyword.control.call.string",
-    // },
+    "fnc-file-execution": {
+        match: getSingleWordRegex(fileExecutors),
+        name: "keyword.control.call.string",
+    },
     "comparison-operator": {
         match: `${comparisonOperators.join("|")}`,
         name: "keyword.operator.comparison.sqf",
@@ -280,7 +279,6 @@ const grammarRepo: IRawRepository = {
         ],
     },
     "var-declaration-global": {
-        // begin: "(?i)\\b([a-z][a-z0-9]+)( +)(=)",
         begin: "(?i)\\b([a-z]\\w+)(\\s*)(=)",
         beginCaptures: {
             "1": { name: "variable.other.global.declaration.sqf" },
@@ -323,18 +321,6 @@ const grammarRepo: IRawRepository = {
         endCaptures: { "1": { name: "keyword.operator.sqf" } },
         name: "meta.declaration.object.sqf",
     },
-
-    /* ----------------------------------------------------------------------------
-		Misc Definitions
-	---------------------------------------------------------------------------- */
-	// "decl-block": {
-    // 	begin: "\\{",
-    // 	beginCaptures: { "0": { name: "meta.brace.curly.sqf" } },
-    // 	end: "\\}",
-    // 	endCaptures: { "0": { name: "meta.brace.curly.sqf" } },
-    // 	name: "meta.decl.block.sqf",
-    // 	patterns: [{ include: "#expression" }],
-    // },
 
     /* ----------------------------------------------------------------------------
 		String

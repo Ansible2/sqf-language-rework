@@ -443,6 +443,22 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
     },
+	execVM: {
+		grammarType: SQFGrammarType.FileExecutor,
+		syntaxes: [
+			{
+                type: SQFSyntaxType.UnaryOperator,
+                returnTypes: SQFDataType.ScriptHandle,
+                rightOperandTypes: SQFDataType.String,
+            },
+            {
+                type: SQFSyntaxType.BinaryOperator,
+                returnTypes: SQFDataType.ScriptHandle,
+                rightOperandTypes: SQFDataType.String,
+                leftOperandTypes: SQFDataType.Any,
+            },
+		]
+	}
 };
 
 Object.keys(sqfCommandSyntaxes).forEach((command: string) => {

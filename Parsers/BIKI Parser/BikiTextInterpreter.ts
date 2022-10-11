@@ -266,15 +266,17 @@ export class BikiTextInterpreter {
 		getSQFGrammarType
 	---------------------------------------------------------------------------- */
     public getSQFGrammarType(name: string): SQFGrammarType {
-        name = name.toLowerCase();
-        if (name.includes("_fnc_")) {
+       	const nameLowered = name = name.toLowerCase();
+        if (nameLowered.includes("_fnc_")) {
             return SQFGrammarType.Function;
         }
 
-        const type = BikiTextInterpreter.grammarTypeMap[name];
+        const type = BikiTextInterpreter.grammarTypeMap[nameLowered];
         if (type) {
             return type;
-        }
+        } else if (BikiTextInterpreter.grammarTypeMap[name]) {
+			return BikiTextInterpreter.grammarTypeMap[name];
+		}
 
         return SQFGrammarType.Command;
     }

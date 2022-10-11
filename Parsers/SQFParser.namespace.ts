@@ -10,6 +10,10 @@ export enum SQFGrammarType {
     NullLiteral = "SQFGrammarType.NullLiteral",
     PropertyAccessor = "SQFGrammarType.PropertyAccessor",
     Command = "SQFGrammarType.Command",
+	StringCompiler = "SQFGrammarType.StringCompiler",
+	FileCompiler = "SQFGrammarType.FileCompiler",
+	FileExecutor = "SQFGrammarType.FileExecutor",
+	CodeExecutor = "SQFGrammarType.CodeExecutor",
 }
 
 export enum SQFDataType {
