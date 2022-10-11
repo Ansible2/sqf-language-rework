@@ -43,6 +43,7 @@ export class DocProvider implements IDocProvider {
 
 		const argument = sqfItem.argument;
 		const effect = sqfItem.effect;
+		const serverExcuted = sqfItem.server;
 
 
         const markupKind: MarkupKind = documentation.kind;
@@ -86,20 +87,23 @@ export class DocProvider implements IDocProvider {
         }
 
         if (docArray.length > 0) {
-            let effectAndArg: string = "";
+            let effectArgServerLine: string = "";
             if (argument) {
-                effectAndArg = `[${argument}]`;
+                effectArgServerLine = `[${argument}]`;
             }
             if (effect) {
-                if (effectAndArg) {
-                    effectAndArg += ` [${effect}]`;
+                if (effectArgServerLine) {
+                    effectArgServerLine += ` [${effect}]`;
                 } else {
-                    effectAndArg = `[${effect}]`;
+                    effectArgServerLine = `[${effect}]`;
                 }
             }
+			if (serverExcuted) {
+				effectArgServerLine += ` [Server Executed]`;
+			}
 
-            if (effectAndArg) {
-                docArray.unshift(`\n${effectAndArg}`);
+            if (effectArgServerLine) {
+                docArray.unshift(`\n${effectArgServerLine}`);
             }
 
             if (documentationLink) {

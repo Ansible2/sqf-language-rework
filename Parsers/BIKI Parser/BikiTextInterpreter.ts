@@ -191,6 +191,9 @@ export class BikiTextInterpreter {
     private static isParameter(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|p\d*=/);
     }
+    private static isServerExec(stringToCheck: string): boolean {
+        return !!stringToCheck.toLowerCase().startsWith("|serverexec");
+    }
     private static isReturnType(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|r\d*=/);
     }
@@ -243,6 +246,10 @@ export class BikiTextInterpreter {
         {
             checkFunction: this.isEffectLocality,
             wikiType: WikiPageDetailType.EffectLocality,
+        },
+        {
+            checkFunction: this.isServerExec,
+            wikiType: WikiPageDetailType.ServerExecution,
         },
     ];
 

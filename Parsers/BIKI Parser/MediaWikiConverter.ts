@@ -32,6 +32,7 @@ interface ParsedPage {
     syntaxes: ParsedSyntax[];
     argumentLocality?: SQFArgument;
     effectLocality?: SQFEffect;
+    serverExecution?: boolean;
     grammarType: SQFGrammarType;
 }
 
@@ -374,8 +375,6 @@ export class MediaWikiConverter {
         );
 
         // TODO:
-        // description
-        // examples
         // server
         // add check to any in side array handler that will only remove the Any if is proceeds an
         /// Array entry so that is was definately parsed as Array of Any
@@ -408,6 +407,12 @@ export class MediaWikiConverter {
                         );
                     if (effectLocality) {
                         parsedPage.effectLocality = effectLocality;
+                    }
+                    break;
+                }
+                case WikiPageDetailType.ServerExecution: {
+                    if (pageDetail.detailContent?.toLowerCase().includes('server')) {
+                        parsedPage.serverExecution = true;
                     }
                     break;
                 }
@@ -710,6 +715,11 @@ export class MediaWikiConverter {
                 `\targument: ${parsedPage.argumentLocality},`
             );
         }
+		if (parsedPage.serverExecution) {
+			finalSyntaxesAsArray.push(
+                `\tserver: true,`
+            );
+		}
 
         finalSyntaxesAsArray.push("},");
         return finalSyntaxesAsArray.join("\n");
@@ -804,7 +814,7 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			// console.log("match.input:",match.input);
 			// console.log('\n----------------------------------\n');
 			if (!text.includes('|')) {
-				output = output.replace(matchedText,`\`${text}\``);
+				output = output.replace(matchedText,`\`${text.trim()}\``);
 				continue;
 			};
 

@@ -2,7 +2,7 @@ export enum SQFGrammarType {
     Function = "SQFGrammarType.Function",
     AccessModifier = "SQFGrammarType.AccessModifier",
     ManipulativeOperator = "SQFGrammarType.ManipulativeOperator",
-    ConrolStatement = "SQFGrammarType.ConrolStatement",
+    ConrolStatement = "SQFGrammarType.ControlStatement",
     ConditionOperator = "SQFGrammarType.ConditionOperator",
     ComparisonOperator = "SQFGrammarType.ComparisonOperator",
     ReservedLiteral = "SQFGrammarType.ReservedLiteral",

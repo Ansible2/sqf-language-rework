@@ -25,6 +25,7 @@ export enum WikiPageDetailType {
 	Unknown,
 	FunctionExecution,
 	Group,
+	ServerExecution,
 }
 
 export interface WikiPageDetail {

@@ -168,6 +168,7 @@ interface SQFItem {
     kind?: CompletionItemKind;
     effect?: SQFEffect;
     argument?: SQFArgument;
+    server?: boolean;
     getDocLink?: (itemName: string) => string;
 }
 
