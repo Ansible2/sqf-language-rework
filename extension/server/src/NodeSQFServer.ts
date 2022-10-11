@@ -53,7 +53,7 @@ export class NodeSQFServer implements ISQFServer {
 
         const completionResolver = this.completionProvider.onCompletionResolve;
         if (completionResolver) {
-            this.connection.onCompletionResolve(completionResolver.bind(this.completionProvider));
+            // this.connection.onCompletionResolve(completionResolver.bind(this.completionProvider));
         }
 
         // Make the text document manager listen on the connection

@@ -28,20 +28,19 @@ export class CompletionProvider implements ICompletionProvider {
     private loadCompletionItems(): void {
         const severSQFItems: Map<string, CompiledSQFItem> =
             this.server.getSQFItemMap();
+		
+        this.completionItems = [];
+		severSQFItems.forEach((sqfItem,itemName) => {
+			const docMarkup = this.docProvider.createMarkupDoc(
+				sqfItem,
+				DocumentationType.CompletionItem
+			);
+			const completionItem: CompletionItem = {
+				...sqfItem,
+				documentation: docMarkup,
+			};
 
-        this.completionItems = Object.entries(severSQFItems).map(
-            ([itemName, sqfItem]) => {
-                const docMarkup = this.docProvider.createMarkupDoc(
-                    sqfItem,
-                    DocumentationType.CompletionItem
-                );
-                const completionItem: CompletionItem = {
-                    ...sqfItem,
-                    documentation: docMarkup,
-                };
-
-                return completionItem;
-            }
-        );
+			this.completionItems.push(completionItem);
+		})
     }
 }
