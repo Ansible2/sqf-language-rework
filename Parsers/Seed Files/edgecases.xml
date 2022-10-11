@@ -1140,4 +1140,55 @@ Without a [[sleep]] statement [[hintC]] will not suspend the script it has been 
 			<sha1>a28lwcxsxil6qaxn0lujo1gdnag3cl8</sha1>
 		</revision>
 	</page>
+	<page>
+		<title>getOrDefault</title>
+		<ns>0</ns>
+		<id>28044</id>
+		<revision>
+			<id>330401</id>
+			<parentid>310152</parentid>
+			<timestamp>2022-09-08T11:59:01Z</timestamp>
+			<contributor>
+				<username>killzone_kid</username>
+				<id>9533</id>
+			</contributor>
+			<origin>330401</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1149" sha1="oqd02crraft1149x99xdjw6bfo1lmf9" xml:space="preserve">{{RV|type=command
+
+|game1= arma3
+|version1= 2.02
+
+|gr1= HashMap
+
+|descr= Retrieves a value out of a [[HashMap]] after looking it up by its key. When the HashMap doesn't contain the key, the default value is returned
+
+|s1= hashMap [[getOrDefault]] [key, defaultValue, setDefault]
+
+|p1= hashMap: [[HashMap]]
+
+|p2= key: [[HashMapKey]] - Case sensitive key
+
+|p3= defaultValue: [[Anything]] - (Optional, default [[nil]])
+
+|p4= setDefault: [[Boolean]] - (Optional, default [[false]]) if set to [[true]] and value does not exist in provided hash map, ''defaultValue'' will be added to the hash map
+|p4since= arma3 2.04
+
+|r1= [[Anything]]
+
+|x1= &lt;sqf&gt;private _myValue = _myHashMap getOrDefault ["a", "Not Found!"];&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;private _myValue = _hashMap getOrDefault ["a", "Not Found!", true]; // will add default value to the hash map if it does not exist&lt;/sqf&gt;
+
+|x3= &lt;sqf&gt;
+private _array = _hashmap getOrDefault [_key, [], true]; // a new array will be created if it doesn't exist
+_array pushBack _item; // _item will be added to the array (the one in the hashmap is updated by reference)
+&lt;/sqf&gt;
+
+|seealso= [[getOrDefaultCall]] [[HashMap]] [[get]]
+}}</text>
+			<sha1>oqd02crraft1149x99xdjw6bfo1lmf9</sha1>
+		</revision>
+	</page>
 </mediawiki>
