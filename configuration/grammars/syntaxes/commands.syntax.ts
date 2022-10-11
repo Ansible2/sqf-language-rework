@@ -21202,7 +21202,14 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Boolean,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.BooleanLiteral,
+    },
+    false: {
+        syntaxes: {
+            type: SQFSyntaxType.NularOperator,
+            returnTypes: SQFDataType.Boolean,
+        },
+        grammarType: SQFGrammarType.BooleanLiteral,
     },
     throw: {
         syntaxes: [
