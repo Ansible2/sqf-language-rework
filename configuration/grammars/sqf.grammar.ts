@@ -1,5 +1,5 @@
 import { IRawGrammar, IRawRepository } from "vscode-textmate/release/types";
-import { CompiledSQFItem, IJSON, SQFGrammarType } from "./sqf.namespace";
+import { CompiledSQFItem, SQFGrammarType } from "./sqf.namespace";
 import { getSqfItems } from "./sqf.syntax";
 
 const accessModifiers: string[] = [];
@@ -16,10 +16,12 @@ const commands: string[] = [];
 const stringCompilerWords: string[] = [];
 const fileExecutors: string[] = [];
 const codeExecutors: string[] = [];
+const fileCompilers: string[] = [];
 
-const sqfItems: IJSON<CompiledSQFItem> = getSqfItems();
-Object.entries(sqfItems).forEach((item) => {
-    const [itemName, sqfItem] = item;
+const sqfItems: Map<string, CompiledSQFItem> = getSqfItems();
+sqfItems.forEach((sqfItem,itemName) => {
+	// format things like (!, #, +, |, etc...) as literals
+	itemName = itemName.replace(/(\W)/g,"\\$1");
 
     switch (sqfItem.grammarType) {
         case SQFGrammarType.AccessModifier: {
@@ -36,6 +38,10 @@ Object.entries(sqfItems).forEach((item) => {
         }
         case SQFGrammarType.StringCompiler: {
             stringCompilerWords.push(itemName);
+            break;
+        }
+        case SQFGrammarType.FileCompiler: {
+            fileCompilers.push(itemName);
             break;
         }
         case SQFGrammarType.ManipulativeOperator: {
@@ -116,6 +122,7 @@ const grammarRepo: IRawRepository = {
             { include: "#condition-operator" },
             { include: "#assignment-operator" },
             { include: "#control-statement" },
+            { include: "#file-compiler" },
             { include: "#fnc-file-execution" },
             { include: "#declaration" },
             { include: "#statements" },
@@ -159,6 +166,10 @@ const grammarRepo: IRawRepository = {
     "control-statement": {
         match: getSingleWordRegex(controlStatements),
         name: "keyword.control.sqf",
+    },
+    "file-compiler": {
+        match: getSingleWordRegex(fileCompilers),
+        name: "keyword.control.fileCompiler.sqf",
     },
     /* ------------------------------------
 		comment

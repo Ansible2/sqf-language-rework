@@ -184,7 +184,7 @@ export interface CompiledSQFItem extends SQFItem {
 }
 
 export interface PreCompiledSQFItem extends SQFItem {
-    // label?: string;
+    label?: string;
     documentation?: string | string[] | MarkupContent;
     detail?: string; // detail should probably be avoided
 }

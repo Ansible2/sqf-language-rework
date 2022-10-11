@@ -1,7 +1,5 @@
 import {
-    CompletionItemLabelDetails,
     createConnection,
-    HoverParams,
     InitializeParams,
     InitializeResult,
     ProposedFeatures,
@@ -12,7 +10,6 @@ import {
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
 import {
-    IJSON,
     CompiledSQFItem,
 } from "../../../configuration/grammars/sqf.namespace";
 import {
@@ -31,7 +28,7 @@ export class NodeSQFServer implements ISQFServer {
     public readonly completionProvider: ICompletionProvider;
     public readonly textDocuments: TextDocuments<TextDocument>;
 
-    private readonly sqfItems: IJSON<CompiledSQFItem>;
+    private readonly sqfItems: Map<string, CompiledSQFItem>;
     private readonly connection: _Connection;
 
     /* ----------------------------------------------------------------------------
@@ -88,7 +85,7 @@ export class NodeSQFServer implements ISQFServer {
     /* ----------------------------------------------------------------------------
 		getSQFItemMap
 	---------------------------------------------------------------------------- */
-    public getSQFItemMap(): IJSON<CompiledSQFItem> {
+    public getSQFItemMap(): Map<string, CompiledSQFItem> {
         return this.sqfItems;
     }
 }

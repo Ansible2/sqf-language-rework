@@ -1,4 +1,5 @@
-import { CompletionItem } from "vscode-languageserver";
+import { CompletionItem } from "vscode-languageserver/node";
+import { CompiledSQFItem } from "../../../configuration/grammars/sqf.namespace";
 import {
     DocumentationType,
     ICompletionProvider,
@@ -25,20 +26,22 @@ export class CompletionProvider implements ICompletionProvider {
 		loadCompletionItems
 	---------------------------------------------------------------------------- */
     private loadCompletionItems(): void {
-        const severSQFItems = this.server.getSQFItemMap();
+        const severSQFItems: Map<string, CompiledSQFItem> =
+            this.server.getSQFItemMap();
 
-        this.completionItems = Object.entries(severSQFItems).map((item) => {
-            const sqfItem = item[1];
-            const docMarkup = this.docProvider.createMarkupDoc(
-                sqfItem,
-                DocumentationType.CompletionItem
-            );
-            const completionItem: CompletionItem = {
-                ...sqfItem,
-                documentation: docMarkup,
-            };
+        this.completionItems = Object.entries(severSQFItems).map(
+            ([itemName, sqfItem]) => {
+                const docMarkup = this.docProvider.createMarkupDoc(
+                    sqfItem,
+                    DocumentationType.CompletionItem
+                );
+                const completionItem: CompletionItem = {
+                    ...sqfItem,
+                    documentation: docMarkup,
+                };
 
-            return completionItem;
-        });
+                return completionItem;
+            }
+        );
     }
 }

@@ -15,7 +15,6 @@ import {
 } from "vscode-languageserver-textdocument";
 import {
     CompiledSQFItem,
-    IJSON,
 } from "../../../configuration/grammars/sqf.namespace";
 
 export class HoverProvider implements IHoverProvider {
@@ -111,10 +110,10 @@ export class HoverProvider implements IHoverProvider {
 	---------------------------------------------------------------------------- */
     public getHoverItem(
         syntaxItemName: string,
-        sqfItems: IJSON<CompiledSQFItem>
+        sqfItems: Map<string, CompiledSQFItem>
     ): Hover | undefined {
-        const syntaxItem: CompiledSQFItem =
-            sqfItems[syntaxItemName.toLowerCase()];
+        const syntaxItem: CompiledSQFItem | undefined =
+            sqfItems.get(syntaxItemName.toLowerCase());
         if (!syntaxItem) return;
 
         const contents = this.docProvider.createMarkupDoc(

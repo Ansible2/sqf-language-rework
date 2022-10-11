@@ -117,6 +117,10 @@ const compileSQFItem = (
     syntaxItemName: string,
     sqfItem: PreCompiledSQFItem
 ): CompiledSQFItem => {
+	if (sqfItem.label) {
+		syntaxItemName = sqfItem.label;
+	}
+
     const compiledDocumentation = compileDocumentation(
         syntaxItemName,
         sqfItem.documentation
@@ -134,23 +138,20 @@ const compileSQFItem = (
     return compiledItem as CompiledSQFItem;
 };
 
-export const getSqfItems = (): IJSON<CompiledSQFItem> => {
-    let syntaxItems: IJSON<CompiledSQFItem> = {};
+export const getSqfItems = (): Map<string, CompiledSQFItem> => {
+    const syntaxItems: Map<string, CompiledSQFItem> = new Map();
 
-    syntaxes.forEach((preSyntaxObject: IJSON<PreCompiledSQFItem>) => {
-        const compiledSyntaxObject: IJSON<CompiledSQFItem> = Object.fromEntries(
-            Object.entries(preSyntaxObject).map(
-                ([syntaxItemName, syntaxItem]) => [
-                    syntaxItemName.toLowerCase(),
-                    compileSQFItem(syntaxItemName, syntaxItem),
-                ]
-            )
-        );
+    syntaxes.forEach((preCompiledSyntaxList: IJSON<PreCompiledSQFItem>) => {
+	
+		Object.entries(preCompiledSyntaxList).forEach(([syntaxItemName, syntaxItem]) => {
+			if (syntaxItem.label) {
+				syntaxItemName = syntaxItem.label;
+			}
+			
+			const compiledItem = compileSQFItem(syntaxItemName, syntaxItem);
+			syntaxItems.set(syntaxItemName.toLowerCase(),compiledItem);
+		});
 
-        syntaxItems = {
-            ...syntaxItems,
-            ...compiledSyntaxObject,
-        };
     });
 
     return syntaxItems;

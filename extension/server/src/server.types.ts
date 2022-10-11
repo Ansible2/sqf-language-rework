@@ -50,7 +50,7 @@ export interface ISQFServer {
 	readonly docProvider: IDocProvider;
     readonly textDocuments: TextDocuments<TextDocument>;
 
-	getSQFItemMap(): IJSON<CompiledSQFItem>;
+	getSQFItemMap(): Map<string, CompiledSQFItem>;
 }
 
 export enum DocumentationType {
