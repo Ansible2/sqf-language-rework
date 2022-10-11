@@ -94,7 +94,8 @@ function getSingleWordRegex(words: string | string[]): string {
         words = words.join("|");
     }
 
-    return `(?<=\\s+|^)(?i)(${words})\\b`;
+    // return `(?<=\\s+|^)(?i)(${words})\\b`;
+    return `(?i)\\b(${words})\\b`;
 }
 
 const grammarRepo: IRawRepository = {
@@ -194,6 +195,7 @@ const grammarRepo: IRawRepository = {
         name: "literal.sqf",
         patterns: [
             { include: "#array-literal" },
+            { include: "#null-literal" },
             { include: "#boolean-literal" },
             { include: "#numeric-literal" },
             { include: "#reserved-literal" },
@@ -218,6 +220,10 @@ const grammarRepo: IRawRepository = {
     "boolean-literal": {
         match: getSingleWordRegex(booleanLiterals),
         name: "constant.language.boolean.sqf",
+    },
+    "null-literal": {
+        match: getSingleWordRegex(nullLiterals),
+        name: "constant.language.null.sqf",
     },
 	"numeric-literal": {
 		match: "\\b\\d+\\b",

@@ -17269,7 +17269,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Object,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ReservedLiteral,
     },
     publicVariableClient: {
         syntaxes: {
