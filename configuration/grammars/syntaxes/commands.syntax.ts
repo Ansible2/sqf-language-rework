@@ -40,10 +40,6 @@ const getBISWikiLink = (itemName: string): string => {
     return `https://community.bistudio.com/wiki/${itemName}`;
 };
 
-// TODO:  create a function to convert an SQFGrammarType to a
-/// "kind" during compilation so that you do not have to add in a kind for precompiled syntax
-
-// does not need to be alphabetical, however, you should still try to keep it as
 const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     private: {
         grammarType: SQFGrammarType.AccessModifier,

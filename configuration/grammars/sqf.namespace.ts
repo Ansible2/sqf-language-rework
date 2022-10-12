@@ -110,7 +110,7 @@ export type SQFSyntaxTypes =
     | SQFDataType
     | SQFArray
     | SQFCode
-    | Array<SQFDataType | SQFArray | SQFCode>;
+    | Array<SQFSyntaxTypes>;
 export interface SQFArray {
     types: SQFSyntaxTypes;
     operation: SQFArrayComparator;
@@ -145,7 +145,7 @@ type NularSyntax = {
 	returnTypes: SQFSyntaxTypes;
 }
 
-export type SQFSyntax = NularSyntax | UnarySyntax | BinarySyntax | FunctionSyntax;
+export type SQFSyntax = FunctionSyntax | NularSyntax | UnarySyntax | BinarySyntax;
 
 export enum SQFEffect {
     LOCAL = "Local Effect",
