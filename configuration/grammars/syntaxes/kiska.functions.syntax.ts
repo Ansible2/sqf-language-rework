@@ -76,6 +76,58 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         },
     },
+    KISKA_fnc_ACE_setOnPrepareFastrope: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Nothing,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    SQFDataType.Object,
+                    [
+                        {
+                            params: SQFDataType.Object,
+                            returns: SQFDataType.Number,
+                        },
+                    ],
+                    SQFDataType.Array,
+                ],
+            },
+        },
+    },
+    KISKA_fnc_ACE_addSupportMenuAction: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Nothing,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [SQFDataType.Object],
+            },
+        },
+    },
+    KISKA_fnc_ACE_unconsciousIsCaptive: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Nothing,
+        },
+    },
+    KISKA_fnc_ACEX_setHCTransfer: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Nothing,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    [SQFDataType.Object, SQFDataType.Group],
+                    SQFDataType.Boolean,
+                ],
+            },
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
