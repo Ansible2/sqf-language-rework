@@ -53,7 +53,7 @@ export class BikiTextInterpreter {
         OBJECT: SQFDataType.Object,
         TARGET: SQFDataType.Object,
         OBJECTRTD: SQFDataType.Object,
-		REMOTEEXEC: SQFDataType.String,
+        REMOTEEXEC: SQFDataType.String,
         VECTOR: SQFDataType.Vector,
         SIDE: SQFDataType.Side,
         GROUP: SQFDataType.Group,
@@ -85,7 +85,7 @@ export class BikiTextInterpreter {
         POSITIONRELATIVE: SQFDataType.PositionRelative,
         "PARTICLE ARRAY": SQFDataType.ParticleArray,
         PARTICLEARRAY: SQFDataType.ParticleArray,
-		IDENTICAL: SQFDataType.IDENTICAL,
+        IDENTICAL: SQFDataType.IDENTICAL,
     };
 
     /* ----------------------------------------------------------------------------
@@ -115,35 +115,36 @@ export class BikiTextInterpreter {
         toString: "'toString'",
         "config greater greater name": "'>>'",
     };
-    
-	/* ----------------------------------------------------------------------------
+
+    /* ----------------------------------------------------------------------------
 		filenameMap
 	---------------------------------------------------------------------------- */
     private static readonly filenameMap: IJSON<string> = ((obj: object) => {
-		return Object.fromEntries(
-			Object.entries(obj).map(([k, v]) => {
-				// TODO: cleanup into map
-				if (k === "a / b") {
-					k = "a divide b"
-				}
-				if (k === "a : b") {
-					k = "a switch b"
-				}
-				if (k === "a * b") {
-					k = "a times b"
-				}
+        return Object.fromEntries(
+            Object.entries(obj).map(([k, v]) => {
+                // TODO: cleanup into map
+                if (k === "a / b") {
+                    k = "a divide b";
+                }
+                if (k === "a : b") {
+                    k = "a switch b";
+                }
+                if (k === "a * b") {
+                    k = "a times b";
+                }
 
-				return [v, k]
-			})
-		);
-	})(BikiTextInterpreter.commandNameMap);
+                return [v, k];
+            })
+        );
+    })(BikiTextInterpreter.commandNameMap);
 
     /* ----------------------------------------------------------------------------
 		grammarTypeMap
 	---------------------------------------------------------------------------- */
-    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = SQFGrammarTypeMap;
+    private static readonly grammarTypeMap: IJSON<SQFGrammarType> =
+        SQFGrammarTypeMap;
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		siteUrlMap
 	---------------------------------------------------------------------------- */
     private static readonly siteUrlMap: IJSON<string> = {
@@ -170,8 +171,8 @@ export class BikiTextInterpreter {
             // ensuring it is not mistaken by JS for an actual bool value
             wikiTitle = new Boolean(wikiTitle).toString();
         }
-        
-		wikiTitle = wikiTitle.trim();
+
+        wikiTitle = wikiTitle.trim();
         const mappedName = BikiTextInterpreter.commandNameMap[wikiTitle];
         if (mappedName) {
             return mappedName;
@@ -273,7 +274,7 @@ export class BikiTextInterpreter {
 		getSQFGrammarType
 	---------------------------------------------------------------------------- */
     public getSQFGrammarType(name: string): SQFGrammarType {
-       	const nameLowered = name = name.toLowerCase();
+        const nameLowered = (name = name.toLowerCase());
         if (nameLowered.includes("_fnc_")) {
             return SQFGrammarType.Function;
         }
@@ -282,8 +283,8 @@ export class BikiTextInterpreter {
         if (type) {
             return type;
         } else if (BikiTextInterpreter.grammarTypeMap[name]) {
-			return BikiTextInterpreter.grammarTypeMap[name];
-		}
+            return BikiTextInterpreter.grammarTypeMap[name];
+        }
 
         return SQFGrammarType.Command;
     }
@@ -335,23 +336,22 @@ export class BikiTextInterpreter {
         return WikiPageType.Unknown;
     }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getFilename
 	---------------------------------------------------------------------------- */
-	public getFilename(pageTitle: string): string {
-		const filename = BikiTextInterpreter.filenameMap[pageTitle];
-		if (filename) {
-			return filename;
-		}
+    public getFilename(pageTitle: string): string {
+        const filename = BikiTextInterpreter.filenameMap[pageTitle];
+        if (filename) {
+            return filename;
+        }
 
-		return pageTitle;
-	}
+        return pageTitle;
+    }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		getWikiExternalUrl
 	---------------------------------------------------------------------------- */
-	public getWikiExternalUrl(nameOfSiteOnWiki: string): string | undefined {
-		return BikiTextInterpreter.siteUrlMap[nameOfSiteOnWiki.toLowerCase()];
-	}
-
+    public getWikiExternalUrl(nameOfSiteOnWiki: string): string | undefined {
+        return BikiTextInterpreter.siteUrlMap[nameOfSiteOnWiki.toLowerCase()];
+    }
 }
