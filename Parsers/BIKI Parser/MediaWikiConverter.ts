@@ -429,7 +429,7 @@ export class MediaWikiConverter {
 	---------------------------------------------------------------------------- */
     public static getWikiPageDetails(page: WikiPage): WikiPageDetail[] {
         const matchPageDetailsRegEx =
-            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}})|(\|([\s\w]*)\=(?!\=)))/gi;
+            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
         const pageDetails: IterableIterator<RegExpMatchArray> | undefined =
             page.revision?.text?.matchAll(matchPageDetailsRegEx);
 
@@ -739,27 +739,38 @@ export class MediaWikiConverter {
 
         let examples: string[] = [];
         let description: string = "";
+		let syntaxStrings: string[] = [];
         pageDetails.forEach((detail: WikiPageDetail) => {
             if (!detail.detailContent) return;
 
+			if (detail.type === WikiPageDetailType.Syntax) {
+				syntaxStrings.push(
+					MediaWikiConverter.formatBikiText(detail.detailContent)
+				);
+				return;
+			}
+
             if (detail.type === WikiPageDetailType.Description) {
-                description = MediaWikiConverter.formatDescription(detail.detailContent);
+                description = MediaWikiConverter.formatBikiText(detail.detailContent);
 				
                 return;
             }
 
             if (detail.type === WikiPageDetailType.Example) {
                 examples.push(
-					MediaWikiConverter.formatExample(detail.detailContent)
+					MediaWikiConverter.formatBikiText(detail.detailContent)
 				);
 				return;
             }
         });
 		examples = examples.map((example,index) => {
-			return `*Example ${index + 1}:*\n${example}`
+			return `*Example ${index + 1}:*\n${example}`;
+		});
+		syntaxStrings = syntaxStrings.map((syntaxString,index) => {
+			return `*Syntax ${index + 1}:*\n<br>\n${syntaxString}`;
 		});
 
-		const final = `${description}\n\n\n---\n${examples.join("\n\n")}`;
+		const final = `${description}\n\n\n---\n${syntaxStrings.join("\n\n")}\n\n---\n${examples.join("\n\n")}`;
 		// TODO:
 		// - lots of small mistakes with link references
 		// - need to parse game version references
@@ -856,7 +867,7 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 		return output.trim();
 	}
 
-	private static formatExample(input: string): string {
+	private static formatBikiText(input: string): string {
 		// console.log('\n----------------------------------\n');
 		let output: string = input;
 		const sqfCodeMatches = output.matchAll(/(<sqf>)([\s\S]*?)(<\/sqf>)/gi);
@@ -883,4 +894,5 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 		// console.log('\n----------------------------------\n');
 		return output.trim();
 	}
+	
 }
