@@ -12271,12 +12271,11 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                     SQFDataType.Object,
                     SQFDataType.String,
                     SQFDataType.Config,
+					{
+						operation: SQFArrayComparator.Exact,
+						types: [SQFDataType.Object,SQFDataType.Boolean],
+					}
                 ],
-            },
-            {
-                type: SQFSyntaxType.UnaryOperator,
-                returnTypes: SQFDataType.Array,
-                rightOperandTypes: SQFDataType.Config,
             },
         ],
         grammarType: SQFGrammarType.Command,
