@@ -742,7 +742,7 @@ export class MediaWikiConverter {
 		let syntaxStrings: string[] = [];
         pageDetails.forEach((detail: WikiPageDetail) => {
             if (!detail.detailContent) return;
-
+			
 			if (detail.type === WikiPageDetailType.Syntax) {
 				syntaxStrings.push(
 					MediaWikiConverter.formatBikiText(detail.detailContent)
@@ -764,39 +764,15 @@ export class MediaWikiConverter {
             }
         });
 		examples = examples.map((example,index) => {
-			return `*Example ${index + 1}:*\n${example}`;
+			return `*Example ${index + 1}:*\n\n${example}`;
 		});
+		// TODO: Finalize syntax look
 		syntaxStrings = syntaxStrings.map((syntaxString,index) => {
-			return `*Syntax ${index + 1}:*\n<br>\n${syntaxString}`;
+			return `*Syntax ${index + 1}:*\n\n${syntaxString}`;
 		});
 
 		const final = `${description}\n\n\n---\n${syntaxStrings.join("\n\n")}\n\n---\n${examples.join("\n\n")}`;
-		// TODO:
-		// - lots of small mistakes with link references
-		// - need to parse game version references
-		// - some page names (<=) are not valid
-		/*
-		regex selection needs to be able to get [[xxxx]] everywhere but between <sqf> block
-		// /(?<!<sqf>[\s\S]*?)(\[\[)([\s\S]*?)(\]\])/gi WIP
-		// /(?<!\<sqf\>[\s\D]*?)(\[\[)([\S\D]*?)(\]\])(?![\s\S]*\<\/sqf\>)/gi
-		// /(?<!<sqf>[\s\S]*?)(\[\[)([\s\w\d\|]*?)(\]\])(?!(<sqf>)[\s\S]*?<\/sqf>)/gi wip
-To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
-<sqf>
-BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
-BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
-BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
-</sqf>
-<sqf>
-_result = [0, [0], [[0]]] - [[0]];		// [0, [[0]]] - Since Arma 3
-_result = [0, [0], [[0]]] - [[[0]]];	// [0, [0]]   - Since Arma 3
-</sqf>
-To rotate BRICK on X axis 90 degrees (tilt forward), change both [[vectorDir]] and [[vectorUp]] accordingly.
-<sqf>
-BRICK setVectorDirAndUp [[]] [[0,0,-1], [0,1,0]] [[global]];
-BRICK setVectorDirAndUp [[0,_var,global], [global]];
-BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
-</sqf>
-		*/
+
 		if (final) {
 			const filename = this.textInterpreter.getFilename(pageTitle);
 			fs.writeFileSync(`${documentationFolderPath}/${filename}.md`,final);
@@ -818,12 +794,6 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 
 			const text = match[2];
 			const matchedText = match[0];
-			// console.log('\n----------------------------------\n');
-			// console.log("matchedText:",matchedText);
-			// console.log("text:",text);
-			// console.log("output:",output);
-			// console.log("match.input:",match.input);
-			// console.log('\n----------------------------------\n');
 			if (!text.includes('|')) {
 				output = output.replace(matchedText,`\`${text.trim()}\``);
 				continue;
@@ -832,9 +802,6 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			const [ link, linkTitle ] = text.split('|');
 			output = output.replace(matchedText,`\`${linkTitle}\``);
 		}
-
-		// replace SQF wiki type links
-		// output = output.replace(/(\[\[)([\s\D\|]*?)(\]\])/gi,"`$2`");
 
 		// remove tables
 		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
@@ -855,6 +822,7 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			const originalString = regexMatchArrayForLink[0];
 			const siteBaseUrl = this.textInterpreter.getWikiExternalUrl(siteName);
 			if (!siteBaseUrl) {
+				// TODO: lots of "<see arm reference>"" ending up in output docs
 				output = output.replace(originalString,`<See ${siteName} Reference ${linkTitle}>`);
 				return;
 			}
@@ -862,13 +830,10 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			output = output.replace(originalString,`[${linkTitle}](${siteBaseUrl}/${endpoint})`);
 		});
 
-		// console.log(input);
-		// console.log(output.trim());
 		return output.trim();
 	}
 
 	private static formatBikiText(input: string): string {
-		// console.log('\n----------------------------------\n');
 		let output: string = input;
 		const sqfCodeMatches = output.matchAll(/(<sqf>)([\s\S]*?)(<\/sqf>)/gi);
 		const savedCodeExamples: string[] = [];
@@ -878,7 +843,6 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 			savedCodeExamples.push(matchString);
 			output = output.replace(matchString,'<SQFCodeToReplace>');
 		}
-		// const sqfCodeMatchesArray = Array.from(sqfCodeMatches);
 		output = MediaWikiConverter.formatDescription(input);
 		
 		for (const sqfCode of savedCodeExamples) {
@@ -890,8 +854,6 @@ BRICK setVectorDirAndUp [[0,"hello",-1], [0,1,0]];
 		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
 		output = output.replace(/\<\/sqf\>/gi,"\n```");
 		
-		// console.log(output);
-		// console.log('\n----------------------------------\n');
 		return output.trim();
 	}
 	

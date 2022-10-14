@@ -73,6 +73,7 @@ export class DocProvider implements IDocProvider {
                     docArray = [syntaxSections, documentation.value];
                     docLinkFormatted = `Link To Documenation: ${documentationLink}`;
                 } else {
+					// TODO: determine how types syntax should look
                     const syntaxesAsMarkdown: string[] = syntaxes.map(
                         (syntax: string) =>
                             ["```sqf", syntax, "```", "___"].join("\n")
