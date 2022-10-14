@@ -766,12 +766,8 @@ export class MediaWikiConverter {
 		examples = examples.map((example,index) => {
 			return `*Example ${index + 1}:*\n\n${example}`;
 		});
-		// TODO: Finalize syntax look
-		syntaxStrings = syntaxStrings.map((syntaxString,index) => {
-			return `*Syntax ${index + 1}:*\n\n${syntaxString}`;
-		});
 
-		const final = `${description}\n\n\n---\n${syntaxStrings.join("\n\n")}\n\n---\n${examples.join("\n\n")}`;
+		const final = `${description}\n\n\n---\n*Syntaxes:*\n\n${syntaxStrings.join("\n\n")}\n\n---\n${examples.join("\n\n")}`;
 
 		if (final) {
 			const filename = this.textInterpreter.getFilename(pageTitle);
