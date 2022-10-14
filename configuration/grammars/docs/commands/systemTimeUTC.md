@@ -2,17 +2,25 @@ Returns `systemTime` according to `U`niversal `T`ime `C`oordinated time scale.
 
 
 ---
+*Syntaxes:*
+
+`systemTimeUTC`
+
+---
 *Example 1:*
+
 ```sqf
 private _UKTime = systemTimeUTC;
 ```
 
 *Example 2:*
+
 ```sqf
 systemTimeUTC apply { if (_x < 10) then { "0" + str _x } else { str _x } }; // ["2021","05","03","14","09","37","593"]
 ```
 
 *Example 3:*
+
 ```sqf
 private _timeUTC = systemTimeUTC;
 private _time = systemTime;

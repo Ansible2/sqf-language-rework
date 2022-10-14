@@ -3,7 +3,13 @@ Taking the current `direction` of the object into account.
 
 
 ---
+*Syntaxes:*
+
+object `getRelDir` position
+
+---
 *Example 1:*
+
 ```sqf
 _reldir = player getRelDir tank;
 ```

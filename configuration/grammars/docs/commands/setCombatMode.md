@@ -8,7 +8,13 @@ See `Combat Modes` for more information on combat modes.
 
 
 ---
+*Syntaxes:*
+
+group `setCombatMode` mode
+
+---
 *Example 1:*
+
 ```sqf
 _group1 setCombatMode "BLUE";
 ```

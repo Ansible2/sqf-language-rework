@@ -2,7 +2,13 @@ Returns grid size based on screen resolution and configs: uiScaleFactor, uiScale
 
 
 ---
+*Syntaxes:*
+
+`pixelGridNoUIScale`
+
+---
 *Example 1:*
+
 ```sqf
 _gridHeightNoUIScale = pixelH * pixelGridNoUIScale;
 ```

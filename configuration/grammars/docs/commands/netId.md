@@ -2,7 +2,13 @@ Unique ID of object or group.  As this command is MP only, you can use `BIS_fnc_
 
 
 ---
+*Syntaxes:*
+
+`netId`  var
+
+---
 *Example 1:*
+
 ```sqf
 _playerNetId = netId player;
 ```

@@ -2,7 +2,13 @@ Enables / disables an entity's ability to receive damage. This command does not 
 
 
 ---
+*Syntaxes:*
+
+entity `allowDamage` allow
+
+---
 *Example 1:*
+
 ```sqf
 player allowDamage false;
 ```

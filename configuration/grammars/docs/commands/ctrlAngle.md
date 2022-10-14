@@ -4,7 +4,13 @@ Gets rotation info of a control set as **ST_PICTURE**. Supported control types:
 
 
 ---
+*Syntaxes:*
+
+`ctrlAngle` control
+
+---
 *Example 1:*
+
 ```sqf
 ctrlAngle _control;
 ```

@@ -2,7 +2,13 @@
 
 
 ---
+*Syntaxes:*
+
+`not` a
+
+---
 *Example 1:*
+
 ```sqf
 not false; // returns true
 ```

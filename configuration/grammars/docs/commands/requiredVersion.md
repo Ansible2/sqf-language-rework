@@ -4,7 +4,13 @@ Check if version of application is available. If the current version is older th
 
 
 ---
+*Syntaxes:*
+
+`requiredVersion` version
+
+---
 *Example 1:*
+
 ```sqf
 if !(requiredVersion "1.09") exitWith {};
 ```

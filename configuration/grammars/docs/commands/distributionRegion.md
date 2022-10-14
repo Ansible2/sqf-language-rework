@@ -4,7 +4,13 @@ Returns the numerical index for the distribution region of this copy of [[:Categ
 
 
 ---
+*Syntaxes:*
+
+`distributionRegion`
+
+---
 *Example 1:*
+
 ```sqf
 if (distributionRegion == 1) then { hint "miles"; } else { hint "kilometres"; };
 ```

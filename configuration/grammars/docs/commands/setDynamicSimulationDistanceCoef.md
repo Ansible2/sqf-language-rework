@@ -2,7 +2,13 @@ Sets activation distance multiplier of [[Arma 3: Dynamic Simulation]] for the gi
 
 
 ---
+*Syntaxes:*
+
+class `setDynamicSimulationDistanceCoef` multiplier
+
+---
 *Example 1:*
+
 ```sqf
 "IsMoving" setDynamicSimulationDistanceCoef 3;
 ```

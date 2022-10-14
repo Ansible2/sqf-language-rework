@@ -2,5 +2,11 @@ Defines an action performed when the user right clicks on the map and,selects Ne
 
 
 ---
+*Syntaxes:*
+
+map `onShowNewObject` command
+
+---
 *Example 1:*
+
 -

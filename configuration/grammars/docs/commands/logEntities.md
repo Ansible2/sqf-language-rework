@@ -4,7 +4,13 @@ Creates a log file containing the list of all game entities in scene.
 
 
 ---
+*Syntaxes:*
+
+`logEntities`
+
+---
 *Example 1:*
+
 ```sqf
 logEntities;
 ```

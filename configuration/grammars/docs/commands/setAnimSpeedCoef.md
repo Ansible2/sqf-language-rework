@@ -3,7 +3,13 @@ Doesn't affect upper body animations (reloading, etc.)
 
 
 ---
+*Syntaxes:*
+
+unit `setAnimSpeedCoef` coef
+
+---
 *Example 1:*
+
 ```sqf
 player setAnimSpeedCoef 0.75;
 ```

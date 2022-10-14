@@ -2,7 +2,15 @@ Returns array of type names of all vehicle's magazines. When applied to a unit, 
 
 
 ---
+*Syntaxes:*
+
+`magazines` vehicle
+
+`magazines` [vehicle, includeEmpty]
+
+---
 *Example 1:*
+
 ```sqf
 _mags = magazines player;
 ```

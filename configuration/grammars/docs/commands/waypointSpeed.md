@@ -8,7 +8,13 @@ Possible values are:
 
 
 ---
+*Syntaxes:*
+
+`waypointSpeed` waypoint
+
+---
 *Example 1:*
+
 ```sqf
 _speed = waypointSpeed [groupOne,1];
 ```

@@ -4,7 +4,13 @@ The Client ID is the temporary ID given to a connected client for that session. 
 
 
 ---
+*Syntaxes:*
+
+clientID `publicVariableClient` varName
+
+---
 *Example 1:*
+
 ```sqf
 3 publicVariableClient "CTFscoreOne";
 ```

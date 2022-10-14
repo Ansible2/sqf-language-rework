@@ -14,7 +14,13 @@ Possible values are:
 
 
 ---
+*Syntaxes:*
+
+`waypointFormation` waypoint
+
+---
 *Example 1:*
+
 ```sqf
 waypointFormation [groupOne,1];
 ```

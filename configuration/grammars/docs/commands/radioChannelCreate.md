@@ -2,18 +2,26 @@ Create a custom radio channel with the given color, label, call sign and registe
 
 
 ---
+*Syntaxes:*
+
+`radioChannelCreate` [color, label, callSign, units, sentenceType]
+
+---
 *Example 1:*
+
 ```sqf
 _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], "Q-dance Radio", "%UNIT_NAME", [player1, player2]];
 ```
 
 *Example 2:*
+
 ```sqf
 _channelID = radioChannelCreate [[0.96, 0.34, 0.13, 0.8], "Q-dance Radio", "%UNIT_NAME", [player1, player2], true];
 // using true also disables automatic quotes for chat in channel (Arma 3)
 ```
 
 *Example 3:*
+
 Create custom channel and add all players to it, present and JIP:
 
 ```sqf

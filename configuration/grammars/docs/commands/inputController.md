@@ -27,7 +27,13 @@ Returns the state of controller inputs. The controller is a standard XBOX contro
 
 
 ---
+*Syntaxes:*
+
+`inputController` input
+
+---
 *Example 1:*
+
 State of the fire trigger:
 
 ```sqf

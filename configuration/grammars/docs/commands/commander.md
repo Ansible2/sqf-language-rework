@@ -2,12 +2,19 @@ In <See o Reference p> it returns the commander of a vehicle. Since <See arm Ref
 
 
 ---
+*Syntaxes:*
+
+`commander`  vehicle
+
+---
 *Example 1:*
+
 ```sqf
 moveOut commander _tank;
 ```
 
 *Example 2:*
+
 Detect if player is in commander turret of a vehicle:
 
 ```sqf

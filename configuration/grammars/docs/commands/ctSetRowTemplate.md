@@ -2,7 +2,13 @@ Takes config path to the new row template. Clears the whole RscControlsTable and
 
 
 ---
+*Syntaxes:*
+
+control `ctSetRowTemplate` config
+
+---
 *Example 1:*
+
 ```sqf
 _control ctSetRowTemplate _configPath;
 ```

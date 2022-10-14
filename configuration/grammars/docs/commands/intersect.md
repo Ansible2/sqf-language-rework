@@ -7,12 +7,19 @@ Finds named selections in object which are in specified LOD, intersected by give
 
 
 ---
+*Syntaxes:*
+
+[object, lodName] `intersect` [begPos, endPos]
+
+---
 *Example 1:*
+
 ```sqf
 [_tank, "VIEW"] intersect [[1500, 1500, 2], [1550, 1500, 2]];
 ```
 
 *Example 2:*
+
 ```sqf
 sphere = "Sign_Sphere10cm_F" createVehicle [0,0,0];
 onEachFrame {

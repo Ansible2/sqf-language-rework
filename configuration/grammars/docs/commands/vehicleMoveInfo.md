@@ -10,7 +10,13 @@ Returns current vehicle move/turn info (a getter for `sendSimpleCommand`) in for
 
 
 ---
+*Syntaxes:*
+
+`vehicleMoveInfo` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 onEachFrame { hintSilent str vehicleMoveInfo vehicle player };
 ```

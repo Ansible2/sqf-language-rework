@@ -6,7 +6,13 @@ Tell the helicopter engine RPMs to reach the given value within a period of time
 
 
 ---
+*Syntaxes:*
+
+helicopterRTD `setWantedRPMRTD` [value, time, engineIndex]
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player setWantedRPMRTD [2500, 30, 0];
 ```

@@ -2,7 +2,13 @@ Clears the value of the given entity's `attribute` in `Eden Editor`. An attribut
 
 
 ---
+*Syntaxes:*
+
+entity [[clear3DENAttribute]]  attribute
+
+---
 *Example 1:*
+
 ```sqf
 0 clear3DENAttribute "name";
 ```

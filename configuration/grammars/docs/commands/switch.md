@@ -2,13 +2,15 @@ Checks if the given parameter matches any `case`. If so, the code block of that 
 If a case has no code block the code of the next case will automatically be executed, making it possible to formulate a logical "or" for cases which would otherwise contain the exact same code (see {{HashLink|#Example 2}}).<br>
 The `default` block will be executed `only` if no case matches, no matter its position inside the code block. It is not a `case`, and will `never` be entered by fallthrough.
 
-{{Feature|Informative|
-* `String` comparison is case-sensitive. Use `toUpper`, `toLower`, `toLowerANSI` or `toUpperANSI` to force all `strings` to the same case.
-* if no `default` block is provided and no `case` is matched, the switch block returns the default value `true`, otherwise it returns what the valid case block returns.
 
+---
+*Syntaxes:*
+
+`switch` value
 
 ---
 *Example 1:*
+
 ```sqf
 switch (floor random 5) do
 {
@@ -19,6 +21,7 @@ switch (floor random 5) do
 ```
 
 *Example 2:*
+
 <!-- this example is referenced in Description -->
 
 ```sqf
@@ -34,6 +37,7 @@ switch (_condition) do
 ```
 
 *Example 3:*
+
 ```sqf
 private _color = switch (side player) do
 {
@@ -43,6 +47,7 @@ private _color = switch (side player) do
 ```
 
 *Example 4:*
+
 ```sqf
 private _fn_moveForward =	{ /*...code...*/ };
 private _fn_moveBackward =	{ /*...code...*/ };
@@ -57,6 +62,7 @@ switch true do
 ```
 
 *Example 5:*
+
 ```sqf
 switch _var do
 {

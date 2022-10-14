@@ -2,12 +2,19 @@ Sets thermal vision mode for currently used camera. This command only works with
 
 
 ---
+*Syntaxes:*
+
+state `setCamUseTI` modeIndex
+
+---
 *Example 1:*
+
 ```sqf
 true setCamUseTI 1;
 ```
 
 *Example 2:*
+
 `Predator` vision:
 
 ```sqf

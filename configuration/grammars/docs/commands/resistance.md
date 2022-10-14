@@ -2,7 +2,13 @@ Pre-defined variable for the resistance `side`.
 
 
 ---
+*Syntaxes:*
+
+`resistance`
+
+---
 *Example 1:*
+
 ```sqf
 if (side _unit == resistance) then
 {
@@ -11,6 +17,7 @@ if (side _unit == resistance) then
 ```
 
 *Example 2:*
+
 ```sqf
 hint format ["%1", resistance]; // Returns "GUER"
 ```

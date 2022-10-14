@@ -11,12 +11,21 @@ Sets an individual unit entity behaviour (main syntax) or a group entity behavio
 
 
 ---
+*Syntaxes:*
+
+unit `setCombatBehaviour` behaviour
+
+group `setCombatBehaviour` behaviour
+
+---
 *Example 1:*
+
 ```sqf
 unit1 setCombatBehaviour "SAFE";
 ```
 
 *Example 2:*
+
 ```sqf
 group1 setCombatBehaviour "CARELESS";
 ```

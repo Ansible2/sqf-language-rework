@@ -2,12 +2,19 @@ Types text to the group radio channel. The text will be visible only on the PC w
 
 
 ---
+*Syntaxes:*
+
+unitName `groupChat` chatText
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne groupChat "Show this text";
 ```
 
 *Example 2:*
+
 ```sqf
 driver vehicle player sideChat "sideChat";
 driver vehicle player globalChat "globalChat";

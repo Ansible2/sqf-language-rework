@@ -2,7 +2,13 @@ Returns bool array if it is possible to load cargo inside vehicle and if possibl
 
 
 ---
+*Syntaxes:*
+
+vehicle `canVehicleCargo` cargo
+
+---
 *Example 1:*
+
 Blackfish with no vehicle cargo loaded
 
 ```sqf
@@ -10,6 +16,7 @@ private _result = blackfish canVehicleCargo offroad; // [true, true]
 ```
 
 *Example 2:*
+
 Blackfish with one vehicle cargo called offroad already loaded
 
 ```sqf
@@ -18,6 +25,7 @@ private _result = blackfish canVehicleCargo offroad; // [false, false]
 Even if the Blackfish were empty, the offroad could not be loaded because it is already in a cargo space
 
 *Example 3:*
+
 Blackfish with one vehicle cargo called offroad already loaded
 
 ```sqf

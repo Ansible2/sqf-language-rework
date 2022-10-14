@@ -2,7 +2,13 @@ Selects a subject page in the `diary`. The subject page is selected but the comm
 
 
 ---
+*Syntaxes:*
+
+player `selectDiarySubject` subject
+
+---
 *Example 1:*
+
 ```sqf
 openMap true;
 player selectDiarySubject "Diary";

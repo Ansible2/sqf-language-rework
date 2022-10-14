@@ -2,12 +2,19 @@ Make the person tell to the receiver the sentence. See `Conversations` for more 
 
 
 ---
+*Syntaxes:*
+
+person `kbTell` [receiver, topicName, sentenceClass, argumentArray1, argumentArray2, (…), forceRadio]
+
+---
 *Example 1:*
+
 ```sqf
 player kbTell [BIS_HQ, "myTopic", "playerSentence1"];
 ```
 
 *Example 2:*
+
 ```sqf
 player kbTell [
 	BIS_HQ,										// to
@@ -32,6 +39,7 @@ class AirstrikeRequest
 </syntaxhighlight>
 
 *Example 3:*
+
 ```sqf
 player kbTell [
 	BIS_HQ,										// to

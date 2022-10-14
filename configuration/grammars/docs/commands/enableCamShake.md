@@ -3,7 +3,13 @@ By default, shake effects are enabled, but once they have been disabled by this 
 
 
 ---
+*Syntaxes:*
+
+`enableCamShake`  value
+
+---
 *Example 1:*
+
 ```sqf
 enableCamShake false;
 ```

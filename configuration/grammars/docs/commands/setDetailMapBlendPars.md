@@ -4,17 +4,25 @@ Sets the detail texture map blend pars. Allows for smooth transition between det
 
 
 ---
+*Syntaxes:*
+
+`setDetailMapBlendPars` [fullDetail, noDetail]
+
+---
 *Example 1:*
+
 ```sqf
 setDetailMapBlendPars [20, 50];
 ```
 
 *Example 2:*
+
 ```sqf
 setDetailMapBlendPars ([[20, 50], [300, 600]] select (currentWeapon player in ["Binocular", "Rangefinder", "Laserdesignator"]));
 ```
 
 *Example 3:*
+
 Reset to default:
 
 ```sqf

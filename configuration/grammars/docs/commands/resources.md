@@ -2,7 +2,13 @@ Returns the resources of a team member. Results are local to the PC on which com
 
 
 ---
+*Syntaxes:*
+
+`resources` member
+
+---
 *Example 1:*
+
 ```sqf
 resources teamMember _unit;
 ```

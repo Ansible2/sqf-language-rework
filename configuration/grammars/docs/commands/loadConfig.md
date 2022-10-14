@@ -2,13 +2,20 @@ Loads the given file as a `Config`, allowing easy processing of the config file 
 
 
 ---
+*Syntaxes:*
+
+`loadConfig` path
+
+---
 *Example 1:*
+
 ```sqf
 private _cfg = loadConfig "a3\data_f\default_super.rvmat"; // note: very slow! ~0.1200 ms on tested system
 getText (_cfg >> "Stage2" >> "uvSource");
 ```
 
 *Example 2:*
+
 ```sqf
 // using a hashmap to cache loaded configs, since loading configs is very slow and should be done once.
 private _fnc_loadConfig = {
@@ -30,6 +37,7 @@ private _fnc_loadConfig = {
 ```
 
 *Example 3:*
+
 ```sqf
 // converting a config into hashmap
 private _fnc_convertClass = {

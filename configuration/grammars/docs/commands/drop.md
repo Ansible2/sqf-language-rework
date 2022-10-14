@@ -5,7 +5,13 @@ They can be set to dynamically change their position, size, direction, can be se
 
 
 ---
+*Syntaxes:*
+
+`drop` parameters
+
+---
 *Example 1:*
+
 ```sqf
 drop ["cl_basic", "", "Billboard", 1, 1,
 	[-3.5 * (sin (direction xural)), -3.5 * (cos (direction xural)), 0],

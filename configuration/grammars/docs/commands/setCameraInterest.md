@@ -2,7 +2,13 @@ Set camera interest for given entity. Camera interest is by default 0. Any unit 
 
 
 ---
+*Syntaxes:*
+
+entity `setCameraInterest` interest
+
+---
 *Example 1:*
+
 ```sqf
 _soldier setCameraInterest 50;
 ```

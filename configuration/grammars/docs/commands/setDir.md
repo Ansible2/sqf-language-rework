@@ -2,23 +2,32 @@ Sets object heading. Angles are measured in degrees clockwise from north; the re
 
 
 ---
+*Syntaxes:*
+
+object `setDir` heading
+
+---
 *Example 1:*
+
 ```sqf
 myUnit setDir 45; // will set myUnit to face North-East
 ```
 
 *Example 2:*
+
 ```sqf
 myUnit setDir -675; // will also set myUnit to face North-East (= 45-360-360)
 ```
 
 *Example 3:*
+
 ```sqf
 MyUnit setDir 30;
 MyUnit setFormDir 30; // needed for AI to keep the given direction
 ```
 
 *Example 4:*
+
 ```sqf
 // provided _myMine is local
 _myMine setDir 45;

@@ -4,7 +4,13 @@ Created sides must have their "side-friendship" defined with `setFriend`.
 
 
 ---
+*Syntaxes:*
+
+`createCenter` side
+
+---
 *Example 1:*
+
 ```sqf
 createCenter east;
 ```

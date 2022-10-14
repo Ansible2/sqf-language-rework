@@ -2,7 +2,13 @@ Attempts to sort given array either in ascending (`true`) or descending (`false`
 
 
 ---
+*Syntaxes:*
+
+array `sort` order
+
+---
 *Example 1:*
+
 ```sqf
 _arr = [5.21725,1.30859,4,5.03028,1];
 _arr sort true;
@@ -10,6 +16,7 @@ hint str _arr; //[1,1.30859,4,5.03028,5.21725]
 ```
 
 *Example 2:*
+
 ```sqf
 _dev = ["ja","pa","pa","tram","tara"];
 _dev sort false;
@@ -17,6 +24,7 @@ hint str _dev; //["tram","tara","pa","pa","ja"]
 ```
 
 *Example 3:*
+
 ```sqf
 #define ASC true
 #define DESC false
@@ -26,6 +34,7 @@ hint str _scores; //[[200,"steve",11],[200,"dave",21],[123,"bob",15],[123,"bill"
 ```
 
 *Example 4:*
+
 Sort buildings by distance and return position of the most distant building:
 
 ```sqf

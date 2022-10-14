@@ -2,7 +2,13 @@ This command was meant to break the script into debugger, however currently `it 
 
 
 ---
+*Syntaxes:*
+
+`halt`
+
+---
 *Example 1:*
+
 ```sqf
 if (_displayAnError) then {halt};
 ```

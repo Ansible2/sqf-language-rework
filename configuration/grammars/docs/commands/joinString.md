@@ -2,28 +2,38 @@ Joins `array` into `String` with provided `separator`. Array can be of mixed typ
 
 
 ---
+*Syntaxes:*
+
+array `joinString` separator
+
+---
 *Example 1:*
+
 ```sqf
 _str = "- This, is a sample string." splitString "-,. "; // ["This","is","a","sample","string"]
 _str joinString " "; // "This is a sample string"
 ```
 
 *Example 2:*
+
 ```sqf
 ["This","is","sparta"] joinString " ~ "; // "This ~ is ~ sparta"
 ```
 
 *Example 3:*
+
 ```sqf
 ["1",2,text "3"] joinString ""; // "123"
 ```
 
 *Example 4:*
+
 ```sqf
 "Japa is the best!" splitString "" joinString " "; // "J a p a   i s   t h e   b e s t !"
 ```
 
 *Example 5:*
+
 Remove all \r\n from file:
 
 ```sqf

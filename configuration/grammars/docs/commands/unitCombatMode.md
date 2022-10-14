@@ -2,7 +2,13 @@ Gets individual unit's `combat mode`. For more information see `setUnitCombatMod
 
 
 ---
+*Syntaxes:*
+
+`unitCombatMode` unit
+
+---
 *Example 1:*
+
 ```sqf
 unitCombatMode _unit;
 ```

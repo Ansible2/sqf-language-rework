@@ -3,16 +3,20 @@ When interval is 0 the "fromXXX" values are used for the beginning of the interp
 <br>
 The `velocity` param doesn't do much in SP, but in MP, provided the velocity component is set correctly, it helps the engine to figure out what the next position of the moving object should be on other clients.<br><br>
 The actual approximate interpolation formula for this command is:
-<sqf>_vecCurrent = _vecFrom vectorAdd (_vecTo vectorDiff _vecFrom vectorMultiply _interval);</sqf>
-{{Feature | Informative | For continuous movement this command should be executed each frame while changing the interval value. For example to apply interpolation for 10 seconds one could use the following command to translate 10 seconds into 0..1 interval:
-<sqf>t1 = time;
-t2 = time + 10;</sqf> 
-Later inside some on frame event...
-<sqf>_interval = linearConversion [t1, t2, time, 0, 1];</sqf>
+
+```sqf
+_vecCurrent = _vecFrom vectorAdd (_vecTo vectorDiff _vecFrom vectorMultiply _interval);
+```
 
 
 ---
+*Syntaxes:*
+
+object `setVelocityTransformation` [fromPosASL, toPosASL, fromVelocity, toVelocity, fromVectorDir, toVectorDir, fromVectorUp, toVectorUp, interval, customCenter]
+
+---
 *Example 1:*
+
 ```sqf
 _tracker setVelocityTransformation 
 [
@@ -29,6 +33,7 @@ _tracker setVelocityTransformation
 ```
 
 *Example 2:*
+
 Bob on imaginary stairway to heaven:
 
 ```sqf
@@ -64,6 +69,7 @@ onEachFrame
 ```
 
 *Example 3:*
+
 Advanced trickery with curved movement. The curve is controlled with one control point (controlPointASL), just like quadratic Bézier curve:
 
 ```sqf

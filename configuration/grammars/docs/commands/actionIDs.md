@@ -2,7 +2,13 @@ Returns `Array` of `Number`s, where numbers are IDs of all user actions added to
 
 
 ---
+*Syntaxes:*
+
+`actionIDs` entity
+
+---
 *Example 1:*
+
 ```sqf
 _actions = actionIDs player;
 ```

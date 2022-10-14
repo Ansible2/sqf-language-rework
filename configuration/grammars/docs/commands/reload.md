@@ -3,17 +3,27 @@
 
 
 ---
+*Syntaxes:*
+
+`reload` unitName
+
+unit `reload` [muzzle, magazine]
+
+---
 *Example 1:*
+
 ```sqf
 if (needReload player == 1) then { reload player };
 ```
 
 *Example 2:*
+
 ```sqf
 player reload ["GL_3GL_F", "1Rnd_HE_Grenade_shell"];
 ```
 
 *Example 3:*
+
 Reload current muzzle:
 
 ```sqf

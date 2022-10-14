@@ -2,7 +2,13 @@ Returns entity's weapons information including weapon index and firemode.
 
 
 ---
+*Syntaxes:*
+
+unit `weaponsInfo` [weaponOrMuzzle, onlyLoaded]
+
+---
 *Example 1:*
+
 Find weapon with FullAuto firemode and switch to it: 
 ```sqf
 private _weapons = player weaponsInfo [currentMuzzle player, true];

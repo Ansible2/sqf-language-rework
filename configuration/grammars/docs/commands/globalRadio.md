@@ -2,12 +2,19 @@ Sends the audio message to the global radio channel. The message is defined in C
 
 
 ---
+*Syntaxes:*
+
+unit `globalRadio` radioName
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne globalRadio "messageOne";
 ```
 
 *Example 2:*
+
 ```sqf
 player globalRadio configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));
 ```

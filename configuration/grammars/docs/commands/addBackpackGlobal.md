@@ -2,12 +2,19 @@ Adds a backpack to a unit (even non-local).
 
 
 ---
+*Syntaxes:*
+
+unit `addBackpackGlobal` backpack
+
+---
 *Example 1:*
+
 ```sqf
 player addBackpackGlobal "B_AssaultPack_khk";
 ```
 
 *Example 2:*
+
 ```sqf
 _unit spawn 
 {

@@ -2,7 +2,13 @@ Sets value of the specified custom sound controller to be used in `simple expres
 
 
 ---
+*Syntaxes:*
+
+`setCustomSoundController` [vehicle, controller, value]
+
+---
 *Example 1:*
+
 Change value of CustomSoundController1 to 12
 
 ```sqf

@@ -2,5 +2,11 @@ Sets the text and command for the menu item. index is index as returned from add
 
 
 ---
+*Syntaxes:*
+
+map `updateMenuItem` [menu item index,text,command]
+
+---
 *Example 1:*
+
 -

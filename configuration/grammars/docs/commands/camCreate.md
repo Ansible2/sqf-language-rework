@@ -3,12 +3,19 @@ Among other commands, `cameraEffect` must be used to enter the camera's view and
 
 
 ---
+*Syntaxes:*
+
+type `camCreate` position
+
+---
 *Example 1:*
+
 ```sqf
 _cam = "camera" camCreate (ASLToAGL eyePos player);
 ```
 
 *Example 2:*
+
 ```sqf
 _flr = "flare" camCreate (position _myPlane); // works too
 ```

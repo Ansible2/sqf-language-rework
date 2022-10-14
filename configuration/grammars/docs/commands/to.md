@@ -2,7 +2,13 @@ Continue sequence of `for` construct. It sets the end value of the index variabl
 
 
 ---
+*Syntaxes:*
+
+forType `to` b
+
+---
 *Example 1:*
+
 ```sqf
 for "_i" from 10 to 20 do
 {

@@ -2,7 +2,13 @@ Adds weapon item, including magazine, directly to the `handgunWeapon`. This is u
 
 
 ---
+*Syntaxes:*
+
+unit `addHandgunItem` item
+
+---
 *Example 1:*
+
 ```sqf
 player addHandgunItem "muzzle_snds_L";
 ```

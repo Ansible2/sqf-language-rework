@@ -2,12 +2,19 @@ Finds the nearest building to a given object or position. A "building" is define
 
 
 ---
+*Syntaxes:*
+
+`nearestBuilding` position
+
+---
 *Example 1:*
+
 ```sqf
 _nBuilding = nearestBuilding player;
 ```
 
 *Example 2:*
+
 ```sqf
 _nBuilding = nearestBuilding position player;
 ```

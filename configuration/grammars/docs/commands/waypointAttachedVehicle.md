@@ -5,12 +5,19 @@ Gets the vehicle attached to the waypoint.
 
 
 ---
+*Syntaxes:*
+
+`waypointAttachedVehicle` waypoint
+
+---
 *Example 1:*
+
 ```sqf
 waypointAttachedVehicle [groupOne, 1];
 ```
 
 *Example 2:*
+
 ```sqf
 waypointAttachedVehicle [group player, currentWaypoint group player];
 ```

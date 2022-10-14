@@ -3,7 +3,13 @@ Sets waypoint position <br><br>
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWPPos` pos
+
+---
 *Example 1:*
+
 ```sqf
 [_groupOne, 1] setWPPos markerPos "MarkerOne";
 ```

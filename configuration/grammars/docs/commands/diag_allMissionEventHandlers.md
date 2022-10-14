@@ -2,7 +2,13 @@ Returns an array with all `mission event handlers`.
 
 
 ---
+*Syntaxes:*
+
+`diag_allMissionEventHandlers`
+
+---
 *Example 1:*
+
 ```sqf
 diag_allMissionEventHandlers;
 /*

@@ -2,12 +2,19 @@ Computes the {{Wikipedia|Euclidean_distance#Squared_Euclidean_distance|squared d
 
 
 ---
+*Syntaxes:*
+
+var1 `distanceSqr` var2
+
+---
 *Example 1:*
+
 ```sqf
 player distanceSqr (leader player);
 ```
 
 *Example 2:*
+
 ```sqf
 _distance = sqrt ((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2);
 _distanceSqr = (x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2;

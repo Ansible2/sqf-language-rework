@@ -2,12 +2,21 @@ Terminates the effect in the given layer by fading it out according to the given
 
 
 ---
+*Syntaxes:*
+
+layer `cutFadeOut`  duration
+
+layerName `cutFadeOut`  duration
+
+---
 *Example 1:*
+
 ```sqf
 0 cutFadeOut 2;
 ```
 
 *Example 2:*
+
 ```sqf
 private _layer = "layer1" cutFadeOut 2;
 ```

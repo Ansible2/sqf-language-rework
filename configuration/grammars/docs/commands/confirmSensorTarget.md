@@ -2,7 +2,13 @@ Sets for which `Side` the entity becomes a "confirmed hostile" target - a target
 
 
 ---
+*Syntaxes:*
+
+vehicle `confirmSensorTarget` [side, isConfirmed]
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player confirmSensorTarget [blufor, true];
 ```

@@ -2,17 +2,25 @@ Converts map screen coordinates into world coordinates. Unlike `posScreenToWorld
 
 
 ---
+*Syntaxes:*
+
+control `ctrlMapScreenToWorld` [x, y]
+
+---
 *Example 1:*
+
 ```sqf
 _worldCoord = _control ctrlMapScreenToWorld _ScreenCoord;
 ```
 
 *Example 2:*
+
 ```sqf
 _worldCoord = _control ctrlMapScreenToWorld [_x, _y];
 ```
 
 *Example 3:*
+
 ```sqf
 _worldCoord = findDisplay 12 displayCtrl 51 ctrlMapScreenToWorld [0.5, 0.5];
 ```

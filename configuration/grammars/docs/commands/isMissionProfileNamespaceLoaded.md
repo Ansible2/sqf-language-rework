@@ -2,7 +2,13 @@ The `missionProfileNamespace` variables are loaded at the start of a mission, be
 
 
 ---
+*Syntaxes:*
+
+`isMissionProfileNamespaceLoaded`
+
+---
 *Example 1:*
+
 ```sqf
 private _isLoaded = isMissionProfileNamespaceLoaded;
 ```

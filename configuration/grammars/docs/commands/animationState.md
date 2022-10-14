@@ -2,7 +2,13 @@ Returns the name of a unit's current primary animation. Seems to be forced to lo
 
 
 ---
+*Syntaxes:*
+
+`animationState` unitName
+
+---
 *Example 1:*
+
 ```sqf
 _state = animationState player;
 ```

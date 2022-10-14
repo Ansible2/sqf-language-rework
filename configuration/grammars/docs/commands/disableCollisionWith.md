@@ -2,17 +2,25 @@ Disable collision between provided objects. The collision is always disabled for
 
 
 ---
+*Syntaxes:*
+
+vehicle1 `disableCollisionWith` vehicle2
+
+---
 *Example 1:*
+
 ```sqf
 player disableCollisionWith myWall;
 ```
 
 *Example 2:*
+
 ```sqf
 [_veh1, _veh2] remoteExecCall ["disableCollisionWith", 0, _veh1];
 ```
 
 *Example 3:*
+
 ```sqf
 // this command stores a reference to the other object on both arguments:
 _obj1 disableCollisionWith _obj2;	// _obj1 has a reference to _obj2, disabling collision with it

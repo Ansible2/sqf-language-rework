@@ -2,17 +2,27 @@ Set the target object or position where the given camera should point at. Needs 
 
 
 ---
+*Syntaxes:*
+
+camera `camSetTarget` target
+
+camera `camSetTarget` position
+
+---
 *Example 1:*
+
 ```sqf
 _camera camSetTarget player;
 ```
 
 *Example 2:*
+
 ```sqf
 _camera camSetTarget [2540,1503,26];
 ```
 
 *Example 3:*
+
 ```sqf
 _cam = "camera" camCreate (player modelToWorld [0, 100, 10]);
 _cam camSetTarget player;

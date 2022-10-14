@@ -4,7 +4,13 @@ The default zoom level is `**0.7}}` where `<See h Reference 0>` is the nearest a
 
 
 ---
+*Syntaxes:*
+
+camera `camSetFovRange` fovRange
+
+---
 *Example 1:*
+
 ```sqf
 _cam camSetFovRange [0.1, 0.7];
 ```

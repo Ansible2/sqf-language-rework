@@ -2,5 +2,11 @@ Remove all drawn links for the given editor object for the given editor,object t
 
 
 ---
+*Syntaxes:*
+
+map `removeDrawLinks` [from,param type]
+
+---
 *Example 1:*
+
 -

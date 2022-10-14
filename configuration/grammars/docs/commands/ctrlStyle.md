@@ -2,7 +2,13 @@ Returns the provided control's style. See {{HashLink|Arma: GUI Configuration#Con
 
 
 ---
+*Syntaxes:*
+
+`ctrlStyle` control
+
+---
 *Example 1:*
+
 ```sqf
 private _ctrlStyle = ctrlStyle _myControl;
 

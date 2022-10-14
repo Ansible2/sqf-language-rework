@@ -2,7 +2,13 @@ Return difficulty that has been forced for this mission, returns -1 if difficult
 
 
 ---
+*Syntaxes:*
+
+`missionDifficulty`
+
+---
 *Example 1:*
+
 ```sqf
 _number = missionDifficulty;
 ```

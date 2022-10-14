@@ -16,7 +16,13 @@ Sets the type of action processed by the trigger after activation (no action, a 
 
 
 ---
+*Syntaxes:*
+
+trigger `setTriggerType` action
+
+---
 *Example 1:*
+
 ```sqf
 _trigger setTriggerType "END1";
 ```

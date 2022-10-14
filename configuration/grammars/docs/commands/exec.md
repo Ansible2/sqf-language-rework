@@ -3,5 +3,11 @@ The magic variable `_time` used within the script contains the elapsed time in s
 
 
 ---
+*Syntaxes:*
+
+argument `exec` script
+
+---
 *Example 1:*
+
 <sqs>[player, _jeep] exec "getin.sqs";</sqs>

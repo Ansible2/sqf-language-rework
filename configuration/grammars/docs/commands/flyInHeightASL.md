@@ -2,7 +2,13 @@ Sets the minimal `ASL` height. Final height is **`flyInHeight` `max` `flyInHeigh
 
 
 ---
+*Syntaxes:*
+
+aircraft `flyInHeightASL` [standardAltitude, combatAltitude, stealthAltitude]
+
+---
 *Example 1:*
+
 ```sqf
 cobraOne flyInHeightASL [200, 100, 400];
 ```

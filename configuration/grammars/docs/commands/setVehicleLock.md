@@ -7,7 +7,13 @@ Sets vehicle lock. Possible values:
 
 
 ---
+*Syntaxes:*
+
+vehicleName `setVehicleLock` lockState
+
+---
 *Example 1:*
+
 ```sqf
 _veh1 setVehicleLock "LOCKED";
 ```

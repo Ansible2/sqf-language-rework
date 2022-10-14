@@ -4,7 +4,15 @@ When applied to a unit (soldier), the command behaves differently and will omit 
 
 
 ---
+*Syntaxes:*
+
+`magazinesDetail` vehicle
+
+`magazinesDetail` [vehicle, includeEmpty, includeLoaded]
+
+---
 *Example 1:*
+
 ```sqf
 _magazinesDetail = magazinesDetail player;
 /*
@@ -23,6 +31,7 @@ _magazinesDetail = magazinesDetail player;
 ```
 
 *Example 2:*
+
 ```sqf
 _magazinesDetail = magazinesDetail Mi_48;
 /*

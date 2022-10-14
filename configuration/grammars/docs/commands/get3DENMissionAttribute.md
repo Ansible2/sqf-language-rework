@@ -2,7 +2,13 @@ Return value of `scenario attribute`. For a list of all available mission attrib
 
 
 ---
+*Syntaxes:*
+
+section [[get3DENMissionAttribute]] class
+
+---
 *Example 1:*
+
 ```sqf
 systemChat str ("Multiplayer" get3DENMissionAttribute "respawn");
 ```

@@ -3,12 +3,19 @@ Since it is going in opposite way of the X axis, <u>the value is negative</u>. T
 
 
 ---
+*Syntaxes:*
+
+`safeZoneX`
+
+---
 *Example 1:*
+
 ```sqf
 _screenLeftBorderX = safeZoneX; // returns a float value < 0
 ```
 
 *Example 2:*
+
 Create control 50% wide, 30% tall, centered on screen:
 
 ```sqf

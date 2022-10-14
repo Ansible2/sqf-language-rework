@@ -2,7 +2,17 @@ Sets wanted position and size for 2D control animation. Width and height are opt
 
 
 ---
+*Syntaxes:*
+
+controlName `ctrlSetPosition`  [x, y]
+
+controlName `ctrlSetPosition`  [x, y, w, h]
+
+controlName `ctrlSetPosition`  [x, y, z]
+
+---
 *Example 1:*
+
 Move control:
 
 ```sqf
@@ -11,6 +21,7 @@ _control2D ctrlCommit 0;
 ```
 
 *Example 2:*
+
 Move control and resize:
 
 ```sqf
@@ -19,11 +30,13 @@ _control2D ctrlCommit 0;
 ```
 
 *Example 3:*
+
 ```sqf
 _control3D ctrlSetPosition [0.5, 1, 0.5]; //centered and 1m away from screen
 ```
 
 *Example 4:*
+
 Typewriter effect:
 
 ```sqf

@@ -2,12 +2,19 @@ Set the `Structured Text` which will be displayed in [[DialogControls-Text#CT_ST
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetStructuredText` structuredText
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetStructuredText parseText "First line<img image=data\isniper.paa /><br />Second line"
 ```
 
 *Example 2:*
+
 To adjust text vertically, add extra line above with blank space (&amp;#160;) and set its size accordingly:
 
 ```sqf
@@ -21,6 +28,7 @@ with uiNamespace do {
 ```
 
 *Example 3:*
+
 There is a bug with **valign** that requires adding 1 extra trailing space per line to the displayed text in order to keep it centered horizontally:
 
 ```sqf

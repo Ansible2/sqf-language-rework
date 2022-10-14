@@ -6,12 +6,25 @@ Alternative syntaxes additionally return FLIR index (see `setCamUseTI`) of the t
 
 
 ---
+*Syntaxes:*
+
+`currentVisionMode` entity
+
+`currentVisionMode` [entity]
+
+vehicle `currentVisionMode` turretPath
+
+unit `currentVisionMode` weapon
+
+---
 *Example 1:*
+
 ```sqf
 _currMode = currentVisionMode gunner _tank;
 ```
 
 *Example 2:*
+
 ```sqf
 if (currentVisionMode player == 1) then
 {

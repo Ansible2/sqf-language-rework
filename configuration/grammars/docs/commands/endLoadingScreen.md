@@ -2,7 +2,13 @@ Finishes loading screen started by `startLoadingScreen`.
 
 
 ---
+*Syntaxes:*
+
+`endLoadingScreen`
+
+---
 *Example 1:*
+
 ```sqf
 startLoadingScreen ["Loading My Mission"];
 // code
@@ -12,6 +18,7 @@ endLoadingScreen;
 ```
 
 *Example 2:*
+
 ```sqf
 // this structure prevents error-prone or lengthy code to miss endLoadingScreen.
 private _maxTime = diag_tickTime + 30; // max 30s of loading

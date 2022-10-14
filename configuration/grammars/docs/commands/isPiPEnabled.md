@@ -2,7 +2,13 @@ Returns whether Picture-In-Picture video option (Render to Texture) is enabled o
 
 
 ---
+*Syntaxes:*
+
+`isPiPEnabled`
+
+---
 *Example 1:*
+
 ```sqf
 private _PiPState = isPiPEnabled;
 ```

@@ -3,7 +3,13 @@ Doesn't quite work with vehicles. If you need to remove all weapons from a vehic
 
 
 ---
+*Syntaxes:*
+
+`removeAllWeapons` unitName
+
+---
 *Example 1:*
+
 ```sqf
 removeAllWeapons player;
 ```

@@ -2,7 +2,13 @@ Removes all MP event handlers of the given type which were added by `addMPEventH
 
 
 ---
+*Syntaxes:*
+
+objectName `removeAllMPEventHandlers` event
+
+---
 *Example 1:*
+
 ```sqf
 player removeAllMPEventHandlers "MPKilled";
 ```

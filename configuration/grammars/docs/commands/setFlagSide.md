@@ -2,12 +2,19 @@ Sets flag `Side`. A flag may be taken by any unit that is enemy to the side that
 
 
 ---
+*Syntaxes:*
+
+flag `setFlagSide` side
+
+---
 *Example 1:*
+
 ```sqf
 _flag1 setFlagSide east;
 ```
 
 *Example 2:*
+
 Capturable OPFOR flag:
 
 ```sqf

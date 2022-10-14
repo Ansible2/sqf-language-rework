@@ -7,7 +7,13 @@ Default traits are:
 
 
 ---
+*Syntaxes:*
+
+unit `setUnitTrait` [skillName, value, isCustom]
+
+---
 *Example 1:*
+
 ```sqf
 player setUnitTrait ["Medic", true];
 ```

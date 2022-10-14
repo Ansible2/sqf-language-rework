@@ -2,7 +2,13 @@ Defines an action performed when player moves pointer over group marker (3D or i
 
 
 ---
+*Syntaxes:*
+
+`onGroupIconOverEnter` command
+
+---
 *Example 1:*
+
 ```sqf
 onGroupIconOverEnter
 {

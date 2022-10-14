@@ -1,13 +1,14 @@
 Set the current terrain's altitude on provided location(s).
-).
-* Edited terrain heights are `not` saved inside savegames, they need to be restored manually on savegame load.
-* Known issues:
-** Terrain sections can become invisible if the change is to extreme
-** Walking on the edge of extreme height changes can catapult the player away
 
 
 ---
+*Syntaxes:*
+
+`setTerrainHeight` [positionAndAltitudeArray, adjustObjects]
+
+---
 *Example 1:*
+
 ```sqf
 private _fnc_flattenTerrain =
 {
@@ -33,6 +34,7 @@ setTerrainHeight [_positionsAndHeights, true];
 ```
 
 *Example 2:*
+
 Bad example:
 
 ```sqf

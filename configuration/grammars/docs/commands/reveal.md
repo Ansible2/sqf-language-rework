@@ -2,17 +2,27 @@ Reveals a target to a `group`. If `toWhom` is a unit, unit's group is considered
 
 
 ---
+*Syntaxes:*
+
+toWhom `reveal` target
+
+toWhom `reveal` [target, accuracy]
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne reveal _soldierTwo; // soldierOne knowsAbout information about soldierTwo is updated
 ```
 
 *Example 2:*
+
 ```sqf
 player reveal cursorObject; // player knowsAbout information about object under cursor is updated
 ```
 
 *Example 3:*
+
 ```sqf
 _soldierOne reveal [_soldierTwo, 1.5];
 ```

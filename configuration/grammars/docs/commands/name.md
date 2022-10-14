@@ -3,17 +3,27 @@ When argument is `Location`, the location's name is returned. To return the text
 
 
 ---
+*Syntaxes:*
+
+`name` object
+
+`name` location
+
+---
 *Example 1:*
+
 ```sqf
 _name = name player;
 ```
 
 *Example 2:*
+
 ```sqf
 _locationName = name myLocation;
 ```
 
 *Example 3:*
+
 ```sqf
 name nearestLocation [position player, "Hill"]; // ""
 text nearestLocation [position player, "Hill"]; // "Lesnoy Khrebet"

@@ -2,12 +2,19 @@ Repeats `Code` while the given condition is `true`. A part of `while`-`do` const
 
 
 ---
+*Syntaxes:*
+
+`while` condition
+
+---
 *Example 1:*
+
 ```sqf
 while { a < b } do { a = a + 1 };
 ```
 
 *Example 2:*
+
 A practical example: Repair all members of a group to such a level that they are able to stand up:
 
 ```sqf
@@ -23,6 +30,7 @@ A practical example: Repair all members of a group to such a level that they are
 ```
 
 *Example 3:*
+
 ```sqf
 [] spawn {
 	// warning: while loop without suspension executes multiple times per frame

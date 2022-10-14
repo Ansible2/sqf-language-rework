@@ -2,7 +2,13 @@
 
 
 ---
+*Syntaxes:*
+
+helicopter `setForceGeneratorRTD` ????
+
+---
 *Example 1:*
+
 ```sqf
 myHelicopter setForceGeneratorRTD ????;
 ```

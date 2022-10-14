@@ -2,12 +2,21 @@ Sorts the ListBox entries by `lbValue`. The entries are sorted in ascending orde
 
 
 ---
+*Syntaxes:*
+
+`lbSortByValue`  control
+
+`lbSortByValue`  idc
+
+---
 *Example 1:*
+
 ```sqf
 lbSortByValue _control;
 ```
 
 *Example 2:*
+
 ```sqf
 lbSortByValue 101;
 ```

@@ -2,7 +2,13 @@ Checks if fireplace is inflamed (burning) or not. To check if a unit is receivin
 
 
 ---
+*Syntaxes:*
+
+`inflamed` fireplace
+
+---
 *Example 1:*
+
 ```sqf
 _inflamed = inflamed _fireplaceOne;
 ```

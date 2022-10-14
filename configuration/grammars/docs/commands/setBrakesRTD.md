@@ -8,7 +8,13 @@ Enable landing gear wheel brakes for a helicopter.
 
 
 ---
+*Syntaxes:*
+
+helicopterRTD `setBrakesRTD` [value, wheelIndex]
+
+---
 *Example 1:*
+
 ```sqf
 myHelicopterRTD setBrakesRTD [1, 3];
 ```

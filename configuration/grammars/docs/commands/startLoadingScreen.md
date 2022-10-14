@@ -4,17 +4,25 @@ Shows loading screen with the given text, using the given resource. While loadin
 
 
 ---
+*Syntaxes:*
+
+`startLoadingScreen` [text, resource]
+
+---
 *Example 1:*
+
 ```sqf
 startLoadingScreen ["Loading My Mission, please wait..."];
 ```
 
 *Example 2:*
+
 ```sqf
 startLoadingScreen ["Can't skip loading time...", "MyLoadingRsc"];
 ```
 
 *Example 3:*
+
 ```sqf
 startLoadingScreen ["Loading My Mission"];
 // code
@@ -24,6 +32,7 @@ endLoadingScreen;
 ```
 
 *Example 4:*
+
 ```sqf
 // this structure prevents error-prone or lengthy code to miss endLoadingScreen.
 private _maxTime = diag_tickTime + 30; // max 30s of loading

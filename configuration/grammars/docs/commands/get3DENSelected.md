@@ -3,7 +3,13 @@ If a wrong type is provided, **`], [], [], [], [], [`** is returned and an error
 
 
 ---
+*Syntaxes:*
+
+[[get3DENSelected]] type
+
+---
 *Example 1:*
+
 ```sqf
 get3DENSelected "";
 
@@ -20,6 +26,7 @@ get3DENSelected "";
 ```
 
 *Example 2:*
+
 ```sqf
 get3DENSelected "object"; // [B Alpha 2-1:1]
 ```

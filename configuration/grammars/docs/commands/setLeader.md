@@ -2,7 +2,13 @@ Set the leader of given team. Effect is local, unless both leader unit and team 
 
 
 ---
+*Syntaxes:*
+
+team `setLeader` leader
+
+---
 *Example 1:*
+
 ```sqf
 (example);
 ```

@@ -6,17 +6,27 @@ Plays music defined in `Description.ext's CfgMusic` or config.cpp. If the `music
 
 
 ---
+*Syntaxes:*
+
+`playMusic` musicName
+
+`playMusic` [musicName, start]
+
+---
 *Example 1:*
+
 ```sqf
 playMusic "RadioAmbient1";
 ```
 
 *Example 2:*
+
 ```sqf
 playMusic ["RadioAmbient3", 3]; // start to play from 00:00:03
 ```
 
 *Example 3:*
+
 Play from 00:00:01 to 00:00:05:
 
 ```sqf

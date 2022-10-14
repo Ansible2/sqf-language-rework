@@ -2,7 +2,13 @@ Opens non-interactive main map in background that overrides user screen. To forc
 
 
 ---
+*Syntaxes:*
+
+`forceMap` show
+
+---
 *Example 1:*
+
 ```sqf
 forceMap true;
 ```

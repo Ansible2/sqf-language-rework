@@ -6,7 +6,13 @@ The limit is 500 map/static objects and 200 dynamic objects including config fea
 
 
 ---
+*Syntaxes:*
+
+object `setFeatureType` type
+
+---
 *Example 1:*
+
 Set a building to be always rendered:
 
 ```sqf

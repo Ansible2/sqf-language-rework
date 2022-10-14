@@ -3,7 +3,13 @@ Supposed to be used together with a rope connecting both vehicles.
 
 
 ---
+*Syntaxes:*
+
+towedVehicle `<See PAGENAM Reference E>` towingVehicle
+
+---
 *Example 1:*
+
 ```sqf
 { moveOut _x } forEach crew _towedVehicle; // make sure nobody is in the towed vehicle
 _towedVehicle lock true;

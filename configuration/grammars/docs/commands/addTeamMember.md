@@ -4,7 +4,13 @@ Add given member to given team. Effect is local, unless both member and team are
 
 
 ---
+*Syntaxes:*
+
+team `addTeamMember` member
+
+---
 *Example 1:*
+
 ```sqf
 _team addTeamMember _teamMember;
 ```

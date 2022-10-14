@@ -3,12 +3,21 @@ Alternative syntax returns `Config` entry with given name (alias for `>>`, sligh
 
 
 ---
+*Syntaxes:*
+
+a `/` b
+
+config `/` name
+
+---
 *Example 1:*
+
 ```sqf
 _result = 15 / 3; // result is 5
 ```
 
 *Example 2:*
+
 ```sqf
 _cfgVehicles = configFile / "CfgVehicles"; // identical to configFile >> "CfgVehicles" (but the order of precedence)
 ```

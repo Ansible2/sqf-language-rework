@@ -2,5 +2,11 @@ Defines an action performed when the user double clicks on the map. Command rece
 
 
 ---
+*Syntaxes:*
+
+map `onDoubleClick` command
+
+---
 *Example 1:*
+
 -

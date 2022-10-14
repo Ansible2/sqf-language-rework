@@ -2,12 +2,19 @@ Returns shot information for the given projectile. If shot was fired by a soldie
 
 
 ---
+*Syntaxes:*
+
+`getShotParents` projectile
+
+---
 *Example 1:*
+
 ```sqf
 _shotParents = getShotParents myProjectile;
 ```
 
 *Example 2:*
+
 ```sqf
 batmobile addEventHandler ["Fired", {systemChat str getShotParents (_this select 6)}];
 ```

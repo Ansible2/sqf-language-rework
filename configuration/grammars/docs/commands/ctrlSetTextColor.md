@@ -2,7 +2,13 @@ Sets text color of given control. Color is in format `Color (RGBA)`. As of Arma 
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetTextColor` color
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetTextColor [1, 0, 0, 1];
 ```

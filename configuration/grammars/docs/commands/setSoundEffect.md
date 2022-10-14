@@ -2,27 +2,39 @@ Defines the different sound effects. To stop any sound, deactivate the trigger (
 
 
 ---
+*Syntaxes:*
+
+trigger `setSoundEffect` [sound, voice, soundEnv, soundDet]
+
+waypoint `setSoundEffect` [sound, voice]
+
+---
 *Example 1:*
+
 ```sqf
 _trigger setSoundEffect ["Alarm", "", "", ""];
 ```
 
 *Example 2:*
+
 ```sqf
 [_group1,2] setSoundEffect ["Alarm", ""];
 ```
 
 *Example 3:*
+
 ```sqf
 _trigger setSoundEffect ["", "Alarm", "", ""];
 ```
 
 *Example 4:*
+
 ```sqf
 _trigger setSoundEffect ["", "", "BattlefieldExplosions3", ""];
 ```
 
 *Example 5:*
+
 ```sqf
 _trigger setSoundEffect ["", "", "", "Owl"];
 ```

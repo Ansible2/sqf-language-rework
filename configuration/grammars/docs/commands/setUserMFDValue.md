@@ -11,12 +11,19 @@ which could control color of the MFD. See Example 2-3-4 on how to set different 
 
 
 ---
+*Syntaxes:*
+
+vehicle `setUserMFDValue` [index, value]
+
+---
 *Example 1:*
+
 ```sqf
 BIS_Plane setUserMFDValue [0,1]; // user0 in MFD will return 1
 ```
 
 *Example 2:*
+
 Set MFD Red:
 
 ```sqf
@@ -27,6 +34,7 @@ Blackfoot setUserMFDValue [3, 1];	// "user3" - 1
 ```
 
 *Example 3:*
+
 Set MFD pale Blue:
 
 ```sqf
@@ -37,6 +45,7 @@ Blackfoot setUserMFDValue [3, 0.1];	// "user3" - 0.1
 ```
 
 *Example 4:*
+
 Hide MFD:
 
 ```sqf

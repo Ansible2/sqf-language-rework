@@ -7,12 +7,19 @@ Returns current `global namespace` the script runs in. Could be one of the follo
 
 
 ---
+*Syntaxes:*
+
+`currentNamespace`
+
+---
 *Example 1:*
+
 ```sqf
 if (currentNamespace isEqualTo uiNamespace) then {hint "This is uiNamespace"};
 ```
 
 *Example 2:*
+
 Quick function to get namespace name
 ```sqf
 _fn_currentNamespace = {

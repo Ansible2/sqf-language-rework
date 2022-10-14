@@ -2,7 +2,13 @@ Autosaves the game (used for Retry). The saving is not started immediately, the 
 
 
 ---
+*Syntaxes:*
+
+`saveGame`
+
+---
 *Example 1:*
+
 ```sqf
 saveGame;
 ```

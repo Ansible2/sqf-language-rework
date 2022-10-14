@@ -11,7 +11,13 @@ Value may be:
 
 
 ---
+*Syntaxes:*
+
+`rankId` unit
+
+---
 *Example 1:*
+
 ```sqf
 _myIdRank = rankId player;
 ```

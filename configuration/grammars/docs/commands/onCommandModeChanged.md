@@ -2,7 +2,13 @@ Defines code performed when hc command mode changes either because of (Left Ctrl
 
 
 ---
+*Syntaxes:*
+
+`onCommandModeChanged` code
+
+---
 *Example 1:*
+
 ```sqf
 //Examples in-use can be found in:
 

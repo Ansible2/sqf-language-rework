@@ -2,7 +2,13 @@ Returns array with all items assigned to the `handgunWeapon` except magazines. U
 
 
 ---
+*Syntaxes:*
+
+`handgunItems` unit
+
+---
 *Example 1:*
+
 ```sqf
 handgunItems player;
 /*

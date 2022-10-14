@@ -6,7 +6,13 @@ In short, this command mimics the speaking icon from the UI. Correspondence betw
 
 
 ---
+*Syntaxes:*
+
+`getPlayerChannel` player
+
+---
 *Example 1:*
+
 ```sqf
 private _channelID = getPlayerChannel player;
 ```

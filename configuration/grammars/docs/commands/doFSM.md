@@ -9,12 +9,19 @@ Unlike with execFSM where `_this` is passed to the FSM, the following parameters
 
 
 ---
+*Syntaxes:*
+
+unit `doFSM`  [fsmName, position, target]
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne doFSM ["move.fsm", position player, player];
 ```
 
 *Example 2:*
+
 ```sqf
 units player doFSM ["move.fsm", position player, player];
 ```

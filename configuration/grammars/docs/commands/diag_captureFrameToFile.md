@@ -5,12 +5,19 @@ The data in the log file can be copied and pasted into the `diag_captureFrame` U
 
 
 ---
+*Syntaxes:*
+
+`diag_captureFrameToFile`  frame
+
+---
 *Example 1:*
+
 ```sqf
 diag_captureFrameToFile 1; //capture the first frame after command execution
 ```
 
 *Example 2:*
+
 ```sqf
 diag_captureFrameToFile 24; //capture 24th frame after command execution
 ```

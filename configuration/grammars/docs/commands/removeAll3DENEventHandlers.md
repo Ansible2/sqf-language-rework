@@ -4,7 +4,13 @@ See the list of all [[Arma_3:_Event_Handlers:_Eden_Editor|Eden Editor Event Hand
 
 
 ---
+*Syntaxes:*
+
+[[removeAll3DENEventHandlers]] type
+
+---
 *Example 1:*
+
 ```sqf
 removeAll3DENEventHandlers "onUndo";
 ```

@@ -2,7 +2,13 @@ Enables copilot actions, toggles availability of the actions related to copilots
 
 
 ---
+*Syntaxes:*
+
+vehicle `enableCopilot` enable
+
+---
 *Example 1:*
+
 ```sqf
 if (!isCopilotEnabled myHeli) then
 {

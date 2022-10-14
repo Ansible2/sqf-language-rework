@@ -5,7 +5,15 @@ So if attribute exists in both places, attribute from `description.ext` is used.
 
 
 ---
+*Syntaxes:*
+
+`getMissionConfigValue` attribute
+
+`getMissionConfigValue`  [attribute, defaultValue]
+
+---
 *Example 1:*
+
 ```sqf
 _respawnDelay = getMissionConfigValue ["respawnDelay",0];
 ```

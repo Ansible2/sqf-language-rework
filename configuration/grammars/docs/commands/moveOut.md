@@ -14,12 +14,21 @@ Notes:
 
 
 ---
+*Syntaxes:*
+
+`moveOut` soldier
+
+soldier `moveOut` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 {if (lifeState _x == "UNCONSCIOUS") then { moveOut _x } } forEach crew cursorTarget;
 ```
 
 *Example 2:*
+
 Move out player just before he dies:
 
 ```sqf

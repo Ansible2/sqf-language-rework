@@ -5,7 +5,13 @@ This type of flag texture cannot be retrieved using `flagTexture`, but `getForce
 
 
 ---
+*Syntaxes:*
+
+object `forceFlagTexture` texture
+
+---
 *Example 1:*
+
 ```sqf
 player forceFlagTexture "\A3\Data_F\Flags\Flag_red_CO.paa";
 ```

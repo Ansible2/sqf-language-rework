@@ -10,7 +10,13 @@ Using `setVectorDirAndUp` alone should be sufficient for any orientation.
 
 
 ---
+*Syntaxes:*
+
+vehicle `setVectorDirAndUp` [vectorDir, vectorUp]
+
+---
 *Example 1:*
+
 ```sqf
 // set exact yaw, pitch, and roll
 _y = 45; _p = -80; _r = 0;
@@ -21,6 +27,7 @@ BRICK setVectorDirAndUp [
 ```
 
 *Example 2:*
+
 To rotate BRICK on Z axis 90 degrees clockwise, change its `vectorDir` but leave `vectorUp` unchanged.
 
 ```sqf
@@ -28,6 +35,7 @@ BRICK setVectorDirAndUp [[1,0,0], [0,0,1]];
 ```
 
 *Example 3:*
+
 To rotate BRICK on Y axis 90 degrees clockwise, change its `vectorUp` but leave `vectorDir` unchanged.
 
 ```sqf
@@ -35,6 +43,7 @@ BRICK setVectorDirAndUp [[0,1,0], [1,0,0]];
 ```
 
 *Example 4:*
+
 To rotate BRICK on X axis 90 degrees (tilt forward), change both `vectorDir` and `vectorUp` accordingly.
 
 ```sqf
@@ -42,6 +51,7 @@ BRICK setVectorDirAndUp [[0,0,-1], [0,1,0]];
 ```
 
 *Example 5:*
+
 More complex orientations
 
 ```sqf

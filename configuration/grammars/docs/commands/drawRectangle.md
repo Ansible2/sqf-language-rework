@@ -2,7 +2,13 @@ Draws a rectangle on the map.<br> [[Image:drawRectangle.jpg|250px]]
 
 
 ---
+*Syntaxes:*
+
+map `drawRectangle`  [centre, halfWidth, halfHeight, angle, color, fill]
+
+---
 *Example 1:*
+
 ```sqf
 _ctrl drawRectangle [
 	getPos player,
@@ -15,6 +21,7 @@ _ctrl drawRectangle [
 ```
 
 *Example 2:*
+
 ```sqf
 _ctrl drawRectangle [
 	player,

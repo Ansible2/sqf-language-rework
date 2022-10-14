@@ -2,7 +2,13 @@ Sets radio trigger menu title text (0 -> 0 -> map radio). Use "NULL" to disable 
 
 
 ---
+*Syntaxes:*
+
+index `setRadioMsg` text
+
+---
 *Example 1:*
+
 ```sqf
 1 setRadioMsg "Click meeeeeeeeee"; //changes title of radio Alpha
 ```

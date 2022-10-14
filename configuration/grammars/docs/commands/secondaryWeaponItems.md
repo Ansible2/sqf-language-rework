@@ -2,7 +2,13 @@ Returns array with all items assigned to the `secondaryWeapon` except magazines.
 
 
 ---
+*Syntaxes:*
+
+`secondaryWeaponItems` unit
+
+---
 *Example 1:*
+
 ```sqf
 secondaryWeaponItems player; //["","","",""]
 ```

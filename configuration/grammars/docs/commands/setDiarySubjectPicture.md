@@ -2,7 +2,13 @@ Sets a picture to be displayed on the right of the `Diary` subject. The picture 
 
 
 ---
+*Syntaxes:*
+
+unit `setDiarySubjectPicture` [subject, picture]
+
+---
 *Example 1:*
+
 ```sqf
 player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\map\markers\nato\o_mech_inf.paa"];
 ```

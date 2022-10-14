@@ -2,7 +2,13 @@ Check if `vehicle` is locked. If it is locked, `Persons` cannot mount / dismount
 
 
 ---
+*Syntaxes:*
+
+`locked` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 _locked = locked _jeepOne;
 ```

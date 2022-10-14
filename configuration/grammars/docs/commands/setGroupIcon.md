@@ -2,7 +2,13 @@ Sets group icon properties.
 
 
 ---
+*Syntaxes:*
+
+group `setGroupIcon` [id, icon, offset]
+
+---
 *Example 1:*
+
 ```sqf
 _target setGroupIcon [_icon, "hc_selectedEnemy"];
 _target setGroupIcon [_icon, "flag"];

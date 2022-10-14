@@ -2,7 +2,13 @@ Sets facial animation phase (eye blinking), blink is in the range from **0}} to 
 
 
 ---
+*Syntaxes:*
+
+unit `setFaceAnimation` blink
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 setFaceAnimation 0.5;
 ```

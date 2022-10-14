@@ -2,7 +2,15 @@ Returns data stored in menu entry on given path.
 
 
 ---
+*Syntaxes:*
+
+`menuData` [idc, path]
+
+control `menuData` path
+
+---
 *Example 1:*
+
 ```sqf
 // Create an entry which will return its data once clicked
 private _ctrlMenuStrip = findDisplay 313 displayCtrl 120;

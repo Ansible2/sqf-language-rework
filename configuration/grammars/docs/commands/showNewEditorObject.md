@@ -2,5 +2,11 @@ Show the add editor object dialog,type is editor object type,class is,class defi
 
 
 ---
+*Syntaxes:*
+
+map `showNewEditorObject` [type,class,side,position]
+
+---
 *Example 1:*
+
 -

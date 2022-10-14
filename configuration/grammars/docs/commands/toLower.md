@@ -2,7 +2,13 @@ Converts the supplied Unicode string to all lowercase characters. If the string 
 
 
 ---
+*Syntaxes:*
+
+`toLower` string
+
+---
 *Example 1:*
+
 ```sqf
 hint toLower "AaBb1"; // returns "aabb1"
 ```

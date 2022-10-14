@@ -2,7 +2,13 @@ Parses the string, interpreting its content as a floating point number.
 
 
 ---
+*Syntaxes:*
+
+`parseNumber` value
+
+---
 *Example 1:*
+
 ```sqf
 _number = parseNumber "0.125";			// 0.125
 _number = parseNumber "0050";			// 50
@@ -13,6 +19,7 @@ _number = parseNumber "0xCF";			// 0
 ```
 
 *Example 2:*
+
 since <See arm Reference 3> v1.50:
 
 ```sqf

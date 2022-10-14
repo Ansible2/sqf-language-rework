@@ -3,22 +3,31 @@ The text can be displayed on multiple lines by using "\n" new line characters (s
 
 
 ---
+*Syntaxes:*
+
+`titleText` [text, type, speed,  showInMap, isStructuredText]
+
+---
 *Example 1:*
+
 ```sqf
 titleText ["Show this text", "PLAIN"];
 ```
 
 *Example 2:*
+
 ```sqf
 titleText ["Your message", "BLACK", 2];
 ```
 
 *Example 3:*
+
 ```sqf
 titleText ["line1\nline2\nline3", "PLAIN"];
 ```
 
 *Example 4:*
+
 ```sqf
 titleText ["<t color='#ff0000' size='5'>RED ALERT!</t><br/>***********", "PLAIN", -1, true, true];
 ```

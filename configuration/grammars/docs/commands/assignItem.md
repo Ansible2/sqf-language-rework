@@ -2,7 +2,13 @@ Assigns existing item from inventory (uniform, vest, backpack) to a correct slot
 
 
 ---
+*Syntaxes:*
+
+unit `assignItem` item
+
+---
 *Example 1:*
+
 ```sqf
 bluforUnit addItem "NVGoggles";
 bluforUnit assignItem "NVGoggles";

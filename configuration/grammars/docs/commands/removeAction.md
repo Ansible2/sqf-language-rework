@@ -2,7 +2,13 @@ Removes user added action with given ID. This only removes actions added with th
 
 
 ---
+*Syntaxes:*
+
+unit `removeAction` actionID
+
+---
 *Example 1:*
+
 ```sqf
 player removeAction 0;
 ```

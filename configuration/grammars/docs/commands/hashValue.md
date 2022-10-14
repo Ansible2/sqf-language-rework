@@ -2,12 +2,19 @@ Processes provided `value`<nowiki/>'s hash, and encodes it using [https://en.wik
 
 
 ---
+*Syntaxes:*
+
+`hashValue` value
+
+---
 *Example 1:*
+
 ```sqf
 private _valueHash = hashValue "Hello There";
 ```
 
 *Example 2:*
+
 ```sqf
 private _isCorrectPW = hashValue _enteredPassword == "eWkXUUqiinE";
 ```

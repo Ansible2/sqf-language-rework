@@ -1,13 +1,20 @@
 A non-existing `Script` or script that has finished (`scriptDone`). To compare non-existent scripts use `isNull` or `isEqualTo`:
-<sqf>
+
+```sqf
 scriptNull == scriptNull;			// ERROR! == cannot be used with script object
 isNull scriptNull;					// true
 scriptNull isEqualTo scriptNull;	// true
-</sqf>
+```
 
 
 ---
+*Syntaxes:*
+
+`scriptNull`
+
+---
 *Example 1:*
+
 Wait until previous script is finished before starting a new one:
 
 ```sqf
@@ -27,6 +34,7 @@ Wait until previous script is finished before starting a new one:
 ```
 
 *Example 2:*
+
 ```sqf
 if (scriptDone (_obj getVariable ["objScript", scriptNull])) then {
 	_obj setVariable ["objScript", _obj spawn {
@@ -37,6 +45,7 @@ if (scriptDone (_obj getVariable ["objScript", scriptNull])) then {
 ```
 
 *Example 3:*
+
 ```sqf
 str scriptNull; // <NULL-script>
 ```

@@ -2,7 +2,13 @@ Gets the suppression value for the given unit. Returns varying `Number` between 
 
 
 ---
+*Syntaxes:*
+
+`getSuppression` unit
+
+---
 *Example 1:*
+
 ```sqf
 getSuppression AI_unit_1;
 ```

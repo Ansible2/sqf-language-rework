@@ -4,7 +4,13 @@ Returns the current position of a helicopter's collective pitch control.
 
 
 ---
+*Syntaxes:*
+
+`collectiveRTD` helicopterRTD
+
+---
 *Example 1:*
+
 ```sqf
 _collective = collectiveRTD vehicle player;
 ```

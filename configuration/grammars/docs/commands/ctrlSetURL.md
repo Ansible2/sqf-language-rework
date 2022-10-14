@@ -5,7 +5,13 @@ Sets URL property of the given control subject to **allowedHTMLLoadURIs[]** whit
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetURL` URL
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetURL "http://arma3.com/";
 ```

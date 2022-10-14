@@ -4,7 +4,13 @@ Engine alternative to `BIS_fnc_codePerformance`.
 
 
 ---
+*Syntaxes:*
+
+`diag_codePerformance` [code, arguments, cycles]
+
+---
 *Example 1:*
+
 ```sqf
 private _result = diag_codePerformance [{ private _a = 123; }, 0, 10000];
 ```

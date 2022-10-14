@@ -2,7 +2,13 @@ Shows or hides the GPS receiver on the map screen, if enabled for the mission an
 
 
 ---
+*Syntaxes:*
+
+`showGPS` show
+
+---
 *Example 1:*
+
 ```sqf
 showGPS true;
 ```

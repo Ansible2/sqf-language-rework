@@ -2,7 +2,13 @@ Returns appID of the DLC the object belongs to or `nil` if object is vanilla.
 
 
 ---
+*Syntaxes:*
+
+`getObjectDLC` obj
+
+---
 *Example 1:*
+
 ```sqf
 _appID = getObjectDLC cursorTarget;
 if (!isNil "_appID") then {
@@ -13,6 +19,7 @@ if (!isNil "_appID") then {
 ```
 
 *Example 2:*
+
 ```sqf
 _akm = createSimpleObject ["A3\Weapons_F_Exp\Rifles\AKM\AKM_F.p3d",getPosASL player];
 getObjectDLC _akm;	// 395180

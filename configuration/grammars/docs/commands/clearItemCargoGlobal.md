@@ -2,7 +2,13 @@ Removes all items from ammo box (or any general weapon holder container). It als
 
 
 ---
+*Syntaxes:*
+
+`clearItemCargoGlobal` box
+
+---
 *Example 1:*
+
 ```sqf
 clearItemCargoGlobal _ammoBox;
 ```

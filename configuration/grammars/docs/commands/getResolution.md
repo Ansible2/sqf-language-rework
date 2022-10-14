@@ -1,10 +1,14 @@
 Returns an array containing all information about current client screen resolution.
 
- for undistorted image if the FOV is custom. Some of the common values:
 
+---
+*Syntaxes:*
+
+`getResolution`
 
 ---
 *Example 1:*
+
 ```sqf
 private _res = getResolution;
 ```

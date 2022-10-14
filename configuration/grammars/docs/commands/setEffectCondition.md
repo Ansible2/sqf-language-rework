@@ -6,7 +6,15 @@ The statement is executed when the trigger or waypoint is activated and the effe
 
 
 ---
+*Syntaxes:*
+
+trigger `setEffectCondition` statement
+
+waypoint `setEffectCondition` statement
+
+---
 *Example 1:*
+
 ```sqf
 _triggerObj setEffectCondition "thisList";
 ```

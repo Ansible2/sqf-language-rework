@@ -4,7 +4,13 @@ Use `removeGoggles` and `removeHeadgear` for those.
 
 
 ---
+*Syntaxes:*
+
+`removeAllAssignedItems` unit
+
+---
 *Example 1:*
+
 ```sqf
 removeAllAssignedItems player;
 ```

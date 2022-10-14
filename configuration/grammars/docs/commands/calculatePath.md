@@ -10,12 +10,19 @@ Spawns an agent that will execute an AI path calculation and fire the **"PathCal
 
 
 ---
+*Syntaxes:*
+
+`calculatePath` [type, behaviour, from, to]
+
+---
 *Example 1:*
+
 ```sqf
 calculatePath ["car", "safe", [2150.67,5778.19,0], [2184.11,5802.28,0]];
 ```
 
 *Example 2:*
+
 Draws the path from South West to North East of Agia Marina:
 
 ```sqf
@@ -29,6 +36,7 @@ Draws the path from South West to North East of Agia Marina:
 ```
 
 *Example 3:*
+
 Alternative usage of `calculatePath` functionality that is free of double execution bug (and calculatePath command):
 
 ```sqf
@@ -46,6 +54,7 @@ _agent setDestination [player getRelPos [500, 0], "LEADER PLANNED", true];
 ```
 
 *Example 4:*
+
 Same as above but for a vehicle:
 
 ```sqf

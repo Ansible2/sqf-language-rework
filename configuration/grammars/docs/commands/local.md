@@ -3,7 +3,15 @@ This can be used to determine on which computer some code must be run. In single
 
 
 ---
+*Syntaxes:*
+
+`local` object
+
+`local` variable = value <span style="margin-left: 7em">`{{Color|red|From <See arm Reference 2> v1.00 until <See arm Reference 3> v1.54}}` - see ``private`` for later versions</span>
+
+---
 *Example 1:*
+
 ```sqf
 if (not local _unit) then
 {
@@ -12,11 +20,13 @@ if (not local _unit) then
 ```
 
 *Example 2:*
+
 ```sqf
 _isLocalGroup = local group _unit;
 ```
 
 *Example 3:*
+
 Sets variable's `scope`:
 
 ```sqf

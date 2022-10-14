@@ -2,7 +2,13 @@ Checks if a unit has the given weapon in hands or on back/in holster. Weapons in
 
 
 ---
+*Syntaxes:*
+
+unitName `hasWeapon` weaponName
+
+---
 *Example 1:*
+
 ```sqf
 if !(player hasWeapon "arifle_MX_ACO_pointer_F") then { player addWeapon "arifle_MX_ACO_pointer_F" };
 ```

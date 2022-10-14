@@ -2,7 +2,13 @@ Break script flow and go to given label (defined by `#` - `NOT` to be confused w
 
 
 ---
+*Syntaxes:*
+
+`goto` label
+
+---
 *Example 1:*
+
 <sqs>
 goto "myLabel"
 player setDamage 1

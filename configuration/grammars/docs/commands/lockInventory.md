@@ -4,12 +4,19 @@ If set to `true` (locked), the inventory cannot be accessed `via` hotkey or acti
 
 
 ---
+*Syntaxes:*
+
+vehicle `lockInventory` lock
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player lockInventory true;
 ```
 
 *Example 2:*
+
 ```sqf
 backpackContainer player lockInventory true;
 ```

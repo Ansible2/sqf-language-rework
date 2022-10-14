@@ -2,12 +2,19 @@ Sends the audio message to the vehicle radio channel. The message is defined in 
 
 
 ---
+*Syntaxes:*
+
+unit `vehicleRadio` radioName
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne vehicleRadio "messageOne";
 ```
 
 *Example 2:*
+
 ```sqf
 player vehicleRadio configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));
 ```

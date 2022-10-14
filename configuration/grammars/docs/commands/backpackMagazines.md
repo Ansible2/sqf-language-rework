@@ -2,7 +2,13 @@ Get array with all magazines from backpack of the given unit.
 
 
 ---
+*Syntaxes:*
+
+`backpackMagazines` unit
+
+---
 *Example 1:*
+
 ```sqf
 backpackMagazines player;
 // returns e.g

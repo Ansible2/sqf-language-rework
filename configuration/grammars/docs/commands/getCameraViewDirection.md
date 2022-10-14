@@ -2,7 +2,13 @@ Returns the direction unit is looking in render time scope. While for AI the ori
 
 
 ---
+*Syntaxes:*
+
+`getCameraViewDirection` unit
+
+---
 *Example 1:*
+
 Draw AI eye direction (green), weapon direction (red) and camera direction (blue) in 3D:
 
 ```sqf

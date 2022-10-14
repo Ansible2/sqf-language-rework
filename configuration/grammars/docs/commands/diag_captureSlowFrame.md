@@ -2,12 +2,19 @@ Opens "capture frame" dialog if current frame exceeds set threshold in seconds. 
 
 
 ---
+*Syntaxes:*
+
+`diag_captureSlowFrame` [section, threshold]
+
+---
 *Example 1:*
+
 ```sqf
 diag_captureSlowFrame ['total',0.003];
 ```
 
 *Example 2:*
+
 ```sqf
 diag_captureSlowFrame ['memAl', 0.0001];
 ```

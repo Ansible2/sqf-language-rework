@@ -4,12 +4,19 @@ Remove weapon from a unit. The unit must be `local` to the computer where comman
 
 
 ---
+*Syntaxes:*
+
+unit `removeWeapon` weapon
+
+---
 *Example 1:*
+
 ```sqf
 player removeWeapon "BAF_L85A2_RIS_SUSAT";
 ```
 
 *Example 2:*
+
 ```sqf
 An_2 removeWeapon "M240_veh";
 ```

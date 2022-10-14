@@ -2,7 +2,13 @@ Generate graph y - coordinates of all input values within specific x and y range
 
 
 ---
+*Syntaxes:*
+
+`getGraphValues` <nowiki>[[graphMinX, graphMaxX, graphMinY, graphMaxY, valueCount, randomOffset], x1, y1, x2, y2, ... xn, yn]</nowiki>
+
+---
 *Example 1:*
+
 ```sqf
 private _minX = 0;
 private _maxX = 10;

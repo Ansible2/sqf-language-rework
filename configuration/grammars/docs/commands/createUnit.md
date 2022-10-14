@@ -2,22 +2,33 @@ Create a unit of the provided `CfgVehicles` class.
 
 
 ---
+*Syntaxes:*
+
+group `createUnit` [type, position, markers, placement, special]
+
+type `createUnit` [position, group, init, skill, rank]
+
+---
 *Example 1:*
+
 ```sqf
 _unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "FORM"];
 ```
 
 *Example 2:*
+
 ```sqf
 "B_RangeMaster_F" createUnit [position player, group player];
 ```
 
 *Example 3:*
+
 ```sqf
 "B_RangeMaster_F" createUnit [getMarkerPos "barracks", _groupAlpha];
 ```
 
 *Example 4:*
+
 ```sqf
 "B_RangeMaster_F" createUnit [
 	getMarkerPos "marker_1",
@@ -29,6 +40,7 @@ _unit = group player createUnit ["B_RangeMaster_F", position player, [], 0, "FOR
 ```
 
 *Example 5:*
+
 <!-- referenced in parameters (p6) -->
 
 ```sqf
@@ -38,6 +50,7 @@ _unit = _grp createUnit [typeOf driver _veh, _grp, [], 0, "CARGO"];
 ```
 
 *Example 6:*
+
 <!-- referenced in the description -->Creating a unit from a different side may lead to issues:
 
 ```sqf
@@ -52,6 +65,7 @@ hint str side _ap; // EAST
 ```
 
 *Example 7:*
+
 <!-- referenced in alternative result (r2) -->
 Reference the created unit through a global variable:
 

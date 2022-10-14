@@ -2,7 +2,13 @@ Returns number of points that curator have. Points can be only in range from 0 t
 
 
 ---
+*Syntaxes:*
+
+`curatorPoints` curatorObj
+
+---
 *Example 1:*
+
 ```sqf
 _points = curatorPoints myCurator;
 ```

@@ -6,7 +6,13 @@ Sets the **sizeEx** property for most controls as follows:
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetFontHeight`  size
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetFontHeight 0.05;
 ```

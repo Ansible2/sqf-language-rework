@@ -2,7 +2,13 @@ Returns the class name of currently used magazine on specified turret. Use turre
 
 
 ---
+*Syntaxes:*
+
+vehicle `currentMagazineDetailTurret` turretPath
+
+---
 *Example 1:*
+
 ```sqf
 _magazineDetail = MBT_Kuma currentMagazineDetailTurret [0];
 ```

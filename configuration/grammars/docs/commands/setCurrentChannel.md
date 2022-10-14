@@ -4,7 +4,13 @@ For Custom Radio (see `radioChannelCreate`)
 
 
 ---
+*Syntaxes:*
+
+`setCurrentChannel` channelID
+
+---
 *Example 1:*
+
 ```sqf
 _isDirectSelected = setCurrentChannel 5; // sets Direct channel as current active
 ```

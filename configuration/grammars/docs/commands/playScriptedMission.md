@@ -3,7 +3,13 @@ If provided, `config` can reference to the config entry, replacing `Description.
 
 
 ---
+*Syntaxes:*
+
+`playScriptedMission` [world, expression, config, ignoreChildWindow]
+
+---
 *Example 1:*
+
 ```sqf
 playScriptedMission
 [

@@ -2,7 +2,13 @@ Return camera interest for given entity, as set by `setCameraInterest`, or as au
 
 
 ---
+*Syntaxes:*
+
+`cameraInterest` entity
+
+---
 *Example 1:*
+
 ```sqf
 camInterest = cameraInterest myUnit;
 ```

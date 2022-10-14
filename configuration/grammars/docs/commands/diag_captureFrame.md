@@ -2,12 +2,19 @@ This command starts counting frames from the moment it is executed and when the 
 
 
 ---
+*Syntaxes:*
+
+`diag_captureFrame` frame
+
+---
 *Example 1:*
+
 ```sqf
 diag_captureFrame 1; // capture the first frame after command execution
 ```
 
 *Example 2:*
+
 ```sqf
 diag_captureFrame 24; // capture 24th frame after command execution
 ```

@@ -3,7 +3,13 @@ Returns resulting matrix from the [multiplication](https://en.wikipedia.org/wiki
 
 
 ---
+*Syntaxes:*
+
+matrix1 `matrixMultiply` matrix2
+
+---
 *Example 1:*
+
 ```sqf
 [
 	[2],
@@ -21,6 +27,7 @@ matrixMultiply
 ```
 
 *Example 2:*
+
 ```sqf
 [
 	[-1,0,0],

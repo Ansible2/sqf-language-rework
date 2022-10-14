@@ -2,7 +2,13 @@ Sets orientation of 3D control model. It is similar to `setVectorDirAndUp` comma
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetModelDirAndUp` dirAndUp
+
+---
 *Example 1:*
+
 ```sqf
 _ctrl3D ctrlSetModelDirAndUp [[0,1,0],[0,0,1]]; //default orientation
 ```

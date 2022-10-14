@@ -3,7 +3,13 @@ The changes may not be applied immediately, but can be forced by the call of `si
 
 
 ---
+*Syntaxes:*
+
+`diag_setLightNew` config
+
+---
 *Example 1:*
+
 ```sqf
 diag_setLightNew "sunOrMoon = 1; diffuse[] = { 0, 0, 0, 0 }; diffuseCloud[] = { 0, 0, 0, 0 }; ambient[] = { 0, 0, 0, 0 }; ... ";
 ```

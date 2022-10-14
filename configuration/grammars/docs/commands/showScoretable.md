@@ -2,7 +2,13 @@ Forces the score table to be shown, hidden or reset to default functionality. Fo
 
 
 ---
+*Syntaxes:*
+
+`showScoretable` force
+
+---
 *Example 1:*
+
 ```sqf
 showScoretable 1;
 ```

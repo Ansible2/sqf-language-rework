@@ -2,12 +2,19 @@ Returns the name of a unit's secondary weapon (launcher). To detect the weapon w
 
 
 ---
+*Syntaxes:*
+
+`secondaryWeapon` unit
+
+---
 *Example 1:*
+
 ```sqf
 private _secondaryWeapon = secondaryWeapon player;
 ```
 
 *Example 2:*
+
 ```sqf
 hint secondaryWeapon player; // "launch_NLAW_F"
 ```

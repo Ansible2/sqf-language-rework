@@ -4,7 +4,15 @@ Sets slider line step and page step delta amount as well as optional step amount
 
 
 ---
+*Syntaxes:*
+
+`sliderSetSpeed` [idc, line, page, step]
+
+control `sliderSetSpeed` [line, page, step]
+
+---
 *Example 1:*
+
 ```sqf
 sliderSetSpeed [101, 0.5, 2];
 ```

@@ -15,7 +15,13 @@ The end type can be:
 
 
 ---
+*Syntaxes:*
+
+`failMission` endtype
+
+---
 *Example 1:*
+
 ```sqf
 failMission "LOSER";
 ```

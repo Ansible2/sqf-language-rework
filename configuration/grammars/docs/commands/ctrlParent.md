@@ -2,7 +2,13 @@ Returns the parent `Display` of the given control. For parent `Control`s group s
 
 
 ---
+*Syntaxes:*
+
+`ctrlParent` control
+
+---
 *Example 1:*
+
 ```sqf
 _display = ctrlParent _control;
 ```

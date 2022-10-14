@@ -2,7 +2,13 @@ Gets the current timeout for `currentWaypoint` of a `group` or -1 if countdown i
 
 
 ---
+*Syntaxes:*
+
+`waypointTimeoutCurrent` group
+
+---
 *Example 1:*
+
 ```sqf
 _timeout = waypointTimeoutCurrent group player;
 ```

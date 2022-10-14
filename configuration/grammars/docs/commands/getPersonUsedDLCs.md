@@ -2,7 +2,13 @@ Returns a list of all DLCs objects the unit is currently using. For example if a
 
 
 ---
+*Syntaxes:*
+
+`getPersonUsedDLCs` unit
+
+---
 *Example 1:*
+
 ```sqf
 _objects = getPersonUsedDLCs player;
 ```

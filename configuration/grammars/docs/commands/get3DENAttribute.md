@@ -3,7 +3,13 @@ An attribute is identified by its **property}} ({{hl|data** when it is engine-dr
 
 
 ---
+*Syntaxes:*
+
+entity [[get3DENAttribute]] attribute
+
+---
 *Example 1:*
+
 ```sqf
 // returns variable name of the object under cursor
 systemChat str ((get3DENMouseOver select 1) get3DENAttribute "name");

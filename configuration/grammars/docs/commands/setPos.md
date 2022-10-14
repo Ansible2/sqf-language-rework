@@ -2,7 +2,13 @@ Sets object position to format `PositionAGLS` (over surface). The Z value is use
 
 
 ---
+*Syntaxes:*
+
+object `setPos` pos
+
+---
 *Example 1:*
+
 ```sqf
 player setPos [getPos player select 0, getPos player select 1, (getPos player select 2) +10];
 
@@ -19,11 +25,13 @@ player setPos (getPos player vectorAdd [0,0,10]);
 ```
 
 *Example 2:*
+
 ```sqf
 _obj setPos [getPos _obj select 0, getPos _obj select 1, -5];
 ```
 
 *Example 3:*
+
 ```sqf
 player setPos (getPos _obj);
 ```

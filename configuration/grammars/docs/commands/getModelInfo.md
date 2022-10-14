@@ -2,17 +2,25 @@ Returns object's model info. Model path is suitable for use with `createSimpleOb
 
 
 ---
+*Syntaxes:*
+
+`getModelInfo` object
+
+---
 *Example 1:*
+
 ```sqf
 _modelInfo = getModelInfo player; // ["b_soldier_03.p3d", "a3\characters_f\blufor\b_soldier_03.p3d", true, [0,0,0]]
 ```
 
 *Example 2:*
+
 ```sqf
 _modelInfo = getModelInfo cursorObject;
 ```
 
 *Example 3:*
+
 Get Z ASL using placing point:
 
 ```sqf

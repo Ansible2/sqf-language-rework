@@ -2,12 +2,19 @@ Preloads the scene for the prepared camera with given timeout after which preloa
 
 
 ---
+*Syntaxes:*
+
+camera `camPreload` timeout
+
+---
 *Example 1:*
+
 ```sqf
 _camera camPreload 5;
 ```
 
 *Example 2:*
+
 Preload camera around player to avoid stuttering on optics zooming:
 
 ```sqf

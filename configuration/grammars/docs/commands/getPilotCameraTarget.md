@@ -2,7 +2,13 @@ Returns the target of the object airplane or helicopter [[A3_Targeting_config_re
 
 
 ---
+*Syntaxes:*
+
+`getPilotCameraTarget` object
+
+---
 *Example 1:*
+
 ```sqf
 getPilotCameraTarget params ["_pilotCamTracking", "_pilotCamTargetPos", "_pilotCamTarget"];
 ```

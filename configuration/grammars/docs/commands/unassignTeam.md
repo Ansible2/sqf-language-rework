@@ -2,7 +2,13 @@ Unassigns the unit (in the case of a vehicle its commander unit) from his team. 
 
 
 ---
+*Syntaxes:*
+
+`unassignTeam` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 unassignTeam _soldier2;
 ```

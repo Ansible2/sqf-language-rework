@@ -2,7 +2,13 @@ Remove all weapons from the weapon pool, of which the player may choose in the f
 
 
 ---
+*Syntaxes:*
+
+`clearWeaponPool`
+
+---
 *Example 1:*
+
 ```sqf
 clearWeaponPool;
 ```

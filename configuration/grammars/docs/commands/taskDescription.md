@@ -2,7 +2,13 @@ Returns the sub-parts of the task description. The returned Array is in format [
 
 
 ---
+*Syntaxes:*
+
+`taskDescription` task
+
+---
 *Example 1:*
+
 ```sqf
 _taskDescArray = taskDescription _task;
 ```

@@ -2,7 +2,15 @@ Returns an array with the type names of all the unit's vest magazines.
 
 
 ---
+*Syntaxes:*
+
+`magazinesDetailVest` unit
+
+`magazinesDetailVest` [unit, includeEmpty, includeLoaded]
+
+---
 *Example 1:*
+
 ```sqf
 magazinesDetailVest player;
 /*

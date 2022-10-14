@@ -2,12 +2,19 @@ Order the given unit(s) to target the given target (via the radio). Command give
 
 
 ---
+*Syntaxes:*
+
+unit `commandTarget` target
+
+---
 *Example 1:*
+
 ```sqf
 _ESoldier1 commandTarget _WSoldier1;
 ```
 
 *Example 2:*
+
 ```sqf
 player commandTarget [ted, bill];
 ```

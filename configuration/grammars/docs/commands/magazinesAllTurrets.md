@@ -2,12 +2,21 @@ Returns all magazines (including empty) from all vehicle turrets (including driv
 
 
 ---
+*Syntaxes:*
+
+`magazinesAllTurrets` vehicle
+
+`magazinesAllTurrets` [vehicle, exludePersonTurrets]
+
+---
 *Example 1:*
+
 ```sqf
 _mags = magazinesAllTurrets vehicle player;
 ```
 
 *Example 2:*
+
 ```sqf
 _mags = magazinesAllTurrets [vehicle player, true];
 ```

@@ -13,12 +13,19 @@ Creates a list of supported operators and type. Each field of array has the form
 
 
 ---
+*Syntaxes:*
+
+`supportInfo` mask
+
+---
 *Example 1:*
+
 ```sqf
 supportInfo "b:select*"; // returns ["b:ARRAY select SCALAR","b:ARRAY select BOOL","b:CONFIG select SCALAR"]
 ```
 
 *Example 2:*
+
 Return all available commands:
 
 ```sqf

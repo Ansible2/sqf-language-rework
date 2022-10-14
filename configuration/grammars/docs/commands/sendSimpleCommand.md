@@ -3,7 +3,13 @@ Sends a simple command to the vehicle's driver / gunner (air vehicles ignore it)
 
 
 ---
+*Syntaxes:*
+
+vehicleName `sendSimpleCommand` command
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player sendSimpleCommand "STOP";
 ```

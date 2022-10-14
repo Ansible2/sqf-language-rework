@@ -2,7 +2,13 @@ Moves mouse pointer to specified position on the screen. `x` and `y` could be an
 
 
 ---
+*Syntaxes:*
+
+`setMousePosition` [x, y]
+
+---
 *Example 1:*
+
 ```sqf
 setMousePosition [0.5, 0.5];
 ```

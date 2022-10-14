@@ -2,7 +2,13 @@ Proportionaly increase/decrease unit's recoil. Drives muzzle up with every shot 
 
 
 ---
+*Syntaxes:*
+
+unitName `setUnitRecoilCoefficient` coefficient
+
+---
 *Example 1:*
+
 ```sqf
 player setUnitRecoilCoefficient 10;
 ```

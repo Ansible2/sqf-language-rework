@@ -3,12 +3,19 @@ This command will remove user "get in" action (not "get out") but will also stop
 
 
 ---
+*Syntaxes:*
+
+vehicle `lockTurret` [turretPath, lock]
+
+---
 *Example 1:*
+
 ```sqf
 vehicleName lockTurret [[0,0], true];
 ```
 
 *Example 2:*
+
 ```sqf
 vehicle player lockTurret [[0], true];
 ```

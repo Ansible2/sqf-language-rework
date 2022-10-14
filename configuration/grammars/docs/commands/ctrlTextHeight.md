@@ -11,7 +11,13 @@ Since Arma 3 v2.05.147765 control types added:
 
 
 ---
+*Syntaxes:*
+
+`ctrlTextHeight`  control
+
+---
 *Example 1:*
+
 ```sqf
 _h = ctrlTextHeight _ctrl;
 ```

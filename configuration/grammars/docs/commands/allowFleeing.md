@@ -15,7 +15,13 @@ Notes:
 
 
 ---
+*Syntaxes:*
+
+unitOrGroup `allowFleeing`  cowardice
+
+---
 *Example 1:*
+
 ```sqf
 _group1 allowFleeing 0;
 ```

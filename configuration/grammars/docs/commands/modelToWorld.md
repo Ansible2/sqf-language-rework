@@ -4,7 +4,13 @@ For the `PositionASL` version of this command, see `modelToWorldWorld`.
 
 
 ---
+*Syntaxes:*
+
+model `modelToWorld` position
+
+---
 *Example 1:*
+
 ```sqf
 _aboveAndBehindPlayer = player modelToWorld [0,-1,3];
 ```

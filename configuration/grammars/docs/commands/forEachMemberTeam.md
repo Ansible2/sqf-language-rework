@@ -2,7 +2,13 @@ Executes the given command recursively for each team that is a member of the giv
 
 
 ---
+*Syntaxes:*
+
+command `forEachMemberTeam` team
+
+---
 *Example 1:*
+
 ```sqf
 (example);
 ```

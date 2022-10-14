@@ -3,12 +3,19 @@ If a unit's captivity level was set as a `Boolean`, then the returned number is 
 
 
 ---
+*Syntaxes:*
+
+`captiveNum` unit
+
+---
 *Example 1:*
+
 ```sqf
 _captivity = captiveNum _unit;
 ```
 
 *Example 2:*
+
 ```sqf
 _unit setCaptive 1024;
 hint str captive _unit; // true

@@ -2,7 +2,13 @@ Check if the unit is ready. Unit is busy when it is given some command like `mov
 
 
 ---
+*Syntaxes:*
+
+`unitReady` unitName
+
+---
 *Example 1:*
+
 ```sqf
 private _it = unitReady _soldierOne;
 ```

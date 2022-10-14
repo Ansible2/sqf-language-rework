@@ -2,7 +2,13 @@ Sets a polyline marker's path.
 
 
 ---
+*Syntaxes:*
+
+marker `setMarkerPolyline` path
+
+---
 *Example 1:*
+
 Changes **"marker_1"** into a polyline and draws a sine curve on `player`'s position:
 
 ```sqf

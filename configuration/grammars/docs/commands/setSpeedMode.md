@@ -6,7 +6,13 @@ Sets group speed mode. If unit is passed as param, unit's group is used. Mode ma
 
 
 ---
+*Syntaxes:*
+
+groupName `setSpeedMode` mode
+
+---
 *Example 1:*
+
 ```sqf
 _groupOne setSpeedMode "LIMITED";
 ```

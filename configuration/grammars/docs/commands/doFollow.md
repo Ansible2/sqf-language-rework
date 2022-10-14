@@ -3,12 +3,19 @@ It is also used to order the unit to `return to formation` after e.g `doStop` ev
 
 
 ---
+*Syntaxes:*
+
+unit `doFollow` unitLead
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 doFollow _soldier2;
 ```
 
 *Example 2:*
+
 ```sqf
 units _group doFollow leader _group; // returns all the units to formation
 ```

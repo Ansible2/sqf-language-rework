@@ -2,7 +2,13 @@ Returns vehicle sensors' potential targets.
 
 
 ---
+*Syntaxes:*
+
+`getSensorTargets` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 private _radarTargets = getSensorTargets vehicle player;
 /*

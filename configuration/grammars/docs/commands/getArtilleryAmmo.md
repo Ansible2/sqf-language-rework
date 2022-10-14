@@ -2,7 +2,13 @@ Get list of all available magazines of artillery units on the list. Command retu
 
 
 ---
+*Syntaxes:*
+
+`getArtilleryAmmo` artilleryList
+
+---
 *Example 1:*
+
 ```sqf
 if ("8Rnd_82mm_Mo_Flare_white" in getArtilleryAmmo [
 	_mortar1,

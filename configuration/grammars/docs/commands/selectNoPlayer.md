@@ -2,7 +2,13 @@ Switches player to no unit, makes `player` return `objNull`.
 
 
 ---
+*Syntaxes:*
+
+`selectNoPlayer`
+
+---
 *Example 1:*
+
 Single player:
 
 ```sqf

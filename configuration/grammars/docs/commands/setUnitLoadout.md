@@ -13,32 +13,49 @@ class MyLoadout
 
 
 ---
+*Syntaxes:*
+
+unit `setUnitLoadout` loadout
+
+unit `setUnitLoadout` [loadout, fullMagazines]
+
+unit `setUnitLoadout` name
+
+unit `setUnitLoadout` config
+
+---
 *Example 1:*
+
 ```sqf
 player_2 setUnitLoadout (getUnitLoadout player_1); // Copies loadout from player_1 and applies it to player_2
 ```
 
 *Example 2:*
+
 ```sqf
 player_2 setUnitLoadout [getUnitLoadout player_1, true]; // Copies loadout from player_1 and applies it to player_2 while topping up all magazines
 ```
 
 *Example 3:*
+
 ```sqf
 _unit setUnitLoadout "B_Soldier_F";
 ```
 
 *Example 4:*
+
 ```sqf
 _unit setUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");
 ```
 
 *Example 5:*
+
 ```sqf
 _unit setUnitLoadout (missionConfigFile >> "MyLoadout");
 ```
 
 *Example 6:*
+
 Strip unit of everything:
 
 ```sqf

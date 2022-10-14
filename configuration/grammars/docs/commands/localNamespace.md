@@ -4,12 +4,19 @@ Use `allVariables` command to save the variables elsewhere if required.
 
 
 ---
+*Syntaxes:*
+
+`localNamespace`
+
+---
 *Example 1:*
+
 ```sqf
 localNamespace setVariable ["abc", 123];
 ```
 
 *Example 2:*
+
 ```sqf
 with localNamespace do { hint str abc };
 ```

@@ -2,7 +2,13 @@ Returns movement borders for HUD [min speed, max speed, min alt, max alt, min di
 
 
 ---
+*Syntaxes:*
+
+`HUDMovementLevels`
+
+---
 *Example 1:*
+
 ```sqf
 HUDMovementLevels; // returns e.g [0,0,0,0,0,0,[0,0,0]]
 ```

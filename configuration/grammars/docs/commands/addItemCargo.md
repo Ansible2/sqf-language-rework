@@ -4,7 +4,13 @@ In the latter case use `addBackpackCargo` instead. For the global variant, see `
 
 
 ---
+*Syntaxes:*
+
+box `addItemCargo` [item, count]
+
+---
 *Example 1:*
+
 ```sqf
 supplyBox addItemCargo ["optic_ARCO", 10];
 ```

@@ -4,7 +4,13 @@ Lasers drawn with this command are subject to the same limitations as weapon att
 
 
 ---
+*Syntaxes:*
+
+`drawLaser` [position, direction, beamColor, dotColor, dotSize, beamThickness, beamMaxLength, isIR]
+
+---
 *Example 1:*
+
 Give the player a laser eye:
 
 ```sqf

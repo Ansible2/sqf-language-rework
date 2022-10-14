@@ -2,7 +2,13 @@ Returns a list of targets within the defined range. "Targets" are not restricted
 
 
 ---
+*Syntaxes:*
+
+unit `nearTargets`  range
+
+---
 *Example 1:*
+
 ```sqf
 player nearTargets 100;
 // can return e.g

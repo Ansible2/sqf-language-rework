@@ -2,7 +2,13 @@ Sets particle source parameters using existing particle config from **CfgCloudle
 
 
 ---
+*Syntaxes:*
+
+source `setParticleClass` className
+
+---
 *Example 1:*
+
 ```sqf
 _source01 = "#particlesource" createVehicleLocal _pos01;
 _source01 setParticleClass "ObjectDestructionFire1Smallx";

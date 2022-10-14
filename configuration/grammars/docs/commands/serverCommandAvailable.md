@@ -17,12 +17,19 @@ To check if server command could be executed in current environment use `serverC
 
 
 ---
+*Syntaxes:*
+
+`serverCommandAvailable` command
+
+---
 *Example 1:*
+
 ```sqf
 _can = serverCommandAvailable "#kick";
 ```
 
 *Example 2:*
+
 ```sqf
 if (serverCommandAvailable "#logout") then 
 {

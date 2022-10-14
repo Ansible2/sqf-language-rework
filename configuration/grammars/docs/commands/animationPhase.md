@@ -2,7 +2,13 @@ Returns the phase of the given animation on the given object. Animation can be s
 
 
 ---
+*Syntaxes:*
+
+object `animationPhase`  animationName
+
+---
 *Example 1:*
+
 ```sqf
 _building animate ["maindoor",1];
 sleep 1;
@@ -10,11 +16,13 @@ _p = _building animationPhase "maindoor";// Returns 1, if the animation speed is
 ```
 
 *Example 2:*
+
 ```sqf
 _flagPole animationPhase "flag";
 ```
 
 *Example 3:*
+
 ```sqf
 _tank animationPhase "MainTurret";
 ```

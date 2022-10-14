@@ -2,7 +2,13 @@ Returns whether or not the given object is an UAV, UGV (drone). Command will als
 
 
 ---
+*Syntaxes:*
+
+`unitIsUAV` object
+
+---
 *Example 1:*
+
 ```sqf
 _isUAV = unitIsUAV _vehicle;
 ```

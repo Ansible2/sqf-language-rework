@@ -2,7 +2,13 @@ Returns selected units in source group for normal commanding mode (individual un
 
 
 ---
+*Syntaxes:*
+
+`groupSelectedUnits` unit
+
+---
 *Example 1:*
+
 ```sqf
 _selectedUnits = groupSelectedUnits player;
 ```

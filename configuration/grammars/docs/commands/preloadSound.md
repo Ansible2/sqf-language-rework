@@ -2,7 +2,13 @@ Makes sure that a sound can start playing without any delay once it is needed. C
 
 
 ---
+*Syntaxes:*
+
+`preloadSound` soundName
+
+---
 *Example 1:*
+
 ```sqf
 {
 	waitUntil {preloadSound _x};

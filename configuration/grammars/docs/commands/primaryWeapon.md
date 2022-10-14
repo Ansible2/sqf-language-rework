@@ -2,12 +2,19 @@ Returns name of unit's primary weapon. This command will also return a weapon cl
 
 
 ---
+*Syntaxes:*
+
+`primaryWeapon` unit
+
+---
 *Example 1:*
+
 ```sqf
 _pWeap = primaryWeapon player;
 ```
 
 *Example 2:*
+
 ```sqf
 hint primaryWeapon player; // "arifle_MX_ACO_pointer_F"
 ```

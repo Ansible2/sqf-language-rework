@@ -2,12 +2,19 @@ Order the given unit(s) to move to the given position (without radio messages). 
 
 
 ---
+*Syntaxes:*
+
+unit(s) `doMove` position
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 doMove (position _officer);
 ```
 
 *Example 2:*
+
 ```sqf
 this doMove (getMarkerPos "Marker1");
 ```

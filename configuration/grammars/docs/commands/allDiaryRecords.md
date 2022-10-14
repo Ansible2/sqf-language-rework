@@ -2,7 +2,13 @@ Returns array with all `Diary` Records for the given subject available to the gi
 
 
 ---
+*Syntaxes:*
+
+person `allDiaryRecords` subject
+
+---
 *Example 1:*
+
 ```sqf
 player allDiaryRecords "Diary";
 ```

@@ -3,16 +3,27 @@ This allows broadcasting of positional music or sound from a source, without hav
 Compare this with [[say2D]] which will always play a sound at the location of the player after he has been in the vicinity of a broadcasting sound.
 Sound is defined in `"CfgSounds"` of the `Description.ext` or main config.
 
-, the `sound source` object was not returned by the command, so the `from` object had to be deleted instead (see Examples [[#Example 2|2]] and [[#Example 3|3]]).
 
+---
+*Syntaxes:*
+
+from [[say3D]] sound
+
+from [[say3D]] [sound, maxDistance, pitch, isSpeech, offset]
+
+[from, to] [[say3D]] sound
+
+[from, to] [[say3D]] [sound, maxDistance, pitch, isSpeech, offset]
 
 ---
 *Example 1:*
+
 ```sqf
 helicopter1 say3D "FortunateSon";
 ```
 
 *Example 2:*
+
 Workaround for dead bodies:
 
 ```sqf
@@ -25,6 +36,7 @@ _dummy spawn {
 ```
 
 *Example 3:*
+
 ```sqf
 // Since Arma 3 v2.00, the sound source is returned and can be deleted directly
 _soundSrc = helicopter1 say3D "Fortunateson";

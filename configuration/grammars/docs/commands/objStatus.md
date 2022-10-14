@@ -10,7 +10,13 @@ To refer to an objective that is named "OBJ_1", for example, use only the index 
 
 
 ---
+*Syntaxes:*
+
+objectivenumber `objStatus` status
+
+---
 *Example 1:*
+
 ```sqf
 "1" objStatus "DONE";
 ``` 

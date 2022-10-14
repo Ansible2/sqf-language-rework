@@ -2,7 +2,13 @@ Add virtual custom weight to a helicopter's center of gravity. This can be used 
 
 
 ---
+*Syntaxes:*
+
+helicopterRTD `setCustomWeightRTD` weight
+
+---
 *Example 1:*
+
 ```sqf
 myHelicopterRTD setCustomWeightRTD 120;
 ```

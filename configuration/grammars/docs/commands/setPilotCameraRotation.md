@@ -2,7 +2,13 @@ Sets rotation (relative to the centered camera position) of the object airplane 
 
 
 ---
+*Syntaxes:*
+
+object `setPilotCameraRotation` rotation
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player setPilotCameraRotation [rad 90, rad 45];
 ```

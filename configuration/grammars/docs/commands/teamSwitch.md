@@ -3,7 +3,13 @@ There has to be at least one playable unit for team switch to work, and for this
 
 
 ---
+*Syntaxes:*
+
+`teamSwitch`
+
+---
 *Example 1:*
+
 ```sqf
 teamSwitch;
 ```

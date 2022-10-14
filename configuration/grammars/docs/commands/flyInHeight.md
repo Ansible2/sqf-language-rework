@@ -2,7 +2,13 @@ Sets the flying altitude for aircraft relatively to the ground surface. Avoid to
 
 
 ---
+*Syntaxes:*
+
+aircraft `flyInHeight` altitude
+
+---
 *Example 1:*
+
 ```sqf
 _helicopter flyInHeight 40;
 ```

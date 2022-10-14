@@ -3,7 +3,13 @@ This command can not be used to determine if the current optic of the turret has
 
 
 ---
+*Syntaxes:*
+
+vehicle `directionStabilizationEnabled` turretPath
+
+---
 *Example 1:*
+
 ```sqf
 uav directionStabilizationEnabled [0];
 ```

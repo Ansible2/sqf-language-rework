@@ -2,12 +2,19 @@ Deletes an object. Only objects inserted in the mission editor and objects creat
 
 
 ---
+*Syntaxes:*
+
+`deleteVehicle` object
+
+---
 *Example 1:*
+
 ```sqf
 deleteVehicle _house1;
 ```
 
 *Example 2:*
+
 Deleting a vehicle with crew:
 
 ```sqf

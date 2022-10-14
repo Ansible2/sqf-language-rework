@@ -2,7 +2,13 @@ Returns a list of files present in the addon.<br>
 
 
 ---
+*Syntaxes:*
+
+`addonFiles` [pboPrefix, fileExtension]
+
+---
 *Example 1:*
+
 ```sqf
 addonFiles ["a3\3den\", ".paa"];
 /*

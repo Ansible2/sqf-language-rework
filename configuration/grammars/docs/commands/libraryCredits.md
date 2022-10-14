@@ -2,7 +2,13 @@ Returns the credits for the libraries used by the game.
 
 
 ---
+*Syntaxes:*
+
+`libraryCredits`
+
+---
 *Example 1:*
+
 ```sqf
 hint str libraryCredits; // as of Arma 2 OA 1.62.95208
 

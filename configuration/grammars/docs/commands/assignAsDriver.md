@@ -2,7 +2,13 @@ Assign a unit as driver of a vehicle. Used together with `orderGetIn` to order s
 
 
 ---
+*Syntaxes:*
+
+unitName `assignAsDriver` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 assignAsDriver _tank;
 [_soldier1] orderGetIn true;

@@ -3,7 +3,13 @@ If driver is remote it will get transferred to players PC.
 
 
 ---
+*Syntaxes:*
+
+who `remoteControl` whom
+
+---
 *Example 1:*
+
 Set player remote control of driver:
 
 ```sqf
@@ -14,12 +20,14 @@ player remoteControl driver UAV;
 ```
 
 *Example 2:*
+
 Return control to player: 
 ```sqf
 objNull remoteControl driver UAV;
 ```
 
 *Example 3:*
+
 A dirty hack to return controlling unit because of the absence of dedicated getter:
 
 ```sqf

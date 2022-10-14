@@ -2,13 +2,20 @@
 
 
 ---
+*Syntaxes:*
+
+object `setUserActionText` [actionIndex, textMenu, textWindowBackground, textWindowForeground]
+
+---
 *Example 1:*
+
 ```sqf
 _id = player addAction ["Hello", ""];
 player setUserActionText [_id, "Good Bye"];
 ```
 
 *Example 2:*
+
 ```sqf
 _id = billboard addAction ["Some Action", {}];
 billboard setUserActionText [

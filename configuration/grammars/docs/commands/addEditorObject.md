@@ -2,5 +2,11 @@ Add an object to the editor and assign arguments. Create script is,called with _
 
 
 ---
+*Syntaxes:*
+
+map `addEditorObject` [type,[name1,value1,...],subtype class]
+
+---
 *Example 1:*
+
 -

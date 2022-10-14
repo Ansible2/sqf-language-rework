@@ -2,12 +2,19 @@ Adds icon to a group leader. Returns icon ID, Control icons visibility with `set
 
 
 ---
+*Syntaxes:*
+
+group `addGroupIcon` [iconClass, offset]
+
+---
 *Example 1:*
+
 ```sqf
 groupName addGroupIcon ["b_inf", [offsetX, offsetY]];
 ```
 
 *Example 2:*
+
 ```sqf
 // Enable icons in 2D and 3D 
 setGroupIconsVisible [true, true]; 

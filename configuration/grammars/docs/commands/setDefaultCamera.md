@@ -2,12 +2,19 @@ Sets the position and direction for the camera used after camera is set on no ob
 
 
 ---
+*Syntaxes:*
+
+`setDefaultCamera` [position, direction]
+
+---
 *Example 1:*
+
 ```sqf
 setDefaultCamera [[5000, 5000, 200], [1, 1, -1]];
 ```
 
 *Example 2:*
+
 Lift camera 100m up above current player position and point downwards:
 
 ```sqf

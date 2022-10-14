@@ -2,7 +2,13 @@ Checks for intersection of terrain between two ASL positions. Same as `terrainIn
 
 
 ---
+*Syntaxes:*
+
+`terrainIntersectAtASL` [start, end]
+
+---
 *Example 1:*
+
 ```sqf
 _posASL = terrainIntersectAtASL [eyePos player, getPosASL chopper];
 ```

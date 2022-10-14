@@ -6,12 +6,19 @@ Alpha can be numbers and fractions.
 
 
 ---
+*Syntaxes:*
+
+marker `setMarkerAlpha` alpha
+
+---
 *Example 1:*
+
 ```sqf
 "my_marker" setMarkerAlpha 0.5;
 ```
 
 *Example 2:*
+
 ```sqf
 "enemy_convoy_marker" setMarkerAlpha 0;
 ```

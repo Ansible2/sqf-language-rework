@@ -2,7 +2,13 @@ Returns array of all containers (uniforms, vests, backpacks) stored in given cra
 
 
 ---
+*Syntaxes:*
+
+`everyContainer` object
+
+---
 *Example 1:*
+
 ```sqf
 everyContainer cursorTarget;
 /*

@@ -2,7 +2,13 @@ Returns the ` machine network ID` of the client to which the group is local. Thi
 
 
 ---
+*Syntaxes:*
+
+`groupOwner` group
+
+---
 *Example 1:*
+
 ```sqf
 _clientID = groupOwner _someGroup;
 ```

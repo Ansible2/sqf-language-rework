@@ -2,7 +2,13 @@ Returns `Group` to which the given vehicle was added last with `addVehicle`. To 
 
 
 ---
+*Syntaxes:*
+
+`assignedGroup` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 _group = assignedGroup vehicle player;
 ```

@@ -2,7 +2,13 @@ Returns if a control of the currently active user dialog is shown or not. Read `
 
 
 ---
+*Syntaxes:*
+
+`ctrlVisible`  idc
+
+---
 *Example 1:*
+
 ```sqf
 _bool = ctrlVisible 100;
 ```

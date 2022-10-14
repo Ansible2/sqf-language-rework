@@ -13,7 +13,13 @@ Works best when used on `agents`. Using "LEADER PLANNED" will trigger **"PathCal
 
 
 ---
+*Syntaxes:*
+
+object `setDestination` [position, planningMode, forceReplan]
+
+---
 *Example 1:*
+
 ```sqf
 bob setDestination [screenToWorld [0.5,0.5], "LEADER PLANNED", true];
 ```

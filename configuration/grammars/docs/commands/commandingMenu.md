@@ -2,12 +2,19 @@ Returns the name of the topmost commanding menu or "" if the menu is closed. For
 
 
 ---
+*Syntaxes:*
+
+`commandingMenu`
+
+---
 *Example 1:*
+
 ```sqf
 waitUntil {commandingMenu == "RscStatus"}; hint "Press 4, I'm bleeding !";
 ```
 
 *Example 2:*
+
 ```sqf
 if (commandingMenu != "") then { hint "Command menu is opened" };
 ```

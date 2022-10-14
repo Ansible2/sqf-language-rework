@@ -12,7 +12,13 @@ Collection took 0.0s</code>
 
 
 ---
+*Syntaxes:*
+
+`diag_dynamicSimulationEnd` file
+
+---
 *Example 1:*
+
 ```sqf
 diag_dynamicSimulationEnd "dynSimDebugData"; // Creates a file called "dynSimDebugData_runtimelog.txt"
 ```

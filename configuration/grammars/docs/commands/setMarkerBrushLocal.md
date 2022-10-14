@@ -16,7 +16,13 @@ Selects the fill texture for the marker ("RECTANGLE" or "ELLIPSE"). Brush is the
 
 
 ---
+*Syntaxes:*
+
+markerName `setMarkerBrushLocal` brush
+
+---
 *Example 1:*
+
 ```sqf
 "Marker1" setMarkerBrushLocal "DiagGrid";
 ```

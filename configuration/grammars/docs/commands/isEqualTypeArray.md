@@ -2,7 +2,13 @@ Compares types of all elements of one array to types of all elements of another 
 
 
 ---
+*Syntaxes:*
+
+arr1 `isEqualTypeArray` arr2
+
+---
 *Example 1:*
+
 ```sqf
 _arr = [1,true,"three"];
 _arr isEqualTypeArray [0,objNull,""]; // false
@@ -10,6 +16,7 @@ _arr isEqualTypeArray [0,false,""]; // true
 ```
 
 *Example 2:*
+
 ```sqf
 _arr = [1,2];
 _arr isEqualTypeArray [0]; // false

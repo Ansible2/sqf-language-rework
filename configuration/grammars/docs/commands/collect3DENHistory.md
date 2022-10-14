@@ -5,7 +5,15 @@ Execute a block of code in which all Eden Editor operations will be recorded as 
 
 
 ---
+*Syntaxes:*
+
+[[collect3DENHistory]] code
+
+[text, tooltip, icon] [[collect3DENHistory]] code
+
+---
 *Example 1:*
+
 ```sqf
 collect3DENHistory 
 {
@@ -15,6 +23,7 @@ collect3DENHistory
 ```
 
 *Example 2:*
+
 ```sqf
 ["Create Entity", "B_Soldier_F", "a3\3den\data\cfg3den\history\create_ca.paa"] collect3DENHistory 
 {
@@ -23,6 +32,7 @@ collect3DENHistory
 ```
 
 *Example 3:*
+
 ```sqf
 [nil, nil, "a3\3den\data\cfg3den\history\moveitems_ca.paa"] collect3DENHistory 
 {

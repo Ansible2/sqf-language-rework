@@ -2,12 +2,19 @@ Types text to the global radio channel. The text will be visible only on the PC 
 
 
 ---
+*Syntaxes:*
+
+unitName `globalChat` chatText
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne globalChat "Show this text";
 ```
 
 *Example 2:*
+
 ```sqf
 driver vehicle player sideChat "sideChat";
 driver vehicle player globalChat "globalChat";

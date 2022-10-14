@@ -2,7 +2,13 @@ Saves joysticks key mappings into the joysticks.cfg file. Engine add these joyst
 
 
 ---
+*Syntaxes:*
+
+`saveJoysticks`
+
+---
 *Example 1:*
+
 ```sqf
 saveJoysticks;
 ```

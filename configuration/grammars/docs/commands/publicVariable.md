@@ -4,7 +4,13 @@ Such variables are persistent and sent to the JIP client before the first batch 
 
 
 ---
+*Syntaxes:*
+
+`publicVariable` varName
+
+---
 *Example 1:*
+
 ```sqf
 TAG_MyPublicVariable = 0;
 TAG_MyPublicVariable = 1;
@@ -14,6 +20,7 @@ TAG_MyPublicVariable = 2;				// needs to be broadcast again - synchronisation is
 ```
 
 *Example 2:*
+
 JIP example:
 
 ```sqf
@@ -26,6 +33,7 @@ player doTarget TAG_CurrentTarget;
 ```
 
 *Example 3:*
+
 ```sqf
 TAG_BossName = "EvilBigBoss";
 

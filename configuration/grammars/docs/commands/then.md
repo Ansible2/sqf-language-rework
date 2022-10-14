@@ -3,12 +3,19 @@ The alternative syntax allows to set "`then`" code and "`else`" code in one arra
 
 
 ---
+*Syntaxes:*
+
+ifType `then` thenCode
+
+---
 *Example 1:*
+
 ```sqf
 if (a > b) then { hint "a is greater than b!"; };
 ```
 
 *Example 2:*
+
 ```sqf
 private _c = 0;
 if (a > b) then
@@ -22,11 +29,13 @@ else
 ```
 
 *Example 3:*
+
 ```sqf
 if (alive player) then [{ hint "player is alive"; }, { hint "player is dead"; }];
 ```
 
 *Example 4:*
+
 ```sqf
 private _value = if (alive player) then { 1 } else { 0 };
 ```

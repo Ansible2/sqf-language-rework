@@ -3,7 +3,13 @@ This returns true only if unit is damaged by nearby fire, it does `not` check wh
 
 
 ---
+*Syntaxes:*
+
+`isBurning` unit
+
+---
 *Example 1:*
+
 ```sqf
 if (isBurning player) then { player groupChat "I'm burning!!"; };
 ```

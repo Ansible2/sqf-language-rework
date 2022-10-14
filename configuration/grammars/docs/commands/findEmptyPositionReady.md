@@ -3,7 +3,13 @@ The size of the area preloaded is from **center - radius - maxDistance}} to {{hl
 
 
 ---
+*Syntaxes:*
+
+center `findEmptyPositionReady` [radius, maxDistance]
+
+---
 *Example 1:*
+
 Preload aread within 500m:
 
 ```sqf

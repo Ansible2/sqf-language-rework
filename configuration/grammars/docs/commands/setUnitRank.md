@@ -4,7 +4,13 @@ Possible rank values, and the associated `rating` that is `set` (not added, the 
 
 
 ---
+*Syntaxes:*
+
+unitName `setUnitRank` rank
+
+---
 *Example 1:*
+
 ```sqf
 player setUnitRank "COLONEL";
 ```

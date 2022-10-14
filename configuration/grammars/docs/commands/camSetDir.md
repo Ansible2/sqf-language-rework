@@ -2,7 +2,13 @@ Sets the orientation of the given camera in the direction of the given vector. N
 
 
 ---
+*Syntaxes:*
+
+camera `camSetDir` direction
+
+---
 *Example 1:*
+
 Since <See arm Reference 3>:
 
 ```sqf
@@ -22,6 +28,7 @@ _cam camCommit 5;
 ```
 
 *Example 2:*
+
 Before <See arm Reference 3>:
 
 ```sqf

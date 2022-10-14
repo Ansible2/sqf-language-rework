@@ -2,13 +2,20 @@ Adds the next frame to the map animation.
 
 
 ---
+*Syntaxes:*
+
+map `ctrlMapAnimAdd`  [time, zoom, position]
+
+---
 *Example 1:*
+
 ```sqf
 _map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];
 ctrlMapAnimCommit _map;
 ```
 
 *Example 2:*
+
 Center map on player:
 
 ```sqf
@@ -17,6 +24,7 @@ ctrlMapAnimCommit _ctrl;
 ```
 
 *Example 3:*
+
 ```sqf
 _map ctrlMapSetPosition [];
 _map ctrlMapAnimAdd [1, 0.1, getMarkerPos "anim1"];

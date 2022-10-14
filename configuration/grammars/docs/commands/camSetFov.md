@@ -6,7 +6,13 @@ The angle of the field of view is `**atan(FOV)*2**` radians when in 4:3 aspect r
 
 
 ---
+*Syntaxes:*
+
+camera `camSetFov` level
+
+---
 *Example 1:*
+
 ```sqf
 _cam camSetFov 0.75;
 ```

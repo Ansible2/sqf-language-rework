@@ -2,17 +2,27 @@ Throws an exception. The exception is processed by first `catch` block. This com
 
 
 ---
+*Syntaxes:*
+
+`throw` expression
+
+if (condition) `throw` exception
+
+---
 *Example 1:*
+
 ```sqf
 try {throw "invalid argument"} catch {hint str _exception};
 ```
 
 *Example 2:*
+
 ```sqf
 123 try {if (_this != 123) throw "invalid argument"} catch {hint str _exception};
 ```
 
 *Example 3:*
+
 The correct usage of shorthand alt syntax:
 
 ```sqf

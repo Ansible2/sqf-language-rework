@@ -3,7 +3,15 @@ The alternative syntax allows to specify clipping type to be used, which in some
 
 
 ---
+*Syntaxes:*
+
+`boundingBoxReal` object
+
+clippingType `boundingBoxReal` object
+
+---
 *Example 1:*
+
 ```sqf
 private _bbr = boundingBoxReal vehicle player;
 private _p1 = _bbr select 0;
@@ -14,6 +22,7 @@ private _maxHeight = abs ((_p2 select 2) - (_p1 select 2));
 ```
 
 *Example 2:*
+
 ```sqf
 hint str (0 boundingBoxReal cursorObject);
 ```

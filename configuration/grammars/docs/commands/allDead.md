@@ -2,12 +2,19 @@ Return a list of all dead units including agents and destroyed vehicles. Dead un
 
 
 ---
+*Syntaxes:*
+
+`allDead`
+
+---
 *Example 1:*
+
 ```sqf
 { deleteVehicle _x } forEach allDead;
 ```
 
 *Example 2:*
+
 allAlive:
 
 ```sqf

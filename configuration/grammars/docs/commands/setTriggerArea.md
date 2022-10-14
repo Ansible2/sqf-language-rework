@@ -2,17 +2,25 @@
 
 
 ---
+*Syntaxes:*
+
+trigger `setTriggerArea` [a, b, angle, isRectangle, c]
+
+---
 *Example 1:*
+
 ```sqf
 _trigger setTriggerArea [100, 50, 45, false];
 ```
 
 *Example 2:*
+
 ```sqf
 _trigger setTriggerArea [100, 50, 45, false, 100];
 ```
 
 *Example 3:*
+
 ```sqf
 _trg = createTrigger ["EmptyDetector", getPos player, false];
 _trg setTriggerArea [5, 5, 0, false];

@@ -2,7 +2,13 @@ Sets oxygen remaining. It has no effect when soldier is not diving. Oxygen remai
 
 
 ---
+*Syntaxes:*
+
+unit `setOxygenRemaining` value
+
+---
 *Example 1:*
+
 ```sqf
 player setOxygenRemaining 0; // drowns player
 ```

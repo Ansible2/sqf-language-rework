@@ -2,7 +2,13 @@ Returns 4 element array with numbers of currently running scripts in format: [<n
 
 
 ---
+*Syntaxes:*
+
+`diag_activeScripts`
+
+---
 *Example 1:*
+
 ```sqf
 hint str diag_activeScripts; //[0,0,0,1]
 ```

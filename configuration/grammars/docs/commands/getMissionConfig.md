@@ -5,7 +5,13 @@ So if attribute exists in both places, attribute from `description.ext` is used.
 
 
 ---
+*Syntaxes:*
+
+`getMissionConfig` attribute
+
+---
 *Example 1:*
+
 ```sqf
 _header = getMissionConfig "Header";
 ```

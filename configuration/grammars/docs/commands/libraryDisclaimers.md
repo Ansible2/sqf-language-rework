@@ -2,7 +2,13 @@ Returns the library disclaimers.
 
 
 ---
+*Syntaxes:*
+
+`libraryDisclaimers`
+
+---
 *Example 1:*
+
 ```sqf
 hint str libraryDisclaimers;
 /*

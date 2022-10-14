@@ -11,12 +11,19 @@ Returns scroll values for current scrollbars in range 0...1 (-1 if not applicabl
 
 
 ---
+*Syntaxes:*
+
+`ctrlScrollValues` control
+
+---
 *Example 1:*
+
 ```sqf
 private _scrollvalues = ctrlScrollValues _ctrl;
 ```
 
 *Example 2:*
+
 ```sqf
 // ControlsGroup
 private _disp = findDisplay 46 createDisplay "RscDisplayEmpty";

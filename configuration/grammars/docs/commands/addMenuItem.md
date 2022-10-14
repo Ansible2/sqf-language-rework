@@ -2,5 +2,11 @@ Creates a new menu item. Menu can be "file" or "view",index is index,as returned
 
 
 ---
+*Syntaxes:*
+
+map `addMenuItem` [menu or index,text,command,priority]
+
+---
 *Example 1:*
+
 -

@@ -3,12 +3,19 @@ The unit damage must be >= 0.1 for this command to have an effect, otherwise, th
 
 
 ---
+*Syntaxes:*
+
+unit `setBleedingRemaining` time
+
+---
 *Example 1:*
+
 ```sqf
 _unit setBleedingRemaining 60;
 ```
 
 *Example 2:*
+
 ```sqf
 player setDamage 0.25;
 player setBleedingRemaining 120;

@@ -2,7 +2,13 @@ Returns an array of all vehicles available to current client. This command retur
 
 
 ---
+*Syntaxes:*
+
+`vehicles`
+
+---
 *Example 1:*
+
 ```sqf
 _vehicles = vehicles;
 ```

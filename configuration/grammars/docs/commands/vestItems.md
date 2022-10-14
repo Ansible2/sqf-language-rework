@@ -2,7 +2,13 @@ Get array with all items (of any kind, even weapons) from vest.
 
 
 ---
+*Syntaxes:*
+
+`vestItems` unit
+
+---
 *Example 1:*
+
 ```sqf
 vestItems player;
 // returns e.g

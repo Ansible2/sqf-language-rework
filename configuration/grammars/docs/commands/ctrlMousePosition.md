@@ -2,7 +2,13 @@ Returns position of the mouse on the screen relative to UI Control in UI coordin
 
 
 ---
+*Syntaxes:*
+
+`ctrlMousePosition` control
+
+---
 *Example 1:*
+
 ```sqf
 private _mouseRelPos = ctrlMousePosition _ctrl;
 ```

@@ -2,12 +2,19 @@ Sets progress position of a `progress bar`.
 
 
 ---
+*Syntaxes:*
+
+control `progressSetPosition` progress
+
+---
 *Example 1:*
+
 ```sqf
 _control progressSetPosition 0.5;
 ```
 
 *Example 2:*
+
 ```sqf
 with uiNamespace do {
 	bar = findDisplay 46 ctrlCreate ["RscProgress", -1];

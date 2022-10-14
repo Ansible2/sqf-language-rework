@@ -3,7 +3,13 @@ Returns absolute `safeZoneX` including all monitors.
 
 
 ---
+*Syntaxes:*
+
+`safeZoneXAbs`
+
+---
 *Example 1:*
+
 ```sqf
 _szX = safeZoneXAbs;
 ```

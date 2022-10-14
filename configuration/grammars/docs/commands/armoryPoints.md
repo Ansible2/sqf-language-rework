@@ -2,7 +2,13 @@ Returns, stored in [USERNAME].ArmaXProfile, value of `armoryPoints` entry. If th
 
 
 ---
+*Syntaxes:*
+
+`armoryPoints`
+
+---
 *Example 1:*
+
 ```sqf
 _points = armoryPoints;
 ```

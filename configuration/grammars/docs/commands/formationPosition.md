@@ -2,12 +2,19 @@ Return position of unit in the formation.
 
 
 ---
+*Syntaxes:*
+
+`formationPosition` unit
+
+---
 *Example 1:*
+
 ```sqf
 _pos = formationPosition _unit;
 ```
 
 *Example 2:*
+
 ```sqf
 // Reposition entire group to a new position (ground level)
 private _group = group player;

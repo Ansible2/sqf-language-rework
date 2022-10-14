@@ -2,17 +2,25 @@ Activates given object animation. Animation is defined in CfgModels `animations`
 
 
 ---
+*Syntaxes:*
+
+object `animate` [animationName, phase, speed]
+
+---
 *Example 1:*
+
 ```sqf
 _building animate ["maindoor", 1];
 ```
 
 *Example 2:*
+
 ```sqf
 _building animate ["Door_1_rot", 1, true];
 ```
 
 *Example 3:*
+
 Create Offroad and add flashing police light bar:
 
 ```sqf

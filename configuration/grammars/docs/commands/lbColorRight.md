@@ -2,12 +2,21 @@ Returns the text color of the item (right) with the given index of the listbox o
 
 
 ---
+*Syntaxes:*
+
+`lbColorRight` [idc, index]
+
+control `lbColorRight`  index
+
+---
 *Example 1:*
+
 ```sqf
 _colour = lbColorRight [101, 0];
 ```
 
 *Example 2:*
+
 ```sqf
 _color = _control lbColorRight 0;
 ```

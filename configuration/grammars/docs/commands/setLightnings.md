@@ -4,7 +4,13 @@ Changes the lightnings value smoothly during the given time (in seconds). A time
 
 
 ---
+*Syntaxes:*
+
+time `setLightnings` value
+
+---
 *Example 1:*
+
 ```sqf
 1800 setLightnings 0.7;
 ```

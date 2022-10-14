@@ -2,7 +2,13 @@ Sets the position of the given camera relative to its target, set with `camSetTa
 
 
 ---
+*Syntaxes:*
+
+camera `camSetRelPos` position
+
+---
 *Example 1:*
+
 ```sqf
 _cam camSetTarget _car;
 _cam camSetRelPos [0,10,8];

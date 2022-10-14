@@ -2,7 +2,15 @@ Returns an array with the type names of all the unit's backpack magazines.
 
 
 ---
+*Syntaxes:*
+
+`magazinesDetailBackpack` unit
+
+`magazinesDetailBackpack` [unit, includeEmpty, includeLoaded]
+
+---
 *Example 1:*
+
 ```sqf
 magazinesDetailBackpack player;
 /*

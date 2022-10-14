@@ -2,12 +2,21 @@ Orders the unit(s) to watch the given position or target (via the radio). Use `o
 
 
 ---
+*Syntaxes:*
+
+units `commandWatch` position
+
+units `commandWatch` target
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne commandWatch markerPos "MarkerMoveOne";
 ```
 
 *Example 2:*
+
 ```sqf
 [s1, s2] commandWatch player;
 ```

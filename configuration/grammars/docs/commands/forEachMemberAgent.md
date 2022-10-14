@@ -2,7 +2,13 @@ Executes the given command recursively for each agent that is a member of the gi
 
 
 ---
+*Syntaxes:*
+
+command `forEachMemberAgent` team
+
+---
 *Example 1:*
+
 ```sqf
 (example);
 ```

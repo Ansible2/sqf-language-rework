@@ -2,12 +2,19 @@ Returns the array element with `max`imum numerical value. Engine solution to `BI
 
 
 ---
+*Syntaxes:*
+
+`selectMax` array
+
+---
 *Example 1:*
+
 ```sqf
 _max = selectMax [1,2,3,4,5]; //5
 ```
 
 *Example 2:*
+
 ```sqf
 // Same as, for example: 
 _max = _a max _b max _c max _d;

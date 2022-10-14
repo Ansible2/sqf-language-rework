@@ -2,7 +2,13 @@ Returns model space coordinates of the object airplane or helicopter [[A3_Target
 
 
 ---
+*Syntaxes:*
+
+`getPilotCameraPosition` object
+
+---
 *Example 1:*
+
 ```sqf
 _pilotCamPos = getPilotCameraPosition vehicle player;
 ```

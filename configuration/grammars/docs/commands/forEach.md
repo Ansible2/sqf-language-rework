@@ -2,7 +2,15 @@ Executes the given command(s) on every item of an `Array` or a `HashMap`.
 
 
 ---
+*Syntaxes:*
+
+code `forEach` array
+
+code `forEach` hashMap
+
+---
 *Example 1:*
+
 ```sqf
 // SQF
 { _x setDamage 1 } forEach units player;
@@ -13,6 +21,7 @@ Executes the given command(s) on every item of an `Array` or a `HashMap`.
 </sqs>
 
 *Example 2:*
+
 This command can also easily be used to execute a single command multiple times without respect to the array items - see also `for`
 
 ```sqf
@@ -22,6 +31,7 @@ for "_i" from 1 to 4 do { player addMagazine "30Rnd_556x45_Stanag" };
 ```
 
 *Example 3:*
+
 You can also use multiple commands in the same block:
 
 ```sqf
@@ -33,6 +43,7 @@ You can also use multiple commands in the same block:
 ```
 
 *Example 4:*
+
 To get the index of a `forEach` loop, use `_forEachIndex`:
 
 ```sqf
@@ -40,6 +51,7 @@ To get the index of a `forEach` loop, use `_forEachIndex`:
 ```
 
 *Example 5:*
+
 Iterating a `HashMap`'s `_forEachIndex`:
 
 ```sqf
@@ -53,6 +65,7 @@ Iterating a `HashMap`'s `_forEachIndex`:
 ```
 
 *Example 6:*
+
 `findIf` equivalent for `HashMap`:
 
 ```sqf
@@ -63,6 +76,7 @@ private _resultKey = {
 ```
 
 *Example 7:*
+
 Array is edited by reference:
 
 ```sqf
@@ -76,6 +90,7 @@ _arr3 = [0];
 ```
 
 *Example 8:*
+
 ```sqf
 {
 	private _verticalValue = _x; // needed, otherwise _horizontalValues' _x made this one inaccessible

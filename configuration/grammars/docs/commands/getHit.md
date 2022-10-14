@@ -2,12 +2,19 @@ Returns selection damage. Same as `getHitPointDamage`, only the argument is sele
 
 
 ---
+*Syntaxes:*
+
+vehicle `getHit` selection
+
+---
 *Example 1:*
+
 ```sqf
 player getHit "head";
 ```
 
 *Example 2:*
+
 ```sqf
 _car getHit "motor";
 ```

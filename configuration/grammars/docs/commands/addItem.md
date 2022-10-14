@@ -2,7 +2,13 @@ Creates new item and tries to add it into inventory. Inventory must have enough 
 
 
 ---
+*Syntaxes:*
+
+unit `addItem` item
+
+---
 *Example 1:*
+
 ```sqf
 // identical to bluforUnit linkItem "NVGoggles"
 // addItem then assignItem makes the item go through through inventory storage and fail if storage space was missing

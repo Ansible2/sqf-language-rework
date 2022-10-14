@@ -2,12 +2,19 @@ Order the given unit(s) to move to the given location (via the radio). Exactly t
 
 
 ---
+*Syntaxes:*
+
+unitName `commandMove`  position
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 commandMove getMarkerPos "Marker1";
 ```
 
 *Example 2:*
+
 ```sqf
 [_soldier1, _soldier2] commandMove getMarkerPos "Marker1";
 ```

@@ -9,7 +9,13 @@ Returns the team the unit belongs to. Possible values:
 
 
 ---
+*Syntaxes:*
+
+`assignedTeam` unitName
+
+---
 *Example 1:*
+
 ```sqf
 _team = assignedTeam player;
 ```

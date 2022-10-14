@@ -2,7 +2,13 @@ Returns an array containing the function name, line number, scope name and all l
 
 
 ---
+*Syntaxes:*
+
+`diag_stacktrace`
+
+---
 *Example 1:*
+
 ```sqf
 private _testvar = 1;
 private _testother = 2;

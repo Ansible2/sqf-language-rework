@@ -2,7 +2,13 @@ Returns `true` if the machine executing the command is the server in a multiplay
 
 
 ---
+*Syntaxes:*
+
+`isServer`
+
+---
 *Example 1:*
+
 ```sqf
 if (!isServer) exitWith {};
 ```

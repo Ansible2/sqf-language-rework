@@ -2,7 +2,13 @@ Returns description of map sign mouse cursor is over. Works with in-game map as 
 
 
 ---
+*Syntaxes:*
+
+`ctrlMapMouseOver` control
+
+---
 *Example 1:*
+
 ```sqf
 (uiNamespace getVariable "_map") ctrlMapCursor ["Track","HC_overFriendly"];
 
@@ -28,6 +34,7 @@ else
 ```
 
 *Example 2:*
+
 ```sqf
 onEachFrame {hintSilent str ctrlMapMouseOver (findDisplay 12 displayCtrl 51)};
 ```

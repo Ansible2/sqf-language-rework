@@ -2,7 +2,13 @@ Sets the object position. The pos array uses the `PositionASL` format. The versi
 
 
 ---
+*Syntaxes:*
+
+obj [[setPosASL2]] pos
+
+---
 *Example 1:*
+
 ```sqf
 private _aslPos = getPosASL player;
 _aslPos set [1, _aslPos select 1 + 10];

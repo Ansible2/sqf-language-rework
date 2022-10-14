@@ -4,18 +4,28 @@ To reset output back to default at any time, use **toFixed -1}} - see {{HashLink
 
 
 ---
+*Syntaxes:*
+
+number `toFixed` decimals
+
+`toFixed` decimals
+
+---
 *Example 1:*
+
 ```sqf
 123 toFixed 2; // "123.00"
 ```
 
 *Example 2:*
+
 ```sqf
 2.34 toFixed 1; // "2.3"
 2.35 toFixed 1; // "2.4"
 ```
 
 *Example 3:*
+
 Convert position to string preserving position precision:
 
 ```sqf
@@ -33,6 +43,7 @@ getPos player call fn_posToString;	// "[3231.04882813,171.80192566,0.00143862]"
 ```
 
 *Example 4:*
+
 Same as `Example 3` only using new alternative syntax:
 
 ```sqf
@@ -42,6 +53,7 @@ str getPos player; // "[3231.04882813,171.80192566,0.00143862]"
 ```
 
 *Example 5:*
+
 ```sqf
 systemChat str position player;		// [11580.3,11797.7,0.00146675]
 call
@@ -56,6 +68,7 @@ systemChat str position player;		// [11580.3,11797.7,0.00146675]
 Ideal to be used when saving data to a database when more precise positioning is required.
 
 *Example 6:*
+
 ```sqf
 str (pi/100000);		// "3.14159e-005" - scientific notation
 (pi/100000) toFixed 10;	// "0.0000314159" - no scientific notation

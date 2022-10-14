@@ -5,12 +5,19 @@ For a list of possible backpacks, see:
 
 
 ---
+*Syntaxes:*
+
+vehicle `addBackpackCargo` [backpackClassName, count]
+
+---
 *Example 1:*
+
 ```sqf
 this addBackpackCargo ["TK_RPG_Backpack_EP1", 2];
 ```
 
 *Example 2:*
+
 ```sqf
 _apc addBackpackCargo ["US_Patrol_Pack_EP1", 4];
 ```

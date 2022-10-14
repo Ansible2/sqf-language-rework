@@ -2,7 +2,13 @@ Returns array with active SQSs. To see number of all scripts currently in the sc
 
 
 ---
+*Syntaxes:*
+
+`diag_activeSQSScripts`
+
+---
 *Example 1:*
+
 ```sqf
 {systemChat str _x} forEach diag_activeSQSScripts;
 ```

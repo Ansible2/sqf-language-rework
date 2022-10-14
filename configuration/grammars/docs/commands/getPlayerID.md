@@ -2,7 +2,13 @@ Returns user DirectPlay ID, which can be used with `getUserInfo`, and is found i
 
 
 ---
+*Syntaxes:*
+
+`getPlayerID` unit
+
+---
 *Example 1:*
+
 ```sqf
 getPlayerID player;
 ```

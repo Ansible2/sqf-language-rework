@@ -2,7 +2,13 @@ Checks if the player has compass opened and visible. Keep in mind that the GPS m
 
 
 ---
+*Syntaxes:*
+
+`visibleCompass`
+
+---
 *Example 1:*
+
 ```sqf
 if (visibleCompass) then {hint "Compass is visible"};
 ```

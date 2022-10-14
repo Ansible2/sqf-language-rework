@@ -2,12 +2,19 @@ Sends the chat message to the custom radio channel. The radio channel needs to b
 
 
 ---
+*Syntaxes:*
+
+unit `customChat` [customChannelID, message]
+
+---
 *Example 1:*
+
 ```sqf
 _unit customChat [1, "Hi, I am a custom chat message"];
 ```
 
 *Example 2:*
+
 ```sqf
 driver vehicle player sideChat "sideChat";
 driver vehicle player globalChat "globalChat";

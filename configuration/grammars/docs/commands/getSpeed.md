@@ -8,7 +8,13 @@ SpeedMode can be:
 
 
 ---
+*Syntaxes:*
+
+object `getSpeed` speedMode
+
+---
 *Example 1:*
+
 ```sqf
 _spd = player getSpeed "FAST";
 ```

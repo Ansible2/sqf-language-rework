@@ -2,7 +2,13 @@ Get array with all magazines of the given unit.
 
 
 ---
+*Syntaxes:*
+
+`soldierMagazines` unit
+
+---
 *Example 1:*
+
 ```sqf
 soldierMagazines player;
 // returns:

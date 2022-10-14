@@ -9,7 +9,13 @@ In SP always returns `false`.
 
 
 ---
+*Syntaxes:*
+
+`isRemoteExecutedJIP`
+
+---
 *Example 1:*
+
 ```sqf
 _remoteExecutedJIP = isRemoteExecutedJIP;
 ```

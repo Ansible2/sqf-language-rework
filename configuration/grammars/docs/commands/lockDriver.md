@@ -2,7 +2,13 @@ Lock the driver position of the vehicle. This command must be executed where veh
 
 
 ---
+*Syntaxes:*
+
+vehicle `lockDriver` lock
+
+---
 *Example 1:*
+
 ```sqf
 vehicleName lockDriver true;
 ```

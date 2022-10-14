@@ -2,7 +2,13 @@ Sets the text associated with a location. This text will be displayed on the gam
 
 
 ---
+*Syntaxes:*
+
+location `setText` text
+
+---
 *Example 1:*
+
 ```sqf
 myLocation setText "Rahmadi Village";
 ```

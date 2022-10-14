@@ -2,7 +2,13 @@ Enable / disable showing of in-game UI during currently active camera effect. By
 
 
 ---
+*Syntaxes:*
+
+`cameraEffectEnableHUD` enable
+
+---
 *Example 1:*
+
 ```sqf
 cameraEffectEnableHUD true;
 ```

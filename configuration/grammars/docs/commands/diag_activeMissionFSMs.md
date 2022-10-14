@@ -2,7 +2,13 @@ Returns array with active Mission FSMs. To see number of all scripts currently i
 
 
 ---
+*Syntaxes:*
+
+`diag_activeMissionFSMs`
+
+---
 *Example 1:*
+
 ```sqf
 {systemChat str _x} forEach diag_activeMissionFSMs;
 ```

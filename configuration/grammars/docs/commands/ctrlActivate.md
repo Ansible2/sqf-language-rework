@@ -4,12 +4,19 @@ Command ignores control disabled state. (Example 2)
 
 
 ---
+*Syntaxes:*
+
+`ctrlActivate` controlName
+
+---
 *Example 1:*
+
 ```sqf
 ctrlActivate _control;
 ```
 
 *Example 2:*
+
 ```sqf
 _control ctrlEnable false;
 ctrlActivate _control; // Action fired.

@@ -2,12 +2,21 @@ Displays a very basic message dialog in the center of the screen. Player control
 
 
 ---
+*Syntaxes:*
+
+`hintC` message
+
+title `hintC` message
+
+---
 *Example 1:*
+
 ```sqf
 hintC "Press W to move forward";
 ```
 
 *Example 2:*
+
 Same as the above in <See arm Reference 3> but without second `hint` displayed:<br>[[Image:HintC.jpg|400px|right]]
 
 ```sqf
@@ -21,6 +30,7 @@ hintC_EH = findDisplay 57 displayAddEventHandler ["Unload", {
 ```
 
 *Example 3:*
+
 ```sqf
 "Instructions" hintC [
 	"Press W to move forward.",
@@ -31,6 +41,7 @@ hintC_EH = findDisplay 57 displayAddEventHandler ["Unload", {
 ```
 
 *Example 4:*
+
 Same as the above in <See arm Reference 3> but without second `hint` displayed:<br>[[Image:HintC_array.jpg|400px|right]]
 
 ```sqf
@@ -49,6 +60,7 @@ hintC_EH = findDisplay 72 displayAddEventHandler ["Unload", {
 ```
 
 *Example 5:*
+
 ```sqf
 private _separator = parseText "<br/>------------------------<br/>";
 private _image = "\ca\ui\textures\aus_flag.paa";

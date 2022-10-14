@@ -3,7 +3,13 @@ This EH, unlike `onGroupIconOverEnter` and `onGroupIconOverLeave`, has one more 
 
 
 ---
+*Syntaxes:*
+
+`onGroupIconClick` command
+
+---
 *Example 1:*
+
 ```sqf
 onGroupIconClick
 {

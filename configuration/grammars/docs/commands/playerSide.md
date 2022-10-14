@@ -2,7 +2,13 @@ Returns the player's `side`. This is valid even when the player controlled perso
 
 
 ---
+*Syntaxes:*
+
+`playerSide`
+
+---
 *Example 1:*
+
 ```sqf
 if (side man1 == playerSide) then
 {
@@ -11,6 +17,7 @@ if (side man1 == playerSide) then
 ```
 
 *Example 2:*
+
 ```sqf
 switch (playerSide) do
 {
@@ -20,6 +27,7 @@ switch (playerSide) do
 ```
 
 *Example 3:*
+
 the following code will change the side of the player including `playerSide`:
 
 ```sqf

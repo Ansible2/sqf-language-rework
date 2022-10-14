@@ -2,12 +2,19 @@ Returns the current humidity value. 0 is no humidity and 1 is 100% humidity. Hum
 
 
 ---
+*Syntaxes:*
+
+`humidity`
+
+---
 *Example 1:*
+
 ```sqf
 currentHumidity = humidity;
 ```
 
 *Example 2:*
+
 ```sqf
 skipTime -24;
 86400 setOvercast 1;

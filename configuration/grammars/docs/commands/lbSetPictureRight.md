@@ -4,12 +4,21 @@ In <See arm Reference 3> it might be necessary to set the color of the picture a
 
 
 ---
+*Syntaxes:*
+
+`lbSetPictureRight` [idc, index, name]
+
+control `lbSetPictureRight` [index, name]
+
+---
 *Example 1:*
+
 ```sqf
 lbSetPictureRight [101, 0, "iskoda"];
 ```
 
 *Example 2:*
+
 ```sqf
 _control lbSetPictureRight [0, "iskoda"];
 ```

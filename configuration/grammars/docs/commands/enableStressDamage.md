@@ -2,7 +2,13 @@ Toggles stress damage in ` Advanced Flight Model`, which otherwise could be manu
 
 
 ---
+*Syntaxes:*
+
+`enableStressDamage` state
+
+---
 *Example 1:*
+
 ```sqf
 if (difficultyEnabledRTD) then { enableStressDamage true };
 ```

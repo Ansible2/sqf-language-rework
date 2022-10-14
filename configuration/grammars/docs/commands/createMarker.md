@@ -2,12 +2,19 @@ Creates a new map marker at the given position. The marker will be created for e
 
 
 ---
+*Syntaxes:*
+
+`createMarker` [name, position, channel, creator]
+
+---
 *Example 1:*
+
 ```sqf
 _marker1 = createMarker ["Marker1", position player];
 ```
 
 *Example 2:*
+
 ```sqf
 _marker2 = createMarker ["Marker2", player]; // since Arma 3 1.50
 ```

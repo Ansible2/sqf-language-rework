@@ -2,12 +2,19 @@ Returns a cargo container of a unit's vest.
 
 
 ---
+*Syntaxes:*
+
+`vestContainer` unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str vestContainer player; // 2df7d600# 163942: dummyweapon.p3d
 ```
 
 *Example 2:*
+
 ```sqf
 hint str getMagazineCargo vestContainer player;
 /*

@@ -2,7 +2,13 @@ Unassign and delete existing item from its assigned slot. If item does not exist
 
 
 ---
+*Syntaxes:*
+
+unit `unlinkItem` item
+
+---
 *Example 1:*
+
 ```sqf
 bluforUnit unlinkItem "NVGoggles";
 opforUnit unlinkItem "NVGoggles_OPFOR";

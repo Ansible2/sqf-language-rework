@@ -10,7 +10,13 @@ Returns array with all ` uncompleted` tasks for the given agent.
 
 
 ---
+*Syntaxes:*
+
+`currentTasks` teamMember
+
+---
 *Example 1:*
+
 ```sqf
 currentTasks teamMember _agent;
 ```

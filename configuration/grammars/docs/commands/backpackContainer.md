@@ -2,12 +2,19 @@ Returns a cargo container of a unit's backpack.
 
 
 ---
+*Syntaxes:*
+
+`backpackContainer` unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str backpackContainer player; // 1a5f7900# 163944: backpack_fast.p3d
 ```
 
 *Example 2:*
+
 ```sqf
 hint str getMagazineCargo backpackContainer player;
 /*
@@ -29,6 +36,7 @@ hint str getMagazineCargo backpackContainer player;
 ```
 
 *Example 3:*
+
 ```sqf
 (backpackContainer player) addWeaponCargoGlobal [weapons player select 0, 1];
 ```

@@ -3,7 +3,13 @@ For complete solution for being able to tell whether or not an object can be dam
 
 
 ---
+*Syntaxes:*
+
+`isDamageAllowed` object
+
+---
 *Example 1:*
+
 ```sqf
 private _canBeDamaged = local _obj && isDamageAllowed _obj;
 ```

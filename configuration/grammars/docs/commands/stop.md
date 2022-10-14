@@ -2,7 +2,13 @@ Stop AI unit.<br>Stopped unit will not be able to move, fire, or change its orie
 
 
 ---
+*Syntaxes:*
+
+unitName `stop` toggle
+
+---
 *Example 1:*
+
 ```sqf
 loon1 stop true;
 ```

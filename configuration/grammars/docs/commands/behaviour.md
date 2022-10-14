@@ -2,7 +2,13 @@ Returns the behaviour of the individual unit, this is why it only accepts `Objec
 
 
 ---
+*Syntaxes:*
+
+`behaviour` unit
+
+---
 *Example 1:*
+
 ```sqf
 _soldier setBehaviour "CARELESS";
 _b = behaviour _soldier; // returns "CARELESS"

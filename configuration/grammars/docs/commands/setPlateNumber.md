@@ -2,12 +2,19 @@ Change the license plates on any vehicle which has plates configured. Max 15 cha
 
 
 ---
+*Syntaxes:*
+
+vehicle `setPlateNumber` string
+
+---
 *Example 1:*
+
 ```sqf
     vehicle player setPlateNumber "K2000";
 ```
 
 *Example 2:*
+
 Reset plate to the world's randomized template:
 
 ```sqf

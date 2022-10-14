@@ -6,18 +6,28 @@ The alternative syntax allows to convert a non-editable (built-in) terrain locat
 
 
 ---
+*Syntaxes:*
+
+`createLocation` [className, position, sizeX, sizeY]
+
+`createLocation` [location]
+
+---
 *Example 1:*
+
 ```sqf
 _location = createLocation ["NameVillage", [4035,2151,10], 100, 100];
 ```
 
 *Example 2:*
+
 ```sqf
 _location = createLocation ["NameVillage", [4035,2151,10], 30, 30];
 _location setText "Player town";
 ```
 
 *Example 3:*
+
 ```sqf
 private _terrainLocation = nearestLocation [player, "nameCity"];	// assuming it returns a built-in location
 _terrainLocation setType "Invisible";								// does not do anything

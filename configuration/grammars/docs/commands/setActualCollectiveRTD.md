@@ -5,7 +5,13 @@ Sets the collective pitch control to a specific position, regardless of input de
 
 
 ---
+*Syntaxes:*
+
+helicopterRTD `setActualCollectiveRTD` value
+
+---
 *Example 1:*
+
 ```sqf
 myHelicopterRTD setActualCollectiveRTD 0.7;
 ```

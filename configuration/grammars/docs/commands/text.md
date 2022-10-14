@@ -2,17 +2,27 @@ Creates a structured text containing the given plain text if argument is `String
 
 
 ---
+*Syntaxes:*
+
+`text` string
+
+`text` location
+
+---
 *Example 1:*
+
 ```sqf
 _stxt2 = text "Hello world.";
 ```
 
 *Example 2:*
+
 ```sqf
 _townName = text myTownLocation;
 ```
 
 *Example 3:*
+
 ```sqf
 _loc = text nearestLocation [position player, "NameMarine"]; //"Marina Bay"
 ```

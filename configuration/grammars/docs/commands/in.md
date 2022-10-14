@@ -2,12 +2,27 @@ Checks whether value is in array, unit is in vehicle, position is inside locatio
 
 
 ---
+*Syntaxes:*
+
+value `in` array
+
+unit `in` vehicle
+
+position `in` location
+
+needle `in` haystack
+
+key `in` hashMap
+
+---
 *Example 1:*
+
 ```sqf
 1 in [0, 1, 2]; // true
 ```
 
 *Example 2:*
+
 ```sqf
 private _myArray = ["Aaa", "AAa", "AAA"];
 
@@ -28,27 +43,32 @@ _myArray findIf { _x == "aaa"; } != -1; // true
 ```
 
 *Example 3:*
+
 ```sqf
 [1,2,3] in [[1,2,3], [4,5,6]]; // true - Arma 3 only
 ```
 
 *Example 4:*
+
 ```sqf
 private _isInCar = player in Car;
 ```
 
 *Example 5:*
+
 ```sqf
 private _isInside = [1000,2000,0] in MyLocation;
 ```
 
 *Example 6:*
+
 ```sqf
 private _isInString = "foo" in "foobar"; // true
 _isInString = "Foo" in "foobar"; // false
 ```
 
 *Example 7:*
+
 ```sqf
 private _onFoot = _unit in _unit;
 ```

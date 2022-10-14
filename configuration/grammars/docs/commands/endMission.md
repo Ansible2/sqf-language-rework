@@ -3,7 +3,13 @@ Finish the mission.
 
 
 ---
+*Syntaxes:*
+
+`endMission` endType
+
+---
 *Example 1:*
+
 ```sqf
 endMission "END1";
 ```

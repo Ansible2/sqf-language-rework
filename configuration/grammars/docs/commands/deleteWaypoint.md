@@ -1,15 +1,20 @@
 Removes the specified waypoint.
- for a deletion of all group's waypoints.
-* Deleting a group's `current waypoint` will `not` stop the group on its tracks.
 
 
 ---
+*Syntaxes:*
+
+`deleteWaypoint` [group, index]
+
+---
 *Example 1:*
+
 ```sqf
 deleteWaypoint [_grp, 2];
 ```
 
 *Example 2:*
+
 Because waypoints get immediately re-indexed when one gets deleted, delete them from last to first:
 
 ```sqf

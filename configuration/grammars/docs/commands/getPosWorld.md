@@ -2,17 +2,25 @@ Returns the provided object's model centre position ([0,0,0]) in `PositionASL`, 
 
 
 ---
+*Syntaxes:*
+
+`getPosWorld` object
+
+---
 *Example 1:*
+
 ```sqf
 _obj setPosWorld getPosWorld _obj;
 ```
 
 *Example 2:*
+
 ```sqf
 ATLToASL (_groundObj modelToWorld [0,0,0]) isEqualTo getPosWorld _groundObj; // true
 ```
 
 *Example 3:*
+
 Wave height under a boat:
 
 ```sqf

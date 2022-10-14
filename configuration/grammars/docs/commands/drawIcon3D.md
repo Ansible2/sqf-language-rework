@@ -1,16 +1,18 @@
 Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [[Arma 3: Mission Event Handlers#Draw3D|Draw3D]] Mission Event Handler (which is executed every frame if the user can see the icon).<br>
 In order for the results of this command to be visible through a `custom camera`, enable HUD with `cameraEffectEnableHUD`.<br>
-<sqf inline>showHUD false</sqf> will hide the icon drawn by this command.<br>
+<sqf inline>showHUD false
+``` will hide the icon drawn by this command.<br>
 In order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.
-
- set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2</sqf>) and half the screen tall (<sqf inline>safeZoneH / 2</sqf>), divide these by the config values respectfully: <sqf>
-private _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");
-private _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");
-</sqf>
 
 
 ---
+*Syntaxes:*
+
+[[drawIcon3D]] [texture, color, position, width, height, angle, text, shadow, textSize, font, textAlign, drawSideArrows, offsetX, offsetY]
+
+---
 *Example 1:*
+
 Icon and text:
 
 ```sqf
@@ -20,6 +22,7 @@ addMissionEventHandler ["Draw3D", {
 ```
 
 *Example 2:*
+
 Just text:
 
 ```sqf
@@ -29,6 +32,7 @@ addMissionEventHandler ["Draw3D", {
 ```
 
 *Example 3:*
+
 ```sqf
 iconPos = player getPos [10, 0] vectorAdd [0,0,2];
 addMissionEventHandler ["draw3D", 
@@ -52,6 +56,7 @@ addMissionEventHandler ["draw3D",
 ```
 
 *Example 4:*
+
 Since {{GVI|arma3|2.04}}
 
 ```sqf

@@ -2,12 +2,19 @@ Types text to the vehicle radio channel. The text will be visible only on the PC
 
 
 ---
+*Syntaxes:*
+
+vehicleName `vehicleChat` chatText
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player vehicleChat "Show this text";
 ```
 
 *Example 2:*
+
 ```sqf
 driver vehicle player sideChat "sideChat";
 driver vehicle player globalChat "globalChat";

@@ -3,7 +3,13 @@
 
 
 ---
+*Syntaxes:*
+
+`getPlayerScores` unitName
+
+---
 *Example 1:*
+
 ```sqf
 getPlayerScores BIS_player1;
 ```

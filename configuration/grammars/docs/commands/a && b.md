@@ -3,7 +3,15 @@ In case of the alternative syntax, {{Wikipedia|Lazy_evaluation#Control_structure
 
 
 ---
+*Syntaxes:*
+
+booleanA `&&` booleanB
+
+boolean `&&` code
+
+---
 *Example 1:*
+
 ```sqf
 private _allEnemiesKilled = true;
 if (alive player && _allEnemiesKilled) then
@@ -13,6 +21,7 @@ if (alive player && _allEnemiesKilled) then
 ```
 
 *Example 2:*
+
 ```sqf
 if ((count _array > 0) && { (_array select 0) == player }) then // an error would be thrown without lazy evaluation
 {
@@ -21,6 +30,7 @@ if ((count _array > 0) && { (_array select 0) == player }) then // an error woul
 ```
 
 *Example 3:*
+
 ```sqf
 if ((alive player) && { player setDamage 0.5; true }) then // valid AS LONG AS the code block returns a Boolean
 {

@@ -2,7 +2,13 @@ Alternative Injury Simulation (AIS) end state. Used to tell engine that script s
 
 
 ---
+*Syntaxes:*
+
+`AISFinishHeal` [unit, healer, healerCanHeal]
+
+---
 *Example 1:*
+
 ```sqf
 AISFinishHeal [_wounded, _medic, true];
 ```

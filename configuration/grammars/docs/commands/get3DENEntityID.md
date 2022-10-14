@@ -2,7 +2,13 @@ Returns unique index of an `Eden Entity`. This number remains the same even afte
 
 
 ---
+*Syntaxes:*
+
+[[get3DENEntityID]] entity
+
+---
 *Example 1:*
+
 ```sqf
 myID = get3DENEntityID player;
 ```

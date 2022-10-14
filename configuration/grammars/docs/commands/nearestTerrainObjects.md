@@ -43,25 +43,38 @@ Possible type names:
 * **"VIEW-TOWER"**
 * **"WALL"**
 * **"WATERTOWER"**
+}}
+
+
+</spoiler>
 
 
 ---
+*Syntaxes:*
+
+`nearestTerrainObjects` [position, types, radius, sort, 2Dmode]
+
+---
 *Example 1:*
+
 ```sqf
 nearestTerrainObjects [player, ["Tree", "Bush"], 200];
 ```
 
 *Example 2:*
+
 ```sqf
 nearestTerrainObjects [player, ["House"], 200];
 ```
 
 *Example 3:*
+
 ```sqf
 nearestTerrainObjects [[2716, 2949, 0], ["Chapel", "Fuelstation"], 100];
 ```
 
 *Example 4:*
+
 Return every terrain object in 50 metres radius around player sorted, closest first:
 
 ```sqf
@@ -69,6 +82,7 @@ nearestTerrainObjects [player, [], 50];
 ```
 
 *Example 5:*
+
 Return every terrain object in 50 metres radius around player unsorted:
 
 ```sqf
@@ -76,6 +90,7 @@ nearestTerrainObjects [player, [], 50, false];
 ```
 
 *Example 6:*
+
 Hide all terrain objects `nearestTerrainObjects` could find:
 
 ```sqf

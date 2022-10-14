@@ -2,7 +2,13 @@ Returns the status of STREAM FRIENDLY UI setting in UI (OPTIONS >> GAME >> GENER
 
 
 ---
+*Syntaxes:*
+
+`isStreamFriendlyUIEnabled`
+
+---
 *Example 1:*
+
 ```sqf
 hint str isStreamFriendlyUIEnabled;
 ```

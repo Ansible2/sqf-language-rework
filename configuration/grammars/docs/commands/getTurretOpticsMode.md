@@ -2,17 +2,27 @@ Get the current optics mode of the optics in the turret occupied by the specifie
 
 
 ---
+*Syntaxes:*
+
+`getTurretOpticsMode` obj
+
+obj `getTurretOpticsMode` turretPath
+
+---
 *Example 1:*
+
 ```sqf
 getTurretOpticsMode player;
 ```
 
 *Example 2:*
+
 ```sqf
 myTank getTurretOpticsMode [-1];
 ```
 
 *Example 3:*
+
 ```sqf
 myAircraft getTurretOpticsMode [0, 0];
 ```

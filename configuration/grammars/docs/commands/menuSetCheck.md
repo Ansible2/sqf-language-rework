@@ -5,7 +5,15 @@ Setting an entry to be checkable will overwrite set picture with `menuSetPicture
 
 
 ---
+*Syntaxes:*
+
+`menuSetCheck` [idc, path, checked]
+
+control `menuSetCheck` [path, checked]
+
+---
 *Example 1:*
+
 ```sqf
 findDisplay 313 displayCtrl 120 menuSetCheck [[0,1], true];
 ```

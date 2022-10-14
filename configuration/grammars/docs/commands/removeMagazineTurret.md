@@ -4,12 +4,19 @@ Note: you may create invalid combinations by using this function. When doing so,
 
 
 ---
+*Syntaxes:*
+
+vehicle `removeMagazineTurret` [magazineName, turretPath]
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player removeMagazineTurret ["60rnd_cmflaremagazine",[-1]];
 ```
 
 *Example 2:*
+
 ```sqf
 _tank removeMagazineTurret ["20Rnd_120mmSABOT_M1A2",[0]];
 ```

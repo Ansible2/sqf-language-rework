@@ -3,17 +3,25 @@ Cross product of two 3D vectors.
 
 
 ---
+*Syntaxes:*
+
+vector1 `vectorCrossProduct` vector2
+
+---
 *Example 1:*
+
 ```sqf
 _vector = [1,1,1] vectorCrossProduct [2,2,2];
 ```
 
 *Example 2:*
+
 ```sqf
 _vectorUp = [0,1,0] vectorCrossProduct [-1,0,0]; //[0,-0,1]
 ```
 
 *Example 3:*
+
 ```sqf
 _vectorSide = (vectorDir player) vectorCrossProduct (vectorUp player);
 ```

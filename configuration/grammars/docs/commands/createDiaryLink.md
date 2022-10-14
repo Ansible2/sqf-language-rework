@@ -2,7 +2,13 @@ Creates a link to the given diary entry.
 
 
 ---
+*Syntaxes:*
+
+`createDiaryLink` [subject, record, text]
+
+---
 *Example 1:*
+
 ```sqf
 _diaryRec1 = player createDiaryRecord ["Diary", ["Record 1", "We can not refer to the next record because it does not exist yet."]];
 _diaryRec2 = player createDiaryRecord ["Diary", ["Record 2", "Go to " + createDiaryLink ["Diary", _diaryRec1, "record 1"]]];
@@ -10,6 +16,7 @@ _diaryRec3 = player createDiaryRecord ["Diary", ["Record 3", "Go to " + createDi
 ```
 
 *Example 2:*
+
 In this example, one can go to any next record.
 
 ```sqf

@@ -5,7 +5,13 @@ Unlocks the given achievement. The achievements are listed in CfgAchievements, h
 
 
 ---
+*Syntaxes:*
+
+`unlockAchievement` name
+
+---
 *Example 1:*
+
 ```sqf
 _isUnlocked = unlockAchievement "Hunter";
 ```

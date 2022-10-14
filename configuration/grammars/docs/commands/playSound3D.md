@@ -2,22 +2,31 @@ Plays positional sound with given `filename` on every computer on network. Since
 
 
 ---
+*Syntaxes:*
+
+[[playSound3D]] [filename, soundSource, isInside, soundPosition, volume, soundPitch, distance, offset, local]
+
+---
 *Example 1:*
+
 ```sqf
 playSound3D ["A3\Sounds_F\sfx\blip1.wss", player]
 ```
 
 *Example 2:*
+
 ```sqf
 playSound3D ["A3\Sounds_F\sfx\blip1.wss", player, false, getPosASL player, 1, 1, 0]
 ```
 
 *Example 3:*
+
 ```sqf
 playSound3D [getMissionPath "mySound.ogg", player]; // to play a mission directory sound
 ```
 
 *Example 4:*
+
 Sound file extension must be specified even if a config entry has none:
 
 ```sqf

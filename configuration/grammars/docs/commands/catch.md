@@ -2,17 +2,25 @@ Processes code when an `exception` is thrown in a `try` block. The exception cau
 
 
 ---
+*Syntaxes:*
+
+tryBlock `catch` code
+
+---
 *Example 1:*
+
 ```sqf
 try {throw "invalid argument"} catch {hint str _exception};
 ```
 
 *Example 2:*
+
 ```sqf
 123 try {if (_this != 123) throw "invalid argument"} catch {hint str _exception};
 ```
 
 *Example 3:*
+
 The correct usage of shorthand alt syntax:
 
 ```sqf

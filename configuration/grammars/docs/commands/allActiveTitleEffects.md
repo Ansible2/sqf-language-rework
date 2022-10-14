@@ -2,19 +2,27 @@ Returns a list of all layers that have currently active title effect. Numbers eq
 
 
 ---
+*Syntaxes:*
+
+`allActiveTitleEffects`
+
+---
 *Example 1:*
+
 ```sqf
 cutText ["Hello World!" ,"PLAIN", 2];
 hint str allActiveTitleEffects; // [0]
 ```
 
 *Example 2:*
+
 ```sqf
 21 cutText ["Hello World!", "PLAIN", 2];
 hint str allActiveTitleEffects; // [21]
 ```
 
 *Example 3:*
+
 ```sqf
 cutText ["Hello World!", "PLAIN", 2];
 titleText ["Hello World!", "PLAIN", 2];

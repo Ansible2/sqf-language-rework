@@ -4,7 +4,13 @@ If script was pre-processed with `preprocessFileLineNumbers`, it will also show/
 
 
 ---
+*Syntaxes:*
+
+`assert` condition
+
+---
 *Example 1:*
+
 ```sqf
 assert (1 > 2);
 ``` 
@@ -12,6 +18,7 @@ assert (1 > 2);
 `Image:PreprocessFile.jpg`
 
 *Example 2:*
+
 Check function params (Faster alternative to `BIS_fnc_param`)
 
 ```sqf

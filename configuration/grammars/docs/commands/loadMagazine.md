@@ -3,7 +3,13 @@ The turret has to be manned. One can also change the magazine if its respective 
 
 
 ---
+*Syntaxes:*
+
+transport `loadMagazine` [turretPath, weaponName, magazineName]
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player loadMagazine [[0], "m256", "20Rnd_120mmHE_M1A2"];
 ```

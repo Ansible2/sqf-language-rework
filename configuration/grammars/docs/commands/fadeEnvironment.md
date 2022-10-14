@@ -10,7 +10,13 @@ Influenced sounds among others are:
 
 
 ---
+*Syntaxes:*
+
+time `fadeEnvironment` volume
+
+---
 *Example 1:*
+
 ```sqf
 5 fadeEnvironment 0.1;
 ```

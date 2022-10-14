@@ -4,7 +4,15 @@ Breaks out of the `scope` with given `name`.
 
 
 ---
+*Syntaxes:*
+
+`breakOut`  name
+
+value `breakOut`  name
+
+---
 *Example 1:*
+
 ```sqf
 scopeName "main";
 while { true } do {
@@ -20,6 +28,7 @@ while { true } do {
 ```
 
 *Example 2:*
+
 ```sqf
 call {
 	scopeName "main";
@@ -31,6 +40,7 @@ call {
 ```
 
 *Example 3:*
+
 ```sqf
 call {
 	scopeName "Main"; // Parent Main

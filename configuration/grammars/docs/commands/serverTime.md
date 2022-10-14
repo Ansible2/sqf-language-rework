@@ -2,7 +2,13 @@ Returns the time since last server restart, synced to all clients in MP. The syn
 
 
 ---
+*Syntaxes:*
+
+`serverTime`
+
+---
 *Example 1:*
+
 ```sqf
 hint format ["Synced server time : %1", serverTime];
 ```

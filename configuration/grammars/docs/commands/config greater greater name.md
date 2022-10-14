@@ -2,7 +2,13 @@ Returns ` config` entry with given name (alias of `a / b`, slightly faster but w
 
 
 ---
+*Syntaxes:*
+
+config `>>` name
+
+---
 *Example 1:*
+
 ```sqf
 configFile >> "CfgVehicles";
 ```

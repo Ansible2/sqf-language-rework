@@ -2,12 +2,19 @@ Multiplies 3D vector by a scalar.
 
 
 ---
+*Syntaxes:*
+
+vector `vectorMultiply` scalar
+
+---
 *Example 1:*
+
 ```sqf
 _newVector = [1,2,3] vectorMultiply 3; // returns [3,6,9]
 ```
 
 *Example 2:*
+
 ```sqf
  
 private _eyePos = eyePos player;

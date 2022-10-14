@@ -2,7 +2,13 @@ The completion radius allows units to call the waypoint completed once they are 
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWaypointCompletionRadius` radius
+
+---
 *Example 1:*
+
 ```sqf
 [grp, 2] setWaypointCompletionRadius 30;
 ```

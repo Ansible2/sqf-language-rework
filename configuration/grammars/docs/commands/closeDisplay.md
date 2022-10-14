@@ -6,12 +6,19 @@ Closes given display with exit code. It does not instantly close the display but
 
 
 ---
+*Syntaxes:*
+
+display `closeDisplay` exitCode
+
+---
 *Example 1:*
+
 ```sqf
 _display closeDisplay 1;
 ```
 
 *Example 2:*
+
 ```sqf
 #define IDC_OK 1
 _display closeDisplay IDC_OK;

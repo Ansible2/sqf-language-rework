@@ -2,7 +2,13 @@ Return the current overcast level. Zero is clear skies, one is maximum cloud cov
 
 
 ---
+*Syntaxes:*
+
+`overcast`
+
+---
 *Example 1:*
+
 ```sqf
 _cloudLevel = overcast;
 ```

@@ -33,12 +33,21 @@ While on Windows the extension name is case-insensitive, on Linux the extension 
 
 
 ---
+*Syntaxes:*
+
+extension `callExtension` function
+
+extension `callExtension`  [function, arguments]
+
+---
 *Example 1:*
+
 ```sqf
 _return = "myExtension" callExtension "stringToBeParsed";
 ```
 
 *Example 2:*
+
 ```sqf
 _result = "test_extension" callExtension str weapons player;
 _result = "test_extension" callExtension ["fnc1", getUnitLoadout player];
@@ -47,6 +56,7 @@ _result = "test_extension" callExtension ["fnc1", [weapons player, magazines pla
 ```
 
 *Example 3:*
+
 ```sqf
 _result = "test_extension" callExtension ["fnc1", [1, "two", true, [4, "five", false]]];
 parseSimpleArray (_result select 0) params ["_number","_string","_boolean","_array"];
@@ -56,6 +66,7 @@ systemChat str [_number,_string,_boolean,_array];
 <u>Source Code</u> ({{ExternalLink
 
 *Example 4:*
+
 ```sqf
 fncToExecute_1 = { hint format ["Extension Result 1: %1", _this] };
 fncToExecute_2 = { hint format ["Extension Result 2: %1", _this] };
@@ -118,6 +129,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 </spoiler>
 
 *Example 5:*
+
 Since Arma 3 v2.11: 
 ```sqf
 hint ("myExtContext" callExtension "");

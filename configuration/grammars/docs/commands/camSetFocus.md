@@ -2,7 +2,13 @@ Sets camera focus range in format [distance, blur]. blur param - sets the camera
 
 
 ---
+*Syntaxes:*
+
+camera `camSetFocus` focusRange
+
+---
 *Example 1:*
+
 ```sqf
 _camera camSetFocus [50, 1];
 ```

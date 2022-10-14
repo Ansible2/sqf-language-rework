@@ -4,22 +4,31 @@ A list of ClassName types (e.g **Tank**) can be found in `CfgVehicles`.
 
 
 ---
+*Syntaxes:*
+
+`nearestObjects` [position, types, radius, 2Dmode]
+
+---
 *Example 1:*
+
 ```sqf
 nearestObjects [player, ["Car", "Tank"], 200];
 ```
 
 *Example 2:*
+
 ```sqf
 nearestObjects [player, ["house"], 200];
 ```
 
 *Example 3:*
+
 ```sqf
 nearestObjects [[2716,2949,0], ["Car", "Truck"], 100];
 ```
 
 *Example 4:*
+
 Return every object in 50 metres radius around player:
 
 ```sqf

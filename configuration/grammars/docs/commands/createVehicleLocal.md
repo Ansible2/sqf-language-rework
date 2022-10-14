@@ -2,12 +2,19 @@ Creates an object of the given type. Created object is not transferred through n
 
 
 ---
+*Syntaxes:*
+
+type `createVehicleLocal` position
+
+---
 *Example 1:*
+
 ```sqf
 _lightsource = "#lightpoint" createVehicleLocal _pos;
 ```
 
 *Example 2:*
+
 ```sqf
 _lightsource = "#lightreflector" createVehicleLocal _pos;
 ```

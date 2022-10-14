@@ -2,7 +2,13 @@ Returns the object under cursor. This command is quite different from `cursorTar
 
 
 ---
+*Syntaxes:*
+
+`cursorObject`
+
+---
 *Example 1:*
+
 ```sqf
 hint str [getModelInfo cursorObject, typeOf cursorObject];
 ```

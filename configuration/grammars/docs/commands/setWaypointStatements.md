@@ -5,12 +5,19 @@ Within the Condition & Statement code string:
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWaypointStatements` [condition, statement]
+
+---
 *Example 1:*
+
 ```sqf
 _waypoint setWaypointStatements ["true", "hint 'hello'; hint 'goodbye'"];
 ```
 
 *Example 2:*
+
 ```sqf
 _waypoint setWaypointStatements ["true", "diag_log ['GroupLeader: ', this]; diag_log ['Units: ', thislist]"];
 ```

@@ -13,12 +13,19 @@ Notes:
 
 
 ---
+*Syntaxes:*
+
+`doGetOut` units
+
+---
 *Example 1:*
+
 ```sqf
 doGetOut _unitOne;
 ```
 
 *Example 2:*
+
 ```sqf
 doGetOut [_unitOne,_unitTwo];
 ```

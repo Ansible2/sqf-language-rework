@@ -2,12 +2,21 @@ Adds an item with given text to Tree View control. The position on Tree View whe
 
 
 ---
+*Syntaxes:*
+
+`tvAdd` [idc, pathParent, text]
+
+control `tvAdd` [pathParent, text]
+
+---
 *Example 1:*
+
 ```sqf
 _index = _ctrl tvAdd [[], "Parent Item"];
 ```
 
 *Example 2:*
+
 ```sqf
 _index = tvAdd [101, [0], "First item"];
 ```

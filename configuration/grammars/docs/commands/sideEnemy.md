@@ -4,7 +4,13 @@ The enemy `side` which is used for renegades. Units of this side are hostile to 
 
 
 ---
+*Syntaxes:*
+
+`sideEnemy`
+
+---
 *Example 1:*
+
 ```sqf
 if (side player == sideEnemy) then
 {

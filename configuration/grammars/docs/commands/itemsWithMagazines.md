@@ -2,7 +2,13 @@ Returns combined array including all unit's stored `items` and all unit's stored
 
 
 ---
+*Syntaxes:*
+
+`itemsWithMagazines` unit
+
+---
 *Example 1:*
+
 ```sqf
 private _res1 = itemsWithMagazines player;
 // ... is essentially the same as ...

@@ -2,7 +2,13 @@ Returns how many seconds injured unit will continue leaving blood trail. If unit
 
 
 ---
+*Syntaxes:*
+
+`getBleedingRemaining` unit
+
+---
 *Example 1:*
+
 ```sqf
 _bleedingRemaining = getBleedingRemaining _unit;
 ```

@@ -2,12 +2,19 @@ Returns the calculated value of `simple expression` defined in config. Config co
 
 
 ---
+*Syntaxes:*
+
+vehicle `getSoundControllerResult` config
+
+---
 *Example 1:*
+
 ```sqf
 _result = (vehicle player) getSoundControllerResult (configFile >> "cfgVehicles" >> typeOf (vehicle player) >> "sounds" >> "idle_ext" >> "volume");
 ```
 
 *Example 2:*
+
 ```sqf
 // mission config entry to reverse rain strength:
 // myExpression = "rain factor [1,0]";

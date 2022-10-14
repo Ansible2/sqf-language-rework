@@ -4,7 +4,13 @@ It works only with **[[Arma 3: Startup Parameters#Developer Options|-filePatchin
 
 
 ---
+*Syntaxes:*
+
+`diag_resetShapes`
+
+---
 *Example 1:*
+
 ```sqf
 diag_resetShapes;
 ```

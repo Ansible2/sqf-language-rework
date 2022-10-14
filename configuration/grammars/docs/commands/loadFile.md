@@ -2,12 +2,19 @@ Returns the content of given files. If you plan to `compile` said string, be awa
 
 
 ---
+*Syntaxes:*
+
+`loadFile` fileName
+
+---
 *Example 1:*
+
 ```sqf
 _contents = loadFile "wantedString.txt";
 ```
 
 *Example 2:*
+
 ```sqf
 _contents = compile loadFile "myFunction.sqf"; // will compile string into code
 ```

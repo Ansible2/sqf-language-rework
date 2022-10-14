@@ -2,7 +2,13 @@ Export list of JIP to a file. <br>Special: BattlEye's RCON variant of this comma
 
 
 ---
+*Syntaxes:*
+
+`exportJIPMessages` fileName
+
+---
 *Example 1:*
+
 ```sqf
 exportJIPMessages "myFileNameWithoutExtension";
 ```

@@ -2,7 +2,13 @@ Sets marker color. Marker color names and their corresponding RGBA values for Ar
 
 
 ---
+*Syntaxes:*
+
+markerName `setMarkerColor` color
+
+---
 *Example 1:*
+
 ```sqf
 "MarkerOne" setMarkerColor "ColorBlack";
 ```

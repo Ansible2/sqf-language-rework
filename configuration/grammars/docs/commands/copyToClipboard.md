@@ -2,7 +2,13 @@ Copies ANSI text string to the clipboard. If Unicode support is desired, see `fo
 
 
 ---
+*Syntaxes:*
+
+`copyToClipboard` text
+
+---
 *Example 1:*
+
 ```sqf
 copyToClipboard str _data;
 ```

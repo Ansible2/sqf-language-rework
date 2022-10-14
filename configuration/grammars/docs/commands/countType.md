@@ -2,12 +2,19 @@ Count how many objects in the array are of given type. This command also works w
 
 
 ---
+*Syntaxes:*
+
+type `countType` objects
+
+---
 *Example 1:*
+
 ```sqf
 _count = "Tank" countType list _triggerOne;
 ```
 
 *Example 2:*
+
 ```sqf
 _count = "B_medic_F" countType units player;
 ```

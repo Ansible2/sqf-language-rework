@@ -2,7 +2,13 @@ Defines name of current scope. Name is visible in debugger, and name is also use
 
 
 ---
+*Syntaxes:*
+
+`scopeName` name
+
+---
 *Example 1:*
+
 ```sqf
 scopeName "main";
 while {true} do {

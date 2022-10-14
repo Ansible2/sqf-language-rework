@@ -7,7 +7,15 @@ Mark a unit as captive. If unit is a vehicle, commander is marked. A captive uni
 
 
 ---
+*Syntaxes:*
+
+unitName `setCaptive` status
+
+unitName `setCaptive` statusNumber
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 setCaptive true;
 side _soldier1; // returns civilian
@@ -15,6 +23,7 @@ side group _soldier1; // returns e.g blufor
 ```
 
 *Example 2:*
+
 ```sqf
 _soldier1 setCaptive 1;
 captive _soldier1; // returns true

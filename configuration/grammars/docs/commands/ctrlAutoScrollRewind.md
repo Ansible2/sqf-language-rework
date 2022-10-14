@@ -4,7 +4,13 @@ Autorscroll is available for `CT_LISTBOX` and `CT_CONTROLS_GROUP` types of contr
 
 
 ---
+*Syntaxes:*
+
+`ctrlAutoScrollRewind` control
+
+---
 *Example 1:*
+
 ```sqf
 _ctrlRewind = ctrlAutoScrollRewind _ctrlGroup;
 ```

@@ -2,17 +2,25 @@ Plays given `CfgSounds` sound or a [[Arma 3: Sound Files| sound file]] given by 
 
 
 ---
+*Syntaxes:*
+
+`playSoundUI` [sound, volume, soundPitch, isEffect]
+
+---
 *Example 1:*
+
 ```sqf
 playSoundUI ["Alarm", 0.5, 0.5];
 ```
 
 *Example 2:*
+
 ```sqf
 playSoundUI ["A3\Sounds_F\sfx\blip1.wss"];
 ```
 
 *Example 3:*
+
 Sound file extension must be specified even if a config entry has none:
 
 ```sqf

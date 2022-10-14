@@ -2,12 +2,19 @@ Returns the array element with `min`imum numerical value. Engine solution to `BI
 
 
 ---
+*Syntaxes:*
+
+`selectMin` array
+
+---
 *Example 1:*
+
 ```sqf
 _min = selectMin [1,2,3,4,5]; //1
 ```
 
 *Example 2:*
+
 ```sqf
 // Same as, for example: 
 _min = _a min _b min _c min _d;

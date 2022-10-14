@@ -10,12 +10,21 @@ Returns the text of a control of the currently active user dialog. This command 
 
 
 ---
+*Syntaxes:*
+
+`ctrlText`  idc
+
+`ctrlText`  controlName
+
+---
 *Example 1:*
+
 ```sqf
 _text = ctrlText 100;
 ```
 
 *Example 2:*
+
 ```sqf
 _text = ctrlText _control;
 ```

@@ -8,17 +8,25 @@ Checks if a group or a side knows about target.
 
 
 ---
+*Syntaxes:*
+
+who `knowsAbout` target
+
+---
 *Example 1:*
+
 ```sqf
 _knowledge = player knowsAbout _target;
 ```
 
 *Example 2:*
+
 ```sqf
 _knowledge = (group player) knowsAbout _target;
 ```
 
 *Example 3:*
+
 ```sqf
 _knowledge = (side player) knowsAbout _target;
 ```

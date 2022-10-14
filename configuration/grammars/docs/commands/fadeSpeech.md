@@ -5,7 +5,13 @@ Changes the master speech volume smoothly within the given time. The default vol
 
 
 ---
+*Syntaxes:*
+
+time `fadeSpeech`  volume
+
+---
 *Example 1:*
+
 ```sqf
 5 fadeSpeech 0.1;
 ```

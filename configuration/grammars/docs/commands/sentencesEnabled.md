@@ -2,7 +2,13 @@ A getter for `enableSentences`.
 
 
 ---
+*Syntaxes:*
+
+`sentencesEnabled`
+
+---
 *Example 1:*
+
 ```sqf
 if (sentencesEnabled) then
 {

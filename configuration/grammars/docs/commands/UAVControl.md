@@ -10,7 +10,13 @@ Since Arma 3 v1.96 this command returns both driver and gunner units if the UAV 
 
 
 ---
+*Syntaxes:*
+
+`UAVControl` uav
+
+---
 *Example 1:*
+
 ```sqf
 UAVControl uav;
 ```

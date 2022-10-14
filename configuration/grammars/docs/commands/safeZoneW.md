@@ -3,18 +3,26 @@ Returns the width of the screen in screen measurement units. Taken from top left
 
 
 ---
+*Syntaxes:*
+
+`safeZoneW`
+
+---
 *Example 1:*
+
 ```sqf
 _screenWidth = safeZoneW;
 ```
 
 *Example 2:*
+
 ```sqf
 _screenLeftBorderX = safeZoneX;
 _screenRightBorderX = safeZoneW + safeZoneX;
 ```
 
 *Example 3:*
+
 Create control 50% wide, 30% tall, centered on screen:
 
 ```sqf

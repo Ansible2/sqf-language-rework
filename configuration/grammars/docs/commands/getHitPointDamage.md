@@ -3,7 +3,13 @@ If you need to get damage of a selection instead of hit point, use `getHit`.
 
 
 ---
+*Syntaxes:*
+
+vehicle `getHitPointDamage` hitPointName
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player getHitPointDamage "hitEngine";
 ```

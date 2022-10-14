@@ -2,7 +2,13 @@ Removes vehicles/units from the garbage collector, so they do not get deleted au
 
 
 ---
+*Syntaxes:*
+
+`removeFromRemainsCollector` remains
+
+---
 *Example 1:*
+
 ```sqf
 removeFromRemainsCollector [unit1, unit2, vehicle1];
 ```

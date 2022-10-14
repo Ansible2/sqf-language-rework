@@ -2,7 +2,13 @@ Cancels the effects of `disableCollisionWith`. The collision is always enabled f
 
 
 ---
+*Syntaxes:*
+
+vehicle1 `enableCollisionWith` vehicle2
+
+---
 *Example 1:*
+
 ```sqf
 [_veh1, _veh2] remoteExecCall ["enableCollisionWith", 0, _veh1];
 ```

@@ -6,7 +6,13 @@ Returns the target pointed at by the player (usually with cross-hairs). The targ
 
 
 ---
+*Syntaxes:*
+
+`cursorTarget`
+
+---
 *Example 1:*
+
 ```sqf
 alive cursorTarget;
 ```

@@ -2,12 +2,19 @@ Returns an array of locations of chosen type(s) within the given radius of the g
 
 
 ---
+*Syntaxes:*
+
+`nearestLocations` [position, [locationType1, locationType2, ...], radius, sortPosition]
+
+---
 *Example 1:*
+
 ```sqf
 _nearbyLocations = nearestLocations [position player, ["RockArea", "VegetationFir"], 100];
 ```
 
 *Example 2:*
+
 Find any of nearest locations:
 
 ```sqf

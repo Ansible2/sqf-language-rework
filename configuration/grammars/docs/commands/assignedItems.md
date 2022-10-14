@@ -2,7 +2,13 @@ Get array with all assigned items. The resulting Array is sorted like: [<Map>, <
 
 
 ---
+*Syntaxes:*
+
+`assignedItems`  unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str assignedItems player;
 ```

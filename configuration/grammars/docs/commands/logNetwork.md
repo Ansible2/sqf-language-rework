@@ -2,7 +2,13 @@ Registers new log file recording a network traffic and returns handle of the log
 
 
 ---
+*Syntaxes:*
+
+`logNetwork` logFile
+
+---
 *Example 1:*
+
 ```sqf
 _handle = logNetwork ["myLog.txt", [""]];
 ```

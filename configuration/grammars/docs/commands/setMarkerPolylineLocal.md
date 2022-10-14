@@ -2,7 +2,13 @@ Sets a polyline marker's path. Works only on the computer that executes this com
 
 
 ---
+*Syntaxes:*
+
+marker `setMarkerPolylineLocal` path
+
+---
 *Example 1:*
+
 Changes **"marker_1"** into a polyline and draws a sine curve on your position:
 
 ```sqf

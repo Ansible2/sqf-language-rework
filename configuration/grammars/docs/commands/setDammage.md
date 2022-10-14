@@ -2,7 +2,13 @@ Damages/hurts or repairs/heals object/unit. Damage 0 means fully functional, dam
 
 
 ---
+*Syntaxes:*
+
+object `setDammage` damage
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 setDammage 1;
 ```

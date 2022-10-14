@@ -5,7 +5,13 @@ Read `Event Handlers` for more information and a list of all available Event Han
 
 
 ---
+*Syntaxes:*
+
+target `addEventHandler` [type, code]
+
+---
 *Example 1:*
+
 ```sqf
 this addEventHandler ["Killed", {
 	params ["_unit", "_killer"];
@@ -14,4 +20,5 @@ this addEventHandler ["Killed", {
 ```
 
 *Example 2:*
+
 <sqs>_index = player addEventHandler ["Killed", { _this exec "playerKilled.sqs" }]</sqs>

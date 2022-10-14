@@ -4,17 +4,25 @@ Attaches an object to another object.
 
 
 ---
+*Syntaxes:*
+
+object1 `attachTo` [object2, offset, memPoint, followBoneRotation]
+
+---
 *Example 1:*
+
 ```sqf
 player attachTo [car, [0, 0, 1]];
 ```
 
 *Example 2:*
+
 ```sqf
 player attachTo [tank, [0, -1, 0], "Usti hlavne"];
 ```
 
 *Example 3:*
+
 Automatic offset:
 
 ```sqf
@@ -22,6 +30,7 @@ ammoCrate attachTo [player];
 ```
 
 *Example 4:*
+
 To set orientation of attached object use `setVectorDirAndUp` command:<br>
 
 

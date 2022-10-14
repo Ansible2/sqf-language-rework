@@ -2,7 +2,13 @@ Defines an action performed when pointer, previously positioned over icon, is mo
 
 
 ---
+*Syntaxes:*
+
+`onGroupIconOverLeave` command
+
+---
 *Example 1:*
+
 ```sqf
 onGroupIconOverLeave
 {

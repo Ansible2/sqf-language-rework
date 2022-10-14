@@ -2,12 +2,21 @@ Deletes a member of or the whole crew of a vehicle. Human players cannot be dele
 
 
 ---
+*Syntaxes:*
+
+vehicle `deleteVehicleCrew` unit
+
+`deleteVehicleCrew` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 _helicopter deleteVehicleCrew driver _helicopter;
 ```
 
 *Example 2:*
+
 Delete entire crew:
 
 ```sqf

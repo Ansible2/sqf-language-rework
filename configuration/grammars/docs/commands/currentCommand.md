@@ -18,10 +18,17 @@ Return the current command type (empty string when no command) for the commander
 * "ACTION"
 * "ATTACKFIRE"
 * "Suppress"
+}}
 
 
 ---
+*Syntaxes:*
+
+`currentCommand` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 _command = currentCommand player;
 ```

@@ -4,7 +4,13 @@ Possible age values are: "ACTUAL", "5 MIN", "10 MIN", "15 MIN", "30 MIN", "60 MI
 
 
 ---
+*Syntaxes:*
+
+object `setTargetAge` age
+
+---
 *Example 1:*
+
 ```sqf
 player setTargetAge "10 MIN";
 ```

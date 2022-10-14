@@ -11,17 +11,25 @@ Sets Render Target's visual effect (Picture-in-Picture).
 
 
 ---
+*Syntaxes:*
+
+name `setPiPEffect` [effect, optionalParam1, ..., optionalParamN]
+
+---
 *Example 1:*
+
 ```sqf
 "rendersurface" setPiPEffect [0];
 ```
 
 *Example 2:*
+
 ```sqf
 "rendertarget0" setPiPEffect [3, 1.0, 1.0, 1.0, 0.0, [0.0, 1.0, 0.0, 0.25], [1.0, 0.0, 1.0, 1.0],  [0.199, 0.587, 0.114, 0.0]];
 ```
 
 *Example 3:*
+
 ```sqf
 cam = "camera" camCreate (player modelToWorld [0,-5,2]);
 cam cameraEffect ["internal","back","rtt"];
@@ -35,6 +43,7 @@ with uiNamespace do {
 ```
 
 *Example 4:*
+
 Black & White:
 
 ```sqf

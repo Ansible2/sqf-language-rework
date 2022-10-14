@@ -5,7 +5,13 @@ For Unicode alternative see `toLower`.
 
 
 ---
+*Syntaxes:*
+
+`toLowerANSI` string
+
+---
 *Example 1:*
+
 ```sqf
 hint toLowerANSI "AaBb1"; // returns "aabb1"
 ```

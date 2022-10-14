@@ -2,7 +2,13 @@ A getter for `ctrlMapSetPosition`. Returns map position in format [x, y, w, h]. 
 
 
 ---
+*Syntaxes:*
+
+`ctrlMapPosition` map
+
+---
 *Example 1:*
+
 ```sqf
 ctrlMapPosition _map;
 ```

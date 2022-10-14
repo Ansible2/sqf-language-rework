@@ -3,7 +3,13 @@ Which null type the item has to be equal to depends on the type of game entity t
 
 
 ---
+*Syntaxes:*
+
+`isNull` entity
+
+---
 *Example 1:*
+
 ```sqf
 if (isNull obj) then
 {
@@ -12,6 +18,7 @@ if (isNull obj) then
 ```
 
 *Example 2:*
+
 `Diary Record` support before {{GVI|arma3|2.00}}:
 
 ```sqf

@@ -2,7 +2,13 @@ Sets surface humidity. Affects how footsteps sound (dry / wet). `humidity` is in
 
 
 ---
+*Syntaxes:*
+
+`setHumidity` humidity
+
+---
 *Example 1:*
+
 ```sqf
 setHumidity 1;
 ```

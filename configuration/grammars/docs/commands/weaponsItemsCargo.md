@@ -3,12 +3,19 @@ Returns an array with subarrays contains class names and also names of connected
 
 
 ---
+*Syntaxes:*
+
+`weaponsItemsCargo` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 weaponsItemsCargo vehicle player;
 ```
 
 *Example 2:*
+
 ```sqf
 weaponsItemsCargo _weaponholder;
 ```

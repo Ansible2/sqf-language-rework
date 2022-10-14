@@ -13,12 +13,21 @@ Since Arma 3 v2.05.147765 supported control types are:
 
 
 ---
+*Syntaxes:*
+
+`ctrlSetText` [idc, text]
+
+control `ctrlSetText` text
+
+---
 *Example 1:*
+
 ```sqf
 ctrlSetText [100, "Hello world"]; // for Dialogs
 ```
 
 *Example 2:*
+
 ```sqf
 _control ctrlSetText "Hello world."; // for Displays
 ```

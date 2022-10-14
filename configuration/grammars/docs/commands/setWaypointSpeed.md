@@ -9,7 +9,13 @@ Possible values are:
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWaypointSpeed` mode
+
+---
 *Example 1:*
+
 ```sqf
 [_grp, 2] setWaypointSpeed "FULL";
 ```

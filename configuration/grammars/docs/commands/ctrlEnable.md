@@ -4,12 +4,21 @@ Read `Arma: GUI Configuration` for more information about user dialogs and contr
 
 
 ---
+*Syntaxes:*
+
+`ctrlEnable`  [idc, enable]
+
+controlName `ctrlEnable` enable
+
+---
 *Example 1:*
+
 ```sqf
 ctrlEnable [100, false];
 ```
 
 *Example 2:*
+
 ```sqf
 _ctrl ctrlEnable false;
 ```

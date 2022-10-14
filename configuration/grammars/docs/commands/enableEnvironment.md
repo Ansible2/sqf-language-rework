@@ -12,12 +12,21 @@ Influenced sounds among others are:
 
 
 ---
+*Syntaxes:*
+
+`enableEnvironment` enable
+
+`enableEnvironment` [ambientLife, ambientSound]
+
+---
 *Example 1:*
+
 ```sqf
 enableEnvironment false; // identical to enableEnvironment [false, false]
 ```
 
 *Example 2:*
+
 ```sqf
 enableEnvironment [false, true];
 ```

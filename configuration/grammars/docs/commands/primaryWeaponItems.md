@@ -2,7 +2,13 @@ Returns array with all items assigned to the `primaryWeapon` except magazines. U
 
 
 ---
+*Syntaxes:*
+
+`primaryWeaponItems` unit
+
+---
 *Example 1:*
+
 ```sqf
 primaryWeaponItems player;
 /*

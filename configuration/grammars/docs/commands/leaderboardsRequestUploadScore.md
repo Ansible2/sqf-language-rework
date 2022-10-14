@@ -3,7 +3,13 @@ The details array is optional. The board has to be initialized before the call.
 
 
 ---
+*Syntaxes:*
+
+`leaderboardsRequestUploadScore` [boardName, score, [details]]
+
+---
 *Example 1:*
+
 ```sqf
 leaderboardsRequestUploadScore ["TT01", 1234, [5,6,7,8]];
 ```

@@ -2,7 +2,13 @@ Return an array with the vehicle's all pylons info.
 
 
 ---
+*Syntaxes:*
+
+`getAllPylonsInfo` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 getAllPylonsInfo vehicle player;
 /*

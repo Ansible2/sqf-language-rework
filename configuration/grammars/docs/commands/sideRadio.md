@@ -2,17 +2,27 @@ Sends the audio message to the side radio channel. The message is defined in Cfg
 
 
 ---
+*Syntaxes:*
+
+unit `sideRadio` radioName
+
+[side, identity] `sideRadio` radioName
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne sideRadio "messageOne";
 ```
 
 *Example 2:*
+
 ```sqf
 player sideRadio configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));
 ```
 
 *Example 3:*
+
 ```sqf
 [west, "Base"] sideRadio configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));
 ```

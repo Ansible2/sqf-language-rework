@@ -2,7 +2,13 @@ Moves the marker. If position is given in 3D format, **z** coordinate is stored 
 
 
 ---
+*Syntaxes:*
+
+markerName `setMarkerPosLocal` pos
+
+---
 *Example 1:*
+
 ```sqf
 "MarkerOne" setMarkerPosLocal getMarkerPos "MarkerTwo";
 ```

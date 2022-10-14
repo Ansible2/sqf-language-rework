@@ -2,7 +2,13 @@ Return the actual in-mission date and time.
 
 
 ---
+*Syntaxes:*
+
+`date`
+
+---
 *Example 1:*
+
 ```sqf
 // in Arma 3
 date params ["_year", "_month", "_day", "_hours", "_minutes"];
@@ -17,6 +23,7 @@ _minutes	= _now select 4;
 ```
 
 *Example 2:*
+
 ```sqf
 if (date select 3 >= 19) then		// 7pm
 {

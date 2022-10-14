@@ -3,7 +3,15 @@ If the new size is bigger than the current size, the new places are filled with 
 
 
 ---
+*Syntaxes:*
+
+array `resize` count
+
+array `resize` [count, fill]
+
+---
 *Example 1:*
+
 ```sqf
 _arrayNum = [0,1,2,3,4];
 _arrayNum resize 2; // _arrayNum is now [0, 1]
@@ -11,6 +19,7 @@ _arrayNum resize 5; // _arrayNum is now [0, 1, nil, nil, nil]
 ```
 
 *Example 2:*
+
 ```sqf
 private _array = [0, 1, 2];
 _array resize [5, -1]; // _array is now [0, 1, 2, -1, -1]

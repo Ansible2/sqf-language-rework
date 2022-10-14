@@ -3,7 +3,13 @@ All items in returned array are `String`.
 
 
 ---
+*Syntaxes:*
+
+`squadParams` unit
+
+---
 *Example 1:*
+
 ```sqf
 _info = squadParams player;
 ```

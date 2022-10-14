@@ -3,7 +3,15 @@ Finds entities inside a sphere with the given radius. If the alternative syntax 
 
 
 ---
+*Syntaxes:*
+
+position `nearEntities` radius
+
+position `nearEntities` [type, radius]
+
+---
 *Example 1:*
+
 ```sqf
 _list = player nearEntities 20;
 _list = ASLToAGL getPosASL player nearEntities 50;

@@ -4,12 +4,19 @@ Another good use of `objectParent` is when a static weapon is known and one need
 
 
 ---
+*Syntaxes:*
+
+`objectParent` object
+
+---
 *Example 1:*
+
 ```sqf
 _weaponholder = objectParent _mybackpack;
 ```
 
 *Example 2:*
+
 Create and place created backpack in front of player:
 
 ```sqf
@@ -19,6 +26,7 @@ _weaponHolder setPos (player modelToWorld [0, 5, 0]);
 ```
 
 *Example 3:*
+
 Check if player is on foot:
 
 ```sqf
@@ -26,6 +34,7 @@ _isOnFoot = isNull objectParent player;
 ```
 
 *Example 4:*
+
 Detect if player is in commander turret of a vehicle:
 
 ```sqf

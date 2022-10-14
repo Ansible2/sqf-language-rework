@@ -2,7 +2,13 @@ Returns array with all items assigned to the `binocular` weapon except magazines
 
 
 ---
+*Syntaxes:*
+
+`binocularItems` unit
+
+---
 *Example 1:*
+
 ```sqf
 binocularItems player;
 ```

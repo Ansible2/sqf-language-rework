@@ -2,12 +2,19 @@ Returns the current in-game time in hours. For a formatted version of time, see 
 
 
 ---
+*Syntaxes:*
+
+`dayTime`
+
+---
 *Example 1:*
+
 ```sqf
 dayTime; // returns 16.5 given it is 16:30 (4.30pm) in game
 ```
 
 *Example 2:*
+
 Get hour, minute, seconds:
 
 ```sqf

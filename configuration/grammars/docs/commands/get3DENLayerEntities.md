@@ -2,7 +2,13 @@ Return all entities and sub-layer in `Eden Entity` layer. In order to get all la
 
 
 ---
+*Syntaxes:*
+
+[[get3DENLayerEntities]] layerID
+
+---
 *Example 1:*
+
 ```sqf
 _myLayer = -1 add3DENLayer "CTRG";
 player set3DENLayer _myLayer;

@@ -2,7 +2,13 @@ Returns the parent control of a given child control. If the control is not part 
 
 
 ---
+*Syntaxes:*
+
+`ctrlParentControlsGroup` ctrl
+
+---
 *Example 1:*
+
 ```sqf
 _ctrlCombo = _ctrl controlsGroupCtrl 100; // control
 ctrlParentControlsGroup _ctrlCombo; // parent control group (_ctrl)

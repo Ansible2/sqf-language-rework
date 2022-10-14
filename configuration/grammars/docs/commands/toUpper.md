@@ -2,7 +2,13 @@ Converts the supplied Unicode string to all uppercase characters. If the string 
 
 
 ---
+*Syntaxes:*
+
+`toUpper` string
+
+---
 *Example 1:*
+
 ```sqf
 hint toUpper "AaBb1"; // returns "AABB1"
 ```

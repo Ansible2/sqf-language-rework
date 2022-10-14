@@ -2,7 +2,13 @@ Executes `code`. Used as part of a construct, such as `while`, `with`, `for` and
 
 
 ---
+*Syntaxes:*
+
+construct `do` code
+
+---
 *Example 1:*
+
 ```sqf
 while { b > a } do
 {
@@ -11,6 +17,7 @@ while { b > a } do
 ```
 
 *Example 2:*
+
 ```sqf
 with uiNamespace do
 {
@@ -19,6 +26,7 @@ with uiNamespace do
 ```
 
 *Example 3:*
+
 ```sqf
 for "_i" from 1 to 10 do
 {
@@ -28,6 +36,7 @@ for "_i" from 1 to 10 do
 ```
 
 *Example 4:*
+
 ```sqf
 switch (50) do
 {

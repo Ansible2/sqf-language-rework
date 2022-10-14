@@ -6,7 +6,13 @@ Returns true once all data is ready. See `camPreload` for alternative, more flex
 
 
 ---
+*Syntaxes:*
+
+`preloadCamera` position
+
+---
 *Example 1:*
+
 ```sqf
 waitUntil {preloadCamera markerPos "cam_location_2"};
 ```

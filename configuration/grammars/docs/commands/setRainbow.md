@@ -2,7 +2,13 @@ Changes the rainbow value smoothly during the given time (in seconds). A time of
 
 
 ---
+*Syntaxes:*
+
+time `setRainbow` value
+
+---
 *Example 1:*
+
 ```sqf
 360 setRainbow 1;
 ```

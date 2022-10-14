@@ -4,7 +4,15 @@ In addition to simple parsing directly into variables, input can be tested in ca
 
 
 ---
+*Syntaxes:*
+
+`params` [element1, element2,...elementN]
+
+argument `params` [element1, element2,...elementN]
+
+---
 *Example 1:*
+
 ```sqf
 [1, 2, 3] call {
 	private ["_one", "_two", "_three"];
@@ -22,6 +30,7 @@ In addition to simple parsing directly into variables, input can be tested in ca
 ```
 
 *Example 2:*
+
 ```sqf
 [123] call {
 	params ["_myvar"];
@@ -34,6 +43,7 @@ In addition to simple parsing directly into variables, input can be tested in ca
 ```
 
 *Example 3:*
+
 ```sqf
 position player params ["", "", "_z"];
 if (_z > 10) then {
@@ -42,6 +52,7 @@ if (_z > 10) then {
 ```
 
 *Example 4:*
+
 ```sqf
 [1, nil, 2] params ["_var1", "_var2", "_var3"];
 // All 3 variables are made private but only _var1 and _var3 are defined
@@ -51,6 +62,7 @@ if (_z > 10) then {
 ```
 
 *Example 5:*
+
 ```sqf
 [1, 2] call {
 	if (!params ["_var1", "_var2", ["_var3", true, [true]]]) exitWith {
@@ -70,6 +82,7 @@ if (_z > 10) then {
 ```
 
 *Example 6:*
+
 ```sqf
 [1, "ok", [1, 2, 3]] call {
 	if (!params [
@@ -89,6 +102,7 @@ if (_z > 10) then {
 ```
 
 *Example 7:*
+
 ```sqf
 [1, 2, 3, [4, 5, 6]] call {
 	params ["_one", "_two", "_three"];
@@ -97,6 +111,7 @@ if (_z > 10) then {
 ```
 
 *Example 8:*
+
 ```sqf
 {
 	_x params ["_group", "_index"];
@@ -114,6 +129,7 @@ fn_someFnc = {
 ```
 
 *Example 9:*
+
 ```sqf
 player addEventHandler ["HitPart", {
 	_this select 0 params ["_target", "_shooter", "_projectile"];

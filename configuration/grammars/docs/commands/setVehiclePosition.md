@@ -3,18 +3,26 @@ If position is in water and the vehicle can float, it is placed on water surface
 
 
 ---
+*Syntaxes:*
+
+object `setVehiclePosition` [position, markers, placement, special]
+
+---
 *Example 1:*
+
 ```sqf
 // place the player at either [1000,2000], or one of the three markers positions
 player setVehiclePosition [[1000,2000], ["Pos1","Pos2","Pos3"], 0, "CAN_COLLIDE"];
 ```
 
 *Example 2:*
+
 ```sqf
 heli setVehiclePosition [player, [], 0, "FLY"];
 ```
 
 *Example 3:*
+
 ```sqf
 _cam = "camera" camCreate [0,0,0];
 _cam setDir random 360;
@@ -24,6 +32,7 @@ _cam cameraEffect ["Internal", "Back"];
 ```
 
 *Example 4:*
+
 ```sqf
 private _tablePos = player getRelPos [3, 0];
 private _table = "Land_CampingTable_F" createVehicle [0,0,0];

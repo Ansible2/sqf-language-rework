@@ -2,7 +2,13 @@ On server machine, returns the ` machine network ID` of the client to which the 
 
 
 ---
+*Syntaxes:*
+
+`owner` object
+
+---
 *Example 1:*
+
 ```sqf
 _clientID = owner _someobject;
 ```

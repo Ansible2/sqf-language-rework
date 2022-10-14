@@ -3,12 +3,21 @@ This command will remove user "get in" action (not get out) but will also stop p
 
 
 ---
+*Syntaxes:*
+
+vehicle `lockCargo` lock
+
+vehicle `lockCargo` [index, lock]
+
+---
 *Example 1:*
+
 ```sqf
 vehicleName lockCargo true;
 ```
 
 *Example 2:*
+
 ```sqf
 vehicleName lockCargo [0, true];
 ```

@@ -6,13 +6,20 @@ To find out which crew will be created, use `BIS_fnc_vehicleCrewTurrets`.
 
 
 ---
+*Syntaxes:*
+
+`createVehicleCrew` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 _veh = createVehicle ["B_MRAP_01_F", getMarkerPos "createVeh", [], 0, "NONE"];
 createVehicleCrew _veh;
 ```
 
 *Example 2:*
+
 ```sqf
 _veh = createVehicle ["O_MRAP_02_hmg_F", position player, [], 0, "NONE"];
 createVehicleCrew _veh;

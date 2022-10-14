@@ -3,7 +3,13 @@ Returns a 2D distance (`distance` projected to X,Y plane) in meters between `Obj
 
 
 ---
+*Syntaxes:*
+
+from [[distance2D]] to
+
+---
 *Example 1:*
+
 ```sqf
 _meters = player distance2D heli;
 ```

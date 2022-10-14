@@ -4,12 +4,19 @@ This command is an aggregate of the following commands: `setName`, `setFace`, `s
 
 
 ---
+*Syntaxes:*
+
+person `setIdentity` identity
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 setIdentity "MyLittleSoldier";
 ```
 
 *Example 2:*
+
 Clone factory in MP:
 
 ```sqf

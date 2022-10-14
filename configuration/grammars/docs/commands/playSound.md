@@ -2,12 +2,21 @@ Plays a sound from CfgSounds. Sound can be defined in `missionConfigFile`, `conf
 
 
 ---
+*Syntaxes:*
+
+`playSound` soundName
+
+`playSound` [soundName, isSpeech, offset]
+
+---
 *Example 1:*
+
 ```sqf
 playSound "soundname";
 ```
 
 *Example 2:*
+
 Start a sound and then stop it after 1.2 second:
 
 ```sqf
@@ -29,6 +38,7 @@ _source spawn
 ```
 
 *Example 3:*
+
 Start a sound and wait until it is finished:
 
 ```sqf

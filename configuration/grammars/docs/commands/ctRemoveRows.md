@@ -2,7 +2,13 @@ Takes array of row indices as a parameter and removes rows with those indices. I
 
 
 ---
+*Syntaxes:*
+
+ctrl `ctRemoveRows` [index1, index2, ...]
+
+---
 *Example 1:*
+
 ```sqf
 _control ctRemoveRows [0, 1, 2];
 ```

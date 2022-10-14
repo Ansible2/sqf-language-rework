@@ -3,7 +3,13 @@ Draws one to multiple triangles on the map.
 
 
 ---
+*Syntaxes:*
+
+map `drawTriangle` [vertices, color, fill]
+
+---
 *Example 1:*
+
 ```sqf
 findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", 
 {

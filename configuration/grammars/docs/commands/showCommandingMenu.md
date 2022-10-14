@@ -6,22 +6,31 @@ If commanding menu has "expression" set up, the expression will receive the foll
 
 
 ---
+*Syntaxes:*
+
+`showCommandingMenu` name
+
+---
 *Example 1:*
+
 ```sqf
 showCommandingMenu "";
 ```
 
 *Example 2:*
+
 ```sqf
 showCommandingMenu "MyClassName";
 ```
 
 *Example 3:*
+
 ```sqf
 showCommandingMenu "#USER:Tag_Menu_myMenu_0";
 ```
 
 *Example 4:*
+
 ```sqf
 showCommandingMenu "RscMainMenu";
 ```

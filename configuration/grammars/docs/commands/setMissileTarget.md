@@ -2,12 +2,19 @@ Sets a guided missile target. Does not work for all types of missiles. If the ta
 
 
 ---
+*Syntaxes:*
+
+munition `setMissileTarget` target
+
+---
 *Example 1:*
+
 ```sqf
 missile1 setMissileTarget tank1;
 ```
 
 *Example 2:*
+
 ```sqf
 _missile = createVehicle ["Missile_AGM_01_F",player modelToWorld [0,0,50],[],0,"CAN_COLLIDE"];
 _missile setDir getDir player;

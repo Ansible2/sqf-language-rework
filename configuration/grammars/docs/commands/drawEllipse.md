@@ -2,7 +2,13 @@ Draws an ellipse on the map. Just like with marker or trigger area, negative `a`
 
 
 ---
+*Syntaxes:*
+
+map `drawEllipse` [centre, a, b, angle, color, fill]
+
+---
 *Example 1:*
+
 ```sqf
 findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", 
 {

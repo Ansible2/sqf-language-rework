@@ -2,5 +2,11 @@ Returns array with all items assigned to the given weapon in given cargo contain
 
 
 ---
+*Syntaxes:*
+
+container `weaponAccessoriesCargo` [weaponId, creatorId]
+
+---
 *Example 1:*
+
 -

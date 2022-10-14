@@ -2,12 +2,19 @@ Collects all loaded `magazines` from all `handgunWeapon` muzzles and returns the
 
 
 ---
+*Syntaxes:*
+
+`handgunMagazine` unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str handgunMagazine player; // ["16Rnd_9x21_Mag"]
 ```
 
 *Example 2:*
+
 ```sqf
 _array = handgunMagazine player;
 if (count _array > 0) then {

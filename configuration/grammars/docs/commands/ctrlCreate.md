@@ -7,12 +7,19 @@ Some of the common controls defined in the main config that can be used with thi
 
 
 ---
+*Syntaxes:*
+
+display `ctrlCreate` [class, idc, controlsGroup]
+
+---
 *Example 1:*
+
 ```sqf
 _display ctrlCreate ["RscText", 1234];
 ```
 
 *Example 2:*
+
 ```sqf
 _map = findDisplay 46 ctrlCreate ["RscMapControl", -1];
 _multiLineText = findDisplay 46 ctrlCreate ["RscTextMulti", -1];
@@ -20,11 +27,13 @@ _multiLineEdit = findDisplay 46 ctrlCreate ["RscEditMulti", -1];
 ```
 
 *Example 3:*
+
 ```sqf
 myControl = findDisplay 0 ctrlCreate ["RscText", 1234, findDisplay 0 displayCtrl 2300];
 ```
 
 *Example 4:*
+
 Create Tree View control with search. Available **RscTreeSearch}} class is hardcoded to be used with <See hl Reference t> with idc {{hl|645**. Example below demonstrates how to. After tree is generated, try typing something in the top box.
 
 ```sqf
@@ -68,6 +77,7 @@ Create Tree View control with search. Available **RscTreeSearch}} class is hardc
 ```
 
 *Example 5:*
+
 Create a simple submit edit box and show content in hint:
 
 ```sqf

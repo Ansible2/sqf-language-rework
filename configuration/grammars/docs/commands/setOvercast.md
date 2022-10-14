@@ -3,7 +3,13 @@ An overcast setting of zero means clear (sunny) weather, and one means storms an
 
 
 ---
+*Syntaxes:*
+
+time `setOvercast` overcast
+
+---
 *Example 1:*
+
 ```sqf
 50 setOvercast 0.5;
 ```

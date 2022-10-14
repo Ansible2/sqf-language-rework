@@ -2,12 +2,19 @@ Returns an array of subarrays with the type names and ammo left of all the vehic
 
 
 ---
+*Syntaxes:*
+
+`magazinesAmmoCargo` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 magazinesAmmoCargo vehicle player;
 ```
 
 *Example 2:*
+
 ```sqf
 magazinesAmmoCargo uniformContainer player;
 ```

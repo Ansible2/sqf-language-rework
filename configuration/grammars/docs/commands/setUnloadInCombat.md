@@ -2,7 +2,13 @@ If cargo or turret units `should` get out of vehicle when in combat. If `true`, 
 
 
 ---
+*Syntaxes:*
+
+vehicle `setUnloadInCombat` [allowCargo, allowTurrets]
+
+---
 *Example 1:*
+
 ```sqf
 _veh setUnloadInCombat [true, false];
 ```

@@ -3,7 +3,13 @@ It is also possible to share the same mission profile variables between several 
 
 
 ---
+*Syntaxes:*
+
+`saveMissionProfileNamespace`
+
+---
 *Example 1:*
+
 ```sqf
 saveMissionProfileNamespace;
 ```

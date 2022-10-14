@@ -2,7 +2,13 @@ Checks if the conduction of the last camCommit call already finished.
 
 
 ---
+*Syntaxes:*
+
+`camCommitted` camera
+
+---
 *Example 1:*
+
 SQS:
 <sqs>
 ; create a camera object
@@ -20,6 +26,7 @@ _cam camCommit 6
 </sqs>
 
 *Example 2:*
+
 SQF:
 
 ```sqf

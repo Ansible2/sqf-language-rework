@@ -1,11 +1,15 @@
 Sorts given multi-column ListNBox in the given column by either `lnbText`, `lnbValue` or `lnbData` in normal or reversed order, using case-sensitive or case-insensitive comparison. Unlike the older `lnbSortXXX` commands, this command supports UNICODE characters out of the box.<br>
 When sorting by **"VALUE"**, the rows with the same `lnbValue` will additionally be sorted by `lnbText` in the order specified by the `reversedOrder` flag, text specified by `useTextRight` flag and case-sensitivity specified by `caseSensitive` flag.
 
- param.
 
+---
+*Syntaxes:*
+
+[controlOrIDC, column] `lnbSortBy` [sortByType, reversedOrder, caseSensitive, useTextRight,  unicodeOff]
 
 ---
 *Example 1:*
+
 ```sqf
 with uiNamespace do
 {

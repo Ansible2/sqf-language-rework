@@ -3,7 +3,13 @@ If leader is AI, player will get usual communication menu to interact with the l
 
 
 ---
+*Syntaxes:*
+
+player `groupSelectUnit` [unit, select]
+
+---
 *Example 1:*
+
 After leaving menu, deselect all units (command menu is not opened → no selection)
 
 ```sqf
@@ -13,6 +19,7 @@ After leaving menu, deselect all units (command menu is not opened → no select
 ```
 
 *Example 2:*
+
 Select all units when player is the leader:
 
 ```sqf
@@ -22,6 +29,7 @@ Select all units when player is the leader:
 ```
 
 *Example 3:*
+
 Open communication with group leader:
 
 ```sqf

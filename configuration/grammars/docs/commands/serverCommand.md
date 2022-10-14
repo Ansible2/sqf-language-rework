@@ -1,16 +1,22 @@
 Executes the given `server command`.
-{{Feature|informative|
-* Available commands for execution can be found with `serverCommandAvailable`
-* Commands that can be executed can be found with `serverCommandExecutable`
 
 
 ---
+*Syntaxes:*
+
+`serverCommand` command
+
+password `serverCommand` command <See Icon Reference 32>
+
+---
 *Example 1:*
+
 ```sqf
 serverCommand "#logout";
 ```
 
 *Example 2:*
+
 Create button on the main map which will show userlist to anyone who clicks on it:
 
 ```sqf
@@ -28,11 +34,13 @@ with uiNamespace do
 ```
 
 *Example 3:*
+
 ```sqf
 serverCommand format ["#kick %1",_name];
 ```
 
 *Example 4:*
+
 ```sqf
 private _passwordWasOK = "MyServerCommandPassword" serverCommand "#lock";
 ```

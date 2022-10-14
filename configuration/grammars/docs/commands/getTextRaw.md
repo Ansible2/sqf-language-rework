@@ -2,7 +2,13 @@ Returns raw text from config entry. If entry is subject to ` localization`, the 
 
 
 ---
+*Syntaxes:*
+
+`getTextRaw` config
+
+---
 *Example 1:*
+
 ```sqf
 private _text = getTextRaw (configFile >> "CfgVehicles" >> "Thing" >> "displayName"); // "$STR_ACTION_GETIN_DRIVER"
 _key = _text select [1]; // "STR_ACTION_GETIN_DRIVER"

@@ -5,7 +5,13 @@ Sets individual unit behaviour `on every unit in a group`.
 
 
 ---
+*Syntaxes:*
+
+groupOrUnit `setBehaviour` behaviour
+
+---
 *Example 1:*
+
 ```sqf
 _group1 setBehaviour "SAFE";
 ```

@@ -2,7 +2,13 @@ Draws given polygon on the given map control with given color. The polygon must 
 
 
 ---
+*Syntaxes:*
+
+map `drawPolygon` [polygon, color]
+
+---
 *Example 1:*
+
 ```sqf
 test_polygon = [];
 for "_i" from 1 to 12 do 
@@ -18,6 +24,7 @@ findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw",
 ```
 
 *Example 2:*
+
 Draw a polygon by adjusting the **_radius}} and {{hl|_numVertices**
 
 ```sqf

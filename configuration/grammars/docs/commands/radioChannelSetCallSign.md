@@ -15,7 +15,13 @@ Available special parameters:
 
 
 ---
+*Syntaxes:*
+
+customChannelID `radioChannelSetCallSign` callSign
+
+---
 *Example 1:*
+
 ```sqf
 4 radioChannelSetCallSign "%UNIT_NAME";
 ```

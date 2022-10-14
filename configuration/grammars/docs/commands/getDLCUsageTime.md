@@ -2,7 +2,13 @@ Returns total time the assets of the given DLC have been used. See [[:Category:A
 
 
 ---
+*Syntaxes:*
+
+`getDLCUsageTime` appId
+
+---
 *Example 1:*
+
 ```sqf
 private _kartsUsage = getDLCUsageTime 288520;
 ```

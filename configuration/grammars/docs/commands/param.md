@@ -4,7 +4,15 @@ If extracted item of input with given index is undefined, of the wrong type or o
 
 
 ---
+*Syntaxes:*
+
+`param` [index, defaultValue, expectedDataTypes, expectedArrayCount]
+
+argument `param` [index, defaultValue, expectedDataTypes, expectedArrayCount]
+
+---
 *Example 1:*
+
 ```sqf
 [1, 2, 3] call 
 {
@@ -16,6 +24,7 @@ If extracted item of input with given index is undefined, of the wrong type or o
 ```
 
 *Example 2:*
+
 ```sqf
 [123] call 
 {
@@ -30,6 +39,7 @@ If extracted item of input with given index is undefined, of the wrong type or o
 ```
 
 *Example 3:*
+
 ```sqf
 _z = position player param [2, 0];
 if (_z > 10) then 
@@ -39,6 +49,7 @@ if (_z > 10) then
 ```
 
 *Example 4:*
+
 ```sqf
 fnc = 
 {

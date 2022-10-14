@@ -2,7 +2,13 @@ Removes all `itemsWithMagazines` from the uniform, vest and backpack. Command es
 
 
 ---
+*Syntaxes:*
+
+`removeAllItemsWithMagazines` unit
+
+---
 *Example 1:*
+
 ```sqf
 removeAllItemsWithMagazines player;
 ```

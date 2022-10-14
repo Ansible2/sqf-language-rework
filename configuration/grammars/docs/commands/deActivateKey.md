@@ -4,7 +4,13 @@ See keys, keysLimit and doneKeys in the `description.ext` file of the missions.
 
 
 ---
+*Syntaxes:*
+
+`deActivateKey` keyname
+
+---
 *Example 1:*
+
 ```sqf
 deActivateKey "Mission04Key";
 ```

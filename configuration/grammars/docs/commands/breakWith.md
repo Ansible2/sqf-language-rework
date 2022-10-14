@@ -2,7 +2,13 @@ Skips all loop iterations and immediately returns the given value.
 
 
 ---
+*Syntaxes:*
+
+`breakWith` return
+
+---
 *Example 1:*
+
 ```sqf
 // stops once _i reaches 5 and outputs 0, 1, 2, 3, 4, END
 systemChat call {

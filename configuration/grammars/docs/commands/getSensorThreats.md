@@ -2,7 +2,13 @@ Returns vehicle sensors' threats.
 
 
 ---
+*Syntaxes:*
+
+`getSensorThreats` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 private _dangers = getSensorThreats vehicle player;
 /*

@@ -3,7 +3,13 @@ Returns ["EmptyDisplay","EmptyDisplayComponent"] when no panel is open.
 
 
 ---
+*Syntaxes:*
+
+`infoPanel` infoPanelId
+
+---
 *Example 1:*
+
 ```sqf
 infoPanel "left" params ["_componentClass", "_componentType"];
 ```

@@ -2,7 +2,13 @@ Returns the direction object is watching (eyes, or a vehicle primary observer).
 
 
 ---
+*Syntaxes:*
+
+`eyeDirection` unit
+
+---
 *Example 1:*
+
 ```sqf
 Can = "Land_Can_V3_F" createVehicle position player;
 onEachFrame {
@@ -15,6 +21,7 @@ onEachFrame {
 ```
 
 *Example 2:*
+
 Draw AI eye direction (green) and weapon direction (red) in 3D:
 
 ```sqf

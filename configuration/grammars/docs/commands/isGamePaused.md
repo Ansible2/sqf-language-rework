@@ -3,7 +3,13 @@ Simulation will not get paused if **-noPause** [[Arma 3: Startup Parameters|star
 
 
 ---
+*Syntaxes:*
+
+`isGamePaused`
+
+---
 *Example 1:*
+
 ```sqf
 onEachFrame 
 {

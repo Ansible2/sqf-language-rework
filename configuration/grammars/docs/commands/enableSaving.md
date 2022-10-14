@@ -2,7 +2,15 @@ Enable / disable saving of the game with an optional autosave.
 
 
 ---
+*Syntaxes:*
+
+`enableSaving` enable
+
+`enableSaving` [enable, save]
+
+---
 *Example 1:*
+
 ```sqf
 enableSaving false;		// saving disabled, does autosave - same as [false, true]
 enableSaving true;		// saving enabled, does not autosave - same as [true, false]

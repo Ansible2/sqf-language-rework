@@ -2,18 +2,28 @@ Tests whether a variable is `nil` or undefined from its `identifier`, or whether
 
 
 ---
+*Syntaxes:*
+
+`isNil` variableName
+
+`isNil` code
+
+---
 *Example 1:*
+
 ```sqf
 if (isNil "TAG_globalVariable") then { TAG_globalVariable = 0 };
 if (isNil "_localVariable") then { hint "_localVariable is nil" };
 ```
 
 *Example 2:*
+
 ```sqf
 isNil { player getVariable "someVar" };
 ```
 
 *Example 3:*
+
 ```sqf
 _myArray = [0, 1];
 isNil { _myArray select 0 }; // returns false
@@ -23,6 +33,7 @@ isNil { _myArray select 3 }; // throws a script error. only length+1 select is a
 ```
 
 *Example 4:*
+
 This trick forces executing something in `Unscheduled Environment`:
 
 ```sqf
@@ -33,6 +44,7 @@ This trick forces executing something in `Unscheduled Environment`:
 ```
 
 *Example 5:*
+
 <See o Reference p> `String` comparison workaround<br>
 `SQS Syntax`:
 <sqs>

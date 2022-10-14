@@ -2,17 +2,27 @@ Types text to the command radio channel. The text will be visible only on the PC
 
 
 ---
+*Syntaxes:*
+
+unitName `commandChat` chatText
+
+[side, identity] `commandChat` chatText
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne commandChat "Show this text";
 ```
 
 *Example 2:*
+
 ```sqf
 [playerSide, "HQ"] commandChat "Do this! That's an order!";
 ```
 
 *Example 3:*
+
 ```sqf
 driver vehicle player sideChat "sideChat";
 driver vehicle player globalChat "globalChat";

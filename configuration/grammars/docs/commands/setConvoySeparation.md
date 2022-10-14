@@ -5,7 +5,13 @@ Sets the distance to keep to the vehicle which is `in front`.<br>
 
 
 ---
+*Syntaxes:*
+
+vehicle `setConvoySeparation` distance
+
+---
 *Example 1:*
+
 ```sqf
 vehicle setConvoySeparation 20;
 ```

@@ -2,7 +2,13 @@ Returns `true` if the given vehicle is still able to fire. For the command to re
 
 
 ---
+*Syntaxes:*
+
+`canFire` unitName
+
+---
 *Example 1:*
+
 ```sqf
 if (not canFire _tank) then
 {

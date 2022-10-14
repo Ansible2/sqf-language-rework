@@ -1,8 +1,15 @@
-Returns whether one value is `not` equal to another. String comparison is case-`in`sensitive (e.g <sqf inline>"STRINGtext" != "stringTEXT" // returns false - strings are equivalent</sqf>).
+Returns whether one value is `not` equal to another. String comparison is case-`in`sensitive (e.g <sqf inline>"STRINGtext" != "stringTEXT" // returns false - strings are equivalent
+```).
 
 
 ---
+*Syntaxes:*
+
+a `!=` b
+
+---
 *Example 1:*
+
 ```sqf
 if (_counter != 4) then
 {
@@ -11,6 +18,7 @@ if (_counter != 4) then
 ```
 
 *Example 2:*
+
 ```sqf
 if (vehicle player != player) then
 {
@@ -23,6 +31,7 @@ else
 ```
 
 *Example 3:*
+
 ```sqf
 if (fuel truck1 != 1) then
 {
@@ -31,6 +40,7 @@ if (fuel truck1 != 1) then
 ```
 
 *Example 4:*
+
 ```sqf
 if (alive _unit1 != alive _unit2) then { hint "One of the units is dead while another is alive" };
 ```

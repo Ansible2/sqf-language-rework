@@ -4,7 +4,13 @@ Possible values: PRIVATE, CORPORAL, SERGEANT, LIEUTENANT, CAPTAIN, MAJOR or COLO
 
 
 ---
+*Syntaxes:*
+
+unitName `setRank` rank
+
+---
 *Example 1:*
+
 ```sqf
 player setRank "COLONEL";
 ```

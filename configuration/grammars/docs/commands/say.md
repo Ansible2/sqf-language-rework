@@ -6,12 +6,25 @@ Make unit say given sound. The sound is defined in `CfgSounds`. If the `unit` is
 
 
 ---
+*Syntaxes:*
+
+from `say` sound
+
+from `say` [sound, maxTitlesDistance, speed]
+
+[from, to] `say` sound
+
+[from, to] `say` [sound, maxTitlesDistance, speed]
+
+---
 *Example 1:*
+
 ```sqf
 (units player select 1) say ["whisper1", 5];
 ```
 
 *Example 2:*
+
 Arma 3:
 
 ```sqf

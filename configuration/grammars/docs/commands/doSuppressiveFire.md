@@ -7,12 +7,19 @@ Orders the given unit or a group of units to suppress the given position or targ
 
 
 ---
+*Syntaxes:*
+
+unit `doSuppressiveFire`  target
+
+---
 *Example 1:*
+
 ```sqf
 _soldier doSuppressiveFire [1869.508,5760.962,0.000];
 ```
 
 *Example 2:*
+
 ```sqf
 units player doSuppressiveFire cursorTarget;
 ```

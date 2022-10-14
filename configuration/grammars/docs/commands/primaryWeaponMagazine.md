@@ -2,12 +2,19 @@ Collects all loaded `magazines` from all `primaryWeapon` muzzles and returns the
 
 
 ---
+*Syntaxes:*
+
+`primaryWeaponMagazine` unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str primaryWeaponMagazine player; //["30Rnd_65x39_caseless_mag"]
 ```
 
 *Example 2:*
+
 ```sqf
 _array = primaryWeaponMagazine player;
 if (count _array > 0) then {

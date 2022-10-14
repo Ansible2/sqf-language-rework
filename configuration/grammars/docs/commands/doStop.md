@@ -2,17 +2,25 @@ Order the given unit(s) to stop (without radio messages). The units stopped in t
 
 
 ---
+*Syntaxes:*
+
+`doStop` unit(s)
+
+---
 *Example 1:*
+
 ```sqf
 doStop _soldier1;
 ```
 
 *Example 2:*
+
 ```sqf
 doStop [_soldier1, _soldier2];
 ```
 
 *Example 3:*
+
 ```sqf
 doStop (units player);
 ```

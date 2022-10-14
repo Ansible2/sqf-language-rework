@@ -2,7 +2,13 @@ Returns the negation of a Boolean expression. This means **`true`}} becomes {{hl
 
 
 ---
+*Syntaxes:*
+
+`!` a
+
+---
 *Example 1:*
+
 The code
 
 ```sqf

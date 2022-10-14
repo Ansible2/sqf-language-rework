@@ -2,12 +2,19 @@ Process an animation of the object. If `animate` uses class name from `CfgModels
 
 
 ---
+*Syntaxes:*
+
+object `animateSource` [source, phase, speed]
+
+---
 *Example 1:*
+
 ```sqf
 house animateSource ["Door_1_source", 1, true];
 ```
 
 *Example 2:*
+
 Create UGV and manipulate its turret (Not possible to do with `animate` command. See [[Arma 3: createVehicle/vehicles]] for reference)
 
 ```sqf
@@ -26,12 +33,14 @@ ugv addAction ["Turret Down",  { ugv animateSource ["MainGun", -rad 20] }];
 ```
 
 *Example 3:*
+
 ```sqf
 barGate animateSource ["Door_1_sound_source", 1]; // Open
 barGate animateSource ["Door_1_sound_source", 0]; // Close
 ```
 
 *Example 4:*
+
 Open/close Bar Gate automatically:
 
 ```sqf

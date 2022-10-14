@@ -2,12 +2,19 @@ Sets `velocity` vector of an object in m/s.
 
 
 ---
+*Syntaxes:*
+
+object `setVelocity` vector
+
+---
 *Example 1:*
+
 ```sqf
 _truck1 setVelocity [20, 0, 0];
 ```
 
 *Example 2:*
+
 Advanced method used for relative acceleration:
 
 ```sqf

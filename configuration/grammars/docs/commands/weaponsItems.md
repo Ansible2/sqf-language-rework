@@ -6,7 +6,13 @@
 
 
 ---
+*Syntaxes:*
+
+`weaponsItems` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 hint str weaponsItems player;
 // returns e.g
@@ -20,6 +26,7 @@ hint str weaponsItems player;
 ```
 
 *Example 2:*
+
 ```sqf
 hint str weaponsItems vehicle player;
 // returns e.g

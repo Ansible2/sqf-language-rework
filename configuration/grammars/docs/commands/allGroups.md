@@ -2,12 +2,19 @@ Return a list of all groups created on the following sides `east`, `west`, `resi
 
 
 ---
+*Syntaxes:*
+
+`allGroups`
+
+---
 *Example 1:*
+
 ```sqf
 { leader _x sideChat "Go ! Go ! Go !" } forEach allGroups;
 ```
 
 *Example 2:*
+
 All groups with players:
 
 ```sqf

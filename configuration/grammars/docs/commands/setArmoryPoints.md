@@ -2,12 +2,19 @@ Stores passed number into [USERNAME].ArmaXProfile file, where it assigns it as a
 
 
 ---
+*Syntaxes:*
+
+`setArmoryPoints` points
+
+---
 *Example 1:*
+
 ```sqf
 setArmoryPoints (armoryPoints + 20);
 ```
 
 *Example 2:*
+
 ```sqf
 setArmoryPoints 3.14;
 ```

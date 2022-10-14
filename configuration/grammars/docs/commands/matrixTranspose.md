@@ -4,7 +4,13 @@ Each row is an `Array` of corresponding column values for the row. The minimum n
 
 
 ---
+*Syntaxes:*
+
+`matrixTranspose` matrix
+
+---
 *Example 1:*
+
 ```sqf
 matrixTranspose 
 [
@@ -21,6 +27,7 @@ matrixTranspose
 ```
 
 *Example 2:*
+
 ```sqf
 matrixTranspose 
 [
@@ -35,6 +42,7 @@ matrixTranspose
 ```
 
 *Example 3:*
+
 ```sqf
 matrixTranspose 
 [

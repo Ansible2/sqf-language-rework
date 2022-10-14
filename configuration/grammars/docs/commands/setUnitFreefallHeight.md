@@ -2,7 +2,13 @@ Sets minimum freefall height AGL per unit, at which the unit assumes HALO pose. 
 
 
 ---
+*Syntaxes:*
+
+unit `setUnitFreefallHeight` minHeight
+
+---
 *Example 1:*
+
 ```sqf
 player setUnitFreefallHeight 1000;
 ```

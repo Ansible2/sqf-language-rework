@@ -2,7 +2,15 @@ Returns the action assigned to a control of the currently active user dialog. Ca
 
 
 ---
+*Syntaxes:*
+
+`buttonAction`  idc
+
+`buttonAction`  control
+
+---
 *Example 1:*
+
 ```sqf
 buttonSetAction [100, { player exec "reply.sqs" }]
 _action = buttonAction 100; // Returns { player exec "reply.sqs" }

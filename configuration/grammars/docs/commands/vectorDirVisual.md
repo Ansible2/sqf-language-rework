@@ -6,7 +6,13 @@ Return object's normalized direction vector in world space (**[x,y,z]**) in rend
 
 
 ---
+*Syntaxes:*
+
+`vectorDirVisual` objectName
+
+---
 *Example 1:*
+
 ```sqf
 _dirVector = vectorDirVisual _unit;
 ```

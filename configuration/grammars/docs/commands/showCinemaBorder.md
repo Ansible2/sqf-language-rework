@@ -2,7 +2,13 @@ Forces drawing of cinema borders when using custom camera `camCreate`. This is n
 
 
 ---
+*Syntaxes:*
+
+`showCinemaBorder` show
+
+---
 *Example 1:*
+
 ```sqf
 showCinemaBorder false;
 ```

@@ -2,7 +2,13 @@ Returns texture of the `local` instance of the flag. A getter for `setFlagTextur
 
 
 ---
+*Syntaxes:*
+
+`flagTexture` flagCarrier
+
+---
 *Example 1:*
+
 ```sqf
 _flagTexture = flagTexture _flag1;
 ```

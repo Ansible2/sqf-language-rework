@@ -2,7 +2,13 @@ Returns [[Arma 3: CfgWorlds Config Reference#class OutsideTerrain|OutsideTerrain
 
 
 ---
+*Syntaxes:*
+
+`diag_dumpTerrainSynth`
+
+---
 *Example 1:*
+
 ```sqf
 private _terrainSynth = diag_dumpTerrainSynth;
 ```

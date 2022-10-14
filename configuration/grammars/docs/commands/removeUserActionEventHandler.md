@@ -2,7 +2,13 @@ Removes a UserAction event handler. For a list of available UserAction event han
 
 
 ---
+*Syntaxes:*
+
+`removeUserActionEventHandler`  [keyName, event, index]
+
+---
 *Example 1:*
+
 ```sqf
 removeUserActionEventHandler ["Reload", "Activate", _reloadUAEH];
 ```

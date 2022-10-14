@@ -2,7 +2,13 @@ Opens Steam overlay with given YT video. Video URL is the end part of the YT URL
 
 
 ---
+*Syntaxes:*
+
+`openYoutubeVideo` youTubeUrl
+
+---
 *Example 1:*
+
 ```sqf
 // open http://www.youtube.com/watch?v=UBIAbm7Rt78
 _isOpened = openYoutubeVideo "watch?v=UBIAbm7Rt78";

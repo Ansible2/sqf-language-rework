@@ -2,7 +2,13 @@ Removes all event handlers of given type that were added by `addEventHandler` `a
 
 
 ---
+*Syntaxes:*
+
+target `removeAllEventHandlers` handlerType
+
+---
 *Example 1:*
+
 ```sqf
 player removeAllEventHandlers "Killed";
 ```

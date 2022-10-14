@@ -7,7 +7,13 @@ Add a number to the `rating` of a unit - negative values can be used to reduce t
 
 
 ---
+*Syntaxes:*
+
+unitName `addRating` rating
+
+---
 *Example 1:*
+
 ```sqf
 player addRating 2000;
 ```

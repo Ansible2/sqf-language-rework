@@ -2,12 +2,19 @@ Sets position and size of the given map control and recalculates control center.
 
 
 ---
+*Syntaxes:*
+
+map `ctrlMapSetPosition` [x, y, w, h]
+
+---
 *Example 1:*
+
 ```sqf
 _map ctrlMapSetPosition [0,0,1,1];
 ```
 
 *Example 2:*
+
 ```sqf
 _map ctrlSetPosition [0.5, 0.5, 0.5, 0.5];
 _map ctrlCommit 0;
@@ -15,6 +22,7 @@ _map ctrlMapSetPosition []; // sync
 ```
 
 *Example 3:*
+
 ```sqf
 with localNamespace do
 {

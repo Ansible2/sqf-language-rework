@@ -2,5 +2,11 @@ Dump (something about FSM) to debugging output. This command is (assumed to be) 
 
 
 ---
+*Syntaxes:*
+
+FSMhandle `debugFSM` true
+
+---
 *Example 1:*
+
 -

@@ -2,17 +2,25 @@ Control what the unit(s) is/are looking at (target or `Position`). If target is 
 
 
 ---
+*Syntaxes:*
+
+unit(s) `lookAt` position
+
+---
 *Example 1:*
+
 ```sqf
 _someSoldier lookAt _otherSoldier;
 ```
 
 *Example 2:*
+
 ```sqf
 [_someSoldier, _otherSoldier] lookAt markerPos "markerOne";
 ```
 
 *Example 3:*
+
 ```sqf
 hint "R U N !";
 BFG = "B_AAA_System_01_F" createVehicle position player;

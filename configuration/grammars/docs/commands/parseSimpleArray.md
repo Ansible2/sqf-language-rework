@@ -11,12 +11,19 @@ Since <See arm Reference 3> v1.96 the command will tolerate extra spaces and sup
 
 
 ---
+*Syntaxes:*
+
+`parseSimpleArray` stringArray
+
+---
 *Example 1:*
+
 ```sqf
 private _arr = parseSimpleArray "[1,2,3]";
 ```
 
 *Example 2:*
+
 ```sqf
 private _array1 = [1, "2", true, [4, "five", false]];
 private _array2 = parseSimpleArray "[1,""2"",true,[4,""five"",false]]";
@@ -24,6 +31,7 @@ _array1 isEqualTo _array2; // true
 ```
 
 *Example 3:*
+
 ```sqf
 _bool = true;
 _num = 123.45;

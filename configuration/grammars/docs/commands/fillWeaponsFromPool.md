@@ -2,7 +2,13 @@ Adds magazines from the campaign pool to the given unit, depending on his weapon
 
 
 ---
+*Syntaxes:*
+
+`fillWeaponsFromPool`  unit
+
+---
 *Example 1:*
+
 ```sqf
 fillWeaponsFromPool _soldier;
 ```

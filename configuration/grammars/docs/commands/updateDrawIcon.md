@@ -2,5 +2,11 @@ Updates the icon to be shown in 2D editor for the specified editor,object. If ma
 
 
 ---
+*Syntaxes:*
+
+map `updateDrawIcon` [object,string identifier,color,offset,width,height,maintain size?,angle,shadow]
+
+---
 *Example 1:*
+
 -

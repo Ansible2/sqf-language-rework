@@ -4,7 +4,13 @@ Consecutive use of onTeamSwitch command will overwrite previously set commandset
 
 
 ---
+*Syntaxes:*
+
+`onTeamSwitch` commandset
+
+---
 *Example 1:*
+
 ```sqf
 onTeamSwitch { [_from, _to] execVM "myTeamSwitchScript.sqf"; };
 ```

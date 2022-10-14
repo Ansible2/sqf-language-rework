@@ -2,7 +2,13 @@ Sets the orientation of a location. The location's area and map icon (if its typ
 
 
 ---
+*Syntaxes:*
+
+location `setDirection` direction
+
+---
 *Example 1:*
+
 ```sqf
 _location = createLocation ["VegetationPalm", getPos player, 200, 200];
 _location setText "Benargee's Palm Tree";

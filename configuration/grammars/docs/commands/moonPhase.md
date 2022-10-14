@@ -2,12 +2,19 @@ Returns the phase of the in-game Moon on the given date in range 0...1, where 0 
 
 
 ---
+*Syntaxes:*
+
+`moonPhase` date
+
+---
 *Example 1:*
+
 ```sqf
 _currentMoonPhase = moonPhase date;
 ```
 
 *Example 2:*
+
 ```sqf
 // Returns array of dates for given year when moon is at its fullest
 fnc_fullMoonDates = 

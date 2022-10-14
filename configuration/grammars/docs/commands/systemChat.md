@@ -2,12 +2,19 @@ Types text to the system radio channel. The text will be visible only on the PC 
 
 
 ---
+*Syntaxes:*
+
+`systemChat` text
+
+---
 *Example 1:*
+
 ```sqf
 systemChat "Hello world!";
 ```
 
 *Example 2:*
+
 ```sqf
 driver vehicle player sideChat "sideChat";
 driver vehicle player globalChat "globalChat";

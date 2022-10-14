@@ -12,12 +12,19 @@ This command defines the level of access a user has to editor objects.
 
 
 ---
+*Syntaxes:*
+
+map `setEditorObjectScope` [objects, editorType, condition, scope, subordinatesAlso]
+
+---
 *Example 1:*
+
 ```sqf
 _map setEditorObjectScope [ [],"vehicle", "side effectiveCommander _x != side player", "HIDE", false];
 ```
 
 *Example 2:*
+
 ```sqf
 ((findDisplay 128) displayCtrl 51) setEditorObjectScope [ ["_unit_0"], "", "true", "ALLNODRAG", false];
 ```

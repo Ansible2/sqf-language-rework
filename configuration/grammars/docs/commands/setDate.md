@@ -2,12 +2,19 @@ Sets mission date and time. Players joining after mission start will get the cur
 
 
 ---
+*Syntaxes:*
+
+`setDate` date
+
+---
 *Example 1:*
+
 ```sqf
 setDate [1986, 2, 25, 16, 0]; // 4:00pm February 25, 1986
 ```
 
 *Example 2:*
+
 ```sqf
 // postInit = 1;
 // Set the real date (MP only):

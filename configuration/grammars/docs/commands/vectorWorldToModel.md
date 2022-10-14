@@ -2,7 +2,13 @@ Converts vector direction from world to model space.
 
 
 ---
+*Syntaxes:*
+
+object `vectorWorldToModel` worldDir
+
+---
 *Example 1:*
+
 Convert world space vector [0,-10,4] to model space of object _airplane: 
 
 ```sqf

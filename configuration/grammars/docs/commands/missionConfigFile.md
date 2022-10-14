@@ -1,12 +1,14 @@
 Return root of mission `Description.ext` entries hierarchy.
-{{Feature|important|Since the introduction of the `Eden Editor`, scenario attributes can be configured in the editor itself, not only in the external Description.ext file.
-To access desired value independently on where it is stored, use the following commands:
-* `getMissionConfigValue`
-* `getMissionConfig`
 
 
 ---
+*Syntaxes:*
+
+`missionConfigFile`
+
+---
 *Example 1:*
+
 ```sqf
 for "_i" from 0 to (count paramsArray - 1) do
 {
@@ -15,6 +17,7 @@ for "_i" from 0 to (count paramsArray - 1) do
 ```
 
 *Example 2:*
+
 To define custom values in `description.ext`:
 <syntaxhighlight lang="cpp">
 class myMissionConfig

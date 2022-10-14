@@ -2,7 +2,13 @@ Returns `true` if stress damage is enabled in the game settings. A getter for `e
 
 
 ---
+*Syntaxes:*
+
+`isStressDamageEnabled`
+
+---
 *Example 1:*
+
 ```sqf
 _settingEnabled = isStressDamageEnabled;
 ```

@@ -2,7 +2,13 @@ Sets that the vehicle will share its own position via datalink to the `Side` cen
 
 
 ---
+*Syntaxes:*
+
+vehicle `setVehicleReportOwnPosition` report
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player setVehicleReportOwnPosition true;
 ```

@@ -2,5 +2,11 @@ Shifts an editor object to the end of the objects array. This means,that the obj
 
 
 ---
+*Syntaxes:*
+
+map `moveObjectToEnd` object
+
+---
 *Example 1:*
+
 -

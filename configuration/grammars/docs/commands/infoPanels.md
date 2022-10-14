@@ -2,7 +2,15 @@ Returns array all info panels configured for given object or object and turret p
 
 
 ---
+*Syntaxes:*
+
+`infoPanels` unit
+
+`infoPanels` [unit, turretPath]
+
+---
 *Example 1:*
+
 ```sqf
 infoPanels [vehicle player, [0]];
 ```

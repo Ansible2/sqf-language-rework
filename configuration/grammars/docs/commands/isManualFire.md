@@ -2,7 +2,13 @@ Returns `true` if manual fire is on. Manual fire could either be selected in veh
 
 
 ---
+*Syntaxes:*
+
+`isManualFire` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 _bool = isManualFire vehicle player;
 ```

@@ -4,12 +4,19 @@ Camera axes are relative to camera orientation. x axis goes from left of the cam
 
 
 ---
+*Syntaxes:*
+
+`positionCameraToWorld` cameraPos
+
+---
 *Example 1:*
+
 ```sqf
 _worldPos = positionCameraToWorld _cameraPos;
 ```
 
 *Example 2:*
+
 Example demonstrating reversed y and z:
 
 ```sqf

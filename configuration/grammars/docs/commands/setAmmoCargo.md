@@ -4,7 +4,13 @@ The <u>actual</u> `quantity` to work with is determined by the model's class in 
 
 
 ---
+*Syntaxes:*
+
+vehicleName `setAmmoCargo` ammoCargo
+
+---
 *Example 1:*
+
 ```sqf
 _ammoTruck1 setAmmoCargo 0.5;
 ```

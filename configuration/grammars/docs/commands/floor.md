@@ -2,7 +2,13 @@ Returns the next `lowest` integer in relation to the provided number.
 
 
 ---
+*Syntaxes:*
+
+`floor` num
+
+---
 *Example 1:*
+
 ```sqf
 floor 5.1;		// result is  5
 floor 5.999;	// result is  5

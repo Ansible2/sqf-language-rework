@@ -2,7 +2,13 @@ Returns a list of objects intersected by the line from `begPos` to `endPos`.
 
 
 ---
+*Syntaxes:*
+
+`lineIntersectsObjs` [begPos, endPos, ignoreObj1, ignoreObj2, sortByDistance, flags]
+
+---
 *Example 1:*
+
 ```sqf
 Sto = [];
 Fn = {

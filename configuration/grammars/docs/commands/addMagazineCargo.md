@@ -2,7 +2,13 @@ Add magazines to the cargo space of vehicles, which can be taken out by infantry
 
 
 ---
+*Syntaxes:*
+
+vehicleName `addMagazineCargo` [magazineName, count]
+
+---
 *Example 1:*
+
 ```sqf
 _truck addMagazineCargo ["M16", 5];
 ```

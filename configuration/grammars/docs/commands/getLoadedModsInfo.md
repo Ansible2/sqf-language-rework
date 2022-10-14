@@ -2,7 +2,13 @@ Returns information about all loaded modifications.
 
 
 ---
+*Syntaxes:*
+
+`getLoadedModsInfo`
+
+---
 *Example 1:*
+
 ```sqf
 private _loadedMods = getLoadedModsInfo;
 /*
@@ -28,6 +34,7 @@ private _loadedMods = getLoadedModsInfo;
 ```
 
 *Example 2:*
+
 ```sqf
 private _modInfo = getLoadedModsInfo select 0;
 _modInfo params ["_modname", "_modDir", "_isDefault", "_isOfficial", "_origin", "_hash", "_hashShort", "_itemID"];

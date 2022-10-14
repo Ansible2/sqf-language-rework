@@ -2,12 +2,21 @@
 
 
 ---
+*Syntaxes:*
+
+`boundingBox` object
+
+clippingType `boundingBox` object
+
+---
 *Example 1:*
+
 ```sqf
 private _box = boundingBox _abrams;
 ```
 
 *Example 2:*
+
 ```sqf
 hint str (0 boundingBox cursorObject);
 ```

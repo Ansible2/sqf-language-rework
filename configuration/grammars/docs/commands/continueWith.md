@@ -2,7 +2,13 @@ Skips the current loop iteration, continues with the next one and returns the gi
 
 
 ---
+*Syntaxes:*
+
+`continueWith` return
+
+---
 *Example 1:*
+
 ```sqf
 // results in [2, "TEST", 4]
 private _result = [1, 2, 3] apply {

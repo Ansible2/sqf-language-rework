@@ -3,17 +3,29 @@ Returns `Array` containing `dikCodes` of keys, buttons and combos assigned to th
 keyWatch[] = { 24 };
 </syntaxhighlight>
 To retrieve the value, use the property name without 'key':
-<sqf>actionKeys "Watch"; // 24</sqf>
+
+```sqf
+actionKeys "Watch"; // 24
+```
 In addition, some of the actions are also listed in here: `inputAction/actions`
 
 
 ---
+*Syntaxes:*
+
+`actionKeys` userAction
+
+`actionKeys` [userAction]
+
+---
 *Example 1:*
+
 ```sqf
 _arrayOfNumbers = actionKeys "ReloadMagazine";
 ```
 
 *Example 2:*
+
 From Arma 3 v2.08:
 
 ```sqf

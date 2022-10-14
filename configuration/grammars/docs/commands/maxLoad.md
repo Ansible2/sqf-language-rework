@@ -2,7 +2,13 @@ Returns maximum load limit for a unit, uniform/vest/backpack containers, vehicle
 
 
 ---
+*Syntaxes:*
+
+`maxLoad` container
+
+---
 *Example 1:*
+
 ```sqf
 private _maxLoad = maxLoad _yaMum;
 ```

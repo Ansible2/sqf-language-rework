@@ -2,17 +2,25 @@
 
 
 ---
+*Syntaxes:*
+
+trigger `synchronizeTrigger` waypoints
+
+---
 *Example 1:*
+
 ```sqf
 _trigger synchronizeTrigger [];
 ```
 
 *Example 2:*
+
 ```sqf
 _trigger synchronizeTrigger [_waypoint1];
 ```
 
 *Example 3:*
+
 ```sqf
 _trigger synchronizeTrigger [_waypoint1, [_group5, 7], _waypoint3];
 ```

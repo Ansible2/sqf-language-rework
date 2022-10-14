@@ -2,7 +2,13 @@ Defines an action performed just before the preload screen started. Preload even
 
 
 ---
+*Syntaxes:*
+
+`onPreloadStarted` command
+
+---
 *Example 1:*
+
 ```sqf
 onPreloadStarted {diag_log "preload started"};
 ```

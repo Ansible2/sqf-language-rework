@@ -2,7 +2,13 @@ Sends any text into the debugger console or the logfile. This command is only `p
 
 
 ---
+*Syntaxes:*
+
+`echo`  text
+
+---
 *Example 1:*
+
 ```sqf
 echo "Text in logfile";
 ```

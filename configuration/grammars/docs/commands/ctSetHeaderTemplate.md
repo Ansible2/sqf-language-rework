@@ -2,7 +2,13 @@ Takes config path to the new header template. Clears the whole RscControlsTable 
 
 
 ---
+*Syntaxes:*
+
+control `ctSetHeaderTemplate` config
+
+---
 *Example 1:*
+
 ```sqf
 _control ctSetHeaderTemplate _configPath;
 ```

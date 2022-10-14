@@ -2,12 +2,21 @@ Sets the disabled color of item's picture (left) with the given index of the lis
 
 
 ---
+*Syntaxes:*
+
+`lbSetPictureColorDisabled` [idc, index, color]
+
+control `lbSetPictureColorDisabled`  [index, color]
+
+---
 *Example 1:*
+
 ```sqf
 lbSetPictureColorDisabled [101, 0, [1, 1, 1, 0.25]];
 ```
 
 *Example 2:*
+
 ```sqf
 _ctrl lbSetPictureColorDisabled [0, [1, 1, 1, 0.25]];
 ```

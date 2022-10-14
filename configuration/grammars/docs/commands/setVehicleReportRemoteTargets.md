@@ -2,7 +2,13 @@ Sets that the vehicle will share targets that were acquired by its own sensors v
 
 
 ---
+*Syntaxes:*
+
+vehicle `setVehicleReportRemoteTargets` bool
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player setVehicleReportRemoteTargets true;
 ```

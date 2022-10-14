@@ -2,7 +2,13 @@ Shows or hides the notebook on the map screen, if enabled for the mission. (defa
 
 
 ---
+*Syntaxes:*
+
+`showPad` show
+
+---
 *Example 1:*
+
 ```sqf
 showPad false;
 ```

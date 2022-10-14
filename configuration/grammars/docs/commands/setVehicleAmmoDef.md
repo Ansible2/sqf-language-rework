@@ -2,7 +2,13 @@ Sets how much ammunition (compared to the configuration of magazines defined in 
 
 
 ---
+*Syntaxes:*
+
+unit `setVehicleAmmoDef` value
+
+---
 *Example 1:*
+
 ```sqf
 player setVehicleAmmoDef 0;
 ```

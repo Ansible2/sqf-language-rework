@@ -9,7 +9,13 @@ Sets background color of given control. Only affects:
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetBackgroundColor` color
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetBackgroundColor [1, 0, 0, 1];
 ```

@@ -2,17 +2,25 @@ Returns estimated width of the text based on `font type` and size. Similar to `c
 
 
 ---
+*Syntaxes:*
+
+text `getTextWidth` [font, size]
+
+---
 *Example 1:*
+
 ```sqf
 _textWidth = "Hello World" getTextWidth ["PuristaMedium", 0.03];
 ```
 
 *Example 2:*
+
 ```sqf
 _textWidthInclMargins = ("Hello World" getTextWidth ["PuristaMedium", 0.03]) + 0.016;
 ```
 
 *Example 3:*
+
 ```sqf
 #define MARGINS 0.0016
 private _ctrl = findDisplay 46 ctrlCreate ["RscText", -1];

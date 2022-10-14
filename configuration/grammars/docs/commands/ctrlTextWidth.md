@@ -7,7 +7,13 @@ Returns the width of the control text including left and right margins (0.008 ea
 
 
 ---
+*Syntaxes:*
+
+`ctrlTextWidth` control
+
+---
 *Example 1:*
+
 ```sqf
 private _w = ctrlTextWidth _ctrl;
 ```

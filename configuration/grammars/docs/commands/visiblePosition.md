@@ -2,7 +2,13 @@ Returns an object's rendered position (z value above surface underneath) in rend
 
 
 ---
+*Syntaxes:*
+
+`visiblePosition` object
+
+---
 *Example 1:*
+
 ```sqf
 playerRenderedPos = visiblePosition player;
 ```

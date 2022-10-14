@@ -4,17 +4,27 @@ The return value is the FSM handle; it can be used to determine (via `completedF
 
 
 ---
+*Syntaxes:*
+
+arguments `execFSM` fsmFilePath
+
+`execFSM` fsmFilePath
+
+---
 *Example 1:*
+
 ```sqf
 _id = player execFSM "test.fsm";
 ```
 
 *Example 2:*
+
 ```sqf
 _handle = [_a, _b, _c] execFSM "test.fsm";
 ```
 
 *Example 3:*
+
 ```sqf
 _handle = execFSM "test.fsm";
 ```

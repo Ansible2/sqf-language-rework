@@ -13,12 +13,19 @@ The possible team values (colours) are:
 
 
 ---
+*Syntaxes:*
+
+unit `assignTeam` team
+
+---
 *Example 1:*
+
 ```sqf
 _soldier2 assignTeam "RED";
 ```
 
 *Example 2:*
+
 In a unit's init script in the editor you should use the following. Or else you might experience [race conditions](https://en.wikipedia.org/wiki/Race_condition). 
 
 ```sqf

@@ -2,7 +2,13 @@ Returns the camera `Object` used by the `Eden Editor`.
 
 
 ---
+*Syntaxes:*
+
+[[get3DENCamera]]
+
+---
 *Example 1:*
+
 ```sqf
 // set exact yaw, pitch, and roll
 _y = 45; _p = -80; _r = 0;
@@ -13,6 +19,7 @@ get3DENCamera setVectorDirAndUp [
 ```
 
 *Example 2:*
+
 ```sqf
 //Look at player
 _a = positionCameraToWorld [0,0,0] vectorFromTo (getPosATL player);

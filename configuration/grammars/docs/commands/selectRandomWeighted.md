@@ -7,12 +7,21 @@ Returns a random element from the given array according to assigned weights. Eng
 
 
 ---
+*Syntaxes:*
+
+`selectRandomWeighted` valuesAndWeights
+
+values `selectRandomWeighted` weights
+
+---
 *Example 1:*
+
 ```sqf
 private _randomWeightedElement = selectRandomWeighted [1,0.1,2,0.2,3,1.3,4,2.4,5,7.5];
 ```
 
 *Example 2:*
+
 ```sqf
 private _randomWeightedElement = [1,2,3,4,5] selectRandomWeighted [0.1,0.2,1.3,2.4,7.5];
 ```

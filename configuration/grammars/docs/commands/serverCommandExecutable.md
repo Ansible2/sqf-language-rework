@@ -2,12 +2,19 @@ Returns `true` if the `serverCommand` can be performed on the machine and in thi
 
 
 ---
+*Syntaxes:*
+
+`serverCommandExecutable` command
+
+---
 *Example 1:*
+
 ```sqf
 _canKick = serverCommandAvailable "#kick";
 ```
 
 *Example 2:*
+
 Add button to the main map to lock server, which could only be activated by admin:
 
 ```sqf

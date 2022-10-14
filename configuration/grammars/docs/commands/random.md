@@ -2,17 +2,31 @@
 
 
 ---
+*Syntaxes:*
+
+`random` x
+
+`random` [min, mid, max]
+
+seed `random` x
+
+seed `random` [x, y]
+
+---
 *Example 1:*
+
 ```sqf
 _rNumber = random 1;
 ```
 
 *Example 2:*
+
 ```sqf
 _rNumber = random -10;
 ```
 
 *Example 3:*
+
 Generate a random position inside a circle (see also `Example Code: Random Area Distribution`)
 
 ```sqf
@@ -20,6 +34,7 @@ _center getPos [_radius * sqrt random 1, random 360];
 ```
 
 *Example 4:*
+
 Select a random value from an array:
 
 ```sqf

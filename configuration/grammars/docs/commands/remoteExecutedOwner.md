@@ -2,12 +2,19 @@ Returns the ` machine network ID` of the client that initiated `Remote Execution
 
 
 ---
+*Syntaxes:*
+
+`remoteExecutedOwner`
+
+---
 *Example 1:*
+
 ```sqf
 private _callerRE = remoteExecutedOwner;
 ```
 
 *Example 2:*
+
 Send request to the server and get immediate response:
 
 ```sqf

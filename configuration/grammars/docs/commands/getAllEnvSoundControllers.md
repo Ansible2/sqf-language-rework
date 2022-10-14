@@ -2,7 +2,13 @@ Returns an array containing the names and values of environmental 2D sound contr
 
 
 ---
+*Syntaxes:*
+
+`getAllEnvSoundControllers` position
+
+---
 *Example 1:*
+
 ```sqf
 getAllEnvSoundControllers position player;
 /*

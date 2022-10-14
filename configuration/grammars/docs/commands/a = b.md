@@ -2,22 +2,31 @@ Assigns the result of expression on the right to the variable on the left. Techn
 
 
 ---
+*Syntaxes:*
+
+variable [[a = b
+
+---
 *Example 1:*
+
 ```sqf
 _value = 5;
 ```
 
 *Example 2:*
+
 ```sqf
 _mygroup = group player;
 ```
 
 *Example 3:*
+
 ```sqf
 _greeting = "Hello!";
 ```
 
 *Example 4:*
+
 ```sqf
 private _enemyTank = myTank1;
 ```

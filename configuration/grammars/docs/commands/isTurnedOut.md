@@ -2,7 +2,13 @@ Returns `true` if given unit is turned out, otherwise `false`. The output change
 
 
 ---
+*Syntaxes:*
+
+`isTurnedOut` unit
+
+---
 *Example 1:*
+
 ```sqf
 _commanderOut = isTurnedOut (tank turretUnit [0,0]);
 ```

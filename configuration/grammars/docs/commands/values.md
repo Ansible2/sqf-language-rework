@@ -2,7 +2,13 @@ Returns all values stored in the given `HashMap`. The order of the returned Arra
 
 
 ---
+*Syntaxes:*
+
+`values` hashmap
+
+---
 *Example 1:*
+
 ```sqf
 private _values = values _myHashMap;
 ```

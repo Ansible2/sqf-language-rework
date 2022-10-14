@@ -3,12 +3,21 @@ This command will remove user get in/get out actions but will not stop player ge
 
 
 ---
+*Syntaxes:*
+
+vehicleName `lock` locked
+
+vehicleName `lock` lockstate
+
+---
 *Example 1:*
+
 ```sqf
 _jeepOne lock true;
 ```
 
 *Example 2:*
+
 ```sqf
 heli lock true;
 locked heli; // 2

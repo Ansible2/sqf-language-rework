@@ -6,11 +6,17 @@ For Livonia furniture see: [[Arma 3 Livonia Props]].<br><br>
 
 See [[Arma 3: Simple Objects]] to learn more about simple objects.
 
- do simple objects support `getVariable` and `setVariable`.
 
+---
+*Syntaxes:*
+
+`createSimpleObject` [shapeName, positionWorld, local]
+
+`createSimpleObject` [className, positionASL, local]
 
 ---
 *Example 1:*
+
 ```sqf
 private _pos = player getRelPos [10, 0];
 private _tank = createSimpleObject ["a3\armor_f_beta\apc_tracked_01\apc_tracked_01_rcws_f.p3d", _pos];
@@ -25,6 +31,7 @@ _tank animate ["Wheel_podkoloL6", 0.5, true];
 ```
 
 *Example 2:*
+
 ```sqf
 private _pos = player getRelPos [10, 0];
 private _tank = createSimpleObject ["B_APC_Tracked_01_CRV_F", AGLToASL _pos];

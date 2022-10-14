@@ -2,7 +2,13 @@ Unassigns existing item and tries to put it into inventory. If there is no space
 
 
 ---
+*Syntaxes:*
+
+unit `unassignItem` item
+
+---
 *Example 1:*
+
 ```sqf
 _bluforUnit unassignItem "NVGoggles";
 _bluforUnit removeItem "NVGoggles";
@@ -13,6 +19,7 @@ _independentUnit removeItem "NVGoggles_INDEP";
 ```
 
 *Example 2:*
+
 ```sqf
 {
    _x unassignItem hmd _x; // Unassign (not remove) NVGs from all units. The class name of the NVG is not needed

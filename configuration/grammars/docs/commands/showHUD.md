@@ -2,12 +2,21 @@ Enable / disable showing of HUD. Defines visibility of weapon crosshair and any 
 
 
 ---
+*Syntaxes:*
+
+`showHUD` enable
+
+`showHUD` [scriptedHUD, info radar, compass, direction, menu, group, cursors, panels, kills, showIcon3D]
+
+---
 *Example 1:*
+
 ```sqf
 showHUD false;
 ```
 
 *Example 2:*
+
 Hide vehicle radar and compass:
 
 ```sqf
@@ -27,6 +36,7 @@ showHUD [
 ```
 
 *Example 3:*
+
 Check if HUD visibility is hardcoded in mission config and `showHUD` command is overriden:
 
 ```sqf

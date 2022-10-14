@@ -2,12 +2,19 @@ Creates an agent of the given type. An agent does not have a group or leader or 
 
 
 ---
+*Syntaxes:*
+
+`createAgent` [type, position, markers, placement, special]
+
+---
 *Example 1:*
+
 ```sqf
 private _agent = createAgent ["B_Soldier_F", getPosATL player, [], 0, "FORM"];
 ```
 
 *Example 2:*
+
 ```sqf
 private _agent = createAgent ["Snake_random_F", ASLtoAGL getPosASL player, [], 0, "CAN_COLLIDE"]; // Creates a snake at player's feet
 ```

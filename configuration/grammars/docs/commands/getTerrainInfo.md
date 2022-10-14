@@ -2,12 +2,19 @@ Returns the terrain heightmap information, as well as sea level offset (due to t
 
 
 ---
+*Syntaxes:*
+
+`getTerrainInfo`
+
+---
 *Example 1:*
+
 ```sqf
 private _terrainInfo = getTerrainInfo; // Stratis: [32,256,4,2048,0]; Altis: [30,1024,7.5,4096,0] 
 ```
 
 *Example 2:*
+
 ```sqf
  // Draws a 20x20 terrain grid when clicking on the map
 // Each triangle of the terrain is formed by a diagonal that starts from the top-left corner of the cell and ends and the bottom-right corner.

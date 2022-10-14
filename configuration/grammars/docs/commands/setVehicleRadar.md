@@ -2,7 +2,13 @@ Sets the AI rule of Radar usage (Emission Control). Automatic means Radar switch
 
 
 ---
+*Syntaxes:*
+
+vehicle `setVehicleRadar` rule
+
+---
 *Example 1:*
+
 ```sqf
 _vehicle setVehicleRadar 1;
 ```

@@ -2,17 +2,25 @@ Returns a road segment containing given position, `objNull` otherwise. Same as `
 
 
 ---
+*Syntaxes:*
+
+`roadAt` position
+
+---
 *Example 1:*
+
 ```sqf
 _road = roadAt ASLToAGL getPosASL player;
 ```
 
 *Example 2:*
+
 ```sqf
 _isOnRoad = !isNull roadAt player;
 ```
 
 *Example 3:*
+
 For detecting bridges, for example:
 
 ```sqf

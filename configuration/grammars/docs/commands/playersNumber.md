@@ -2,7 +2,13 @@ Returns count of occupied role selection slots for given side. Players who claim
 
 
 ---
+*Syntaxes:*
+
+`playersNumber` side
+
+---
 *Example 1:*
+
 ```sqf
 _west = playersNumber west;
 _east = playersNumber east;

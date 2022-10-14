@@ -3,7 +3,13 @@ In a nutshell, this command removes gaming `Side` (see `createCenter`). If a sid
 
 
 ---
+*Syntaxes:*
+
+`deleteCenter` side
+
+---
 *Example 1:*
+
 ```sqf
 deleteCenter east;
 ```

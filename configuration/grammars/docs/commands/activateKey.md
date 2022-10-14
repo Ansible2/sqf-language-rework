@@ -3,7 +3,13 @@ See keys, keysLimit and doneKeys in the `description.ext` file of the missions.
 
 
 ---
+*Syntaxes:*
+
+`activateKey` keyname
+
+---
 *Example 1:*
+
 ```sqf
 activateKey "Mission04Key";
 ```

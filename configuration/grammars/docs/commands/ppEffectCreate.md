@@ -11,7 +11,15 @@ Supported effects:
 
 
 ---
+*Syntaxes:*
+
+`ppEffectCreate` [name, priority]
+
+`ppEffectCreate` [<nowiki/>[name1, priority1], ...]
+
+---
 *Example 1:*
+
 ```sqf
 _ppGrain = ppEffectCreate ["filmGrain", 2005];
 ```

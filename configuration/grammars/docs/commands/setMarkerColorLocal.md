@@ -2,7 +2,13 @@ Sets marker color for the given marker locally. Marker color names and their cor
 
 
 ---
+*Syntaxes:*
+
+markerName `setMarkerColorLocal` color
+
+---
 *Example 1:*
+
 ```sqf
 "MarkerOne" setMarkerColorLocal "ColorBlack";
 ```

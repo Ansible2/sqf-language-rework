@@ -3,7 +3,13 @@ Filename path can be either absolute or relative. The file must contain only the
 
 
 ---
+*Syntaxes:*
+
+`diag_lightNewLoad` path
+
+---
 *Example 1:*
+
 ```sqf
 diag_lightNewLoad "o:\lighting.txt";
 ```

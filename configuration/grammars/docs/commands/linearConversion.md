@@ -2,7 +2,13 @@ Converts given value from given "from" range to wanted "to" range. If clipping i
 
 
 ---
+*Syntaxes:*
+
+`linearConversion`  [minFrom, maxFrom, value, minTo, maxTo, clip]
+
+---
 *Example 1:*
+
 ```sqf
 // Say given range is 0 to 1 and wanted range is 0 to 100 (percent calculation). Given value 0.55 then will be 55
 linearConversion [0, 1, 0.55, 0, 100];
@@ -15,11 +21,13 @@ linearConversion [0, 1, 1.1, 0, 100, true];
 ```
 
 *Example 2:*
+
 ```sqf
 linearConversion [4, 8, 5, 0, 1, false];
 ```
 
 *Example 3:*
+
 ```sqf
 // Calculate days from 1/1/1970
 fnc_daysFromEpoc = 

@@ -2,12 +2,19 @@ Returns information about active `SQF` scripts. To see number of all scripts cur
 
 
 ---
+*Syntaxes:*
+
+`diag_activeSQFScripts`
+
+---
 *Example 1:*
+
 ```sqf
 [] spawn { hint str diag_activeSQFScripts; }; // displays [["<spawn> hint str diag_activeSQFScripts;", "", true, 1]]
 ```
 
 *Example 2:*
+
 ```sqf
 [] spawn {
 	hint str diag_activeSQFScripts; // displays [["<spawn> hint str diag_activeSQFScripts;", "", true, 2]]
@@ -15,6 +22,7 @@ Returns information about active `SQF` scripts. To see number of all scripts cur
 ```
 
 *Example 3:*
+
 ```sqf
 [] spawn {
 	scriptName "aScript";

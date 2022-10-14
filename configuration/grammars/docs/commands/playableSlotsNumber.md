@@ -2,7 +2,13 @@ Returns the number of available slots in mission per `side` (both empty and take
 
 
 ---
+*Syntaxes:*
+
+`playableSlotsNumber` side
+
+---
 *Example 1:*
+
 ```sqf
 _maxBluforPlayers = playableSlotsNumber blufor;
 ```

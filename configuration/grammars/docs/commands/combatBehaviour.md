@@ -9,13 +9,22 @@ Returns combat behaviour of unit or group. To set unit or group behaviour see `s
 
 
 ---
+*Syntaxes:*
+
+`combatBehaviour` unit
+
+`combatBehaviour` group
+
+---
 *Example 1:*
+
 ```sqf
 unit1 setCombatBehaviour "CARELESS";
 combatBehaviour unit1; // "CARELESS"
 ```
 
 *Example 2:*
+
 ```sqf
 group unit1 setCombatBehaviour "SAFE";
 combatBehaviour group unit1; // "SAFE"

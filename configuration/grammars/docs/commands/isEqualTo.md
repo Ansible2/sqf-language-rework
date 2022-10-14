@@ -9,7 +9,13 @@ Some differences between `isEqualTo` and `==`:
 
 
 ---
+*Syntaxes:*
+
+val1 `isEqualTo` val2
+
+---
 *Example 1:*
+
 ```sqf
 _arr1 = [1,[2,[3]]];
 _arr2 = [1,[2,[3]]];
@@ -17,6 +23,7 @@ if (_arr1 isEqualTo _arr2) then {hint "Arrays match!"}
 ```
 
 *Example 2:*
+
 ```sqf
 if (a isEqualTo b) then {hint "a is equal to b"};
 if !(a isEqualTo b) then {hint "a is not equal to b"};

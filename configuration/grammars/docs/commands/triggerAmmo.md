@@ -3,7 +3,13 @@ If ammo uses submunition, then creation of submunition will be triggered.
 
 
 ---
+*Syntaxes:*
+
+`triggerAmmo` munition
+
+---
 *Example 1:*
+
 ```sqf
 triggerAmmo bomb1;
 ```

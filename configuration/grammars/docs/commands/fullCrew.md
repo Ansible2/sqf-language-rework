@@ -2,17 +2,27 @@ Returns an array with all crew inside given vehicle, with or without empty seats
 
 
 ---
+*Syntaxes:*
+
+`fullCrew` vehicle
+
+`fullCrew` [vehicle, type, includeEmpty]
+
+---
 *Example 1:*
+
 ```sqf
 _list = fullCrew vehicle player;
 ```
 
 *Example 2:*
+
 ```sqf
 _list = fullCrew [vehicle player, "turret"];
 ```
 
 *Example 3:*
+
 ```sqf
 private _actionCompatibleCargoIndexes = fullCrew [heli, "cargo", true];
 /*

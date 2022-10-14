@@ -2,12 +2,19 @@ Force all units in the array to get in or out of their assigned vehicles. Units 
 
 
 ---
+*Syntaxes:*
+
+unitArray `orderGetIn` order
+
+---
 *Example 1:*
+
 ```sqf
 [_unitOne, _unitTwo] orderGetIn true;
 ```
 
 *Example 2:*
+
 ```sqf
 [_unitOne, _unitTwo] orderGetIn false;
 ```

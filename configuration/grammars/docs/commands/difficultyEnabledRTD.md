@@ -3,7 +3,13 @@ Forcing of rotorlib simulation could be done with mission param `forceRotorLibSi
 
 
 ---
+*Syntaxes:*
+
+`difficultyEnabledRTD`
+
+---
 *Example 1:*
+
 ```sqf
 _rtdOn = difficultyEnabledRTD;
 ```

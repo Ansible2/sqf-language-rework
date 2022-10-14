@@ -2,7 +2,13 @@ Smoothly conducts the changes that were assigned to a camera within the given ti
 
 
 ---
+*Syntaxes:*
+
+camera `camCommitPrepared` time
+
+---
 *Example 1:*
+
 ```sqf
 // Create a camera object
 _cam = "camera" camCreate [5600,4800,10];

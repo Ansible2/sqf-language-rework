@@ -2,7 +2,13 @@ Returns the person piloting the vehicle. If co-pilot is piloting, co-pilot is re
 
 
 ---
+*Syntaxes:*
+
+`currentPilot` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 if (currentPilot _vehicle != driver _vehicle) then
 {

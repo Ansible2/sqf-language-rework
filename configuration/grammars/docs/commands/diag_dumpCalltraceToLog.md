@@ -2,7 +2,13 @@ Dumps current callstack/calltrace to RPT.
 
 
 ---
+*Syntaxes:*
+
+`diag_dumpCalltraceToLog`
+
+---
 *Example 1:*
+
 ```sqf
 diag_dumpCalltraceToLog;
 /* outputs:

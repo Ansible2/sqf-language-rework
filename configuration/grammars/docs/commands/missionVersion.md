@@ -4,7 +4,13 @@ Returns the version of the current mission.
 
 
 ---
+*Syntaxes:*
+
+`missionVersion`
+
+---
 *Example 1:*
+
 ```sqf
 _version = missionVersion;
 ```

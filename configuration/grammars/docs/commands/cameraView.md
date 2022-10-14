@@ -6,7 +6,13 @@ Returns mode of active camera view. Mode is one of:
 
 
 ---
+*Syntaxes:*
+
+`cameraView`
+
+---
 *Example 1:*
+
 ```sqf
 if (cameraOn == _vehicle && cameraView == "External") then
 {

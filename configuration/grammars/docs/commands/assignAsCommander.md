@@ -3,7 +3,13 @@ Before usage of this command a subordinate unit has not got the option to get in
 
 
 ---
+*Syntaxes:*
+
+unitName `assignAsCommander` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 assignAsCommander _tank;
 [_soldier1] orderGetIn true;

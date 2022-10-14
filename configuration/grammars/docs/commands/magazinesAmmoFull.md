@@ -2,7 +2,15 @@ Returns array of arrays of all unit's or vehicle's magazines with extended infor
 
 
 ---
+*Syntaxes:*
+
+`magazinesAmmoFull` entity
+
+`magazinesAmmoFull` [vehicle, includeEmpty]
+
+---
 *Example 1:*
+
 ```sqf
 toFixed 0; magazinesAmmoFull player;
 /*
@@ -21,6 +29,7 @@ toFixed 0; magazinesAmmoFull player;
 ```
 
 *Example 2:*
+
 ```sqf
 toFixed 0; magazinesAmmoFull Mi_48;
 /*

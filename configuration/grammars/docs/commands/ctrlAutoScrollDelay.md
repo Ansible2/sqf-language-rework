@@ -4,7 +4,13 @@ Autorscroll is available for `CT_LISTBOX` and `CT_CONTROLS_GROUP` types of contr
 
 
 ---
+*Syntaxes:*
+
+`ctrlAutoScrollDelay` control
+
+---
 *Example 1:*
+
 ```sqf
 _ctrlDelay = ctrlAutoScrollDelay _ctrlGroup;
 ```

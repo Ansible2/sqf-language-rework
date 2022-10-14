@@ -2,7 +2,13 @@
 
 
 ---
+*Syntaxes:*
+
+a `^` b
+
+---
 *Example 1:*
+
 ```sqf
 5 ^ 2 // 5², result is 25
 ```

@@ -4,12 +4,19 @@ Sets the rotation of a control set as **ST_PICTURE**. Rotation will be done with
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetAngle` [angle, centerX, centerY, now]
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetAngle [25, 0.5, 0.5];
 ```
 
 *Example 2:*
+
 ```sqf
 with uiNamespace do
 {
@@ -31,6 +38,7 @@ with uiNamespace do
 ```
 
 *Example 3:*
+
 ```sqf
 _control ctrlSetAngle [25, 0.5, 0.5, false];
 _control ctrlCommit 1; // Rotation applies smoothly for 1 second.

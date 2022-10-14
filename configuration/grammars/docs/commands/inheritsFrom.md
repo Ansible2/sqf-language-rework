@@ -2,12 +2,19 @@ Returns base entry of config entry.
 
 
 ---
+*Syntaxes:*
+
+`inheritsFrom` config
+
+---
 *Example 1:*
+
 ```sqf
 _base = inheritsFrom (configFile >> "CfgVehicles" >> "Car");
 ``` Result is `Config` entry for class "LandVehicle"
 
 *Example 2:*
+
 Print parent tree of given config class:
 
 ```sqf

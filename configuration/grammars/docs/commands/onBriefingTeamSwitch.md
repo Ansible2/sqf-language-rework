@@ -2,7 +2,13 @@ Select a sound defined in the `CfgSounds` of the mission to be played the first 
 
 
 ---
+*Syntaxes:*
+
+`onBriefingTeamSwitch` soundName
+
+---
 *Example 1:*
+
 ```sqf
 onBriefingTeamSwitch "TeamSwitchVoiceOver";
 ```

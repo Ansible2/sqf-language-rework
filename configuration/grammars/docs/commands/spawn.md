@@ -6,12 +6,19 @@ Since {{GVI|arma3|1.56
 
 
 ---
+*Syntaxes:*
+
+arguments `spawn` code
+
+---
 *Example 1:*
+
 ```sqf
 _handle = 0 spawn { player globalChat "Hello world!" };
 ```
 
 *Example 2:*
+
 There is no guarantee that spawned scripts will be executed in the same order they spawned: 
 
 ```sqf
@@ -25,6 +32,7 @@ for "_i" from 0 to 100 do
 ```
 
 *Example 3:*
+
 Local variables declared in the main scope are not available in the spawned code. You have to pass them as parameters:
 
 ```sqf

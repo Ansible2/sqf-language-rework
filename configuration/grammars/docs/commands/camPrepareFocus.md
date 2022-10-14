@@ -4,7 +4,13 @@ focusRange is . Prepares the camera focus blur.
 
 
 ---
+*Syntaxes:*
+
+camera `camPrepareFocus` [distance, blur]
+
+---
 *Example 1:*
+
 ```sqf
 _camera camPrepareFocus [50, 1];
 ```

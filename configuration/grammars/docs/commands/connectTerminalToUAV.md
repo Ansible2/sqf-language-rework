@@ -3,12 +3,19 @@ If UAV is already connected to another terminal, this new connection will fail.
 
 
 ---
+*Syntaxes:*
+
+person `connectTerminalToUAV` uav
+
+---
 *Example 1:*
+
 ```sqf
 bool = player connectTerminalToUAV uav1;
 ```
 
 *Example 2:*
+
 ```sqf
 player connectTerminalToUAV objNull; //disconnect
 ```

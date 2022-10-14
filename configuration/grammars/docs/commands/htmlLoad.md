@@ -4,17 +4,25 @@ The command is subject to restrictions, imposed by `CfgCommands` class.
 
 
 ---
+*Syntaxes:*
+
+control `htmlLoad` filename
+
+---
 *Example 1:*
+
 ```sqf
 _control htmlLoad "briefing.html";
 ```
 
 *Example 2:*
+
 ```sqf
 _control htmlLoad "http://www.bistudio.com/newsfeed/arma3_news.php?build=main&language=English";
 ```
 
 *Example 3:*
+
 Display news item:
 
 ```sqf

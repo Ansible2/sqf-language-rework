@@ -2,12 +2,19 @@ A getter for `setTerrainGrid`, returns the current terrain grid.
 
 
 ---
+*Syntaxes:*
+
+`getTerrainGrid`
+
+---
 *Example 1:*
+
 ```sqf
 _terrainGrid = getTerrainGrid;
 ```
 
 *Example 2:*
+
 ```sqf
 if (getTerrainGrid < 50) then
 {

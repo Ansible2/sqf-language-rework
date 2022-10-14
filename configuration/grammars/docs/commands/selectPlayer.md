@@ -4,7 +4,13 @@ Move player into given unit. Some usage advices:
 
 
 ---
+*Syntaxes:*
+
+`selectPlayer` unitName
+
+---
 *Example 1:*
+
 ```sqf
 selectPlayer bob;
 ```

@@ -2,7 +2,13 @@ Add weapons to the weapon pool, of which the player may choose in the following 
 
 
 ---
+*Syntaxes:*
+
+`addWeaponPool`  [weaponName, count]
+
+---
 *Example 1:*
+
 ```sqf
 addWeaponPool ["M16",5];
 ```

@@ -2,5 +2,11 @@ Returns the value of "3D Performance" in OFP Preferences (flashpoint.cfg). This 
 
 
 ---
+*Syntaxes:*
+
+`benchmark`
+
+---
 *Example 1:*
+
 <sqs>? (benchmark > 2000) : setViewDistance 2000</sqs>

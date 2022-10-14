@@ -2,7 +2,13 @@ When used on a person, the given action is started immediately (there is no tran
 
 
 ---
+*Syntaxes:*
+
+soldier `switchAction` action
+
+---
 *Example 1:*
+
 ```sqf
 soldierOne switchAction "SitDown";
 ```

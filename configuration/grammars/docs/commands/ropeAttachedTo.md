@@ -3,7 +3,13 @@ Returns the owner of the first rope - the transport to which other entities are 
 
 
 ---
+*Syntaxes:*
+
+`ropeAttachedTo` cargo
+
+---
 *Example 1:*
+
 ```sqf
 _heli = ropeAttachedTo veh1;
 ```

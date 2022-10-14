@@ -6,7 +6,13 @@ The code is executed on every `hc` group selection change until it is replaced o
 
 
 ---
+*Syntaxes:*
+
+`onHCGroupSelectionChanged` code
+
+---
 *Example 1:*
+
 ```sqf
 onHCGroupSelectionChanged {
 	if (_isSelected) then
@@ -21,11 +27,13 @@ onHCGroupSelectionChanged {
 ```
 
 *Example 2:*
+
 ```sqf
 onHCGroupSelectionChanged "player globalChat 'HC group selection has been changed.';";
 ```
 
 *Example 3:*
+
 Remove event handler:
 
 ```sqf

@@ -4,12 +4,19 @@ Useful to disable/enable whole parts of the scenario if layers are used during m
 
 
 ---
+*Syntaxes:*
+
+`getMissionLayerEntities` layerName
+
+---
 *Example 1:*
+
 ```sqf
 private _base = getMissionLayerEntities "Base";
 ```
 
 *Example 2:*
+
 delete all objects within that layer after the player is over 800m away from _someObject:
 
 ```sqf
@@ -21,6 +28,7 @@ private _simpleObjects = (getMissionLayerEntities "Simple Objects") select 0;
 ```
 
 *Example 3:*
+
 ```sqf
 private _layer1337Entities = getMissionLayerEntities 1337;
 ```

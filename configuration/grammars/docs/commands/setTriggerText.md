@@ -2,7 +2,13 @@ Sets the text label attached to the trigger object. This is used for example as 
 
 
 ---
+*Syntaxes:*
+
+trigger `setTriggerText` text
+
+---
 *Example 1:*
+
 ```sqf
 trigger setTriggerText "Call for support";
 ```

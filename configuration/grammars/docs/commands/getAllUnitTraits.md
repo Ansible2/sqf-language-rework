@@ -2,7 +2,13 @@ Returns unit traits, native or set by `setUnitTrait`.
 
 
 ---
+*Syntaxes:*
+
+`getAllUnitTraits` unit
+
+---
 *Example 1:*
+
 ```sqf
 /* can return:
 [
@@ -20,6 +26,7 @@ private _playerTraits = getAllUnitTraits player;
 ```
 
 *Example 2:*
+
 ```sqf
 private _unitTraits = getAllUnitTraits _unit;
 private _indexes = [_unitTraits, "Medic"] call BIS_fnc_findNestedElement;

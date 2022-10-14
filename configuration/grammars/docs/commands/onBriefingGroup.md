@@ -2,7 +2,13 @@ Select a sound declared in the `Description.ext` of the mission to be played the
 
 
 ---
+*Syntaxes:*
+
+`onBriefingGroup`  soundName
+
+---
 *Example 1:*
+
 ```sqf
 onBriefingGroup "GroupVoiceOver";
 ```

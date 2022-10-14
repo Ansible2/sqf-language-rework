@@ -2,7 +2,13 @@ Changes the terrain height of the cell in which given position lies. This comman
 
 
 ---
+*Syntaxes:*
+
+position `diag_setTerrainHeight` height
+
+---
 *Example 1:*
+
 ```sqf
 private _fnc_flattenTerrain =
 {

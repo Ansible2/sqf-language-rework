@@ -3,7 +3,13 @@ An attribute is identified by its **property}} ({{hl|data** when it is engine-dr
 
 
 ---
+*Syntaxes:*
+
+section [[set3DENMissionAttribute]] [class, value]
+
+---
 *Example 1:*
+
 ```sqf
 "Multiplayer" set3DENMissionAttribute ["respawn", 3]; // Set respawn type to 3
 ```

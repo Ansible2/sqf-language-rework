@@ -16,17 +16,25 @@ Some of the special types that can be detected with this command (and with `near
 
 
 ---
+*Syntaxes:*
+
+`allMissionObjects` type
+
+---
 *Example 1:*
+
 ```sqf
 _airObjects = allMissionObjects "Air";
 ```
 
 *Example 2:*
+
 ```sqf
 { deleteVehicle _x; } forEach (allMissionObjects "");
 ```
 
 *Example 3:*
+
 ```sqf
 _allMObjects = allMissionObjects "All";
 ```

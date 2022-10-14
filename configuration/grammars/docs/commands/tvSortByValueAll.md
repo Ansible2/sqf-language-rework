@@ -2,7 +2,13 @@ Sorts all children, including trees deriving from given path.  Value of `Tree Vi
 
 
 ---
+*Syntaxes:*
+
+control `tvSortByValueAll` [path, reversed]
+
+---
 *Example 1:*
+
 ```sqf
 _ctrl tvSortByValueAll [[], false]; // Sorts the complete Tree View
 ```

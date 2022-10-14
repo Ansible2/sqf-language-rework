@@ -4,7 +4,13 @@ Server event handlers, which are available in server config, all use this namesp
 
 
 ---
+*Syntaxes:*
+
+`serverNamespace`
+
+---
 *Example 1:*
+
 ```sqf
 private _serverVars = allVariables serverNamespace;
 ```

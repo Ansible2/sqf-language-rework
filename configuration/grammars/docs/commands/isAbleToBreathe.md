@@ -2,7 +2,13 @@ If unit is diving and doesn't have a re-breather, it returns `false`. Diving mea
 
 
 ---
+*Syntaxes:*
+
+`isAbleToBreathe`  unit
+
+---
 *Example 1:*
+
 ```sqf
 _canBreath = isAbleToBreathe player;
 ```

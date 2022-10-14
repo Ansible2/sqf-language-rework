@@ -2,5 +2,11 @@ Returns aimPrecision from animation state with custom value that will directly a
 
 
 ---
+*Syntaxes:*
+
+`getCustomAimCoef` unit
+
+---
 *Example 1:*
+
 _coef = `getCustomAimCoef` player

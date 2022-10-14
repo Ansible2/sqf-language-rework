@@ -3,12 +3,19 @@ Checks specific difficulty settings of the current user. Difficulty flag names c
 
 
 ---
+*Syntaxes:*
+
+`difficultyOption` optionName
+
+---
 *Example 1:*
+
 ```sqf
 hint str (difficultyOption "friendlyTags");
 ```
 
 *Example 2:*
+
 Remember last `cameraView` per vehicle:
 
 ```sqf

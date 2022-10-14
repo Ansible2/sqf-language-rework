@@ -2,7 +2,13 @@ Always true
 
 
 ---
+*Syntaxes:*
+
+`true`
+
+---
 *Example 1:*
+
 ```sqf
 _var = true;
 systemChat str _var; // true

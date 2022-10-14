@@ -2,7 +2,13 @@ Returns `Array` of selected rows indices in the given listbox. If listbox is of 
 
 
 ---
+*Syntaxes:*
+
+`lbSelection` control
+
+---
 *Example 1:*
+
 ```sqf
 _indices = lbSelection _control;
 ```

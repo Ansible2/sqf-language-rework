@@ -2,7 +2,13 @@ Cuts the given rope to the specified length. If some entity was attached to the 
 
 
 ---
+*Syntaxes:*
+
+`ropeCut` [rope, length]
+
+---
 *Example 1:*
+
 ```sqf
 ropeCut [ropes heli1 select 0, 5];
 ```

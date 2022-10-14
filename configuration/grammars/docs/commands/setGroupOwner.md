@@ -2,7 +2,13 @@ Changes the ownership of a group (and all its units) to a given client. The grou
 
 
 ---
+*Syntaxes:*
+
+group `setGroupOwner` clientID
+
+---
 *Example 1:*
+
 ```sqf
 _localityChanged = _someGroup setGroupOwner (owner _playerObject);
 ```

@@ -2,12 +2,21 @@ Sets the picture in the item with the given position of the 2D listbox.The pictu
 
 
 ---
+*Syntaxes:*
+
+`lnbSetPicture` [idc, [row, column], picturePathOrName]
+
+ctrl `lnbSetPicture` [<nowiki/>[row, column], picturePathOrName]
+
+---
 *Example 1:*
+
 ```sqf
 lnbSetPicture [1, [0, 0], "Picture"];
 ```
 
 *Example 2:*
+
 ```sqf
 _ctrl lnbSetPicture [[0, 0], "\A3\Ui_f\data\GUI\Cfg\Ranks\lieutenant_gs.paa"];
 ```

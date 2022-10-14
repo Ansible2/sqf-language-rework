@@ -2,7 +2,13 @@ Returns the render scale of the object relative to the original model.
 
 
 ---
+*Syntaxes:*
+
+`getObjectScale` object
+
+---
 *Example 1:*
+
 ```sqf
 private _objectScale = getObjectScale _object;
 

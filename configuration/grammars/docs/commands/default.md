@@ -2,7 +2,13 @@ Defines a `Switch Type` default case - does `not` need a colon to define its blo
 
 
 ---
+*Syntaxes:*
+
+`default` a
+
+---
 *Example 1:*
+
 ```sqf
 switch (_condition) do
 {

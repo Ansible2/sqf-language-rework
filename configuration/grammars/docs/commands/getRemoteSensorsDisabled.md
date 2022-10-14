@@ -2,7 +2,13 @@ Get status of disabled raycasts for remote entities. See `disableRemoteSensors` 
 
 
 ---
+*Syntaxes:*
+
+`getRemoteSensorsDisabled`
+
+---
 *Example 1:*
+
 ```sqf
 _status = getRemoteSensorsDisabled;
 ```

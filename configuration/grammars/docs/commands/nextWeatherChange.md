@@ -4,7 +4,13 @@ When a weather change finishes, the game engine will automatically generate a ne
 
 
 ---
+*Syntaxes:*
+
+`nextWeatherChange`
+
+---
 *Example 1:*
+
 ```sqf
 _seconds = nextWeatherChange;
 ```

@@ -5,7 +5,13 @@ Compares types of all elements of input array to types of all elements of templa
 
 
 ---
+*Syntaxes:*
+
+input `isEqualTypeParams`  template
+
+---
 *Example 1:*
+
 ```sqf
 // These all return true
 [1,2,player,"10"] isEqualTypeParams [0,0,objNull,""];
@@ -14,6 +20,7 @@ Compares types of all elements of input array to types of all elements of templa
 ```
 
 *Example 2:*
+
 ```sqf
 // These all return false
 123 isEqualTypeParams [0,0,objNull,""];

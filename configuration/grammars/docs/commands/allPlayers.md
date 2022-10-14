@@ -3,7 +3,13 @@ Use `BIS_fnc_listPlayers` or see {{HashLink|#Example 1}} to only get human playe
 
 
 ---
+*Syntaxes:*
+
+`allPlayers`
+
+---
 *Example 1:*
+
 ```sqf
 // only gets human players
 private _headlessClients = entities "HeadlessClient_F";
@@ -11,6 +17,7 @@ private _humanPlayers = allPlayers - _headlessClients;
 ```
 
 *Example 2:*
+
 ```sqf
 {
 	systemChat format [
@@ -22,6 +29,7 @@ private _humanPlayers = allPlayers - _headlessClients;
 ```
 
 *Example 3:*
+
 ```sqf
 private _bluNums = west countSide allPlayers;
 ```

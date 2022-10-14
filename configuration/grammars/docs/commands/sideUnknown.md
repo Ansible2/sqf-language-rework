@@ -3,7 +3,13 @@ The unknown `side`.
 
 
 ---
+*Syntaxes:*
+
+`sideUnknown`
+
+---
 *Example 1:*
+
 ```sqf
 //soldier1 and soldier2 of different sides and out of sight
 soldier1 reveal soldier2;

@@ -2,7 +2,13 @@ Exits the `current` code scope. Often used for exiting `do`, `for`, `count`, `fo
 
 
 ---
+*Syntaxes:*
+
+ifType `exitWith` code
+
+---
 *Example 1:*
+
 ```sqf
 systemChat "start";
 private _condition = true;
@@ -27,6 +33,7 @@ systemChat "never shown - the script has already ended";
 ```
 
 *Example 2:*
+
 ```sqf
 for "_j" from 1 to 10 do
 {
@@ -42,6 +49,7 @@ systemChat "Complete";
 ```
 
 *Example 3:*
+
 Most loops will also terminate when their scope is exited. To exit and terminate scopes which are called every frame such as `onEachFrame` and `waitUntil` use the following examples:
 
 
@@ -65,6 +73,7 @@ waitUntil
 ```
 
 *Example 4:*
+
 ```sqf
 while { true } do
 {
@@ -79,6 +88,7 @@ while { true } do
 ```
 
 *Example 5:*
+
 ```sqf
 if (_condition) exitWith
 {

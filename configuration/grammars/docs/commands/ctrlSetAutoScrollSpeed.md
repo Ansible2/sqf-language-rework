@@ -4,7 +4,13 @@ Autorscroll is available for `CT_LISTBOX` and `CT_CONTROLS_GROUP` types of contr
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetAutoScrollSpeed` speed
+
+---
 *Example 1:*
+
 ```sqf
 _ctrlGroup ctrlSetAutoScrollSpeed 0.1;
 ```

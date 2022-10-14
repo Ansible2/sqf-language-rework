@@ -2,7 +2,13 @@ Get array with all magazines from uniform of the given unit.
 
 
 ---
+*Syntaxes:*
+
+`uniformMagazines` unit
+
+---
 *Example 1:*
+
 ```sqf
 uniformMagazines player;
 // returns e.g

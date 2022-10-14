@@ -2,7 +2,13 @@ Returns the variable name that contains a primary editor reference to this objec
 
 
 ---
+*Syntaxes:*
+
+`vehicleVarName` object
+
+---
 *Example 1:*
+
 ```sqf
 hint vehicleVarName player;
 ```

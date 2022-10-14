@@ -2,7 +2,13 @@ Sets the position of the given camera or seagull (see `camCreate`). It is worth 
 
 
 ---
+*Syntaxes:*
+
+camera `camSetPos` position
+
+---
 *Example 1:*
+
 ```sqf
 _cam camSetPos [2300,1000,130];
 _cam camCommit 10;

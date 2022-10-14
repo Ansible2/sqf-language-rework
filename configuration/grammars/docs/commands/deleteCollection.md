@@ -4,7 +4,13 @@ Delete a collection. As example, used with a soldier, it'll hide the ingame mode
 
 
 ---
+*Syntaxes:*
+
+`deleteCollection` object
+
+---
 *Example 1:*
+
 ```sqf
 deleteCollection unitName;
 ```

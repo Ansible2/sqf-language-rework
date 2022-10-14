@@ -2,7 +2,13 @@ Adds magazines to the magazine pool, of which the player may choose in the follo
 
 
 ---
+*Syntaxes:*
+
+`addMagazinePool`  [magazineName, count]
+
+---
 *Example 1:*
+
 ```sqf
 addMagazinePool ["M16", 20];
 ```

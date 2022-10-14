@@ -3,7 +3,13 @@ This command adds non-playable unit into array of `switchableUnits` and makes th
 
 
 ---
+*Syntaxes:*
+
+`addSwitchableUnit` unit
+
+---
 *Example 1:*
+
 ```sqf
 addSwitchableUnit bob;
 ```

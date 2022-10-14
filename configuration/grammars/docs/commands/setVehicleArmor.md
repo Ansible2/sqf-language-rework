@@ -4,12 +4,19 @@ Works like `setDamage`, but the other way around: 1 is full health - see {{HashL
 
 
 ---
+*Syntaxes:*
+
+vehicleName `setVehicleArmor` value
+
+---
 *Example 1:*
+
 ```sqf
 player setVehicleArmor 0.5;
 ```
 
 *Example 2:*
+
 ```sqf
 player setVehicleArmor 1;
 // is the same as

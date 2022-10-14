@@ -3,7 +3,15 @@ Action names can be found in config class **ControllerSchemes** or `user action 
 
 
 ---
+*Syntaxes:*
+
+`actionKeysNames`  userAction
+
+`actionKeysNames`  [userAction, maxKeys, inputDevicePriority]
+
+---
 *Example 1:*
+
 ```sqf
 _list = actionKeysNames "ReloadMagazine"; // "R"
 ```

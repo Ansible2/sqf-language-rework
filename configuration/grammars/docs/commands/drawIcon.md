@@ -1,8 +1,15 @@
-Draws an icon on the map. This command needs to be called every frame, preferably using the `onDraw` UI Event Handler. Some useful icons can be found in <sqf inline>configfile >> "CfgVehicleIcons"</sqf>.
+Draws an icon on the map. This command needs to be called every frame, preferably using the `onDraw` UI Event Handler. Some useful icons can be found in <sqf inline>configfile >> "CfgVehicleIcons"
+```.
 
 
 ---
+*Syntaxes:*
+
+map `drawIcon` [texture, color, position, width, height, angle, text, shadow, textSize, font, align]
+
+---
 *Example 1:*
+
 Red icon with text:
 
 ```sqf
@@ -24,6 +31,7 @@ findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw", {
 ```
 
 *Example 2:*
+
 Green text only:
 
 ```sqf

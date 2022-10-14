@@ -3,7 +3,13 @@ The variables are stored next to the user profile in a file named **myUsername.v
 
 
 ---
+*Syntaxes:*
+
+`profileNamespace`
+
+---
 *Example 1:*
+
 ```sqf
 profileNamespace setVariable ["TAG_kills", 10000];
 // somewhere else in the code

@@ -2,7 +2,13 @@ Compares two values by reference, returns `true` if equal.
 
 
 ---
+*Syntaxes:*
+
+val1 `isEqualRef` val2
+
+---
 *Example 1:*
+
 ```sqf
 _arr1 = [1,[2,[3]]];
 _arr2 = _arr1;

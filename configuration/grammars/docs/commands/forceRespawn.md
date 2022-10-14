@@ -2,7 +2,13 @@ Forces the unit to respawn. The effect is as if the player pressed the RESPAWN b
 
 
 ---
+*Syntaxes:*
+
+`forceRespawn` unit
+
+---
 *Example 1:*
+
 ```sqf
 forceRespawn player;
 ```

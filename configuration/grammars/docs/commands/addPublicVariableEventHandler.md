@@ -2,7 +2,15 @@
 
 
 ---
+*Syntaxes:*
+
+varName `addPublicVariableEventHandler`  code
+
+varName `addPublicVariableEventHandler`  [target, code]
+
+---
 *Example 1:*
+
 ```sqf
 "publicThis" addPublicVariableEventHandler {
 	hint format [
@@ -14,6 +22,7 @@
 ```
 
 *Example 2:*
+
 Client:
 
 ```sqf

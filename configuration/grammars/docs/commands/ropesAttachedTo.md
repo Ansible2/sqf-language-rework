@@ -3,7 +3,13 @@ This command returns `Array` of `Object`s instead of a single `Object` as with `
 
 
 ---
+*Syntaxes:*
+
+`ropesAttachedTo` cargo
+
+---
 *Example 1:*
+
 ```sqf
 r1 = ropeCreate [car1, [0,0,0], car3, [0,0,0], 10]; 
 r2 = ropeCreate [car2, [0,0,0], car3, [0,0,0], 10];

@@ -2,7 +2,13 @@ Returns true if the current mission is a Steam Workshop mission.
 
 
 ---
+*Syntaxes:*
+
+`isSteamMission`
+
+---
 *Example 1:*
+
 ```sqf
 if (isSteamMission) then
 {

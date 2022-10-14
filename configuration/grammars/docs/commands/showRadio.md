@@ -2,7 +2,13 @@ Shows or hides the radio on the map screen, if enabled for the mission and you p
 
 
 ---
+*Syntaxes:*
+
+`showRadio` show
+
+---
 *Example 1:*
+
 ```sqf
 showRadio false;
 ```

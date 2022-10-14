@@ -15,7 +15,13 @@ Notes:
 
 
 ---
+*Syntaxes:*
+
+`fleeing`  unit
+
+---
 *Example 1:*
+
 ```sqf
 if (fleeing soldier_1) then {player sideChat "We have won!"} else {player sideChat "Keep fighting!"};
 ```

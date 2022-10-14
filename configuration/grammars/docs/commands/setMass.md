@@ -2,12 +2,21 @@ Changes the mass of a PhysX object. When using the alternative syntax the mass c
 
 
 ---
+*Syntaxes:*
+
+myObject `setMass` mass
+
+myObject `setMass` [mass, time]
+
+---
 *Example 1:*
+
 ```sqf
 myObject setMass [10, 0.5];
 ```
 
 *Example 2:*
+
 ```sqf
 myObject setMass 10;
 ```

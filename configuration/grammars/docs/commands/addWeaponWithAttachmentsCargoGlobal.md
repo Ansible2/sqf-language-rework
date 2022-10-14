@@ -2,12 +2,19 @@ Adds a weapon into the cargo space of a vehicle / box with given attachments / m
 
 
 ---
+*Syntaxes:*
+
+container `addWeaponWithAttachmentsCargoGlobal` [weaponConfiguration, weaponsCount]
+
+---
 *Example 1:*
+
 ```sqf
 cursorObject addWeaponWithAttachmentsCargoGlobal [["arifle_MX_GL_F", "muzzle_snds_H", "", "optic_aco", ["30Rnd_65x39_caseless_mag", 15], ["3Rnd_HE_Grenade_shell", 2], ""], 2];
 ```
 
 *Example 2:*
+
 Add five MX GL rifles, each with flashlight side attachment, a full 30 rounds magazine loaded into the gun and a full 3Rnd HE grenade magazine loaded into the grenade launcher:
 
 ```sqf
@@ -15,6 +22,7 @@ cursorObject addWeaponWithAttachmentsCargoGlobal [["arifle_MX_GL_F", "", "acc_fl
 ```
 
 *Example 3:*
+
 Add one MX rifle without any attachments or magazines event though the class has linked items:
 
 ```sqf
@@ -22,6 +30,7 @@ cursorObject addWeaponWithAttachmentsCargoGlobal [["arifle_MX_Holo_pointer_F", "
 ```
 
 *Example 4:*
+
 Add all weapons on player with attachments:
 
 ```sqf

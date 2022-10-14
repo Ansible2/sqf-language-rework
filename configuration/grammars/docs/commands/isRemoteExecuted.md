@@ -2,7 +2,13 @@ Returns `true` if the code context is being remote executed by `remoteExec` or `
 
 
 ---
+*Syntaxes:*
+
+`isRemoteExecuted`
+
+---
 *Example 1:*
+
 ```sqf
 private _remoteExecuted = isRemoteExecuted;
 ```

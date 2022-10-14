@@ -2,12 +2,19 @@ From server machine, change the ownership of an object to a given client. Using 
 
 
 ---
+*Syntaxes:*
+
+object `setOwner` clientID
+
+---
 *Example 1:*
+
 ```sqf
 _someObject setOwner 12;
 ```
 
 *Example 2:*
+
 ```sqf
 _someObject setOwner (owner _playerObject);
 ```

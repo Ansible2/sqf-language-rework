@@ -4,7 +4,13 @@ These raycasts are used to determine what other entities an entity can see, and 
 
 
 ---
+*Syntaxes:*
+
+`disableRemoteSensors` state
+
+---
 *Example 1:*
+
 ```sqf
 disableRemoteSensors true;
 ```

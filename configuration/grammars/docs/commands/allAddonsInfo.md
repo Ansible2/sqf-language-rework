@@ -2,7 +2,13 @@ Returns the list of all loaded addons.
 
 
 ---
+*Syntaxes:*
+
+`allAddonsInfo`
+
+---
 *Example 1:*
+
 ```sqf
 allAddonsInfo
 /*

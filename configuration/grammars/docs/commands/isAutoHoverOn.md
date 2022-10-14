@@ -2,7 +2,13 @@ Return `true` if vehicle has enabled auto hover. (always returns false if the ve
 
 
 ---
+*Syntaxes:*
+
+`isAutoHoverOn` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 _isOn = isAutoHoverOn vehicle player;
 ```

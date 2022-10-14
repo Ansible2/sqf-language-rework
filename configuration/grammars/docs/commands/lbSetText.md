@@ -2,12 +2,21 @@ Sets the text on the left side of the item with the given index of the listbox o
 
 
 ---
+*Syntaxes:*
+
+`lbSetText` [idc, index, name]
+
+control `lbSetText` [index, name]
+
+---
 *Example 1:*
+
 ```sqf
 lbSetText [101, 0, "iskoda"];
 ```
 
 *Example 2:*
+
 ```sqf
 _control lbSetText [0, "iskoda"];
 ```

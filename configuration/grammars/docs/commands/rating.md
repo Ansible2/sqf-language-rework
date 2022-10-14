@@ -4,7 +4,13 @@ The rating of the player is displayed as the "score" at the end of the mission. 
 
 
 ---
+*Syntaxes:*
+
+`rating` unitName
+
+---
 *Example 1:*
+
 ```sqf
 _score = rating player;
 ```

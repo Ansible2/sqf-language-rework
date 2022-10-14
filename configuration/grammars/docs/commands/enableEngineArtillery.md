@@ -2,7 +2,13 @@ Enable/disable the artillery engine. This allows the user to use the artillery c
 
 
 ---
+*Syntaxes:*
+
+`enableEngineArtillery` enabled
+
+---
 *Example 1:*
+
 ```sqf
 enableEngineArtillery false;
 ```

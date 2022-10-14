@@ -6,7 +6,13 @@ To be used with "GUARD" `waypoint`.
 
 
 ---
+*Syntaxes:*
+
+`createGuardedPoint` [side, position, objectMapID, vehicle]
+
+---
 *Example 1:*
+
 ```sqf
 createGuardedPoint [east, [0,0], -1, vehicle player];
 ```

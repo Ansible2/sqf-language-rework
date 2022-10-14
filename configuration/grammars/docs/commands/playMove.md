@@ -3,12 +3,19 @@ The difference between `playMove` and `playMoveNow` is that `playMove` adds anot
 
 
 ---
+*Syntaxes:*
+
+unitName `playMove` moveName
+
+---
 *Example 1:*
+
 ```sqf
 soldierOne playMove "Stand";
 ```
 
 *Example 2:*
+
 ```sqf
 player switchMove "AmovPercMstpSrasWrflDnon";
 [] spawn 
@@ -20,6 +27,7 @@ player switchMove "AmovPercMstpSrasWrflDnon";
 ```
 
 *Example 3:*
+
 ```sqf
 player switchMove "AmovPercMstpSrasWrflDnon";
 [] spawn

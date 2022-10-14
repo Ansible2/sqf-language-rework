@@ -20,7 +20,13 @@ The return value is either 0 or 1 most of the time, the in-between values only r
 
 
 ---
+*Syntaxes:*
+
+`sunOrMoon`
+
+---
 *Example 1:*
+
 ```sqf
 private _transitionState = sunOrMoon;
 ```

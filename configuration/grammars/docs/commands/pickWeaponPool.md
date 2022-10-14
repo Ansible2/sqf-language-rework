@@ -2,7 +2,13 @@ Transfers weapons and magazines from cargo of object into the weapon pool. This 
 
 
 ---
+*Syntaxes:*
+
+`pickWeaponPool` object
+
+---
 *Example 1:*
+
 ```sqf
 pickWeaponPool vehicle player;
 ```

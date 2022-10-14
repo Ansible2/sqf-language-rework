@@ -2,7 +2,13 @@ Set interval of emitting particles from particle source. In Arma 3 hardcoded lim
 
 
 ---
+*Syntaxes:*
+
+particleSource `setDropInterval` interval
+
+---
 *Example 1:*
+
 ```sqf
 _source setDropInterval 0.05;
 ```

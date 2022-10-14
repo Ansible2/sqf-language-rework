@@ -4,7 +4,13 @@ See [[ArmA:_Mission_Editor#Triggers_Mode_.28F3.29|ArmA:Mission Editor - Triggers
 
 
 ---
+*Syntaxes:*
+
+trigger `setTriggerActivation` [by, type, repeating]
+
+---
 *Example 1:*
+
 ```sqf
 _trigger setTriggerActivation ["WEST", "EAST D", true];
 ```

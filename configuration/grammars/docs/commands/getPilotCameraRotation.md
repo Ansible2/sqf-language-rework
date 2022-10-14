@@ -2,7 +2,13 @@ Returns rotation (relative to the centered camera position) of the object airpla
 
 
 ---
+*Syntaxes:*
+
+`getPilotCameraRotation` object
+
+---
 *Example 1:*
+
 ```sqf
 _pilotCamRot = getPilotCameraRotation vehicle player;
 ```

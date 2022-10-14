@@ -4,7 +4,13 @@ Use this command to force desired effective commander.
 
 
 ---
+*Syntaxes:*
+
+vehicle `setEffectiveCommander` person
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player setEffectiveCommander player;
 ```

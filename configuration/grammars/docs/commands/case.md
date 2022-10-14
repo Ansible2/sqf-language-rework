@@ -3,7 +3,13 @@ Also note that it is not possible to store the returned `Switch Type` in a varia
 
 
 ---
+*Syntaxes:*
+
+`case` b
+
+---
 *Example 1:*
+
 ```sqf
 switch (_condition) do
 {

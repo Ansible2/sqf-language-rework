@@ -2,7 +2,13 @@ Remove given member from given team. Effect is local, unless both member and tea
 
 
 ---
+*Syntaxes:*
+
+team `removeTeamMember` member
+
+---
 *Example 1:*
+
 ```sqf
 _team removeTeamMember _teamMember;
 ```

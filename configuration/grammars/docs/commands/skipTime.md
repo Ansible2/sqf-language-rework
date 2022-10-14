@@ -2,17 +2,25 @@ Jumps the specified number of hours forward or backward.<br>The time of day and 
 
 
 ---
+*Syntaxes:*
+
+`skipTime` duration
+
+---
 *Example 1:*
+
 ```sqf
 skipTime 5;
 ```
 
 *Example 2:*
+
 ```sqf
 skipTime (5/60); // be sure to use parentheses, otherwise here (skipTime 5)/60 will happen
 ```
 
 *Example 3:*
+
 ```sqf
 while {true} do 
 {
@@ -22,6 +30,7 @@ while {true} do
 ```
 
 *Example 4:*
+
 ```sqf
 skipTime ((_timeToSkipTo - dayTime + 24) % 24); // skip forward to a specific time, irrespective of the current mission time
 ```

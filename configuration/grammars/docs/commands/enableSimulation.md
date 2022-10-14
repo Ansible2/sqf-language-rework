@@ -4,7 +4,13 @@ For a global and JIP enabled alternative, see `enableSimulationGlobal`.
 
 
 ---
+*Syntaxes:*
+
+entity `enableSimulation` state
+
+---
 *Example 1:*
+
 ```sqf
 player enableSimulation false;
 ```

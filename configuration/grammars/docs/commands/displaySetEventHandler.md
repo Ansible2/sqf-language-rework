@@ -5,12 +5,19 @@ If applicable, see `DIK KeyCodes` for a list of key code constants, which are re
 
 
 ---
+*Syntaxes:*
+
+display `displaySetEventHandler` [handlerName, function]
+
+---
 *Example 1:*
+
 ```sqf
 _control displaySetEventHandler ["KeyDown", ""];
 ```
 
 *Example 2:*
+
 **init.sqf**:
 
 ```sqf

@@ -2,7 +2,15 @@ Returns if a control on the currently active user dialog is enabled. Disabled co
 
 
 ---
+*Syntaxes:*
+
+`ctrlEnabled`  idc
+
+`ctrlEnabled`  controlName
+
+---
 *Example 1:*
+
 ```sqf
 if !(ctrlEnabled 100) then
 {
@@ -11,6 +19,7 @@ if !(ctrlEnabled 100) then
 ```
 
 *Example 2:*
+
 ```sqf
 _enabled = ctrlEnabled _control;
 ```

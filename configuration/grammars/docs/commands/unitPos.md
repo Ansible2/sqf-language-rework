@@ -5,7 +5,13 @@ Return the unit position rules.
 
 
 ---
+*Syntaxes:*
+
+`unitPos` unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str unitPos _unit;
 ```

@@ -4,7 +4,13 @@ Returns 3 arrays for easy cross reference: 1st - array of hit point names, 2nd -
 
 
 ---
+*Syntaxes:*
+
+`getAllHitPointsDamage` entity
+
+---
 *Example 1:*
+
 ```sqf
 getAllHitPointsDamage player;
 //[
@@ -15,6 +21,7 @@ getAllHitPointsDamage player;
 ```
 
 *Example 2:*
+
 ```sqf
 getAllHitPointsDamage (vehicle player);
 //[

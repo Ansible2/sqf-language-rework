@@ -2,7 +2,13 @@ Deletes internal class for the leaderboard with given name. Returns true if the 
 
 
 ---
+*Syntaxes:*
+
+`leaderboardDeInit` boardName
+
+---
 *Example 1:*
+
 ```sqf
 leaderboardDeInit "TT01";
 ```

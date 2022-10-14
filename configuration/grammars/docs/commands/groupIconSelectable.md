@@ -2,7 +2,13 @@ Returns whether or not group icons raise `onGroupIconClick`, `onGroupIconOverEnt
 
 
 ---
+*Syntaxes:*
+
+`groupIconSelectable`
+
+---
 *Example 1:*
+
 ```sqf
 hint str groupIconSelectable;
 ```

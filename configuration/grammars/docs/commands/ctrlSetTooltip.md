@@ -2,17 +2,25 @@ Sets tooltip text of given control.
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetTooltip` text
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetTooltip "tooltip";
 ```
 
 *Example 2:*
+
 ```sqf
 findDisplay 10000 displayCtrl 10001 ctrlSetTooltip "ThisIsAGoodTip";
 ```
 
 *Example 3:*
+
 ```sqf
 with uiNamespace do 
 {

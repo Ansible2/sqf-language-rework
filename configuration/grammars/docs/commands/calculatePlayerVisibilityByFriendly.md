@@ -2,7 +2,13 @@ Sets if friendly units will calculate `player`'s visibility or not. Default valu
 
 
 ---
+*Syntaxes:*
+
+`calculatePlayerVisibilityByFriendly` calculate
+
+---
 *Example 1:*
+
 ```sqf
 calculatePlayerVisibilityByFriendly true;
 ```

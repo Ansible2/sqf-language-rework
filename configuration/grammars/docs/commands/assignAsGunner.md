@@ -2,7 +2,13 @@ Assign a unit as gunner of a vehicle. Used together with `orderGetIn` to order s
 
 
 ---
+*Syntaxes:*
+
+unitName `assignAsGunner` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 assignAsGunner _tank;
 [_soldier1] orderGetIn true;

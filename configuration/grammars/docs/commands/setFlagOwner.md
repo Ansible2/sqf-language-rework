@@ -2,12 +2,19 @@ Sets flag owner. When owner is set to `objNull` or any object other than a unit 
 
 
 ---
+*Syntaxes:*
+
+flag `setFlagOwner` owner
+
+---
 *Example 1:*
+
 ```sqf
 _flag1 setFlagOwner _soldier1;
 ```
 
 *Example 2:*
+
 To return the flag back to the flag pole:
 
 ```sqf

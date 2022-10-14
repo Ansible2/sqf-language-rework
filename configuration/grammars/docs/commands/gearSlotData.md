@@ -2,12 +2,19 @@ Returns gear slot item name.
 
 
 ---
+*Syntaxes:*
+
+`gearSlotData` control
+
+---
 *Example 1:*
+
 ```sqf
 gearSlotData _myControl;
 ```
 
 *Example 2:*
+
 Open any ammobox and click by any gear slots:
 
 ```sqf

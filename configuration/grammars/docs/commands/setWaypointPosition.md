@@ -3,12 +3,19 @@ The waypoint will be placed similar to **"NONE"}} attribute in `setVehiclePositi
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWaypointPosition` [center, radius]
+
+---
 *Example 1:*
+
 ```sqf
 [_grp, 2] setWaypointPosition [position player, 0];
 ```
 
 *Example 2:*
+
 Exact placement using a negative `radius` and `PositionASL`:
 
 ```sqf

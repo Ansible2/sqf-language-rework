@@ -3,12 +3,19 @@ If applicable, see `DIK_KeyCodes` for a list of key code constants, which are re
 
 
 ---
+*Syntaxes:*
+
+display `displayAddEventHandler` [eventName, code]
+
+---
 *Example 1:*
+
 ```sqf
 moduleName_keyDownEHId = findDisplay 46 displayAddEventHandler ["KeyDown", "hint str _this;"];
 ```
 
 *Example 2:*
+
 ```sqf
 moduleName_keyDownEHId = findDisplay 46 displayAddEventHandler ["KeyDown", { hint str _this }];
 ```

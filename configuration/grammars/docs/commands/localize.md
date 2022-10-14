@@ -2,17 +2,25 @@ Used to internationalize text messages. A string is returned from `Stringtable.c
 
 
 ---
+*Syntaxes:*
+
+`localize` stringName
+
+---
 *Example 1:*
+
 ```sqf
 hint localize "STR_WEST"; // Returns "BLUFOR"
 ```
 
 *Example 2:*
+
 ```sqf
 hint format ["Go %1", localize "STR_Q_NORTH"]; // Returns "Go North"
 ```
 
 *Example 3:*
+
 ```sqf
 hint format 
 [
@@ -22,6 +30,7 @@ hint format
 ```
 
 *Example 4:*
+
 ```sqf
 localize "$STR_USRACT_ADJUST"; // Since Arma 3 v2.04, Returns "Adjust"
 ```

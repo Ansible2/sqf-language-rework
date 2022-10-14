@@ -6,7 +6,13 @@ Returns a list of playable units available for switching to
 
 
 ---
+*Syntaxes:*
+
+`switchableUnits`
+
+---
 *Example 1:*
+
 ```sqf
 _availableUnits = switchableUnits;
 ```

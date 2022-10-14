@@ -4,17 +4,25 @@ Object FOV is indirectly connected with optics magnification or player view zoom
 
 
 ---
+*Syntaxes:*
+
+`getObjectFOV` object
+
+---
 *Example 1:*
+
 ```sqf
 private _objFOV = getObjectFOV player;
 ```
 
 *Example 2:*
+
 ```sqf
 private _objFOVinDegrees = deg getObjectFOV cursorObject;
 ```
 
 *Example 3:*
+
 Perceived distance to an object:
 
 ```sqf

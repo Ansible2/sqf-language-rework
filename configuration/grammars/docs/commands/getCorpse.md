@@ -2,7 +2,13 @@ Returns the corpse associated with given weaponholder. When unit is killed and h
 
 
 ---
+*Syntaxes:*
+
+`getCorpse` weaponholder
+
+---
 *Example 1:*
+
 ```sqf
 systemChat str getCorpse cursorObject;
 ```

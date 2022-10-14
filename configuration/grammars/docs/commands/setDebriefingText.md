@@ -5,7 +5,15 @@ Sets debriefing title, text, subtitle, picture and background for a mission endi
 
 
 ---
+*Syntaxes:*
+
+endType `setDebriefingText` [title, description]
+
+endType `setDebriefingText` [title, description, subtitle, picture, background]
+
+---
 *Example 1:*
+
 ```sqf
 _currentObjective = (taskDescription (currentTask player)) select 2;
 "endDeath" setDebriefingText ["You Lose","All of your men were killed while assaulting the " + _currentObjective];

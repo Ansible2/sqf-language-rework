@@ -4,7 +4,13 @@ So in the cases where `sleep` would get stuck indefinitely, `uiSleep` can still 
 
 
 ---
+*Syntaxes:*
+
+`uiSleep` delay
+
+---
 *Example 1:*
+
 ```sqf
 uiSleep 0.5;
 ```

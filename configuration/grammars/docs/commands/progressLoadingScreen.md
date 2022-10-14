@@ -2,7 +2,13 @@ If loading screen is shown, sets progress bar to the given value (interval is fr
 
 
 ---
+*Syntaxes:*
+
+`progressLoadingScreen` progress
+
+---
 *Example 1:*
+
 ```sqf
 startLoadingScreen ["Loading My Mission"];
 // 

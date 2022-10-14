@@ -2,7 +2,13 @@ Prepares the camera field of view (zoom). The default zoom level is 0.75, 0.01 i
 
 
 ---
+*Syntaxes:*
+
+camera `camPrepareFov` fieldOfView
+
+---
 *Example 1:*
+
 ```sqf
 _camera camPrepareFov 0.1;
 ```

@@ -2,17 +2,27 @@ Find objects (Units, Vehicles, Dead, Map Objects) in a sphere with given radius.
 
 
 ---
+*Syntaxes:*
+
+position `nearObjects` radius
+
+position `nearObjects` [typeName, radius]
+
+---
 *Example 1:*
+
 ```sqf
 _list = position player nearObjects 50;
 ```
 
 *Example 2:*
+
 ```sqf
 _list = [_xpos,_ypos] nearObjects ["House", 20];
 ```
 
 *Example 3:*
+
 ```sqf
 _list = player nearObjects 20;
 ```

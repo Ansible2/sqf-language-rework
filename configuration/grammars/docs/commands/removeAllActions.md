@@ -2,12 +2,19 @@ Removes all unit's user added actions.
 
 
 ---
+*Syntaxes:*
+
+`removeAllActions` obj
+
+---
 *Example 1:*
+
 ```sqf
 removeAllActions player;
 ```
 
 *Example 2:*
+
 Do
 
 ```sqf
@@ -24,6 +31,7 @@ removeAllActions player;
 ```
 
 *Example 3:*
+
 Do
 
 ```sqf

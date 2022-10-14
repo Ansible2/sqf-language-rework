@@ -2,7 +2,13 @@ Deletes given control. The control has to be created either by script with `ctrl
 
 
 ---
+*Syntaxes:*
+
+`ctrlDelete` control
+
+---
 *Example 1:*
+
 ```sqf
 ctrlDelete ((findDisplay 20000) displayCtrl 20001);
 ```

@@ -4,12 +4,19 @@ For Arma 3 actions see: `playAction/actions`.
 
 
 ---
+*Syntaxes:*
+
+soldier `playActionNow` action
+
+---
 *Example 1:*
+
 ```sqf
 soldierOne playActionNow "SitDown";
 ```
 
 *Example 2:*
+
 ```sqf
 rabbitTwo playActionNow "WalkF";
 ```

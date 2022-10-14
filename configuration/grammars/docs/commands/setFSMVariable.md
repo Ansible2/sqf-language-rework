@@ -3,7 +3,13 @@ The FSM handle is the number returned by the `execFSM` command.
 
 
 ---
+*Syntaxes:*
+
+handle `setFSMVariable` [name, value]
+
+---
 *Example 1:*
+
 ```sqf
 _handle = execFSM "test.fsm";
 _handle setFSMVariable ["_foo", 23]; // sets variable _foo in the FSM to 23

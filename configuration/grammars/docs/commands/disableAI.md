@@ -2,7 +2,13 @@ Disables parts of the AI behaviour to get a better control over the actions of a
 
 
 ---
+*Syntaxes:*
+
+unit `disableAI` feature
+
+---
 *Example 1:*
+
 ```sqf
 MyUnit disableAI "AUTOTARGET";
 ```

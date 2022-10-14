@@ -9,7 +9,13 @@ It is possible to use more than one `#line` keywords, but it seems having just o
 
 
 ---
+*Syntaxes:*
+
+`preprocessFileLineNumbers` fileName
+
+---
 *Example 1:*
+
 ```sqf
 _string = preprocessFileLineNumbers "A3\ui_f\scripts\IGUI\RscUnitInfo.sqf"
 ```

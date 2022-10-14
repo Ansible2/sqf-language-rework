@@ -2,7 +2,21 @@ Checks if given object can be stored in inventory of given object or any invento
 
 
 ---
+*Syntaxes:*
+
+object `canAdd` item
+
+object `canAdd` [item, count]
+
+weapon `canAdd` item
+
+weapon `canAdd` [attachment, slot]
+
+weapon `canAdd` [magazine, muzzle]
+
+---
 *Example 1:*
+
 ```sqf
 if (player canAdd "FirstAidKit") then
 {
@@ -15,6 +29,7 @@ else
 ```
 
 *Example 2:*
+
 ```sqf
 if (_box canAdd "FirstAidKit") then
 {
@@ -27,11 +42,13 @@ else
 ```
 
 *Example 3:*
+
 ```sqf
 car canAdd [currentWeapon player, 50];
 ```
 
 *Example 4:*
+
 ```sqf
 // check if attachment can be loaded
 "arifle_Katiba_GL_F" canAdd "acc_pointer_IR";
@@ -39,6 +56,7 @@ car canAdd [currentWeapon player, 50];
 ```
 
 *Example 5:*
+
 ```sqf
 // check if magazine can be loaded
 "arifle_Katiba_GL_F" canAdd "30Rnd_65x39_caseless_green";

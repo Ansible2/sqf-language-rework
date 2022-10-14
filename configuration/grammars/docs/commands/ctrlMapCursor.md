@@ -1,25 +1,33 @@
 Changes the default cursor that appears when interacting with a map control to a custom one. Use an empty string to restore the default cursor.
-.
 
 
 ---
+*Syntaxes:*
+
+control `ctrlMapCursor` [defaultCursor, newCursor]
+
+---
 *Example 1:*
+
 ```sqf
 _map ctrlMapCursor ["Track", "Arrow"];
 ```
 
 *Example 2:*
+
 ```sqf
 uiNamespace setVariable ["_map", findDisplay 12 displayCtrl 51];
 (uiNamespace getVariable "_map") ctrlMapCursor ["Track", "HC_overFriendly"];
 ```
 
 *Example 3:*
+
 ```sqf
 findDisplay 12 displayCtrl 51 ctrlMapCursor ["Scroll", "Wait"];
 ```
 
 *Example 4:*
+
 Cycle through all available cursors over custom map:
 
 ```sqf

@@ -2,7 +2,13 @@ Aggregate candidates.
 
 
 ---
+*Syntaxes:*
+
+[speaker, side, classname, position, timeMax] `targetsAggregate` candidates
+
+---
 *Example 1:*
+
 ```sqf
 _aggregation = [player, sideEnemy, "", [], 0] targetsAggregate (player targetsQuery [objNull, sideUnknown, "", [], 0]);
 /*

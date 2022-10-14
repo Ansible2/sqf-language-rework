@@ -6,7 +6,15 @@ Read [[Arma 3: Remote Execution]] for more information about remote execution, s
 
 
 ---
+*Syntaxes:*
+
+params `remoteExec` [order, targets, JIP]
+
+`remoteExec` [functionName, targets, JIP]
+
+---
 *Example 1:*
+
 How to write `remoteExec`/`remoteExecCall`:
 <code><See Color Reference hint> {{Color|teal|"Hello"}};
 <See cc Reference s>
@@ -27,6 +35,7 @@ How to write `remoteExec`/`remoteExecCall`:
 {{Color|teal|["line 1", "line 2"]}} remoteExec ["<See Color Reference BIS_fnc_infoText>"];</code>
 
 *Example 2:*
+
 send an order to specific machines:
 
 ```sqf
@@ -37,6 +46,7 @@ send an order to specific machines:
 ```
 
 *Example 3:*
+
 <!-- This example is referenced in the Syntax section. -->
 Add statements to the JIP queue:
 
@@ -63,6 +73,7 @@ remoteExec ["", "MY_JIP_ID"]; // the "MY_JIP_ID" order is removed from the JIP q
 ```
 
 *Example 4:*
+
 Some more complex examples:
 
 ```sqf
@@ -71,6 +82,7 @@ Some more complex examples:
 ```
 
 *Example 5:*
+
 A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1];
 ``` (on machines where the player is in MyGroup):
 
@@ -80,6 +92,7 @@ A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1]
 ```
 
 *Example 6:*
+
 ``Multiplayer Scripting` "performance trick"`<br>
 This <sqf inline>[0, -2] select isDedicated
 ``` check is worth to avoid `function` server-side calculations only:
@@ -93,6 +106,7 @@ This <sqf inline>[0, -2] select isDedicated
 ```
 
 *Example 7:*
+
 <!-- This example is referenced in the Description section. -->
 As said in the description: `commands` will be executed in an `unscheduled environment`
 
@@ -101,6 +115,7 @@ As said in the description: `commands` will be executed in an `unscheduled envir
 ```
 
 *Example 8:*
+
 <!-- This example is referenced in the Description section. -->
 
 ```sqf

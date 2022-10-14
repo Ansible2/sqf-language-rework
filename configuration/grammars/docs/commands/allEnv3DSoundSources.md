@@ -2,7 +2,13 @@ Returns all environmental 3D sound sources (`Object`s) like trees and houses in 
 
 
 ---
+*Syntaxes:*
+
+[[allEnv3DSoundSources]]
+
+---
 *Example 1:*
+
 ```sqf
 private _sources = allEnv3DSoundSources;
 ```

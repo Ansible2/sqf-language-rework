@@ -6,12 +6,19 @@ Specifies the entity which will activate the selected trigger.<br>
 
 
 ---
+*Syntaxes:*
+
+triggerName `triggerAttachVehicle` objects
+
+---
 *Example 1:*
+
 ```sqf
 trigger triggerAttachVehicle [player];
 ```
 
 *Example 2:*
+
 ```sqf
 trigger triggerAttachVehicle [];
 ```

@@ -1,16 +1,25 @@
 Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.
 A rain density of zero is no rain, one is maximum rain. Rain is not possible when `overcast` is less than 0.7.
 
- is `0.5`.
 
+---
+*Syntaxes:*
+
+time `setRain` rain
+
+<See Icon Reference 32> `setRain` rainParams
+
+<See Icon Reference 32> `setRain` config
 
 ---
 *Example 1:*
+
 ```sqf
 60 setRain 1;
 ```
 
 *Example 2:*
+
 Force no rain:
 
 ```sqf
@@ -20,6 +29,7 @@ forceWeatherChange;
 ```
 
 *Example 3:*
+
 Snow like effect (Since <See arm Reference 3> v2.08):
 
 ```sqf
@@ -51,6 +61,7 @@ setRain [
 ```
 
 *Example 4:*
+
 After 2.10
 
 ```sqf

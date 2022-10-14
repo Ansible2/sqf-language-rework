@@ -2,7 +2,13 @@ Plays the map animation.
 
 
 ---
+*Syntaxes:*
+
+`ctrlMapAnimCommit`  mapControl
+
+---
 *Example 1:*
+
 Center map on player:
 
 ```sqf

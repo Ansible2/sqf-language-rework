@@ -2,7 +2,13 @@ Returns current sum of mass from items stored in all unit's containers, linked i
 
 
 ---
+*Syntaxes:*
+
+`loadAbs` unit
+
+---
 *Example 1:*
+
 Player weight:
 
 ```sqf

@@ -2,7 +2,13 @@ Starts async. operation to upload score to board with given name, value is only 
 
 
 ---
+*Syntaxes:*
+
+`leaderboardsRequestUploadScoreKeepBest`  [boardName, score, details]
+
+---
 *Example 1:*
+
 ```sqf
 leaderboardsRequestUploadScoreKeepBest ["TT01", 1234, [5,6,7,8]];
 ```

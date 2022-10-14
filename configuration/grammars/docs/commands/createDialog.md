@@ -2,7 +2,15 @@ Creates a dialog which is defined either in the mission's `description.ext`, in 
 
 
 ---
+*Syntaxes:*
+
+`createDialog`  dialogName
+
+`createDialog` [dialogName, forceOnTop]
+
+---
 *Example 1:*
+
 ```sqf
 _ok = createDialog "RscDisplayGame";
 if (!_ok) then {hint "Dialog couldn't be opened!"};

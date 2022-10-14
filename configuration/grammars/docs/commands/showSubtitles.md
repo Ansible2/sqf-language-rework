@@ -2,7 +2,13 @@ Enables / disables showing of subtitles in a chat. Only scripted/engine chatter 
 
 
 ---
+*Syntaxes:*
+
+`showSubtitles` enable
+
+---
 *Example 1:*
+
 ```sqf
 showSubtitles false;
 ```

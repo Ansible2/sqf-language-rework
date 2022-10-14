@@ -1,9 +1,14 @@
 Returns an array containing the names and values of environmental 2D sound controllers, variables that can be used in simple expressions when configuring sounds.
- is for 2D controller (`getAllEnvSoundControllers`)
 
 
 ---
+*Syntaxes:*
+
+[[getAllEnv3DSoundControllers]] object
+
+---
 *Example 1:*
+
 ```sqf
 getAllEnv3DSoundControllers _thatTreeOverThere;
 /*

@@ -2,7 +2,13 @@ Sets maximum load limit for a uniform/vest/backpack containers, vehicle cargo, s
 
 
 ---
+*Syntaxes:*
+
+container `setMaxLoad` maxLoadValue
+
+---
 *Example 1:*
+
 ```sqf
 _yaMum setMaxLoad _maxLoad;
 ```

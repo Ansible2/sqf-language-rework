@@ -4,7 +4,13 @@ In scripts an extra step is needed to achieve the same effect. See [[<See PAGENA
 
 
 ---
+*Syntaxes:*
+
+object `setVehicleVarName` name
+
+---
 *Example 1:*
+
 ```sqf
 private _playersCar = vehicle player;
 systemChat str _playersCar; // displays e.g "ce06b00# 164274: offroad_01_unarmed_f.p3d"
@@ -18,6 +24,7 @@ publicVariable "MyOffroad";	// broadcasts it over the network
 ```
 
 *Example 2:*
+
 ```sqf
 _offroad setVehicleVarName ""; // Reset string representation to the default value
 ```

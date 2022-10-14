@@ -5,7 +5,13 @@ For Unicode alternative see `toUpper`.
 
 
 ---
+*Syntaxes:*
+
+`toUpperANSI` string
+
+---
 *Example 1:*
+
 ```sqf
 hint toUpperANSI "AaBb1"; // returns "AABB1"
 ```

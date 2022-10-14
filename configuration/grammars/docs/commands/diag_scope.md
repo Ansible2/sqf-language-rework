@@ -4,7 +4,13 @@ Any use of `call` and such will stack execution creating child scopes and increa
 
 
 ---
+*Syntaxes:*
+
+`diag_scope`
+
+---
 *Example 1:*
+
 ```sqf
 [] spawn
 { 

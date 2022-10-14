@@ -2,7 +2,13 @@ Continue sequence of `for` construct. It sets the start value of the index varia
 
 
 ---
+*Syntaxes:*
+
+for `from` b
+
+---
 *Example 1:*
+
 ```sqf
 for "_i" from 10 to 20 do
 {

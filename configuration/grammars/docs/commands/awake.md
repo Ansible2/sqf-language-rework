@@ -2,18 +2,26 @@ Wakes up sleeping PhysX object or puts a PhysX object to sleep. In 2.10 this com
 
 
 ---
+*Syntaxes:*
+
+object `awake` awake
+
+---
 *Example 1:*
+
 ```sqf
 _object awake false;
 ```
 
 *Example 2:*
+
 Since 2.10: 
 ```sqf
 _deadUnit awake true;
 ```
 
 *Example 3:*
+
 Make corpse react to explosion (since 2.10): 
 ```sqf
 _deadUnit addEventHandler ["Explosion", 

@@ -4,12 +4,19 @@ How frequently the unit(s) is/are glancing there depends on behaviour.
 
 
 ---
+*Syntaxes:*
+
+unit(s) `glanceAt` position
+
+---
 *Example 1:*
+
 ```sqf
 _someSoldier glanceAt _otherSoldier;
 ```
 
 *Example 2:*
+
 ```sqf
 [_someSoldier, _otherSoldier] glanceAt markerPos "markerOne";
 ```

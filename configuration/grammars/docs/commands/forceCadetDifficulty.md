@@ -2,12 +2,19 @@ Forces **showCadetHints}} and <See hl Reference P> global Cadet [[Arma 3: Diffic
 
 
 ---
+*Syntaxes:*
+
+`forceCadetDifficulty` [showCadetHints, showCadetWP]
+
+---
 *Example 1:*
+
 ```sqf
 private _previousSettings = forceCadetDifficulty [true, false];
 ```
 
 *Example 2:*
+
 ```sqf
 private _fnc_forceCadetDifficulty = 
 {

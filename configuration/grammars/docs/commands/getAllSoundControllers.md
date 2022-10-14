@@ -2,7 +2,13 @@ Returns an array containing names and values of the sound controllers that can b
 
 
 ---
+*Syntaxes:*
+
+`getAllSoundControllers` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 getAllSoundControllers vehicle player;
 /*

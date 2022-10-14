@@ -1,7 +1,9 @@
 Set parameters to particle source. Array is in format `ParticleArray`. <br>
 
 Since Arma 3 version 1.11.114706 you can use this command to overwrite many values set by `setParticleClass`, particularity those defined in `ParticleArray`. Correspondence between CfgCloudlets class param names and command array of params:
-<sqf>particleSource setParticleParams
+
+```sqf
+particleSource setParticleParams
 [
 	/* String or Array - If string then the name of the particleShape. And following default values are used:
 		particleFSNtieth = 1
@@ -40,9 +42,16 @@ Since Arma 3 version 1.11.114706 you can use this command to overwrite many valu
 	bounceOnSurface, /*Optional Number*/
 	emissiveColor, /*Optional Array of Array of RGBA Numbers*/
 	vectorDir /*Optional 3D Array Vector dir. Since Arma 3 v1.92 it is possible to set the initial direction of the SpaceObject */
-];</sqf>
+];
+```
 
 
 ---
+*Syntaxes:*
+
+particleSource `setParticleParams` array
+
+---
 *Example 1:*
+
 see `ParticleArray`

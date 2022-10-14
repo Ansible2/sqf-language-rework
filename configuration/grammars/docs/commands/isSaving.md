@@ -2,7 +2,13 @@ Returns the status of autosave request, made when `saveGame` command is executed
 
 
 ---
+*Syntaxes:*
+
+`isSaving`
+
+---
 *Example 1:*
+
 ```sqf
 [] spawn
 {

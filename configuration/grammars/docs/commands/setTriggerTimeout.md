@@ -3,7 +3,13 @@ For a normal trigger, `min`, `mid` and `max` are used to generate random duratio
 
 
 ---
+*Syntaxes:*
+
+trigger `setTriggerTimeout` [min, mid, max, interruptable]
+
+---
 *Example 1:*
+
 ```sqf
 _trigger setTriggerTimeout [5, 10, 7, false];
 ```

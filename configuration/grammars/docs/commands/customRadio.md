@@ -2,7 +2,13 @@ Sends the message to the custom radio channel. The message is defined in the `de
 
 
 ---
+*Syntaxes:*
+
+unit `customRadio` [customChannelID, message]
+
+---
 *Example 1:*
+
 ```sqf
 _soldierOne customRadio [1, "WordEnemy"];
 ```

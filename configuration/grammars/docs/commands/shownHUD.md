@@ -2,7 +2,13 @@ Returns array of `Boolean`s corresponding to the visibility of various HUD eleme
 
 
 ---
+*Syntaxes:*
+
+`shownHUD`
+
+---
 *Example 1:*
+
 ```sqf
 _hudStatus = shownHUD;
 ```

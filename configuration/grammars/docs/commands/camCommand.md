@@ -2,12 +2,19 @@ Executes a command on the given `camera / actor` object. Known commands:
 
 
 ---
+*Syntaxes:*
+
+camera `camCommand` command
+
+---
 *Example 1:*
+
 ```sqf
 _camera camCommand "manual on";
 ```
 
 *Example 2:*
+
 ```sqf
 private _camera = "CamCurator" camCreate [0,0,0];
 _camera camCommand "maxPitch 89";

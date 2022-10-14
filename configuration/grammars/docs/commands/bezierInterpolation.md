@@ -3,7 +3,13 @@ Gets interpolated value based on {{Wikipedia|Bézier_curve|Bézier curve}} with 
 
 
 ---
+*Syntaxes:*
+
+progress `bezierInterpolation` positions
+
+---
 *Example 1:*
+
 Quick demonstration that spawns some spheres around player object:
 
 ```sqf
@@ -18,6 +24,7 @@ for "_i" from 0 to 1 step 0.05 do {
 ```
 
 *Example 2:*
+
 Create a map marker curve from 4 control points with overlap (progress is -0.5...1.5 instead of 0...1):
 
 ```sqf

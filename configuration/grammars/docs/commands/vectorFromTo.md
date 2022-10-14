@@ -3,7 +3,13 @@ To get a non-normalised vector, use `vectorDiff`.
 
 
 ---
+*Syntaxes:*
+
+vector1 `vectorFromTo` vector2
+
+---
 *Example 1:*
+
 ```sqf
 [1,2,3] vectorFromTo [4,5,6];
 // is the same as

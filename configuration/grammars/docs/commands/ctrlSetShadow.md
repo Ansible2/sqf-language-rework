@@ -5,7 +5,13 @@ Sets 'shadow' property of the control:
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetShadow` shadow
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetShadow 1;
 ```

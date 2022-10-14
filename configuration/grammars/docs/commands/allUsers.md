@@ -2,7 +2,13 @@ Returns a list of `player ids` of all the users on an MP server.
 
 
 ---
+*Syntaxes:*
+
+`allUsers`
+
+---
 *Example 1:*
+
 ```sqf
 if (isServer) then
 {

@@ -2,7 +2,13 @@ Allow or prevent an object being damaged (or injured, or killed). The command do
 
 
 ---
+*Syntaxes:*
+
+object `allowDammage` allow
+
+---
 *Example 1:*
+
 ```sqf
 player allowDammage false;
 ```

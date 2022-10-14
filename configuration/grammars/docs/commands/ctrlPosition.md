@@ -2,7 +2,13 @@ Returns the current position of 2D control as **[x, y, w, h]}} array. For 3D con
 
 
 ---
+*Syntaxes:*
+
+`ctrlPosition`  controlName
+
+---
 *Example 1:*
+
 ```sqf
 _pos = ctrlPosition _control;
 ```

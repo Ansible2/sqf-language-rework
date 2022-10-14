@@ -2,7 +2,13 @@ Returns current user settings for particles quality (configure->video->general->
 
 
 ---
+*Syntaxes:*
+
+`particlesQuality`
+
+---
 *Example 1:*
+
 ```sqf
 _currentQuality = particlesQuality;
 ```

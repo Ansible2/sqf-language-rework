@@ -2,7 +2,13 @@ Executes the given command recursively for both teams and agents that are member
 
 
 ---
+*Syntaxes:*
+
+command `forEachMember` team
+
+---
 *Example 1:*
+
 ```sqf
 (example);
 ```

@@ -5,7 +5,13 @@ Sets how to handle opening of URL, default browser ot Steam overlay. Possible va
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetURLOverlayMode` mode
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetURLOverlayMode 1;
 ```

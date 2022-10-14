@@ -2,7 +2,15 @@ Returns all vehicle's magazines and their ammo count (also works on supply boxes
 
 
 ---
+*Syntaxes:*
+
+`magazinesAmmo` vehicle
+
+`magazinesAmmo` [vehicle, includeEmpty]
+
+---
 *Example 1:*
+
 ```sqf
 _magazinesAmmo = magazinesAmmo player;
 /*
@@ -18,6 +26,7 @@ _magazinesAmmo = magazinesAmmo player;
 ```
 
 *Example 2:*
+
 ```sqf
 _magazinesAmmo = magazinesAmmo Mi_48;
 /*

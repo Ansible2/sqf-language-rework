@@ -2,7 +2,13 @@ Controls the ability of given unit to activate entities with disabled [[Arma 3: 
 
 
 ---
+*Syntaxes:*
+
+unit `triggerDynamicSimulation` trigger
+
+---
 *Example 1:*
+
 ```sqf
 player triggerDynamicSimulation false;
 ```

@@ -2,7 +2,13 @@ Displays a resource defined in RscTitles. Also see `cutRsc`, with these two comm
 
 
 ---
+*Syntaxes:*
+
+`titleRsc` [text, type, speed, showInMap]
+
+---
 *Example 1:*
+
 ```sqf
 titleRsc ["BIS", "PLAIN"];
 ```

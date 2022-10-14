@@ -3,7 +3,13 @@ Returns an array of all entities that are attached to the transport with `ropes`
 
 
 ---
+*Syntaxes:*
+
+`ropeAttachedObjects` ropesOwner
+
+---
 *Example 1:*
+
 ```sqf
 _cargoArray = ropeAttachedObjects heli1;
 ```

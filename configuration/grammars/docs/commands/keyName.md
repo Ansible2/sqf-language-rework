@@ -2,12 +2,19 @@ Returns the name of a button with extra quotation marks (on the keyboard, mouse 
 
 
 ---
+*Syntaxes:*
+
+`keyName`  dikCode
+
+---
 *Example 1:*
+
 ```sqf
 _name = keyName 28; // result is """Enter"""
 ```
 
 *Example 2:*
+
 From Arma 3 v2.08:
 
 ```sqf

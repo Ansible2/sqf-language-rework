@@ -2,7 +2,13 @@ Set custom data for the task. Tooltip will be drawn in task list on the right si
 
 
 ---
+*Syntaxes:*
+
+task `setSimpleTaskCustomData` [IconPath, tooltip, description]
+
+---
 *Example 1:*
+
 ```sqf
 _task setSimpleTaskCustomData ["\A3\Ui_f\data\IGUI\Cfg\simpleTasks\letters\h_ca.paa", "This is the tooltip", "This is the description"];
 ```

@@ -2,7 +2,13 @@ Assign a unit as cargo of a vehicle. Used together with `orderGetIn` to order a 
 
 
 ---
+*Syntaxes:*
+
+unitName `assignAsCargo` vehicleName
+
+---
 *Example 1:*
+
 ```sqf
 _soldier1 assignAsCargo _truck;
 [_soldier1] orderGetIn true;

@@ -2,7 +2,13 @@ Sends given audio message to the direct channel. Command operates just like xxxx
 
 
 ---
+*Syntaxes:*
+
+unit `directSay` radioName
+
+---
 *Example 1:*
+
 ```sqf
 player directSay configName selectRandom ("true" configClasses (configFile >> "CfgRadio"));
 ```

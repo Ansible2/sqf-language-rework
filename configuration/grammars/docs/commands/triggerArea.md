@@ -2,7 +2,13 @@ Returns currently monitored trigger area. Since Arma 3 v1.60, the command return
 
 
 ---
+*Syntaxes:*
+
+`triggerArea` trigger
+
+---
 *Example 1:*
+
 ```sqf
 _area = triggerArea sensor1; // result is [200, 120, 45, false, -1];
 ```

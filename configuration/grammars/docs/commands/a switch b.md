@@ -2,10 +2,17 @@ See `switch`
 
 
 ---
+*Syntaxes:*
+
+a `:` b
+
+---
 *Example 1:*
+
 <sqs>? (_var == _test) : hint "_var is equal to _test!";</sqs>
 
 *Example 2:*
+
 ```sqf
 switch (_condition) do
 {

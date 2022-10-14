@@ -2,12 +2,19 @@ Adds/overrides loadout to a vehicle pylon. **TransportPylonsComponent}} in vehic
 
 
 ---
+*Syntaxes:*
+
+vehicle `setPylonLoadout` [pylon, magazine, forced, turret]
+
+---
 *Example 1:*
+
 ```sqf
 vehicle player setPylonLoadout ["pylon1", ""];
 ```
 
 *Example 2:*
+
 Make all of your pylon weapons Twin Cannon 30 mm:
 
 ```sqf
@@ -17,6 +24,7 @@ for "_i" from 1 to 100 do {
 ```
 
 *Example 3:*
+
 Showcase all possible magazines:
 
 ```sqf

@@ -2,7 +2,13 @@ Find the places with the maximum value of `expression` in the given area. Places
 
 
 ---
+*Syntaxes:*
+
+`selectBestPlaces` [position, radius, expression, precision, sourcesCount]
+
+---
 *Example 1:*
+
 ```sqf
 myPlaces = selectBestPlaces [position player, 50, "meadow + 2*hills", 1, 5];
 ```

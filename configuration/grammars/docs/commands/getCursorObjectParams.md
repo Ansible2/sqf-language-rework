@@ -2,7 +2,13 @@ Returns object and named selections under cursor and distance to object's surfac
 
 
 ---
+*Syntaxes:*
+
+`getCursorObjectParams`
+
+---
 *Example 1:*
+
 ```sqf
 hint str getCursorObjectParams;
 ```

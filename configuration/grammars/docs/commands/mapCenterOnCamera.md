@@ -3,7 +3,15 @@
 
 
 ---
+*Syntaxes:*
+
+mainmap `mapCenterOnCamera` enable
+
+`mapCenterOnCamera`  minimap
+
+---
 *Example 1:*
+
 ```sqf
 // --- Minimap update
 ((uiNamespace getVariable "BIS_UAV_DISPLAY") displayCtrl 112410) mapCenterOnCamera true;

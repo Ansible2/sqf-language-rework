@@ -2,7 +2,13 @@ Marks given group for auto-deletion when group is empty. `true` will mark the gr
 
 
 ---
+*Syntaxes:*
+
+group `deleteGroupWhenEmpty` delete
+
+---
 *Example 1:*
+
 ```sqf
 _group deleteGroupWhenEmpty true;
 ```

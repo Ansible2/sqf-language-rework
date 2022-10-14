@@ -2,12 +2,19 @@ Finds the nearest enemy to the specified position. Returns a null object if the 
 
 
 ---
+*Syntaxes:*
+
+object `findNearestEnemy` position
+
+---
 *Example 1:*
+
 ```sqf
 _myNearestEnemy = (units _myGroup select 0) findNearestEnemy player;
 ```
 
 *Example 2:*
+
 ```sqf
 _myNearestEnemy = player findNearestEnemy player;
 ```

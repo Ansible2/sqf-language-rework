@@ -2,7 +2,13 @@ Returns UAV/UGV vehicle if person has connection to some UAV. To return the AI u
 
 
 ---
+*Syntaxes:*
+
+`getConnectedUAV` person
+
+---
 *Example 1:*
+
 ```sqf
 getConnectedUAV player;
 ```

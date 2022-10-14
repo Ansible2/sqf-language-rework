@@ -11,12 +11,19 @@ Sets scroll values for current scrollbars in range 0...1 for the following contr
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetScrollValues` [vScrollValue, hScrollValue]
+
+---
 *Example 1:*
+
 ```sqf
 _ctrlGrp ctrlSetScrollValues [-1, 0.5];
 ```
 
 *Example 2:*
+
 ```sqf
 // ControlsGroup
 private _disp = findDisplay 46 createDisplay "RscDisplayEmpty";

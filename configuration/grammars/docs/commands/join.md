@@ -4,12 +4,19 @@ To have a group member leave a group, join him with the `grpNull` group (e.g. **
 
 
 ---
+*Syntaxes:*
+
+unitArray `join` group
+
+---
 *Example 1:*
+
 ```sqf
 [_unitOne, _unitTwo] join player;
 ```
 
 *Example 2:*
+
 ```sqf
 [_unitOne, _unitTwo] join (group player);
 ```

@@ -2,7 +2,13 @@ Returns the effective commander of the vehicle. Effective commander is the playe
 
 
 ---
+*Syntaxes:*
+
+`effectiveCommander` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 _commander = effectiveCommander tank;
 ```

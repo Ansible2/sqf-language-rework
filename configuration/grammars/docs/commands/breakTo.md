@@ -4,7 +4,13 @@ Scope name can be assigned using `scopeName` command.
 
 
 ---
+*Syntaxes:*
+
+`breakTo` name
+
+---
 *Example 1:*
+
 ```sqf
 scopeName "main";
 while { true } do

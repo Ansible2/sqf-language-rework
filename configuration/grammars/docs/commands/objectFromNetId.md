@@ -2,7 +2,13 @@ Get object with given unique ID. If object is a `group` use `groupFromNetId`. As
 
 
 ---
+*Syntaxes:*
+
+`objectFromNetId` id
+
+---
 *Example 1:*
+
 ```sqf
 objectFromNetId "2:3"
 ```

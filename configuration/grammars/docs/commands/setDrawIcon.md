@@ -2,5 +2,11 @@ Set the icon to be shown in 2D editor for the specified editor object. If mainta
 
 
 ---
+*Syntaxes:*
+
+map `setDrawIcon` [object,texture,color,offset,width,height,maintain size?,angle,string identifier,shadow,is3D,draw line?,priority]
+
+---
 *Example 1:*
+
 -

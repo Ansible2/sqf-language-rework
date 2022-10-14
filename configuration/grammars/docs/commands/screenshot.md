@@ -5,17 +5,25 @@ To increase the limit, add the following line at the end of the profile file:
 
 
 ---
+*Syntaxes:*
+
+`screenshot` filename
+
+---
 *Example 1:*
+
 ```sqf
 screenshot "";
 ```
 
 *Example 2:*
+
 ```sqf
 screenshot "testFile.png";
 ```
 
 *Example 3:*
+
 The following code will result in the screenshot being placed in **\Documents\Arma 3\Screenshots\`any\where\you\want.png`**
 
 ```sqf

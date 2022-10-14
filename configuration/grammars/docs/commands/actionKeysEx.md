@@ -15,7 +15,13 @@ The Key Device can be one of several types:
 
 
 ---
+*Syntaxes:*
+
+`actionKeysEx` userAction
+
+---
 *Example 1:*
+
 To retrieve the following key's data, use the property name without 'key':
 <syntaxhighlight lang="cpp">keyWatch[] = { 24 };</syntaxhighlight>
 
@@ -24,6 +30,7 @@ actionKeysEx "Watch"; // [[[24, "KEYBOARD"], [], false]]
 ```
 
 *Example 2:*
+
 ```sqf
 private _result = actionKeysEx "OpticsMode"; // [[[129,"MOUSE_BUTTON"],[29,"KEYBOARD"],false],[[181,"KEYBOARD"],[],false]]
 ```

@@ -5,7 +5,13 @@ Note that rows and headers are indexed separately.
 
 
 ---
+*Syntaxes:*
+
+`ctAddHeader` control
+
+---
 *Example 1:*
+
 ```sqf
 _array = ctAddHeader _control;
 ```

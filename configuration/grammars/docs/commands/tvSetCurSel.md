@@ -2,17 +2,27 @@ Sets cursor to given item on given path. IDC means id of parent Tree View. To de
 
 
 ---
+*Syntaxes:*
+
+`tvSetCurSel` [idc, path]
+
+control `tvSetCurSel` path
+
+---
 *Example 1:*
+
 ```sqf
 tvSetCurSel [101, [0]];
 ```
 
 *Example 2:*
+
 ```sqf
 _ctrl tvSetCurSel [0,0,0];
 ```
 
 *Example 3:*
+
 ```sqf
 [] spawn
 {

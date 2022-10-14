@@ -3,17 +3,25 @@ This command ignores moving objects present within the search area. The search a
 
 
 ---
+*Syntaxes:*
+
+center `findEmptyPosition` [radius, maxDistance, vehicleType]
+
+---
 *Example 1:*
+
 ```sqf
 _position = (getPosATL player) findEmptyPosition [0,100];
 ```
 
 *Example 2:*
+
 ```sqf
 _position = _center findEmptyPosition [10,100,"UH60M_EP1"];
 ```
 
 *Example 3:*
+
 Check if exact position is empty:
 
 ```sqf

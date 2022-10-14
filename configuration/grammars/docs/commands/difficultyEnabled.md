@@ -2,12 +2,19 @@ Checks specific difficulty settings of the current user. Difficulty flag names c
 
 
 ---
+*Syntaxes:*
+
+`difficultyEnabled`  flagName
+
+---
 *Example 1:*
+
 ```sqf
 hint str (difficultyEnabled "armor");
 ```
 
 *Example 2:*
+
 List current difficulty settings:
 
 ```sqf

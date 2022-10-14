@@ -2,7 +2,13 @@ Preloads all textures, materials and proxies needed to render given object. Work
 
 
 ---
+*Syntaxes:*
+
+distance `preloadObject` object
+
+---
 *Example 1:*
+
 ```sqf
 [] spawn 
 {
@@ -12,6 +18,7 @@ Preloads all textures, materials and proxies needed to render given object. Work
 ```
 
 *Example 2:*
+
 ```sqf
 [] spawn 
 {

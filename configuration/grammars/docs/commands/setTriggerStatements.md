@@ -2,7 +2,13 @@ Defines trigger condition, activation and deactivation statements. Trigger condi
 
 
 ---
+*Syntaxes:*
+
+trigger `setTriggerStatements` [condition, activation, deactivation]
+
+---
 *Example 1:*
+
 ```sqf
 _trg setTriggerStatements ["this", "hint 'trigger on'", "hint 'trigger off'"];
 ```

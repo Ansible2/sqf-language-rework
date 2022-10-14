@@ -24,17 +24,25 @@ The type is returned as on of the following all-uppercase strings:
 
 
 ---
+*Syntaxes:*
+
+`typeName` anything
+
+---
 *Example 1:*
+
 ```sqf
 _msg = "hello"; _result = typeName _msg;  //_result will be "STRING"
 ```
 
 *Example 2:*
+
 ```sqf
 _unit = player; _result = typeName _unit; //_result becomes "OBJECT"
 ```
 
 *Example 3:*
+
 Values representing direct ` Data Types`:
 
 ```sqf
@@ -60,6 +68,7 @@ hint typeName createHashMap;		// HASHMAP (Since Arma 3 v2.02)
 ```
 
 *Example 4:*
+
 ```sqf
 if (typeName _this != "ARRAY") exitWith { hint "_this is not an array!" };
 // is the same as

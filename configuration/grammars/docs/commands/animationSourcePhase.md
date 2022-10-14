@@ -2,12 +2,19 @@ Returns current animation phase of given source. Similar to `animationPhase` or 
 
 
 ---
+*Syntaxes:*
+
+object `animationSourcePhase` source
+
+---
 *Example 1:*
+
 ```sqf
 private _phase = house animationSourcePhase "Door_1_source";
 ```
 
 *Example 2:*
+
 ```sqf
 private _mainturretDirection =	deg (_marshall animationSourcePhase "mainturret"); // relative to Marshall direction
 private _maingunElevation =		deg (_marshall animationSourcePhase "maingun");

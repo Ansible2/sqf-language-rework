@@ -4,7 +4,13 @@ For Arma 3 actions see: `playAction/actions`.
 
 
 ---
+*Syntaxes:*
+
+soldier `playAction` action
+
+---
 *Example 1:*
+
 ```sqf
 soldierOne playAction "SitDown";
 ```

@@ -2,7 +2,13 @@ Collects all loaded `magazines` from all `binocular` muzzles and returns them in
 
 
 ---
+*Syntaxes:*
+
+`binocularMagazine`  unit
+
+---
 *Example 1:*
+
 ```sqf
 hint str binocularMagazine player; // ["Laserbatteries"]
 ```

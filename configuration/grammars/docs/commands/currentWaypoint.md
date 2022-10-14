@@ -10,7 +10,13 @@ By default, a group has 1 waypoint at their starting position, which is consider
 
 
 ---
+*Syntaxes:*
+
+`currentWaypoint`  groupName
+
+---
 *Example 1:*
+
 ```sqf
 _index = currentWaypoint group player;
 ```

@@ -4,7 +4,13 @@ For Custom Radio, see `radioChannelCreate`.
 
 
 ---
+*Syntaxes:*
+
+`currentChannel`
+
+---
 *Example 1:*
+
 ```sqf
 _selected = currentChannel; // 3 - for example for the Group
 ```

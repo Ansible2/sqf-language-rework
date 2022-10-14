@@ -2,7 +2,13 @@ Returns player's custom waypoint (LShift + LMB) position or an empty array **[]*
 
 
 ---
+*Syntaxes:*
+
+`customWaypointPosition`
+
+---
 *Example 1:*
+
 ```sqf
 if (customWaypointPosition isNotEqualTo []) then
 {

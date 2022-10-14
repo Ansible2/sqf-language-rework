@@ -2,7 +2,13 @@ Get group with given unique ID. For objects use `objectFromNetId`. As this comma
 
 
 ---
+*Syntaxes:*
+
+`groupFromNetId` id
+
+---
 *Example 1:*
+
 ```sqf
 _group = groupFromNetId "4:45";
 ```

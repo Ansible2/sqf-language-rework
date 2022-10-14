@@ -2,7 +2,13 @@ Unregisters a task type from given agent. The task type is the name given in **C
 
 
 ---
+*Syntaxes:*
+
+teamMember `unregisterTask` name
+
+---
 *Example 1:*
+
 ```sqf
 teamMember _agent unregisterTask (registeredTasks select 0);
 ```

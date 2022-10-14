@@ -2,12 +2,21 @@ Returns the index of the selected item of the `CT_LISTBOX`, `CT_LISTNBOX`, `CT_C
 
 
 ---
+*Syntaxes:*
+
+`lbCurSel`  idc
+
+`lbCurSel`  control
+
+---
 *Example 1:*
+
 ```sqf
 _index = lbCurSel 101;
 ```
 
 *Example 2:*
+
 ```sqf
 lbCurSel _ctrl;
 ```

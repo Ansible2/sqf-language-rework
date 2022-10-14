@@ -2,7 +2,13 @@ Hides dead body of the given unit. After a short delay, the body slowly sinks in
 
 
 ---
+*Syntaxes:*
+
+`hideBody` unit
+
+---
 *Example 1:*
+
 ```sqf
 hideBody player1;
 ```

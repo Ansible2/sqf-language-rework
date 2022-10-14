@@ -4,7 +4,13 @@ To make sure the added weapon is loaded and ready, add the magazine first.
 
 
 ---
+*Syntaxes:*
+
+object `addWeaponGlobal` weapon
+
+---
 *Example 1:*
+
 ```sqf
 {
 	_x addMagazineGlobal "Laserbatteries";
@@ -13,6 +19,7 @@ To make sure the added weapon is loaded and ready, add the magazine first.
 ```
 
 *Example 2:*
+
 ```sqf
 {
 	if (typeOf _x == "O_Heli_Attack_02_black_F") then {

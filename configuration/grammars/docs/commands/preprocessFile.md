@@ -2,7 +2,13 @@ Reads and processes the content of the specified file. Preprocessor is C-like, s
 
 
 ---
+*Syntaxes:*
+
+`preprocessFile` fileName
+
+---
 *Example 1:*
+
 ```sqf
 _content = preprocessFile "myFunction.sqf";
 ```

@@ -27,7 +27,13 @@ Returns the pose of the given unit. It can be one of:
 
 
 ---
+*Syntaxes:*
+
+`pose` unit
+
+---
 *Example 1:*
+
 ```sqf
 if (pose player == "SurfaceSwimming") then { hint "How's water?" };
 ```

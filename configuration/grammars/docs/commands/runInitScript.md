@@ -2,7 +2,13 @@ Fades in mission screen and re-executes `init.sqf` and `init.sqs` scripts. In `E
 
 
 ---
+*Syntaxes:*
+
+`runInitScript`
+
+---
 *Example 1:*
+
 ```sqf
 runInitScript;
 ```

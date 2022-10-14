@@ -2,7 +2,13 @@ Returns an array of config entries which meet criteria in condition code. Comman
 
 
 ---
+*Syntaxes:*
+
+condition `configClasses` config
+
+---
 *Example 1:*
+
 collect all CfgVehicles configs:
 
 ```sqf
@@ -10,6 +16,7 @@ _configs = "true" configClasses (configFile >> "CfgVehicles");
 ```
 
 *Example 2:*
+
 Return all classes that can transport 10 and more soldiers:
 
 ```sqf
@@ -17,6 +24,7 @@ _transporters = "getNumber (_x >> 'transportSoldier') >= 10" configClasses (conf
 ```
 
 *Example 3:*
+
 Return all classes that inherit from 'RscText':
 
 ```sqf

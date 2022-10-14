@@ -4,7 +4,13 @@ For single selection listbox use `lbSetCurSel` instead.
 
 
 ---
+*Syntaxes:*
+
+control `lbSetSelected` [index, selected, forceEH]
+
+---
 *Example 1:*
+
 ```sqf
 _control lbSetSelected [0, true];
 ```

@@ -2,12 +2,19 @@ Attaches a script to a scripted waypoint. In early versions of Arma, command con
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWaypointScript` command
+
+---
 *Example 1:*
+
 ```sqf
 [_grp, 2] setWaypointScript "find.sqs player";
 ```
 
 *Example 2:*
+
 ```sqf
 [_grp, 2] setWaypointScript "somescript.sqf [1,2,3,4,5,6,7,8]";
 ```

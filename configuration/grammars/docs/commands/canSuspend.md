@@ -2,7 +2,13 @@ Returns `true` if `sleep`, `uiSleep` or `waitUntil` commands can be used in curr
 
 
 ---
+*Syntaxes:*
+
+`canSuspend`
+
+---
 *Example 1:*
+
 ```sqf
 onEachFrame 
 {
@@ -13,6 +19,7 @@ onEachFrame
 ```
 
 *Example 2:*
+
 Make sure the function code is always spawned even when called:
 
 ```sqf

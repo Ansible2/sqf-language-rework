@@ -3,7 +3,13 @@ Official and Creator DLC appIds can be found on [[:Category:Arma 3: DLCs & Expan
 
 
 ---
+*Syntaxes:*
+
+`isDLCAvailable` appId
+
+---
 *Example 1:*
+
 ```sqf
 private _karts = 288520;
 isDLCAvailable _karts; // returns true

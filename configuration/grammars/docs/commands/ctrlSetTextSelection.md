@@ -2,12 +2,19 @@ Selects **length}} characters of edit control from the {{hl|start** position and
 
 
 ---
+*Syntaxes:*
+
+control `ctrlSetTextSelection` [start, length]
+
+---
 *Example 1:*
+
 ```sqf
 _control ctrlSetTextSelection [5, 10];
 ```
 
 *Example 2:*
+
 ```sqf
 disableSerialization;
 private _ctrl = findDisplay 46 createDisplay "RscDisplayEmpty" ctrlCreate ["RscEditMulti", -1];
@@ -19,6 +26,7 @@ ctrlSetFocus _ctrl;
 ```
 
 *Example 3:*
+
 Select text from right to left:
 
 ```sqf

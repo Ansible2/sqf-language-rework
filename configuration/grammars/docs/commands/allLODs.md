@@ -2,7 +2,13 @@ Returns the list of object or model `LOD`s.
 
 
 ---
+*Syntaxes:*
+
+`allLODs` objectOrModel
+
+---
 *Example 1:*
+
 ```sqf
 allLODs player;
 /*
@@ -28,6 +34,7 @@ allLODs player;
 ```
 
 *Example 2:*
+
 ```sqf
 allLODs getText (configFile >> "CfgWeapons" >> "arifle_MX_F" >> "model");
 /*

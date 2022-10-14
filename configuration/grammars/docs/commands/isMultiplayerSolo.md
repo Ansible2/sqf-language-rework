@@ -2,7 +2,13 @@ Returns `true` when playing a game in `solo multiplayer` (for example Apex coop 
 
 
 ---
+*Syntaxes:*
+
+`isMultiplayerSolo`
+
+---
 *Example 1:*
+
 ```sqf
 _state = isMultiplayerSolo;
 ```

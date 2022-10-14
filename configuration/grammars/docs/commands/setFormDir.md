@@ -2,17 +2,25 @@ Sets group formation heading. Accepted heading range is 0 to 360. Formation is f
 
 
 ---
+*Syntaxes:*
+
+group `setFormDir` heading
+
+---
 *Example 1:*
+
 ```sqf
 _group1 setFormDir 180;
 ```
 
 *Example 2:*
+
 ```sqf
 _unit1 setFormDir random 360;
 ```
 
 *Example 3:*
+
 ```sqf
 //center the main turret
 (group BIS_Crew1) setFormDir (getDir BIS_Armor);

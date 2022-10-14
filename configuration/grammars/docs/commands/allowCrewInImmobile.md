@@ -3,7 +3,15 @@ The {{Link|#Syntax 2|alternative syntax}} provides the ability to keep the crew 
 
 
 ---
+*Syntaxes:*
+
+vehicle `allowCrewInImmobile` allow
+
+vehicle `allowCrewInImmobile` [brokenWheels, upsideDown]
+
+---
 *Example 1:*
+
 ```sqf
 _vehicle allowCrewInImmobile true;
 ```

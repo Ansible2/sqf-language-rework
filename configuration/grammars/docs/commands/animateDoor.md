@@ -19,12 +19,19 @@ To animate doors or other sources that have "user" controller, use `animate` com
 
 
 ---
+*Syntaxes:*
+
+object `animateDoor` [doorname, phase, instant]
+
+---
 *Example 1:*
+
 ```sqf
 Taru animateDoor ["Door_1_source", 1];
 ```
 
 *Example 2:*
+
 Open left front door on Ifrit instantly:
 
 ```sqf

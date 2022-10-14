@@ -10,12 +10,19 @@ Returns a list of all variables from desired namespace. Namespaces supported:<br
 
 
 ---
+*Syntaxes:*
+
+`allVariables` namespace
+
+---
 *Example 1:*
+
 ```sqf
 _allVarsUINamespace = allVariables uiNamespace;
 ```
 
 *Example 2:*
+
 ```sqf
 _allVarsTrigger = allVariables trigger1;
 ```

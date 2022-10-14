@@ -6,7 +6,13 @@ FSM's. Priorities are:
 
 
 ---
+*Syntaxes:*
+
+unit `setUnitPosWeak` mode
+
+---
 *Example 1:*
+
 ```sqf
 _soldier disableAI "FSM";
 _soldier setUnitPosWeak "DOWN";

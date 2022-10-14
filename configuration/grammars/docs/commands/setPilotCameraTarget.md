@@ -4,12 +4,19 @@ Using `objNull` will unlock the camera
 
 
 ---
+*Syntaxes:*
+
+object `setPilotCameraTarget` target
+
+---
 *Example 1:*
+
 ```sqf
 _pilotCamTrack = vehicle player setPilotCameraTarget [2100,4200,4.2];
 ```
 
 *Example 2:*
+
 ```sqf
 _pilotCamTrack = vehicle player setPilotCameraTarget BIS_Edita;
 ```

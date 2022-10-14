@@ -8,12 +8,19 @@ Returns object type as a number:
 
 
 ---
+*Syntaxes:*
+
+`getObjectType` object
+
+---
 *Example 1:*
+
 ```sqf
 _objType = getObjectType player;
 ```
 
 *Example 2:*
+
 ```sqf
 _objType = getObjectType cursorObject;
 ```

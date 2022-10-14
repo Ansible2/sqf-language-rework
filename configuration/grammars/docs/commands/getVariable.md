@@ -3,17 +3,27 @@ All available data types combinations:
 
 
 ---
+*Syntaxes:*
+
+varspace `getVariable` name
+
+varspace `getVariable` [name, defaultValue]
+
+---
 *Example 1:*
+
 ```sqf
 private _variable = myTruck getVariable "myVariable"; // returns nil if "myVariable" is not set
 ```
 
 *Example 2:*
+
 ```sqf
 private _variable = myTruck getVariable ["myVariable", 50]; // returns 50 if "myVariable" is not set
 ```
 
 *Example 3:*
+
 ```sqf
 for "_i" from 0 to 5 do
 {
@@ -23,12 +33,14 @@ for "_i" from 0 to 5 do
 ```
 
 *Example 4:*
+
 ```sqf
 myMissionVar = 2015;
 missionNamespace getVariable "myMissionVar"; // returns 2015
 ```
 
 *Example 5:*
+
 Get current value of a variable and if it is undefined, define it and get the defined value:
 
 ```sqf

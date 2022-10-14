@@ -3,7 +3,15 @@ In case of the alternative syntax, {{Wikipedia|Lazy_evaluation#Control_structure
 
 
 ---
+*Syntaxes:*
+
+a `and` b
+
+a `and` b
+
+---
 *Example 1:*
+
 ```sqf
 if ((not isNull player) and (alive player) and (_enemycount == 0)) then
 {
@@ -12,6 +20,7 @@ if ((not isNull player) and (alive player) and (_enemycount == 0)) then
 ```
 
 *Example 2:*
+
 ```sqf
 if ((count _array > 0) and { (_array select 0) == player }) then	// works as expected
 {

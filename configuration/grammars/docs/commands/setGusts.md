@@ -2,7 +2,13 @@ Changes the gusts value smoothly during the given time (in seconds). A time of z
 
 
 ---
+*Syntaxes:*
+
+time `setGusts` value
+
+---
 *Example 1:*
+
 ```sqf
 60 setGusts 0.75;
 ```

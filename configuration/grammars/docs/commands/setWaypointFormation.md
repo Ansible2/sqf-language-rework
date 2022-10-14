@@ -15,7 +15,13 @@ Possible values are:
 
 
 ---
+*Syntaxes:*
+
+waypoint `setWaypointFormation` formation
+
+---
 *Example 1:*
+
 ```sqf
 [_grp, 2] setWaypointFormation "LINE";
 ```

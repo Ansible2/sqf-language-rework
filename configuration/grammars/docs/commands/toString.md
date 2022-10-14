@@ -2,17 +2,27 @@ Converts the supplied `Array` of `Number`s into a `String` through [e](https://e
 
 
 ---
+*Syntaxes:*
+
+`toString` array
+
+`toString` code
+
+---
 *Example 1:*
+
 ```sqf
 hint toString [65,97,338]; // returns "AaŒ"
 ```
 
 *Example 2:*
+
 ```sqf
 ["test", "test"] joinString toString [12345] splitString toString [12345]; // ["test", "test"]
 ```
 
 *Example 3:*
+
 ```sqf
 private _compilableString = toString { hint "it works!" };
 hint _compilableString; // hints ' hint "it works!" '

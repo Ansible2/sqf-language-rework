@@ -3,7 +3,13 @@ This is often the same as the group leader, but not always, for example in cases
 
 
 ---
+*Syntaxes:*
+
+`formLeader` unitName
+
+---
 *Example 1:*
+
 ```sqf
 if (formLeader player != leader player) then
 {

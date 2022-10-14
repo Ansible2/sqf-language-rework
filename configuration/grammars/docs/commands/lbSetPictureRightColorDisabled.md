@@ -3,12 +3,21 @@ Color which consists from only zeros means disable this override.
 
 
 ---
+*Syntaxes:*
+
+`lbSetPictureRightColorDisabled` [idc, index, color]
+
+control `lbSetPictureRightColorDisabled`  [index, color]
+
+---
 *Example 1:*
+
 ```sqf
 lbSetPictureRightColorDisabled [101, 0, [1, 1, 1, 0.25]];
 ```
 
 *Example 2:*
+
 ```sqf
 _ctrl lbSetPictureRightColorDisabled [0, [1, 1, 1, 0.25]];
 ```

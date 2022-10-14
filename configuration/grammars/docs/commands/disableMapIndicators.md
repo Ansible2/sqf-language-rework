@@ -2,7 +2,13 @@ Command allows suppressing visualization of FRIENDLY, ENEMY, MINES and/or PING m
 
 
 ---
+*Syntaxes:*
+
+`disableMapIndicators`  [disableFriendly, disableEnemy, disableMines, disablePing]
+
+---
 *Example 1:*
+
 Disable visualization of friendly and enemy units:
 
 ```sqf

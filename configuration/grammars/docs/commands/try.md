@@ -1,22 +1,35 @@
 Defines a try-catch structure. This sets up an `exception handling` block. Any thrown exception in a try block is caught in a `catch` block. The structured exception block has the following form:
-<sqf>try
+
+```sqf
+try
 { /* block that can throw exception */ }
 catch
-{ /* block that processes the exception. Exception is described in the _exception variable */ };</sqf>
+{ /* block that processes the exception. Exception is described in the _exception variable */ };
+```
 
 
 ---
+*Syntaxes:*
+
+`try` code
+
+args `try` code
+
+---
 *Example 1:*
+
 ```sqf
 try {throw "invalid argument"} catch {hint str _exception};
 ```
 
 *Example 2:*
+
 ```sqf
 123 try {if (_this != 123) throw "invalid argument"} catch {hint str _exception};
 ```
 
 *Example 3:*
+
 ```sqf
 try {
 	if (a > b) throw "Error: some error"; // OK

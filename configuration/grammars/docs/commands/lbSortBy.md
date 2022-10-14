@@ -1,11 +1,15 @@
 Sorts given ListBox by either `lbText`, `lbValue` or `lbData` in normal or reversed order, using case-sensitive or case-insensitive comparison. This command supports UNICODE characters.
 When sorting by **"VALUE"**, the rows with the same `lbValue` will additionally be sorted by `lbText` in the order specified by `reversedOrder` flag, text specified by `useTextRight` flag and case-sensitivity specified by `caseSensitive` flag.
 
- param.
 
+---
+*Syntaxes:*
+
+controlOrIDC `lbSortBy` [sortByType, reversedOrder, caseSensitive, useTextRight, unicodeOff]
 
 ---
 *Example 1:*
+
 ```sqf
 with uiNamespace do
 {

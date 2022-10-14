@@ -3,7 +3,13 @@ Like the old [[Arma 3: Cheats#TOPOGRAPHY|TOPOGRAPHY]] cheat code, exports terrai
 
 
 ---
+*Syntaxes:*
+
+`diag_exportTerrainSVG` [filePath, drawLocationNames, drawGrid, drawCountlines, drawTreeObjects, drawMountainHeightpoints, simpleRoads]
+
+---
 *Example 1:*
+
 ```sqf
 diag_exportTerrainSVG ["C:\Users\USERNAME\Desktop\Stratis_Map.svg", true, true, true, true, true, false]; // replace USERNAME with your username!
 ```

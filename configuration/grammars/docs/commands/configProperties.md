@@ -4,17 +4,25 @@ Condition has to return `true` in order for the looked at property to be added t
 
 
 ---
+*Syntaxes:*
+
+`configProperties` [config, condition, inherit]
+
+---
 *Example 1:*
+
 ```sqf
 _configs = configProperties [configFile >> "CfgVehicles" >> "O_Truck_02_box_F"];
 ```
 
 *Example 2:*
+
 ```sqf
 _configs = configProperties [configFile >> "RscText", "true", true];
 ```
 
 *Example 3:*
+
 Get all hitpoints of a truck:
 
 ```sqf

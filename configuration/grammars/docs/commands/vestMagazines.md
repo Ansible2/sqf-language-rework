@@ -2,7 +2,13 @@ Get array with all magazines from vest of the given unit.
 
 
 ---
+*Syntaxes:*
+
+`vestMagazines` unit
+
+---
 *Example 1:*
+
 ```sqf
 vestMagazines player;
 // returns e.g

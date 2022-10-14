@@ -2,7 +2,13 @@ Assigns a static object to the trigger. The activation source is changed to "STA
 
 
 ---
+*Syntaxes:*
+
+triggerName `triggerAttachObject` objectId
+
+---
 *Example 1:*
+
 ```sqf
 _trigger triggerAttachObject 1234;
 ```

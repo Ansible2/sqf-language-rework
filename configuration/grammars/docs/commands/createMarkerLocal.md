@@ -3,7 +3,13 @@ If the position is given in 3D format, **z}} coordinate is stored with the marke
 
 
 ---
+*Syntaxes:*
+
+`createMarkerLocal` [name, position, channel, creator]
+
+---
 *Example 1:*
+
 ```sqf
 _marker = createMarkerLocal ["Marker1", position player];
 ```

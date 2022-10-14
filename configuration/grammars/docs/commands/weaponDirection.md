@@ -2,12 +2,19 @@ Returns the direction that the vehicle weapon is aiming in. For addons the weapo
 
 
 ---
+*Syntaxes:*
+
+vehicleName `weaponDirection` weaponName
+
+---
 *Example 1:*
+
 ```sqf
 _weaponVectorDir = player weaponDirection currentWeapon player;
 ```
 
 *Example 2:*
+
 Draw AI eye direction (green) and weapon direction (red) in 3D:
 
 ```sqf

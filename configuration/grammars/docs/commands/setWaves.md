@@ -4,12 +4,19 @@ Changes the waves value smoothly during the given time (in seconds). A time of z
 
 
 ---
+*Syntaxes:*
+
+time `setWaves` value
+
+---
 *Example 1:*
+
 ```sqf
 180 setWaves .5;
 ```
 
 *Example 2:*
+
 ```sqf
 0 setWaves 1;
 ```

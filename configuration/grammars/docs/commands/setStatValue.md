@@ -5,7 +5,13 @@ For example "ExpWarlockDown" is restricted to scripts in any subdirectory of **"
 
 
 ---
+*Syntaxes:*
+
+`setStatValue` [name, value]
+
+---
 *Example 1:*
+
 ```sqf
 setStatValue ["ExpWarlockDown", 1]; // Unlocks the "Warlock Down" Steam achivement
 ```

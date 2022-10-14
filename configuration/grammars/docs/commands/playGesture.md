@@ -2,7 +2,13 @@ When used on a person,a smooth transition to the given move will be initiated. `
 
 
 ---
+*Syntaxes:*
+
+soldier `playGesture` moveName
+
+---
 *Example 1:*
+
 ```sqf
 soldierOne playGesture "Wave";
 ```

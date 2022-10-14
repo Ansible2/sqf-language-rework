@@ -2,7 +2,13 @@ Real time in seconds spent from the start of the game. On Windows the command us
 
 
 ---
+*Syntaxes:*
+
+`diag_tickTime`
+
+---
 *Example 1:*
+
 ```sqf
 // Measure execution time of a script
 _start = diag_tickTime;

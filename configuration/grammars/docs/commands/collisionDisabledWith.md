@@ -2,7 +2,13 @@ Returns the object, given object has collision disabled with and whether or not 
 
 
 ---
+*Syntaxes:*
+
+`collisionDisabledWith` obj
+
+---
 *Example 1:*
+
 ```sqf
 private _collisionInfo = collisionDisabledWith _tank;
 ```

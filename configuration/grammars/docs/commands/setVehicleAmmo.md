@@ -4,12 +4,19 @@ The value ranges from 0 to 1.
 
 
 ---
+*Syntaxes:*
+
+vehicleName `setVehicleAmmo` value
+
+---
 *Example 1:*
+
 ```sqf
 player setVehicleAmmo 0;
 ```
 
 *Example 2:*
+
 ```sqf
 _vehicle setVehicleAmmo 1;
 ```

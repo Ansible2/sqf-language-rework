@@ -2,12 +2,19 @@ Removes a given Event Handler that was added with `addEventHandler`.
 
 
 ---
+*Syntaxes:*
+
+target `removeEventHandler` [type, index]
+
+---
 *Example 1:*
+
 ```sqf
 player removeEventHandler ["Killed", 0];
 ```
 
 *Example 2:*
+
 The `Magic Variables` <var>_thisEvent</var> and <var>_thisEventHandler</var> can be used to easily remove an Event Handler:
 
 ```sqf

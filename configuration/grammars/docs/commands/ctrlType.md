@@ -2,7 +2,13 @@ Returns number representing the type of control, which is also defined by `type`
 
 
 ---
+*Syntaxes:*
+
+`ctrlType` control
+
+---
 *Example 1:*
+
 ```sqf
 _type = ctrlType _rscEdit; // 2
 ```

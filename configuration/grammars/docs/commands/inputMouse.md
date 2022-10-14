@@ -26,7 +26,15 @@ LShift + RMB Double Click: 42 * 16777216 + 1114112 + 1 + 256 = 705757441
 
 
 ---
+*Syntaxes:*
+
+`inputMouse` button
+
+`inputMouse` combocode
+
+---
 *Example 1:*
+
 State of the RMB:
 
 ```sqf
@@ -34,6 +42,7 @@ onEachFrame { hintSilent str inputMouse 1 };
 ```
 
 *Example 2:*
+
 Detect LCtrl + 2xRMB:
 
 ```sqf

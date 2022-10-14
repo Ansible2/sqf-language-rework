@@ -2,7 +2,13 @@ This namespace has the same lifetime as `profileNamespace` but is also connected
 
 
 ---
+*Syntaxes:*
+
+`missionProfileNamespace`
+
+---
 *Example 1:*
+
 ```sqf
 private _currentMissionProfileNamespace = missionProfileNamespace;
 ```

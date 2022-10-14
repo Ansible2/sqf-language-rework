@@ -2,7 +2,13 @@ Set max. wind overall wind changes in time. A time of zero means there will be a
 
 
 ---
+*Syntaxes:*
+
+time `setWindForce` wind
+
+---
 *Example 1:*
+
 ```sqf
 1800 setWindForce 0.5;
 ```

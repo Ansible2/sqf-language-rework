@@ -5,12 +5,21 @@ When used in a trigger, the track starts on activation but does not automaticall
 
 
 ---
+*Syntaxes:*
+
+trigger `setMusicEffect` track
+
+waypoint `setMusicEffect` track
+
+---
 *Example 1:*
+
 ```sqf
 _trigger setMusicEffect "Track1";
 ```
 
 *Example 2:*
+
 ```sqf
 [_group1,1] setMusicEffect "$STOP$";
 ```

@@ -2,7 +2,13 @@ Smoothly conduct the changes that were assigned to a camera within the given tim
 
 
 ---
+*Syntaxes:*
+
+camera `camCommit` time
+
+---
 *Example 1:*
+
 `SQS Syntax`:
 <sqs>
 ; create a camera object
@@ -20,6 +26,7 @@ _cam camCommit 6
 </sqs>
 
 *Example 2:*
+
 `SQF Syntax`:
 
 ```sqf

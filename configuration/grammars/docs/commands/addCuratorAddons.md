@@ -2,17 +2,25 @@ Allow curator use of given addon.
 
 
 ---
+*Syntaxes:*
+
+curatorObj `addCuratorAddons` addons
+
+---
 *Example 1:*
+
 ```sqf
 curatorObj addCuratorAddons ["A3_Armor_F_AMV","A3_Armor_F_Panther"];
 ```
 
 *Example 2:*
+
 ```sqf
 curatorObj addCuratorAddons ["A3_Modules_F_Curator_Lightning"];
 ```
 
 *Example 3:*
+
 Addons can be stacked:
 
 ```sqf

@@ -14,10 +14,22 @@ List of the commands that work with `forceUnicode`:
 * `regexFind`
 * `regexMatch`
 * `regexReplace`
+}}
+</div>
+Sets the Unicode flag which forces some of the string manipulation commands to switch to Unicode. The Unicode flag is always set right after `forceUnicode` command execution, but is reset depending on the command mode: 
+* 1 - the Unicode flag is reset right after any of the supported commands executed or the end of script, whichever comes earlier.
+* 0 - the Unicode flag is reset at the end of the script. 
+When the flag is set it will also affect all scopes within the script including child scopes (see also: `diag_scope`). There are many other string manipulation commands like `ctrlSetText`, `getTextWidth`, etc. that support Unicode by design so no additional forcing is needed.
 
 
 ---
+*Syntaxes:*
+
+`forceUnicode` mode
+
+---
 *Example 1:*
+
 ```sqf
 copyToClipboard "д"; // copies "Ð´" to clipboard
 
@@ -26,6 +38,7 @@ copyToClipboard "д"; // copies "д" to clipboard
 ```
 
 *Example 2:*
+
 ```sqf
 private _string = "привет";			// a string that uses Unicode characters
 systemChat str count _string;		// 12 - the character count is wrong without forceUnicode

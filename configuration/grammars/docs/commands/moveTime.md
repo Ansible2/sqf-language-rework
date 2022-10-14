@@ -2,7 +2,13 @@ Returns the current time of the most important RTM animation currently being pla
 
 
 ---
+*Syntaxes:*
+
+`moveTime` soldier
+
+---
 *Example 1:*
+
 ```sqf
 moveTime player;
 ```

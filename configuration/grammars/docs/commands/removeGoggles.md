@@ -2,7 +2,13 @@ Removes goggles from unit (diver goggles for example). This command does not rem
 
 
 ---
+*Syntaxes:*
+
+`removeGoggles` unit
+
+---
 *Example 1:*
+
 ```sqf
 removeGoggles assaultDiver;
 ```

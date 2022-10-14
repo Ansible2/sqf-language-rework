@@ -2,7 +2,13 @@ Pass a non-verbal communication to the receiver. This command does `as if` the s
 
 
 ---
+*Syntaxes:*
+
+person `kbReact` [receiver, topicName, sentenceID(, argumentArray1, argumentArray2, …)]
+
+---
 *Example 1:*
+
 ```sqf
 // will trigger AS IF unit1 said the sentence (via kbTell)
 // unit2's FSM will react accordingly.

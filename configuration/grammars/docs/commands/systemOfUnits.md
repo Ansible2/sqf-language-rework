@@ -5,7 +5,13 @@ Returns the currently selected system of units.
 
 
 ---
+*Syntaxes:*
+
+`systemOfUnits`
+
+---
 *Example 1:*
+
 ```sqf
 _system = systemOfUnits;
 ```

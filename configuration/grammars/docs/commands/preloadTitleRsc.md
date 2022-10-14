@@ -2,7 +2,13 @@ Resource title - preload data. The resource can be defined in the `Description.e
 
 
 ---
+*Syntaxes:*
+
+`preloadTitleRsc` [name, type, speed, showInMap]
+
+---
 *Example 1:*
+
 ```sqf
 _ok = preloadTitleRsc ["BIS", "PLAIN"];
 ```

@@ -4,7 +4,13 @@ Returns if the given vehicle is still able to move.
 
 
 ---
+*Syntaxes:*
+
+`canMove` vehicle
+
+---
 *Example 1:*
+
 ```sqf
 if (not canMove _tank) then
 {

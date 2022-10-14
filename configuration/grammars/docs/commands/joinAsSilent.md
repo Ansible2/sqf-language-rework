@@ -2,12 +2,19 @@ Joins the unit to the given group, if position id is available, this one is used
 
 
 ---
+*Syntaxes:*
+
+unit `joinAsSilent` [group, id]
+
+---
 *Example 1:*
+
 ```sqf
 player joinAsSilent [_group, 4];
 ```
 
 *Example 2:*
+
 To get the position id:
 
 ```sqf

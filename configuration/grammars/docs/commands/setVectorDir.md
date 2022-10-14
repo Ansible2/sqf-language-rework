@@ -2,12 +2,19 @@ Set object's direction vector. Up vector will remain unchanged.
 
 
 ---
+*Syntaxes:*
+
+object `setVectorDir` vectorDir
+
+---
 *Example 1:*
+
 ```sqf
 player setVectorDir [5,6,1];
 ```
 
 *Example 2:*
+
 ```sqf
 // provided _myMine is local
 _myMine setVectorDir [0.3, 1, 0];

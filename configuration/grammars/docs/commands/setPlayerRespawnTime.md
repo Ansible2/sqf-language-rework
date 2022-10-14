@@ -2,7 +2,13 @@ Sets the time interval (in seconds) that the player must wait before respawn. It
 
 
 ---
+*Syntaxes:*
+
+`setPlayerRespawnTime` interval
+
+---
 *Example 1:*
+
 ```sqf
 setPlayerRespawnTime 5;
 ```

@@ -2,7 +2,13 @@ Returns the `Position` where object believes the enemy to be. If there is no dir
 
 
 ---
+*Syntaxes:*
+
+object `getHideFrom` enemy
+
+---
 *Example 1:*
+
 ```sqf
 _pos = player getHideFrom _enemy;
 ```

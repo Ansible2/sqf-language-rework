@@ -2,7 +2,13 @@ Returns `true` if the `Eden Editor` is currently in mission preview mode, single
 
 
 ---
+*Syntaxes:*
+
+[[is3DENPreview]]
+
+---
 *Example 1:*
+
 ```sqf
 if is3DENPreview then { systemChat "Welcome to Eden Editor Preview!" };
 ```

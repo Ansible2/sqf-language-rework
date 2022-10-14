@@ -2,12 +2,19 @@ Returns size of `CT_LISTNBOX`. This command supports `CT_TOOLBOX` control since 
 
 
 ---
+*Syntaxes:*
+
+`lnbSize` controlOrIDC
+
+---
 *Example 1:*
+
 ```sqf
 lnbSize _control;
 ```
 
 *Example 2:*
+
 ```sqf
 lnbSize _someIDC;
 ```

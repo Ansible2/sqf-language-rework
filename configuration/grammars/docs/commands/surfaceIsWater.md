@@ -2,12 +2,19 @@ Returns whether there is water at given position. In Arma 3, it also detects pon
 
 
 ---
+*Syntaxes:*
+
+`surfaceIsWater` position
+
+---
 *Example 1:*
+
 ```sqf
 private _result = surfaceIsWater [1000, 3000];
 ```
 
 *Example 2:*
+
 ```sqf
 _isWater = surfaceIsWater position player;
 ```

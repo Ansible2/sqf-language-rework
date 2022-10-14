@@ -2,7 +2,13 @@ Adds list of rows of strings.
 
 
 ---
+*Syntaxes:*
+
+`lnbAddArray` [idc, arrayOfTextAndValues]
+
+---
 *Example 1:*
+
 ```sqf
 lnbAddArray [
 	102,

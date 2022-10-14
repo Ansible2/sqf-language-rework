@@ -3,18 +3,26 @@ Returns the height of the screen in screen measurement units. Taken from top lef
 
 
 ---
+*Syntaxes:*
+
+`safeZoneH`
+
+---
 *Example 1:*
+
 ```sqf
 _screenHeight = safeZoneH;
 ```
 
 *Example 2:*
+
 ```sqf
 _screenTopBorderY = safeZoneY;
 _screenBottomBorderY = safeZoneH + safeZoneY;
 ```
 
 *Example 3:*
+
 Create control 50% wide, 30% tall, centered on screen:
 
 ```sqf

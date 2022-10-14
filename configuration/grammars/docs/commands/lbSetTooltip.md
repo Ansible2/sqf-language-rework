@@ -2,12 +2,21 @@ Sets tooltip for item with given index of the listbox or combobox with id idc of
 
 
 ---
+*Syntaxes:*
+
+`lbSetTooltip` [idc, index, tooltip]
+
+control `lbSetTooltip` [index, tooltip]
+
+---
 *Example 1:*
+
 ```sqf
 lbSetTooltip [101, 1, "tooltip"];
 ```
 
 *Example 2:*
+
 ```sqf
 _control lbSetTooltip [0, "another tooltip"];
 ```

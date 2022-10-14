@@ -2,7 +2,13 @@ Returns position that is given distance and relative direction away from origina
 
 
 ---
+*Syntaxes:*
+
+object `getRelPos`  [distance, direction]
+
+---
 *Example 1:*
+
 Find position 100 metres away at player's 3 o'clock:
 
 ```sqf

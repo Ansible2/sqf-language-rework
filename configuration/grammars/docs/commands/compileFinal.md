@@ -5,7 +5,13 @@ Compile expression and makes it final, preventing it from:
 
 
 ---
+*Syntaxes:*
+
+`compileFinal`  expression
+
+---
 *Example 1:*
+
 ```sqf
 myCode = compileFinal "a = a + 1";
 call myCode;

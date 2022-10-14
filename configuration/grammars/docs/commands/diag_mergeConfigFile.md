@@ -2,7 +2,13 @@ Updates config without restarting. Attributes and classes can not be deleted unl
 
 
 ---
+*Syntaxes:*
+
+`diag_mergeConfigFile`  [path, userdir]
+
+---
 *Example 1:*
+
 ```sqf
 diag_mergeConfigFile ["O:\Arma3\A3\Stuff_F\config.cpp"]
 ```

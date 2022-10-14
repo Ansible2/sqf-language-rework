@@ -2,7 +2,13 @@ Opens given component or first component of given component type on specified in
 
 
 ---
+*Syntaxes:*
+
+`setInfoPanel` [infopanelId, componentClassOrType]
+
+---
 *Example 1:*
+
 ```sqf
 // opens slingload assistant on right panel
 private _result = setInfoPanel ["VehicleSystemsDisplayManagerComponentRight", "SlingLoadDisplayComponent"];

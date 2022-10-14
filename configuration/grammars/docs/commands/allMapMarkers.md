@@ -7,7 +7,13 @@ For custom waypoint position (LShift+LMB) see `customWaypointPosition`
 
 
 ---
+*Syntaxes:*
+
+`allMapMarkers`
+
+---
 *Example 1:*
+
 ```sqf
 _markers = allMapMarkers;
 ```
@@ -15,6 +21,7 @@ _markers = allMapMarkers;
 returns: ["marker1","_USER_DEFINED #2/0"]
 
 *Example 2:*
+
 ```sqf
 {
 	private "_a";
@@ -28,6 +35,7 @@ returns: ["marker1","_USER_DEFINED #2/0"]
 ```
 
 *Example 3:*
+
 ```sqf
 if (_someString in allMapMarkers) then
 {
