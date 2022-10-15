@@ -1,7 +1,8 @@
 // select header comment
 // /(?<=\/\* \-+\n)([\s\S]*?)(?=\n+\-+ \*\/\n)/i
 
-// select Function
+// select Function name
+// /(?<=function:\s*)\b.*/gi
 
 // select description 
 // /(?<=description:\n*)([\s\S]*)(?=Parameters:)/i
@@ -17,5 +18,6 @@
 
 // select examples
 // /(?<=Example\w*:\n*)([\s\S]*)(?=author[\w\W]*?:)/i
+
 // select individual examples
-// 
+// /(?<=\(begin example\)\n)([\s\S]*?)(?=\(end\))/gi
