@@ -15,9 +15,9 @@ export class BikiParser implements Parser  {
 	---------------------------------------------------------------------------- */
     public getPages(xmlFilePath: string): any[] {
 		const xmlPath = path.resolve(xmlFilePath);
-		const xmlFileAsString = fs.readFileSync(xmlPath);
+		const xmlFileBuffer = fs.readFileSync(xmlPath);
 		const xmlParser = new XMLParser();
-		const xmlAsJSON = xmlParser.parse(xmlFileAsString);
+		const xmlAsJSON = xmlParser.parse(xmlFileBuffer);
 		const pages: WikiPage[] = xmlAsJSON.mediawiki.page;
 
 		return pages;
