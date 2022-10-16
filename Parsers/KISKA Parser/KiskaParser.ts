@@ -101,18 +101,23 @@ interface KiskaPage {
 }
 
 class KiskaPageConverter {
+	
+
     public static parseKiskaPage(filePath: string): KiskaPage | null {
 		const filename = path.basename(filePath);
-		const fileAsString = fs.readFileSync(filePath).toString();
-		const headerComment = fileAsString.match(/(?<=\/\* \-+\n)([\s\S]*?)(?=\n+\-+ \*\/\n)/i);
-		console.log(headerComment);
-		
-		if (headerComment !== null) {
-			console.log(headerComment);
+		const fileAsString = fs.readFileSync(filePath,'utf-8').trim();
+		const headerRegexMatch = fileAsString.match(/(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i);
+
+		const functionName = filename.replace('fn_','KISKA_fnc');
+		if (!headerRegexMatch) {
+			console.log(functionName,"does not have a header comment");
+			return null;
 		}
 
+		const headerComment = headerRegexMatch[0];
+
 		return {
-			name: filename.replace('fn_','KISKA_fnc'),
+			name: filename.replace('fn_','KISKA_fnc_'),
 		}
 	};
 }
