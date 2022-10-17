@@ -115,6 +115,25 @@ class KiskaPageConverter {
 		}
 
 		const headerComment = headerRegexMatch[0];
+		// TODO: do stuff with description
+		const descriptionMatch = headerComment.match(/(?<=description:\r*\n*)([\s\S]*)(?=Parameters:)/i);
+		// TODO: do stuff with return
+		const returnMatch = headerComment.match(/(?<=Returns:\r*\n*)([\s\S]*)(?=Examples:)/i);
+
+		const parametersMatch = headerComment.match(/(?<=parameters:\r*\n*)([\s\S]*)(?=Returns:)/i);
+		if (parametersMatch) {
+			const parametersFull = parametersMatch[0];
+			const individualParametersMatch = parametersFull.match(/(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim);
+			// TODO: do stuff with individual parameters
+		}
+		
+		const examplesMatch = headerComment.match(/(?<=Example\w*:\r*\n*)([\s\S]*)(?=author[\w\W]*?:)/i);
+		if (examplesMatch) {
+			const examplesFull = examplesMatch[0];
+			const individualExamplesMatch = examplesFull.match(/(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi);
+			// TODO: do stuff with individual examples
+		}
+
 
 		return {
 			name: filename.replace('fn_','KISKA_fnc_'),
