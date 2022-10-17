@@ -108,7 +108,7 @@ class KiskaPageConverter {
 		const fileAsString = fs.readFileSync(filePath,'utf-8').trim();
 		const headerRegexMatch = fileAsString.match(/(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i);
 
-		const functionName = filename.replace('fn_','KISKA_fnc');
+		const functionName = filename.replace('fn_','KISKA_fnc_');
 		if (!headerRegexMatch) {
 			console.log(functionName,"does not have a header comment");
 			return null;
@@ -136,7 +136,7 @@ class KiskaPageConverter {
 
 
 		return {
-			name: filename.replace('fn_','KISKA_fnc_'),
+			name: functionName,
 		}
 	};
 }
