@@ -25,6 +25,8 @@ export enum SQFDataType {
     Empty = "EMPTY",
     Array = "ARRAY",
     Boolean = "BOOLEAN",
+    Behaviour = "(Behaviour) STRING",
+    CombatMode = "(Combat Mode) STRING",
     Code = "CODE",
     Config = "CONFIG",
     Control = "CONTROL",
@@ -75,6 +77,7 @@ export enum SQFDataType {
 	ParticleArray = `(Particle) ARRAY`,
 	Color = "(Color) NUMBER[R,G,B]",
 	ColorAlpha = "(Color) NUMBER[R,G,B,A]",
+	MinMidMax = "(Min/Mid/Max) NUMBER[min,mid,max]",
 }
 
 export enum SQFSyntaxType {
@@ -123,26 +126,26 @@ export interface SQFCode {
 
 type BinarySyntax = {
 	type: SQFSyntaxType.BinaryOperator;
-	returnTypes: SQFSyntaxTypes;
+	returnTypes?: SQFSyntaxTypes;
 	leftOperandTypes: SQFSyntaxTypes;
 	rightOperandTypes: SQFSyntaxTypes;
 }
 
 type FunctionSyntax = {
 	type: SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction;
-	returnTypes: SQFSyntaxTypes;
+	returnTypes?: SQFSyntaxTypes;
 	leftOperandTypes?: SQFSyntaxTypes;
 }
 
 type UnarySyntax = {
 	type: SQFSyntaxType.UnaryOperator;
-	returnTypes: SQFSyntaxTypes;
+	returnTypes?: SQFSyntaxTypes;
 	rightOperandTypes: SQFSyntaxTypes;
 }
 
 type NularSyntax = {
 	type: SQFSyntaxType.NularOperator;
-	returnTypes: SQFSyntaxTypes;
+	returnTypes?: SQFSyntaxTypes;
 }
 
 export type SQFSyntax = FunctionSyntax | NularSyntax | UnarySyntax | BinarySyntax;

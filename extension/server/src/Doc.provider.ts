@@ -137,7 +137,7 @@ export class DocProvider implements IDocProvider {
 
             const type: SQFSyntaxType = syntax.type;
             let returnType: string = "";
-            if (syntax.returnTypes !== SQFDataType.Nothing) {
+            if (syntax.returnTypes && syntax.returnTypes !== SQFDataType.Nothing) {
                 returnType = this.parseSyntaxReturnOrOperands(
                     syntax.returnTypes
                 );
