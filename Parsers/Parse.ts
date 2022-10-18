@@ -17,7 +17,9 @@ try {
     const parser = new KiskaParser();
     const pages = parser.getPages(
         path.resolve(
-            "S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
+            // "S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
+			__dirname,
+			"./Seed Files/Example Kiska Functions"
         )
     );
     // const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/edgecases.xml"));

@@ -62,6 +62,9 @@ export class KiskaParsers implements Parser {
         const parsedPages: KiskaPage[] = filePaths.map(
             KiskaPageConverter.parseKiskaPage
         ).filter((page) => page) as KiskaPage[];
+		
+		console.log(parsedPages[0]);
+		
         // filter undefined or empty returns
         // return parsedPages.filter((page) => page);
 		return [];
@@ -101,42 +104,59 @@ interface KiskaPage {
 }
 
 class KiskaPageConverter {
-	
-
     public static parseKiskaPage(filePath: string): KiskaPage | null {
 		const filename = path.basename(filePath);
 		const fileAsString = fs.readFileSync(filePath,'utf-8').trim();
 		const headerRegexMatch = fileAsString.match(/(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i);
 
 		const functionName = filename.replace('fn_','KISKA_fnc_');
+		const kiskaPage: KiskaPage = {
+			name: functionName,
+		}
+
 		if (!headerRegexMatch) {
 			console.log(functionName,"does not have a header comment");
 			return null;
 		}
 
 		const headerComment = headerRegexMatch[0];
+		console.log(headerComment);
+		
 		// TODO: do stuff with description
 		const descriptionMatch = headerComment.match(/(?<=description:\r*\n*)([\s\S]*)(?=Parameters:)/i);
+		if (descriptionMatch) {
+			kiskaPage.description = descriptionMatch[0];
+		}
+
 		// TODO: do stuff with return
 		const returnMatch = headerComment.match(/(?<=Returns:\r*\n*)([\s\S]*)(?=Examples:)/i);
+		if (returnMatch) {
+			kiskaPage.return = returnMatch[0];
+		}
 
 		const parametersMatch = headerComment.match(/(?<=parameters:\r*\n*)([\s\S]*)(?=Returns:)/i);
 		if (parametersMatch) {
-			const parametersFull = parametersMatch[0];
+			const parametersFull = parametersMatch[0].concat('<END>');
 			const individualParametersMatch = parametersFull.match(/(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim);
-			// TODO: do stuff with individual parameters
+			kiskaPage.parameters = [];
+			individualParametersMatch?.forEach((parameter) => {
+				// TODO: do stuff with individual parameters
+				kiskaPage.parameters?.push(parameter);
+			});
 		}
 		
 		const examplesMatch = headerComment.match(/(?<=Example\w*:\r*\n*)([\s\S]*)(?=author[\w\W]*?:)/i);
 		if (examplesMatch) {
 			const examplesFull = examplesMatch[0];
+			kiskaPage.examples = [];
 			const individualExamplesMatch = examplesFull.match(/(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi);
-			// TODO: do stuff with individual examples
+			individualExamplesMatch?.forEach((example) => {
+				// TODO: do stuff with individual examples
+				kiskaPage.examples?.push(example);
+			});
 		}
 
 
-		return {
-			name: functionName,
-		}
+		return kiskaPage;
 	};
 }
