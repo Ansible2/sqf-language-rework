@@ -120,17 +120,16 @@ class KiskaPageConverter {
 		}
 
 		const headerComment = headerRegexMatch[0];
-		console.log(headerComment);
 		
-		// TODO: do stuff with description
 		const descriptionMatch = headerComment.match(/(?<=description:\r*\n*)([\s\S]*)(?=Parameters:)/i);
 		if (descriptionMatch) {
+			// TODO: do stuff with description
 			kiskaPage.description = descriptionMatch[0];
 		}
 
-		// TODO: do stuff with return
 		const returnMatch = headerComment.match(/(?<=Returns:\r*\n*)([\s\S]*)(?=Examples:)/i);
 		if (returnMatch) {
+			// TODO: do stuff with return
 			kiskaPage.return = returnMatch[0];
 		}
 

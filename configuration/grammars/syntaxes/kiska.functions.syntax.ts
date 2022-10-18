@@ -23,7 +23,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [
@@ -44,7 +43,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: SQFDataType.Object,
@@ -55,7 +53,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [
@@ -80,7 +77,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [
@@ -100,7 +96,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [SQFDataType.Object],
@@ -111,14 +106,12 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
         },
     },
     KISKA_fnc_ACEX_setHCTransfer: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [
@@ -128,6 +121,68 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         },
     },
+	KISKA_fnc_AAAZone: {
+		grammarType: SQFGrammarType.Function,
+		syntaxes: {
+			type: SQFSyntaxType.ScheduledFunction,
+			leftOperandTypes: {
+				operation: SQFArrayComparator.Exact,
+				types: [
+					SQFDataType.Object,
+					SQFDataType.Number,
+					SQFDataType.Number,
+				]
+			}
+		}
+	},
+	KISKA_fnc_arty: {
+		grammarType: SQFGrammarType.Function,
+		syntaxes: {
+			type: SQFSyntaxType.ScheduledFunction,
+			leftOperandTypes: {
+				operation: SQFArrayComparator.Exact,
+				types: [
+					SQFDataType.Object,
+					[SQFDataType.Object,SQFDataType.Position],
+					SQFDataType.Number,
+					SQFDataType.Number,
+					SQFDataType.Number,
+					[SQFDataType.MinMidMax,SQFDataType.Number],
+				]
+			}
+		}
+	},
+	KISKA_fnc_attack: {
+		grammarType: SQFGrammarType.Function,
+		syntaxes: {
+			type: SQFSyntaxType.UnscheduledFunction,
+			leftOperandTypes: {
+				operation: SQFArrayComparator.Exact,
+				types: [
+					[SQFDataType.Group,SQFDataType.Object],
+					[SQFDataType.Object,SQFDataType.Location,SQFDataType.Group,SQFDataType.Array],
+					SQFDataType.Number,
+					SQFDataType.Behaviour,
+					SQFDataType.CombatMode,
+					SQFDataType.Boolean,
+				]
+			}
+		}
+	},
+	KISKA_fnc_clearWaypoints: {
+		grammarType: SQFGrammarType.Function,
+		syntaxes: {
+			type: SQFSyntaxType.UnscheduledFunction,
+			leftOperandTypes: {
+				operation: SQFArrayComparator.Exact,
+				types: [
+					[SQFDataType.Group,SQFDataType.Object],
+					SQFDataType.Number,
+					SQFDataType.Boolean,
+				]
+			}
+		}
+	},
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
