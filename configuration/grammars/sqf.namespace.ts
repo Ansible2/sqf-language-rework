@@ -27,6 +27,7 @@ export enum SQFDataType {
     Boolean = "BOOLEAN",
     Behaviour = "(Behaviour) STRING",
     CombatMode = "(Combat Mode) STRING",
+    SpeedMode = "(Speed Mode) STRING",
     Code = "CODE",
     Config = "CONFIG",
     Control = "CONTROL",

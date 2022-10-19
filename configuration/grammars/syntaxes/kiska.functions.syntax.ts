@@ -121,68 +121,177 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         },
     },
-	KISKA_fnc_AAAZone: {
-		grammarType: SQFGrammarType.Function,
-		syntaxes: {
-			type: SQFSyntaxType.ScheduledFunction,
-			leftOperandTypes: {
-				operation: SQFArrayComparator.Exact,
-				types: [
+    KISKA_fnc_AAAZone: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    SQFDataType.Object,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ],
+            },
+        },
+    },
+    KISKA_fnc_arty: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    SQFDataType.Object,
+                    [SQFDataType.Object, SQFDataType.Position],
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                    [SQFDataType.MinMidMax, SQFDataType.Number],
+                ],
+            },
+        },
+    },
+    KISKA_fnc_attack: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    [SQFDataType.Group, SQFDataType.Object],
+                    [
+                        SQFDataType.Object,
+                        SQFDataType.Location,
+                        SQFDataType.Group,
+                        SQFDataType.Position,
+                    ],
+                    SQFDataType.Number,
+                    SQFDataType.Behaviour,
+                    SQFDataType.CombatMode,
+                    SQFDataType.Boolean,
+                ],
+            },
+        },
+    },
+    KISKA_fnc_clearWaypoints: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    [SQFDataType.Group, SQFDataType.Object],
+                    SQFDataType.Number,
+                    SQFDataType.Boolean,
+                ],
+            },
+        },
+    },
+    KISKA_fnc_configureConvoy: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    SQFDataType.Group,
+                    {
+                        operation: SQFArrayComparator.OneOf,
+                        types: SQFDataType.Object,
+                    },
+                ],
+            },
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    SQFDataType.Side,
+                    [
+                        SQFDataType.Object,
+                        {
+                            operation: SQFArrayComparator.Exact,
+                            types: [
+                                [SQFDataType.Object, SQFDataType.PositionATL],
+                                SQFDataType.Number,
+                                SQFDataType.String,
+                            ],
+                        },
+                    ],
+                ],
+            },
+        },
+    },
+    KISKA_fnc_defend: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    [SQFDataType.Object, SQFDataType.Group],
+                    [
+                        SQFDataType.Object,
+                        SQFDataType.Location,
+                        SQFDataType.Group,
+                        SQFDataType.Position3d,
+                    ],
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                    [SQFDataType.Number, SQFDataType.Boolean],
+                    [SQFDataType.Number, SQFDataType.Boolean],
+                ],
+            },
+        },
+    },
+    KISKA_fnc_driveTo: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+			returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    [
+                        SQFDataType.Object,
+                        SQFDataType.Group,
+                        {
+                            operation: SQFArrayComparator.OneOf,
+                            types: SQFDataType.Object,
+                        },
+                    ],
 					SQFDataType.Object,
+					[SQFDataType.Object,SQFDataType.PositionATL],
 					SQFDataType.Number,
-					SQFDataType.Number,
-				]
-			}
-		}
-	},
-	KISKA_fnc_arty: {
+					SQFDataType.SpeedMode,
+					[SQFDataType.Code,SQFDataType.Array,SQFDataType.String],
+                ],
+            },
+        },
+    },
+	KISKA_fnc_dropOff: {
 		grammarType: SQFGrammarType.Function,
-		syntaxes: {
-			type: SQFSyntaxType.ScheduledFunction,
-			leftOperandTypes: {
-				operation: SQFArrayComparator.Exact,
-				types: [
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
 					SQFDataType.Object,
-					[SQFDataType.Object,SQFDataType.Position],
+					[SQFDataType.Object,SQFDataType.PositionATL],
+                    [
+                        SQFDataType.Object,
+                        SQFDataType.Group,
+                        {
+                            operation: SQFArrayComparator.OneOf,
+                            types: SQFDataType.Object,
+                        },
+                    ],
 					SQFDataType.Number,
-					SQFDataType.Number,
-					SQFDataType.Number,
-					[SQFDataType.MinMidMax,SQFDataType.Number],
-				]
-			}
-		}
-	},
-	KISKA_fnc_attack: {
-		grammarType: SQFGrammarType.Function,
-		syntaxes: {
-			type: SQFSyntaxType.UnscheduledFunction,
-			leftOperandTypes: {
-				operation: SQFArrayComparator.Exact,
-				types: [
-					[SQFDataType.Group,SQFDataType.Object],
-					[SQFDataType.Object,SQFDataType.Location,SQFDataType.Group,SQFDataType.Array],
-					SQFDataType.Number,
-					SQFDataType.Behaviour,
-					SQFDataType.CombatMode,
-					SQFDataType.Boolean,
-				]
-			}
-		}
-	},
-	KISKA_fnc_clearWaypoints: {
-		grammarType: SQFGrammarType.Function,
-		syntaxes: {
-			type: SQFSyntaxType.UnscheduledFunction,
-			leftOperandTypes: {
-				operation: SQFArrayComparator.Exact,
-				types: [
-					[SQFDataType.Group,SQFDataType.Object],
-					SQFDataType.Number,
-					SQFDataType.Boolean,
-				]
-			}
-		}
-	},
+					SQFDataType.SpeedMode,
+					[SQFDataType.Code,SQFDataType.Array,SQFDataType.String],
+                ],
+            },
+        },
+	}
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
