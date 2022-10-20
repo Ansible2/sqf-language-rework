@@ -9,6 +9,7 @@ import {
     SQFSyntaxType,
     SQFDataType,
     SQFArrayComparator,
+    SQFArray,
 } from "../sqf.namespace";
 
 const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
@@ -247,7 +248,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-			returnTypes: SQFDataType.Boolean,
+            returnTypes: SQFDataType.Boolean,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [
@@ -259,24 +260,24 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                             types: SQFDataType.Object,
                         },
                     ],
-					SQFDataType.Object,
-					[SQFDataType.Object,SQFDataType.PositionATL],
-					SQFDataType.Number,
-					SQFDataType.SpeedMode,
-					[SQFDataType.Code,SQFDataType.Array,SQFDataType.String],
+                    SQFDataType.Object,
+                    [SQFDataType.Object, SQFDataType.PositionATL],
+                    SQFDataType.Number,
+                    SQFDataType.SpeedMode,
+                    [SQFDataType.Code, SQFDataType.Array, SQFDataType.String],
                 ],
             },
         },
     },
-	KISKA_fnc_dropOff: {
-		grammarType: SQFGrammarType.Function,
+    KISKA_fnc_dropOff: {
+        grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
                 types: [
-					SQFDataType.Object,
-					[SQFDataType.Object,SQFDataType.PositionATL],
+                    SQFDataType.Object,
+                    [SQFDataType.Object, SQFDataType.PositionATL],
                     [
                         SQFDataType.Object,
                         SQFDataType.Group,
@@ -285,13 +286,31 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                             types: SQFDataType.Object,
                         },
                     ],
-					SQFDataType.Number,
-					SQFDataType.SpeedMode,
-					[SQFDataType.Code,SQFDataType.Array,SQFDataType.String],
+                    SQFDataType.Number,
+                    SQFDataType.SpeedMode,
+                    [SQFDataType.Code, SQFDataType.Array, SQFDataType.String],
                 ],
             },
         },
-	}
+    },
+    KISKA_fnc_engageHeliTurretsLoop: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.of(SQFArrayComparator.Exact, [
+                SQFDataType.Object,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+                {
+                    operation: SQFArrayComparator.AnyOf,
+                    types: [SQFDataType.Array, SQFDataType.Number],
+                },
+            ]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {

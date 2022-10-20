@@ -21,6 +21,7 @@ export enum SQFGrammarType {
 	FileExecutor = "file executor",
 	CodeExecutor = "code executor",
 }
+
 export enum SQFDataType {
     Empty = "EMPTY",
     Array = "ARRAY",
@@ -81,6 +82,33 @@ export enum SQFDataType {
 	MinMidMax = "(Min/Mid/Max) NUMBER[min,mid,max]",
 }
 
+export interface SQFArray {
+    types: SQFSyntaxTypes;
+    operation: SQFArrayComparator;
+}
+
+export namespace SQFArray {
+	export function of(operation: SQFArrayComparator, types: SQFSyntaxTypes): SQFArray {
+		return {
+			operation: operation,
+			types: types
+		}
+	}
+}
+
+export interface SQFCode {
+    returns: SQFSyntaxTypes;
+    params?: SQFSyntaxTypes;
+}
+export namespace SQFCode {
+	export function of(returns: SQFSyntaxTypes, params?: SQFSyntaxTypes): SQFCode {
+		return {
+			params: params,
+			returns: returns
+		}
+	}
+}
+
 export enum SQFSyntaxType {
     UnscheduledFunction = 0,
     NularOperator = 1,
@@ -115,14 +143,7 @@ export type SQFSyntaxTypes =
     | SQFArray
     | SQFCode
     | Array<SQFSyntaxTypes>;
-export interface SQFArray {
-    types: SQFSyntaxTypes;
-    operation: SQFArrayComparator;
-}
-export interface SQFCode {
-    params?: SQFSyntaxTypes;
-    returns: SQFSyntaxTypes;
-}
+
 
 
 type BinarySyntax = {
