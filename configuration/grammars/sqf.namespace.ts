@@ -16,10 +16,10 @@ export enum SQFGrammarType {
     NullLiteral = "null literal",
     PropertyAccessor = "property accessor",
     Command = "command",
-	StringCompiler = "string compiler",
-	FileCompiler = "file compiler",
-	FileExecutor = "file executor",
-	CodeExecutor = "code executor",
+    StringCompiler = "string compiler",
+    FileCompiler = "file compiler",
+    FileExecutor = "file executor",
+    CodeExecutor = "code executor",
 }
 
 export enum SQFDataType {
@@ -29,6 +29,7 @@ export enum SQFDataType {
     Behaviour = "(Behaviour) STRING",
     CombatMode = "(Combat Mode) STRING",
     SpeedMode = "(Speed Mode) STRING",
+    Formation = "(Formation) STRING",
     Code = "CODE",
     Config = "CONFIG",
     Control = "CONTROL",
@@ -64,22 +65,22 @@ export enum SQFDataType {
     WithType = "WITH TYPE",
     ForType = "FOR TYPE",
     HashMapKey = "HASHMAP_KEY",
-	Waypoint = "[GROUP,NUMBER]",
-	Position = "NUMBER[x,y,z?]",
+    Waypoint = "[GROUP,NUMBER]",
+    Position = "NUMBER[x,y,z?]",
     Position3d = "(Position 3D) NUMBER[x,y,z]",
     Position2d = "(Position 2D) NUMBER[x,y]",
-	PositionWorld = "(Position World) NUMBER[x,y,z]",
-	PositionASL = "(Position ASL) NUMBER[x,y,z]",
-	PositionAGL = "(Position AGL) NUMBER[x,y,z]",
-	PositionAGLS = "(Position AGLS) NUMBER[x,y,z]",
-	PositionATL = "(Position ATL) NUMBER[x,y,z]",
-	PositionASLW = "(Position ASLW) NUMBER[x,y,z]",
-	PositionConfig = "(Position Config) NUMBER[x,z,y]",
-	PositionRelative = "(Position Relative) NUMBER[x,z,y]",
-	ParticleArray = `(Particle) ARRAY`,
-	Color = "(Color) NUMBER[R,G,B]",
-	ColorAlpha = "(Color) NUMBER[R,G,B,A]",
-	MinMidMax = "(Min/Mid/Max) NUMBER[min,mid,max]",
+    PositionWorld = "(Position World) NUMBER[x,y,z]",
+    PositionASL = "(Position ASL) NUMBER[x,y,z]",
+    PositionAGL = "(Position AGL) NUMBER[x,y,z]",
+    PositionAGLS = "(Position AGLS) NUMBER[x,y,z]",
+    PositionATL = "(Position ATL) NUMBER[x,y,z]",
+    PositionASLW = "(Position ASLW) NUMBER[x,y,z]",
+    PositionConfig = "(Position Config) NUMBER[x,z,y]",
+    PositionRelative = "(Position Relative) NUMBER[x,z,y]",
+    ParticleArray = `(Particle) ARRAY`,
+    Color = "(Color) NUMBER[R,G,B]",
+    ColorAlpha = "(Color) NUMBER[R,G,B,A]",
+    MinMidMax = "(Min/Mid/Max) NUMBER[min,mid,max]",
 }
 
 export interface SQFArray {
@@ -88,25 +89,64 @@ export interface SQFArray {
 }
 
 export namespace SQFArray {
-	export function of(operation: SQFArrayComparator, types: SQFSyntaxTypes): SQFArray {
-		return {
-			operation: operation,
-			types: types
+    export function of(
+        types: SQFSyntaxTypes,
+        operation?: SQFArrayComparator
+    ): SQFArray {
+        if (!operation) {
+			if (!Array.isArray(types)) {
+				return SQFArray.ofOneOfThese(types);
+			}
+
+			return SQFArray.ofAnyOfThese(types);
 		}
-	}
+
+		return {
+            operation: operation,
+            types: types,
+        };
+    }
+    export function ofOneOfThese(types: SQFSyntaxTypes): SQFArray {
+        return {
+            operation: SQFArrayComparator.OneOf,
+            types: types,
+        };
+    }
+    export function ofAnyOfThese(types: SQFSyntaxTypes): SQFArray {
+        return {
+            operation: SQFArrayComparator.AnyOf,
+            types: types,
+        };
+    }
+    export function ofExactlyThis(types: SQFSyntaxTypes): SQFArray {
+        return {
+            operation: SQFArrayComparator.Exact,
+            types: types,
+        };
+    }
 }
 
 export interface SQFCode {
-    returns: SQFSyntaxTypes;
+    returnTypes: SQFSyntaxTypes;
     params?: SQFSyntaxTypes;
 }
 export namespace SQFCode {
-	export function of(returns: SQFSyntaxTypes, params?: SQFSyntaxTypes): SQFCode {
-		return {
-			params: params,
-			returns: returns
-		}
-	}
+    export function returns(
+        returnTypes: SQFSyntaxTypes
+    ): SQFCode {
+        return {
+            returnTypes: returnTypes,
+        };
+    }
+    // function takes(
+    //     params: SQFSyntaxTypes
+    // ): SQFCode {
+	// 	if (!this) { }
+    //     return {
+	// 		,
+    //         params: params,
+    //     };
+    // }
 }
 
 export enum SQFSyntaxType {
@@ -144,33 +184,35 @@ export type SQFSyntaxTypes =
     | SQFCode
     | Array<SQFSyntaxTypes>;
 
-
-
 type BinarySyntax = {
-	type: SQFSyntaxType.BinaryOperator;
-	returnTypes?: SQFSyntaxTypes;
-	leftOperandTypes: SQFSyntaxTypes;
-	rightOperandTypes: SQFSyntaxTypes;
-}
+    type: SQFSyntaxType.BinaryOperator;
+    returnTypes?: SQFSyntaxTypes;
+    leftOperandTypes: SQFSyntaxTypes;
+    rightOperandTypes: SQFSyntaxTypes;
+};
 
 type FunctionSyntax = {
-	type: SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction;
-	returnTypes?: SQFSyntaxTypes;
-	leftOperandTypes?: SQFSyntaxTypes;
-}
+    type: SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction;
+    returnTypes?: SQFSyntaxTypes;
+    leftOperandTypes?: SQFSyntaxTypes;
+};
 
 type UnarySyntax = {
-	type: SQFSyntaxType.UnaryOperator;
-	returnTypes?: SQFSyntaxTypes;
-	rightOperandTypes: SQFSyntaxTypes;
-}
+    type: SQFSyntaxType.UnaryOperator;
+    returnTypes?: SQFSyntaxTypes;
+    rightOperandTypes: SQFSyntaxTypes;
+};
 
 type NularSyntax = {
-	type: SQFSyntaxType.NularOperator;
-	returnTypes?: SQFSyntaxTypes;
-}
+    type: SQFSyntaxType.NularOperator;
+    returnTypes?: SQFSyntaxTypes;
+};
 
-export type SQFSyntax = FunctionSyntax | NularSyntax | UnarySyntax | BinarySyntax;
+export type SQFSyntax =
+    | FunctionSyntax
+    | NularSyntax
+    | UnarySyntax
+    | BinarySyntax;
 
 export enum SQFEffect {
     LOCAL = "Local Effect",
