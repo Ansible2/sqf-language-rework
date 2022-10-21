@@ -1,0 +1,175 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.11/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.11/ http://www.mediawiki.org/xml/export-0.11.xsd" version="0.11" xml:lang="en">
+  <siteinfo>
+    <sitename>Bohemia Interactive Community</sitename>
+    <dbname>community</dbname>
+    <base>https://community.bistudio.com/wiki/Main_Page</base>
+    <generator>MediaWiki 1.35.1</generator>
+    <case>case-sensitive</case>
+    <namespaces>
+      <namespace key="-2" case="case-sensitive">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="case-sensitive" />
+      <namespace key="1" case="case-sensitive">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="case-sensitive">Bohemia Interactive Community</namespace>
+      <namespace key="5" case="case-sensitive">Bohemia Interactive Community talk</namespace>
+      <namespace key="6" case="case-sensitive">File</namespace>
+      <namespace key="7" case="case-sensitive">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="case-sensitive">Template</namespace>
+      <namespace key="11" case="case-sensitive">Template talk</namespace>
+      <namespace key="12" case="case-sensitive">Help</namespace>
+      <namespace key="13" case="case-sensitive">Help talk</namespace>
+      <namespace key="14" case="case-sensitive">Category</namespace>
+      <namespace key="15" case="case-sensitive">Category talk</namespace>
+      <namespace key="110" case="case-sensitive">Forum</namespace>
+      <namespace key="111" case="case-sensitive">Forum talk</namespace>
+      <namespace key="460" case="case-sensitive">Campaign</namespace>
+      <namespace key="461" case="case-sensitive">Campaign talk</namespace>
+      <namespace key="5020" case="case-sensitive">DayZ</namespace>
+      <namespace key="5021" case="case-sensitive">DayZ talk</namespace>
+      <namespace key="5030" case="case-sensitive">Ylands</namespace>
+      <namespace key="5031" case="case-sensitive">Ylands talk</namespace>
+      <namespace key="5050" case="case-sensitive">Arma Reforger</namespace>
+      <namespace key="5051" case="case-sensitive">Arma Reforger talk</namespace>
+      <namespace key="5060" case="case-sensitive">Arma 4</namespace>
+      <namespace key="5061" case="case-sensitive">Arma 4 talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>BIS fnc unitPlay</title>
+    <ns>0</ns>
+    <id>15744</id>
+    <revision>
+      <id>327458</id>
+      <parentid>327128</parentid>
+      <timestamp>2022-07-12T22:12:10Z</timestamp>
+      <contributor>
+        <username>Lou Montana</username>
+        <id>10739</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - "
+|s1=[" to "
+|s1= ["</comment>
+      <origin>327458</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1369" sha1="iq8jwulrgqkhw4n7ehx2g8lz8ellp1j" xml:space="preserve">{{RV|type=function
+
+|game1= arma2oa
+|version1= 1.50
+
+|game2= tkoh
+|version2= 1.00
+
+|game3= arma3
+|version3= 0.50
+
+|gr1= Scenes
+
+|descr= Plays back input movement data on input unit. Simplified.
+
+|s1= [unit, data, varDone, stateIgnore, obsolete_1, obsolete_2, skipTime] spawn [[BIS_fnc_unitPlay]]
+
+|p1= unit: [[Object]] - Unit to play movement data on
+
+|p2= data: [[Array]] - Movement data recorder by [[BIS_fnc_unitCapture]]
+
+|p3= varDone: [[Array]] - (Optional, default []) Variable to set on specified Object once playback has finished in format:
+*0: [[Object]] - Target object
+*1: [[String]] - Variable name
+
+|p4= stateIgnore: [[Boolean]] - (Optional, default [[false]]) whether to ignore if the Unit is dead and/or cannot move
+
+|p5= obsolete_1: [[Nothing]] - obsolete param, preserved because of backward compatibility
+
+|p6= obsolete_2: [[Nothing]] - obsolete param, preserved because of backward compatibility
+
+|p7= skipTime: [[Number]] - (Optional, default 0) amount of time to skip at the start of playback. For example if you wish to play the data from halfway instead of the start.
+
+|r1= [[Boolean]] - always [[true]]
+
+|exec= spawn
+
+|x1= &lt;sqf&gt;[ vehicle player, _unitCaptureData ] spawn BIS_fnc_unitPlay&lt;/sqf&gt;
+
+|seealso= [[BIS_fnc_unitCaptureFiring]] [[BIS_fnc_unitCaptureSimple]] [[BIS_fnc_unitPlaySimple]] [[BIS_fnc_unitPlayFiring]] [[BIS_fnc_unitCapture]]
+}}</text>
+      <sha1>iq8jwulrgqkhw4n7ehx2g8lz8ellp1j</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>BIS fnc unitCapture</title>
+    <ns>0</ns>
+    <id>15741</id>
+    <revision>
+      <id>329957</id>
+      <parentid>324546</parentid>
+      <timestamp>2022-08-09T17:17:11Z</timestamp>
+      <contributor>
+        <username>Lou Montana</username>
+        <id>10739</id>
+      </contributor>
+      <minor/>
+      <comment>Text replacement - "[[Script Handle|Script handle]]" to "[[Script Handle]]"</comment>
+      <origin>329957</origin>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text bytes="1751" sha1="5tjpniipxskyalssy36bte50oauua3s" xml:space="preserve">{{RV|type=function
+
+|game1= arma2oa
+|version1= 1.50
+
+|game2= tkoh
+|version2= 1.00
+
+|game3= arma3
+|version3= 0.50
+
+|gr1= Scenes
+
+|descr= Records movement data of input unit over a specified period of time. Simplified.
+Pressing the {{Controls|Esc}} key, the duration ending, or the unit dying ends the recording.&lt;br&gt;
+Copies to clipboard an [[Array]] in format [frameTime, unitPosition, unitDirectionVector, unitUpVector, unitVelocity] for each frame.
+
+|s1= [unit, duration, FPS, firing, startTime] spawn [[BIS_fnc_unitCapture]]
+
+|p1= unit: [[Object]] - unit from which to capture movement data
+
+|p2= duration: [[Number]] - capture's maximum duration
+
+|p3= FPS: [[Number]] - (Optional, default 20) frames recorded per second (default 20). Range is 1..100
+
+|p4= Firing: [[Boolean]] - (Optional, default [[false]]) if set to [[true]], will record the input unit's weapon fire data as well
+
+|p5= startTime: [[Number]] - (Optional, default 0) starting time offset for the frame time
+
+|r1= [[Script Handle]]
+
+|exec= spawn
+
+|x1= &lt;sqf&gt;[BIS_Vehicle, 50, 30, true, 10] spawn BIS_fnc_unitCapture;&lt;/sqf&gt;
+
+|seealso= [[BIS_fnc_unitCaptureFiring]] [[BIS_fnc_unitCaptureSimple]] [[BIS_fnc_unitPlaySimple]] [[BIS_fnc_unitPlayFiring]] [[BIS_fnc_unitPlay]]
+}}
+
+&lt;dl class="command_description"&gt;
+
+&lt;dt&gt;&lt;/dt&gt;
+&lt;dd class="notedate"&gt;Posted on September 29, 2014 - 21:31 (UTC)&lt;/dd&gt;
+&lt;dt class="note"&gt;[[User:Benargee|Benargee]]&lt;/dt&gt;
+&lt;dd class="note"&gt;
+Video Tutorial by '''[https://www.youtube.com/channel/UCY63DNbVREJIaANChQhYDTA TheJserver]'''&lt;br&gt;
+{{GVI|arma2oa|1.56}} '''Part 1:''' https://www.youtube.com/watch?v=ryB20wQhSr0&lt;br&gt;
+{{GVI|arma2oa|1.56}} '''Part 2:''' https://www.youtube.com/watch?v=ePszdYfMRvc&lt;br&gt;
+''Works exactly the same in Arma 3 in my experience.''
+&lt;/dd&gt;
+
+&lt;/dl&gt;</text>
+      <sha1>5tjpniipxskyalssy36bte50oauua3s</sha1>
+    </revision>
+  </page>
+</mediawiki>

@@ -13,7 +13,9 @@
         "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
         "ts-node": "ts-node",
-		"parse:biki": "ts-node ./Parsers/Parse.ts",
+		"parse:biki:commands": "ts-node ./Parsers/Parse.ts biki:commands",
+		"parse:biki:functions": "ts-node ./Parsers/Parse.ts biki:functions",
+		"parse:kiska": "ts-node ./Parsers/Parse.ts kiska",
         "build": "ts-node ./build-process/build && npm run compile && npm run install:prod",
         "build:nocomp": "ts-node ./build-process/build",
         "install:prod": "cd .out && npm ci --production"
