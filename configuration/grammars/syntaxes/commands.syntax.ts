@@ -117,7 +117,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 leftOperandTypes: SQFDataType.Array,
                 rightOperandTypes: {
                     params: SQFDataType.Any,
-                    returnTypes: [SQFDataType.Boolean, SQFDataType.Nothing],
+                    codeReturnTypes: [SQFDataType.Boolean, SQFDataType.Nothing],
                 },
                 returnTypes: SQFDataType.Array,
             },

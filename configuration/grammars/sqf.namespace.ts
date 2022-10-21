@@ -127,27 +127,47 @@ export namespace SQFArray {
 }
 
 export interface SQFCode {
-    returnTypes: SQFSyntaxTypes;
+    codeReturnTypes: SQFSyntaxTypes;
     params?: SQFSyntaxTypes;
 }
-export namespace SQFCode {
-    export function returns(
-        returnTypes: SQFSyntaxTypes
-    ): SQFCode {
-        return {
-            returnTypes: returnTypes,
-        };
-    }
-    // function takes(
-    //     params: SQFSyntaxTypes
-    // ): SQFCode {
-	// 	if (!this) { }
-    //     return {
-	// 		,
-    //         params: params,
-    //     };
-    // }
+export class SQFCode {
+	private constructor(returnTypes: SQFSyntaxTypes) {
+		this.codeReturnTypes = returnTypes;
+	}
+
+	public static returns(returnTypes: SQFSyntaxTypes): SQFCode {
+		return new SQFCode(returnTypes);
+	}
+
+	public takes(params: SQFSyntaxTypes): SQFCode {
+		this.params = params;
+		return this;
+	}
+
 }
+// export namespace SQFCode {
+//     function returns(
+//         returnTypes: SQFSyntaxTypes
+//     ): SQFCode {
+//         return new SQFCode(returnTypes);
+//     }
+//     function takes(
+//         returnTypes: SQFSyntaxTypes
+//     ): SQFCode {
+//         return new SQFCode(returnTypes);
+//     }
+
+	
+//     // function takes(
+//     //     params: SQFSyntaxTypes
+//     // ): SQFCode {
+// 	// 	if (!this) { }
+//     //     return {
+// 	// 		,
+//     //         params: params,
+//     //     };
+//     // }
+// }
 
 export enum SQFSyntaxType {
     UnscheduledFunction = 0,
@@ -164,7 +184,7 @@ export function isSQFArray(object: unknown): object is SQFArray {
     );
 }
 export function isSQFCode(object: unknown): object is SQFCode {
-    return Object.prototype.hasOwnProperty.call(object, "returns");
+    return Object.prototype.hasOwnProperty.call(object, "codeReturnTypes");
 }
 
 export function isSqfDataType(object: unknown): object is string {

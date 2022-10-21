@@ -286,7 +286,7 @@ export class DocProvider implements IDocProvider {
                 true
             );
             const returnParsed = this.parseSyntaxReturnOrOperands(
-                operator.returnTypes,
+                operator.codeReturnTypes,
                 true
             );
 
