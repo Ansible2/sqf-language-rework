@@ -211,7 +211,7 @@ export class BikiTextInterpreter {
         return stringToCheck.startsWith("|eff");
     }
     private static isPageType(stringToCheck: string): boolean {
-        return stringToCheck.startsWith("|function");
+        return stringToCheck.startsWith("|type");
     }
     private static isFunctionExecution(stringToCheck: string): boolean {
         return !!stringToCheck.match(/^\|exec\s*\=/);

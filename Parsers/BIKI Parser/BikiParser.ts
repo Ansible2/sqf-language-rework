@@ -49,7 +49,7 @@ export class BikiParser implements Parser  {
 
 		fs.writeFileSync(
 			`${BikiOutputFolder}/output.ts`,
-			`import {SQFDataType, SQFEffect, SQFArgument, SQFGrammarType, SQFSyntaxType} from "../../../configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join(
+			`import {SQFDataType, SQFEffect, SQFArray, SQFArgument, SQFGrammarType, SQFSyntaxType} from "../../../configuration/grammars/sqf.namespace";\nconst output = {${parsedPages.join(
 				""
 			)}\n}`
 			

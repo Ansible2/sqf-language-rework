@@ -47,6 +47,13 @@ function findLastIndex<T>(
     return -1;
 }
 
+function isSyntaxTypeFunction(type: SQFSyntaxType): boolean {
+    return (
+        type === SQFSyntaxType.ScheduledFunction ||
+        type === SQFSyntaxType.UnscheduledFunction
+    );
+}
+
 export class MediaWikiConverter {
     public static textInterpreter: BikiTextInterpreter =
         new BikiTextInterpreter();
@@ -160,6 +167,9 @@ export class MediaWikiConverter {
             pageTitle: pageTitle,
             returnType: returnType,
         } as ParsedSyntax;
+        const isFunction = isSyntaxTypeFunction(
+            MediaWikiConverter.currentParsedPageType
+        );
 
         if (MediaWikiConverter.currentParsedPageType !== SQFSyntaxType.Empty) {
             syntaxType = MediaWikiConverter.currentParsedPageType;
@@ -173,9 +183,12 @@ export class MediaWikiConverter {
             syntaxType = SQFSyntaxType.BinaryOperator;
             leftArgTypes = parsingSyntaxDetails.parameters_1;
             rightArgTypes = parsingSyntaxDetails.parameters_2;
-        } else if (parsingSyntaxDetails.parameters_1) {
+        } else if (parsingSyntaxDetails.parameters_1 && !isFunction) {
             syntaxType = SQFSyntaxType.UnaryOperator;
             rightArgTypes = parsingSyntaxDetails.parameters_1;
+        } else if (parsingSyntaxDetails.parameters_1 && isFunction) {
+            syntaxType = MediaWikiConverter.currentParsedPageType;
+            leftArgTypes = parsingSyntaxDetails.parameters_1;
         }
 
         if (syntaxType) {
@@ -196,7 +209,8 @@ export class MediaWikiConverter {
 	---------------------------------------------------------------------------- */
     private static addPageDetailToSyntax(
         parsingSyntaxes: ParsingSyntax[],
-        pageDetail: WikiPageDetail
+        pageDetail: WikiPageDetail,
+        isFunctionSyntax: boolean = false
     ) {
         const indexOfSyntax = findLastIndex(
             parsingSyntaxes,
@@ -220,7 +234,7 @@ export class MediaWikiConverter {
             return;
         }
 
-        if (isParameter) {
+        if (isParameter && !isFunctionSyntax) {
             if (parsingSyntax.syntax.parameters_1) {
                 parsingSyntax.syntax.parameters_2 = typesParsed;
 
@@ -251,6 +265,18 @@ export class MediaWikiConverter {
             } else {
                 parsingSyntax.syntax.parameters_1 = typesParsed;
             }
+
+            return;
+        }
+
+        if (isParameter && isFunctionSyntax) {
+            if (!parsingSyntax.syntax.parameters_1) {
+                parsingSyntax.syntax.parameters_1 = [];
+            }
+            parsingSyntax.syntax.parameters_1 = [
+                ...parsingSyntax.syntax.parameters_1,
+                ...typesParsed,
+            ];
 
             return;
         }
@@ -287,7 +313,10 @@ export class MediaWikiConverter {
             ) {
                 MediaWikiConverter.addPageDetailToSyntax(
                     parsingSyntaxes,
-                    pageDetail
+                    pageDetail,
+                    isSyntaxTypeFunction(
+                        MediaWikiConverter.currentParsedPageType
+                    )
                 );
             }
         }
@@ -315,6 +344,9 @@ export class MediaWikiConverter {
             );
             break;
         }
+
+		console.log(wikiPageType);
+		
 
         if (wikiPageType !== WikiPageType.Function) return SQFSyntaxType.Empty;
 
@@ -349,11 +381,11 @@ export class MediaWikiConverter {
             MediaWikiConverter.getWikiPageDetails(page);
         if (pageDetails.length < 1) return "";
 
-		MediaWikiConverter.writeDocumentation(page.title,pageDetails);
+        MediaWikiConverter.writeDocumentation(page.title, pageDetails);
 
-        const functionType = MediaWikiConverter.getFunctionType(pageDetails);
-        if (functionType !== SQFSyntaxType.Empty) {
-            MediaWikiConverter.currentParsedPageType = functionType;
+        const pageType = MediaWikiConverter.getFunctionType(pageDetails);
+        if (pageType !== SQFSyntaxType.Empty) {
+            MediaWikiConverter.currentParsedPageType = pageType;
         }
 
         let parsedSyntaxes: ParsedSyntax[] =
@@ -411,7 +443,11 @@ export class MediaWikiConverter {
                     break;
                 }
                 case WikiPageDetailType.ServerExecution: {
-                    if (pageDetail.detailContent?.toLowerCase().includes('server')) {
+                    if (
+                        pageDetail.detailContent
+                            ?.toLowerCase()
+                            .includes("server")
+                    ) {
                         parsedPage.serverExecution = true;
                     }
                     break;
@@ -449,9 +485,9 @@ export class MediaWikiConverter {
                         detailFull
                     ),
                     detailFull: detailFull,
-                    detailName: matchGroups[1],
-                    detailContent: matchGroups[3],
-                    detailNameFull: matchGroups[5],
+                    detailName: matchGroups[2],
+                    detailContent: matchGroups[3].trim(),
+                    detailNameFull: `|${matchGroups[2]}=`,
                 };
             }
         );
@@ -657,26 +693,39 @@ export class MediaWikiConverter {
             `\t\treturnTypes: ${syntax.returnType},`,
         ];
 
-        if (syntax.leftArgTypes) {
-            let insertSyntax = "";
-            if (syntax.leftArgTypes.length > 1) {
-                insertSyntax = `[${syntax.leftArgTypes}]`;
-            } else {
-                insertSyntax = syntax.leftArgTypes[0];
+        if (isSyntaxTypeFunction(syntax.syntaxType)) {
+            if (syntax.leftArgTypes) {
+                let insertSyntax = "";
+                if (syntax.leftArgTypes.length >= 1) {
+                    insertSyntax = `SQFArray.ofExactlyThis([${syntax.leftArgTypes}])`;
+                    syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
+					// TODO may not need this else
+                } /*else {
+					insertSyntax = `SQFArray.ofExactlyThis([${syntax.leftArgTypes[0]}]),`;
+				}*/
+            }
+        } else {
+            if (syntax.leftArgTypes) {
+                let insertSyntax = "";
+                if (syntax.leftArgTypes.length > 1) {
+                    insertSyntax = `[${syntax.leftArgTypes}]`;
+                } else {
+                    insertSyntax = syntax.leftArgTypes[0];
+                }
+
+                syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
             }
 
-            syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
-        }
+            if (syntax.rightArgTypes) {
+                let insertSyntax = "";
+                if (syntax.rightArgTypes.length > 1) {
+                    insertSyntax = `[${syntax.rightArgTypes}]`;
+                } else {
+                    insertSyntax = syntax.rightArgTypes[0];
+                }
 
-        if (syntax.rightArgTypes) {
-            let insertSyntax = "";
-            if (syntax.rightArgTypes.length > 1) {
-                insertSyntax = `[${syntax.rightArgTypes}]`;
-            } else {
-                insertSyntax = syntax.rightArgTypes[0];
+                syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax},`);
             }
-
-            syntaxArray.push(`\t\trightOperandTypes: ${insertSyntax},`);
         }
 
         syntaxArray.push("\t}");
@@ -715,11 +764,9 @@ export class MediaWikiConverter {
                 `\targument: ${parsedPage.argumentLocality},`
             );
         }
-		if (parsedPage.serverExecution) {
-			finalSyntaxesAsArray.push(
-                `\tserver: true,`
-            );
-		}
+        if (parsedPage.serverExecution) {
+            finalSyntaxesAsArray.push(`\tserver: true,`);
+        }
 
         finalSyntaxesAsArray.push("},");
         return finalSyntaxesAsArray.join("\n");
@@ -728,7 +775,10 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
 		writeDocumentation
 	---------------------------------------------------------------------------- */
-    private static writeDocumentation(pageTitle: string, pageDetails: WikiPageDetail[]): void {
+    private static writeDocumentation(
+        pageTitle: string,
+        pageDetails: WikiPageDetail[]
+    ): void {
         const documentationFolderPath: string = path.resolve(
             __dirname,
             "../.output/Biki Parser/docs"
@@ -739,118 +789,134 @@ export class MediaWikiConverter {
 
         let examples: string[] = [];
         let description: string = "";
-		let syntaxStrings: string[] = [];
+        let syntaxStrings: string[] = [];
         pageDetails.forEach((detail: WikiPageDetail) => {
             if (!detail.detailContent) return;
-			
-			if (detail.type === WikiPageDetailType.Syntax) {
-				syntaxStrings.push(
-					MediaWikiConverter.formatBikiText(detail.detailContent)
-				);
-				return;
-			}
+
+            if (detail.type === WikiPageDetailType.Syntax) {
+                syntaxStrings.push(
+                    MediaWikiConverter.formatBikiText(detail.detailContent)
+                );
+                return;
+            }
 
             if (detail.type === WikiPageDetailType.Description) {
-                description = MediaWikiConverter.formatBikiText(detail.detailContent);
-				
+                description = MediaWikiConverter.formatBikiText(
+                    detail.detailContent
+                );
+
                 return;
             }
 
             if (detail.type === WikiPageDetailType.Example) {
                 examples.push(
-					MediaWikiConverter.formatBikiText(detail.detailContent)
-				);
-				return;
+                    MediaWikiConverter.formatBikiText(detail.detailContent)
+                );
+                return;
             }
         });
-		examples = examples.map((example,index) => {
-			return `*Example ${index + 1}:*\n\n${example}`;
-		});
+        examples = examples.map((example, index) => {
+            return `*Example ${index + 1}:*\n\n${example}`;
+        });
 
-		const final = `${description}\n\n\n---\n*Syntaxes:*\n\n${syntaxStrings.join("\n\n")}\n\n---\n${examples.join("\n\n")}`;
+        const final = `${description}\n\n\n---\n*Syntaxes:*\n\n${syntaxStrings.join(
+            "\n\n"
+        )}\n\n---\n${examples.join("\n\n")}`;
 
-		if (final) {
-			const filename = this.textInterpreter.getFilename(pageTitle);
-			fs.writeFileSync(`${documentationFolderPath}/${filename}.md`,final);
-		}	
-
+        if (final) {
+            const filename = this.textInterpreter.getFilename(pageTitle);
+            fs.writeFileSync(
+                `${documentationFolderPath}/${filename}.md`,
+                final
+            );
+        }
     }
 
-	private static formatDescription(input: string): string {
-		let output = input;
-		// replace file links
-		output = output.replace(/\[\[File.*?\]\]/gi,"");
+    private static formatDescription(input: string): string {
+        let output = input;
+        // replace file links
+        output = output.replace(/\[\[File.*?\]\]/gi, "");
 
-		// replace code references
-		output = output.replace(/(\'\'+)(.*?)(\'\'+)/gi,"`$2`")
+        // replace code references
+        output = output.replace(/(\'\'+)(.*?)(\'\'+)/gi, "`$2`");
 
-		const internalLinkMatches = output.matchAll(/(\[\[)([\s\D\|]*?)(\]\])/gi);
-		for (const match of internalLinkMatches) {
-			if (!match.input) continue;
+        const internalLinkMatches = output.matchAll(
+            /(\[\[)([\s\D\|]*?)(\]\])/gi
+        );
+        for (const match of internalLinkMatches) {
+            if (!match.input) continue;
 
-			const text = match[2];
-			const matchedText = match[0];
-			if (!text.includes('|')) {
-				output = output.replace(matchedText,`\`${text.trim()}\``);
-				continue;
-			};
+            const text = match[2];
+            const matchedText = match[0];
+            if (!text.includes("|")) {
+                output = output.replace(matchedText, `\`${text.trim()}\``);
+                continue;
+            }
 
-			const [ link, linkTitle ] = text.split('|');
-			output = output.replace(matchedText,`\`${linkTitle}\``);
-		}
+            const [link, linkTitle] = text.split("|");
+            output = output.replace(matchedText, `\`${linkTitle}\``);
+        }
 
-		// remove tables
-		output = output.replace(/{{{![\s\S]*?}}}/gi,"");
+        // remove tables
+        output = output.replace(/{{{![\s\S]*?}}}/gi, "");
 
-		// remove notes
-		output = output.replace(/{{Feature[\s\S]*}}/gi,"");
-		
-		// replace emphasized text
-		output = output.replace(/({{hl\|)(.*)(}})/gi,"**$2**");
+        // remove notes
+        output = output.replace(/{{Feature[\s\S]*}}/gi, "");
 
-		// handle external wiki links
-		const linkMatch = output.matchAll(/(\{\{)(([\s\w\d]+)(\|)*)(([\s\w\d]+)(\|)*)([\s\w\d]+)(\}\})/gi);
-		const linkMatchArray = Array.from(linkMatch);
-		linkMatchArray.forEach((regexMatchArrayForLink) => {
-			const siteName = regexMatchArrayForLink[3];
-			const endpoint = regexMatchArrayForLink[6];
-			const linkTitle = regexMatchArrayForLink[8];
-			const originalString = regexMatchArrayForLink[0];
-			const siteBaseUrl = this.textInterpreter.getWikiExternalUrl(siteName);
-			if (!siteBaseUrl) {
-				// TODO: lots of "<see arm reference>"" ending up in output docs
-				output = output.replace(originalString,`<See ${siteName} Reference ${linkTitle}>`);
-				return;
-			}
+        // replace emphasized text
+        output = output.replace(/({{hl\|)(.*)(}})/gi, "**$2**");
 
-			output = output.replace(originalString,`[${linkTitle}](${siteBaseUrl}/${endpoint})`);
-		});
+        // handle external wiki links
+        const linkMatch = output.matchAll(
+            /(\{\{)(([\s\w\d]+)(\|)*)(([\s\w\d]+)(\|)*)([\s\w\d]+)(\}\})/gi
+        );
+        const linkMatchArray = Array.from(linkMatch);
+        linkMatchArray.forEach((regexMatchArrayForLink) => {
+            const siteName = regexMatchArrayForLink[3];
+            const endpoint = regexMatchArrayForLink[6];
+            const linkTitle = regexMatchArrayForLink[8];
+            const originalString = regexMatchArrayForLink[0];
+            const siteBaseUrl =
+                this.textInterpreter.getWikiExternalUrl(siteName);
+            if (!siteBaseUrl) {
+                // TODO: lots of "<see arm reference>"" ending up in output docs
+                output = output.replace(
+                    originalString,
+                    `<See ${siteName} Reference ${linkTitle}>`
+                );
+                return;
+            }
 
-		return output.trim();
-	}
+            output = output.replace(
+                originalString,
+                `[${linkTitle}](${siteBaseUrl}/${endpoint})`
+            );
+        });
 
-	private static formatBikiText(input: string): string {
-		let output: string = input;
-		const sqfCodeMatches = output.matchAll(/(<sqf>)([\s\S]*?)(<\/sqf>)/gi);
-		const savedCodeExamples: string[] = [];
-		for (const match of sqfCodeMatches) {
-			const matchString: string | undefined = match.input;
-			if (!matchString) continue;
-			savedCodeExamples.push(matchString);
-			output = output.replace(matchString,'<SQFCodeToReplace>');
-		}
-		output = MediaWikiConverter.formatDescription(input);
-		
-		for (const sqfCode of savedCodeExamples) {
-			output = output.replace('<SQFCodeToReplace>',sqfCode);
-		}
+        return output.trim();
+    }
 
-		output = output.replace(/\<sqf\>\n+/gi,"\n```sqf\n");
-		output = output.replace(/\<sqf\>/gi,"\n```sqf\n");
-		output = output.replace(/\n+\<\/sqf\>/gi,"\n```");
-		output = output.replace(/\<\/sqf\>/gi,"\n```");
-		
-		return output.trim();
-	}
-	
+    private static formatBikiText(input: string): string {
+        let output: string = input;
+        const sqfCodeMatches = output.matchAll(/(<sqf>)([\s\S]*?)(<\/sqf>)/gi);
+        const savedCodeExamples: string[] = [];
+        for (const match of sqfCodeMatches) {
+            const matchString: string | undefined = match.input;
+            if (!matchString) continue;
+            savedCodeExamples.push(matchString);
+            output = output.replace(matchString, "<SQFCodeToReplace>");
+        }
+        output = MediaWikiConverter.formatDescription(input);
+
+        for (const sqfCode of savedCodeExamples) {
+            output = output.replace("<SQFCodeToReplace>", sqfCode);
+        }
+
+        output = output.replace(/\<sqf\>\n+/gi, "\n```sqf\n");
+        output = output.replace(/\<sqf\>/gi, "\n```sqf\n");
+        output = output.replace(/\n+\<\/sqf\>/gi, "\n```");
+        output = output.replace(/\<\/sqf\>/gi, "\n```");
+
+        return output.trim();
+    }
 }
