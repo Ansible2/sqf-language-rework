@@ -697,6 +697,7 @@ export class MediaWikiConverter {
             if (syntax.leftArgTypes) {
                 let insertSyntax = "";
                 if (syntax.leftArgTypes.length >= 1) {
+					// TODO: what about functions that take a single parameter as an arg without an array?
                     insertSyntax = `SQFArray.ofExactlyThis([${syntax.leftArgTypes}])`;
                     syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
 					// TODO may not need this else
