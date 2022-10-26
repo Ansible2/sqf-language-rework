@@ -821,7 +821,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-			returnTypes: SQFDataType.Boolean,
+            returnTypes: SQFDataType.Boolean,
             leftOperandTypes: SQFArray.ofExactlyThis([
                 SQFDataType.Object,
                 SQFArray.ofOneOfThese([
@@ -853,6 +853,337 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                     ]),
                 ]),
             ]),
+        },
+    },
+    KISKA_fnc_randomLoadout: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [
+                    SQFDataType.Object,
+                    SQFDataType.Group,
+                    SQFArray.of(SQFDataType.Object),
+                ],
+                SQFArray.of(SQFDataType.UnitLoadout),
+            ]),
+        },
+    },
+    KISKA_fnc_savePlayerLoadout: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_randomMusic_getCurrentTrack: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.String,
+        },
+    },
+    KISKA_fnc_randomMusic_getTrackInterval: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: [
+                SQFArray.ofExactlyThis([SQFDataType.Number]),
+                SQFDataType.MinMidMax,
+                SQFDataType.String,
+            ],
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_getUnusedTracks: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.String),
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_getUsedTracks: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.String),
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_getVolume: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_isSystemRunning: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_setCurrentTrack: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.String]),
+            returnTypes: SQFDataType.Boolean,
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_setSystemRunning: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.Boolean]),
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_setTrackInterval: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [
+                    SQFDataType.Number,
+                    SQFDataType.MinMidMax,
+                    SQFArray.ofExactlyThis([SQFDataType.Number]),
+                ],
+            ]),
+            returnTypes: SQFDataType.Boolean,
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_setUnusedTracks: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                SQFArray.of(SQFDataType.String),
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_setUsedTracks: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                SQFArray.of(SQFDataType.String),
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_setVolume: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.Number]),
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic_stopClient: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_randomMusic_stopServer: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.Boolean]),
+            returnTypes: SQFDataType.Boolean,
+        },
+        server: true,
+    },
+    KISKA_fnc_randomMusic: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                SQFDataType.Number,
+                SQFArray.of(SQFDataType.String),
+                [
+                    SQFDataType.MinMidMax,
+                    SQFDataType.Number,
+                    SQFArray.ofExactlyThis([SQFDataType.Number]),
+                ],
+                SQFArray.of(SQFDataType.String),
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_getLatestPlayedMusicID: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_getMusicDuration: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [SQFDataType.String, SQFDataType.Config],
+            ]),
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_getMusicFromClass: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.String]),
+            returnTypes: SQFArray.of(SQFDataType.String),
+        },
+    },
+    KISKA_fnc_getPlayingMusic: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.String]),
+            returnTypes: SQFDataType.String,
+        },
+    },
+    KISKA_fnc_isMusicPlaying: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_musicEventHandlers: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_musicStartEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.String]),
+        },
+    },
+    KISKA_fnc_musicStopEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.Boolean]),
+        },
+    },
+    KISKA_fnc_playMusic: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                SQFDataType.String,
+                SQFArray.ofExactlyThis([
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Boolean,
+                SQFDataType.Number,
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_stopMusic: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_addRallyPointDiaryEntry: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+        },
+    },
+    KISKA_fnc_allowGroupRally: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [SQFDataType.Object, SQFDataType.Group],
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_disallowGroupRally: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [SQFDataType.Object, SQFDataType.Group],
+                SQFDataType.Boolean,
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_isGroupRallyAllowed: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [SQFDataType.Object, SQFDataType.Group],
+            ]),
+        },
+    },
+    KISKA_fnc_updateRallyPointNotification: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_updateRespawnMarker: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                SQFDataType.Object,
+                SQFDataType.Marker,
+                SQFDataType.String,
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_updateRespawnMarkerQuery: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_keepInGroup: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+        },
+    },
+    KISKA_fnc_ambientNewsRadio: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: SQFArray.ofExactlyThis([
+                [SQFDataType.Object, SQFDataType.PositionASL],
+				SQFDataType.Number,
+				SQFDataType.Number,
+				SQFDataType.Number,
+				SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.Number,
         },
     },
 };

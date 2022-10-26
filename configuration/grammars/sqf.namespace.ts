@@ -57,6 +57,7 @@ export enum SQFDataType {
     Any = "ANYTHING",
     Nothing = "NOTHING",
     Void = "VOID",
+    Marker = "(Marker) STRING",
     Vector = "(Vector) NUMBER[x,y,z]",
     Variable = "VARIABLE",
     IfType = "IF TYPE",
@@ -81,6 +82,7 @@ export enum SQFDataType {
     Color = "(Color) NUMBER[R,G,B]",
     ColorAlpha = "(Color) NUMBER[R,G,B,A]",
     MinMidMax = "(Min/Mid/Max) NUMBER[min,mid,max]",
+    UnitLoadout = "(Unit Loadout) ARRAY",
 }
 
 export interface SQFArray {
@@ -118,7 +120,7 @@ export namespace SQFArray {
             types: types,
         };
     }
-    export function ofExactlyThis(types: SQFSyntaxTypes): SQFArray {
+    export function ofExactlyThis(types: SQFSyntaxTypes[]): SQFArray {
         return {
             operation: SQFArrayComparator.Exact,
             types: types,
