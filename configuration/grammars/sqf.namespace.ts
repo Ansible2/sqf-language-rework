@@ -120,7 +120,7 @@ export namespace SQFArray {
             types: types,
         };
     }
-    export function ofExactlyThis(types: SQFSyntaxTypes[]): SQFArray {
+    export function ofExactly(types: SQFSyntaxTypes[]): SQFArray {
         return {
             operation: SQFArrayComparator.Exact,
             types: types,
