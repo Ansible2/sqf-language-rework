@@ -1224,6 +1224,234 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Number,
         },
     },
+    KISKA_fnc_playSound2D: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                [SQFDataType.Object, SQFDataType.Position],
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_playSound3D: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.String, SQFDataType.Config],
+                [SQFDataType.Object, SQFDataType.PositionASL],
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+                SQFDataType.Number,
+            ]),
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_radioChatter: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Boolean,
+                [
+                    SQFArray.ofExactly([
+                        SQFDataType.Object,
+                        SQFDataType.Number,
+                        SQFDataType.PositionRelative,
+                    ]),
+                    SQFArray.ofExactly([
+                        [SQFDataType.Object, SQFDataType.PositionASL],
+                        SQFDataType.Number,
+                        SQFDataType.Number,
+                    ]),
+                ],
+            ]),
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_stopBattleSound: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_stopRadioChatter: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_stopRandom3dSoundLoop: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_addCommMenuItem: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.String,
+                SQFDataType.Any,
+                SQFDataType.Any,
+                SQFDataType.String,
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_buildCommandMenu: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.String,
+                    SQFDataType.Number,
+                    SQFDataType.Any,
+                ]),
+            ]),
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_callingForArsenalSupplyDrop: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_callingForArty: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_callingForCAS: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_callingForHelicopterCAS: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_callingForSupplyDrop_aircraft: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_callingForSupportMaster: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_commandMenuTree: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.PositionAGLS,
+                    SQFDataType.Object,
+                    SQFDataType.Boolean,
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Number,
+            ]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
