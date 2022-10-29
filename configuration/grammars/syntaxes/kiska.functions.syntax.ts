@@ -2078,6 +2078,79 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
+    KISKA_fnc_getFromNetId: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: [SQFDataType.Object, SQFDataType.Group],
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
+    KISKA_fnc_getMissionLayerObjects: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.String, SQFDataType.Number],
+            ]),
+        },
+    },
+    KISKA_fnc_getMostSpecificCfgValue: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: [
+                SQFDataType.Nothing,
+                SQFDataType.Array,
+                SQFDataType.Number,
+                SQFDataType.String,
+            ],
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFArray.of(SQFDataType.Config),
+                SQFArray.ofAnyOfThese([
+                    SQFDataType.Array,
+                    SQFDataType.Number,
+                    SQFDataType.String,
+                ]),
+                SQFArray.ofAnyOfThese([
+                    SQFDataType.Array,
+                    SQFDataType.Number,
+                    SQFDataType.String,
+                ]),
+            ]),
+        },
+    },
+	KISKA_fnc_getNearestIncriment: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Number,
+                SQFDataType.Number,
+            ]),
+        },
+    },
+	KISKA_fnc_getRelativeVectorAndPos: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.ofExactly([
+				SQFDataType.PositionRelative,
+				SQFDataType.Vector,
+				SQFDataType.Vector,
+			]),
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Object,
+            ]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
