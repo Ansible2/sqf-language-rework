@@ -29,13 +29,6 @@ const kiskaTimelineEventType = [
 ];
 
 const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
-    KISKA_fnc_isMainMenu: {
-        grammarType: SQFGrammarType.Function,
-        syntaxes: {
-            returnTypes: SQFDataType.Boolean,
-            type: SQFSyntaxType.UnscheduledFunction,
-        },
-    },
     KISKA_fnc_ACE_deployFastRope: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
@@ -2023,7 +2016,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                         ])
                     ),
                 ],
-                SQFDataType.Boolean,
+                SQFDataType.Number,
             ]),
         },
     },
@@ -2125,7 +2118,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
-	KISKA_fnc_getNearestIncriment: {
+    KISKA_fnc_getNearestIncriment: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
@@ -2136,18 +2129,262 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
-	KISKA_fnc_getRelativeVectorAndPos: {
+    KISKA_fnc_getRelativeVectorAndPos: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFArray.ofExactly([
-				SQFDataType.PositionRelative,
-				SQFDataType.Vector,
-				SQFDataType.Vector,
-			]),
+                SQFDataType.PositionRelative,
+                SQFDataType.Vector,
+                SQFDataType.Vector,
+            ]),
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Object,
                 SQFDataType.Object,
+            ]),
+        },
+    },
+    KISKA_fnc_getVariableTarget_sendBack: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                [
+                    SQFDataType.Namespace,
+                    SQFDataType.Object,
+                    SQFDataType.String,
+                    SQFDataType.Group,
+                    SQFDataType.Control,
+                    SQFDataType.Location,
+                ],
+                SQFDataType.String,
+                SQFDataType.String,
+                SQFDataType.Any,
+                SQFDataType.Any,
+            ]),
+        },
+    },
+    KISKA_fnc_getVariableTarget: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Any,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                [
+                    SQFDataType.Namespace,
+                    SQFDataType.Object,
+                    SQFDataType.String,
+                    SQFDataType.Group,
+                    SQFDataType.Control,
+                    SQFDataType.Location,
+                ],
+                SQFDataType.Any,
+                [SQFDataType.Number, SQFDataType.Object, SQFDataType.String],
+            ]),
+        },
+    },
+    KISKA_fnc_getVectorToTarget: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.ofExactly([
+                SQFDataType.Vector,
+                SQFDataType.Vector,
+            ]),
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Object, SQFDataType.PositionASL],
+                [SQFDataType.Object, SQFDataType.PositionASL],
+            ]),
+        },
+    },
+    KISKA_fnc_hintDiary: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.DiaryRecord,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFDataType.String,
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
+    KISKA_fnc_idCounter: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+        },
+    },
+    KISKA_fnc_isAdminOrHost: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_isGroupAlive: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Group, SQFDataType.Object],
+            ]),
+        },
+    },
+    KISKA_fnc_isMainMenu: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_isPatchLoaded: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+        },
+    },
+    KISKA_fnc_log: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Any,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Any,
+                SQFDataType.Boolean,
+                SQFDataType.Boolean,
+                SQFDataType.Boolean,
+                SQFDataType.String,
+            ]),
+        },
+    },
+    KISKA_fnc_markBorder: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.PositionASL, SQFDataType.Object],
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.String,
+            ]),
+        },
+    },
+    KISKA_fnc_markPositions: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.ofOneOfThese([
+                SQFDataType.Object,
+                SQFDataType.EdenEntity,
+            ]),
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFArray.of(SQFDataType.Position),
+            ]),
+        },
+    },
+    KISKA_fnc_monitorFPS: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.ScheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
+    KISKA_fnc_netId: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.String,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Object, SQFDataType.Group],
+            ]),
+        },
+    },
+	KISKA_fnc_notification: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Any,
+            leftOperandTypes: SQFArray.ofExactly([
+                [
+                    SQFDataType.String,
+                    SQFArray.ofExactly([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                        [SQFDataType.Color, SQFDataType.ColorAlpha],
+                    ]),
+                    SQFArray.of(
+                        SQFArray.of([
+                            [
+                                SQFDataType.String,
+                                SQFDataType.Number,
+                                [SQFDataType.Color, SQFDataType.ColorAlpha],
+                            ],
+                        ])
+                    ),
+                ],
+                SQFDataType.Boolean,
+				SQFDataType.Number,
+				SQFDataType.ColorAlpha,
+            ]),
+        },
+    },
+	KISKA_fnc_notify: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Any,
+            leftOperandTypes: SQFArray.ofExactly([
+                [
+                    SQFDataType.String,
+					SQFDataType.StructuredText,
+                    SQFArray.ofExactly([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                        [SQFDataType.Color, SQFDataType.ColorAlpha],
+                    ]),
+                    SQFArray.of(
+                        SQFArray.of([
+                            [
+                                SQFDataType.String,
+                                SQFDataType.Number,
+                                [SQFDataType.Color, SQFDataType.ColorAlpha],
+                            ],
+                        ])
+                    ),
+                ],
+                [
+                    SQFDataType.String,
+					SQFDataType.StructuredText,
+                    SQFArray.ofExactly([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                        [SQFDataType.Color, SQFDataType.ColorAlpha],
+                    ]),
+                    SQFArray.of(
+                        SQFArray.of([
+                            [
+                                SQFDataType.String,
+                                SQFDataType.Number,
+                                [SQFDataType.Color, SQFDataType.ColorAlpha],
+                            ],
+                        ])
+                    ),
+                ],
+				SQFDataType.Number,
+                SQFDataType.Boolean,
             ]),
         },
     },
