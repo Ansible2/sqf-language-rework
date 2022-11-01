@@ -2659,6 +2659,244 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
+    KISKA_fnc_GCH_addDiaryEntry: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_GCH_addGroupEventhandlers: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.HashMap,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group]),
+        },
+    },
+    KISKA_fnc_GCH_addMissionEvents: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_GCH_assignTeam: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Number,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_getPlayerSide: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Side,
+        },
+    },
+    KISKA_fnc_GCH_getSelectedGroup: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Group,
+        },
+    },
+    KISKA_fnc_GCH_getSideGroups: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.Group),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Side]),
+        },
+    },
+    KISKA_fnc_GCH_groupDeleteQuery: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Group,
+                SQFDataType.Boolean,
+            ]),
+        },
+        server: true,
+    },
+    KISKA_fnc_GCH_isAllowedToEdit: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Group, SQFDataType.Object],
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_isGroupExcluded: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group]),
+        },
+    },
+    KISKA_fnc_GCH_isOpen: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_GCH_openDialog: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_GCH_setGroupExcluded: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Group,
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_setLeaderRemote: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Group,
+                SQFDataType.Object,
+            ]),
+        },
+		server: true,
+    },
+    KISKA_fnc_GCH_updateCurrentGroupSection: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Boolean,
+                SQFDataType.Boolean,
+                SQFDataType.Boolean,
+                SQFDataType.Boolean,
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_updateSideGroupsList: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad_assignTeamCombo: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad_canBeDeletedCombo: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad_canRallyCombo: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad_closeButton: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_joinGroupButton: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_leaveGroupButton: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_setGroupIdButton: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_setLeaderButton: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad_showAiCheckbox: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad_sideGroupsList: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+            ]),
+        },
+    },
+    KISKA_fnc_GCHOnLoad: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Display,
+            ]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
