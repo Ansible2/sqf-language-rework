@@ -11,6 +11,7 @@ import {
     SQFArrayComparator,
     SQFArray,
     SQFCode,
+    SQFEffect,
 } from "../sqf.namespace";
 
 const kiskaCallbackType = [
@@ -2774,7 +2775,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Object,
             ]),
         },
-		server: true,
+        server: true,
     },
     KISKA_fnc_GCH_updateCurrentGroupSection: {
         grammarType: SQFGrammarType.Function,
@@ -2793,109 +2794,303 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Boolean]),
         },
     },
     KISKA_fnc_GCHOnLoad_assignTeamCombo: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCHOnLoad_canBeDeletedCombo: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCHOnLoad_canRallyCombo: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCHOnLoad_closeButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCH_joinGroupButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCH_leaveGroupButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCH_setGroupIdButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCH_setLeaderButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCHOnLoad_showAiCheckbox: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCHOnLoad_sideGroupsList: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
     KISKA_fnc_GCHOnLoad: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Display]),
+        },
+    },
+    KISKA_fnc_supportManager_addDiaryEntry: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_supportManager_addToPool_global: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Display,
+                [
+                    SQFDataType.String,
+                    SQFArray.ofExactly([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                    ]),
+                ],
             ]),
         },
+        effect: SQFEffect.GLOBAL,
+    },
+    KISKA_fnc_supportManager_addToPool: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                [
+                    SQFDataType.String,
+                    SQFArray.ofExactly([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                    ]),
+                ],
+                SQFDataType.Boolean,
+            ]),
+        },
+        effect: SQFEffect.LOCAL,
+    },
+    KISKA_fnc_supportManager_onLoad: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Display]),
+        },
+    },
+    KISKA_fnc_supportManager_openDialog: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_supportManager_removeFromPool_global: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+        effect: SQFEffect.GLOBAL,
+    },
+    KISKA_fnc_supportManager_removeFromPool: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+        effect: SQFEffect.LOCAL,
+    },
+    KISKA_fnc_supportManager_store_buttonClickEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_supportManager_take_buttonClickEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_supportManager_updateCurrentList: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_supportManager_updatePoolList: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_traitManager_addDiaryEntry: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_traitManager_addToPool_global: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+        },
+        effect: SQFEffect.GLOBAL,
+    },
+    KISKA_fnc_traitManager_addToPool: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+        },
+        effect: SQFEffect.LOCAL,
+    },
+    KISKA_fnc_traitManager_onLoad_traitPool: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Display]),
+        },
+    },
+    KISKA_fnc_traitManager_onLoad: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Display]),
+        },
+    },
+    KISKA_fnc_traitManager_openDialog: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_traitManager_removeFromPool_global: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+        effect: SQFEffect.GLOBAL,
+    },
+    KISKA_fnc_traitManager_removeFromPool: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+        effect: SQFEffect.LOCAL,
+    },
+    KISKA_fnc_traitManager_store_buttonClickEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_traitManager_take_buttonClickEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_traitManager_updateCurrentList: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_traitManager_updatePoolList: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_VDL_addOpenGuiDiaryEntry: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_VDL_controlsGroup_onLoad: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Control,
+                SQFDataType.String,
+            ]),
+        },
+    },
+    KISKA_fnc_VDL_onLoad: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Display]),
+        },
+    },
+    KISKA_fnc_openVdlDialog: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_viewDistanceLimiter: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+            ]),
+        },
+        effect: SQFEffect.LOCAL,
     },
 };
 
