@@ -3080,7 +3080,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_viewDistanceLimiter: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            type: SQFSyntaxType.UnscheduledFunction,
+            type: SQFSyntaxType.ScheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Number,
                 SQFDataType.Number,
