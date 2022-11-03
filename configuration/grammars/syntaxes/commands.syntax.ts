@@ -8,6 +8,8 @@ import {
     SQFArrayComparator,
     SQFArgument,
     SQFEffect,
+    SQFCode,
+    SQFArray,
 } from "../sqf.namespace";
 // ("{2,})([a-z0-9\s]*)("{2,})
 // TODO: adjust documentation to just be a string url
@@ -115,10 +117,10 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             {
                 type: SQFSyntaxType.BinaryOperator,
                 leftOperandTypes: SQFDataType.Array,
-                rightOperandTypes: {
-                    params: SQFDataType.Any,
-                    codeReturnTypes: [SQFDataType.Boolean, SQFDataType.Nothing],
-                },
+                rightOperandTypes: SQFCode.returns([
+                    SQFDataType.Boolean,
+                    SQFDataType.Nothing,
+                ]).takes(SQFDataType.Any),
                 returnTypes: SQFDataType.Array,
             },
         ],
@@ -12271,10 +12273,10 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                     SQFDataType.Object,
                     SQFDataType.String,
                     SQFDataType.Config,
-					{
-						operation: SQFArrayComparator.Exact,
-						types: [SQFDataType.Object,SQFDataType.Boolean],
-					}
+                    {
+                        operation: SQFArrayComparator.Exact,
+                        types: [SQFDataType.Object, SQFDataType.Boolean],
+                    },
                 ],
             },
         ],
@@ -18329,10 +18331,8 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
     setMusicEffect: {
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
-            returnTypes: SQFDataType.Nothing,
             leftOperandTypes: [
                 SQFDataType.Object,
-                SQFDataType.Array,
                 SQFDataType.Waypoint,
             ],
             rightOperandTypes: SQFDataType.String,
@@ -20172,7 +20172,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.BinaryOperator,
             returnTypes: SQFDataType.Nothing,
             leftOperandTypes: SQFDataType.Object,
-            rightOperandTypes: [SQFDataType.Array, SQFDataType.PositionATL],
+            rightOperandTypes: SQFDataType.PositionATL,
         },
         grammarType: SQFGrammarType.Command,
         effect: SQFEffect.GLOBAL,
@@ -20202,16 +20202,27 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         argument: SQFArgument.GLOBAL,
     },
     setSoundEffect: {
-        syntaxes: {
-            type: SQFSyntaxType.BinaryOperator,
-            returnTypes: SQFDataType.Nothing,
-            leftOperandTypes: [
-                SQFDataType.Object,
-                SQFDataType.Array,
-                SQFDataType.Waypoint,
-            ],
-            rightOperandTypes: SQFDataType.String,
-        },
+        syntaxes: [
+            {
+                type: SQFSyntaxType.BinaryOperator,
+                rightOperandTypes: SQFArray.ofExactly([
+                    SQFDataType.Object,
+                    SQFDataType.String,
+                    SQFDataType.String,
+                    SQFDataType.String,
+                    SQFDataType.String,
+                ]),
+                leftOperandTypes: SQFDataType.Object,
+            },
+            {
+                type: SQFSyntaxType.BinaryOperator,
+                rightOperandTypes: SQFArray.ofExactly([
+                    SQFDataType.String,
+                    SQFDataType.String,
+                ]),
+                leftOperandTypes: SQFDataType.Waypoint,
+            },
+        ],
         grammarType: SQFGrammarType.Command,
     },
     shownCompass: {
@@ -24456,14 +24467,11 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
         grammarType: SQFGrammarType.PropertyAccessor,
     },
-	ArmatoString: {
-		label: "toString",
+    ArmatoString: {
+        label: "toString",
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: [
-                SQFDataType.Array,
-                SQFDataType.Code,
-            ],
+            rightOperandTypes: [SQFDataType.Array, SQFDataType.Code],
             returnTypes: SQFDataType.String,
         },
         grammarType: SQFGrammarType.Command,

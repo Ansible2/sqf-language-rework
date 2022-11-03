@@ -8,6 +8,7 @@ import {
     SQFArrayComparator,
     SQFArgument,
     SQFEffect,
+    SQFCode,
 } from "../sqf.namespace";
 // ("{2,})([a-z0-9\s]*)("{2,})
 // TODO: adjust documentation to just be a string url
@@ -209,10 +210,10 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             {
                 type: SQFSyntaxType.BinaryOperator,
                 leftOperandTypes: SQFDataType.Array,
-                rightOperandTypes: {
-                    params: SQFDataType.Any,
-                    codeReturnTypes: [SQFDataType.Boolean, SQFDataType.Nothing],
-                },
+                rightOperandTypes: SQFCode.returns([
+                    SQFDataType.Boolean,
+                    SQFDataType.Nothing,
+                ]).takes(SQFDataType.Any),
                 returnTypes: SQFDataType.Array,
             },
         ],
@@ -443,10 +444,10 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
     },
-	execVM: {
-		grammarType: SQFGrammarType.FileExecutor,
-		syntaxes: [
-			{
+    execVM: {
+        grammarType: SQFGrammarType.FileExecutor,
+        syntaxes: [
+            {
                 type: SQFSyntaxType.UnaryOperator,
                 returnTypes: SQFDataType.ScriptHandle,
                 rightOperandTypes: SQFDataType.String,
@@ -457,8 +458,8 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 rightOperandTypes: SQFDataType.String,
                 leftOperandTypes: SQFDataType.Any,
             },
-		]
-	}
+        ],
+    },
 };
 
 Object.keys(sqfCommandSyntaxes).forEach((command: string) => {

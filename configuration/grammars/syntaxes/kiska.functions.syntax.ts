@@ -2327,12 +2327,10 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                         [SQFDataType.Color, SQFDataType.ColorAlpha],
                     ]),
                     SQFArray.of(
-                        SQFArray.of([
-                            [
-                                SQFDataType.String,
-                                SQFDataType.Number,
-                                [SQFDataType.Color, SQFDataType.ColorAlpha],
-                            ],
+                        SQFArray.ofExactly([
+                            SQFDataType.String,
+                            SQFDataType.Number,
+                            [SQFDataType.Color, SQFDataType.ColorAlpha],
                         ])
                     ),
                 ],
@@ -2357,12 +2355,10 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                         [SQFDataType.Color, SQFDataType.ColorAlpha],
                     ]),
                     SQFArray.of(
-                        SQFArray.of([
-                            [
-                                SQFDataType.String,
-                                SQFDataType.Number,
-                                [SQFDataType.Color, SQFDataType.ColorAlpha],
-                            ],
+                        SQFArray.ofExactly([
+                            SQFDataType.String,
+                            SQFDataType.Number,
+                            [SQFDataType.Color, SQFDataType.ColorAlpha],
                         ])
                     ),
                 ],
@@ -2375,7 +2371,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                         [SQFDataType.Color, SQFDataType.ColorAlpha],
                     ]),
                     SQFArray.of(
-                        SQFArray.of([
+                        SQFArray.ofExactly([
                             [
                                 SQFDataType.String,
                                 SQFDataType.Number,
