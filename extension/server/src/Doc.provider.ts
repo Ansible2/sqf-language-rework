@@ -209,11 +209,9 @@ export class DocProvider implements IDocProvider {
         const debug =
             this.currentParse.toLowerCase() === "getdir" ||
             this.currentParse.toLowerCase() ===
-                "KISKA_fnc_ACEX_setHCTransfer".toLowerCase() || 
-            this.currentParse.toLowerCase() ===
-                "test_fnc_test".toLowerCase() || 
-            this.currentParse.toLowerCase() ===
-                "KISKA_fnc_spawn".toLowerCase();
+                "KISKA_fnc_ACEX_setHCTransfer".toLowerCase() ||
+            this.currentParse.toLowerCase() === "test_fnc_test".toLowerCase() ||
+            this.currentParse.toLowerCase() === "KISKA_fnc_spawn".toLowerCase();
         if (!operator || !debug) return "";
 
         // convert to typedoc
@@ -223,8 +221,8 @@ export class DocProvider implements IDocProvider {
         const doc = DocProvider.convertToSQFTypeDoc(operator);
         const docAsString = DocProvider.converySQFTypeDocToString(doc);
         return docAsString;
-		
-		// return '';
+
+        // return '';
         // can return a single datatype
         /*
         if (isSqfDataType(operator)) {
@@ -375,20 +373,20 @@ export class DocProvider implements IDocProvider {
 
         // can return a array of datatypes
         if (Array.isArray(type)) {
-            doc.subDocs = type.map(DocProvider.convertToSQFTypeDoc);
+            doc.subDocs = type.map((subType) => DocProvider.convertToSQFTypeDoc(subType,currentLevel));
             doc.subDocSeperator = " | ";
-			doc.rightEnclose = ")";
-			doc.leftEnclose = "(";
+            doc.rightEnclose = ")";
+            doc.leftEnclose = "(";
 
             return doc;
         }
 
         if (isSQFArray(type)) {
-			doc = DocProvider.convertSQFArrayToDoc(type,currentLevel);
-			if (type.operation === SQFArrayComparator.OneOf) {
-				console.log(type);
-				console.log(doc);
-			}
+            doc = DocProvider.convertSQFArrayToDoc(type, currentLevel);
+        }
+
+        if (isSQFCode(type)) {
+        	doc = DocProvider.convertSQFCodeToDoc(type,currentLevel);
         }
 
         return doc;
@@ -422,24 +420,31 @@ export class DocProvider implements IDocProvider {
     /* ----------------------------------------------------------------------------
 		convertSQFArrayToDoc
 	---------------------------------------------------------------------------- */
-    private static convertSQFArrayToDoc(sqfArray: SQFArray, currentLevel: number = -1): SQFTypeDoc {
+    private static convertSQFArrayToDoc(
+        sqfArray: SQFArray,
+        currentLevel: number = -1
+    ): SQFTypeDoc {
         const arrayOperation = sqfArray.operation;
         const types = sqfArray.types;
-
-		const doc: SQFTypeDoc = {
-			raw: "",
-			subLevel: currentLevel,
-			isSubDoc: false,
-		};
+        const doc: SQFTypeDoc = {
+            raw: "",
+            subLevel: currentLevel,
+            isSubDoc: false,
+        };
 
         const typesIsArray = Array.isArray(types);
         if (typesIsArray) {
-			doc.subDocs = types.map(DocProvider.convertToSQFTypeDoc);
-			doc.raw = sqfArray.toString();
+            doc.subDocs = types.map((type) => DocProvider.convertToSQFTypeDoc(type,currentLevel));
+            console.log("subDocs:", doc.subDocs);
+
+            doc.raw = sqfArray.toString();
         } else {
-			const singleSubDoc = DocProvider.convertToSQFTypeDoc(types,currentLevel);
-			doc.raw = DocProvider.converySQFTypeDocToString(singleSubDoc);
-		}
+            const singleSubDoc = DocProvider.convertToSQFTypeDoc(
+                types,
+                currentLevel
+            );
+            doc.raw = DocProvider.converySQFTypeDocToString(singleSubDoc);
+        }
 
         switch (arrayOperation) {
             case SQFArrayComparator.Exact: {
@@ -450,15 +455,15 @@ export class DocProvider implements IDocProvider {
             }
 
             case SQFArrayComparator.OneOf: {
-				doc.rightEnclose = ">[]";
-				doc.leftEnclose = "<";
-				doc.subDocSeperator = " | ";
+                doc.rightEnclose = ">[]";
+                doc.leftEnclose = "<";
+                doc.subDocSeperator = " | ";
             }
 
             case SQFArrayComparator.AnyOf: {
                 doc.rightEnclose = ">[]";
-				doc.leftEnclose = "<";
-				doc.subDocSeperator = ", ";
+                doc.leftEnclose = "<";
+                doc.subDocSeperator = ", ";
             }
 
             default:
@@ -466,5 +471,21 @@ export class DocProvider implements IDocProvider {
         }
 
         return doc;
+    }
+
+    /* ----------------------------------------------------------------------------
+		convertSQFCodeToDoc
+	---------------------------------------------------------------------------- */
+    private static convertSQFCodeToDoc(sqfCode: SQFCode, currentLevel: number = -1): SQFTypeDoc {
+    	// IDEA: can have a sub doc for both param side and return side
+    	// `(${paramsParsed}) -> { ${returnParsed} }`;
+
+		const doc: SQFTypeDoc = {
+            raw: "",
+            subLevel: currentLevel,
+            isSubDoc: false,
+        };
+
+		return doc;
     }
 }
