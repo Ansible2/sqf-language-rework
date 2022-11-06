@@ -203,147 +203,12 @@ export class DocProvider implements IDocProvider {
 	---------------------------------------------------------------------------- */
     private parseSyntaxReturnOrOperands(
         operator: undefined | SQFSyntaxTypes,
-        isInBlock: boolean = false
     ): string {
-        // const debug = this.currentParse.toLowerCase() === "kiska_fnc_notify";
-        const debug =
-            this.currentParse.toLowerCase() === "getdir" ||
-            this.currentParse.toLowerCase() ===
-                "KISKA_fnc_ACEX_setHCTransfer".toLowerCase() ||
-            this.currentParse.toLowerCase() === "test_fnc_test".toLowerCase() ||
-            this.currentParse.toLowerCase() === "KISKA_fnc_spawn".toLowerCase();
-        if (!operator || !debug) return "";
-
-        // convert to typedoc
-        // convert typedoc to string
-        // format typedoc(?)
-        let operatorAsString: string = "";
+        if (!operator) return "";
+		// TODO: add formatting
         const doc = DocProvider.convertToSQFTypeDoc(operator);
         const docAsString = DocProvider.converySQFTypeDocToString(doc);
         return docAsString;
-
-        // return '';
-        // can return a single datatype
-        /*
-        if (isSqfDataType(operator)) {
-            if (isInBlock) {
-                operatorAsString = `${operator}`;
-            } else {
-                operatorAsString = `<${operator}>`;
-            }
-
-            return operatorAsString;
-        }
-
-        if (Array.isArray(operator)) {
-            const syntaxStrings: string[] = operator.map((operatorInArray) =>
-                this.parseSyntaxReturnOrOperands(operatorInArray, true)
-            );
-
-            let syntaxesCombined: string = syntaxStrings.join(" | ");
-            if (!isInBlock) {
-                syntaxesCombined = `(${syntaxesCombined})`;
-            }
-
-            return syntaxesCombined;
-        }
-
-        if (isSQFArray(operator)) {
-            return this.parseSQFArray(operator);
-        }
-
-        if (isSQFCode(operator)) {
-            return this.parseSQFCode(operator);
-        }
-
-        return this.formatSyntaxOperator(operatorAsString);
-		*/
-    }
-
-    /* ----------------------------------------------------------------------------
-		parseSQFArray
-	---------------------------------------------------------------------------- */
-    private parseSQFArray(sqfArray: SQFArray): string {
-        const arrayOperation = sqfArray.operation;
-        const types = sqfArray.types;
-
-        let typesAsString: string[] = [];
-        const typesIsArray = Array.isArray(types);
-        if (typesIsArray) {
-            typesAsString = types.map((type) =>
-                this.parseSyntaxReturnOrOperands(type, true)
-            );
-        }
-
-        let arrayAsString = "";
-        let parsedArray = "";
-        switch (arrayOperation) {
-            case SQFArrayComparator.Exact: {
-                if (typesAsString.length === 0) {
-                    arrayAsString = this.parseSyntaxReturnOrOperands(
-                        types,
-                        true
-                    );
-                } else {
-                    arrayAsString = typesAsString!.join(",\n");
-                }
-
-                parsedArray = `[\n${arrayAsString}\n]`;
-                break;
-            }
-            case SQFArrayComparator.OneOf:
-            case SQFArrayComparator.AnyOf: {
-                if (typesIsArray) {
-                    if (arrayOperation === SQFArrayComparator.AnyOf) {
-                        arrayAsString = typesAsString!.join(",\n");
-                        parsedArray = `<${arrayAsString}>[]`;
-                    } else if (arrayOperation === SQFArrayComparator.OneOf) {
-                        const typesAsArrays = typesAsString!.map(
-                            (type) => `${type}[]`
-                        );
-                        arrayAsString = typesAsArrays.join(", ");
-                        parsedArray = `(${arrayAsString})`;
-                    }
-                } else if (isSqfDataType(types)) {
-                    parsedArray = `${types}[]`;
-                } else if (isSQFArray(types) || isSQFCode(types)) {
-                    // TODO: means of representing an array of an array here
-
-                    parsedArray = this.parseSyntaxReturnOrOperands(types, true);
-                    parsedArray = `<${parsedArray}>[]`; // decent for anyof
-                }
-
-                break;
-            }
-            default:
-                break;
-        }
-
-        // TODO: limit length of output with formatting
-        return parsedArray;
-    }
-
-    /* ----------------------------------------------------------------------------
-		parseSQFCode
-	---------------------------------------------------------------------------- */
-    private parseSQFCode(sqfCode: SQFCode): string {
-        const paramsParsed = this.parseSyntaxReturnOrOperands(
-            sqfCode.params,
-            true
-        );
-        const returnParsed = this.parseSyntaxReturnOrOperands(
-            sqfCode.codeReturnTypes,
-            true
-        );
-
-        return `(${paramsParsed}) -> { ${returnParsed} }`;
-    }
-
-    /* ----------------------------------------------------------------------------
-		formatSyntaxOperator
-	---------------------------------------------------------------------------- */
-    private formatSyntaxOperator(syntaxOperator: string): string {
-        return syntaxOperator;
     }
 
     /* ----------------------------------------------------------------------------
@@ -410,7 +275,7 @@ export class DocProvider implements IDocProvider {
             convertedDoc = convertedSubs;
         }
 
-        if (doc.rightEnclose && doc.leftEnclose) {
+        if (doc.rightEnclose !== undefined && doc.leftEnclose !== undefined) {
             convertedDoc = `${doc.leftEnclose}${convertedDoc}${doc.rightEnclose}`;
         }
 
@@ -429,22 +294,23 @@ export class DocProvider implements IDocProvider {
         const doc: SQFTypeDoc = {
             raw: "",
             subLevel: currentLevel,
-            isSubDoc: false,
+            isSubDoc: currentLevel > 0,
         };
 
         const typesIsArray = Array.isArray(types);
+		let rawDoc: string;
         if (typesIsArray) {
             doc.subDocs = types.map((type) => DocProvider.convertToSQFTypeDoc(type,currentLevel));
-            console.log("subDocs:", doc.subDocs);
-
-            doc.raw = sqfArray.toString();
+            rawDoc = DocProvider.converySQFTypeDocToString(doc);
         } else {
             const singleSubDoc = DocProvider.convertToSQFTypeDoc(
                 types,
                 currentLevel
             );
-            doc.raw = DocProvider.converySQFTypeDocToString(singleSubDoc);
+			rawDoc = DocProvider.converySQFTypeDocToString(singleSubDoc);
         }
+
+		doc.raw = rawDoc;
 
         switch (arrayOperation) {
             case SQFArrayComparator.Exact: {
@@ -477,15 +343,28 @@ export class DocProvider implements IDocProvider {
 		convertSQFCodeToDoc
 	---------------------------------------------------------------------------- */
     private static convertSQFCodeToDoc(sqfCode: SQFCode, currentLevel: number = -1): SQFTypeDoc {
-    	// IDEA: can have a sub doc for both param side and return side
-    	// `(${paramsParsed}) -> { ${returnParsed} }`;
-
-		const doc: SQFTypeDoc = {
+		const mainDoc: SQFTypeDoc = {
             raw: "",
             subLevel: currentLevel,
-            isSubDoc: false,
+            isSubDoc: currentLevel > 0,
+			subDocSeperator: " -> ",
+			subDocs: [],
         };
 
-		return doc;
+		if (sqfCode.params) {
+			const paramsDoc = DocProvider.convertToSQFTypeDoc(sqfCode.params,currentLevel);
+			paramsDoc.raw = DocProvider.converySQFTypeDocToString(paramsDoc);
+			paramsDoc.leftEnclose = "(";
+			paramsDoc.rightEnclose = ")";
+			mainDoc.subDocs?.push(paramsDoc);
+		}
+		
+		const returnsDoc = DocProvider.convertToSQFTypeDoc(sqfCode.codeReturnTypes,currentLevel);
+		returnsDoc.raw = DocProvider.converySQFTypeDocToString(returnsDoc);
+		returnsDoc.leftEnclose = "{";
+		returnsDoc.rightEnclose = "}";
+		mainDoc.subDocs?.push(returnsDoc);
+	
+		return mainDoc;
     }
 }
