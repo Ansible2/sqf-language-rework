@@ -67,7 +67,7 @@ export enum SQFDataType {
     ForType = "FOR-TYPE",
     HashMapKey = "HASHMAP-KEY",
     Waypoint = "[GROUP,NUMBER]",
-    Position = "NUMBER[x,y,z?]",
+    Position = "(Position) NUMBER[x,y,z?]",
     Position3d = "(Position3D) NUMBER[x,y,z]",
     Position2d = "(Position2D) NUMBER[x,y]",
     PositionWorld = "(PositionWorld) NUMBER[x,y,z]",
