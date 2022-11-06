@@ -1,11 +1,8 @@
 import { DocumentationType, IDocProvider, ISQFServer } from "./server.types";
-import {
-    MarkupContent,
-    MarkupKind,
-} from "vscode-languageserver/node";
+import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
 
 import {
-	CompiledSQFItem,
+    CompiledSQFItem,
     isSQFArray,
     isSQFCode,
     isSqfDataType,
@@ -19,32 +16,46 @@ import {
     SQFSyntaxTypes,
 } from "../../../configuration/grammars/sqf.namespace";
 
+interface SQFTypeDoc {
+	rightEnclose?: string, 
+	leftEnclose?: string, 
+	subDocs?: SQFTypeDoc[],
+	raw: string,
+	subLevel: number,
+	isSubDoc: boolean,
+	subDocSeperator?: string
+}
+
 export class DocProvider implements IDocProvider {
-	private readonly server: ISQFServer;
-	constructor(server: ISQFServer) {
-		this.server = server;
-	}
+    private readonly server: ISQFServer;
+    private currentParse: string;
+    constructor(server: ISQFServer) {
+        this.server = server;
+        this.currentParse = "";
+    }
 
     /* ----------------------------------------------------------------------------
 		createMarkupDoc
 	---------------------------------------------------------------------------- */
-    public createMarkupDoc(sqfItem: CompiledSQFItem, docType: DocumentationType,): MarkupContent {
-		const documentation = sqfItem.documentation;
-		const syntaxes = this.parseSQFSyntaxes(
-			sqfItem.grammarType,
-			sqfItem.label,
-			sqfItem.syntaxes
-		);
+    public createMarkupDoc(
+        sqfItem: CompiledSQFItem,
+        docType: DocumentationType
+    ): MarkupContent {
+        const documentation = sqfItem.documentation;
+        const syntaxes = this.parseSQFSyntaxes(
+            sqfItem.grammarType,
+            sqfItem.label,
+            sqfItem.syntaxes
+        );
 
-		let documentationLink;
-		if (sqfItem.getDocLink) {
-			documentationLink = sqfItem.getDocLink(sqfItem.label);
-		}
+        let documentationLink;
+        if (sqfItem.getDocLink) {
+            documentationLink = sqfItem.getDocLink(sqfItem.label);
+        }
 
-		const argument = sqfItem.argument;
-		const effect = sqfItem.effect;
-		const serverExcuted = sqfItem.server;
-
+        const argument = sqfItem.argument;
+        const effect = sqfItem.effect;
+        const serverExcuted = sqfItem.server;
 
         const markupKind: MarkupKind = documentation.kind;
         let docValue = "";
@@ -73,7 +84,7 @@ export class DocProvider implements IDocProvider {
                     docArray = [syntaxSections, documentation.value];
                     docLinkFormatted = `Link To Documenation: ${documentationLink}`;
                 } else {
-					// TODO: determine how types syntax should look
+                    // TODO: determine how types syntax should look
                     const syntaxesAsMarkdown: string[] = syntaxes.map(
                         (syntax: string) =>
                             ["```sqf", syntax, "```", "___"].join("\n")
@@ -99,9 +110,9 @@ export class DocProvider implements IDocProvider {
                     effectArgServerLine = `[${effect}]`;
                 }
             }
-			if (serverExcuted) {
-				effectArgServerLine += ` [Server Executed]`;
-			}
+            if (serverExcuted) {
+                effectArgServerLine += ` [Server Executed]`;
+            }
 
             if (effectArgServerLine) {
                 docArray.unshift(`\n${effectArgServerLine}`);
@@ -127,6 +138,7 @@ export class DocProvider implements IDocProvider {
         SQFItemName: string,
         syntaxes: SQFSyntax[] | SQFSyntax
     ): string[] {
+        this.currentParse = SQFItemName;
         if (!Array.isArray(syntaxes)) {
             syntaxes = [syntaxes];
         }
@@ -137,7 +149,10 @@ export class DocProvider implements IDocProvider {
 
             const type: SQFSyntaxType = syntax.type;
             let returnType: string = "";
-            if (syntax.returnTypes && syntax.returnTypes !== SQFDataType.Nothing) {
+            if (
+                syntax.returnTypes &&
+                syntax.returnTypes !== SQFDataType.Nothing
+            ) {
                 returnType = this.parseSyntaxReturnOrOperands(
                     syntax.returnTypes
                 );
@@ -190,10 +205,22 @@ export class DocProvider implements IDocProvider {
         operator: undefined | SQFSyntaxTypes,
         isInBlock: boolean = false
     ): string {
-        if (!operator) return "";
-        let operatorAsString: string = "";
+        // const debug = this.currentParse.toLowerCase() === "kiska_fnc_notify";
+        const debug = this.currentParse.toLowerCase() === "getdir";
+        if (!operator || !debug) return "";
+		
+		// convert to typedoc
+		// convert typedoc to string
+		// format typedoc(?)
+		let operatorAsString: string = "";
+		const doc = this.convertToSQFTypeDoc(operator);	
+		const docAsString = this.converySQFTypeDocToString(doc);
+		return docAsString;		
 
+
+		
         // can return a single datatype
+		/*
         if (isSqfDataType(operator)) {
             if (isInBlock) {
                 operatorAsString = `${operator}`;
@@ -213,87 +240,164 @@ export class DocProvider implements IDocProvider {
             if (!isInBlock) {
                 syntaxesCombined = `(${syntaxesCombined})`;
             }
-            console.log("syntaxesCombined:", syntaxesCombined);
 
             return syntaxesCombined;
         }
 
         if (isSQFArray(operator)) {
-            operator = operator as SQFArray;
-            const arrayOperation = operator.operation;
-            let arrayAsString = "";
-            const types = operator.types;
-            let typesAsString: string[] = [];
-            const typesIsArray = Array.isArray(types);
-            if (typesIsArray) {
-                typesAsString = types.map((type) =>
-                    this.parseSyntaxReturnOrOperands(type, true)
-                );
-            }
-
-            switch (arrayOperation) {
-                case SQFArrayComparator.Exact: {
-                    if (typesAsString.length === 0) {
-                        arrayAsString = this.parseSyntaxReturnOrOperands(
-                            types,
-                            true
-                        );
-                    } else {
-                        arrayAsString = typesAsString!.join(", ");
-                    }
-
-                    operatorAsString = `[${arrayAsString}]`;
-                    break;
-                }
-                case SQFArrayComparator.OneOf:
-                case SQFArrayComparator.AnyOf: {
-                    if (typesIsArray) {
-                        if (arrayOperation === SQFArrayComparator.AnyOf) {
-                            arrayAsString = typesAsString!.join(", ");
-                            operatorAsString = `<${arrayAsString}>[]`;
-                        } else if (
-                            arrayOperation === SQFArrayComparator.OneOf
-                        ) {
-                            const typesAsArrays = typesAsString!.map(
-                                (type) => `${type}[]`
-                            );
-                            arrayAsString = typesAsArrays.join(", ");
-                            operatorAsString = `(${arrayAsString})`;
-                        }
-                    } else if (isSqfDataType(types)) {
-                        operatorAsString = `${types}[]`;
-                    } else if (isSQFArray(types) || isSQFCode(types)) {
-                        operatorAsString = this.parseSyntaxReturnOrOperands(
-                            types,
-                            true
-                        );
-                    }
-
-                    break;
-                }
-                default:
-                    break;
-            }
-
-            return operatorAsString;
+            return this.parseSQFArray(operator);
         }
 
         if (isSQFCode(operator)) {
-            operator = operator as SQFCode;
-
-            const paramsParsed = this.parseSyntaxReturnOrOperands(
-                operator.params,
-                true
-            );
-            const returnParsed = this.parseSyntaxReturnOrOperands(
-                operator.codeReturnTypes,
-                true
-            );
-
-            operatorAsString = `(${paramsParsed}) -> { ${returnParsed} }`;
-            return operatorAsString;
+            return this.parseSQFCode(operator);
         }
 
-        return operatorAsString;
+        return this.formatSyntaxOperator(operatorAsString);
+		*/
     }
+
+    /* ----------------------------------------------------------------------------
+		parseSQFArray
+	---------------------------------------------------------------------------- */
+    private parseSQFArray(sqfArray: SQFArray): string {
+        const arrayOperation = sqfArray.operation;
+        const types = sqfArray.types;
+
+        let typesAsString: string[] = [];
+        const typesIsArray = Array.isArray(types);
+        if (typesIsArray) {
+            typesAsString = types.map((type) =>
+                this.parseSyntaxReturnOrOperands(type, true)
+            );
+        }
+
+        let arrayAsString = "";
+        let parsedArray = "";
+        switch (arrayOperation) {
+            case SQFArrayComparator.Exact: {
+                if (typesAsString.length === 0) {
+                    arrayAsString = this.parseSyntaxReturnOrOperands(
+                        types,
+                        true
+                    );
+                } else {
+                    arrayAsString = typesAsString!.join(",\n");
+                }
+
+                parsedArray = `[\n${arrayAsString}\n]`;
+                break;
+            }
+            case SQFArrayComparator.OneOf:
+            case SQFArrayComparator.AnyOf: {
+                if (typesIsArray) {
+                    if (arrayOperation === SQFArrayComparator.AnyOf) {
+                        arrayAsString = typesAsString!.join(",\n");
+                        parsedArray = `<${arrayAsString}>[]`;
+                    } else if (arrayOperation === SQFArrayComparator.OneOf) {
+                        const typesAsArrays = typesAsString!.map(
+                            (type) => `${type}[]`
+                        );
+                        arrayAsString = typesAsArrays.join(", ");
+                        parsedArray = `(${arrayAsString})`;
+                    }
+                } else if (isSqfDataType(types)) {
+                    parsedArray = `${types}[]`;
+                } else if (isSQFArray(types) || isSQFCode(types)) {
+                    // TODO: means of representing an array of an array here
+
+                    parsedArray = this.parseSyntaxReturnOrOperands(types, true);
+                    parsedArray = `<${parsedArray}>[]`; // decent for anyof
+                }
+
+                break;
+            }
+            default:
+                break;
+        }
+
+        // TODO: limit length of output with formatting
+        return parsedArray;
+    }
+
+    /* ----------------------------------------------------------------------------
+		parseSQFCode
+	---------------------------------------------------------------------------- */
+    private parseSQFCode(sqfCode: SQFCode): string {
+        const paramsParsed = this.parseSyntaxReturnOrOperands(
+            sqfCode.params,
+            true
+        );
+        const returnParsed = this.parseSyntaxReturnOrOperands(
+            sqfCode.codeReturnTypes,
+            true
+        );
+
+        return `(${paramsParsed}) -> { ${returnParsed} }`;
+    }
+
+    /* ----------------------------------------------------------------------------
+		formatSyntaxOperator
+	---------------------------------------------------------------------------- */
+    private formatSyntaxOperator(syntaxOperator: string): string {
+        return syntaxOperator;
+    }
+
+	/* ----------------------------------------------------------------------------
+		convertTypeToDocType
+	---------------------------------------------------------------------------- */
+	private convertToSQFTypeDoc(type: SQFSyntaxTypes, parentLevel: number = -1): SQFTypeDoc {
+		const isSubDoc = parentLevel > -1;
+		const currentLevel = ++parentLevel;
+		const doc: SQFTypeDoc = {
+			raw: type.toString(),
+			subLevel: currentLevel,
+			isSubDoc: isSubDoc
+		};
+
+		// can return a single datatype
+        if (isSqfDataType(type)) {
+			if (!isSubDoc) {
+				doc.rightEnclose = "<";
+				doc.leftEnclose = ">";
+			}
+
+			return doc;
+        }
+		
+		// can return a array of datatypes
+		if (Array.isArray(type)) {
+			doc.subDocs = type.map(this.convertToSQFTypeDoc);
+			doc.subDocSeperator = " | ";
+
+			if (!isSubDoc) {
+				doc.rightEnclose = "(";
+				doc.leftEnclose = ")";
+			}
+
+			return doc;
+		}
+
+
+		return doc;
+	}
+
+	private converySQFTypeDocToString(doc: SQFTypeDoc): string {
+		let convertedSubs: string | undefined;
+		if (doc.subDocs) {
+			convertedSubs = doc.subDocs.map((subDoc) => {
+				return this.converySQFTypeDocToString(subDoc)
+			}).join(doc.subDocSeperator); // maybe SQFTypeDoc needs a param for sub doc seperator ('|', ',', etc...)
+		};
+		
+		let convertedDoc: string = doc.raw;
+		if (convertedSubs) {
+			convertedDoc = convertedSubs;
+		}
+		
+		if (doc.rightEnclose && doc.leftEnclose) {
+			convertedDoc = `${doc.rightEnclose}${convertedDoc}${doc.leftEnclose}`;
+		}
+
+		return convertedDoc;
+	}
 }
