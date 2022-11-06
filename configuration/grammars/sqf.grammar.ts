@@ -18,6 +18,8 @@ const fileExecutors: string[] = [];
 const codeExecutors: string[] = [];
 const fileCompilers: string[] = [];
 
+// TODO: ensure that namespace commands (missionNamespace, localNamespace, etc...) have their own text grammar category
+
 const sqfItems: Map<string, CompiledSQFItem> = getSqfItems();
 sqfItems.forEach((sqfItem,itemName) => {
 	// format things like (!, #, +, |, etc...) as literals
