@@ -17,13 +17,13 @@ import {
 } from "../../../configuration/grammars/sqf.namespace";
 
 interface SQFTypeDoc {
-	rightEnclose?: string, 
-	leftEnclose?: string, 
-	subDocs?: SQFTypeDoc[],
-	raw: string,
-	subLevel: number,
-	isSubDoc: boolean,
-	subDocSeperator?: string
+    rightEnclose?: string;
+    leftEnclose?: string;
+    subDocs?: SQFTypeDoc[];
+    raw: string;
+    subLevel: number;
+    isSubDoc: boolean;
+    subDocSeperator?: string;
 }
 
 export class DocProvider implements IDocProvider {
@@ -206,21 +206,27 @@ export class DocProvider implements IDocProvider {
         isInBlock: boolean = false
     ): string {
         // const debug = this.currentParse.toLowerCase() === "kiska_fnc_notify";
-        const debug = this.currentParse.toLowerCase() === "getdir";
+        const debug =
+            this.currentParse.toLowerCase() === "getdir" ||
+            this.currentParse.toLowerCase() ===
+                "KISKA_fnc_ACEX_setHCTransfer".toLowerCase() || 
+            this.currentParse.toLowerCase() ===
+                "test_fnc_test".toLowerCase() || 
+            this.currentParse.toLowerCase() ===
+                "KISKA_fnc_spawn".toLowerCase();
         if (!operator || !debug) return "";
-		
-		// convert to typedoc
-		// convert typedoc to string
-		// format typedoc(?)
-		let operatorAsString: string = "";
-		const doc = this.convertToSQFTypeDoc(operator);	
-		const docAsString = this.converySQFTypeDocToString(doc);
-		return docAsString;		
 
-
+        // convert to typedoc
+        // convert typedoc to string
+        // format typedoc(?)
+        let operatorAsString: string = "";
+        const doc = DocProvider.convertToSQFTypeDoc(operator);
+        const docAsString = DocProvider.converySQFTypeDocToString(doc);
+        return docAsString;
 		
+		// return '';
         // can return a single datatype
-		/*
+        /*
         if (isSqfDataType(operator)) {
             if (isInBlock) {
                 operatorAsString = `${operator}`;
@@ -342,62 +348,123 @@ export class DocProvider implements IDocProvider {
         return syntaxOperator;
     }
 
-	/* ----------------------------------------------------------------------------
+    /* ----------------------------------------------------------------------------
 		convertTypeToDocType
 	---------------------------------------------------------------------------- */
-	private convertToSQFTypeDoc(type: SQFSyntaxTypes, parentLevel: number = -1): SQFTypeDoc {
-		const isSubDoc = parentLevel > -1;
-		const currentLevel = ++parentLevel;
-		const doc: SQFTypeDoc = {
-			raw: type.toString(),
-			subLevel: currentLevel,
-			isSubDoc: isSubDoc
-		};
+    private static convertToSQFTypeDoc(
+        type: SQFSyntaxTypes,
+        parentLevel: number = -1
+    ): SQFTypeDoc {
+        const isSubDoc = parentLevel > -1;
+        const currentLevel = ++parentLevel;
+        let doc: SQFTypeDoc = {
+            raw: type.toString(),
+            subLevel: currentLevel,
+            isSubDoc: isSubDoc,
+        };
 
-		// can return a single datatype
+        // can return a single datatype
         if (isSqfDataType(type)) {
-			if (!isSubDoc) {
-				doc.rightEnclose = "<";
-				doc.leftEnclose = ">";
-			}
+            if (!isSubDoc) {
+                doc.rightEnclose = ">";
+                doc.leftEnclose = "<";
+            }
 
-			return doc;
+            return doc;
         }
-		
-		// can return a array of datatypes
-		if (Array.isArray(type)) {
-			doc.subDocs = type.map(this.convertToSQFTypeDoc);
-			doc.subDocSeperator = " | ";
 
-			if (!isSubDoc) {
-				doc.rightEnclose = "(";
-				doc.leftEnclose = ")";
+        // can return a array of datatypes
+        if (Array.isArray(type)) {
+            doc.subDocs = type.map(DocProvider.convertToSQFTypeDoc);
+            doc.subDocSeperator = " | ";
+			doc.rightEnclose = ")";
+			doc.leftEnclose = "(";
+
+            return doc;
+        }
+
+        if (isSQFArray(type)) {
+			doc = DocProvider.convertSQFArrayToDoc(type,currentLevel);
+			if (type.operation === SQFArrayComparator.OneOf) {
+				console.log(type);
+				console.log(doc);
 			}
+        }
 
-			return doc;
-		}
+        return doc;
+    }
 
+    /* ----------------------------------------------------------------------------
+		converySQFTypeDocToString
+	---------------------------------------------------------------------------- */
+    private static converySQFTypeDocToString(doc: SQFTypeDoc): string {
+        let convertedSubs: string | undefined;
+        if (doc.subDocs) {
+            convertedSubs = doc.subDocs
+                .map((subDoc) => {
+                    return DocProvider.converySQFTypeDocToString(subDoc);
+                })
+                .join(doc.subDocSeperator); // maybe SQFTypeDoc needs a param for sub doc seperator ('|', ',', etc...)
+        }
 
-		return doc;
-	}
+        let convertedDoc: string = doc.raw;
+        if (convertedSubs) {
+            convertedDoc = convertedSubs;
+        }
 
-	private converySQFTypeDocToString(doc: SQFTypeDoc): string {
-		let convertedSubs: string | undefined;
-		if (doc.subDocs) {
-			convertedSubs = doc.subDocs.map((subDoc) => {
-				return this.converySQFTypeDocToString(subDoc)
-			}).join(doc.subDocSeperator); // maybe SQFTypeDoc needs a param for sub doc seperator ('|', ',', etc...)
+        if (doc.rightEnclose && doc.leftEnclose) {
+            convertedDoc = `${doc.leftEnclose}${convertedDoc}${doc.rightEnclose}`;
+        }
+
+        return convertedDoc;
+    }
+
+    /* ----------------------------------------------------------------------------
+		convertSQFArrayToDoc
+	---------------------------------------------------------------------------- */
+    private static convertSQFArrayToDoc(sqfArray: SQFArray, currentLevel: number = -1): SQFTypeDoc {
+        const arrayOperation = sqfArray.operation;
+        const types = sqfArray.types;
+
+		const doc: SQFTypeDoc = {
+			raw: "",
+			subLevel: currentLevel,
+			isSubDoc: false,
 		};
-		
-		let convertedDoc: string = doc.raw;
-		if (convertedSubs) {
-			convertedDoc = convertedSubs;
-		}
-		
-		if (doc.rightEnclose && doc.leftEnclose) {
-			convertedDoc = `${doc.rightEnclose}${convertedDoc}${doc.leftEnclose}`;
+
+        const typesIsArray = Array.isArray(types);
+        if (typesIsArray) {
+			doc.subDocs = types.map(DocProvider.convertToSQFTypeDoc);
+			doc.raw = sqfArray.toString();
+        } else {
+			const singleSubDoc = DocProvider.convertToSQFTypeDoc(types,currentLevel);
+			doc.raw = DocProvider.converySQFTypeDocToString(singleSubDoc);
 		}
 
-		return convertedDoc;
-	}
+        switch (arrayOperation) {
+            case SQFArrayComparator.Exact: {
+                doc.rightEnclose = "]";
+                doc.leftEnclose = "[";
+                doc.subDocSeperator = ", ";
+                break;
+            }
+
+            case SQFArrayComparator.OneOf: {
+				doc.rightEnclose = ">[]";
+				doc.leftEnclose = "<";
+				doc.subDocSeperator = " | ";
+            }
+
+            case SQFArrayComparator.AnyOf: {
+                doc.rightEnclose = ">[]";
+				doc.leftEnclose = "<";
+				doc.subDocSeperator = ", ";
+            }
+
+            default:
+                break;
+        }
+
+        return doc;
+    }
 }

@@ -120,13 +120,10 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: {
-                operation: SQFArrayComparator.Exact,
-                types: [
-                    [SQFDataType.Object, SQFDataType.Group],
-                    SQFDataType.Boolean,
-                ],
-            },
+			leftOperandTypes: SQFArray.ofExactly([
+				[SQFDataType.Object, SQFDataType.Group],
+				SQFDataType.Boolean,
+			]),
         },
     },
     KISKA_fnc_AAAZone: {
@@ -2372,12 +2369,11 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                     ]),
                     SQFArray.of(
                         SQFArray.ofExactly([
-                            [
-                                SQFDataType.String,
-                                SQFDataType.Number,
-                                [SQFDataType.Color, SQFDataType.ColorAlpha],
-                            ],
-                        ])
+                            SQFDataType.String,
+                            SQFDataType.Number,
+                            [SQFDataType.Color, SQFDataType.ColorAlpha],
+                        ]),
+						SQFArrayComparator.OneOf
                     ),
                 ],
                 SQFDataType.Number,
@@ -3087,6 +3083,22 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
         effect: SQFEffect.LOCAL,
+    },
+	test_fnc_test: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFArray.of(SQFDataType.String),
+                SQFArray.ofOneOfThese([
+                    SQFDataType.Position,
+                    SQFDataType.Object,
+                ]),
+            ]),
+        },
     },
 };
 
