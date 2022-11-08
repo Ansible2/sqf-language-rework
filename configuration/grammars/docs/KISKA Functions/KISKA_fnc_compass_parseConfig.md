@@ -7,7 +7,7 @@ Returns an array formatted for CBA settings menu lists.
 1: **_varName** *(STRING)* - uiNamespace variable to save to and to check
 
 #### Returns:
-<ARRAY> - An array formatted as [[title name strings],[image path strings],0]
+*(ARRAY)* - An array formatted as [[title name strings],[image path strings],0]
 
 #### Examples:
 ```sqf

@@ -13,8 +13,8 @@ Adds an action to the player that will be activated and deactivated when within 
 3: **_refreshInterval** : *(NUMBER)* - How often to look to update action visibility
 
 #### Returns:
-<NUMBER> - The porximity action id to be used with KISKA_fnc_removeProximityPlayerAction
-        (-1 if failure)
+*(NUMBER)* - The porximity action id to be used with KISKA_fnc_removeProximityPlayerAction
+    (-1 if failure)
 
 #### Examples:
 ```sqf

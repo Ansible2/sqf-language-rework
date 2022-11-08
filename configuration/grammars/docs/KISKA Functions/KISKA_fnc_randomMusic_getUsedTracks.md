@@ -5,7 +5,7 @@ Retrieves the tracks in the random music system that have already been played
 NONE
 
 #### Returns:
-<ARRAY> - An array of strings of the used classnames of tracks
+*(ARRAY)* - An array of strings of the used classnames of tracks
 
 #### Examples:
 ```sqf

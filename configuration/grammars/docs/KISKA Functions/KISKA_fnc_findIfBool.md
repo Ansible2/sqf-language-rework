@@ -11,7 +11,7 @@ Params are passed within _thisArgs.
 2: **_thisArgs** : *(ARRAY)* - Any local arguements that can be passed
 
 #### Returns:
-<BOOL> - True if an index meets the condition, false if not
+*(BOOL)* - True if an index meets the condition, false if not
 
 #### Examples:
 ```sqf

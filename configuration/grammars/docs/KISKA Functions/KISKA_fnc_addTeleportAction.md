@@ -12,7 +12,7 @@ Adds a hold action to an object to teleport to a desired location.
 evals to a boolean. True means that the action will be shown.
 
 #### Returns:
-<NUMBER> - action id, -1 if not added
+*(NUMBER)* - action id, -1 if not added
 
 #### Examples:
 ```sqf

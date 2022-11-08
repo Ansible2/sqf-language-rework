@@ -19,7 +19,7 @@ Params:
 2: *(ARRAY (of GROUPs))* - All the groups that are in the vehicle crew
 
 #### Returns:
-<BOOL> - false if encountered error, true if success
+*(BOOL)* - false if encountered error, true if success
 
 #### Examples:
 ```sqf

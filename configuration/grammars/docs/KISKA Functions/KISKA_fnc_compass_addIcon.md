@@ -13,7 +13,7 @@ Adds and icon to the compass
 4: **_isActive** *(BOOL)* - Icon will use "active" scale of icon
 
 #### Returns:
-<BOOL> - false if new iconId, true if overwriting the icon id
+*(BOOL)* - false if new iconId, true if overwriting the icon id
 
 #### Examples:
 ```sqf

@@ -5,7 +5,7 @@ Starts KISKA Speech recognition's extension's listening to the the user's microp
 0: **_timelineId** *(NUMBER)* - The id of the timeline to stop
 
 #### Returns:
-<BOOL> - true if recording started, false if recording is currently happening
+*(BOOL)* - true if recording started, false if recording is currently happening
 
 #### Examples:
 ```sqf

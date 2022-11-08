@@ -15,8 +15,8 @@ will go on forever.
 3: **_isInside** *(BOOL)* - Are these sounds being played indoors
 
 #### Returns:
-<NUMBER> - The KISKA_fnc_playRandom3dSoundLoop Handler ID for stopping the sound 
-		with KISKA_fnc_stopRandom3dSoundLoop
+*(NUMBER)* - The KISKA_fnc_playRandom3dSoundLoop Handler ID for stopping the sound 
+with KISKA_fnc_stopRandom3dSoundLoop
 
 #### Examples:
 ```sqf

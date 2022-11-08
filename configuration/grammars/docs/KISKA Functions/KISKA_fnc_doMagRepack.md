@@ -7,7 +7,7 @@ Completes a repack on the units current weapon.
 1: **_doHint** : *(BOOL)* - Should the local client be informed of packs?
 
 #### Returns:
-<BOOL> - false if not completed, true if it was
+*(BOOL)* - false if not completed, true if it was
 
 #### Examples:
 ```sqf

@@ -13,7 +13,7 @@ Add an action to given object that allows the spawn of a vehicle
 4: **_onCreateCode** *(CODE)* - Code to run upon vehicle creation. Passed arg is the created vehicle
 
 #### Returns:
-<BOOL> - false if not added, true otherwise
+*(BOOL)* - false if not added, true otherwise
 
 #### Examples:
 ```sqf

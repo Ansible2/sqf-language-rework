@@ -7,7 +7,7 @@ Calls to KISKA_speechRecognition(_x64).dll extension to run a function within it
 1: **_args** *(ARRAY)* - Any arguments to pass to the extension
 
 #### Returns:
-<STRING> - Whatever the extension returns
+*(STRING)* - Whatever the extension returns
 
 #### Examples:
 ```sqf

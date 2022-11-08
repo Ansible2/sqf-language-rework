@@ -7,7 +7,7 @@ Rounds off a number to the nearest incriment.
 1: **_incriment** : *(NUMBER)* - The incriment by which the number should be assessed
 
 #### Returns:
-<NUMBER> - The nearest incriment to the given number
+*(NUMBER)* - The nearest incriment to the given number
 
 #### Examples:
 ```sqf

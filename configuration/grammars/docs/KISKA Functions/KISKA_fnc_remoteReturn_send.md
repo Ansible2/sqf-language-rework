@@ -11,7 +11,7 @@ Gets a remote return from a scripting command on a target machine. Basically rem
 3: **_scheduled** : *(BOOL)* - Should _code be run in a scheduled environment (on target machine)
 
 #### Returns:
-<ANY> - Whatever the code returns
+*(ANY)* - Whatever the code returns
 
 #### Examples:
 ```sqf

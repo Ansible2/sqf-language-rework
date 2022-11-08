@@ -6,7 +6,7 @@ Checks if a machine is allowed to edit a given property in the GCH dialog.
 If provided, it will be assumed that even the group leader can edit the property
 
 #### Returns:
-<BOOL> - True if yes, false if no.
+*(BOOL)* - True if yes, false if no.
 
 #### Examples:
 ```sqf

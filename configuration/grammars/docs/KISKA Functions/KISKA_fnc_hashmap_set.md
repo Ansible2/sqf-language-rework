@@ -11,7 +11,7 @@ Sets a key/value pair in a hashmap but also supports objects and groups as keys.
 3: **_insertOnly** *(BOOL)* - Can set overwrite an existing key
 
 #### Returns:
-<BOOL> - False if key is new, true if overwriting
+*(BOOL)* - False if key is new, true if overwriting
 
 #### Examples:
 ```sqf

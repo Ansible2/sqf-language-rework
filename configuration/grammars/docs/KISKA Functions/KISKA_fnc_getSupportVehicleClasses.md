@@ -7,7 +7,7 @@ Gets mission configed default vehicle types available for KISKA supports.
 1: **_typeId** *(NUMBER)* - The type of vehicle to search for
 
 #### Returns:
-<ARRAY> - A list of vehicles listed under the relevant config
+*(ARRAY)* - A list of vehicles listed under the relevant config
 
 #### Examples:
 ```sqf

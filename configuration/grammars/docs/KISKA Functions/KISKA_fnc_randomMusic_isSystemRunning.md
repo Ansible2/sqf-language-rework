@@ -5,7 +5,7 @@ Retrieves whether or not the random music system is currently running
 NONE
 
 #### Returns:
-<BOOL> - True for running, false for not
+*(BOOL)* - True for running, false for not
 
 #### Examples:
 ```sqf

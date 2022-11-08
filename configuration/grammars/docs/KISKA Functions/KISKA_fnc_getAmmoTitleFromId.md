@@ -5,7 +5,7 @@ Takes a number (id) and translates it into the title name for that number. Used 
 0: **_id** : *(NUMBER)* - The ammo type ID
 
 #### Returns:
-<STRING> - ClassName for the corresponding Id number, otherwise empty string
+*(STRING)* - ClassName for the corresponding Id number, otherwise empty string
 
 #### Examples:
 ```sqf

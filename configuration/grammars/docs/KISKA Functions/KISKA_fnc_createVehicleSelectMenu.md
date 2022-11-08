@@ -5,7 +5,7 @@ Creates an array to be used with showCommandingMenu. Specifically, this is to pr
 0: **_classes** : *(ARRAY)* - The class names to add to the list (in the order to appear)
 
 #### Returns:
-<ARRAY> - The created array
+*(ARRAY)* - The created array
 
 #### Examples:
 ```sqf

@@ -15,7 +15,7 @@ Params:
 0: *(OBJECT)* - The helicopter
 
 #### Returns:
-<BOOL> - True if helicopter can attempt, false if problem
+*(BOOL)* - True if helicopter can attempt, false if problem
 
 #### Examples:
 ```sqf

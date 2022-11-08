@@ -5,7 +5,7 @@ Returns the current playing tracks class name.
 NONE
 
 #### Returns:
-<STRING> - The class name of music. Will be "" if nothing is playing.
+*(STRING)* - The class name of music. Will be "" if nothing is playing.
 
 #### Examples:
 ```sqf

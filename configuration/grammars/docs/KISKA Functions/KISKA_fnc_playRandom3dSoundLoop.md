@@ -29,8 +29,8 @@ If array, random syntax of random [min,mid,max] is used to get buffer each time 
 2: *(CONFIG)* - The config of the current sound being played
 
 #### Returns:
-<NUMBER> - An id that can be used with KISKA_fnc_stopRandom3dSoundLoop to stop
-		the sound loop.
+*(NUMBER)* - An id that can be used with KISKA_fnc_stopRandom3dSoundLoop to stop
+the sound loop.
 
 #### Examples:
 ```sqf

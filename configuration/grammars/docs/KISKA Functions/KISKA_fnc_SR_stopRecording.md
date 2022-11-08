@@ -5,8 +5,8 @@ Manually stops KISKA's Speech Recognition extension from listening to the user's
 NONE
 
 #### Returns:
-<BOOL> - true if a recording was stopped, false if recording was not happening 
-	 when called
+*(BOOL)* - true if a recording was stopped, false if recording was not happening 
+ when called
 
 #### Examples:
 ```sqf

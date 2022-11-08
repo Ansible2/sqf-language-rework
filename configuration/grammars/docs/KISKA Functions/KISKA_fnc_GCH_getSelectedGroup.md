@@ -5,7 +5,7 @@ Returns the selected group in the group changer.
 NONE
 
 #### Returns:
-<GROUP> - The currently selected group or grpNull if not found
+*(GROUP)* - The currently selected group or grpNull if not found
 
 #### Examples:
 ```sqf

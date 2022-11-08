@@ -5,7 +5,7 @@ Adds group's ability to place rally points by setting "KISKA_canRally" in the gr
 0: **_groupToAdd** *(GROUP or OBJECT)* - The group or the unit whose group to add
 
 #### Returns:
-<BOOL> - True if allowed, false if not allowed or error
+*(BOOL)* - True if allowed, false if not allowed or error
 
 #### Examples:
 ```sqf

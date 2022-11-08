@@ -7,7 +7,7 @@ Returns vectorDir and vectorUp that should angle the object towards the target. 
 1: **_target** : *(OBJECT, ARRAY)* - The target to angle towards or its ASL position
 
 #### Returns:
-<ARRAY> - An array of arrays formatted as [directionVector,upVector]
+*(ARRAY)* - An array of arrays formatted as [directionVector,upVector]
 
 #### Examples:
 ```sqf

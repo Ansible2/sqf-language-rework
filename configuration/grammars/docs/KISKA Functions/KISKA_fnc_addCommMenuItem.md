@@ -15,7 +15,7 @@ This is an alias of sorts of Bohemia's BIS_fnc_addCommMenuItem. It is mostly mad
 5: **_addToHash** *(BOOL)* - Add to KISKA_playersSupportMap
 
 #### Returns:
-<NUMBER> - The comm menu ID
+*(NUMBER)* - The comm menu ID
 
 #### Examples:
 ```sqf

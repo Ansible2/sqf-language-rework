@@ -5,7 +5,7 @@ Returns the units currentWaypoint
 0: **_group** *(GROUP or OBJECT)* - The unit to get the currentWaypoint for.
 
 #### Returns:
-<ARRAY> - The waypoint
+*(ARRAY)* - The waypoint
 
 #### Examples:
 ```sqf

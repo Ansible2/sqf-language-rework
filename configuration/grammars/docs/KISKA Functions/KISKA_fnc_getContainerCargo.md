@@ -5,9 +5,9 @@ Saves the cargo of a container in a formatterd array to be used with KISKA_fnc_p
 0: **_primaryContainer** *(OBJECT)* - The container to save the cargo of
 
 #### Returns:
-<ARRAY> - Formatted array of all items in cargo space of a container.
-		Used with KISKA_fnc_setContainerCargo.
-		Will return [] if no cargo is present.
+*(ARRAY)* - Formatted array of all items in cargo space of a container.
+Used with KISKA_fnc_setContainerCargo.
+Will return [] if no cargo is present.
 
 #### Examples:
 ```sqf

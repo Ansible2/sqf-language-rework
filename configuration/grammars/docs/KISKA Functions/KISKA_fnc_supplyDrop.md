@@ -21,7 +21,7 @@ OPTIONAL:
 7: **_stage_2_velocityDiff** *(NUMBER)* - The downward velocity of the crates below _stage_1_height
 
 #### Returns:
-<ARRAY> - The containers dropped
+*(ARRAY)* - The containers dropped
 
 #### Examples:
 ```sqf

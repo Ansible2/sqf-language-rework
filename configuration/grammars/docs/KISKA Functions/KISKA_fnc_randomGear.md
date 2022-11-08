@@ -13,7 +13,7 @@ Randomizes gear based upon input arrays for each slot. Designed with civillians 
 4: **_vests** : *(ARRAY)* - Potential vests to wear, array can be formated as random or weighted random
 
 #### Returns:
-<BOOL> - true if unit was given random clothes, false if error
+*(BOOL)* - true if unit was given random clothes, false if error
 
 #### Examples:
 ```sqf

@@ -5,7 +5,7 @@ Retrieves the current tracks in the random music system that could play. Possibl
 NONE
 
 #### Returns:
-<ARRAY or NUMBER> - see Description for details
+*(ARRAY or NUMBER)* - see Description for details
 
 #### Examples:
 ```sqf

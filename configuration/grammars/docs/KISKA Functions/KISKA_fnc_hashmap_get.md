@@ -9,7 +9,7 @@ Gets a value from a hashmap but also supports objects and groups as keys. Ideall
 2: **_default** *(ANY)* - The value to return if the map does not contain the value
 
 #### Returns:
-<ANY> - The saved value, default value, or nil if not found and no default provided
+*(ANY)* - The saved value, default value, or nil if not found and no default provided
 
 #### Examples:
 ```sqf

@@ -12,9 +12,9 @@ Clears a group's waypoints and conditionally halts their previous movement.
 NOTHING
 
 Example:
-    (begin example)
-        [group player,-1,false] call KISKA_fnc_clearWaypoints
-    (end)
+(begin example)
+    [group player,-1,false] call KISKA_fnc_clearWaypoints
+(end)
 
 #### Examples:
 ```sqf

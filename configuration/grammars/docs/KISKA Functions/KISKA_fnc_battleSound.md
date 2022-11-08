@@ -13,7 +13,7 @@ for getting a random value between the numbers.
 3: **_intensity** *(NUMBER)* - Value between 1-5 that determines how frequent these sounds are played (5 being the fastest)
 
 #### Returns:
-<NUMBER> - The Handler ID for stopping the sound with KISKA_fnc_stopBattleSound
+*(NUMBER)* - The Handler ID for stopping the sound with KISKA_fnc_stopBattleSound
 
 #### Examples:
 ```sqf

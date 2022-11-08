@@ -5,7 +5,7 @@ Simply creates a 3d object helper marker on provided postitions. Works in 3den a
 0: **_positions** *(ARRAY)* - An array of positions to place the markers on
 
 #### Returns:
-_entities <ARRAY> - all created markers
+_entities *(ARRAY)* - all created markers
 
 #### Examples:
 ```sqf

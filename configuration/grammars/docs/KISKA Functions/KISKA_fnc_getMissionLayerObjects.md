@@ -5,7 +5,7 @@ Simply returns the objects of a mission layer.
 0: **_layer** : *(STRING or NUMBER)* - The name or ID of the mission layer
 
 #### Returns:
-<ARRAY> - The layer's objects
+*(ARRAY)* - The layer's objects
 
 #### Examples:
 ```sqf

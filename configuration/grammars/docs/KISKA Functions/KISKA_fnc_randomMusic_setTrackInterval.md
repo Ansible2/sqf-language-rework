@@ -7,7 +7,7 @@ Sets the dwell time variable that handles the time between random music tracks b
      number for a set time between.
 
 #### Returns:
-<BOOL> - true if updated, false if not
+*(BOOL)* - true if updated, false if not
 
 #### Examples:
 ```sqf

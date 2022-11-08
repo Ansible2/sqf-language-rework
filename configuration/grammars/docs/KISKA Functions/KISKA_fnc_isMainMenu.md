@@ -5,7 +5,7 @@ Checks if loaded mission is main menu.
 NONE
 
 #### Returns:
-<BOOL>
+*(BOOL)*
 
 #### Examples:
 ```sqf

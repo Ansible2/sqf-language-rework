@@ -13,7 +13,7 @@ Places a number of objects around a given radius to mark an area.
 4: **_markerObjectClass** *(STRING)* - The classname of the object to place to mark the area
 
 #### Returns:
-<ARRAY> - An array of simple objects created to mark the area
+*(ARRAY)* - An array of simple objects created to mark the area
 
 #### Examples:
 ```sqf

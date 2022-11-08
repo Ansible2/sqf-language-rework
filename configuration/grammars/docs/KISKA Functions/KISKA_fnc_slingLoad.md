@@ -18,10 +18,10 @@ Tells AI helicopter to pick up a given object and drop it off at a given locatio
     the aircraft must travel prior to droping off the _liftObject
 
 #### Returns:
-<ARRAY> -
-        0: <OBJECT> - The pilot
-        1: <GROUP> - Pilot's group
-        2: <ARRAY> - Generated waypoints
+*(ARRAY)* -
+    0: *(OBJECT)* - The pilot
+    1: *(GROUP)* - Pilot's group
+    2: *(ARRAY)* - Generated waypoints
 
 #### Examples:
 ```sqf

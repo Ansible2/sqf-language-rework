@@ -5,7 +5,7 @@ Retrieves the current volume that random music system plays tracks at
 NONE
 
 #### Returns:
-<NUMBER> - the volume
+*(NUMBER)* - the volume
 
 #### Examples:
 ```sqf

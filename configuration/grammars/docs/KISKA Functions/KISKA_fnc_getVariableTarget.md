@@ -12,7 +12,7 @@ Gets a variable from a remote target object, id, or string (uses remoteExec targ
 (the machine to get the variable from)
 
 #### Returns:
-<ANY> - Whatever the variable is, nil otherwise
+*(ANY)* - Whatever the variable is, nil otherwise
 
 #### Examples:
 ```sqf

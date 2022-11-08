@@ -13,7 +13,7 @@ Prints a log with a script name to console. Whether or not something is logged d
 4: **_scriptName** *(STRING)* - The name of the script from where this message is being called
 
 #### Returns:
-<ANY> - The message sent
+*(ANY)* - The message sent
 
 #### Examples:
 ```sqf

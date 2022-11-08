@@ -5,7 +5,7 @@ Sets the current random track from the random music system.
 0: **_trackClass** *(STRING)* - a classname to check the duration of or its config path
 
 #### Returns:
-<BOOL> - True when set
+*(BOOL)* - True when set
 
 #### Examples:
 ```sqf

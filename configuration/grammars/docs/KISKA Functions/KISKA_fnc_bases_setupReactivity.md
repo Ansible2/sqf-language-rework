@@ -21,7 +21,7 @@ Spawns a configed KISKA base.
         1: *(NUMBER)* - The same _priority
 
 #### Returns:
-<NUMBER> - The event id of the combatBehaviour eventhandler
+*(NUMBER)* - The event id of the combatBehaviour eventhandler
 
 #### Examples:
 ```sqf

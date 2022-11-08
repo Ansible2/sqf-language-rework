@@ -21,7 +21,7 @@ Creates a task from a config entry. Config should be placed inside KISKA_cfgTask
 6: **_visibleIn3D** *(BOOL or configNull)* - Show a 3D task icon
 
 #### Returns:
-<STRING> - Created Task Id
+*(STRING)* - Created Task Id
 
 #### Examples:
 ```sqf

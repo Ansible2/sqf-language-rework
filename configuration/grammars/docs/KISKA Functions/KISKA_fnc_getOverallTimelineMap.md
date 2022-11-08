@@ -5,7 +5,7 @@ Returns the global timeline map of IDs and the individual info for a timeline.
 NONE
 
 #### Returns:
-<HASHMAP> - The overall timeline map to get info on certain timelines
+*(HASHMAP)* - The overall timeline map to get info on certain timelines
 
 #### Examples:
 ```sqf

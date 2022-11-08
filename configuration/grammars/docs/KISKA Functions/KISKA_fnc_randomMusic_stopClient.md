@@ -5,7 +5,7 @@ The clientside part of stopping random music system. Ideally, should not be call
 NONE
 
 #### Returns:
-<BOOL> - True if done, false if nothing done
+*(BOOL)* - True if done, false if nothing done
 
 #### Examples:
 ```sqf

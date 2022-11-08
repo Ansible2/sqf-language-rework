@@ -12,7 +12,7 @@ Creates a showCommandingMenu compatible menu global array to be used with KISKA_
 2: *(ANY)* - The value to assign to this menu option
 
 #### Returns:
-<ARRAY> - The created menu array
+*(ARRAY)* - The created menu array
 
 #### Examples:
 ```sqf

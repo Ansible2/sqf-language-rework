@@ -6,7 +6,7 @@ Spawns a configed KISKA base.
     in missionConfigFile >> "KISKA_bases" config, its class
 
 #### Returns:
-<HASHMAP> - see KISKA_fnc_bases_getHashmap
+*(HASHMAP)* - see KISKA_fnc_bases_getHashmap
 
 #### Examples:
 ```sqf

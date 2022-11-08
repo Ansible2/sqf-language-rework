@@ -5,7 +5,7 @@ Returns whether or not music is currently playing
 NONE
 
 #### Returns:
-<BOOL> - false if nothing is playing, true if something is
+*(BOOL)* - false if nothing is playing, true if something is
 
 #### Examples:
 ```sqf

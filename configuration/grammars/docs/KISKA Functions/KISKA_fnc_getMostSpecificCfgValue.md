@@ -14,8 +14,8 @@ Picks the most specific unitTypes property from a list of configs.
 3: **_ignoredTypes** *(ARRAY of ARRAY, NUMBER, or STRING)* - A list of invalid types for the property
 
 #### Returns:
-<NIL, ARRAY, NUMBER, or STRING> - The config value returned by the most specific config passed
-        that is valid.
+*(NIL, ARRAY, NUMBER, or STRING)* - The config value returned by the most specific config passed
+    that is valid.
 
 #### Examples:
 ```sqf

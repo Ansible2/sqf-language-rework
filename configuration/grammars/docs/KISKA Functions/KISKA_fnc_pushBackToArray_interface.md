@@ -9,7 +9,7 @@ Pushes back a value to a global array. Checks if machine hasInterface before pus
 2: **_namespace** : *(NAMESPACE,OBJECT,GROUP,LOCATION,CONTROL, or DISPLAY)* - What namespace the array is in
 
 #### Returns:
-<BOOL> - true if added, false if not
+*(BOOL)* - true if added, false if not
 
 #### Examples:
 ```sqf

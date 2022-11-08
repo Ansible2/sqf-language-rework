@@ -5,7 +5,7 @@ Stops the random music system either abrubtly or allows the last song to play.
 0: **_playLastSong** *(BOOL)* - Should the last song play or not
 
 #### Returns:
-<BOOL> - True if done, false if nothing done
+*(BOOL)* - True if done, false if nothing done
 
 #### Examples:
 ```sqf

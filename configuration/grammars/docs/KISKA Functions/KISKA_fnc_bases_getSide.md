@@ -6,7 +6,7 @@ Selects the most specific config's infantryClasses property and returns its valu
     That will be converted from a number in the side
 
 #### Returns:
-<SIDE> - The returned side for the given configs
+*(SIDE)* - The returned side for the given configs
 
 #### Examples:
 ```sqf

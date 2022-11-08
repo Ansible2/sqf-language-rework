@@ -7,7 +7,7 @@ Checks if a key exists in a hashmap, supports objects and groups as keys. Ideall
 1: **_key** *(ANY)* - The key to find
 
 #### Returns:
-<BOOL> - True if the key is found, false if not
+*(BOOL)* - True if the key is found, false if not
 
 #### Examples:
 ```sqf

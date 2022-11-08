@@ -9,7 +9,7 @@ Removes an index from a global array. This was used in lieu of creating a public
 2: **_namespace** : *(NAMESPACE,OBJECT,GROUP,LOCATION,CONTROL,DISPLAY)* - What namespace the array is in
 
 #### Returns:
-<BOOL> - True if done, false if not
+*(BOOL)* - True if done, false if not
 
 #### Examples:
 ```sqf

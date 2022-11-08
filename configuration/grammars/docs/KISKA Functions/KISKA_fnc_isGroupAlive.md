@@ -5,7 +5,7 @@ Checks if any unit in the group is alive.
 0: **_group** *(GROUP or OBJECT)* - The group or a unit in that group to check the status for
 
 #### Returns:
-<BOOL> - True if a unit in the group is alive, false otherwise
+*(BOOL)* - True if a unit in the group is alive, false otherwise
 
 #### Examples:
 ```sqf

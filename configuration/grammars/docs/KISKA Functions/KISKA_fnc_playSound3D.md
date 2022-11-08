@@ -17,7 +17,7 @@ or an array of any combination of the two (effectively multiple origins)
 5: **_pitch** *(NUMBER)* - Range from 0-5
 
 #### Returns:
-<BOOL> - True if sound found and played, false if error
+*(BOOL)* - True if sound found and played, false if error
 
 #### Examples:
 ```sqf

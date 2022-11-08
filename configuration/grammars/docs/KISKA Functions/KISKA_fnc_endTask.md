@@ -12,7 +12,7 @@ Either completes, cancels, or ends a task and calls the task's onComplete event 
     (this is only needed in the event that the task is ended without it having been created)
 
 #### Returns:
-<BOOL> - Whether or not the state of the task was set to the desired one
+*(BOOL)* - Whether or not the state of the task was set to the desired one
 
 #### Examples:
 ```sqf

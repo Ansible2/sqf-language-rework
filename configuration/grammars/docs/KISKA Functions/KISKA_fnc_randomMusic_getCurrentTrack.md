@@ -5,7 +5,7 @@ Returns the most recent track selected by the random music system. Will be an em
 NONE
 
 #### Returns:
-<STRING> - The current randomly selected track
+*(STRING)* - The current randomly selected track
 
 #### Examples:
 ```sqf

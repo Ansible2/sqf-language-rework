@@ -11,7 +11,7 @@ code that will be executed once a timeline is stopped. Params:
 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID
 
 #### Returns:
-<NUMBER> - The id of the new timeline
+*(NUMBER)* - The id of the new timeline
 
 #### Examples:
 ```sqf

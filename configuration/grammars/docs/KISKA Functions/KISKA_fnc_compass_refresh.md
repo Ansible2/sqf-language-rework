@@ -5,7 +5,7 @@ Resets the config global of the compass and then restarts the cutRSC for it.
 NONE
 
 #### Returns:
-<BOOL> - true if compass restarted
+*(BOOL)* - true if compass restarted
 
 #### Examples:
 ```sqf

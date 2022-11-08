@@ -5,7 +5,7 @@ FInds all alive players with or without headless clients
 0: **_noHeadless** *(BOOL)* - Seperate Headless Clients
 
 #### Returns:
-_alivePlayers <ARRAY> - All alive players
+_alivePlayers *(ARRAY)* - All alive players
 
 #### Examples:
 ```sqf

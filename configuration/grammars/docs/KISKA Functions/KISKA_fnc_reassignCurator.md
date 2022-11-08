@@ -7,7 +7,7 @@ Reassigns a curator object to the local player.
 1: **_isManual** : *(BOOL)* - Was this called from the diary entry (keeps hints from showing otherwise)
 
 #### Returns:
-<BOOL> - true if added to player, false otherwise
+*(BOOL)* - true if added to player, false otherwise
 
 #### Examples:
 ```sqf

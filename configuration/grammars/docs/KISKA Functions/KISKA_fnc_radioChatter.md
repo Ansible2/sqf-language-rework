@@ -17,7 +17,7 @@ If array format positionASL.
 2: **_volume** *(NUMBER)* - How loud the sound plays
 
 #### Returns:
-<NUMBER> - the "chatter ID" that can be used with KISKA_fnc_stopRadioChatter. -1 if error
+*(NUMBER)* - the "chatter ID" that can be used with KISKA_fnc_stopRadioChatter. -1 if error
 
 #### Examples:
 ```sqf

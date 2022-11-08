@@ -7,7 +7,7 @@ Takes a layer of objects and produces an array of arrays that are their 3d ATL p
 1: **_convertToConfig** *(BOOL)* - Change all square brackets ([]) to curly ({})
 
 #### Returns:
-<STRING> - The converted Array
+*(STRING)* - The converted Array
 
 #### Examples:
 ```sqf

@@ -5,7 +5,7 @@ Checks if the group changer is open or not.
 NONE
 
 #### Returns:
-<BOOL> - Returns true if the group changer is open and false if it is not
+*(BOOL)* - Returns true if the group changer is open and false if it is not
 
 #### Examples:
 ```sqf

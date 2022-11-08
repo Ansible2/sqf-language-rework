@@ -5,7 +5,7 @@ Searchs missionConfigFile, campaignConfigFile, and the configFile (in that order
 0: **_pathArray** : *(ARRAY)* - The array in string format
 
 #### Returns:
-<CONFIG> - The first config path if found or configNull if not
+*(CONFIG)* - The first config path if found or configNull if not
 
 #### Examples:
 ```sqf

@@ -7,7 +7,7 @@ Adds an xml grammar file to the speech recognizer.
 1: **_xml** *(STRING)* - The xml in string format
 
 #### Returns:
-<BOOL> - true if will be added, false if cannot be added
+*(BOOL)* - true if will be added, false if cannot be added
 
 #### Examples:
 ```sqf

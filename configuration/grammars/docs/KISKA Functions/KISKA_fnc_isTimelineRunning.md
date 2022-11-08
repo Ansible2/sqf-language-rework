@@ -8,7 +8,7 @@ Checks if a timeline has either fully been complete (_checkForFullCompletion = t
 completed and the timeline is fully done.
 
 #### Returns:
-<BOOL> - The state of the timeline
+*(BOOL)* - The state of the timeline
 
 #### Examples:
 ```sqf

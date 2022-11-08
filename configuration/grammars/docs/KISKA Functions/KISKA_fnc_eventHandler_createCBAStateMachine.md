@@ -5,7 +5,7 @@ Adds a configed custom eventhandler
 0: **_config** *(CONFIG)* - The config of the statemachine
 
 #### Returns:
-<LOCATION> - The statemachine
+*(LOCATION)* - The statemachine
 
 #### Examples:
 ```sqf

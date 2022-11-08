@@ -7,7 +7,7 @@ Removes a groups ability to rally an deletes its marker if requested.
 1: **_deleteMarker** *(BOOL)* - Should the group's latest rally marker (if present) be deleted
 
 #### Returns:
-<BOOL> - True if no longer allowed or never was, false if error
+*(BOOL)* - True if no longer allowed or never was, false if error
 
 #### Examples:
 ```sqf

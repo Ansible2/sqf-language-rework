@@ -5,7 +5,7 @@ Parses a given config into a hashmap that can be used by KISKA_fnc_ambientAnim. 
 0: **_config** *(CONFIG)* - A config to parse into a hashmap
 
 #### Returns:
-<HASHMAP> - A map of the animation sets and their properties.
+*(HASHMAP)* - A map of the animation sets and their properties.
 
 #### Examples:
 ```sqf

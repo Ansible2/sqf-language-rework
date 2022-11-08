@@ -12,7 +12,7 @@ If array, format is [title,description,icon].
 3: **_showTitle** *(BOOL)* - Whether or not to show title in the description section as well
 
 #### Returns:
-<DIARY-RECORD> - An entry in the users diary
+*(DIARY-RECORD)* - An entry in the users diary
 
 #### Examples:
 ```sqf

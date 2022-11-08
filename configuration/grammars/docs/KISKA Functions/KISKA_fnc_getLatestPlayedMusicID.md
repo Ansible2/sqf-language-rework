@@ -5,7 +5,7 @@ Returns the latest track ID of music that played (each song played increments) t
 NONE
 
 #### Returns:
-<NUMBER> - The highest incremented track "ID". -1 indicates no music has ever been played
+*(NUMBER)* - The highest incremented track "ID". -1 indicates no music has ever been played
 
 #### Examples:
 ```sqf

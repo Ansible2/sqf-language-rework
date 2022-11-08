@@ -5,7 +5,7 @@ Simply checks a config name to see if it is loaded under CFGPatches
 0: **_configName** *(STRING)* - The patch config name to check for
 
 #### Returns:
-<BOOL> - False if not, true if is loaded
+*(BOOL)* - False if not, true if is loaded
 
 #### Examples:
 ```sqf

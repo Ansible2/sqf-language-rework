@@ -5,7 +5,7 @@ For a given string id, return the latest "index" for that id. This increments th
 0: **_id** *(string)* - The id to increment
 
 #### Returns:
-<NUMBER> - the latest index of the given id
+*(NUMBER)* - the latest index of the given id
 
 #### Examples:
 ```sqf

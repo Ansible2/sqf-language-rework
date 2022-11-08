@@ -5,7 +5,7 @@ Stages an action added with KISKA_fnc_addProximityPlayerAction for removal. This
 0: **_id** : *(NUMBER)* - The proximity action id returned from KISKA_fnc_addProximityPlayerAction
 
 #### Returns:
-<BOOL> - False if not removed, true if removed
+*(BOOL)* - False if not removed, true if removed
 
 #### Examples:
 ```sqf

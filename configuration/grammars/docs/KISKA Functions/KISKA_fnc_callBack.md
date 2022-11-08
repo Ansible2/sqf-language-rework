@@ -13,7 +13,7 @@ Standerdizes a meanes of passing a callback function to another function along w
 2: **_runInScheduled** *(BOOL)* - Spawns the code in a scheduled thread
 
 #### Returns:
-<ANY> - Whatever the callback function returns or scripthandle if run in scheduled
+*(ANY)* - Whatever the callback function returns or scripthandle if run in scheduled
 
 #### Examples:
 ```sqf

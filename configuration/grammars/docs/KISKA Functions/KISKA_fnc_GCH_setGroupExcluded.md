@@ -7,7 +7,7 @@ Sets a group's exclusion from the Group Changer.
 1: **_isExcluded** *(BOOL)* - True to exclude group, false to include
 
 #### Returns:
-<BOOL> - Returns true if the group is excluded or false if not
+*(BOOL)* - Returns true if the group is excluded or false if not
 
 #### Examples:
 ```sqf

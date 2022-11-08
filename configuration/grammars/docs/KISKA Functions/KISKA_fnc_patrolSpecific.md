@@ -21,7 +21,7 @@ Creates a cycle of waypoints for a patrol using a predetermined set of possible 
 7: **_formation** *(STRING)* - setWaypointFormation, takes "NO CHANGE", "COLUMN", "STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "LINE", "FILE", and "DIAMOND"
 
 #### Returns:
-<BOOL> - True if units will patrol, false if problem encountered
+*(BOOL)* - True if units will patrol, false if problem encountered
 
 #### Examples:
 ```sqf

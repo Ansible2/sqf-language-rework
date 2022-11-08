@@ -9,7 +9,7 @@ Moves units into a vehicle as crew and then as passengers.
 2: **_deleteCrewIfNull** : *(BOOL)* - If the vehicle turns out to be null, the provided crew will be deleted
 
 #### Returns:
-<BOOL> - True if crew was set, false if problem encountered
+*(BOOL)* - True if crew was set, false if problem encountered
 
 #### Examples:
 ```sqf

@@ -5,7 +5,7 @@ Checks if a group is excluded from the Group Changer menu.
 0: **_group** *(GROUP)* - The group to check exclusion of
 
 #### Returns:
-<BOOL> - Returns true if the group is excluded or false if not
+*(BOOL)* - Returns true if the group is excluded or false if not
 
 #### Examples:
 ```sqf

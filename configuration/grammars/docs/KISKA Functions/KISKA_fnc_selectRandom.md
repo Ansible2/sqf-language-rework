@@ -10,7 +10,7 @@ Selects randomly an entry from an array be it weighted or unweighted.
     (only needed for possibly weighted arrays)
 
 #### Returns:
-<ANY> - Random entry from the array
+*(ANY)* - Random entry from the array
 
 #### Examples:
 ```sqf

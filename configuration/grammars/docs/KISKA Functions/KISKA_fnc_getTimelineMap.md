@@ -6,7 +6,7 @@ The Individual map defined for a specific timeline of the given ID. This is the 
 for the global timeline map
 
 #### Returns:
-<HASHMAP> - A hashmap containing information for the timeline events
+*(HASHMAP)* - A hashmap containing information for the timeline events
 
 #### Examples:
 ```sqf

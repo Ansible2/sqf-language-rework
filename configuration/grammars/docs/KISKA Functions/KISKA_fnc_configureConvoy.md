@@ -15,9 +15,9 @@ Creates several convoy vehicles and/or configures their groups to be ready to ac
     which is the 0 index vehicle
 
 #### Returns:
-<ARRAY> -
-		0: <GROUP> - The convoy group which includes all drivers
-		1: <ARRAY> - The vehicles in the convoy (lead vehicle is index 0)
+*(ARRAY)* -
+0: *(GROUP)* - The convoy group which includes all drivers
+1: *(ARRAY)* - The vehicles in the convoy (lead vehicle is index 0)
 
 #### Examples:
 ```sqf

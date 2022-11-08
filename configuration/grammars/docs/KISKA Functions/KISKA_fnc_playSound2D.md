@@ -11,7 +11,7 @@ Plays a 2D sound if a player is within a given area. Used due to say2D's broken 
 3: **_threeDimensional** *(BOOL)* - Whether to measure the distance to the player in 2d or 3d space
 
 #### Returns:
-<BOOL> - True if played, false if did not
+*(BOOL)* - True if played, false if did not
 
 #### Examples:
 ```sqf

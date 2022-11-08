@@ -9,7 +9,7 @@ random loadout for. If array, accepts and array of objects.
 Same syntax as getUnitLoadout return.
 
 #### Returns:
-_unitsChanged <ARRAY> - All the units changed
+_unitsChanged *(ARRAY)* - All the units changed
 
 #### Examples:
 ```sqf

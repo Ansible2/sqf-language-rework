@@ -32,9 +32,9 @@ Params:
 
 #### Returns:
 ARRAY - The vehicle info
-		0: <OBJECT> - The vehicle created
-		1: <ARRAY> - The vehicle crew
-		2: <GROUP> - The group the crew is a part of
+0: *(OBJECT)* - The vehicle created
+1: *(ARRAY)* - The vehicle crew
+2: *(GROUP)* - The group the crew is a part of
 
 #### Examples:
 ```sqf

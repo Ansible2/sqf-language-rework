@@ -8,7 +8,7 @@ Takes a cargo array formatted from KISKA_fnc_getContainerCargo and adds it to an
 KISKA_fnc_getContainerCargo or the object to copy from
 
 #### Returns:
-<BOOL> - True if cargo was set
+*(BOOL)* - True if cargo was set
 
 #### Examples:
 ```sqf

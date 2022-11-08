@@ -5,7 +5,7 @@ Returns the side of the player's group in order to avoid if the player is captiv
 NONE
 
 #### Returns:
-<SIDE> - The side of the player's group
+*(SIDE)* - The side of the player's group
 
 #### Examples:
 ```sqf

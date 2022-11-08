@@ -10,7 +10,7 @@ Adds a configed custom eventhandler.
     _thisScriptedEventHandler is available with the event id
 
 #### Returns:
-<NUMBER> - The ID of the eventhandler
+*(NUMBER)* - The ID of the eventhandler
 
 #### Examples:
 ```sqf

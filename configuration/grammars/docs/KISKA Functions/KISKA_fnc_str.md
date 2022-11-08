@@ -5,7 +5,7 @@ Given that str command produces triple quoted strings if used on a string (which
 0: **_value** *(ANY)* - The value to convert to a string
 
 #### Returns:
-<STRING> - The value as a string
+*(STRING)* - The value as a string
 
 #### Examples:
 ```sqf

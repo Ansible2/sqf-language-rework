@@ -5,7 +5,7 @@ Spawns a configed KISKA bases' infantry.
 0: **_baseConfig** *(CONFIG)* - The config path of the base config
 
 #### Returns:
-<HASHMAP> - see KISKA_fnc_bases_getHashmap
+*(HASHMAP)* - see KISKA_fnc_bases_getHashmap
 
 #### Examples:
 ```sqf

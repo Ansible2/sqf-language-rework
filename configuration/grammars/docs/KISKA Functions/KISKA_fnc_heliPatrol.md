@@ -7,13 +7,15 @@ Has a helicopter patrol looking for enemy men. If "spotted", the helicopter will
 1: **_patrolPoints** *(ARRAY)* - An Array of patrol points (OBJECTs or positions)
 
 2: **_spotDistance3D** *(NUMBER)* - How far away can the helicopter spot a player
-3. _patrolHeight *(NUMBER)* - What's the flying height of the helicopter
-4. _patrolSpeed *(STRING)* - setWaypointSpeed, takes "UNCHANGED", "LIMITED", "NORMAL", and "FULL"
+
+3: **_patrolHeight** *(NUMBER)* - What's the flying height of the helicopter
+
+4: **_patrolSpeed** *(STRING)* - setWaypointSpeed, takes "UNCHANGED", "LIMITED", "NORMAL", and "FULL"
 
 5: **_randomPatrol** *(BOOL)* - Should patrol points be randomized or followed in array order
 
 #### Returns:
-<BOOL> - True if helicopter will patrol, false if problem encountered
+*(BOOL)* - True if helicopter will patrol, false if problem encountered
 
 #### Examples:
 ```sqf

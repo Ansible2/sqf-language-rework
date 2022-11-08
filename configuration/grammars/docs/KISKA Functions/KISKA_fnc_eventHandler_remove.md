@@ -9,7 +9,7 @@ Removes a configed custom eventhandler. Worth noting that this will still return
 2: **_id** *(NUMBER)* - The event to remove
 
 #### Returns:
-<BOOL> - True if removed, false if it never existed
+*(BOOL)* - True if removed, false if it never existed
 
 #### Examples:
 ```sqf

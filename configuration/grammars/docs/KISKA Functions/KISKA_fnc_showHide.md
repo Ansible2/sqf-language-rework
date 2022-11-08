@@ -9,7 +9,7 @@ On selected objects, will disable simulation and hide the object or the reverse.
 2: **_enableDynamicSim** *(BOOL)* - Should the object be dynamically simulated after shown
 
 #### Returns:
-<BOOL> - True if action performed, false otherwise
+*(BOOL)* - True if action performed, false otherwise
 
 #### Examples:
 ```sqf

@@ -9,7 +9,7 @@ Displays a hint to the player and (always) creates a chronological diary entry a
 2: **_silent** *(BOOL)* - true for silent hint
 
 #### Returns:
-<DIARY-RECORD> - The created diary record.
+*(DIARY-RECORD)* - The created diary record.
 
 #### Examples:
 ```sqf

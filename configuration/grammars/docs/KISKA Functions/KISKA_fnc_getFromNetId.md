@@ -7,7 +7,7 @@ Gets an object or group from a netId.
 1: **_fromObject** *(BOOL)* - false for getting object, true for group
 
 #### Returns:
-<OBJECT or GROUP> - The Id of the entity
+*(OBJECT or GROUP)* - The Id of the entity
 
 #### Examples:
 ```sqf

@@ -5,7 +5,7 @@ Checks if a group is has KISKA_canRally saved to its namespace on the server whi
 0: **_groupToCheck** *(GROUP or OBJECT)* - The group or the unit whose group you want to check
 
 #### Returns:
-<BOOL> - True if allowed, false if not or error
+*(BOOL)* - True if allowed, false if not or error
 
 #### Examples:
 ```sqf
