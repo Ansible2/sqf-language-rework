@@ -1,4 +1,4 @@
-Converts the supplied `Array` of `Number`s into a `String` through [e](https://en.wikipedia.org/wiki/Unicod) characters representation conversion, or provided `Code` to `compilable` `String`.
+Converts the supplied `Array` of `Number`s into a `String` through [nicode](https://en.wikipedia.org/wiki/U) characters representation conversion, or provided `Code` to `compilable` `String`.
 
 
 ---

@@ -1,6 +1,6 @@
-Sets the group radio callsign, how it will be displayed in radio chat. Two groups on the same side `cannot` have the same callsign (possible on different sides) - see {{HashLink|#Example 4}}.<br>
+Sets the group radio callsign, how it will be displayed in radio chat. Two groups on the same side `cannot` have the same callsign (possible on different sides) - see <See HashLink Reference Example 4>.<br>
 The identity setup can consist of format keywords (marked with `%`) and param keywords taken from `CfgWorlds` config.
-Formatting is almost like using the `format` command but with some special group keywords (see {{HashLink|#Example 2}}).
+Formatting is almost like using the `format` command but with some special group keywords (see <See HashLink Reference Example 2>).
 <br>
 <spoiler text="Show Arma 3 values table">
 
@@ -38,7 +38,7 @@ player sideChat "lalala";	// Alpha :=: Red (KK): "lalala"
 
 *Example 3:*
 
-`<See arm Reference 1> / <See arm Reference 2> / <See arm Reference 3>`:
+`<See arma1 Reference arma2> / <See arm Reference 3>`:
 
 ```sqf
 group player setGroupId ["First Assault Recon Team"];

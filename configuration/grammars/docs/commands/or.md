@@ -1,4 +1,4 @@
-Returns `true` if one or both conditions are `true`. In case of the alternative syntax, {{Wikipedia|Lazy_evaluation#Control_structures|lazy evaluation}} is used. That means that if left operand is `true`, evaluation of the right side is skipped completely.
+Returns `true` if one or both conditions are `true`. In case of the alternative syntax, [lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation#Control_structures) is used. That means that if left operand is `true`, evaluation of the right side is skipped completely.
 
 
 ---

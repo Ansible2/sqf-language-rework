@@ -7,5 +7,3 @@ Set effectivity of wings.
 helicopterRTD `setWingForceScaleRTD` [leftHorizontal, rightHorizontal, vertical]
 
 ---
-*Example 1:*
-

@@ -1,6 +1,6 @@
 Asks the server to execute the given function or script command on the given target machine(s).
 * Functions are executed in the `scheduled environment`; suspension is allowed.
-* Script commands are executed in the `unscheduled environment`; suspension is not allowed (see {{Link|#Example 7}}).
+* Script commands are executed in the `unscheduled environment`; suspension is not allowed (see <See Link Reference Example 7>).
 
 Read [[Arma 3: Remote Execution]] for more information about remote execution, security features and JIP techniques.
 
@@ -17,22 +17,22 @@ params `remoteExec` [order, targets, JIP]
 
 How to write `remoteExec`/`remoteExecCall`:
 <code><See Color Reference hint> {{Color|teal|"Hello"}};
-<See cc Reference s>
-[{{Color|teal|"Hello"}}] remoteExec ["<See Color Reference hint>"];
-{{Color|teal|"Hello"}} remoteExec ["<See Color Reference hint>"]; <See cc Reference y></code>
+<See cc Reference ecomes>
+[<See Color Reference hint>"];
+<See Color Reference hint>"]; <See cc Reference lternatively></code>
 
 <code><See Color Reference unit1> <See Color Reference setFace> {{Color|teal|"Miller"}};
-<See cc Reference s>
-[<See Color Reference unit1>, {{Color|teal|"Miller"}}] remoteExec ["<See Color Reference setFace>"];</code>
+<See cc Reference ecomes>
+[<See Color Reference unit1>, <See Color Reference setFace>"];</code>
 
 <code><See Color Reference cutRsc> {{Color|darkred|["", "BLACK OUT"]}};
-<See cc Reference s>
-[{{Color|darkred|["", "BLACK OUT"]}}] remoteExec ["<See Color Reference cutRsc>"]; // double brackets are needed as the unary command takes an array</code>
+<See cc Reference ecomes>
+[<See Color Reference cutRsc>"]; // double brackets are needed as the unary command takes an array</code>
 
-<code>{{cc|functions, however, do not need double squared brackets}}
-{{Color|teal|["line 1", "line 2"]}} spawn <See Color Reference BIS_fnc_infoText>;
-<See cc Reference s>
-{{Color|teal|["line 1", "line 2"]}} remoteExec ["<See Color Reference BIS_fnc_infoText>"];</code>
+<code><See cc Reference  do not need double squared brackets>
+<See Color Reference BIS_fnc_infoText>;
+<See cc Reference ecomes>
+<See Color Reference BIS_fnc_infoText>"];</code>
 
 *Example 2:*
 

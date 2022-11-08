@@ -7,5 +7,3 @@ Adds resources to a team member.
 teamMember `addResources` [resource1, resource2, ...]
 
 ---
-*Example 1:*
-

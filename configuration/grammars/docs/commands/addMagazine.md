@@ -11,8 +11,8 @@ player addMagazine "dasdsa"; // .rpt: Given magazine[dasdsa] not found)
 unitName `addMagazine` magazineName
 
 unitName `addMagazine` [magazineName, ammoCount]<br>
-{{GVI|arma2oa|1.62}} <See Icon Reference 32><See Icon Reference 32><br>
-{{GVI|arma3|1.00}} <See Icon Reference 32><See Icon Reference 32>
+<See GVI Reference 62> <See Icon Reference 32><See Icon Reference 32><br>
+<See GVI Reference 00> <See Icon Reference 32><See Icon Reference 32>
 
 ---
 *Example 1:*

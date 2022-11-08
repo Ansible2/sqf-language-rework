@@ -2,7 +2,7 @@ Defines an action performed when `high command` group selection has been changed
 Command receives 2 variables:
 * _group: `Group` - last selected/deselected group
 * _isSelected: `Boolean` - new selection state of the specific group
-The code is executed on every `hc` group selection change until it is replaced or removed (see {{HashLink|#Example 3}}).
+The code is executed on every `hc` group selection change until it is replaced or removed (see <See HashLink Reference Example 3>).
 
 
 ---

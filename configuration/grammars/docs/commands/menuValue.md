@@ -7,5 +7,3 @@ Returns current value set in menu entry on given path.
 `menuValue` [idc, path]
 
 ---
-*Example 1:*
-

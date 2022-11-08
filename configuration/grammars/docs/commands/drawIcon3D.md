@@ -57,7 +57,7 @@ addMissionEventHandler ["draw3D",
 
 *Example 4:*
 
-Since {{GVI|arma3|2.04}}
+Since <See GVI Reference 04>
 
 ```sqf
 pos = player getPos [10, 0] vectorAdd [0,0,2];

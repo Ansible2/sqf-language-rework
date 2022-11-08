@@ -1,4 +1,4 @@
-Returns the name of the topmost commanding menu or "" if the menu is closed. For action menu visibility check see `isActionMenuVisible`. See {{HashLink|#Notes}} for <See arm Reference 2>/<See arm Reference 3> structure.
+Returns the name of the topmost commanding menu or "" if the menu is closed. For action menu visibility check see `isActionMenuVisible`. See <See HashLink Reference Notes> for <See arma2 Reference arma3> structure.
 
 
 ---

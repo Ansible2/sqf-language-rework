@@ -1,4 +1,4 @@
-In <See o Reference p> it returns the commander of a vehicle. Since <See arm Reference 1> it returns the primary observer. The commander of a vehicle can be found with `effectiveCommander`.
+In <See ofp Reference arma1> it returns the primary observer. The commander of a vehicle can be found with `effectiveCommander`.
 
 
 ---

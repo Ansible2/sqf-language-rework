@@ -1,6 +1,6 @@
 Sets the armor (or health for men) state of the vehicle (a value from 0 to 1). 
 
-Works like `setDamage`, but the other way around: 1 is full health - see {{HashLink|#Example 2}}.
+Works like `setDamage`, but the other way around: 1 is full health - see <See HashLink Reference Example 2>.
 
 
 ---

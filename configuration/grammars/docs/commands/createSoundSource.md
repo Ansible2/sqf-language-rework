@@ -11,7 +11,7 @@ Creates a sound source of the given type (type is the name of the subclass of `C
 * **"Sound_Stream"**
 }}
 
-Since <See arm Reference 3> v1.70 it is possible to define sounds for use with `createSoundSource` in mission config. As mentioned earlier, the sounds needed for this command should be defined inside `CfgVehicles` class, which itself references `CfgSFX` class. If given class searched in main config and is not found, the search will continue in `description.ext` - see {{HashLink|#Example 3}}.<br>
+Since <See arma3 Reference Example 3>.<br>
 Note that the sound created by `createSoundSource` will always be looping.
 Also when `CfgSFX` sound definition contains more than 1 sound, there is no guarantee that the sound played will be the same on every PC in Multiplayer.
 
@@ -41,7 +41,7 @@ _soundSource = createSoundSource ["LittleDog", position player, [], 0];
 
 *Example 3:*
 
-{{GVI|arma3|1.70}} Here is an example of suitable mission config definition:
+<See GVI Reference 70> Here is an example of suitable mission config definition:
 <syntaxhighlight lang="cpp">
 // description.ext
 class CfgSFX

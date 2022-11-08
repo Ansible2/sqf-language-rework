@@ -1,4 +1,4 @@
-Returns terrain's {{Wikipedia|Normal (geometry)|surface normal}} on given position.
+Returns terrain's [surface normal](https://en.wikipedia.org/wiki/Normal (geometry)) on given position.
 
 
 ---

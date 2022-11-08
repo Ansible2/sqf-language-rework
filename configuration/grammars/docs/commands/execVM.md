@@ -1,4 +1,4 @@
-Compiles and adds an `SQF` `script` to the `scheduler` queue and returns script handle (see also {{HashLink|#Example 4}}).
+Compiles and adds an `SQF` `script` to the `scheduler` queue and returns script handle (see also <See HashLink Reference Example 4>).
 The script does not execute immediately upon running `execVM` command but with some delay depending on the VM's scripts queue and engine load.
 
 

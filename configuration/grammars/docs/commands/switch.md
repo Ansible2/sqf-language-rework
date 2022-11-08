@@ -1,5 +1,5 @@
 Checks if the given parameter matches any `case`. If so, the code block of that case will be executed. After that the switch ends so no further cases will be checked.<br>
-If a case has no code block the code of the next case will automatically be executed, making it possible to formulate a logical "or" for cases which would otherwise contain the exact same code (see {{HashLink|#Example 2}}).<br>
+If a case has no code block the code of the next case will automatically be executed, making it possible to formulate a logical "or" for cases which would otherwise contain the exact same code (see <See HashLink Reference Example 2>).<br>
 The `default` block will be executed `only` if no case matches, no matter its position inside the code block. It is not a `case`, and will `never` be entered by fallthrough.
 
 

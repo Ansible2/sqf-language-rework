@@ -1,5 +1,5 @@
 Checks whether the given object or type is (a subtype) of the given type.<br>
-While {{HashLink|#Syntax 1}} and {{HashLink|#Syntax 2}} only support `CfgVehicles`, {{GVI|arma2|1.00
+While <See HashLink Reference Syntax 1> and <See HashLink Reference Syntax 2> only support `CfgVehicles`, {{GVI|arma2|1.00
 
 
 ---

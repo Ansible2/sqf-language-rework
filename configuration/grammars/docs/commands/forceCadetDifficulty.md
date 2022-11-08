@@ -1,4 +1,4 @@
-Forces **showCadetHints}} and <See hl Reference P> global Cadet [[Arma 3: Difficulty Settings|{{arma3** difficulty]], returns previous settings.
+Forces **showCadetHints}} and <See hl Reference howCadetWP> global Cadet [[Arma 3: Difficulty Settings|{{arma3** difficulty]], returns previous settings.
 
 
 ---

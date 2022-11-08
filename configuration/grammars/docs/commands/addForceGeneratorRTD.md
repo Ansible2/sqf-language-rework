@@ -7,5 +7,3 @@ Adds force generator to world.
 `addForceGeneratorRTD` parameters
 
 ---
-*Example 1:*
-

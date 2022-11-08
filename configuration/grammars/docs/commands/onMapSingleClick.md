@@ -4,7 +4,7 @@ Defines the action performed when user clicks in map by executing command string
 * replaced by <sqf inline>onMapSingleClick "SomeOtherCommand(s)"
 ```
 
-In <See arm Reference 3> the code should return `true` only if you wish to override default engine handling of the mouse click on map (see {{Link|#Example 4}}).<br>
+In <See arma3 Reference Example 4>).<br>
 For older games, when click is processed, code should ultimately return `true` back to the engine. If `false` is returned, default processing by the game engine is done.
 Return value of any other type (including `Nothing`) is an error. In such case default processing by the game engine is done, and error message may be displayed.
 

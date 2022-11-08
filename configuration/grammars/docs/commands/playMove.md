@@ -1,5 +1,5 @@
 When used on a person, smooth transition to given move will be done.<br>
-The difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see {{HashLink|#Example 2}}).
+The difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see <See HashLink Reference Example 2>).
 
 
 ---

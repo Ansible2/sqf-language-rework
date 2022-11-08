@@ -1,5 +1,5 @@
 Returns `true` only if both conditions are `true`.
-In case of the alternative syntax, {{Wikipedia|Lazy_evaluation#Control_structures|lazy evaluation}} is used - if left operand is `false`, evaluation of the right side is ignored.
+In case of the alternative syntax, [lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation#Control_structures) is used - if left operand is `false`, evaluation of the right side is ignored.
 
 
 ---

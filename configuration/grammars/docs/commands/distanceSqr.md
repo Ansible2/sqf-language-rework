@@ -1,4 +1,4 @@
-Computes the {{Wikipedia|Euclidean_distance#Squared_Euclidean_distance|squared distance}} between two objects or positions.
+Computes the [squared distance](https://en.wikipedia.org/wiki/Euclidean_distance#Squared_Euclidean_distance) between two objects or positions.
 
 
 ---

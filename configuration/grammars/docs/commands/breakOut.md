@@ -1,6 +1,6 @@
 Breaks out of the `scope` with given `name`.
 * An unknown `scopeName` name will cause the script error **Generic error in expression**
-* If multiple scopes with the same `name` exist, the command will break out the nearest scope. See {{Link|#Example 3}}.
+* If multiple scopes with the same `name` exist, the command will break out the nearest scope. See <See Link Reference Example 3>.
 
 
 ---

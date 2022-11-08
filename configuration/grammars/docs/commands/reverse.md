@@ -6,7 +6,7 @@ Reverses given array by reference (modifies the original array, just like `resiz
 
 `reverse` array
 
-`reverse` string {{GVI|arma3|2.02}}
+`reverse` string <See GVI Reference 02>
 
 ---
 *Example 1:*

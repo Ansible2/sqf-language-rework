@@ -3,7 +3,7 @@ Returns the side of a unit, vehicle, object or location.
 * side of an empty vehicle is `civilian`
 * side of a crewed vehicle is, if present, commander's > gunner's > driver's or > cargo's side, in this order
 * side of a captive or dead unit is `civilian`. Use <sqf inline>side group _unit
-``` to get the underlying side (see {{Link|#Example 2}})
+``` to get the underlying side (see <See Link Reference Example 2>)
 * you can use `playerSide` to know the real player's side
 
 

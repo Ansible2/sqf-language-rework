@@ -1,4 +1,4 @@
-Exponential function with the base {{Wikipedia|E_(mathematical_constant)|e}}. Equal to **e^x**.
+Exponential function with the base [e](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Equal to **e^x**.
 
 
 ---

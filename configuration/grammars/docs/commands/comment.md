@@ -1,4 +1,4 @@
-Defines a comment. See {{HashLink|SQF Syntax#Comments}} to learn more about comments.
+Defines a comment. See <See HashLink Reference Comments> to learn more about comments.
 
 
 ---

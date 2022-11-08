@@ -1,4 +1,4 @@
-Gives a broken down version of `actionKeys` return. Returns an `Array` containing the breakdowns of the `dikCodes` of keys, buttons and combos assigned to the given user action. Action names can be found in config class ControllerSchemes or `user action names` or user profile (see {{HashLink|#Example 1}}).
+Gives a broken down version of `actionKeys` return. Returns an `Array` containing the breakdowns of the `dikCodes` of keys, buttons and combos assigned to the given user action. Action names can be found in config class ControllerSchemes or `user action names` or user profile (see <See HashLink Reference Example 1>).
 In addition, some of the actions are also listed here: `inputAction/actions`
 
 The Key Device can be one of several types:

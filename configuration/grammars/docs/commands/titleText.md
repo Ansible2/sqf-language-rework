@@ -1,5 +1,5 @@
 Displays text across the screen. If used along with `cutText` two different texts (in different type styles) can be shown at once.
-The text can be displayed on multiple lines by using "\n" new line characters (see {{HashLink|#Example 3}}).
+The text can be displayed on multiple lines by using "\n" new line characters (see <See HashLink Reference Example 3>).
 
 
 ---

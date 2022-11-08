@@ -1,4 +1,4 @@
-Returns current animation phase of given source. Similar to `animationPhase` or `doorPhase` but designed to complement `animateSource`. This command could be used to obtain relative turret direction and gun elevation on a vehicle (see {{HashLink|#Example 2}}).
+Returns current animation phase of given source. Similar to `animationPhase` or `doorPhase` but designed to complement `animateSource`. This command could be used to obtain relative turret direction and gun elevation on a vehicle (see <See HashLink Reference Example 2>).
 
 
 ---

@@ -5,7 +5,7 @@ Returns the team the unit belongs to. Possible values:
 * **"GREEN"**
 * **"BLUE"**
 * **"YELLOW"**
-* {{GVI|arma3|1.94}} **""** if given unit is `objNull` or `remoteControl`ling another unit
+* <See GVI Reference 94> **""** if given unit is `objNull` or `remoteControl`ling another unit
 
 
 ---
