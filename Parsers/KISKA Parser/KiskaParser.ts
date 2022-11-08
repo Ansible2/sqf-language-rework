@@ -163,7 +163,7 @@ class KiskaPageConverter {
         const headerComment = headerRegexMatch[0];
 
         const descriptionMatch = headerComment.match(
-            /(?<=description:\r*\n*)([\s\S]*)(?=Parameters:)/i
+            /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i
         );
         if (descriptionMatch) {
             // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
@@ -182,37 +182,45 @@ class KiskaPageConverter {
         }
 
         const returnMatch = headerComment.match(
-            /(?<=Returns:\r*\n*)([\s\S]*)(?=author[\w\W]*?:)/i
+            /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i
         );
         if (returnMatch) {
-            // TODO: do stuff with return
             kiskaPage.return = returnMatch[0];
-            kiskaPage.return.replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "");
+            kiskaPage.return
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
+                .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
         }
 
         const parametersMatch = headerComment.match(
-            /(?<=parameters:\r*\n*)([\s\S]*)(?=Examples:)/i
+            /(?<=parameters:\r*\n*)([\s\S]*?)(?=(Examples:|returns:))/i
         );
         if (parametersMatch) {
             const parametersFull = parametersMatch[0].concat("<END>");
             const individualParametersMatch = parametersFull.match(
                 /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim
             );
-            kiskaPage.parameters = [];
-            individualParametersMatch?.forEach((parameter) => {
-                let parameterFormatted = parameter.replace(
-                    /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
-                    ""
-                )
-				.replace(/(?<=\d+:\s*)(_\w*\b)/gi,'**$1**')
-				.replace(/(\<)(.*?)(\>)/gi,'*($2)*');
 
-                kiskaPage.parameters?.push(parameterFormatted);
-            });
+            kiskaPage.parameters = [];
+            if (
+                !individualParametersMatch ||
+                individualParametersMatch.length < 1
+            ) {
+                kiskaPage.parameters.push("NONE");
+            } else {
+                individualParametersMatch?.forEach((parameter) => {
+                    const parameterFormatted = parameter
+                        .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                        .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
+                        .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
+
+                    kiskaPage.parameters?.push(parameterFormatted);
+                });
+            }
         }
 
         const examplesMatch = headerComment.match(
-            /(?<=Example\w*:\r*\n*)([\s\S]*)(?=author[\w\W]*?:)/i
+            /(?<=Example\w*:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|returns:))/i
         );
         if (examplesMatch) {
             const examplesFull = examplesMatch[0];
