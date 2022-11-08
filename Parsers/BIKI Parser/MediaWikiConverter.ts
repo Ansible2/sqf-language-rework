@@ -345,9 +345,6 @@ export class MediaWikiConverter {
             break;
         }
 
-		console.log(wikiPageType);
-		
-
         if (wikiPageType !== WikiPageType.Function) return SQFSyntaxType.Empty;
 
         // is function
@@ -697,10 +694,10 @@ export class MediaWikiConverter {
             if (syntax.leftArgTypes) {
                 let insertSyntax = "";
                 if (syntax.leftArgTypes.length >= 1) {
-					// TODO: what about functions that take a single parameter as an arg without an array?
+                    // TODO: what about functions that take a single parameter as an arg without an array?
                     insertSyntax = `SQFArray.ofExactlyThis([${syntax.leftArgTypes}])`;
                     syntaxArray.push(`\t\tleftOperandTypes: ${insertSyntax},`);
-					// TODO may not need this else
+                    // TODO may not need this else
                 } /*else {
 					insertSyntax = `SQFArray.ofExactlyThis([${syntax.leftArgTypes[0]}]),`;
 				}*/
@@ -869,7 +866,7 @@ export class MediaWikiConverter {
 
         // handle external wiki links
         const linkMatch = output.matchAll(
-            /(\{\{)(([\s\w\d]+)(\|)*)(([\s\w\d]+)(\|)*)([\s\w\d]+)(\}\})/gi
+            /(\{\{)(([\s\w\d]+)(\|)*)((.+?)(\|)*)([\s\w\d]+)(\}\})/gi
         );
         const linkMatchArray = Array.from(linkMatch);
         linkMatchArray.forEach((regexMatchArrayForLink) => {
