@@ -94,8 +94,8 @@ export enum SQFArgument {
 
 export interface Parser {
     getPages: (any: any) => any[];
-    parsePages: (pages: any[]) => string[];
-    doWithParsedPages: (parsedPages: string[]) => any;
+    parsePages: (pages: any[]) => any[];
+    doWithParsedPages: (parsedPages: any[]) => any;
 }
 
 export enum SyntaxMatchDifference {
