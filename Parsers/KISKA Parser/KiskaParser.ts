@@ -200,12 +200,13 @@ class KiskaPageConverter {
             );
             kiskaPage.parameters = [];
             individualParametersMatch?.forEach((parameter) => {
-                // TODO: do stuff with individual parameters
                 let parameterFormatted = parameter.replace(
                     /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
                     ""
-                );
-                // TODO: further formatting on parameter
+                )
+				.replace(/(?<=\d+:\s*)(_\w*\b)/gi,'**$1**')
+				.replace(/(\<)(.*?)(\>)/gi,'*($2)*');
+
                 kiskaPage.parameters?.push(parameterFormatted);
             });
         }
@@ -220,7 +221,6 @@ class KiskaPageConverter {
                 /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi
             );
             individualExamplesMatch?.forEach((example) => {
-                // TODO: do stuff with individual examples
                 kiskaPage.examples?.push(
                     example
                         .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
