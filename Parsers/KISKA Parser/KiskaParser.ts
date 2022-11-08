@@ -186,10 +186,10 @@ class KiskaPageConverter {
         );
         if (returnMatch) {
             kiskaPage.return = returnMatch[0];
-            kiskaPage.return
+            kiskaPage.return = kiskaPage.return
                 .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
-                .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
+                .replace(/(\<)(.*?)(\>)/gi, "*($2)*")
+                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**");
         }
 
         const parametersMatch = headerComment.match(
