@@ -2,8 +2,7 @@
 Used as a unified point of adding diary entries for KISKA.
 
 #### Parameters:
-0: **_textEntry** *(STRING or ARRAY)* - The text entry in createDiaryRecord.
-If array, format is [title,description,icon].
+0: **_textEntry** *(STRING or ARRAY)* - The text entry in createDiaryRecord.If array, format is [title,description,icon].
 
 1: **_task** *(TASK)* - A task attached to the diary record
 

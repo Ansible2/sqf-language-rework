@@ -6,11 +6,10 @@ Sets the position and vector dir and up of one object to another based on relati
 
 1: **_child** *(OBJECT)* - The object to find coordinates for.
 
-2: **_relativeInfo** *(ARRAY)* - An array containing the relative coordinates to
-    change to worldspace:
-    0: *(ARRAY)* - Relative world pos
-    1: *(ARRAY)* - Relative vector dir
-    2: *(ARRAY)* - Relative vector up
+2: **_relativeInfo** *(ARRAY)* - An array containing the relative coordinates tochange to worldspace:
+    0. *(ARRAY)* - Relative world pos
+    1. *(ARRAY)* - Relative vector dir
+    2. *(ARRAY)* - Relative vector up
 
 #### Returns:
 NOTHING

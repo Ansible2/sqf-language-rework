@@ -8,8 +8,7 @@ Adds a hold action to an object to teleport to a desired location.
 
 2: **_text** *(STRING)* - The action text, can be structured text
 
-3: **_conditionShow** *(STRING)* - A string that will compile into an expression that
-evals to a boolean. True means that the action will be shown.
+3: **_conditionShow** *(STRING)* - A string that will compile into an expression thatevals to a boolean. True means that the action will be shown.
 
 #### Returns:
 *(NUMBER)* - action id, -1 if not added

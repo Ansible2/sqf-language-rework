@@ -6,9 +6,7 @@ Creates a cycle of waypoints for a patrol using a predetermined set of possible 
 
 1: **_postions** *(ARRAY)* - An array of possible positions to patrol between, can be either positions or objects
 
-2: **_numWaypoints** *(NUMBER)* - The number of waypoints, use -1 to patrol all given positions
-
-(Optional)
+2: **_numWaypoints** *(NUMBER)* - The number of waypoints, use -1 to patrol all given positions(Optional)
 
 3: **_random** *(BOOL)* - Should waypoints be randomized from _positions array
 

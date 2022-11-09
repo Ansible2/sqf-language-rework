@@ -4,8 +4,7 @@ Checks if a timeline has either fully been complete (_checkForFullCompletion = t
 #### Parameters:
 0: **_timelineId** *(NUMBER)* - The id of the timeline to check
 
-1: **_checkForFullCompletion** *(BOOL)* - Check if the timeline's onComplete function has 
-completed and the timeline is fully done.
+1: **_checkForFullCompletion** *(BOOL)* - Check if the timeline's onComplete function has completed and the timeline is fully done.
 
 #### Returns:
 *(BOOL)* - The state of the timeline

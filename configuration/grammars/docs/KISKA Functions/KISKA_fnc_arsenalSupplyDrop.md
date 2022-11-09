@@ -2,8 +2,7 @@
 Spawns in an aircraft that flies over a DZ to drop off an arsenal.
 
 #### Parameters:
-0: **_dropPosition** : *(ARRAY)* - The position (area) to drop the arsenal
-  1: **_vehicleClass** : *(STRING)* - The class of the vehicle to drop the arsenal
+0: **_dropPosition** : *(ARRAY)* - The position (area) to drop the arsenal  1: **_vehicleClass** : *(STRING)* - The class of the vehicle to drop the arsenal
 
 2: **_dropAlt** : *(NUMBER)* - The flyInHeight of the drop vehicle
 

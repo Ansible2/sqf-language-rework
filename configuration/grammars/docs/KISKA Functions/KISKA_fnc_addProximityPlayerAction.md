@@ -2,11 +2,9 @@
 Adds an action to the player that will be activated and deactivated when within a certain radius of a given position.
 
 #### Parameters:
-0: **_center** : *(OBJECT or ARRAY)* - The position the player needs to be close to.
-    If array, format as Postion2D or PositionAGL.
+0: **_center** : *(OBJECT or ARRAY)* - The position the player needs to be close to.If array, format as Postion2D or PositionAGL.
 
-1: **_radius** : *(NUMBER)* - The max distance the player can be from the _center to
-    get the action.
+1: **_radius** : *(NUMBER)* - The max distance the player can be from the _center toget the action.
 
 2: **_action** : *(ARRAY)* - The action array used with "addAction" command
 

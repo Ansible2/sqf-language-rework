@@ -4,12 +4,9 @@ Picks the most specific unitTypes property from a list of configs.
 #### Parameters:
 0: **_property** *(STRING)* - The config property to search for in all of the classes
 
-1: **_configs** *(ARRAY)* - An array of CONFIGs that you would like to look for the
-    property. These should be within the same configHierarchy.
+1: **_configs** *(ARRAY)* - An array of CONFIGs that you would like to look for theproperty. These should be within the same configHierarchy.
 
-2: **_ignoredValues** *(ARRAY of ARRAY, NUMBER, or STRING)* - A list of invalid values
-    for the property to have in order to be ignored. (strings should be lowercase)
-    (NIL will always be ignored)
+2: **_ignoredValues** *(ARRAY of ARRAY, NUMBER, or STRING)* - A list of invalid valuesfor the property to have in order to be ignored. (strings should be lowercase)(NIL will always be ignored)
 
 3: **_ignoredTypes** *(ARRAY of ARRAY, NUMBER, or STRING)* - A list of invalid types for the property
 

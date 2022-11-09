@@ -2,11 +2,9 @@
 Plays a sound 3D but the function accepts the CFGSounds name rather then the file path.
 
 #### Parameters:
-0: **_sound** *(STRING or CONFIG)* - The sound to play. The classname of a CfgSounds entry (if string)
-or any config class that has a "sound[]" array and "duration" number property (such as CfgMusic classes)
+0: **_sound** *(STRING or CONFIG)* - The sound to play. The classname of a CfgSounds entry (if string)or any config class that has a "sound[]" array and "duration" number property (such as CfgMusic classes)
 
-1: **_origin** *(OBJECT or ARRAY)* - The position (ASL), object from which the sound comes from, 
-or an array of any combination of the two (effectively multiple origins)
+1: **_origin** *(OBJECT or ARRAY)* - The position (ASL), object from which the sound comes from, or an array of any combination of the two (effectively multiple origins)
 
 2: **_distance** *(NUMBER)* - Distance at which the sound can be heard
 

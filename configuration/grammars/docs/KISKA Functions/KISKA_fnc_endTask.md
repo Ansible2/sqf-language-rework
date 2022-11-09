@@ -8,8 +8,7 @@ Either completes, cancels, or ends a task and calls the task's onComplete event 
 
 2: **_notify** *(BOOL)* - Should a nortification be shown
 
-4: **_owner** *(BOOL, OBJECT, GROUP, SIDE, or ARRAY)* - Whom the task is assigned to
-    (this is only needed in the event that the task is ended without it having been created)
+4: **_owner** *(BOOL, OBJECT, GROUP, SIDE, or ARRAY)* - Whom the task is assigned to(this is only needed in the event that the task is ended without it having been created)
 
 #### Returns:
 *(BOOL)* - Whether or not the state of the task was set to the desired one

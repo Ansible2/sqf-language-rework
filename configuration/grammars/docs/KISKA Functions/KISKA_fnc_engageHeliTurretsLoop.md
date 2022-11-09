@@ -14,8 +14,7 @@ Sets up a helicopter's turrets to be able to properly engage enemies without wit
 
 5: **_makeInvulnerable** : *(BOOL)* - Makes vehicle crew invulnerable or not
 
-6: **_turretsWithWeapons** : *(ARRAY)* - If you've already found which turrets to regard as "gunner" turrets, pass their turret paths
-    or the function will get them.
+6: **_turretsWithWeapons** : *(ARRAY)* - If you've already found which turrets to regard as "gunner" turrets, pass their turret pathsor the function will get them.
 
 #### Returns:
 NOTHING

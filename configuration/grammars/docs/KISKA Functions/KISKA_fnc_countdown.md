@@ -4,8 +4,7 @@ Sleeps for a given time and eventually displays a certain amount on screen.
 #### Parameters:
 0: **_countDownTotal** : *(NUMBER)* - The amount to countdown from
 
-1: **_shownCountDown** : *(NUMBER)* - The number at which a print out of the
-    current countdown will show on screen.
+1: **_shownCountDown** : *(NUMBER)* - The number at which a print out of thecurrent countdown will show on screen.
 
 2: **_soundedCountDown** : *(NUMBER)* - The number at which a beep should play for each second
 

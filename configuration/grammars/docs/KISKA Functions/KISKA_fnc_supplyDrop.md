@@ -6,9 +6,7 @@ Spawns a supply drop near the requested position. Crates will parachute in.
 
 1: **_altittude** *(NUMBER)* - Start height of drop
 
-2: **_dropPosition** *(OBJECT, GROUP, ARRAY, LOCATION, TASK)* - Position you want the drop to be near
-
-OPTIONAL:
+2: **_dropPosition** *(OBJECT, GROUP, ARRAY, LOCATION, TASK)* - Position you want the drop to be nearOPTIONAL:
 
 3: **_stopAdjustingHeight** *(NUMBER)* - The height (ATL) at which the velocity of the crates should top being managed
 

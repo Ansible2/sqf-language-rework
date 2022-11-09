@@ -4,11 +4,8 @@ Sets the onprepare function of a specific vehicle when it conducts fastroping wi
 #### Parameters:
 0: **_vehicle** *(OBJECT)* - The vehicle to fastrope from
 
-1: **_onPrepare** *(CODE, ARRAY, or STRING)* - A function that returns a number
-    being the time it takes for the ropes to deploy from the given vehicle
-    (SEE KISKA_fnc_callBack for array syntax).
-     Args:
-     0: *(OBJECT)* - The helicopter conducting a fastrope
+1: **_onPrepare** *(CODE, ARRAY, or STRING)* - A function that returns a numberbeing the time it takes for the ropes to deploy from the given vehicle(SEE KISKA_fnc_callBack for array syntax).Args:
+    0. *(OBJECT)* - The helicopter conducting a fastrope
 
 #### Returns:
 NOTHING

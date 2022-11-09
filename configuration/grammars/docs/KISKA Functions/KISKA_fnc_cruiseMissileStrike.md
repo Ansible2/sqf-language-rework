@@ -6,8 +6,7 @@ Spawns a cruise missile at designated "launcher" and then guides it to a target.
 
 1: **_side** *(SIDE)* - The side that is launching the missile
 
-2: **_launchPos** *(OBJECT or ARRAY)* - An object or position ASL to spawn the missile at.
-If empty array array (default), a random position is chosen 2000m away.
+2: **_launchPos** *(OBJECT or ARRAY)* - An object or position ASL to spawn the missile at.If empty array array (default), a random position is chosen 2000m away.
 
 #### Returns:
 NOTHING

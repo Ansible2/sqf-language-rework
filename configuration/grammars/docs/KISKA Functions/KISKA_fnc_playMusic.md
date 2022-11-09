@@ -4,9 +4,7 @@ Plays music with smooth fade between tracks. Must be run in scheduled environmen
 #### Parameters:
 0: **_track** *(STRING)* - Music to play
 
-1: **_startTime** *(NUMBER OR ARRAY)* - Starting time of music. -1 for random start time.
-If array, duration of track can also be specified (SEE EXAMPLE 2).
-THIS INCLUDES FADE TIME
+1: **_startTime** *(NUMBER OR ARRAY)* - Starting time of music. -1 for random start time.If array, duration of track can also be specified (SEE EXAMPLE 2).THIS INCLUDES FADE TIME
 
 2: **_canInterrupt** *(BOOL)* - Interrupt playing music
 

@@ -2,8 +2,7 @@
 Executes a recursive chain timeline events. This should not be executed on its own but begins from KISKA_fnc_startTimeline.
 
 #### Parameters:
-0: **_timeline** *(ARRAY)* - An array of timeline events that will happen. 
-See KISKA_fnc_startTimeline for formats
+0: **_timeline** *(ARRAY)* - An array of timeline events that will happen. See KISKA_fnc_startTimeline for formats
 
 1: **_timelineId** *(NUMBER)* - The id of the timeline to stop
 

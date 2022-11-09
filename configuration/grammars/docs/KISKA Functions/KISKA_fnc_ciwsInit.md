@@ -18,10 +18,7 @@ Fires a number of rounds from AAA piece at target with random disperstion values
 
 7: **_soundAlarm** : *(BOOL)* - Play air raid siren and sound alarm when incoming detected
 
-8: **_engageTypes** : *(ARRAY)* - This array decides what types of objects or entities should be engaged by the CIWS
- these are formatted as an array or string inside, using an array allows the
- decision to define a type as supported by nearEntities (which is much faster then the default nearObjects)
- simply by setting it as ["myEntityType",true]
+8: **_engageTypes** : *(ARRAY)* - This array decides what types of objects or entities should be engaged by the CIWS these are formatted as an array or string inside, using an array allows the decision to define a type as supported by nearEntities (which is much faster then the default nearObjects) simply by setting it as ["myEntityType",true]
 
 #### Returns:
 Nothing

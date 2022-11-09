@@ -6,16 +6,11 @@ Rewrite of BIS_fnc_stalk for optimizations and features. One provided group will
 
 1: **_stalkedGroup** *(GROUP or OBJECT)* - The group to be stalked
 
-2: **_refreshInterval** *(NUMBER)* - How often the _stalkerGroup will have their waypoint
-    updated with the position of the _stalkedGroup, and how often to check the _conditionToEndStalking
+2: **_refreshInterval** *(NUMBER)* - How often the _stalkerGroup will have their waypointupdated with the position of the _stalkedGroup, and how often to check the _conditionToEndStalking
 
-3: **_postStalking** *(STRING, ARRAY, or CODE)* - Code that after stalking is complete
-    will be executed. (See KISKA_fnc_callBack _callBackFunction parameter)
+3: **_postStalking** *(STRING, ARRAY, or CODE)* - Code that after stalking is completewill be executed. (See KISKA_fnc_callBack _callBackFunction parameter)
 
-4: **_conditionToEndStalking** *(STRING, ARRAY, or CODE)* - Code that (if returns true)
-    can end the stalking. (See KISKA_fnc_callBack _callBackFunction parameter).
-    The stalking will automatically end if all units in one or both groups end
-    up dead.
+4: **_conditionToEndStalking** *(STRING, ARRAY, or CODE)* - Code that (if returns true)can end the stalking. (See KISKA_fnc_callBack _callBackFunction parameter).The stalking will automatically end if all units in one or both groups endup dead.
 
 #### Returns:
 NOTHING

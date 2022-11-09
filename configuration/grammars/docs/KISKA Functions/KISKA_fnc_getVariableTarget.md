@@ -8,8 +8,7 @@ Gets a variable from a remote target object, id, or string (uses remoteExec targ
 
 2: **_defaultValue** : *(ANY)* - If the variable does not exist for the target, what should be returned instead
 
-3: **_target** : *(NUMBER, OBJECT, or STRING)* - Where the _target is local will be where the variable is taken from 
-(the machine to get the variable from)
+3: **_target** : *(NUMBER, OBJECT, or STRING)* - Where the _target is local will be where the variable is taken from (the machine to get the variable from)
 
 #### Returns:
 *(ANY)* - Whatever the variable is, nil otherwise

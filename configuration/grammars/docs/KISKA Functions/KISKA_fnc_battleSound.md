@@ -4,9 +4,7 @@ Create ambient battlefield sounds for a specified duration
 #### Parameters:
 0: **_source** *(OBJECT or ARRAY)* - Where the sound is coming from. Can be an object or positions array (ASL)
 
-1: **_distance** *(NUMBER or ARRAY)* - Distance at which the sounds can be heard,
-if an array, will be used with the "random" command (random _distance)
-for getting a random value between the numbers.
+1: **_distance** *(NUMBER or ARRAY)* - Distance at which the sounds can be heard,if an array, will be used with the "random" command (random _distance)for getting a random value between the numbers.
 
 2: **_duration** *(NUMBER)* - How long the sounds should play for in seconds
 

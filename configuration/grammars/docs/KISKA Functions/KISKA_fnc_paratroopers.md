@@ -8,11 +8,9 @@ Takes a set of units and moves them into aircraft to be dropped over a position 
 
 2: **_dropVehicleClass** : *(STRING)* - What vehicle class will drop the units
 
-3: **_numToDrop** : *(NUMBER)* - The number of units out of the array to drop
-(if -1, will resize to the amount of units in _unitsToDrop)
+3: **_numToDrop** : *(NUMBER)* - The number of units out of the array to drop(if -1, will resize to the amount of units in _unitsToDrop)
 
-4: **_flyDirection** : *(NUMBER)* - The direction that the aircraft will fly towards _dropZone
-(if -1, will be random direction)
+4: **_flyDirection** : *(NUMBER)* - The direction that the aircraft will fly towards _dropZone(if -1, will be random direction)
 
 5: **_flyInHeight** : *(NUMBER)* - The flyInHeight of the aircraft
 
