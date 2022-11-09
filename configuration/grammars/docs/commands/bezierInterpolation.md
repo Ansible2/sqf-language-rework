@@ -1,4 +1,4 @@
-Gets interpolated value based on [zier curve](https://en.wikipedia.org/wiki/Bézier_curve|Bé) with given control points (progress value is 0...1 for a curve that starts at pos0 and finishes at posN) <br>
+Gets interpolated value based on *(Reference Wikipedia "Bézier_curve|Bézier curve")* with given control points (progress value is 0...1 for a curve that starts at pos0 and finishes at posN) <br>
 [[Image:bezierInterpolation2.jpg|400px]]
 
 

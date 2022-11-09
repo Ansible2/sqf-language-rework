@@ -45,7 +45,7 @@ This trick forces executing something in `Unscheduled Environment`:
 
 *Example 5:*
 
-<See o Reference p> `String` comparison workaround<br>
+{{ofp}} `String` comparison workaround<br>
 `SQS Syntax`:
 <sqs>
 _nil = format ["%1", _undefinedVariable]

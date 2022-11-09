@@ -1,6 +1,6 @@
 Return the state of input devices mapped to given input action.
 <br>
-For Arma 3 inputActions and its bindings see: `<See PAGENA Reference E>/actions`.
+For Arma 3 inputActions and its bindings see: `{{PAGENAME}}/actions`.
 <br>
 For earlier Arma editions  see `:Category:Key Actions`.
 

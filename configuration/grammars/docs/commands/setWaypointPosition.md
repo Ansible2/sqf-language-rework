@@ -1,5 +1,5 @@
 Attempts to move given waypoint to a random position inside a circle with the given center and radius. 
-The waypoint will be placed similar to **"NONE"}} attribute in `setVehiclePosition`, even if the radius is 0, which means it could still be off center. In order to force waypoint to the exact position, similar to {{hl|"CAN_COLLIDE"}} attribute, use a negative radius (see {{Link|#Example 2**).
+The waypoint will be placed similar to **"NONE"}} attribute in `setVehiclePosition`, even if the radius is 0, which means it could still be off center. In order to force waypoint to the exact position, similar to *(Reference hl ""CAN_COLLIDE"")* attribute, use a negative radius (see {{Link|#Example 2**).
 
 
 ---

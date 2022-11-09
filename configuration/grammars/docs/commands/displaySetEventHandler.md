@@ -1,7 +1,7 @@
 Sets given event handler of given display.
 The return code of the provided function should indicate whether this event was handled correctly. This implies telling the engine whether it is default code should be executed. 
 See `User Interface Event Handlers` for the full list of handler names.<br>
-If applicable, see `DIK KeyCodes` for a list of key code constants, which are relevant to key related user interface events like <See HashLink Reference onKeyDown> and <See HashLink Reference onKeyUp>.
+If applicable, see `DIK KeyCodes` for a list of key code constants, which are relevant to key related user interface events like *(Reference HashLink "onKeyDown" at User Interface Event Handlers#onKeyDown)* and *(Reference HashLink "onKeyUp" at User Interface Event Handlers#onKeyUp)*.
 
 
 ---

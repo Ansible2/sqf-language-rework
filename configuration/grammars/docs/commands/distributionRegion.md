@@ -1,4 +1,4 @@
-Returns the numerical index for the distribution region of this copy of [[:Category:ArmA: Armed Assault|<See arm Reference 1>]].
+Returns the numerical index for the distribution region of this copy of [[:Category:ArmA: Armed Assault|{{arma1}}]].
 # USA
 # Rest of the world
 

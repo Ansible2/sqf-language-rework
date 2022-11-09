@@ -1,7 +1,7 @@
 Converts given, formatted as simple array, `String` into a valid `Array`. Simple array is array consisting of `Number`s, `String`s, `Boolean`s and `Array`s of all of the above.
 This command is almost `4&times; faster` than similar uncached `call` `compile` method. And because `call` `compile` is not required, it is also `more secure` and primarily intended for use with `callExtension` to parse the `String` output into `Array`.<br>
 <br>
-Since <See arm Reference 3> v1.96 the command will tolerate extra spaces and supports single quotes. The only recognised keywords (case `in`sensitive) are:
+Since {{arma3}} v1.96 the command will tolerate extra spaces and supports single quotes. The only recognised keywords (case `in`sensitive) are:
 * **true** - translates into `true`
 * **false** - translates into `false`
 * **nil** - translates into `nil`

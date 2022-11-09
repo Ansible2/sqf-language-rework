@@ -1,4 +1,4 @@
-Sorts the ListBox entries by `lbValue`. The entries are sorted in ascending order. Also note that this command will mix up the entries randomly if multiple entries have the same value. In <See arm Reference 3> use `lbSortBy` to avoid this problem.
+Sorts the ListBox entries by `lbValue`. The entries are sorted in ascending order. Also note that this command will mix up the entries randomly if multiple entries have the same value. In {{arma3}} use `lbSortBy` to avoid this problem.
 
 
 ---

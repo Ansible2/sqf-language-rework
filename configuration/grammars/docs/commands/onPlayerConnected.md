@@ -21,7 +21,7 @@ onPlayerConnected { diag_log [_id, _uid, _name] };
 
 *Example 3:*
 
-From <See arm Reference 3> v1.49:
+From {{arma3}} v1.49:
 
 ```sqf
 onPlayerConnected {

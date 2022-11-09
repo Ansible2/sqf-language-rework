@@ -1,7 +1,7 @@
 Add backpack(s) to the cargo space of vehicle. Classname list of available backpacks is [[Arma 2: Operation Arrowhead: Backpacks|here]].
 For a list of possible backpacks, see:
-* <See GVI Reference 50> [[Arma 2: Operation Arrowhead: Backpacks]]
-* <See GVI Reference 00> [[Arma 3: CfgVehicles Equipment]] (starting with **B_**)
+* *(Reference GVI "arma2|1.50")* [[Arma 2: Operation Arrowhead: Backpacks]]
+* *(Reference GVI "arma3|1.00")* [[Arma 3: CfgVehicles Equipment]] (starting with **B_**)
 
 
 ---

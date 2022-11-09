@@ -3,9 +3,9 @@ Returns resting state of a PhysX (EPE) object. Some EPE objects are deliberately
 * EPE object is put to sleep - `false`
 * Unit is `alive`, ragdoll is active - `false`
 * Unit is `alive`, ragdoll is NOT active - `true`
-* <See GVI Reference 10> Unit is NOT `alive`, ragdoll is active - `true`
-* <See GVI Reference 10> Unit is NOT `alive`, ragdoll is NOT active - `false`
-It may look counter-intuitive but there is a simple formula to return ragdoll state of a unit (since <See GVI Reference 10>):
+* *(Reference GVI "arma3|2.10")* Unit is NOT `alive`, ragdoll is active - `true`
+* *(Reference GVI "arma3|2.10")* Unit is NOT `alive`, ragdoll is NOT active - `false`
+It may look counter-intuitive but there is a simple formula to return ragdoll state of a unit (since *(Reference GVI "arma3|2.10")*):
 
 ```sqf
 private _unitIsInRagdoll = alive _unit != isAwake _unit;

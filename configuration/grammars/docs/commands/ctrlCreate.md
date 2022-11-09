@@ -34,7 +34,7 @@ myControl = findDisplay 0 ctrlCreate ["RscText", 1234, findDisplay 0 displayCtrl
 
 *Example 4:*
 
-Create Tree View control with search. Available **RscTreeSearch}} class is hardcoded to be used with <See hl Reference scEdit> with idc {{hl|645**. Example below demonstrates how to. After tree is generated, try typing something in the top box.
+Create Tree View control with search. Available **RscTreeSearch}} class is hardcoded to be used with *(Reference hl "RscEdit")* with idc {{hl|645**. Example below demonstrates how to. After tree is generated, try typing something in the top box.
 
 ```sqf
 [] spawn 

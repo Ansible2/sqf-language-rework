@@ -1,7 +1,7 @@
-In <See arma2 Reference arma3> v1.64, this command sets unit into incapacitated state.<br>
+In {{arma2}} and since {{arma3}} v1.64, this command sets unit into incapacitated state.<br>
 `lifeState` results:
-* <See arm Reference 2>: "UNCONSCIOUS"
-* <See arm Reference 3>: "INCAPACITATED"
+* {{arma2}}: "UNCONSCIOUS"
+* {{arma3}}: "INCAPACITATED"
 
 
 ---

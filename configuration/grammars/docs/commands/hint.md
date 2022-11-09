@@ -1,4 +1,4 @@
-Outputs a hint message to the right of the screen (left of the screen in <See ofp Reference arma1>). Use `hintSilent` for soundless hint. To split message in multiple lines either use `Structured Text` or **\n** (in lower case).
+Outputs a hint message to the right of the screen (left of the screen in {{ofp}}) with a sound (except in {{arma1}}). Use `hintSilent` for soundless hint. To split message in multiple lines either use `Structured Text` or **\n** (in lower case).
 
 
 ---

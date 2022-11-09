@@ -1,6 +1,6 @@
 Sets the given effect on the given camera. If you want to switch the screen directly to the first-person, aiming, third-person or group view of an object, use `switchCamera` instead. The effect type "Terminate" is used to exit the current camera view and switch back to the player's view. Does not need `camCommit`.
 <br><br>
-Since <See GVI Reference 74>, it is possible to terminate individual r2t source. For example:
+Since *(Reference GVI "arma3|1.74")*, it is possible to terminate individual r2t source. For example:
 
 ```sqf
 cam cameraEffect ["terminate", "back", "rtt1"]; // would terminate "rtt1" r2t source

@@ -6,7 +6,7 @@ Executes the given `server command`.
 
 `serverCommand` command
 
-password `serverCommand` command <See Icon Reference 32>
+password `serverCommand` command *(Reference Icon "32" at serverExec)*
 
 ---
 *Example 1:*

@@ -1,4 +1,4 @@
-Forces mission ending (set with `endMission`) even if a camera effect or any another condition delays the endMission (mostly in `<See o Reference p>`).
+Forces mission ending (set with `endMission`) even if a camera effect or any another condition delays the endMission (mostly in `{{ofp}}`).
 
 
 ---

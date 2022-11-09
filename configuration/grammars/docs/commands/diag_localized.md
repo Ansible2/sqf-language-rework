@@ -1,4 +1,4 @@
-Returns array with all `localize`d keys from the given ` stringtable` or the array of all stringtables names if empty string **""}} is given. Common stringtables are: {{hl|"Global"}}, {{hl|"Mission"}}, {{hl|"Campaign"**.
+Returns array with all `localize`d keys from the given ` stringtable` or the array of all stringtables names if empty string **""}} is given. Common stringtables are: *(Reference hl ""Global"")*, *(Reference hl ""Mission"")*, {{hl|"Campaign"**.
 
 
 ---

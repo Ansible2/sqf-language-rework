@@ -25,7 +25,7 @@ _object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];
 
 *Example 3:*
 
-Can be used on units since <See arm Reference 3> v2.04:
+Can be used on units since {{arma3}} v2.04:
 
 ```sqf
 if (local bob) then

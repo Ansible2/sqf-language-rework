@@ -9,7 +9,7 @@ The possible team values (colours) are:
 * "GREEN" - (green)
 * "BLUE" - (blue)
 * "YELLOW"  - (yellow)
-`NOTE`: In older version of the game the effect of this command is local <See Icon Reference 32>
+`NOTE`: In older version of the game the effect of this command is local *(Reference Icon "32" at localEffect)*
 
 
 ---

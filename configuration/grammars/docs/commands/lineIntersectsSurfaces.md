@@ -32,7 +32,7 @@ onEachFrame {
 
 *Example 3:*
 
-This should detect glass windows and wire fences (since <See arm Reference 3> v1.52):
+This should detect glass windows and wire fences (since {{arma3}} v1.52):
 
 ```sqf
 wirefence = "Land_New_WiredFence_5m_F" createVehicle position player;

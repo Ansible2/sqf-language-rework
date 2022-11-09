@@ -1,6 +1,6 @@
 Returns a list of all variables from desired namespace. Namespaces supported:<br>
-*`Control` - `Since <See arm Reference 3> v2.01`
-*`Display` - `Since <See arm Reference 3> v2.01`
+*`Control` - `Since {{arma3}} v2.01`
+*`Display` - `Since {{arma3}} v2.01`
 *`Team Member`
 *`Namespace`
 *`Object`

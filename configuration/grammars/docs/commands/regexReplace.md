@@ -4,7 +4,7 @@ Searches given `haystack` with given `pattern` and replaces all matches with giv
 ---
 *Syntaxes:*
 
-haystack `<See PAGENAM Reference E>` [pattern, replace string]
+haystack `{{PAGENAMEE}}` [pattern, replace string]
 
 ---
 *Example 1:*

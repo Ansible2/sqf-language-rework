@@ -1,5 +1,5 @@
 Returns a list of all units controlled by `connected clients` - human players including dead players, but also [[Arma 3 Headless Client|Headless Clients]].<br>
-Use `BIS_fnc_listPlayers` or see <See HashLink Reference Example 1> to only get human players.
+Use `BIS_fnc_listPlayers` or see *(Reference HashLink "#Example 1")* to only get human players.
 
 
 ---

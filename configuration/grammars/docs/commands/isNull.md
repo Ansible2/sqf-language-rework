@@ -19,7 +19,7 @@ if (isNull obj) then
 
 *Example 2:*
 
-`Diary Record` support before <See GVI Reference 00>:
+`Diary Record` support before *(Reference GVI "arma3|2.00")*:
 
 ```sqf
 private _nullRecord = objNull createDiaryRecord []; // wrong parameters = failure to create a record = null value
@@ -27,7 +27,7 @@ private _createdRecord = player createDiaryRecord ["Diary", ["title", "descripti
 if (_createdRecord isEqualTo _nullRecord) then { hint "Failed" };
 ```
 
-`Team Member` support before <See GVI Reference 10>:
+`Team Member` support before *(Reference GVI "arma3|2.10")*:
 
 ```sqf
 private _isNull = _teamMember isEqualTo teamMemberNull;

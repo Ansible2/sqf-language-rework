@@ -7,9 +7,9 @@ A rain density of zero is no rain, one is maximum rain. Rain is not possible whe
 
 time `setRain` rain
 
-<See Icon Reference 32> `setRain` rainParams
+*(Reference Icon "32" at localeffect)* `setRain` rainParams
 
-<See Icon Reference 32> `setRain` config
+*(Reference Icon "32" at localeffect)* `setRain` config
 
 ---
 *Example 1:*
@@ -30,7 +30,7 @@ forceWeatherChange;
 
 *Example 3:*
 
-Snow like effect (Since <See arm Reference 3> v2.08):
+Snow like effect (Since {{arma3}} v2.08):
 
 ```sqf
 0 setOvercast 1;

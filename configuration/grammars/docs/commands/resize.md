@@ -1,5 +1,5 @@
 Changes the size of the given array. The command does not return new array, it resizes the source array to the desired number of elements.
-If the new size is bigger than the current size, the new places are filled with `nil`. The <See Link Reference alternative syntax> allows to fill resized positions with a given value. `Array` and `HashMap` values are copied.
+If the new size is bigger than the current size, the new places are filled with `nil`. The *(Reference Link "alternative syntax" at #Syntax 2)* allows to fill resized positions with a given value. `Array` and `HashMap` values are copied.
 
 
 ---

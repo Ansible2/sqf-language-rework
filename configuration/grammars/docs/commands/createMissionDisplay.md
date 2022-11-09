@@ -17,7 +17,7 @@ _ChildDisplay = _Rootdisplay createMissionDisplay "Tutorial";
 
 *Example 2:*
 
-In <See arm Reference 3> this creates the scenarios UI
+In {{arma3}} this creates the scenarios UI
 
 ```sqf
 findDisplay 46 createMissionDisplay "";
@@ -25,7 +25,7 @@ findDisplay 46 createMissionDisplay "";
 
 *Example 3:*
 
-Other options for <See arm Reference 3>:
+Other options for {{arma3}}:
 
 ```sqf
 (findDisplay 46) createMissionDisplay ["","Cutscenes"];

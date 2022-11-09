@@ -40,7 +40,7 @@ Objects such as
 * "test_EmptyObjectForBubbles"
 * "test_EmptyObjectForFireBig"
 * "test_EmptyObjectForSmoke"
-create additional emitters, which are stored in "effects" variable on the object. Since <See arm Reference 3> v1.72 these emitters are automatically deleted when object is deleted
+create additional emitters, which are stored in "effects" variable on the object. Since {{arma3}} v1.72 these emitters are automatically deleted when object is deleted
 
 ```sqf
 [] spawn

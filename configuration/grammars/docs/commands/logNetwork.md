@@ -1,4 +1,4 @@
-Registers new log file recording a network traffic and returns handle of the log. The log file is saved inside the <See arm Reference 3> root folder.
+Registers new log file recording a network traffic and returns handle of the log. The log file is saved inside the {{arma3}} root folder.
 
 
 ---

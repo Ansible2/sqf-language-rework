@@ -1,6 +1,6 @@
 Asks the server to execute the given function or script command on the given target machine(s).
 * Functions are executed in the `scheduled environment`; suspension is allowed.
-* Script commands are executed in the `unscheduled environment`; suspension is not allowed (see <See Link Reference Example 7>).
+* Script commands are executed in the `unscheduled environment`; suspension is not allowed (see *(Reference Link "#Example 7")*).
 
 Read [[Arma 3: Remote Execution]] for more information about remote execution, security features and JIP techniques.
 
@@ -16,23 +16,23 @@ params `remoteExec` [order, targets, JIP]
 *Example 1:*
 
 How to write `remoteExec`/`remoteExecCall`:
-<code><See Color Reference hint> {{Color|teal|"Hello"}};
-<See cc Reference ecomes>
-[<See Color Reference hint>"];
-<See Color Reference hint>"]; <See cc Reference lternatively></code>
+<code>*(Reference Color "hint" at darkorange)* *(Reference Color "teal|"Hello"")*;
+*(Reference cc "becomes")*
+[*(Reference Color "teal|"Hello"")*] remoteExec ["*(Reference Color "hint" at darkorange)*"];
+*(Reference Color "teal|"Hello"")* remoteExec ["*(Reference Color "hint" at darkorange)*"]; *(Reference cc "alternatively")*</code>
 
-<code><See Color Reference unit1> <See Color Reference setFace> {{Color|teal|"Miller"}};
-<See cc Reference ecomes>
-[<See Color Reference unit1>, <See Color Reference setFace>"];</code>
+<code>*(Reference Color "unit1" at green)* *(Reference Color "setFace" at darkorange)* *(Reference Color "teal|"Miller"")*;
+*(Reference cc "becomes")*
+[*(Reference Color "unit1" at green)*, *(Reference Color "teal|"Miller"")*] remoteExec ["*(Reference Color "setFace" at darkorange)*"];</code>
 
-<code><See Color Reference cutRsc> {{Color|darkred|["", "BLACK OUT"]}};
-<See cc Reference ecomes>
-[<See Color Reference cutRsc>"]; // double brackets are needed as the unary command takes an array</code>
+<code>*(Reference Color "cutRsc" at darkorange)* *(Reference Color "darkred|["", "BLACK OUT"]")*;
+*(Reference cc "becomes")*
+[*(Reference Color "darkred|["", "BLACK OUT"]")*] remoteExec ["*(Reference Color "cutRsc" at darkorange)*"]; // double brackets are needed as the unary command takes an array</code>
 
-<code><See cc Reference  do not need double squared brackets>
-<See Color Reference BIS_fnc_infoText>;
-<See cc Reference ecomes>
-<See Color Reference BIS_fnc_infoText>"];</code>
+<code>*(Reference cc "functions, however, do not need double squared brackets")*
+*(Reference Color "teal|["line 1", "line 2"]")* spawn *(Reference Color "BIS_fnc_infoText" at darkorange)*;
+*(Reference cc "becomes")*
+*(Reference Color "teal|["line 1", "line 2"]")* remoteExec ["*(Reference Color "BIS_fnc_infoText" at darkorange)*"];</code>
 
 *Example 2:*
 

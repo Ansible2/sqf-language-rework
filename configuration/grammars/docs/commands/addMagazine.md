@@ -1,4 +1,4 @@
-Adds a magazine to a person. Infantry units can only carry a specific number of magazines, once the magazine slots are filled (or uniform/vest/bagpack are full in <See arm Reference 3>), any further `addMagazine` commands are ignored. If class of magazine does not exist, an error message is printed in .rpt:
+Adds a magazine to a person. Infantry units can only carry a specific number of magazines, once the magazine slots are filled (or uniform/vest/bagpack are full in {{arma3}}), any further `addMagazine` commands are ignored. If class of magazine does not exist, an error message is printed in .rpt:
 
 ```sqf
 player addMagazine "dasdsa"; // .rpt: Given magazine[dasdsa] not found)
@@ -11,8 +11,8 @@ player addMagazine "dasdsa"; // .rpt: Given magazine[dasdsa] not found)
 unitName `addMagazine` magazineName
 
 unitName `addMagazine` [magazineName, ammoCount]<br>
-<See GVI Reference 62> <See Icon Reference 32><See Icon Reference 32><br>
-<See GVI Reference 00> <See Icon Reference 32><See Icon Reference 32>
+*(Reference GVI "arma2oa|1.62")* *(Reference Icon "32" at localArgument)**(Reference Icon "32" at globalEffect)*<br>
+*(Reference GVI "arma3|1.00")* *(Reference Icon "32" at globalArgument)**(Reference Icon "32" at globalEffect)*
 
 ---
 *Example 1:*

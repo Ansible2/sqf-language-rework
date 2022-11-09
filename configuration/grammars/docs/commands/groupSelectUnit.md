@@ -1,4 +1,4 @@
-Selects a unit from player's group. If player is the leader, the effect of this command is similar to player pressing <See Controls Reference 1>, <See Controls Reference 2>, <See Controls Reference 3> etc to highlight units in his squad, after which the unit command menu is shown.
+Selects a unit from player's group. If player is the leader, the effect of this command is similar to player pressing *(Reference Controls "F1")*, *(Reference Controls "F2")*, *(Reference Controls "F3")* etc to highlight units in his squad, after which the unit command menu is shown.
 If leader is AI, player will get usual communication menu to interact with the leader.
 
 

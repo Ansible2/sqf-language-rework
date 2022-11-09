@@ -1,6 +1,6 @@
 Sets string representation of an object to a custom string.<br>
 When a vehicle is created and named in the editor, the name becomes both the variable containing the vehicle object and the string representation of the vehicle object.
-In scripts an extra step is needed to achieve the same effect. See [[<See PAGENA Reference E>#Example 1|Example 1]].
+In scripts an extra step is needed to achieve the same effect. See [[{{PAGENAME}}#Example 1|Example 1]].
 
 
 ---

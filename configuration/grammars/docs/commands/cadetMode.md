@@ -1,4 +1,4 @@
-`Prior to <See arm Reference 3>` it returns if the player is currently playing in cadet or veteran mode.
+`Prior to {{arma3}}` it returns if the player is currently playing in cadet or veteran mode.
 
 
 ---

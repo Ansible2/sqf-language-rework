@@ -1,6 +1,6 @@
 Set the zoom level (`F`ield `O`f `V`iew) start and end values for automatical zooming. <!-- "automatical"? LoL ;-) -->
 <br>
-The default zoom level is `**0.7}}` where `<See hl Reference 0>` is the nearest and `{{hl|1**` is the most far zoom value.
+The default zoom level is `**0.7}}` where `*(Reference hl "0")*` is the nearest and `{{hl|1**` is the most far zoom value.
 
 
 ---

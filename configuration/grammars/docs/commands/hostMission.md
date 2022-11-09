@@ -15,7 +15,7 @@ hostMission [configFile >> "CfgMissions" >> "MPMissions" >> _scenarioClassName, 
 
 *Example 2:*
 
-Launch host mission dialog from a client on dedicated server in <See arm Reference 3>:
+Launch host mission dialog from a client on dedicated server in {{arma3}}:
 
 ```sqf
 hostMission [

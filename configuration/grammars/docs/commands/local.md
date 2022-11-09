@@ -1,4 +1,4 @@
-Check if given unit is local on the computer in multiplayer games - see <See HashLink Reference Locality>.<br>
+Check if given unit is local on the computer in multiplayer games - see *(Reference HashLink "Multiplayer Scripting#Locality")*.<br>
 This can be used to determine on which computer some code must be run. In single player all objects are local.
 
 
@@ -7,7 +7,7 @@ This can be used to determine on which computer some code must be run. In single
 
 `local` object
 
-`local` variable = value <span style="margin-left: 7em">`<See Color Reference arma2> v1.00 until <See arma3 Reference 54>` - see ``private`` for later versions</span>
+`local` variable = value <span style="margin-left: 7em">`*(Reference Color "red|From {{arma2")* v1.00 until {{arma3}} v1.54}}` - see ``private`` for later versions</span>
 
 ---
 *Example 1:*

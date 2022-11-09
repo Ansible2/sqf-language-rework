@@ -20,7 +20,7 @@ _number = parseNumber "0xCF";			// 0
 
 *Example 2:*
 
-since <See arm Reference 3> v1.50:
+since {{arma3}} v1.50:
 
 ```sqf
 private _result = parseNumber false;				// 0

@@ -1,4 +1,4 @@
-Compiles and adds an `SQF` `script` to the `scheduler` queue and returns script handle (see also <See HashLink Reference Example 4>).
+Compiles and adds an `SQF` `script` to the `scheduler` queue and returns script handle (see also *(Reference HashLink "#Example 4")*).
 The script does not execute immediately upon running `execVM` command but with some delay depending on the VM's scripts queue and engine load.
 
 
@@ -22,7 +22,7 @@ execVM "test.sqf";
 _handle = player execVM "test.sqf";
 waitUntil { scriptDone _handle };
 ```
-The following is also possible in <See arm Reference 3>:
+The following is also possible in {{arma3}}:
 
 ```sqf
 private _handle = execVM "123.sqf";

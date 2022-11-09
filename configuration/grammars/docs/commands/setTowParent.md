@@ -5,7 +5,7 @@ Supposed to be used together with a rope connecting both vehicles.
 ---
 *Syntaxes:*
 
-towedVehicle `<See PAGENAM Reference E>` towingVehicle
+towedVehicle `{{PAGENAMEE}}` towingVehicle
 
 ---
 *Example 1:*

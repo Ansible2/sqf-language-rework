@@ -4,7 +4,7 @@ Defines the action performed when user clicks in map by executing command string
 * replaced by <sqf inline>onMapSingleClick "SomeOtherCommand(s)"
 ```
 
-In <See arma3 Reference Example 4>).<br>
+In {{arma3}} the code should return `true` only if you wish to override default engine handling of the mouse click on map (see *(Reference Link "#Example 4")*).<br>
 For older games, when click is processed, code should ultimately return `true` back to the engine. If `false` is returned, default processing by the game engine is done.
 Return value of any other type (including `Nothing`) is an error. In such case default processing by the game engine is done, and error message may be displayed.
 
@@ -19,7 +19,7 @@ params `onMapSingleClick` command
 ---
 *Example 1:*
 
-`<See arm Reference 1>:` Creates a soldier unit at the position clicked:
+`{{arma1}}:` Creates a soldier unit at the position clicked:
 
 ```sqf
 onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";
@@ -27,7 +27,7 @@ onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";
 
 *Example 2:*
 
-`<See arm Reference 1>:` Orders "grp1" to move to position clicked. Disables further map-click actions:
+`{{arma1}}:` Orders "grp1" to move to position clicked. Disables further map-click actions:
 
 ```sqf
 onMapSingleClick "grp1 move _pos; onMapSingleClick ''; true";
@@ -35,7 +35,7 @@ onMapSingleClick "grp1 move _pos; onMapSingleClick ''; true";
 
 *Example 3:*
 
-`<See o Reference p>:` Single quotes cannot be used for string definition, so two double-quotes have to be used instead:
+`{{ofp}}:` Single quotes cannot be used for string definition, so two double-quotes have to be used instead:
 
 ```sqf
 onMapSingleClick "'SoldierWB' createUnit [_pos, group player]; true";

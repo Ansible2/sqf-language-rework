@@ -1,4 +1,4 @@
-Returns the state of game focus changed by pressing <See Controls Reference TAB> or similar action.
+Returns the state of game focus changed by pressing *(Reference Controls "TAB" at ALT)* or similar action.
 
 
 ---

@@ -1,4 +1,4 @@
-Returns `true` if walk is `toggled` (default W+S in <See arm Reference 3>).
+Returns `true` if walk is `toggled` (default W+S in {{arma3}}).
 
 
 ---

@@ -1,5 +1,5 @@
 A getter for `allowDamage` command. The command indicates if damage is allowed at current `local`ity, hence local effect of the command.
-For complete solution for being able to tell whether or not an object can be damaged at current locality see <See HashLink Reference Example 1>.
+For complete solution for being able to tell whether or not an object can be damaged at current locality see *(Reference HashLink "#Example 1")*.
 
 
 ---

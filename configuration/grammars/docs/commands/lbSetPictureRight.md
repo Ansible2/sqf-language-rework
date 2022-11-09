@@ -1,6 +1,6 @@
 Sets the second (right aligned) picture in the item with the given index of the listbox or combobox with id idc of the topmost user `dialog`. Name is the picture name.
 The picture is searched for in the mission directory, the dtaExt subdirectory of the campaign directory and the dtaExt directory and the data bank (or directory).<br>
-In <See arm Reference 3> it might be necessary to set the color of the picture as well with `lbSetPictureRightColor` as default [0,0,0,0] color makes the picture invisible.
+In {{arma3}} it might be necessary to set the color of the picture as well with `lbSetPictureRightColor` as default [0,0,0,0] color makes the picture invisible.
 
 
 ---

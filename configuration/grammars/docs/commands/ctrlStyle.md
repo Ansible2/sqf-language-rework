@@ -1,4 +1,4 @@
-Returns the provided control's style. See <See HashLink Reference Control Styles>.
+Returns the provided control's style. See *(Reference HashLink "Arma: GUI Configuration#Control Styles")*.
 
 
 ---

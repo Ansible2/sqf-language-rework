@@ -1,4 +1,4 @@
-Checks if the player has watch opened and visible. Keep in mind that the GPS minimap in <See arm Reference 3> also shows the time.
+Checks if the player has watch opened and visible. Keep in mind that the GPS minimap in {{arma3}} also shows the time.
 
 
 ---

@@ -1,4 +1,4 @@
-In <See ofp Reference arma1> it returns the primary observer. The commander of a vehicle can be found with `effectiveCommander`.
+In {{ofp}} it returns the commander of a vehicle. Since {{arma1}} it returns the primary observer. The commander of a vehicle can be found with `effectiveCommander`.
 
 
 ---

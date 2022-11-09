@@ -1,6 +1,6 @@
-Sets the group radio callsign, how it will be displayed in radio chat. Two groups on the same side `cannot` have the same callsign (possible on different sides) - see <See HashLink Reference Example 4>.<br>
+Sets the group radio callsign, how it will be displayed in radio chat. Two groups on the same side `cannot` have the same callsign (possible on different sides) - see *(Reference HashLink "#Example 4")*.<br>
 The identity setup can consist of format keywords (marked with `%`) and param keywords taken from `CfgWorlds` config.
-Formatting is almost like using the `format` command but with some special group keywords (see <See HashLink Reference Example 2>).
+Formatting is almost like using the `format` command but with some special group keywords (see *(Reference HashLink "#Example 2")*).
 <br>
 <spoiler text="Show Arma 3 values table">
 
@@ -18,7 +18,7 @@ group `setGroupId` [nameFormat, nameParam1, ..., nameParamN]
 ---
 *Example 1:*
 
-`<See arm Reference 3>`:
+`{{arma3}}`:
 
 ```sqf
 group player setGroupId ["Some name for the group"];
@@ -28,7 +28,7 @@ player sideChat "lalala";	// Some name for the group (KK): "lalala"
 
 *Example 2:*
 
-`<See arm Reference 3>`:
+`{{arma3}}`:
 
 ```sqf
 group player setGroupId ["%GroupNames :=: %GroupColors", "Alpha", "GroupColor2"];
@@ -38,12 +38,12 @@ player sideChat "lalala";	// Alpha :=: Red (KK): "lalala"
 
 *Example 3:*
 
-`<See arma1 Reference arma2> / <See arm Reference 3>`:
+`{{arma1}} / {{arma2}} / {{arma3}}`:
 
 ```sqf
 group player setGroupId ["First Assault Recon Team"];
 ```
-`<See o Reference p>`:
+`{{ofp}}`:
 
 ```sqf
 _group1 setGroupId ["Delta", "GroupColor4"]

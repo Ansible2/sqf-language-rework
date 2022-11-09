@@ -1,5 +1,5 @@
 Returns an array with all the units in the group or group of the unit. <br>
-Since <See arm Reference 3> v2.02 the command can also return all units belonging to a certain side.
+Since {{arma3}} v2.02 the command can also return all units belonging to a certain side.
 
 
 ---

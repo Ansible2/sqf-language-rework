@@ -17,7 +17,7 @@ hintC "Press W to move forward";
 
 *Example 2:*
 
-Same as the above in <See arm Reference 3> but without second `hint` displayed:<br>[[Image:HintC.jpg|400px|right]]
+Same as the above in {{arma3}} but without second `hint` displayed:<br>[[Image:HintC.jpg|400px|right]]
 
 ```sqf
 hintC "Press W to move forward";
@@ -42,7 +42,7 @@ hintC_EH = findDisplay 57 displayAddEventHandler ["Unload", {
 
 *Example 4:*
 
-Same as the above in <See arm Reference 3> but without second `hint` displayed:<br>[[Image:HintC_array.jpg|400px|right]]
+Same as the above in {{arma3}} but without second `hint` displayed:<br>[[Image:HintC_array.jpg|400px|right]]
 
 ```sqf
 "Instructions" hintC [

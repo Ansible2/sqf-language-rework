@@ -1,4 +1,4 @@
-Set variable to given value in the variable space of given element. Can be used to broadcast variables over the network. To remove a variable, set it to `nil` (see <See HashLink Reference Example 5>).
+Set variable to given value in the variable space of given element. Can be used to broadcast variables over the network. To remove a variable, set it to `nil` (see *(Reference HashLink "#Example 5")*).
 
 
 ---

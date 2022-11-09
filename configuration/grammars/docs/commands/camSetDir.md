@@ -9,7 +9,7 @@ camera `camSetDir` direction
 ---
 *Example 1:*
 
-Since <See arm Reference 3>:
+Since {{arma3}}:
 
 ```sqf
 private _pos1 = player modelToWorld [0, 5, 5];
@@ -29,7 +29,7 @@ _cam camCommit 5;
 
 *Example 2:*
 
-Before <See arm Reference 3>:
+Before {{arma3}}:
 
 ```sqf
 private _pos1 = player modelToWorld [0, 5, 5];
