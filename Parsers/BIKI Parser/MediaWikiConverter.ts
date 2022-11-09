@@ -923,6 +923,7 @@ export class MediaWikiConverter {
         output = output.replace(/\<sqf\>/gi, "\n```sqf\n");
         output = output.replace(/\n+\<\/sqf\>/gi, "\n```");
         output = output.replace(/\<\/sqf\>/gi, "\n```");
+		output = output.replace(/(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi, "```$2\n$4\n```");
 
         return output.trim();
     }
