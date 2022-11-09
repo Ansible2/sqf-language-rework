@@ -75,7 +75,7 @@ export class KiskaParsers implements Parser {
 
             if (kiskaPage.parameters) {
                 pageArray.push("#### Parameters:\n");
-                const parameters = kiskaPage.parameters.join("\n").trim();
+                const parameters = kiskaPage.parameters.join("\n\n").trim();
                 pageArray.push(parameters);
                 pageArray.push("\n\n");
             }
@@ -211,6 +211,8 @@ class KiskaPageConverter {
                 individualParametersMatch?.forEach((parameter) => {
                     const parameterFormatted = parameter
                         .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                        .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                        .replace(/\n{1}(?!( {4,}|\t+|\n))/gi, "")
                         .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
                         .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
 
