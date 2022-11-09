@@ -23,7 +23,9 @@ The Key Device can be one of several types:
 *Example 1:*
 
 To retrieve the following key's data, use the property name without 'key':
-<syntaxhighlight lang="cpp">keyWatch[] = { 24 };</syntaxhighlight>
+```cpp
+keyWatch[] = { 24 };
+```
 
 ```sqf
 actionKeysEx "Watch"; // [[[24, "KEYBOARD"], [], false]]

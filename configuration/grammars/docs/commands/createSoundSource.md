@@ -42,7 +42,7 @@ _soundSource = createSoundSource ["LittleDog", position player, [], 0];
 *Example 3:*
 
 *(Reference GVI "arma3|1.70")* Here is an example of suitable mission config definition:
-<syntaxhighlight lang="cpp">
+```cpp
 // description.ext
 class CfgSFX
 {
@@ -63,7 +63,7 @@ class CfgVehicles
 		sound = "MyOwl"; // reference to CfgSFX class
 	};
 };
-</syntaxhighlight>
+```
 
 
 ```sqf

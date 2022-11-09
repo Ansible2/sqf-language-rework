@@ -1,7 +1,9 @@
 Captures a screenshot and stores it to given filename. <u>PNG is the only available format</u> and the file must have .png extension.<br><br>
 The file is saved into `Screenshots` folder in the `Profile` directory. The folder is by default limited to 250 MB to prevent abuse.<br>
 To increase the limit, add the following line at the end of the profile file:
-<syntaxhighlight lang="cpp">maxScreenShotFolderSizeMB = 2000; // 2 GB</syntaxhighlight>
+```cpp
+maxScreenShotFolderSizeMB = 2000; // 2 GB
+```
 
 
 ---

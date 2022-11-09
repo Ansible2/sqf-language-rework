@@ -1,7 +1,7 @@
 Returns `Array` containing `dikCodes` of keys, buttons and combos assigned to the given user action. Action names could be found in config class ControllerSchemes or `user action names` or user profile, for example:
-<syntaxhighlight lang="cpp">
+```cpp
 keyWatch[] = { 24 };
-</syntaxhighlight>
+```
 To retrieve the value, use the property name without 'key':
 
 ```sqf

@@ -1,5 +1,5 @@
 Animates a door on a vehicle. Animation is defined in config file in `CfgVehicles` -> ` AnimationSources`. Wanted animation phase is set with phase param. This command works only on animation sources with "door" controller. Door_L in the example below can be animated with `animateDoor` but not CargoRamp_Open: **heli `animateDoor` ["Door_L", 1];**  <br>
-<syntaxhighlight lang="cpp">
+```cpp
 class AnimationSources
 {
 	class CargoRamp_Open
@@ -14,7 +14,7 @@ class AnimationSources
 		animPeriod = 1.6;
 	};
 };
-</syntaxhighlight>
+```
 To animate doors or other sources that have "user" controller, use `animate` command, or even better, `animateSource` (recommended). Sources with "hit" controller can be animated with `setHitPointDamage` command applied to the name contained in hitpoint property. For availability of animation sources and their controller types see: [[Arma 3: createVehicle/vehicles]]
 
 

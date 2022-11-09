@@ -1,12 +1,12 @@
 When MFD is using user controllers, this command can set values on them. For example, MFD config for Blackfoot has an entry
-<syntaxhighlight lang="cpp">
+```cpp
 // ...
 class Draw
 {
 	alpha = "user3";
 	color[] = {"user0","user1","user2"};
 // ...
-</syntaxhighlight>
+```
 which could control color of the MFD. See Example 2-3-4 on how to set different colors of the Blackfoot MFD
 
 

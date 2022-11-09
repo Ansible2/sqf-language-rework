@@ -19,7 +19,7 @@ for "_i" from 0 to (count paramsArray - 1) do
 *Example 2:*
 
 To define custom values in `description.ext`:
-<syntaxhighlight lang="cpp">
+```cpp
 class myMissionConfig
 {
 	class mySetup
@@ -29,7 +29,7 @@ class myMissionConfig
 		myText = "LOL";
 	};
 };
-</syntaxhighlight>
+```
 
 To read defined custom values from a script:
 

@@ -1,5 +1,5 @@
 Creates a loadout from given inventory structure and applies it to a unit. When `String` for class name is supplied, the command will search **CfgVehicles** for the given class in order to extract the loadout from config. If `Config` is given, it will search given config (including ` mission config`) for the loadout information. In either case, the config should contain the following entries, which is standard for any unit class, for example:
-<syntaxhighlight lang="cpp">
+```cpp
 class MyLoadout
 {
 	uniformClass = "U_B_CombatUniform_mcam";
@@ -9,7 +9,7 @@ class MyLoadout
 	items[] = {"FirstAidKit","FirstAidKit","FirstAidKit"};
 	magazines[] = {"30Rnd_65x39_caseless_mag","16Rnd_9x21_Mag","SmokeShell","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade"};
 };
-</syntaxhighlight>
+```
 
 
 ---

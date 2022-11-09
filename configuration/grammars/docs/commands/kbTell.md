@@ -25,7 +25,7 @@ player kbTell [
 	true];										// use radio
 ```
 in given .bikb:
-<syntaxhighlight lang="cpp">
+```cpp
 class AirstrikeRequest 
 {
 	text = "%team requesting close air support at grid %location ";
@@ -36,7 +36,7 @@ class AirstrikeRequest
 		class Location	{ type = "simple"; };
 	};
 };
-</syntaxhighlight>
+```
 
 *Example 3:*
 

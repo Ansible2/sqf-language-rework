@@ -89,7 +89,7 @@ addMissionEventHandler ["ExtensionCallback",
 <br>
 Here is a minimal example of an extension utilising [[Arma 3: Mission Event Handlers#ExtensionCallback | extension callback]] (don't actually do it like this). `fncToExecute_X` function is called from "ExtensionCallback" event handler when it is triggered after 2 seconds of the extension call.
 <spoiler>
-<syntaxhighlight lang="cpp">
+```cpp
 #include <thread>
 #include <string>
 #include <chrono>
@@ -125,7 +125,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
 	}, function).detach();
 }
-</syntaxhighlight>
+```
 </spoiler>
 
 *Example 5:*
@@ -135,7 +135,7 @@ Since Arma 3 v2.11:
 hint ("myExtContext" callExtension "");
 ```
 Here is a minimal example: <spoiler>
-<syntaxhighlight lang="cpp">
+```cpp
 #include <string>
 #include <vector>
 #include <iterator>
@@ -193,5 +193,5 @@ void __stdcall RVExtensionContext(const char **args, int argsCnt)
 {
 	contextInfo.assign(args, std::next(args, argsCnt));
 }
-</syntaxhighlight>
+```
 </spoiler>
