@@ -866,21 +866,30 @@ export class MediaWikiConverter {
 
         // handle external wiki links
         const linkMatch = output.matchAll(
-            /(\{\{)(([\s\w\d]+)(\|)*)((.+?)(\|)*)([\s\w\d]+)(\}\})/gi
+            /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
+			// /(\{\{)(([\s\w\d]+)(\|)*)((.+?)(\|)*)([\s\w\d]+)(\}\})/gi
         );
         const linkMatchArray = Array.from(linkMatch);
         linkMatchArray.forEach((regexMatchArrayForLink) => {
             const siteName = regexMatchArrayForLink[3];
-            const endpoint = regexMatchArrayForLink[6];
+            const endpoint = regexMatchArrayForLink[5];
             const linkTitle = regexMatchArrayForLink[8];
-            const originalString = regexMatchArrayForLink[0];
+			const originalString = regexMatchArrayForLink[0];
+			if (!linkTitle) {
+				output = output.replace(
+                    originalString,
+                    `*(Reference ${siteName} "${endpoint}")*`
+                );
+                return;
+			}
+
             const siteBaseUrl =
                 this.textInterpreter.getWikiExternalUrl(siteName);
             if (!siteBaseUrl) {
                 // TODO: lots of "<see arm reference>"" ending up in output docs
                 output = output.replace(
                     originalString,
-                    `<See ${siteName} Reference ${linkTitle}>`
+                    `*(Reference ${siteName} "${linkTitle}" at ${endpoint})*`
                 );
                 return;
             }
