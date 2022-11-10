@@ -867,7 +867,6 @@ export class MediaWikiConverter {
         // handle external wiki links
         const linkMatch = output.matchAll(
             /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
-			// /(\{\{)(([\s\w\d]+)(\|)*)((.+?)(\|)*)([\s\w\d]+)(\}\})/gi
         );
         const linkMatchArray = Array.from(linkMatch);
         linkMatchArray.forEach((regexMatchArrayForLink) => {
@@ -886,7 +885,6 @@ export class MediaWikiConverter {
             const siteBaseUrl =
                 this.textInterpreter.getWikiExternalUrl(siteName);
             if (!siteBaseUrl) {
-                // TODO: lots of "<see arm reference>"" ending up in output docs
                 output = output.replace(
                     originalString,
                     `*(Reference ${siteName} "${linkTitle}" at ${endpoint})*`
@@ -919,6 +917,7 @@ export class MediaWikiConverter {
             output = output.replace("<SQFCodeToReplace>", sqfCode);
         }
 
+        output = output.replace(/(\[\[)(.+)(\]\])/gi, "\`$2\`");
         output = output.replace(/\<sqf\>\n+/gi, "\n```sqf\n");
         output = output.replace(/\<sqf\>/gi, "\n```sqf\n");
         output = output.replace(/\n+\<\/sqf\>/gi, "\n```");
