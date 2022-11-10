@@ -11,6 +11,7 @@ import {
     PreCompiledSQFItem,
     SQFGrammarType,
 } from "./sqf.namespace";
+import { binFunctionSyntaxes } from "./syntaxes/bin.functions.syntax";
 import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 import { kiskaFunctionSyntaxes } from "./syntaxes/kiska.functions.syntax";
@@ -18,6 +19,7 @@ import { kiskaFunctionSyntaxes } from "./syntaxes/kiska.functions.syntax";
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     sqfCommandSyntaxes,
     bisFunctionSyntaxes,
+    binFunctionSyntaxes,
     kiskaFunctionSyntaxes,
 ];
 
