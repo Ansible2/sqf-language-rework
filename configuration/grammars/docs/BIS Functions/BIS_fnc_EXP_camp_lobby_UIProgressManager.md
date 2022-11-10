@@ -1,0 +1,26 @@
+<pre>/*
+
+	PROJECT: R&D
+	AUTHOR:  Endstar
+	DATE:    18-04-2016
+
+	fn_EXP_camp_lobby_UIProgressManager.sqf
+
+		Campaign Lobby: Handles Progress button UI behaviour
+
+	Params
+
+		0:
+
+	Return
+
+		0:
+*/</pre>*(Reference Wiki "placeholder")*<!-- Remove this after fill-in -->
+
+
+---
+*Syntaxes:*
+
+[] call `BIS_fnc_EXP_camp_lobby_UIProgressManager`
+
+---

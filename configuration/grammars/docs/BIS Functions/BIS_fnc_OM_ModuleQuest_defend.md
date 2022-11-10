@@ -1,0 +1,9 @@
+
+
+
+---
+*Syntaxes:*
+
+<!-- [] call `BIS_fnc_OM_ModuleQuest_defend` -->
+
+---
