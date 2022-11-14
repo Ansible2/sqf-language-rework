@@ -1,4 +1,4 @@
-import { IRawGrammar, IRawRepository } from "vscode-textmate/release/types";
+import { IRawGrammar, IRawRepository } from "vscode-textmate/release/rawGrammar";
 import { CompiledSQFItem, SQFGrammarType } from "./sqf.namespace";
 import { getSqfItems } from "./sqf.syntax";
 
