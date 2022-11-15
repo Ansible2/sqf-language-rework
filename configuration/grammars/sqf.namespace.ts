@@ -20,6 +20,7 @@ export enum SQFGrammarType {
     FileCompiler = "file-compiler",
     FileExecutor = "file-executor",
     CodeExecutor = "code-executor",
+	PreprocessorCommand = "preprocessor-command"
 }
 
 export enum SQFDataType {

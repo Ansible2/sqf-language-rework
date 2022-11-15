@@ -17,6 +17,7 @@ const stringCompilerWords: string[] = [];
 const fileExecutors: string[] = [];
 const codeExecutors: string[] = [];
 const fileCompilers: string[] = [];
+const preprocessorCommands: string[] = [];
 
 // TODO: ensure that namespace commands (missionNamespace, localNamespace, etc...) have their own text grammar category
 
@@ -86,6 +87,10 @@ sqfItems.forEach((sqfItem,itemName) => {
             commands.push(itemName);
             break;
         }
+        case SQFGrammarType.PreprocessorCommand: {
+            preprocessorCommands.push(itemName);
+            break;
+        }
         default:
             break;
     }
@@ -98,6 +103,14 @@ function getSingleWordRegex(words: string | string[]): string {
 
     // return `(?<=\\s+|^)(?i)(${words})\\b`;
     return `(?i)\\b(${words})\\b`;
+}
+function getSingleWordRegexSpecialStart(words: string | string[]): string {
+    if (Array.isArray(words)) {
+        words = words.join("|");
+    }
+
+    // return `(?<=\\s+|^)(?i)(${words})\\b`;
+    return `(?i)(${words})\\b`;
 }
 
 const grammarRepo: IRawRepository = {
@@ -117,6 +130,7 @@ const grammarRepo: IRawRepository = {
         patterns: [
 			{ include: "#comment" },
             { include: "#string" },
+			{ include: "#preprocessor-commands" },
             { include: "#literal" },
             { include: "#paren-expression" },
             { include: "#other" },
@@ -234,6 +248,20 @@ const grammarRepo: IRawRepository = {
 	"reserved-literal": {
 		match: getSingleWordRegex(reservedLiterals),
 		name: "variable.language.reserved.sqf",
+	},
+	
+	/* ----------------------------------------------------------------------------
+		preprocessor
+	---------------------------------------------------------------------------- */
+	"preprocessor-commands": {
+        name: "meta.expression.sqf",
+        patterns: [
+			{ include: "#basic-preprocess" }, 
+		],
+    },
+	"basic-preprocess": {
+		match: getSingleWordRegexSpecialStart(preprocessorCommands),
+		name: "keyword.control.preprocessor"
 	},
 
     /* ----------------------------------------------------------------------------

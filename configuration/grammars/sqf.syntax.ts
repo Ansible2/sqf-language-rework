@@ -15,12 +15,14 @@ import { binFunctionSyntaxes } from "./syntaxes/bin.functions.syntax";
 import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 import { kiskaFunctionSyntaxes } from "./syntaxes/kiska.functions.syntax";
+import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
 
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     sqfCommandSyntaxes,
     bisFunctionSyntaxes,
     binFunctionSyntaxes,
     kiskaFunctionSyntaxes,
+	preprocessorSyntaxes
 ];
 
 const compileDocumentation = (
