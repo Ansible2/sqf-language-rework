@@ -38,7 +38,6 @@ export class HoverProvider implements IHoverProvider {
 		
 		getWordAtPosition(document, params.position);
         const word = this.parseHoveredWord(document, params.position);
-        // console.log("Found word:", word);
 
         const sqfItems = this.server.getSQFItemMap();
         const hoverItem = this.getHoverItem(word, sqfItems);

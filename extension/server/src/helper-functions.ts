@@ -4,11 +4,19 @@ import {
     TextDocument,
 } from "vscode-languageserver-textdocument";
 
+export interface SQFWord {
+    document: TextDocument;
+    rangeOfParsedWord: Range;
+    parsedWord: string;
+    startingChar: string;
+    startingIndex: number;
+}
+
 export function getWordAtPosition(
     document: TextDocument,
-    positionOfHover: Position
-): string {
-    const hoveredLineNumber: number = positionOfHover.line;
+    startPosition: Position
+): SQFWord | null {
+    const hoveredLineNumber: number = startPosition.line;
     // this will get the whole range from the first character of
     /// the line being hovered on to the first character (non-inclusive)
     /// of the next line down (hence hoveredLineNumber + 1)
@@ -25,53 +33,74 @@ export function getWordAtPosition(
     };
 
     const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
-	console.log("text start...");
-	console.log(textOnLineHovered);
-	console.log("text end...");
-	
-	const startingIndex = positionOfHover.character;
-	const startingChar = textOnLineHovered.charAt(startingIndex);
-	console.log("startingChar:",startingChar);
-	console.log("startingIndex:",startingIndex);
-	
-	const isNonWordChar = new RegExp(/[^a-z0-9_#]/i);
-	const isWordChar = new RegExp(/[a-z0-9_#]/i);
-	if (isNonWordChar.test(startingChar)) {
-		console.log("whitespace");
-		return "";
-	}
+    console.log("text start...");
+    console.log(textOnLineHovered);
+    console.log("text end...");
 
-	let indexOfChar: number = startingIndex;
-	let word = startingChar;
-	while (indexOfChar >= 0) {
-		const charBehind = textOnLineHovered[--indexOfChar];
-		if (charBehind === undefined || isNonWordChar.test(charBehind)) {
-			break;
+    const startingIndex = startPosition.character;
+    const startingChar = textOnLineHovered.charAt(startingIndex);
 
-		} else if (isWordChar.test(charBehind)) {
-			word = charBehind + word;
+    // const isNonWordChar = new RegExp(/[^a-z0-9_]/i);
+    const isNonWordChar = new RegExp(/\W/);
+    // const isWordChar = new RegExp(/[a-z0-9_]/i);
+    const isWordChar = new RegExp(/\w/);
+    if (isNonWordChar.test(startingChar)) {
+        console.log("whitespace");
+        return null;
+    }
 
-		}
-	}
-	
-	const maxIndexOfLine = textOnLineHovered.length - 1;
-	indexOfChar = startingIndex;
-	while (indexOfChar <= maxIndexOfLine) {
-		const charAhead = textOnLineHovered[++indexOfChar];
-		if (charAhead === undefined || isNonWordChar.test(charAhead)) {
-			break;
+    let indexOfChar: number = startingIndex;
+    let word = startingChar;
+    let indexOfFirstChar: number = startingIndex;
+    while (indexOfChar >= 0) {
+        const charBehind = textOnLineHovered[--indexOfChar];
+        if (charBehind === undefined || isNonWordChar.test(charBehind)) {
+            break;
+        } else if (isWordChar.test(charBehind)) {
+            indexOfFirstChar = indexOfChar;
+            word = charBehind + word;
+        }
+    }
 
-		} else if (isWordChar.test(charAhead)) {
-			word += charAhead;
+    const maxIndexOfLine = textOnLineHovered.length - 1;
+    indexOfChar = startingIndex;
+    let indexOfLastChar: number = startingIndex;
+    while (indexOfChar <= maxIndexOfLine) {
+        const charAhead = textOnLineHovered[++indexOfChar];
+        if (charAhead === undefined || isNonWordChar.test(charAhead)) {
+            break;
+        } else if (isWordChar.test(charAhead)) {
+            indexOfLastChar = indexOfChar;
+            word += charAhead;
+        }
+    }
 
-		}
-	}
-	
-	const startsWithNumberRegex = new RegExp(/^\d/);
-	if (startsWithNumberRegex.test(word)) {
-		console.log("Parsed word is a number/or invalid",);
-	}
-	console.log("Parsed Word:",word);
+    const startsWithNumberRegex = new RegExp(/^\d/);
+    if (startsWithNumberRegex.test(word)) {
+        console.log("Parsed word is a number/or invalid");
+    }
 
-	return textOnLineHovered;
+	const sqfWord = {
+		document: document,
+		rangeOfParsedWord: {
+			start: {
+				line: startPosition.line,
+				character: indexOfFirstChar
+			},
+			end: {
+				line: startPosition.line,
+				character: indexOfLastChar
+			}
+		},
+		parsedWord: word,
+		startingIndex: startingIndex,
+		startingChar: startingChar,
+	};
+	console.log("sqfWord:");
+	console.log("parsedWord:",sqfWord.parsedWord);
+	console.log("rangeOfParsedWord:",sqfWord.rangeOfParsedWord);
+	console.log("startingChar:",sqfWord.startingChar);
+	console.log("startingIndex:",sqfWord.startingIndex);
+
+    return sqfWord
 }
