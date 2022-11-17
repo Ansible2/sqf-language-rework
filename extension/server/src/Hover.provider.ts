@@ -16,6 +16,7 @@ import {
 import {
     CompiledSQFItem,
 } from "../../../configuration/grammars/sqf.namespace";
+import { getWordAtPosition } from "./helper-functions";
 
 export class HoverProvider implements IHoverProvider {
     private readonly server: ISQFServer;
@@ -34,9 +35,10 @@ export class HoverProvider implements IHoverProvider {
 
         const document = this.server.textDocuments.get(documentUri);
         if (!document) return {} as Hover;
-
+		
+		getWordAtPosition(document, params.position);
         const word = this.parseHoveredWord(document, params.position);
-        console.log("Found word:", word);
+        // console.log("Found word:", word);
 
         const sqfItems = this.server.getSQFItemMap();
         const hoverItem = this.getHoverItem(word, sqfItems);
