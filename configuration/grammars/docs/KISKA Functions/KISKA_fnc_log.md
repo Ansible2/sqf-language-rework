@@ -22,6 +22,6 @@ scriptName "My Script";
 private _myvar = 1;
 [["Hello Number",_myvar]] call KISKA_fnc_log;
 
-- prints ["My Script"] "Hello Number 1" to console
+// prints ["My Script"] "Hello Number 1" to console
 ```
 
