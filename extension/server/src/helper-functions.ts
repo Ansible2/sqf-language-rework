@@ -10,6 +10,7 @@ export interface SQFWord {
     parsedWord: string;
     startingChar: string;
     startingIndex: number;
+	leadingHash: boolean;
 }
 
 export function getWordAtPosition(
@@ -40,9 +41,7 @@ export function getWordAtPosition(
     const startingIndex = startPosition.character;
     const startingChar = textOnLineHovered.charAt(startingIndex);
 
-    // const isNonWordChar = new RegExp(/[^a-z0-9_]/i);
     const isNonWordChar = new RegExp(/\W/);
-    // const isWordChar = new RegExp(/[a-z0-9_]/i);
     const isWordChar = new RegExp(/\w/);
     if (isNonWordChar.test(startingChar)) {
         console.log("whitespace");
@@ -78,9 +77,12 @@ export function getWordAtPosition(
     const startsWithNumberRegex = new RegExp(/^\d/);
     if (startsWithNumberRegex.test(word)) {
         console.log("Parsed word is a number/or invalid");
+		return null;
     }
 
 	const sqfWord = {
+		// used for figuring out whether something is a macro or # as in "select" command
+		leadingHash: textOnLineHovered[indexOfFirstChar - 1] === "#",
 		document: document,
 		rangeOfParsedWord: {
 			start: {
@@ -96,11 +98,7 @@ export function getWordAtPosition(
 		startingIndex: startingIndex,
 		startingChar: startingChar,
 	};
-	console.log("sqfWord:");
-	console.log("parsedWord:",sqfWord.parsedWord);
-	console.log("rangeOfParsedWord:",sqfWord.rangeOfParsedWord);
-	console.log("startingChar:",sqfWord.startingChar);
-	console.log("startingIndex:",sqfWord.startingIndex);
+	
 
     return sqfWord
 }
