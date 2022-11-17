@@ -16,10 +16,17 @@ export const preprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
     "#define": {
         grammarType: SQFGrammarType.PreprocessorCommand,
         syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
+			type: SQFSyntaxType.UnaryOperator,
             rightOperandTypes: SQFDataType.Variable,
         },
     },
+	"#include": {
+		grammarType: SQFGrammarType.PreprocessorCommand,
+		syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.String,
+        },
+	}
 };
 
 Object.keys(preprocessorSyntaxes).forEach((command: string) => {
