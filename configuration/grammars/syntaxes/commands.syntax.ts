@@ -10332,7 +10332,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.IfType,
             rightOperandTypes: SQFDataType.Code,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     didJIP: {
         syntaxes: {
