@@ -9,11 +9,6 @@ import {
     ISQFServer,
 } from "./server.types";
 import {
-    Position,
-    Range,
-    TextDocument,
-} from "vscode-languageserver-textdocument";
-import {
     CompiledSQFItem,
 } from "../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "./helper-functions";
@@ -31,12 +26,15 @@ export class HoverProvider implements IHoverProvider {
 	---------------------------------------------------------------------------- */
     public onHover(params: HoverParams): Hover {
         const documentUri = params.textDocument.uri;
-        if (!documentUri) return {} as Hover;
+		const emptyHoverReturn = {} as Hover;
+        if (!documentUri) return emptyHoverReturn;
 
         const document = this.server.textDocuments.get(documentUri);
-        if (!document) return {} as Hover;
+        if (!document) return emptyHoverReturn;
 		
 		const sqfWord = getWordAtPosition(document, params.position);
+		if (!sqfWord) return emptyHoverReturn;
+
 		if (sqfWord) {
 			console.log("sqfWord:");
 			console.log("parsedWord:",sqfWord.parsedWord);
@@ -46,73 +44,18 @@ export class HoverProvider implements IHoverProvider {
 			console.log("leadingHash:",sqfWord.leadingHash);
 		}
 
-        const word = this.parseHoveredWord(document, params.position);
-
         const sqfItems = this.server.getSQFItemMap();
+
+		let word = sqfWord.parsedWord;
+		const possibleMacroWord = `#${sqfWord.parsedWord}`;
+		if (sqfWord.leadingHash && sqfItems.has(possibleMacroWord)) {
+			word = possibleMacroWord;
+		}
+
         const hoverItem = this.getHoverItem(word, sqfItems);
-        if (hoverItem) return hoverItem;
+        if (!hoverItem) return emptyHoverReturn;
 
-        return {} as Hover;
-    }
-
-    /* ----------------------------------------------------------------------------
-		parseHoveredWord
-	---------------------------------------------------------------------------- */
-    private parseHoveredWord(
-        document: TextDocument,
-        positionOfHover: Position,
-        allowedRegex?: string
-    ): string {
-        const hoveredLineNumber: number = positionOfHover.line;
-        // this will get the whole range from the first character of
-        /// the line being hovered on to the first character (non-inclusive)
-        /// of the next line down (hence hoveredLineNumber + 1)
-        const hoveredLineStartingPosition: Position = {
-            line: hoveredLineNumber,
-            character: 0,
-        };
-        const fullRangeOfLineBeingHovered: Range = {
-            start: hoveredLineStartingPosition,
-            end: {
-                line: hoveredLineNumber + 1,
-                character: 0,
-            },
-        };
-        const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
-
-        if (!allowedRegex) {
-            allowedRegex = "[a-z0-9_]";
-        }
-
-        // TODO: figure out how to make this more readable
-        const matchChar = new RegExp(allowedRegex, "i");
-        const matchAll = new RegExp(`(${allowedRegex}*)`, "i");
-
-        const hoverCharacterIndex: number = positionOfHover.character;
-        let indexOfCurrentCharacter: number = hoverCharacterIndex;
-
-        while (indexOfCurrentCharacter > 0) {
-            indexOfCurrentCharacter--;
-            let subStringToMatch = textOnLineHovered.substring(
-                indexOfCurrentCharacter,
-                indexOfCurrentCharacter + 1
-            );
-
-            if (!matchChar.test(subStringToMatch)) {
-                indexOfCurrentCharacter++;
-                break;
-            }
-        }
-
-        if (indexOfCurrentCharacter < 0) indexOfCurrentCharacter = 0;
-        const def = textOnLineHovered.substring(indexOfCurrentCharacter);
-
-        let match: RegExpExecArray | null = null;
-        if ((match = matchAll.exec(def))) {
-            return match[1];
-        }
-
-        return "";
+        return hoverItem;
     }
 
     /* ----------------------------------------------------------------------------
