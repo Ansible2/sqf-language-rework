@@ -18,8 +18,7 @@ const fileExecutors: string[] = [];
 const codeExecutors: string[] = [];
 const fileCompilers: string[] = [];
 const preprocessorCommands: string[] = [];
-
-// TODO: ensure that namespace commands (missionNamespace, localNamespace, etc...) have their own text grammar category
+const namespaceLiterals: string[] = [];
 
 const sqfItems: Map<string, CompiledSQFItem> = getSqfItems();
 sqfItems.forEach((sqfItem,itemName) => {
@@ -85,6 +84,10 @@ sqfItems.forEach((sqfItem,itemName) => {
         }
         case SQFGrammarType.Command: {
             commands.push(itemName);
+            break;
+        }
+        case SQFGrammarType.NamespaceLiteral: {
+            namespaceLiterals.push(itemName);
             break;
         }
         case SQFGrammarType.PreprocessorCommand: {
@@ -213,6 +216,7 @@ const grammarRepo: IRawRepository = {
             { include: "#null-literal" },
             { include: "#boolean-literal" },
             { include: "#numeric-literal" },
+            { include: "#namespace-literal" },
             { include: "#reserved-literal" },
         ],
     },
@@ -235,6 +239,10 @@ const grammarRepo: IRawRepository = {
     "boolean-literal": {
         match: getSingleWordRegex(booleanLiterals),
         name: "constant.language.boolean.sqf",
+    },
+    "namespace-literal": {
+        match: getSingleWordRegex(namespaceLiterals),
+        name: "entity.namespace.sqf",
     },
     "null-literal": {
         match: getSingleWordRegex(nullLiterals),

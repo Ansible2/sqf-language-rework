@@ -7494,7 +7494,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     removeWeaponTurret: {
         syntaxes: {
@@ -12626,7 +12626,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     modelToWorldWorld: {
         syntaxes: {
@@ -17525,7 +17525,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     moveToCompleted: {
         syntaxes: {
@@ -17581,7 +17581,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     ppEffectCommit: {
         syntaxes: {
@@ -17776,7 +17776,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     rain: {
         syntaxes: {
@@ -21190,7 +21190,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     triggerAttachVehicle: {
         syntaxes: {
@@ -23398,7 +23398,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
         server: true,
     },
     selectionVectorDirAndUp: {
@@ -23822,7 +23822,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.NularOperator,
             returnTypes: SQFDataType.Namespace,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.NamespaceLiteral,
     },
     saveMissionProfileNamespace: {
         syntaxes: {

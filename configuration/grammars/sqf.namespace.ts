@@ -20,7 +20,8 @@ export enum SQFGrammarType {
     FileCompiler = "file-compiler",
     FileExecutor = "file-executor",
     CodeExecutor = "code-executor",
-	PreprocessorCommand = "preprocessor-command"
+    PreprocessorCommand = "preprocessor-command",
+    NamespaceLiteral = "namespace",
 }
 
 export enum SQFDataType {
@@ -98,14 +99,14 @@ export namespace SQFArray {
         operation?: SQFArrayComparator
     ): SQFArray {
         if (!operation) {
-			if (!Array.isArray(types)) {
-				return SQFArray.ofOneOfThese(types);
-			}
+            if (!Array.isArray(types)) {
+                return SQFArray.ofOneOfThese(types);
+            }
 
-			return SQFArray.ofAnyOfThese(types);
-		}
+            return SQFArray.ofAnyOfThese(types);
+        }
 
-		return {
+        return {
             operation: operation,
             types: types,
         };
@@ -135,19 +136,18 @@ export interface SQFCode {
     params?: SQFSyntaxTypes;
 }
 export class SQFCode {
-	private constructor(returnTypes: SQFSyntaxTypes) {
-		this.codeReturnTypes = returnTypes;
-	}
+    private constructor(returnTypes: SQFSyntaxTypes) {
+        this.codeReturnTypes = returnTypes;
+    }
 
-	public static returns(returnTypes: SQFSyntaxTypes): SQFCode {
-		return new SQFCode(returnTypes);
-	}
+    public static returns(returnTypes: SQFSyntaxTypes): SQFCode {
+        return new SQFCode(returnTypes);
+    }
 
-	public takes(params: SQFSyntaxTypes): SQFCode {
-		this.params = params;
-		return this;
-	}
-
+    public takes(params: SQFSyntaxTypes): SQFCode {
+        this.params = params;
+        return this;
+    }
 }
 // export namespace SQFCode {
 //     function returns(
@@ -161,7 +161,6 @@ export class SQFCode {
 //         return new SQFCode(returnTypes);
 //     }
 
-	
 //     // function takes(
 //     //     params: SQFSyntaxTypes
 //     // ): SQFCode {
