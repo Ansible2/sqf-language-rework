@@ -9,9 +9,7 @@ import {
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
-import {
-    CompiledSQFItem,
-} from "../../../configuration/grammars/sqf.namespace";
+import { CompiledSQFItem } from "../../../configuration/grammars/sqf.namespace";
 import {
     ICompletionProvider,
     IDocProvider,
@@ -35,9 +33,9 @@ export class NodeSQFServer implements ISQFServer {
 		constructor
 	---------------------------------------------------------------------------- */
     constructor() {
-		this.sqfItems = getSqfItems();
+        this.sqfItems = getSqfItems();
 
-		this.connection = createConnection(ProposedFeatures.all);
+        this.connection = createConnection(ProposedFeatures.all);
 
         this.textDocuments = new TextDocuments(TextDocument);
         this.docProvider = new DocProvider(this);
@@ -47,9 +45,13 @@ export class NodeSQFServer implements ISQFServer {
         // Create a connection for the server, using Node's IPC as a transport.
         // Also include all preview / proposed LSP features.
         this.connection.onInitialize(this.initializeConnection);
-        this.connection.onHover(this.hoverProvider.onHover.bind(this.hoverProvider));
-        
-		this.connection.onCompletion(this.completionProvider.onCompletion.bind(this.completionProvider));
+        this.connection.onHover(
+            this.hoverProvider.onHover.bind(this.hoverProvider)
+        );
+
+        this.connection.onCompletion(
+            this.completionProvider.onCompletion.bind(this.completionProvider)
+        );
 
         const completionResolver = this.completionProvider.onCompletionResolve;
         if (completionResolver) {
@@ -73,8 +75,8 @@ export class NodeSQFServer implements ISQFServer {
                 hoverProvider: true,
                 // Tell the client that this server supports code completion.
                 completionProvider: {
-                    resolveProvider: false
-                        // !!this.completionProvider.onCompletionResolve,
+                    resolveProvider: false, // !!this.completionProvider.onCompletionResolve,
+                    triggerCharacters: ["#"],
                 },
             },
         };
