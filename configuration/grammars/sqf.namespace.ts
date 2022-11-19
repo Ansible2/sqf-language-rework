@@ -54,6 +54,7 @@ export enum SQFDataType {
     Task = "TASK",
     Team = "TEAM",
     TeamMember = "TEAM-MEMBER",
+    Text = "TEXT",
     NaN = "NAN",
     Any = "ANYTHING",
     Nothing = "NOTHING",
