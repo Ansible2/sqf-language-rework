@@ -1,4 +1,5 @@
 import {
+    CancellationToken,
     CompletionItem,
     CompletionParams,
     createConnection,
@@ -11,6 +12,7 @@ import {
     ProposedFeatures,
     TextDocuments,
     TextDocumentSyncKind,
+    WorkDoneProgressReporter,
     _Connection,
 } from "vscode-languageserver/node";
 
@@ -23,34 +25,36 @@ import {
 import {
     CompiledSQFItem,
     IJSON,
-	SQFArgument,
-	SQFEffect,
+    SQFArgument,
+    SQFEffect,
 } from "../../../configuration/grammars/sqf.namespace";
-
-
-
 
 export interface IHoverProvider {
     onHover(params: HoverParams): Hover;
 }
 
 export interface IDocProvider {
-	createMarkupDoc(
-		sqfItem: CompiledSQFItem, docType: DocumentationType
+    createMarkupDoc(
+        sqfItem: CompiledSQFItem,
+        docType: DocumentationType
     ): MarkupContent;
 }
 
 export interface ICompletionProvider {
-	onCompletion(): CompletionItem[];
-	onCompletionResolve?(): CompletionItem;
+    onCompletion(
+        params: CompletionParams,
+        token: CancellationToken,
+        workDoneProgress: WorkDoneProgressReporter
+    ): CompletionItem[];
+    onCompletionResolve?(): CompletionItem;
 }
 
 export interface ISQFServer {
-	readonly hoverProvider: IHoverProvider;
-	readonly docProvider: IDocProvider;
+    readonly hoverProvider: IHoverProvider;
+    readonly docProvider: IDocProvider;
     readonly textDocuments: TextDocuments<TextDocument>;
 
-	getSQFItemMap(): Map<string, CompiledSQFItem>;
+    getSQFItemMap(): Map<string, CompiledSQFItem>;
 }
 
 export enum DocumentationType {
