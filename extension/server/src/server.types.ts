@@ -46,7 +46,10 @@ export interface ICompletionProvider {
         token: CancellationToken,
         workDoneProgress: WorkDoneProgressReporter
     ): CompletionItem[];
-    onCompletionResolve?(): CompletionItem;
+    onCompletionResolve?(
+		completionItem: CompletionItem,
+		token: CancellationToken,
+	): CompletionItem;
 }
 
 export interface ISQFServer {

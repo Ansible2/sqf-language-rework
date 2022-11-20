@@ -63,9 +63,8 @@ const compileDocumentation = (
                 (preCompiledDoc as string).substring(2), // get rid of leading './'
                 `${itemName}.md`
             );
-            console.log("Filepath", filePath);
 
-            const markdownAsString = readFileSync(filePath).toString();
+			const markdownAsString = readFileSync(filePath).toString();
             compiledDocumentation.value = markdownAsString;
         } catch (error) {
             console.log(

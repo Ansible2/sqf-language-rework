@@ -53,7 +53,7 @@ export class CompletionProvider implements ICompletionProvider {
         const word = getWordAtPosition(textDocument, params.position);
 
         if (this.wasTriggeredByHash && word?.leadingHash) {
-			const filteredItems = this.hashtagCompletionItems.filter((item) =>
+            const filteredItems = this.hashtagCompletionItems.filter((item) =>
                 item.label.includes(word.parsedWord)
             );
 
@@ -66,6 +66,21 @@ export class CompletionProvider implements ICompletionProvider {
     }
 
     /* ----------------------------------------------------------------------------
+		onCompletionResolve
+	---------------------------------------------------------------------------- */
+    onCompletionResolve(
+        completionItem: CompletionItem,
+        token: CancellationToken
+    ): CompletionItem {
+        completionItem.documentation = this.docProvider.createMarkupDoc(
+            completionItem as unknown as CompiledSQFItem,
+            DocumentationType.CompletionItem
+        );
+
+        return completionItem;
+    }
+
+    /* ----------------------------------------------------------------------------
 		loadCompletionItems
 	---------------------------------------------------------------------------- */
     private loadCompletionItems(): void {
@@ -75,27 +90,30 @@ export class CompletionProvider implements ICompletionProvider {
         this.completionItems = [];
         this.hashtagCompletionItems = [];
         severSQFItems.forEach((sqfItem, itemName) => {
-            const docMarkup = this.docProvider.createMarkupDoc(
-                sqfItem,
-                DocumentationType.CompletionItem
-            );
+            // const docMarkup = this.docProvider.createMarkupDoc(
+            //     sqfItem,
+            //     DocumentationType.CompletionItem
+            // );
             const completionItem: CompletionItem = {
                 ...sqfItem,
-                documentation: docMarkup,
-            };
-            this.completionItems.push(completionItem);
+            } as CompletionItem;
 
             if (completionItem.label.startsWith("#")) {
-				// items with leading # (preprocessor commands) are
-				// filiterd out when included with a # as their filtertext (label by default).
-				const labelWithoutHashtag = completionItem.label.slice(1,completionItem.label.length);
-				const item: CompletionItem = {
-					...completionItem, 
-					filterText: labelWithoutHashtag,
-					insertText: labelWithoutHashtag,
-				};
+                // items with leading # (preprocessor commands) are
+                // filiterd out when included with a # as their filtertext (label by default).
+                const labelWithoutHashtag = completionItem.label.slice(
+                    1,
+                    completionItem.label.length
+                );
+                const item: CompletionItem = {
+                    ...completionItem,
+                    filterText: labelWithoutHashtag,
+                    insertText: labelWithoutHashtag,
+                };
 
                 this.hashtagCompletionItems.push(item);
+            } else {
+                this.completionItems.push(completionItem);
             }
         });
     }
