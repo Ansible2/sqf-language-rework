@@ -90,12 +90,13 @@ export class CompletionProvider implements ICompletionProvider {
         this.completionItems = [];
         this.hashtagCompletionItems = [];
         severSQFItems.forEach((sqfItem, itemName) => {
-            // const docMarkup = this.docProvider.createMarkupDoc(
-            //     sqfItem,
-            //     DocumentationType.CompletionItem
-            // );
+            const docMarkup = this.docProvider.createMarkupDoc(
+                sqfItem,
+                DocumentationType.CompletionItem
+            );
             const completionItem: CompletionItem = {
                 ...sqfItem,
+				documentation: docMarkup,
             } as CompletionItem;
 
             if (completionItem.label.startsWith("#")) {

@@ -1,10 +1,7 @@
-import { readFileSync } from "fs-extra";
-import path = require("path");
 import {
     CompletionItemKind,
     CompletionItemTag,
     MarkupContent,
-	MarkupKind,
 } from "vscode-languageserver/node";
 
 export enum SQFGrammarType {
@@ -260,67 +257,9 @@ interface SQFItem {
     syntaxes: SQFSyntax[] | SQFSyntax;
     kind?: CompletionItemKind;
     effect?: SQFEffect;
-	documentation?: string | string[] | MarkupContent;
     argument?: SQFArgument;
     server?: boolean;
     getDocLink?: (itemName: string) => string;
-}
-
-export namespace CompiledSQFItem {
-	export function getDocumentation(item: CompiledSQFItem): MarkupContent {
-		let itemDoc = item.documentation;
-		const itemName = item.label;
-
-		const compiledDocumentation: MarkupContent = {
-			kind: MarkupKind.Markdown,
-			value: "",
-		};
-	
-		if (!itemDoc) return compiledDocumentation;
-	
-		const preCompiledDocIsArray: boolean = Array.isArray(itemDoc);
-		const preCompiledDocIsMarkup: boolean =
-			typeof itemDoc === "object" &&
-			!preCompiledDocIsArray &&
-			"value" in itemDoc &&
-			"kind" in itemDoc;
-		if (preCompiledDocIsMarkup) return itemDoc as MarkupContent;
-	
-		if (preCompiledDocIsArray) {
-			itemDoc = itemDoc as string[];
-			const compiledDoc = itemDoc.join("\n");
-			compiledDocumentation.value = compiledDoc;
-	
-			return compiledDocumentation;
-		}
-	
-		const docIsMarkdownFile: boolean = (itemDoc as string).startsWith(
-			"./"
-		);
-		if (docIsMarkdownFile) {
-			try {
-				const filePath = path.resolve(
-					__dirname,
-					`./docs`,
-					(itemDoc as string).substring(2), // get rid of leading './'
-					`${itemName}.md`
-				);
-	
-				const markdownAsString = readFileSync(filePath).toString();
-				compiledDocumentation.value = markdownAsString;
-			} catch (error) {
-				console.log(
-					`Unable to retrieve markdown file for ${itemName} doc at ${__dirname}/docs/${itemDoc}`
-				);
-			}
-	
-			return compiledDocumentation;
-		}
-	
-		itemDoc = itemDoc as string;
-		compiledDocumentation.value = itemDoc;
-		return compiledDocumentation;
-	}
 }
 
 export interface CompiledSQFItem extends SQFItem {
@@ -329,14 +268,14 @@ export interface CompiledSQFItem extends SQFItem {
     // a label is created when compiled so that the key can
     // be made lowercase
     label: string;
-    // documentation: MarkupContent;
+    documentation: MarkupContent;
     detail?: string; // detail should probably be avoided
     kind: CompletionItemKind;
 }
 
 export interface PreCompiledSQFItem extends SQFItem {
     label?: string;
-    // documentation?: string | string[] | MarkupContent;
+    documentation?: string | string[] | MarkupContent;
     detail?: string; // detail should probably be avoided
 }
 
