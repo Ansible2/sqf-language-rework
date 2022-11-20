@@ -9,6 +9,6 @@ BOOL
 
 #### Examples:
 ```sqf
-call KISKA_fnc_openVdlDialog;
+call KISKA_fnc_VDL_openDialog;
 ```
 

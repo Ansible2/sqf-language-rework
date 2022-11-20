@@ -242,7 +242,7 @@ const grammarRepo: IRawRepository = {
     },
     "namespace-literal": {
         match: getSingleWordRegex(namespaceLiterals),
-        name: "entity.namespace.sqf",
+        name: "constant.language.namespace.sqf",
     },
     "null-literal": {
         match: getSingleWordRegex(nullLiterals),

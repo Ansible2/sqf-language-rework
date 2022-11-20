@@ -28,10 +28,8 @@ interface SQFTypeDoc {
 
 export class DocProvider implements IDocProvider {
     private readonly server: ISQFServer;
-    private currentParse: string;
     constructor(server: ISQFServer) {
         this.server = server;
-        this.currentParse = "";
     }
 
     /* ----------------------------------------------------------------------------
@@ -138,7 +136,6 @@ export class DocProvider implements IDocProvider {
         SQFItemName: string,
         syntaxes: SQFSyntax[] | SQFSyntax
     ): string[] {
-        this.currentParse = SQFItemName;
         if (!Array.isArray(syntaxes)) {
             syntaxes = [syntaxes];
         }

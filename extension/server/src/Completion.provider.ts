@@ -53,7 +53,7 @@ export class CompletionProvider implements ICompletionProvider {
         const word = getWordAtPosition(textDocument, params.position);
 
         if (this.wasTriggeredByHash && word?.leadingHash) {
-			const filteredItems = this.hashtagCompletionItems.filter((item) =>
+            const filteredItems = this.hashtagCompletionItems.filter((item) =>
                 item.label.includes(word.parsedWord)
             );
 
@@ -63,6 +63,21 @@ export class CompletionProvider implements ICompletionProvider {
         }
 
         return this.completionItems;
+    }
+
+    /* ----------------------------------------------------------------------------
+		onCompletionResolve
+	---------------------------------------------------------------------------- */
+    onCompletionResolve(
+        completionItem: CompletionItem,
+        token: CancellationToken
+    ): CompletionItem {
+        completionItem.documentation = this.docProvider.createMarkupDoc(
+            completionItem as unknown as CompiledSQFItem,
+            DocumentationType.CompletionItem
+        );
+
+        return completionItem;
     }
 
     /* ----------------------------------------------------------------------------
@@ -81,21 +96,25 @@ export class CompletionProvider implements ICompletionProvider {
             );
             const completionItem: CompletionItem = {
                 ...sqfItem,
-                documentation: docMarkup,
-            };
-            this.completionItems.push(completionItem);
+				documentation: docMarkup,
+            } as CompletionItem;
 
             if (completionItem.label.startsWith("#")) {
-				// items with leading # (preprocessor commands) are
-				// filiterd out when included with a # as their filtertext (label by default).
-				const labelWithoutHashtag = completionItem.label.slice(1,completionItem.label.length);
-				const item: CompletionItem = {
-					...completionItem, 
-					filterText: labelWithoutHashtag,
-					insertText: labelWithoutHashtag,
-				};
+                // items with leading # (preprocessor commands) are
+                // filiterd out when included with a # as their filtertext (label by default).
+                const labelWithoutHashtag = completionItem.label.slice(
+                    1,
+                    completionItem.label.length
+                );
+                const item: CompletionItem = {
+                    ...completionItem,
+                    filterText: labelWithoutHashtag,
+                    insertText: labelWithoutHashtag,
+                };
 
                 this.hashtagCompletionItems.push(item);
+            } else {
+                this.completionItems.push(completionItem);
             }
         });
     }
