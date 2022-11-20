@@ -39,7 +39,6 @@ export class DocProvider implements IDocProvider {
         sqfItem: CompiledSQFItem,
         docType: DocumentationType
     ): MarkupContent {
-		// const documentation: MarkupContent = CompiledSQFItem.getDocumentation(sqfItem);
         const documentation = sqfItem.documentation;
         const syntaxes = this.parseSQFSyntaxes(
             sqfItem.grammarType,
