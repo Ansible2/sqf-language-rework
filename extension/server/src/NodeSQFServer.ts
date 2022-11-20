@@ -73,10 +73,9 @@ export class NodeSQFServer implements ISQFServer {
             capabilities: {
                 textDocumentSync: TextDocumentSyncKind.Incremental,
                 hoverProvider: true,
-                // Tell the client that this server supports code completion.
                 completionProvider: {
-                    resolveProvider: false, // !!this.completionProvider.onCompletionResolve,
-                    triggerCharacters: ["#"],
+                    resolveProvider: false,
+                    triggerCharacters: ["#"], // # does not trigger for things such as macros
                 },
             },
         };
