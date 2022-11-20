@@ -9,6 +9,6 @@ NOTHING
 
 #### Examples:
 ```sqf
-call KISKA_fnc_GCH_setGroupIdButton;
+[buttonControl] call KISKA_fnc_GCHOnLoad_setGroupIdButton;
 ```
 

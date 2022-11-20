@@ -12,7 +12,8 @@ Starts a looping function for limiting a player's viewDistance. Loop can be stop
 
 4: **_increment** *(NUMBER)* - The amount the viewDistance can incriment up or down each cycle (KISKA_VDL_inc)
 
-5: **_viewDistance** *(NUMBER)* - This is the static overall viewDistance, can be set by (KISKA_VDL_viewDist) This is static because it doesn't affect FPS too much.
+5: **_viewDistance** *(NUMBER)* - This is the static overall viewDistance, can be set by (KISKA_VDL_viewDist)
+ This is static because it doesn't affect FPS too much.
 
 #### Returns:
 NOTHING
@@ -20,6 +21,6 @@ NOTHING
 #### Examples:
 ```sqf
 Every 3 seconds, check
-[45,3,500,1700,3000,25] spawn KISKA_fnc_viewDistanceLimiter;
+[45,3,500,1700,25,3000] spawn KISKA_fnc_viewDistanceLimiter;
 ```
 
