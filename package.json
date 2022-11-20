@@ -6,14 +6,13 @@
     "engines": {
         "vscode": "^1.70.0"
     },
-	"repository": {
-		"type": "github",
-		"url": "https://github.com/Ansible2/sqf-language-rework"
-	},
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/Ansible2/sqf-language-rework"
+    },
     "main": "extension/client/src/extension",
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-		"vsce": "cd .out && vsce package && cd ..",
+        "vsce": "npm run build && cd .out && vsce package",
         "compile": "tsc -b",
         "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
