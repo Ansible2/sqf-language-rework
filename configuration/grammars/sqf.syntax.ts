@@ -57,8 +57,14 @@ const compileDocumentation = (
     );
     if (docIsMarkdownFile) {
         try {
-            const directory = (preCompiledDoc as string).replace(/^\.\//,""); // get rid of leading './'
-            const relativeToDocsFolderPath = path.normalize(`${directory}/${itemName}.md`);;
+			// Unable to retrieve markdown file for [<] doc at [S:\Arma Working Folder\VS Code SQF Language\sqf-language-rework\configuration\grammars/docs/./commands]
+			const definedPath = (preCompiledDoc as string).replace(/^\.\//,""); // get rid of leading './';
+			let relativeToDocsFolderPath: string = definedPath;
+
+			const isFullFilePath = (preCompiledDoc as string).endsWith(".md");
+			if (!isFullFilePath) {
+				relativeToDocsFolderPath = path.normalize(`${definedPath}/${itemName}.md`);
+			}
 			
             const markdownAsString = docsAsJson[relativeToDocsFolderPath];
 			if (!markdownAsString) {
