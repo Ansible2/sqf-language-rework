@@ -1,5 +1,3 @@
-import { readFileSync } from "fs-extra";
-import path = require("path");
 import {
     MarkupContent,
     MarkupKind,
@@ -16,13 +14,14 @@ import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
 import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 import { kiskaFunctionSyntaxes } from "./syntaxes/kiska.functions.syntax";
 import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
+import { docsAsJson } from "./docs/docs-json";
 
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     sqfCommandSyntaxes,
     bisFunctionSyntaxes,
     binFunctionSyntaxes,
     kiskaFunctionSyntaxes,
-	preprocessorSyntaxes
+    preprocessorSyntaxes,
 ];
 
 const compileDocumentation = (
@@ -57,18 +56,18 @@ const compileDocumentation = (
     );
     if (docIsMarkdownFile) {
         try {
-            const filePath = path.resolve(
-                __dirname,
-                `./docs`,
-                (preCompiledDoc as string).substring(2), // get rid of leading './'
-                `${itemName}.md`
-            );
+            const directory = (preCompiledDoc as string).substring(2); // get rid of leading './'
+            const relativeToDocsFolderPath = `${directory}/${itemName}.md`;
+            const markdownAsString = docsAsJson[relativeToDocsFolderPath];
+			if (!markdownAsString) {
+				console.log(`sqf.syntax: item: [${itemName}] did not have docs in docsAsJson with key: [${relativeToDocsFolderPath}]`);
+				throw "";
+			}
 
-			const markdownAsString = readFileSync(filePath).toString();
             compiledDocumentation.value = markdownAsString;
         } catch (error) {
             console.log(
-                `Unable to retrieve markdown file for ${itemName} doc at ${__dirname}/docs/${preCompiledDoc}`
+                `sqf.syntax: Unable to retrieve markdown file for [${itemName}] doc at [${__dirname}/docs/${preCompiledDoc}]`
             );
         }
 
@@ -85,8 +84,8 @@ const getCompletionItemKind = (
     grammarType: SQFGrammarType
 ): CompletionItemKind => {
     switch (grammarType) {
-		case SQFGrammarType.ReservedLiteral:
-		case SQFGrammarType.ControlStatement:
+        case SQFGrammarType.ReservedLiteral:
+        case SQFGrammarType.ControlStatement:
         case SQFGrammarType.AccessModifier: {
             return CompletionItemKind.Keyword;
         }
@@ -102,14 +101,14 @@ const getCompletionItemKind = (
         case SQFGrammarType.ManipulativeOperator: {
             return CompletionItemKind.Operator;
         }
-		case SQFGrammarType.BooleanLiteral:
+        case SQFGrammarType.BooleanLiteral:
         case SQFGrammarType.NullLiteral: {
             return CompletionItemKind.Constant;
         }
         case SQFGrammarType.PropertyAccessor: {
             return CompletionItemKind.Property;
         }
-		case SQFGrammarType.Command:
+        case SQFGrammarType.Command:
         default: {
             return CompletionItemKind.Method;
         }
@@ -120,9 +119,9 @@ const compileSQFItem = (
     syntaxItemName: string,
     sqfItem: PreCompiledSQFItem
 ): CompiledSQFItem => {
-	if (sqfItem.label) {
-		syntaxItemName = sqfItem.label;
-	}
+    if (sqfItem.label) {
+        syntaxItemName = sqfItem.label;
+    }
 
     const compiledDocumentation = compileDocumentation(
         syntaxItemName,
@@ -145,16 +144,16 @@ export const getSqfItems = (): Map<string, CompiledSQFItem> => {
     const syntaxItems: Map<string, CompiledSQFItem> = new Map();
 
     syntaxes.forEach((preCompiledSyntaxList: IJSON<PreCompiledSQFItem>) => {
-	
-		Object.entries(preCompiledSyntaxList).forEach(([syntaxItemName, syntaxItem]) => {
-			if (syntaxItem.label) {
-				syntaxItemName = syntaxItem.label;
-			}
-			
-			const compiledItem = compileSQFItem(syntaxItemName, syntaxItem);
-			syntaxItems.set(syntaxItemName.toLowerCase(),compiledItem);
-		});
+        Object.entries(preCompiledSyntaxList).forEach(
+            ([syntaxItemName, syntaxItem]) => {
+                if (syntaxItem.label) {
+                    syntaxItemName = syntaxItem.label;
+                }
 
+                const compiledItem = compileSQFItem(syntaxItemName, syntaxItem);
+                syntaxItems.set(syntaxItemName.toLowerCase(), compiledItem);
+            }
+        );
     });
 
     return syntaxItems;

@@ -26,8 +26,11 @@ async function main() {
 
     console.log("parsing docs...");
     await Promise.all(promises);
+    
     console.log("writing to file...");
-    fs.writeFileSync(`${docsDirectory}/docs-compiled.ts`,`export const compiledDocs = ${JSON.stringify(filesParsed)};`);
+    const stringToWrite = `import { IJSON } from "../sqf.namespace";\n\nexport const docsAsJson: IJSON<string> = ${JSON.stringify(filesParsed)};`;
+    fs.writeFileSync(`${docsDirectory}/docs-json.ts`,stringToWrite);
+    
     console.log("complete");
 }
 

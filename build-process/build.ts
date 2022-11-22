@@ -49,7 +49,6 @@ const build = async () => {
     createDirectory(outPaths.directories.extension);
     createDirectory(outPaths.directories.client);
     createDirectory(outPaths.directories.server);
-    createDirectory(outPaths.directories.grammarDocs);
 
     // empty space
     console.log();
@@ -79,11 +78,6 @@ const build = async () => {
     /* ----------------------------------------------------------------------------
 		copy main static files
     ---------------------------------------------------------------------------- */
-	const copyGrammarDocsDir: Promise<void> = copyDirectoryTo(
-		inPaths.directories.grammarDocs,
-		outPaths.directories.grammarDocs
-	);
-
     const copyPackageJSON: Promise<void> = copyFileTo(
         inPaths.files.packageJson,
         outPaths.files.packageJson
@@ -124,7 +118,6 @@ const build = async () => {
 
 
     await Promise.all([
-		copyGrammarDocsDir,
         copyExtConfig,
         copySqfConfig,
         copyPackageJSON,
