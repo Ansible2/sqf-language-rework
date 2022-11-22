@@ -22,7 +22,8 @@
         "parse:kiska": "ts-node ./Parsers/Parse.ts kiska",
         "build": "ts-node ./build-process/build && npm run compile && npm run install:prod",
         "build:nocomp": "ts-node ./build-process/build",
-        "install:prod": "cd .out && npm ci --production"
+        "install:prod": "cd .out && npm ci --production",
+		"compile:docs": "ts-node ./scripts/compile-docs.ts"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
