@@ -12,7 +12,7 @@
     },
     "main": "extension/client/src/extension",
     "scripts": {
-        "vsce": "npm run build && cd .out && vsce package",
+        "vsce": "nnpm run build && cd .out && vsce package",
         "compile": "tsc -b",
         "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
@@ -20,7 +20,7 @@
         "parse:biki:commands": "ts-node ./Parsers/Parse.ts biki:commands",
         "parse:biki:functions": "ts-node ./Parsers/Parse.ts biki:functions",
         "parse:kiska": "ts-node ./Parsers/Parse.ts kiska",
-        "build": "ts-node ./build-process/build && npm run compile && npm run install:prod",
+        "build": "npm run compile:docs && ts-node ./build-process/build && npm run compile && npm run install:prod",
         "build:nocomp": "ts-node ./build-process/build",
         "install:prod": "cd .out && npm ci --production",
 		"compile:docs": "ts-node ./scripts/compile-docs.ts"

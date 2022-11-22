@@ -274,7 +274,7 @@ Object.keys(preprocessorSyntaxes).forEach((command: string) => {
     const item = preprocessorSyntaxes[command];
 
     if (!item.documentation) {
-        const docFolder = "./Preprocessor Commands";
+        const docFolder = "Preprocessor Commands";
         item.documentation = docFolder;
     }
 });

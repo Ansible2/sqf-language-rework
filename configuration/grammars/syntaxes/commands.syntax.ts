@@ -24485,7 +24485,7 @@ Object.keys(sqfCommandSyntaxes).forEach((command: string) => {
     }
 
     if (!item.documentation) {
-        const bisCommandsFolder = "./commands";
+        const bisCommandsFolder = "commands";
         item.documentation = bisCommandsFolder;
     }
 });

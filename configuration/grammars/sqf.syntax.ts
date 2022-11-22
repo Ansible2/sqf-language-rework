@@ -15,6 +15,7 @@ import { sqfCommandSyntaxes } from "./syntaxes/commands.syntax";
 import { kiskaFunctionSyntaxes } from "./syntaxes/kiska.functions.syntax";
 import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
 import { docsAsJson } from "./docs/docs-json";
+import path = require("path");
 
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     sqfCommandSyntaxes,
@@ -56,8 +57,9 @@ const compileDocumentation = (
     );
     if (docIsMarkdownFile) {
         try {
-            const directory = (preCompiledDoc as string).substring(2); // get rid of leading './'
-            const relativeToDocsFolderPath = `${directory}/${itemName}.md`;
+            const directory = (preCompiledDoc as string).replace(/^\.\//,""); // get rid of leading './'
+            const relativeToDocsFolderPath = path.normalize(`${directory}/${itemName}.md`);;
+			
             const markdownAsString = docsAsJson[relativeToDocsFolderPath];
 			if (!markdownAsString) {
 				console.log(`sqf.syntax: item: [${itemName}] did not have docs in docsAsJson with key: [${relativeToDocsFolderPath}]`);
