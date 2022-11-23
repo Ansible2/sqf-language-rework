@@ -5,39 +5,69 @@ import * as jsonFile from "jsonfile";
 import { BuildContext, BuildPaths } from "./build-context";
 import { sqfGrammar } from "../configuration/grammars/sqf.grammar";
 
+import * as esbuild from "esbuild";
+
+// "vscode:prepublish": "npm run esbuild-base -- --minify",
+// "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+// "esbuild": "npm run esbuild-base -- --sourcemap",
+// "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+// "test-compile": "tsc -p ./"
+
+async function doEsbuild() {
+    console.log("Starting on esbuild...");
+    try {
+        await esbuild.build({
+            entryPoints: [
+                "../extension/server/src/server.ts",
+                "../extension/client/src/extension.ts",
+            ],
+            bundle: true,
+            outfile: "../.out/extension/src/main.js",
+            external: ["vscode"],
+            platform: "node",
+            format: "cjs",
+            sourcemap: true,
+            minify: true,
+        });
+    } catch (error) {
+        console.log("esbuild had an error...");
+        console.error(error);
+        process.exit(1);
+    }
+
+    console.log("esbuild is complete!");
+}
 
 const copyFileTo = (origin: string, destination: string): Promise<void> => {
-	console.log(`Copying [${origin}] to [${destination}]`);
+    console.log(`Copying [${origin}] to [${destination}]`);
 
-	return fsPromises.copyFile(
-        origin,
-        destination
-    );
+    return fsPromises.copyFile(origin, destination);
 };
-const copyDirectoryTo = async (origin: string, destination: string): Promise<void> => {
-	console.log(`Copying Directory [${origin}] to [${destination}]`);
 
-	
-	await fse.emptyDir(destination);
-	fse.copy(
-		origin,
-		destination,
-		{ overwrite: true }
-	);
+const copyDirectoryTo = async (
+    origin: string,
+    destination: string
+): Promise<void> => {
+    console.log(`Copying Directory [${origin}] to [${destination}]`);
+
+    await fse.emptyDir(destination);
+    fse.copy(origin, destination, { overwrite: true });
 };
 
 const createDirectory = (path: string): void => {
-	const directoryExitsts: boolean = fs.existsSync(path);
+    const directoryExitsts: boolean = fs.existsSync(path);
     if (!directoryExitsts) {
         console.log(`Directory at [${path}] does not exist. Creating...`);
         fs.mkdirSync(path);
     }
-}
+};
 
 const build = async () => {
+    console.log("\nExecuting build process...");
+    // await doEsbuild();
+
     const inPaths: BuildPaths = BuildContext.in;
     const outPaths: BuildPaths = BuildContext.out;
-    console.log("\nExecuting build process...");
 
     /* ----------------------------------------------------------------------------
 		Create .out Directories
@@ -65,15 +95,21 @@ const build = async () => {
         outPaths.files.sqfLanguageConfig
     );
 
-	// TODO: write grammars to json files in grammar folder
-	/* ----------------------------------------------------------------------------
+    // TODO: write grammars to json files in grammar folder
+    /* ----------------------------------------------------------------------------
 		Compile grammar files
     ---------------------------------------------------------------------------- */
-	console.log("Writing Grammar files...");
-	const jsonWriteOptions: jsonFile.JFWriteOptions = { spaces: 4, EOL: '\r\n' };
-	const writeSqfGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.sqfGrammar, sqfGrammar, jsonWriteOptions);
-	// const writeExtGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.extGrammar, extGrammar);
-
+    console.log("Writing Grammar files...");
+    const jsonWriteOptions: jsonFile.JFWriteOptions = {
+        spaces: 4,
+        EOL: "\r\n",
+    };
+    const writeSqfGrammar: Promise<void> = jsonFile.writeFile(
+        outPaths.files.sqfGrammar,
+        sqfGrammar,
+        jsonWriteOptions
+    );
+    // const writeExtGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.extGrammar, extGrammar);
 
     /* ----------------------------------------------------------------------------
 		copy main static files
@@ -114,8 +150,6 @@ const build = async () => {
         inPaths.files.changelog,
         outPaths.files.changelog
     );
-	
-
 
     await Promise.all([
         copyExtConfig,
@@ -129,7 +163,7 @@ const build = async () => {
         copyPackageLockJSON_server,
         copyPackageJSON_client,
         copyPackageLockJSON_client,
-		writeSqfGrammar
+        writeSqfGrammar,
     ]);
 };
 

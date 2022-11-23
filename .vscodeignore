@@ -7,6 +7,8 @@
 contributing.md
 .travis.yml
 extension/client/node_modules/**
+extension/client/node_modules/**
+.out/
 !extension/client/node_modules/vscode-jsonrpc/**
 !extension/client/node_modules/vscode-languageclient/**
 !extension/client/node_modules/vscode-languageserver-protocol/**
