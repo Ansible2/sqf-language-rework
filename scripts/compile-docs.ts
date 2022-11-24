@@ -1,9 +1,3 @@
-// create empty json
-// read files from directory
-// use file path relative as key and file contents as value for json
-// write complete json to ts file with an export
-// reference the export from the other ts file (syntax.ts)
-
 import * as fs from "fs";
 import * as fse from "fs-extra";
 import * as path from "path";
@@ -27,26 +21,17 @@ async function main() {
 
     console.log("parsing docs...");
     await Promise.all(promises);
-    
+
     console.log("writing to file...");
 
-	const filePath = `${docsDirectory}/docs-json.js`;
-	const stringifyStream = bigJSON.createStringifyStream({
-		body: filesParsed
-	});
-
-	const startString = "export const docsAsJson = ";
-	fs.writeFileSync(`${docsDirectory}/docs-json.js`,startString);
-
-	stringifyStream.on('data', (chunk: string) => {
-		fs.appendFileSync(filePath,chunk)
-	});
-
-	// const filesParsedAsString = JSON.stringify(filesParsed);
-	// console.log(filesParsedAsString.length);
-	
+	// docs are written to .js instead of .ts primarily to avoid overloading the ts language server
+    const filePath = `${docsDirectory}/docs-json.js`;
+	const filesParsedAsString = await bigJSON.stringify({
+        body: filesParsed,
+    });
     
-    console.log("complete");
+	fs.writeFileSync(filePath,`const docsAsJson = ${filesParsedAsString};\n\nmodule.exports = {docsAsJson: docsAsJson};`);
+	console.log("completed docs transpile!");
 }
 
 const parseFile = async (
@@ -56,7 +41,7 @@ const parseFile = async (
     const relativePath = path.relative(docsDirectory, absoluteFilePath);
     const fileAsString = fse.readFileSync(absoluteFilePath).toString();
     filesParsed[relativePath] = fileAsString;
-}
+};
 
 function getFilePathsFromDirectory(directoy: string): string[] | null {
     if (!fs.existsSync(directoy)) {
