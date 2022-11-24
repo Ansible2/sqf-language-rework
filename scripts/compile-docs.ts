@@ -7,6 +7,7 @@
 import * as fs from "fs";
 import * as fse from "fs-extra";
 import * as path from "path";
+const bigJSON = require("big-json");
 import { IJSON } from "../Parsers/SQFParser.namespace";
 
 const filesParsed: IJSON<string> = {};
@@ -28,8 +29,22 @@ async function main() {
     await Promise.all(promises);
     
     console.log("writing to file...");
-    const stringToWrite = `import { IJSON } from "../sqf.namespace";\n\nexport const docsAsJson: IJSON<string> = ${JSON.stringify(filesParsed)};`;
-    fs.writeFileSync(`${docsDirectory}/docs-json.ts`,stringToWrite);
+
+	const filePath = `${docsDirectory}/docs-json.js`;
+	const stringifyStream = bigJSON.createStringifyStream({
+		body: filesParsed
+	});
+
+	const startString = "export const docsAsJson = ";
+	fs.writeFileSync(`${docsDirectory}/docs-json.js`,startString);
+
+	stringifyStream.on('data', (chunk: string) => {
+		fs.appendFileSync(filePath,chunk)
+	});
+
+	// const filesParsedAsString = JSON.stringify(filesParsed);
+	// console.log(filesParsedAsString.length);
+	
     
     console.log("complete");
 }
