@@ -34,7 +34,6 @@
         "@typescript-eslint/parser": "^5.30.0",
         "big-json": "^3.2.0",
         "esbuild": "^0.15.15",
-        "eslint": "^8.13.0",
         "fast-xml-parser": "^4.0.10",
         "fs-extra": "^10.1.0",
         "json2md": "^1.13.0",
