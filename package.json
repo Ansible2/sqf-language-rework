@@ -12,7 +12,7 @@
     },
     "main": "extension/client/src/extension",
     "scripts": {
-        "vsce": "nnpm run build && cd .out && vsce package",
+        "vsce": "npm run build && cd .out && vsce package",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
         "ts-node": "ts-node",
         "parse:biki:commands": "ts-node ./Parsers/Parse.ts biki:commands",
