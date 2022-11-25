@@ -157,7 +157,7 @@ const build = async () => {
         copyReadMe,
         copyVscodeIgnore,
         copyChangelog,
-        // copyPackageJSON,
+        copyPackageJSON,
         // copyPackageLockJSON,
         // copyPackageJSON_server,
         // copyPackageLockJSON_server,
