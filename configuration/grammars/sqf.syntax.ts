@@ -66,7 +66,7 @@ const compileDocumentation = (
 				relativeToDocsFolderPath = path.normalize(`${definedPath}/${itemName}.md`);
 			}
 			
-            const markdownAsString = docsAsJson[relativeToDocsFolderPath];
+            const markdownAsString = (docsAsJson as IJSON<string>)[relativeToDocsFolderPath];
 			if (!markdownAsString) {
 				console.log(`sqf.syntax: item: [${itemName}] did not have docs in docsAsJson with key: [${relativeToDocsFolderPath}]`);
 				throw "";

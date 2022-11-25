@@ -22,7 +22,7 @@ async function doEsbuild() {
                 "extension/client/src/extension.ts",
             ],
             bundle: true,
-			outdir: ".out",
+			outdir: ".out/extension",
             external: ["vscode"],
             platform: "node",
             format: "cjs",

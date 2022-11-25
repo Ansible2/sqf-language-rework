@@ -13,13 +13,12 @@
     "main": "extension/client/src/extension",
     "scripts": {
         "vsce": "nnpm run build && cd .out && vsce package",
-        "compile": "tsc -b",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
         "ts-node": "ts-node",
         "parse:biki:commands": "ts-node ./Parsers/Parse.ts biki:commands",
         "parse:biki:functions": "ts-node ./Parsers/Parse.ts biki:functions",
         "parse:kiska": "ts-node ./Parsers/Parse.ts kiska",
-        "build": "npm run compile:docs && npm run build:script && npm run compile",
+        "build": "npm run compile:docs && npm run build:script",
         "build:script": "ts-node ./build-process/build",
         "install:prod": "cd .out && npm ci --production",
         "compile:docs": "ts-node ./scripts/compile-docs.ts"
