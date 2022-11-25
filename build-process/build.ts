@@ -114,10 +114,10 @@ const build = async () => {
     /* ----------------------------------------------------------------------------
 		copy main static files
     ---------------------------------------------------------------------------- */
-    // const copyPackageJSON: Promise<void> = copyFileTo(
-    //     inPaths.files.packageJson,
-    //     outPaths.files.packageJson
-    // );
+    const copyPackageJSON: Promise<void> = copyFileTo(
+        inPaths.files.packageJson,
+        outPaths.files.packageJson
+    );
     // const copyPackageLockJSON: Promise<void> = copyFileTo(
     //     inPaths.files.packageLockJson,
     //     outPaths.files.packageLockJson
