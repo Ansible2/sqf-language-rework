@@ -18,11 +18,11 @@ async function doEsbuild() {
     try {
         await esbuild.build({
             entryPoints: [
-                "../extension/server/src/server.ts",
-                "../extension/client/src/extension.ts",
+                "extension/server/src/server.ts",
+                "extension/client/src/extension.ts",
             ],
             bundle: true,
-            outfile: "../.out/extension/src/main.js",
+			outdir: ".out",
             external: ["vscode"],
             platform: "node",
             format: "cjs",
@@ -64,7 +64,7 @@ const createDirectory = (path: string): void => {
 
 const build = async () => {
     console.log("\nExecuting build process...");
-    // await doEsbuild();
+    await doEsbuild();
 
     const inPaths: BuildPaths = BuildContext.in;
     const outPaths: BuildPaths = BuildContext.out;
@@ -114,30 +114,30 @@ const build = async () => {
     /* ----------------------------------------------------------------------------
 		copy main static files
     ---------------------------------------------------------------------------- */
-    const copyPackageJSON: Promise<void> = copyFileTo(
-        inPaths.files.packageJson,
-        outPaths.files.packageJson
-    );
-    const copyPackageLockJSON: Promise<void> = copyFileTo(
-        inPaths.files.packageLockJson,
-        outPaths.files.packageLockJson
-    );
-    const copyPackageJSON_server: Promise<void> = copyFileTo(
-        inPaths.files.serverPackageJson,
-        outPaths.files.serverPackageJson
-    );
-    const copyPackageLockJSON_server: Promise<void> = copyFileTo(
-        inPaths.files.serverPackageLockJson,
-        outPaths.files.serverPackageLockJson
-    );
-    const copyPackageJSON_client: Promise<void> = copyFileTo(
-        inPaths.files.clientPackageJson,
-        outPaths.files.clientPackageJson
-    );
-    const copyPackageLockJSON_client: Promise<void> = copyFileTo(
-        inPaths.files.clientPackageLockJson,
-        outPaths.files.clientPackageLockJson
-    );
+    // const copyPackageJSON: Promise<void> = copyFileTo(
+    //     inPaths.files.packageJson,
+    //     outPaths.files.packageJson
+    // );
+    // const copyPackageLockJSON: Promise<void> = copyFileTo(
+    //     inPaths.files.packageLockJson,
+    //     outPaths.files.packageLockJson
+    // );
+    // const copyPackageJSON_server: Promise<void> = copyFileTo(
+    //     inPaths.files.serverPackageJson,
+    //     outPaths.files.serverPackageJson
+    // );
+    // const copyPackageLockJSON_server: Promise<void> = copyFileTo(
+    //     inPaths.files.serverPackageLockJson,
+    //     outPaths.files.serverPackageLockJson
+    // );
+    // const copyPackageJSON_client: Promise<void> = copyFileTo(
+    //     inPaths.files.clientPackageJson,
+    //     outPaths.files.clientPackageJson
+    // );
+    // const copyPackageLockJSON_client: Promise<void> = copyFileTo(
+    //     inPaths.files.clientPackageLockJson,
+    //     outPaths.files.clientPackageLockJson
+    // );
     const copyReadMe: Promise<void> = copyFileTo(
         inPaths.files.readme,
         outPaths.files.readme
@@ -154,15 +154,15 @@ const build = async () => {
     await Promise.all([
         copyExtConfig,
         copySqfConfig,
-        copyPackageJSON,
         copyReadMe,
         copyVscodeIgnore,
         copyChangelog,
-        copyPackageLockJSON,
-        copyPackageJSON_server,
-        copyPackageLockJSON_server,
-        copyPackageJSON_client,
-        copyPackageLockJSON_client,
+        // copyPackageJSON,
+        // copyPackageLockJSON,
+        // copyPackageJSON_server,
+        // copyPackageLockJSON_server,
+        // copyPackageJSON_client,
+        // copyPackageLockJSON_client,
         writeSqfGrammar,
     ]);
 };

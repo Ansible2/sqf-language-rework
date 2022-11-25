@@ -24,20 +24,26 @@ async function main() {
 
     console.log("writing to file...");
 
-	// docs are written to .js instead of .ts primarily to avoid overloading the ts language server
+    // docs are written to .js instead of .ts primarily to avoid overloading the ts language server
     const filePath = `${docsDirectory}/docs-json.js`;
-	const filesParsedAsString = await bigJSON.stringify({
+    const filesParsedAsString: string = await bigJSON.stringify({
         body: filesParsed,
     });
-    
-	fs.writeFileSync(filePath,`const docsAsJson = ${filesParsedAsString};\n\nmodule.exports = {docsAsJson: docsAsJson};`);
-	console.log("completed docs transpile!");
+
+    fs.writeFileSync(
+        filePath,
+        `const docsAsJson = ${filesParsedAsString};\n\nmodule.exports = {docsAsJson: docsAsJson};`
+    );
+    console.log("completed docs transpile!");
 }
 
 const parseFile = async (
     absoluteFilePath: string,
     docsDirectory: string
 ): Promise<void> => {
+	const fileIsNotMarkdown = path.extname(absoluteFilePath) !== ".md";
+	if (fileIsNotMarkdown) return;
+
     const relativePath = path.relative(docsDirectory, absoluteFilePath);
     const fileAsString = fse.readFileSync(absoluteFilePath).toString();
     filesParsed[relativePath] = fileAsString;
