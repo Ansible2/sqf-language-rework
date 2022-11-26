@@ -27,7 +27,7 @@ import {
     IJSON,
     SQFArgument,
     SQFEffect,
-} from "../../../configuration/grammars/sqf.namespace";
+} from "../../../../configuration/grammars/sqf.namespace";
 
 export interface IHoverProvider {
     onHover(params: HoverParams): Hover;

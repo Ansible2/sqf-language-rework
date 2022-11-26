@@ -8,14 +8,14 @@ import {
     ResultProgressReporter,
     WorkDoneProgressReporter,
 } from "vscode-languageserver/node";
-import { CompiledSQFItem } from "../../../configuration/grammars/sqf.namespace";
-import { getWordAtPosition } from "./helper-functions";
+import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
+import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
     DocumentationType,
     ICompletionProvider,
     IDocProvider,
     ISQFServer,
-} from "./server.types";
+} from "../types/server.types";
 
 export class CompletionProvider implements ICompletionProvider {
     private readonly server: ISQFServer;

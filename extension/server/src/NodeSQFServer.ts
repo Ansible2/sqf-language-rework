@@ -15,10 +15,10 @@ import {
     IDocProvider,
     IHoverProvider,
     ISQFServer,
-} from "./server.types";
-import { HoverProvider } from "./Hover.provider";
-import { DocProvider } from "./Doc.provider";
-import { CompletionProvider } from "./Completion.provider";
+} from "./types/server.types";
+import { HoverProvider } from "./providers/Hover.provider";
+import { DocProvider } from "./providers/Doc.provider";
+import { CompletionProvider } from "./providers/Completion.provider";
 
 export class NodeSQFServer implements ISQFServer {
     public readonly hoverProvider: IHoverProvider;

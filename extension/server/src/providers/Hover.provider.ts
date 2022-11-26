@@ -7,7 +7,7 @@ import {
     IDocProvider,
     IHoverProvider,
     ISQFServer,
-} from "./server.types";
+} from "./types/server.types";
 import {
     CompiledSQFItem,
 } from "../../../configuration/grammars/sqf.namespace";

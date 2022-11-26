@@ -1,4 +1,4 @@
-import { DocumentationType, IDocProvider, ISQFServer } from "./server.types";
+import { DocumentationType, IDocProvider, ISQFServer } from "./types/server.types";
 import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
 
 import {
