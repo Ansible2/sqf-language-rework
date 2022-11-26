@@ -2817,28 +2817,28 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
-    KISKA_fnc_GCH_joinGroupButton: {
+    KISKA_fnc_GCHOnLoad_joinGroupButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
-    KISKA_fnc_GCH_leaveGroupButton: {
+    KISKA_fnc_GCHOnLoad_leaveGroupButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
-    KISKA_fnc_GCH_setGroupIdButton: {
+    KISKA_fnc_GCHOnLoad_setGroupIdButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control]),
         },
     },
-    KISKA_fnc_GCH_setLeaderButton: {
+    KISKA_fnc_GCHOnLoad_setLeaderButton: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
@@ -3063,7 +3063,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.Display]),
         },
     },
-    KISKA_fnc_openVdlDialog: {
+    KISKA_fnc_VDL_openDialog: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
@@ -3083,22 +3083,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
         effect: SQFEffect.LOCAL,
-    },
-	test_fnc_test: {
-        grammarType: SQFGrammarType.Function,
-        syntaxes: {
-            type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFArray.of(SQFDataType.Object),
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Number,
-                SQFDataType.Number,
-                SQFArray.of(SQFDataType.String),
-                SQFArray.ofOneOfThese([
-                    SQFDataType.Position,
-                    SQFDataType.Object,
-                ]),
-            ]),
-        },
     },
 };
 

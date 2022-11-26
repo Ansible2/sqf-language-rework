@@ -6,24 +6,22 @@
     "engines": {
         "vscode": "^1.70.0"
     },
-	"repository": {
-		"type": "github",
-		"url": "https://github.com/Ansible2/sqf-language-rework"
-	},
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/Ansible2/sqf-language-rework"
+    },
     "main": "extension/client/src/extension",
     "scripts": {
-        "vscode:prepublish": "npm run compile",
-		"vsce": "cd .out && vsce package && cd ..",
-        "compile": "tsc -b",
-        "lint": "eslint ./extension/client/src ./extension/server/src --ext .ts,.tsx",
+        "vsce": "npm run build && cd .out && vsce package",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
         "ts-node": "ts-node",
         "parse:biki:commands": "ts-node ./Parsers/Parse.ts biki:commands",
         "parse:biki:functions": "ts-node ./Parsers/Parse.ts biki:functions",
         "parse:kiska": "ts-node ./Parsers/Parse.ts kiska",
-        "build": "ts-node ./build-process/build && npm run compile && npm run install:prod",
-        "build:nocomp": "ts-node ./build-process/build",
-        "install:prod": "cd .out && npm ci --production"
+        "build": "npm run compile:docs && npm run build:script",
+        "build:script": "ts-node ./build-process/build",
+        "install:prod": "cd .out && npm ci --production",
+        "compile:docs": "ts-node ./scripts/compile-docs.ts"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
@@ -32,7 +30,8 @@
         "@types/node": "^16.11.47",
         "@typescript-eslint/eslint-plugin": "^5.30.0",
         "@typescript-eslint/parser": "^5.30.0",
-        "eslint": "^8.13.0",
+        "big-json": "^3.2.0",
+        "esbuild": "^0.15.15",
         "fast-xml-parser": "^4.0.10",
         "fs-extra": "^10.1.0",
         "json2md": "^1.13.0",

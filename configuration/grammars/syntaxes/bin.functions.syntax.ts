@@ -2715,12 +2715,12 @@ export const binFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
 };
 
 
-const binFunctionsFolder = "./BIN Functions";
 
 const getBISWikiLink = (itemName: string): string => {
-    return `https://community.bistudio.com/wiki/${itemName}`;
+	return `https://community.bistudio.com/wiki/${itemName}`;
 };
 
+const binFunctionsFolder = "./BIN Functions";
 Object.keys(binFunctionSyntaxes).forEach((command: string) => {
     const item = binFunctionSyntaxes[command];
     if (!item.documentation) {

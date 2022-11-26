@@ -4,3 +4,4 @@ client/server
 .vscode-test
 /.vscode
 .output
+docs-json.js

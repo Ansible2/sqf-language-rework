@@ -297,7 +297,7 @@ const grammarRepo: IRawRepository = {
     },
     commands: {
         match: getSingleWordRegex(commands),
-        name: "support.function.sqf",
+        name: "entity.name.function.sqf",
     },
 
     /* ----------------------------------------------------------------------------

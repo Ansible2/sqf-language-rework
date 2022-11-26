@@ -16,7 +16,7 @@ import {
 // this function can jusut be called at paring time instead of compile time
 const getBISWikiLink = (itemName: string): string => {
     const convertUrlMap: IJSON<string> = {
-        "||": "a_or_b",
+        "||": "a or b",
         "!": "!_a",
         "!=": "a_!=_b",
         "#": "a_hash_b",
@@ -40,6 +40,26 @@ const getBISWikiLink = (itemName: string): string => {
     }
 
     return `https://community.bistudio.com/wiki/${itemName}`;
+};
+
+// todo get docs for "false" and "="
+const convertFilenameMap: IJSON<string> = {
+	"||": "a or b",
+	"!": "! a",
+	"!=": "a != b",
+	"#": "a hash b",
+	"%": "a % b",
+	"&&": "a && b",
+	"*": "a times b",
+	"/": "a divide b",
+	":": "a switch b",
+	"<": "a less b",
+	">": "a greater b",
+	"<=": "a less= b",
+	">=": "a greater= b",
+	"==": "a == b",
+	">>": "config greater greater name",
+	"^": "a ^ b",
 };
 
 const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
@@ -24485,6 +24505,11 @@ Object.keys(sqfCommandSyntaxes).forEach((command: string) => {
     }
 
     if (!item.documentation) {
+		if (convertFilenameMap[command]) {
+			item.documentation = convertFilenameMap[command];
+			return;
+		}
+
         const bisCommandsFolder = "./commands";
         item.documentation = bisCommandsFolder;
     }
