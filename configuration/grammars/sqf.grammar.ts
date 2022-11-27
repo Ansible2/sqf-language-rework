@@ -112,7 +112,7 @@ function getSingleWordRegexSpecialStart(words: string | string[]): string {
         words = words.join("|");
     }
 
-    return `(?i)(?<=(\s+|^))(${words})\\b`;
+    return `(?i)(?<=(\\s+|^))(${words})\\b`;
 }
 
 const grammarRepo: IRawRepository = {
