@@ -1,21 +1,16 @@
-import { window } from "vscode";
-import { TextDocument } from "vscode-languageserver-textdocument";
 import {
     CancellationToken,
     CompletionItem,
-    CompletionList,
-    CompletionParams,
-    ResultProgressReporter,
-    WorkDoneProgressReporter,
 } from "vscode-languageserver/node";
 import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
     DocumentationType,
+    ICompletionParams,
     ICompletionProvider,
     IDocProvider,
-    ISQFServer,
-} from "../types/server.types";
+} from "../types/providers.types";
+import { ISQFServer } from "../types/server.types";
 
 export class CompletionProvider implements ICompletionProvider {
     private readonly server: ISQFServer;
@@ -32,18 +27,18 @@ export class CompletionProvider implements ICompletionProvider {
     }
 
     onCompletion(
-        params: CompletionParams,
-        token: CancellationToken,
-        workDoneProgress: WorkDoneProgressReporter
+        params: ICompletionParams
+        // token: CancellationToken,
+        // workDoneProgress: WorkDoneProgressReporter
     ): CompletionItem[] {
         if (params.context?.triggerCharacter === "#") {
             this.wasTriggeredByHash = true;
             return this.hashtagCompletionItems;
         }
 
-        const textDocument = this.server.textDocuments.get(
-            params.textDocument.uri
-        );
+        const textDocument = this.server
+            .getTextDocuments()
+            .get(params.textDocument.uri);
         if (!textDocument) {
             return [];
         }
@@ -68,17 +63,17 @@ export class CompletionProvider implements ICompletionProvider {
     /* ----------------------------------------------------------------------------
 		onCompletionResolve
 	---------------------------------------------------------------------------- */
-    onCompletionResolve(
-        completionItem: CompletionItem,
-        token: CancellationToken
-    ): CompletionItem {
-        completionItem.documentation = this.docProvider.createMarkupDoc(
-            completionItem as unknown as CompiledSQFItem,
-            DocumentationType.CompletionItem
-        );
+    // onCompletionResolve(
+    //     completionItem: CompletionItem,
+    //     token: CancellationToken
+    // ): CompletionItem {
+    //     completionItem.documentation = this.docProvider.createMarkupDoc(
+    //         completionItem as unknown as CompiledSQFItem,
+    //         DocumentationType.CompletionItem
+    //     );
 
-        return completionItem;
-    }
+    //     return completionItem;
+    // }
 
     /* ----------------------------------------------------------------------------
 		loadCompletionItems
@@ -96,7 +91,7 @@ export class CompletionProvider implements ICompletionProvider {
             );
             const completionItem: CompletionItem = {
                 ...sqfItem,
-				documentation: docMarkup,
+                documentation: docMarkup,
             } as CompletionItem;
 
             if (completionItem.label.startsWith("#")) {

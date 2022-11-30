@@ -1,17 +1,12 @@
+import { Hover, HoverParams } from "vscode-languageserver/node";
+import { ISQFServer } from "../types/server.types";
+import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
+import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
-    Hover,
-    HoverParams,
-} from "vscode-languageserver/node";
-import {
-    DocumentationType,
-    IDocProvider,
     IHoverProvider,
-    ISQFServer,
-} from "./types/server.types";
-import {
-    CompiledSQFItem,
-} from "../../../configuration/grammars/sqf.namespace";
-import { getWordAtPosition } from "./helper-functions";
+    IDocProvider,
+    DocumentationType,
+} from "../types/providers.types";
 
 export class HoverProvider implements IHoverProvider {
     private readonly server: ISQFServer;
@@ -26,31 +21,31 @@ export class HoverProvider implements IHoverProvider {
 	---------------------------------------------------------------------------- */
     public onHover(params: HoverParams): Hover {
         const documentUri = params.textDocument.uri;
-		const emptyHoverReturn = {} as Hover;
+        const emptyHoverReturn = {} as Hover;
         if (!documentUri) return emptyHoverReturn;
 
-        const document = this.server.textDocuments.get(documentUri);
+        const document = this.server.getTextDocuments().get(documentUri);
         if (!document) return emptyHoverReturn;
-		
-		const sqfWord = getWordAtPosition(document, params.position);
-		if (!sqfWord) return emptyHoverReturn;
 
-		if (sqfWord) {
-			console.log("sqfWord:");
-			console.log("parsedWord:",sqfWord.parsedWord);
-			console.log("rangeOfParsedWord:",sqfWord.rangeOfParsedWord);
-			console.log("startingChar:",sqfWord.startingChar);
-			console.log("startingIndex:",sqfWord.startingIndex);
-			console.log("leadingHash:",sqfWord.leadingHash);
-		}
+        const sqfWord = getWordAtPosition(document, params.position);
+        if (!sqfWord) return emptyHoverReturn;
+
+        if (sqfWord) {
+            console.log("sqfWord:");
+            console.log("parsedWord:", sqfWord.parsedWord);
+            console.log("rangeOfParsedWord:", sqfWord.rangeOfParsedWord);
+            console.log("startingChar:", sqfWord.startingChar);
+            console.log("startingIndex:", sqfWord.startingIndex);
+            console.log("leadingHash:", sqfWord.leadingHash);
+        }
 
         const sqfItems = this.server.getSQFItemMap();
 
-		let word = sqfWord.parsedWord;
-		const possibleMacroWord = `#${sqfWord.parsedWord}`;
-		if (sqfWord.leadingHash && sqfItems.has(possibleMacroWord)) {
-			word = possibleMacroWord;
-		}
+        let word = sqfWord.parsedWord;
+        const possibleMacroWord = `#${sqfWord.parsedWord}`;
+        if (sqfWord.leadingHash && sqfItems.has(possibleMacroWord)) {
+            word = possibleMacroWord;
+        }
 
         const hoverItem = this.getHoverItem(word, sqfItems);
         if (!hoverItem) return emptyHoverReturn;
@@ -65,8 +60,9 @@ export class HoverProvider implements IHoverProvider {
         syntaxItemName: string,
         sqfItems: Map<string, CompiledSQFItem>
     ): Hover | undefined {
-        const syntaxItem: CompiledSQFItem | undefined =
-            sqfItems.get(syntaxItemName.toLowerCase());
+        const syntaxItem: CompiledSQFItem | undefined = sqfItems.get(
+            syntaxItemName.toLowerCase()
+        );
         if (!syntaxItem) return;
 
         const contents = this.docProvider.createMarkupDoc(
