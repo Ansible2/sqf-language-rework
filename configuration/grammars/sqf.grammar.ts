@@ -353,7 +353,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.object.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords
+        begin: `(?i)\\b(\\w*)(\\s*)(=*)(\\s*)(${stringCompilerWords
             .concat("{")
             .join("|")})`,
         beginCaptures: {
