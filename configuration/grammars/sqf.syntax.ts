@@ -1,13 +1,10 @@
 import {
-    MarkupContent,
-    MarkupKind,
-    CompletionItemKind,
-} from "vscode-languageserver/node";
-import {
     IJSON,
     CompiledSQFItem,
     PreCompiledSQFItem,
     SQFGrammarType,
+	SQFCompletionItemKind,
+	SQFMarkupContent,
 } from "./sqf.namespace";
 import { binFunctionSyntaxes } from "./syntaxes/bin.functions.syntax";
 import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
@@ -16,6 +13,7 @@ import { kiskaFunctionSyntaxes } from "./syntaxes/kiska.functions.syntax";
 import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
 import { docsAsJson } from "./docs/docs-json";
 import path = require("path");
+import { SqfMarkupKind } from "../../extension/server/src/types/providers.types";
 
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     sqfCommandSyntaxes,
@@ -27,10 +25,10 @@ const syntaxes: IJSON<PreCompiledSQFItem>[] = [
 
 const compileDocumentation = (
     itemName: string,
-    preCompiledDoc: string | string[] | MarkupContent | undefined
-): MarkupContent => {
-    const compiledDocumentation: MarkupContent = {
-        kind: MarkupKind.Markdown,
+    preCompiledDoc: string | string[] | SQFMarkupContent  | undefined
+): SQFMarkupContent => {
+    const compiledDocumentation: SQFMarkupContent = {
+        kind: SqfMarkupKind.Markdown,
         value: "",
     };
 
@@ -42,7 +40,7 @@ const compileDocumentation = (
         !preCompiledDocIsArray &&
         "value" in preCompiledDoc &&
         "kind" in preCompiledDoc;
-    if (preCompiledDocIsMarkup) return preCompiledDoc as MarkupContent;
+    if (preCompiledDocIsMarkup) return preCompiledDoc as SQFMarkupContent;
 
     if (preCompiledDocIsArray) {
         preCompiledDoc = preCompiledDoc as string[];
@@ -89,35 +87,35 @@ const compileDocumentation = (
 // TODO make into static hashmap possibly
 const getCompletionItemKind = (
     grammarType: SQFGrammarType
-): CompletionItemKind => {
+): SQFCompletionItemKind => {
     switch (grammarType) {
         case SQFGrammarType.ReservedLiteral:
         case SQFGrammarType.ControlStatement:
         case SQFGrammarType.AccessModifier: {
-            return CompletionItemKind.Keyword;
+            return SQFCompletionItemKind.Keyword;
         }
         case SQFGrammarType.ComparisonOperator: {
-            return CompletionItemKind.Operator;
+            return SQFCompletionItemKind.Operator;
         }
         case SQFGrammarType.ConditionOperator: {
-            return CompletionItemKind.Operator;
+            return SQFCompletionItemKind.Operator;
         }
         case SQFGrammarType.Function: {
-            return CompletionItemKind.Function;
+            return SQFCompletionItemKind.Function;
         }
         case SQFGrammarType.ManipulativeOperator: {
-            return CompletionItemKind.Operator;
+            return SQFCompletionItemKind.Operator;
         }
         case SQFGrammarType.BooleanLiteral:
         case SQFGrammarType.NullLiteral: {
-            return CompletionItemKind.Constant;
+            return SQFCompletionItemKind.Constant;
         }
         case SQFGrammarType.PropertyAccessor: {
-            return CompletionItemKind.Property;
+            return SQFCompletionItemKind.Property;
         }
         case SQFGrammarType.Command:
         default: {
-            return CompletionItemKind.Method;
+            return SQFCompletionItemKind.Method;
         }
     }
 };

@@ -1,4 +1,3 @@
-import { CompletionItemKind } from "vscode-languageserver/node";
 import {
     SQFGrammarType,
     IJSON,

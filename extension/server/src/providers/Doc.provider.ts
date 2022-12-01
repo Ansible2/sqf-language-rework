@@ -8,11 +8,16 @@ import {
     SQFCode,
     SQFDataType,
     SQFGrammarType,
+    SQFMarkupContent,
     SQFSyntax,
     SQFSyntaxType,
     SQFSyntaxTypes,
 } from "../../../../configuration/grammars/sqf.namespace";
-import { IDocProvider, DocumentationType, ISqfMarkupContent, SqfMarkupKind } from "../types/providers.types";
+import {
+    IDocProvider,
+    DocumentationType,
+    SqfMarkupKind,
+} from "../types/providers.types";
 import { ISQFServer } from "../types/server.types";
 
 interface SQFTypeDoc {
@@ -37,7 +42,7 @@ export class DocProvider implements IDocProvider {
     public createMarkupDoc(
         sqfItem: CompiledSQFItem,
         docType: DocumentationType
-    ): ISqfMarkupContent {
+    ): SQFMarkupContent {
         const documentation = sqfItem.documentation;
         const syntaxes = this.parseSQFSyntaxes(
             sqfItem.grammarType,
@@ -53,7 +58,7 @@ export class DocProvider implements IDocProvider {
         const argument = sqfItem.argument;
         const effect = sqfItem.effect;
         const serverExcuted = sqfItem.server;
-		// TODO: make sure that parsed documentation has type of SqfMarkupKind
+        // TODO: make sure that parsed documentation has type of SqfMarkupKind
         const markupKind: SqfMarkupKind = documentation.kind as SqfMarkupKind;
         let docValue = "";
         let docLinkFormatted: string;

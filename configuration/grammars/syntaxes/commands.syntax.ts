@@ -1,4 +1,3 @@
-import { CompletionItemKind } from "vscode-languageserver/node";
 import {
     SQFGrammarType,
     IJSON,
@@ -10,6 +9,7 @@ import {
     SQFEffect,
     SQFCode,
     SQFArray,
+	SQFCompletionItemKind,
 } from "../sqf.namespace";
 // ("{2,})([a-z0-9\s]*)("{2,})
 // TODO: adjust documentation to just be a string url
@@ -215,7 +215,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
         grammarType: SQFGrammarType.Command,
-        kind: CompletionItemKind.Constructor,
+        kind: SQFCompletionItemKind.Constructor,
     },
     getOrDefault: {
         syntaxes: {

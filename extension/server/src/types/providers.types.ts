@@ -1,4 +1,4 @@
-import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
+import { CompiledSQFItem, SQFMarkupContent } from "../../../../configuration/grammars/sqf.namespace";
 import { IDocumentPosition } from "./textDocument.types";
 
 export enum DocumentationType {
@@ -11,13 +11,8 @@ export enum SqfMarkupKind {
     Markdown = "markdown",
 }
 
-export interface ISqfMarkupContent {
-    kind: string;
-    value: string;
-}
-
 export interface ISqfHover {
-    contents: ISqfMarkupContent;
+    contents: SQFMarkupContent;
 }
 
 export interface ISqfHoverParams {
@@ -35,7 +30,7 @@ export interface IDocProvider {
     createMarkupDoc(
         sqfItem: CompiledSQFItem,
         docType: DocumentationType
-    ): ISqfMarkupContent;
+    ): SQFMarkupContent;
 }
 
 export interface ICompletionParams {
