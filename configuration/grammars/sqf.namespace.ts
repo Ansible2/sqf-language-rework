@@ -149,29 +149,6 @@ export class SQFCode {
         return this;
     }
 }
-// export namespace SQFCode {
-//     function returns(
-//         returnTypes: SQFSyntaxTypes
-//     ): SQFCode {
-//         return new SQFCode(returnTypes);
-//     }
-//     function takes(
-//         returnTypes: SQFSyntaxTypes
-//     ): SQFCode {
-//         return new SQFCode(returnTypes);
-//     }
-
-//     // function takes(
-//     //     params: SQFSyntaxTypes
-//     // ): SQFCode {
-// 	// 	if (!this) { }
-//     //     return {
-// 	// 		,
-//     //         params: params,
-//     //     };
-//     // }
-// }
-
 export enum SQFSyntaxType {
     UnscheduledFunction = 0,
     NularOperator = 1,
@@ -190,9 +167,9 @@ export function isSQFCode(object: unknown): object is SQFCode {
     return Object.prototype.hasOwnProperty.call(object, "codeReturnTypes");
 }
 
+const sqfDataTypeValues: SQFDataType[] = Object.values(SQFDataType);
 export function isSqfDataType(object: unknown): object is string {
-    const dataTypes: SQFDataType[] = Object.values(SQFDataType);
-    return dataTypes.includes(object as SQFDataType);
+    return sqfDataTypeValues.includes(object as SQFDataType);
 }
 
 export enum SQFArrayComparator {
