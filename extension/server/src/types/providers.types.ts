@@ -1,11 +1,3 @@
-import {
-    CancellationToken,
-    Hover,
-    HoverParams,
-    MarkupContent,
-    _Connection,
-} from "vscode-languageserver/node";
-
 import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
 import { IDocumentPosition } from "./textDocument.types";
 
@@ -14,15 +6,36 @@ export enum DocumentationType {
     HoverItem = 2,
 }
 
+export enum SqfMarkupKind {
+    PlainText = "plaintext",
+    Markdown = "markdown",
+}
+
+export interface ISqfMarkupContent {
+    kind: string;
+    value: string;
+}
+
+export interface ISqfHover {
+    contents: ISqfMarkupContent;
+}
+
+export interface ISqfHoverParams {
+    textDocument: {
+        uri: string;
+    };
+    position: IDocumentPosition;
+}
+
 export interface IHoverProvider {
-    onHover(params: HoverParams): Hover;
+    onHover(params: ISqfHoverParams): ISqfHover;
 }
 
 export interface IDocProvider {
     createMarkupDoc(
         sqfItem: CompiledSQFItem,
         docType: DocumentationType
-    ): MarkupContent;
+    ): ISqfMarkupContent;
 }
 
 export interface ICompletionParams {
@@ -36,14 +49,13 @@ export interface ICompletionParams {
 }
 
 export interface ISqfCompletionItem extends CompiledSQFItem {
-	filterText?: string,
-	insertText?: string,
+    filterText?: string;
+    insertText?: string;
 }
 
 export interface ICompletionProvider {
     onCompletion(params: ICompletionParams): ISqfCompletionItem[];
     onCompletionResolve?(
-        completionItem: ISqfCompletionItem,
-        token: CancellationToken
+        completionItem: ISqfCompletionItem
     ): ISqfCompletionItem;
 }

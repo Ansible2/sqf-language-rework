@@ -1,4 +1,3 @@
-import { Hover, HoverParams } from "vscode-languageserver/node";
 import { ISQFServer } from "../types/server.types";
 import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
@@ -6,6 +5,8 @@ import {
     IHoverProvider,
     IDocProvider,
     DocumentationType,
+	ISqfHover,
+	ISqfHoverParams,
 } from "../types/providers.types";
 
 export class HoverProvider implements IHoverProvider {
@@ -19,9 +20,9 @@ export class HoverProvider implements IHoverProvider {
     /* ----------------------------------------------------------------------------
 		onHover
 	---------------------------------------------------------------------------- */
-    public onHover(params: HoverParams): Hover {
+    public onHover(params: ISqfHoverParams): ISqfHover {
         const documentUri = params.textDocument.uri;
-        const emptyHoverReturn = {} as Hover;
+        const emptyHoverReturn = {} as ISqfHover;
         if (!documentUri) return emptyHoverReturn;
 
         const document = this.server.getTextDocuments().get(documentUri);
@@ -59,7 +60,7 @@ export class HoverProvider implements IHoverProvider {
     public getHoverItem(
         syntaxItemName: string,
         sqfItems: Map<string, CompiledSQFItem>
-    ): Hover | undefined {
+    ): ISqfHover | undefined {
         const syntaxItem: CompiledSQFItem | undefined = sqfItems.get(
             syntaxItemName.toLowerCase()
         );
@@ -70,7 +71,7 @@ export class HoverProvider implements IHoverProvider {
             DocumentationType.HoverItem
         );
 
-        const hoverItem: Hover = {
+        const hoverItem: ISqfHover = {
             contents: contents,
         };
         return hoverItem;

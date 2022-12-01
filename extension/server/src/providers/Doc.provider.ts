@@ -1,5 +1,3 @@
-import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
-
 import {
     CompiledSQFItem,
     isSQFArray,
@@ -14,7 +12,7 @@ import {
     SQFSyntaxType,
     SQFSyntaxTypes,
 } from "../../../../configuration/grammars/sqf.namespace";
-import { IDocProvider, DocumentationType } from "../types/providers.types";
+import { IDocProvider, DocumentationType, ISqfMarkupContent, SqfMarkupKind } from "../types/providers.types";
 import { ISQFServer } from "../types/server.types";
 
 interface SQFTypeDoc {
@@ -39,7 +37,7 @@ export class DocProvider implements IDocProvider {
     public createMarkupDoc(
         sqfItem: CompiledSQFItem,
         docType: DocumentationType
-    ): MarkupContent {
+    ): ISqfMarkupContent {
         const documentation = sqfItem.documentation;
         const syntaxes = this.parseSQFSyntaxes(
             sqfItem.grammarType,
@@ -55,14 +53,14 @@ export class DocProvider implements IDocProvider {
         const argument = sqfItem.argument;
         const effect = sqfItem.effect;
         const serverExcuted = sqfItem.server;
-
-        const markupKind: MarkupKind = documentation.kind;
+		// TODO: make sure that parsed documentation has type of SqfMarkupKind
+        const markupKind: SqfMarkupKind = documentation.kind as SqfMarkupKind;
         let docValue = "";
         let docLinkFormatted: string;
         let docArray: string[] = [];
         switch (docType) {
             case DocumentationType.CompletionItem: {
-                if (markupKind === MarkupKind.PlainText) {
+                if (markupKind === SqfMarkupKind.PlainText) {
                     docArray = [...syntaxes, documentation.value];
                     docLinkFormatted = `Link To Documenation: ${documentationLink}`;
                 } else {
@@ -78,7 +76,7 @@ export class DocProvider implements IDocProvider {
                 break;
             }
             case DocumentationType.HoverItem: {
-                if (markupKind === MarkupKind.PlainText) {
+                if (markupKind === SqfMarkupKind.PlainText) {
                     const syntaxSections = syntaxes.join("\n ___ \n");
                     docArray = [syntaxSections, documentation.value];
                     docLinkFormatted = `Link To Documenation: ${documentationLink}`;

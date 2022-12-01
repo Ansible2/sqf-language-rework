@@ -3,6 +3,8 @@ import {
     CompletionList,
     CompletionParams,
     createConnection,
+    Hover,
+    HoverParams,
     InitializeParams,
     InitializeResult,
     ProposedFeatures,
@@ -52,7 +54,14 @@ export class NodeSQFServer implements ISQFServer {
         // Also include all preview / proposed LSP features.
         this.connection.onInitialize(this.initializeConnection.bind(this));
         this.connection.onHover(
-            this.hoverProvider.onHover.bind(this.hoverProvider)
+            this.hoverProvider.onHover.bind(
+                this.hoverProvider
+            ) as ServerRequestHandler<
+                HoverParams,
+                Hover | null | undefined,
+                never,
+                void
+            >
         );
 
         this.connection.onCompletion(
