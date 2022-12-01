@@ -6,6 +6,7 @@ import {
     InitializeParams,
     InitializeResult,
     ProposedFeatures,
+    RequestHandler,
     ServerRequestHandler,
     TextDocuments,
     TextDocumentSyncKind,
@@ -69,7 +70,13 @@ export class NodeSQFServer implements ISQFServer {
         if (completionResolver) {
             this.hasCompletionResolver = true;
             this.connection.onCompletionResolve(
-                completionResolver.bind(this.completionProvider)
+                completionResolver.bind(
+                    this.completionProvider
+                ) as unknown as RequestHandler<
+                    CompletionItem,
+                    CompletionItem,
+                    void
+                >
             );
         }
 

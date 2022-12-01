@@ -1,7 +1,3 @@
-import {
-    CancellationToken,
-    CompletionItem,
-} from "vscode-languageserver/node";
 import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
@@ -9,6 +5,7 @@ import {
     ICompletionParams,
     ICompletionProvider,
     IDocProvider,
+	ISqfCompletionItem,
 } from "../types/providers.types";
 import { ISQFServer } from "../types/server.types";
 
@@ -16,8 +13,8 @@ export class CompletionProvider implements ICompletionProvider {
     private readonly server: ISQFServer;
     private readonly docProvider: IDocProvider;
     private wasTriggeredByHash: boolean;
-    private completionItems: CompletionItem[] = [];
-    private hashtagCompletionItems: CompletionItem[] = [];
+    private completionItems: ISqfCompletionItem[] = [];
+    private hashtagCompletionItems: ISqfCompletionItem[] = [];
 
     constructor(server: ISQFServer) {
         this.server = server;
@@ -30,7 +27,7 @@ export class CompletionProvider implements ICompletionProvider {
         params: ICompletionParams
         // token: CancellationToken,
         // workDoneProgress: WorkDoneProgressReporter
-    ): CompletionItem[] {
+    ): ISqfCompletionItem[] {
         if (params.context?.triggerCharacter === "#") {
             this.wasTriggeredByHash = true;
             return this.hashtagCompletionItems;
@@ -89,10 +86,10 @@ export class CompletionProvider implements ICompletionProvider {
                 sqfItem,
                 DocumentationType.CompletionItem
             );
-            const completionItem: CompletionItem = {
+            const completionItem: ISqfCompletionItem = {
                 ...sqfItem,
                 documentation: docMarkup,
-            } as CompletionItem;
+            };
 
             if (completionItem.label.startsWith("#")) {
                 // items with leading # (preprocessor commands) are
@@ -101,7 +98,7 @@ export class CompletionProvider implements ICompletionProvider {
                     1,
                     completionItem.label.length
                 );
-                const item: CompletionItem = {
+                const item: ISqfCompletionItem = {
                     ...completionItem,
                     filterText: labelWithoutHashtag,
                     insertText: labelWithoutHashtag,

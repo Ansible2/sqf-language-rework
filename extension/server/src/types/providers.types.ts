@@ -1,11 +1,8 @@
 import {
     CancellationToken,
-    CompletionItem,
-    CompletionParams,
     Hover,
     HoverParams,
     MarkupContent,
-    WorkDoneProgressReporter,
     _Connection,
 } from "vscode-languageserver/node";
 
@@ -38,11 +35,15 @@ export interface ICompletionParams {
     position: IDocumentPosition;
 }
 
+export interface ISqfCompletionItem extends CompiledSQFItem {
+	filterText?: string,
+	insertText?: string,
+}
+
 export interface ICompletionProvider {
-	// TODO: replace CompletionItem[] return type with a generic
-    onCompletion(params: ICompletionParams): CompletionItem[];
+    onCompletion(params: ICompletionParams): ISqfCompletionItem[];
     onCompletionResolve?(
-        completionItem: CompletionItem,
+        completionItem: ISqfCompletionItem,
         token: CancellationToken
-    ): CompletionItem;
+    ): ISqfCompletionItem;
 }
