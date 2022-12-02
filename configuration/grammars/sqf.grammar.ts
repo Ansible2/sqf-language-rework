@@ -249,7 +249,7 @@ const grammarRepo: IRawRepository = {
         name: "constant.language.null.sqf",
     },
 	"numeric-literal": {
-		match: "\\b\\d+\\b",
+		match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}|\\.)\\d+(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
 		name: "constant.numeric.sqf",
 	},
 	"reserved-literal": {
