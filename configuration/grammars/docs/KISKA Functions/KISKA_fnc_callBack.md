@@ -1,5 +1,5 @@
 #### Description:
-Standerdizes a meanes of passing a callback function to another function along with custom arguments.
+Standerdizes a means of passing a callback function to another function along with custom arguments.
 
 #### Parameters:
 0: **_defaultArgs** *(ARRAY)* - Default arguements. These would be what a functionwriter would put inside of their code as arguements that will always be passedin the _this magic variable

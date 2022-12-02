@@ -1,5 +1,5 @@
 #### Description:
-Picks the most specific unitTypes property from a list of configs.
+Picks the most specific value from a list of configs properties to check.
 
 #### Parameters:
 0: **_property** *(STRING)* - The config property to search for in all of the classes

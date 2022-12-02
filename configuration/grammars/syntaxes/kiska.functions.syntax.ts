@@ -8,7 +8,7 @@ import {
     SQFArray,
     SQFCode,
     SQFEffect,
-	SQFCompletionItemTag,
+    SQFCompletionItemTag,
 } from "../sqf.namespace";
 
 const kiskaCallbackType = [
@@ -117,10 +117,10 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-			leftOperandTypes: SQFArray.ofExactly([
-				[SQFDataType.Object, SQFDataType.Group],
-				SQFDataType.Boolean,
-			]),
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Object, SQFDataType.Group],
+                SQFDataType.Boolean,
+            ]),
         },
     },
     KISKA_fnc_AAAZone: {
@@ -2370,7 +2370,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                             SQFDataType.Number,
                             [SQFDataType.Color, SQFDataType.ColorAlpha],
                         ]),
-						SQFArrayComparator.OneOf
+                        SQFArrayComparator.OneOf
                     ),
                 ],
                 SQFDataType.Number,
@@ -3080,6 +3080,17 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
         effect: SQFEffect.LOCAL,
+    },
+    KISKA_fnc_exportLoadouts: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.String,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Object, SQFArray.of(SQFDataType.Object)],
+                SQFDataType.Boolean,
+            ]),
+        },
     },
 };
 

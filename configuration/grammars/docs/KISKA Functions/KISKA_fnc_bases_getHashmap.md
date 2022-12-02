@@ -1,8 +1,8 @@
 #### Description:
-Returns a KISKA bases' hashmap data and initializes it did not exist.
+Returns a KISKA bases' hashmap spawn data or initializes if it did not exist.
 
 #### Parameters:
-0: **_baseConfig** *(CONFIG)* - The config path of the base config
+0: **_baseConfig** *(CONFIG or STRING)* - The config path of the base config
 
 #### Returns:
 *(HASHMAP)* - a hashmap containing data about the base:
@@ -19,7 +19,7 @@ Returns a KISKA bases' hashmap data and initializes it did not exist.
 
 #### Examples:
 ```sqf
-[
+private _mapOfDataForSpecificBase = [
     "SomeBaseConfig"
 ] call KISKA_fnc_bases_getHashmap;
 ```

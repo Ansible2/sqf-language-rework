@@ -2,7 +2,7 @@
 On selected objects, will disable simulation and hide the object or the reverse.
 
 #### Parameters:
-0: **_objects** *(ARRAY, GROUP, or OBJECT)* - Units to show or hide
+0: **_objects** *(ARRAY, GROUP, STRING, or OBJECT)* - Units to show or hide, if string, it is a mission layer
 
 1: **_show** *(BOOL)* - True to show and simulate, false to hide and disable simulation
 
