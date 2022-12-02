@@ -21948,7 +21948,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Boolean,
             rightOperandTypes: SQFDataType.Boolean,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     "!=": {
         syntaxes: {
@@ -21985,7 +21985,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Boolean,
             ],
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     environmentVolume: {
         syntaxes: {
@@ -22021,7 +22021,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     "<=": {
         syntaxes: {
@@ -22030,7 +22030,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     ">": {
         syntaxes: {
@@ -22039,7 +22039,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     "^": {
         syntaxes: {
@@ -22048,7 +22048,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     removeAllBinocularItems: {
         syntaxes: {
@@ -23106,7 +23106,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     moveTarget: {
         syntaxes: {
@@ -23156,7 +23156,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Any,
             rightOperandTypes: SQFDataType.Any,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     ">>": {
         syntaxes: {
@@ -23165,7 +23165,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Config,
             rightOperandTypes: SQFDataType.String,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     ":": {
         syntaxes: {
@@ -23183,7 +23183,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     add3DENEventHandler: {
         syntaxes: {
@@ -23307,7 +23307,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Boolean,
             ],
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     ">=": {
         syntaxes: {
@@ -23316,7 +23316,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Number,
             rightOperandTypes: SQFDataType.Number,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     "||": {
         syntaxes: {
@@ -23325,7 +23325,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFDataType.Boolean,
             rightOperandTypes: SQFDataType.Boolean,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ComparisonOperator,
     },
     "+": {
         syntaxes: [
@@ -23363,7 +23363,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 rightOperandTypes: SQFDataType.HashMap,
             },
         ],
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     "-": {
         syntaxes: [
@@ -23385,7 +23385,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 rightOperandTypes: SQFDataType.Array,
             },
         ],
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ManipulativeOperator,
     },
     weaponReloadingTime: {
         syntaxes: {
