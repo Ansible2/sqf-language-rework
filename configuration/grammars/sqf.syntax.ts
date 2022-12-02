@@ -3,8 +3,8 @@ import {
     CompiledSQFItem,
     PreCompiledSQFItem,
     SQFGrammarType,
-	SQFCompletionItemKind,
-	SQFMarkupContent,
+    SQFCompletionItemKind,
+    SQFMarkupContent,
 } from "./sqf.namespace";
 import { binFunctionSyntaxes } from "./syntaxes/bin.functions.syntax";
 import { bisFunctionSyntaxes } from "./syntaxes/bis.functions.syntax";
@@ -25,7 +25,7 @@ const syntaxes: IJSON<PreCompiledSQFItem>[] = [
 
 const compileDocumentation = (
     itemName: string,
-    preCompiledDoc: string | string[] | SQFMarkupContent  | undefined
+    preCompiledDoc: string | string[] | SQFMarkupContent | undefined
 ): SQFMarkupContent => {
     const compiledDocumentation: SQFMarkupContent = {
         kind: SqfMarkupKind.Markdown,
@@ -55,19 +55,25 @@ const compileDocumentation = (
     );
     if (docIsMarkdownFile) {
         try {
-			const definedPath = (preCompiledDoc as string).replace(/^\.\//,""); // get rid of leading './';
-			let relativeToDocsFolderPath: string = definedPath;
+            const definedPath = (preCompiledDoc as string).replace(/^\.\//, ""); // get rid of leading './';
+            let relativeToDocsFolderPath: string = definedPath;
 
-			const isFullFilePath = (preCompiledDoc as string).endsWith(".md");
-			if (!isFullFilePath) {
-				relativeToDocsFolderPath = path.normalize(`${definedPath}/${itemName}.md`);
-			}
-			
-            const markdownAsString = (docsAsJson as IJSON<string>)[relativeToDocsFolderPath];
-			if (!markdownAsString) {
-				console.log(`sqf.syntax: item: [${itemName}] did not have docs in docsAsJson with key: [${relativeToDocsFolderPath}]`);
-				throw "";
-			}
+            const isFullFilePath = (preCompiledDoc as string).endsWith(".md");
+            if (!isFullFilePath) {
+                relativeToDocsFolderPath = path.normalize(
+                    `${definedPath}/${itemName}.md`
+                );
+            }
+
+            const markdownAsString = (docsAsJson as IJSON<string>)[
+                relativeToDocsFolderPath
+            ];
+            if (!markdownAsString) {
+                console.log(
+                    `sqf.syntax: item: [${itemName}] did not have docs in docsAsJson with key: [${relativeToDocsFolderPath}]`
+                );
+                throw "";
+            }
 
             compiledDocumentation.value = markdownAsString;
         } catch (error) {
