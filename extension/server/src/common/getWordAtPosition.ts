@@ -1,31 +1,31 @@
 import {
-    Position,
-    Range,
-    TextDocument,
-} from "vscode-languageserver-textdocument";
+    IDocumentPosition,
+    IDocumentRange,
+    ITextDocument,
+} from "../types/textDocument.types";
 
 export interface SQFWord {
-    document: TextDocument;
-    rangeOfParsedWord: Range;
+    document: ITextDocument;
+    rangeOfParsedWord: IDocumentRange;
     parsedWord: string;
     startingChar: string;
     startingIndex: number;
-	leadingHash: boolean;
+    leadingHash: boolean;
 }
 
 export function getWordAtPosition(
-    document: TextDocument,
-    startPosition: Position
+    document: ITextDocument,
+    startPosition: IDocumentPosition
 ): SQFWord | null {
     const hoveredLineNumber: number = startPosition.line;
     // this will get the whole range from the first character of
     /// the line being hovered on to the first character (non-inclusive)
     /// of the next line down (hence hoveredLineNumber + 1)
-    const hoveredLineStartingPosition: Position = {
+    const hoveredLineStartingPosition: IDocumentPosition = {
         line: hoveredLineNumber,
         character: 0,
     };
-    const fullRangeOfLineBeingHovered: Range = {
+    const fullRangeOfLineBeingHovered: IDocumentRange = {
         start: hoveredLineStartingPosition,
         end: {
             line: hoveredLineNumber + 1,
@@ -34,17 +34,12 @@ export function getWordAtPosition(
     };
 
     const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
-    console.log("text start...");
-    console.log(textOnLineHovered);
-    console.log("text end...");
-
-    const startingIndex = startPosition.character;
+     const startingIndex = startPosition.character;
     const startingChar = textOnLineHovered.charAt(startingIndex);
 
     const isNonWordChar = new RegExp(/\W/);
     const isWordChar = new RegExp(/\w/);
     if (isNonWordChar.test(startingChar)) {
-        console.log("whitespace");
         return null;
     }
 
@@ -77,28 +72,27 @@ export function getWordAtPosition(
     const startsWithNumberRegex = new RegExp(/^\d/);
     if (startsWithNumberRegex.test(word)) {
         console.log("Parsed word is a number/or invalid");
-		return null;
+        return null;
     }
 
-	const sqfWord = {
-		// used for figuring out whether something is a macro or # as in "select" command
-		leadingHash: textOnLineHovered[indexOfFirstChar - 1] === "#",
-		document: document,
-		rangeOfParsedWord: {
-			start: {
-				line: startPosition.line,
-				character: indexOfFirstChar
-			},
-			end: {
-				line: startPosition.line,
-				character: indexOfLastChar
-			}
-		},
-		parsedWord: word,
-		startingIndex: startingIndex,
-		startingChar: startingChar,
-	};
-	
+    const sqfWord = {
+        // used for figuring out whether something is a macro or # as in "select" command
+        leadingHash: textOnLineHovered[indexOfFirstChar - 1] === "#",
+        document: document,
+        rangeOfParsedWord: {
+            start: {
+                line: startPosition.line,
+                character: indexOfFirstChar,
+            },
+            end: {
+                line: startPosition.line,
+                character: indexOfLastChar,
+            },
+        },
+        parsedWord: word,
+        startingIndex: startingIndex,
+        startingChar: startingChar,
+    };
 
-    return sqfWord
+    return sqfWord;
 }

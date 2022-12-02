@@ -1,6 +1,3 @@
-import { DocumentationType, IDocProvider, ISQFServer } from "./server.types";
-import { MarkupContent, MarkupKind } from "vscode-languageserver/node";
-
 import {
     CompiledSQFItem,
     isSQFArray,
@@ -11,10 +8,17 @@ import {
     SQFCode,
     SQFDataType,
     SQFGrammarType,
+    SQFMarkupContent,
     SQFSyntax,
     SQFSyntaxType,
     SQFSyntaxTypes,
-} from "../../../configuration/grammars/sqf.namespace";
+} from "../../../../configuration/grammars/sqf.namespace";
+import {
+    IDocProvider,
+    DocumentationType,
+    SqfMarkupKind,
+} from "../types/providers.types";
+import { ISQFServer } from "../types/server.types";
 
 interface SQFTypeDoc {
     rightEnclose?: string;
@@ -38,7 +42,7 @@ export class DocProvider implements IDocProvider {
     public createMarkupDoc(
         sqfItem: CompiledSQFItem,
         docType: DocumentationType
-    ): MarkupContent {
+    ): SQFMarkupContent {
         const documentation = sqfItem.documentation;
         const syntaxes = this.parseSQFSyntaxes(
             sqfItem.grammarType,
@@ -54,14 +58,13 @@ export class DocProvider implements IDocProvider {
         const argument = sqfItem.argument;
         const effect = sqfItem.effect;
         const serverExcuted = sqfItem.server;
-
-        const markupKind: MarkupKind = documentation.kind;
+        const markupKind: SqfMarkupKind = documentation.kind as SqfMarkupKind;
         let docValue = "";
         let docLinkFormatted: string;
         let docArray: string[] = [];
         switch (docType) {
             case DocumentationType.CompletionItem: {
-                if (markupKind === MarkupKind.PlainText) {
+                if (markupKind === SqfMarkupKind.PlainText) {
                     docArray = [...syntaxes, documentation.value];
                     docLinkFormatted = `Link To Documenation: ${documentationLink}`;
                 } else {
@@ -77,7 +80,7 @@ export class DocProvider implements IDocProvider {
                 break;
             }
             case DocumentationType.HoverItem: {
-                if (markupKind === MarkupKind.PlainText) {
+                if (markupKind === SqfMarkupKind.PlainText) {
                     const syntaxSections = syntaxes.join("\n ___ \n");
                     docArray = [syntaxSections, documentation.value];
                     docLinkFormatted = `Link To Documenation: ${documentationLink}`;
@@ -199,10 +202,10 @@ export class DocProvider implements IDocProvider {
 		parseSyntaxReturnOrOperands
 	---------------------------------------------------------------------------- */
     private parseSyntaxReturnOrOperands(
-        operator: undefined | SQFSyntaxTypes,
+        operator: undefined | SQFSyntaxTypes
     ): string {
         if (!operator) return "";
-		// TODO: add formatting
+        // TODO: add formatting
         const doc = DocProvider.convertToSQFTypeDoc(operator);
         const docAsString = DocProvider.converySQFTypeDocToString(doc);
         return docAsString;
@@ -235,7 +238,9 @@ export class DocProvider implements IDocProvider {
 
         // can return a array of datatypes
         if (Array.isArray(type)) {
-            doc.subDocs = type.map((subType) => DocProvider.convertToSQFTypeDoc(subType,currentLevel));
+            doc.subDocs = type.map((subType) =>
+                DocProvider.convertToSQFTypeDoc(subType, currentLevel)
+            );
             doc.subDocSeperator = " | ";
             doc.rightEnclose = ")";
             doc.leftEnclose = "(";
@@ -248,7 +253,7 @@ export class DocProvider implements IDocProvider {
         }
 
         if (isSQFCode(type)) {
-        	doc = DocProvider.convertSQFCodeToDoc(type,currentLevel);
+            doc = DocProvider.convertSQFCodeToDoc(type, currentLevel);
         }
 
         return doc;
@@ -295,19 +300,21 @@ export class DocProvider implements IDocProvider {
         };
 
         const typesIsArray = Array.isArray(types);
-		let rawDoc: string;
+        let rawDoc: string;
         if (typesIsArray) {
-            doc.subDocs = types.map((type) => DocProvider.convertToSQFTypeDoc(type,currentLevel));
+            doc.subDocs = types.map((type) =>
+                DocProvider.convertToSQFTypeDoc(type, currentLevel)
+            );
             rawDoc = DocProvider.converySQFTypeDocToString(doc);
         } else {
             const singleSubDoc = DocProvider.convertToSQFTypeDoc(
                 types,
                 currentLevel
             );
-			rawDoc = DocProvider.converySQFTypeDocToString(singleSubDoc);
+            rawDoc = DocProvider.converySQFTypeDocToString(singleSubDoc);
         }
 
-		doc.raw = rawDoc;
+        doc.raw = rawDoc;
 
         switch (arrayOperation) {
             case SQFArrayComparator.Exact: {
@@ -339,29 +346,38 @@ export class DocProvider implements IDocProvider {
     /* ----------------------------------------------------------------------------
 		convertSQFCodeToDoc
 	---------------------------------------------------------------------------- */
-    private static convertSQFCodeToDoc(sqfCode: SQFCode, currentLevel: number = -1): SQFTypeDoc {
-		const mainDoc: SQFTypeDoc = {
+    private static convertSQFCodeToDoc(
+        sqfCode: SQFCode,
+        currentLevel: number = -1
+    ): SQFTypeDoc {
+        const mainDoc: SQFTypeDoc = {
             raw: "",
             subLevel: currentLevel,
             isSubDoc: currentLevel > 0,
-			subDocSeperator: " -> ",
-			subDocs: [],
+            subDocSeperator: " -> ",
+            subDocs: [],
         };
 
-		if (sqfCode.params) {
-			const paramsDoc = DocProvider.convertToSQFTypeDoc(sqfCode.params,currentLevel);
-			paramsDoc.raw = DocProvider.converySQFTypeDocToString(paramsDoc);
-			paramsDoc.leftEnclose = "(";
-			paramsDoc.rightEnclose = ")";
-			mainDoc.subDocs?.push(paramsDoc);
-		}
-		
-		const returnsDoc = DocProvider.convertToSQFTypeDoc(sqfCode.codeReturnTypes,currentLevel);
-		returnsDoc.raw = DocProvider.converySQFTypeDocToString(returnsDoc);
-		returnsDoc.leftEnclose = "{";
-		returnsDoc.rightEnclose = "}";
-		mainDoc.subDocs?.push(returnsDoc);
-	
-		return mainDoc;
+        if (sqfCode.params) {
+            const paramsDoc = DocProvider.convertToSQFTypeDoc(
+                sqfCode.params,
+                currentLevel
+            );
+            paramsDoc.raw = DocProvider.converySQFTypeDocToString(paramsDoc);
+            paramsDoc.leftEnclose = "(";
+            paramsDoc.rightEnclose = ")";
+            mainDoc.subDocs?.push(paramsDoc);
+        }
+
+        const returnsDoc = DocProvider.convertToSQFTypeDoc(
+            sqfCode.codeReturnTypes,
+            currentLevel
+        );
+        returnsDoc.raw = DocProvider.converySQFTypeDocToString(returnsDoc);
+        returnsDoc.leftEnclose = "{";
+        returnsDoc.rightEnclose = "}";
+        mainDoc.subDocs?.push(returnsDoc);
+
+        return mainDoc;
     }
 }

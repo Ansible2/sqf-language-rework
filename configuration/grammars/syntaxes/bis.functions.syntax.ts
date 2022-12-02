@@ -1,8 +1,4 @@
 import {
-    CompletionItemKind,
-    CompletionItemTag,
-} from "vscode-languageserver/node";
-import {
     SQFGrammarType,
     IJSON,
     PreCompiledSQFItem,
@@ -15211,21 +15207,3 @@ Object.keys(bisFunctionSyntaxes).forEach((command: string) => {
         item.getDocLink = getBISWikiLink;
     }
 });
-
-// export const bisFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
-// 	BIS_fnc_pow: {
-//         documentation: bisFunctionsFolder,
-//         getDocLink: getBISWikiLink,
-//         grammarType: SQFGrammarType.Function,
-//         kind: CompletionItemKind.Function,
-//         tags: [CompletionItemTag.Deprecated],
-//         syntaxes: {
-//             returnTypes: SQFDataType.Number,
-//             leftOperandTypes: {
-//                 types: [SQFDataType.Number, SQFDataType.Number],
-//                 operation: SQFArrayComparator.Exact,
-//             },
-//             type: SQFSyntaxType.UnscheduledFunction,
-//         },
-//     },
-// };

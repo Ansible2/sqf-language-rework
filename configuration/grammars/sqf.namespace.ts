@@ -1,9 +1,3 @@
-import {
-    CompletionItemKind,
-    CompletionItemTag,
-    MarkupContent,
-} from "vscode-languageserver/node";
-
 export enum SQFGrammarType {
     Function = "function",
     AccessModifier = "access-modifier",
@@ -149,29 +143,6 @@ export class SQFCode {
         return this;
     }
 }
-// export namespace SQFCode {
-//     function returns(
-//         returnTypes: SQFSyntaxTypes
-//     ): SQFCode {
-//         return new SQFCode(returnTypes);
-//     }
-//     function takes(
-//         returnTypes: SQFSyntaxTypes
-//     ): SQFCode {
-//         return new SQFCode(returnTypes);
-//     }
-
-//     // function takes(
-//     //     params: SQFSyntaxTypes
-//     // ): SQFCode {
-// 	// 	if (!this) { }
-//     //     return {
-// 	// 		,
-//     //         params: params,
-//     //     };
-//     // }
-// }
-
 export enum SQFSyntaxType {
     UnscheduledFunction = 0,
     NularOperator = 1,
@@ -190,9 +161,9 @@ export function isSQFCode(object: unknown): object is SQFCode {
     return Object.prototype.hasOwnProperty.call(object, "codeReturnTypes");
 }
 
+const sqfDataTypeValues: SQFDataType[] = Object.values(SQFDataType);
 export function isSqfDataType(object: unknown): object is string {
-    const dataTypes: SQFDataType[] = Object.values(SQFDataType);
-    return dataTypes.includes(object as SQFDataType);
+    return sqfDataTypeValues.includes(object as SQFDataType);
 }
 
 export enum SQFArrayComparator {
@@ -246,6 +217,45 @@ export enum SQFArgument {
     GLOBAL = "Global Argument",
 }
 
+export enum SQFCompletionItemKind {
+    Text = 1,
+    Method = 2,
+    Function = 3,
+    Constructor = 4,
+    Field = 5,
+    Variable = 6,
+    Class = 7,
+    Interface = 8,
+    Module = 9,
+    Property = 10,
+    Unit = 11,
+    Value = 12,
+    Enum = 13,
+    Keyword = 14,
+    Snippet = 15,
+    Color = 16,
+    File = 17,
+    Reference = 18,
+    Folder = 19,
+    EnumMember = 20,
+    Constant = 21,
+    Struct = 22,
+    Event = 23,
+    Operator = 24,
+    TypeParameter = 25,
+}
+
+
+export interface SQFMarkupContent {
+    kind: string;
+    value: string;
+}
+
+
+export enum SQFCompletionItemTag {
+    Deprecated = 1,
+}
+
 interface SQFItem {
     labelDetails?: {
         detail: string;
@@ -253,9 +263,9 @@ interface SQFItem {
     };
     grammarType: SQFGrammarType;
     data?: any;
-    tags?: CompletionItemTag[];
+    tags?: SQFCompletionItemTag[];
     syntaxes: SQFSyntax[] | SQFSyntax;
-    kind?: CompletionItemKind;
+    kind?: SQFCompletionItemKind;
     effect?: SQFEffect;
     argument?: SQFArgument;
     server?: boolean;
@@ -268,14 +278,14 @@ export interface CompiledSQFItem extends SQFItem {
     // a label is created when compiled so that the key can
     // be made lowercase
     label: string;
-    documentation: MarkupContent;
+    documentation: SQFMarkupContent;
     detail?: string; // detail should probably be avoided
-    kind: CompletionItemKind;
+    kind: SQFCompletionItemKind;
 }
 
 export interface PreCompiledSQFItem extends SQFItem {
     label?: string;
-    documentation?: string | string[] | MarkupContent;
+    documentation?: string | string[] | SQFMarkupContent;
     detail?: string; // detail should probably be avoided
 }
 

@@ -1,8 +1,4 @@
 import {
-    CompletionItemKind,
-    CompletionItemTag,
-} from "vscode-languageserver/node";
-import {
     SQFGrammarType,
     IJSON,
     PreCompiledSQFItem,
@@ -12,6 +8,7 @@ import {
     SQFArray,
     SQFCode,
     SQFEffect,
+	SQFCompletionItemTag,
 } from "../sqf.namespace";
 
 const kiskaCallbackType = [
@@ -1514,7 +1511,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     },
     KISKA_fnc_arsenalSupplyDrop: {
         grammarType: SQFGrammarType.Function,
-        tags: [CompletionItemTag.Deprecated],
+        tags: [SQFCompletionItemTag.Deprecated],
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
