@@ -25,8 +25,6 @@ export class CompletionProvider implements ICompletionProvider {
 
     onCompletion(
         params: ICompletionParams
-        // token: CancellationToken,
-        // workDoneProgress: WorkDoneProgressReporter
     ): ISqfCompletionItem[] {
         if (params.context?.triggerCharacter === "#") {
             this.wasTriggeredByHash = true;
@@ -56,21 +54,6 @@ export class CompletionProvider implements ICompletionProvider {
 
         return this.completionItems;
     }
-
-    /* ----------------------------------------------------------------------------
-		onCompletionResolve
-	---------------------------------------------------------------------------- */
-    // onCompletionResolve(
-    //     completionItem: CompletionItem,
-    //     token: CancellationToken
-    // ): CompletionItem {
-    //     completionItem.documentation = this.docProvider.createMarkupDoc(
-    //         completionItem as unknown as CompiledSQFItem,
-    //         DocumentationType.CompletionItem
-    //     );
-
-    //     return completionItem;
-    // }
 
     /* ----------------------------------------------------------------------------
 		loadCompletionItems
