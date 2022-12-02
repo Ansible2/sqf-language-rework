@@ -31,17 +31,7 @@ export class HoverProvider implements IHoverProvider {
         const sqfWord = getWordAtPosition(document, params.position);
         if (!sqfWord) return emptyHoverReturn;
 
-        if (sqfWord) {
-            console.log("sqfWord:");
-            console.log("parsedWord:", sqfWord.parsedWord);
-            console.log("rangeOfParsedWord:", sqfWord.rangeOfParsedWord);
-            console.log("startingChar:", sqfWord.startingChar);
-            console.log("startingIndex:", sqfWord.startingIndex);
-            console.log("leadingHash:", sqfWord.leadingHash);
-        }
-
         const sqfItems = this.server.getSQFItemMap();
-
         let word = sqfWord.parsedWord;
         const possibleMacroWord = `#${sqfWord.parsedWord}`;
         if (sqfWord.leadingHash && sqfItems.has(possibleMacroWord)) {
