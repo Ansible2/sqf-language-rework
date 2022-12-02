@@ -58,7 +58,6 @@ export class DocProvider implements IDocProvider {
         const argument = sqfItem.argument;
         const effect = sqfItem.effect;
         const serverExcuted = sqfItem.server;
-        // TODO: make sure that parsed documentation has type of SqfMarkupKind
         const markupKind: SqfMarkupKind = documentation.kind as SqfMarkupKind;
         let docValue = "";
         let docLinkFormatted: string;
