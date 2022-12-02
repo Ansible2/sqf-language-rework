@@ -5,8 +5,8 @@ import {
     IHoverProvider,
     IDocProvider,
     DocumentationType,
-	ISqfHover,
-	ISqfHoverParams,
+    ISqfHover,
+    ISqfHoverParams,
 } from "../types/providers.types";
 
 export class HoverProvider implements IHoverProvider {
