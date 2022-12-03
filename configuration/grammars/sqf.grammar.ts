@@ -249,6 +249,7 @@ const grammarRepo: IRawRepository = {
         name: "constant.language.null.sqf",
     },
 	"numeric-literal": {
+		// TODO seperate if possible
 		match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
 		name: "constant.numeric.sqf",
 	},
@@ -357,7 +358,9 @@ const grammarRepo: IRawRepository = {
             .concat("{")
             .join("|")})`,
         beginCaptures: {
-            "1": { name: "support.function.sqf" },
+			// TODO: the lack of concretes here (regex without *)
+			// seems to be causing w* to be used over other things
+            // "1": { name: "support.function.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
             "5": { name: "keyword.control.compileString.sqf" },
         },
