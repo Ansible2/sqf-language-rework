@@ -142,6 +142,7 @@ const grammarRepo: IRawRepository = {
             { include: "#assignment-operator" },
             { include: "#control-statement" },
             { include: "#file-compiler" },
+            { include: "#string-compiler" },
             { include: "#fnc-file-execution" },
             { include: "#declaration" },
             { include: "#statements" },
@@ -189,6 +190,10 @@ const grammarRepo: IRawRepository = {
     "file-compiler": {
         match: getSingleWordRegex(fileCompilers),
         name: "keyword.control.fileCompiler.sqf",
+    },
+    "string-compiler": {
+        match: getSingleWordRegex(stringCompilerWords),
+        name: "keyword.control.compileString.sqf",
     },
     /* ------------------------------------
 		comment
@@ -341,7 +346,7 @@ const grammarRepo: IRawRepository = {
         },
         end: " |;|{|}|\t|=|(|)|[|]", // TODO: check if needed
         endCaptures: { "1": { name: "meta.brace.curly.sqf" } }, // TODO: check if needed
-        name: "meta.declaration.object.sqf",
+        name: "meta.declaration.variable.global.sqf",
     },
     "var-declaration-local": {
         begin: "(?i)\\b(_+\\w+)(\\s*)(=)",
@@ -351,22 +356,22 @@ const grammarRepo: IRawRepository = {
         },
         end: " |;|{|}|\t|=|(|)|[|]", // TODO: check if needed
         endCaptures: { "1": { name: "meta.brace.curly.sqf" } }, // TODO: check if needed
-        name: "meta.declaration.object.sqf",
+        name: "meta.declaration.variable.local.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w*)(\\s*)(=*)(\\s*)(${stringCompilerWords
+        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords
             .concat("{")
             .join("|")})`,
         beginCaptures: {
 			// TODO: the lack of concretes here (regex without *)
 			// seems to be causing w* to be used over other things
-            // "1": { name: "support.function.sqf" },
+            "1": { name: "support.function.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
             "5": { name: "keyword.control.compileString.sqf" },
         },
         end: " |;|{|}|\t", // TODO: check if needed
         endCaptures: { "1": { name: "meta.brace.curly.sqf" } },
-        name: "meta.declaration.object.sqf",
+        name: "meta.declaration.function.sqf",
     },
     "fnc-execute": {
         begin: `(\\s*)(${codeExecutors.join('|')})(\\s+)(\\w+|{)`, // TODO: check if s+ is needed
@@ -376,7 +381,7 @@ const grammarRepo: IRawRepository = {
         },
         end: " |;|{|}|(|)",
         endCaptures: { "1": { name: "keyword.operator.sqf" } },
-        name: "meta.declaration.object.sqf",
+        name: "meta.declaration.function.execute.sqf",
     },
 
     /* ----------------------------------------------------------------------------
