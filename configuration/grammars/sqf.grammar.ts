@@ -1,4 +1,7 @@
-import { IRawGrammar, IRawRepository } from "vscode-textmate/release/rawGrammar";
+import {
+    IRawGrammar,
+    IRawRepository,
+} from "vscode-textmate/release/rawGrammar";
 import { CompiledSQFItem, SQFGrammarType } from "./sqf.namespace";
 import { getSqfItems } from "./sqf.syntax";
 
@@ -21,9 +24,9 @@ const preprocessorCommands: string[] = [];
 const namespaceLiterals: string[] = [];
 
 const sqfItems: Map<string, CompiledSQFItem> = getSqfItems();
-sqfItems.forEach((sqfItem,itemName) => {
-	// format things like (!, #, +, |, etc...) as literals
-	itemName = itemName.replace(/(\W)/g,"\\$1");
+sqfItems.forEach((sqfItem, itemName) => {
+    // format things like (!, #, +, |, etc...) as literals
+    itemName = itemName.replace(/(\W)/g, "\\$1");
 
     switch (sqfItem.grammarType) {
         case SQFGrammarType.AccessModifier: {
@@ -130,9 +133,9 @@ const grammarRepo: IRawRepository = {
     expression: {
         name: "meta.expression.sqf",
         patterns: [
-			{ include: "#comment" },
+            { include: "#comment" },
             { include: "#string" },
-			{ include: "#preprocessor-commands" },
+            { include: "#preprocessor-commands" },
             { include: "#literal" },
             { include: "#paren-expression" },
             { include: "#other" },
@@ -164,13 +167,13 @@ const grammarRepo: IRawRepository = {
         name: "meta.block.sqf",
         patterns: [{ include: "#expression" }],
     },
-	"paren-expression": {
-		begin: "\\(",
-		beginCaptures: { "0": { name: "meta.brace.paren.sqf" } },
-		end: "\\)",
-		endCaptures: { "0": { name: "meta.brace.paren.sqf" } },
-		patterns: [{ include: "#expression" }],
-	},
+    "paren-expression": {
+        begin: "\\(",
+        beginCaptures: { "0": { name: "meta.brace.paren.sqf" } },
+        end: "\\)",
+        endCaptures: { "0": { name: "meta.brace.paren.sqf" } },
+        patterns: [{ include: "#expression" }],
+    },
     "fnc-file-execution": {
         match: getSingleWordRegex(fileExecutors),
         name: "keyword.control.call.string",
@@ -253,29 +256,27 @@ const grammarRepo: IRawRepository = {
         match: getSingleWordRegex(nullLiterals),
         name: "constant.language.null.sqf",
     },
-	"numeric-literal": {
-		// TODO seperate if possible
-		match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
-		name: "constant.numeric.sqf",
-	},
-	"reserved-literal": {
-		match: getSingleWordRegex(reservedLiterals),
-		name: "variable.language.reserved.sqf",
-	},
-	
-	/* ----------------------------------------------------------------------------
+    "numeric-literal": {
+        // TODO seperate if possible
+        match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
+        name: "constant.numeric.sqf",
+    },
+    "reserved-literal": {
+        match: getSingleWordRegex(reservedLiterals),
+        name: "variable.language.reserved.sqf",
+    },
+
+    /* ----------------------------------------------------------------------------
 		preprocessor
 	---------------------------------------------------------------------------- */
-	"preprocessor-commands": {
+    "preprocessor-commands": {
         name: "meta.expression.sqf",
-        patterns: [
-			{ include: "#basic-preprocess" }, 
-		],
+        patterns: [{ include: "#basic-preprocess" }],
     },
-	"basic-preprocess": {
-		match: getSingleWordRegexSpecialStart(preprocessorCommands),
-		name: "keyword.control.preprocessor"
-	},
+    "basic-preprocess": {
+        match: getSingleWordRegexSpecialStart(preprocessorCommands),
+        name: "keyword.control.preprocessor",
+    },
 
     /* ----------------------------------------------------------------------------
 		Statements
@@ -283,20 +284,20 @@ const grammarRepo: IRawRepository = {
     statements: {
         name: "meta.expression.sqf",
         patterns: [
-			{ include: "#commands" }, 
-			{ include: "#functions" },
-			{ include: "#var-local" },
-			{ include: "#var-global" },
-		],
+            { include: "#commands" },
+            { include: "#functions" },
+            { include: "#var-local" },
+            { include: "#var-global" },
+        ],
     },
-	"var-local": {
-		match: getSingleWordRegex("\\b(_+\\w+)"),
-		name: "variable.other.local"
-	},
-	"var-global": {
-		match: getSingleWordRegex("\\b([a-z]\\w+)"),
-		name: "variable.other.global"
-	},
+    "var-local": {
+        match: getSingleWordRegex("\\b(_+\\w+)"),
+        name: "variable.other.local",
+    },
+    "var-global": {
+        match: getSingleWordRegex("\\b([a-z]\\w+)"),
+        name: "variable.other.global",
+    },
     functions: {
         match: getSingleWordRegex(functions),
         name: "variable.language.knownFunction.sqf",
@@ -363,8 +364,8 @@ const grammarRepo: IRawRepository = {
             .concat("{")
             .join("|")})`,
         beginCaptures: {
-			// TODO: the lack of concretes here (regex without *)
-			// seems to be causing w* to be used over other things
+            // TODO: the lack of concretes here (regex without *)
+            // seems to be causing w* to be used over other things
             "1": { name: "support.function.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
             "5": { name: "keyword.control.compileString.sqf" },
@@ -374,7 +375,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.function.sqf",
     },
     "fnc-execute": {
-        begin: `(\\s*)(${codeExecutors.join('|')})(\\s+)(\\w+|{)`, // TODO: check if s+ is needed
+        begin: `(\\s*)(${codeExecutors.join("|")})(\\s+)(\\w+|{)`, // TODO: check if s+ is needed
         beginCaptures: {
             "2": { name: "keyword.control.executeCode.sqf" },
             "4": { name: "support.function.sqf" },
@@ -387,30 +388,29 @@ const grammarRepo: IRawRepository = {
     /* ----------------------------------------------------------------------------
 		String
 	---------------------------------------------------------------------------- */
-	string: {
-		name: "string.sqf",
-		patterns: [
-			{ include: "#qstring-single" },
-			{ include: "#qstring-double" },
-			{ include: "#qstring-triple" },
-		],
-	},
-	"qstring-triple": {
-		begin: '\"\"\"',
-		end: '\"\"\"',
-		name: "string.triple.sqf",
-	},
-	"qstring-double": {
-		begin: '"',
-		end: '"',
-		name: "string.double.sqf",
-	},
-	"qstring-single": {
-		begin: "'",
-		end: "'",
-		name: "string.single.sqf",
-	},
-    
+    string: {
+        name: "string.sqf",
+        patterns: [
+            { include: "#qstring-single" },
+            { include: "#qstring-double" },
+            { include: "#qstring-triple" },
+        ],
+    },
+    "qstring-triple": {
+        begin: '"""',
+        end: '"""',
+        name: "string.triple.sqf",
+    },
+    "qstring-double": {
+        begin: '"',
+        end: '"',
+        name: "string.double.sqf",
+    },
+    "qstring-single": {
+        begin: "'",
+        end: "'",
+        name: "string.single.sqf",
+    },
 };
 
 export const sqfGrammar: IRawGrammar = {
