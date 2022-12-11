@@ -1513,7 +1513,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Nothing,
             rightOperandTypes: SQFDataType.String,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     allow3DMode: {
         syntaxes: {
@@ -2507,7 +2507,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 rightOperandTypes: SQFDataType.String,
             },
         ],
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     ASLToAGL: {
         syntaxes: {
@@ -21175,9 +21175,9 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
             returnTypes: SQFDataType.Any,
-            rightOperandTypes: [SQFDataType.Code, SQFDataType.Boolean],
+            rightOperandTypes: SQFCode.returns(SQFDataType.Boolean),
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     uiSleep: {
         syntaxes: {
@@ -22392,7 +22392,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Any,
             rightOperandTypes: SQFDataType.Any,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     forceUnicode: {
         syntaxes: {
@@ -22422,7 +22422,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Any,
             rightOperandTypes: SQFDataType.Any,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     getTextRaw: {
         syntaxes: {
