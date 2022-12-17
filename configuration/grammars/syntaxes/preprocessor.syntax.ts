@@ -247,30 +247,43 @@ export const preprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Number,
         },
     },
-	// TODO: These should only apply to config
-    // __EXEC: {
-    //     grammarType: SQFGrammarType.PreprocessorCommand,
-    //     syntaxes: {
-    //         type: SQFSyntaxType.UnaryOperator,
-    //         rightOperandTypes: SQFDataType.Code,
-    //     },
-    // },
-    // __EVAL: {
-    //     grammarType: SQFGrammarType.PreprocessorCommand,
-    //     syntaxes: {
-    //         type: SQFSyntaxType.UnaryOperator,
-    //         rightOperandTypes: SQFDataType.Code,
-    //         returnTypes: [
-    //             SQFDataType.Array,
-    //             SQFDataType.Number,
-    //             SQFDataType.String,
-    //         ],
-    //     },
-    // },
 };
 
 Object.keys(preprocessorSyntaxes).forEach((command: string) => {
     const item = preprocessorSyntaxes[command];
+
+    if (!item.documentation) {
+        const docFolder = "./Preprocessor Commands";
+        item.documentation = docFolder;
+    }
+});
+
+
+export const configPreprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
+    ...preprocessorSyntaxes,
+    __EXEC: {
+        grammarType: SQFGrammarType.PreprocessorCommand,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Code,
+        },
+    },
+    __EVAL: {
+        grammarType: SQFGrammarType.PreprocessorCommand,
+        syntaxes: {
+            type: SQFSyntaxType.UnaryOperator,
+            rightOperandTypes: SQFDataType.Code,
+            returnTypes: [
+                SQFDataType.Array,
+                SQFDataType.Number,
+                SQFDataType.String,
+            ],
+        },
+    },
+};
+
+Object.keys(configPreprocessorSyntaxes).forEach((command: string) => {
+    const item = configPreprocessorSyntaxes[command];
 
     if (!item.documentation) {
         const docFolder = "./Preprocessor Commands";
