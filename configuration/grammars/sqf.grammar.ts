@@ -260,7 +260,7 @@ const grammarRepo: IRawRepository = {
 	},
 	"reserved-literal": {
 		match: getSingleWordRegex(reservedLiterals),
-		name: "variable.language.reserved.sqf",
+		name: "constant.language.reserved.sqf",
 	},
 	
 	/* ----------------------------------------------------------------------------
