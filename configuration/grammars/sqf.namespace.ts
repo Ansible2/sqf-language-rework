@@ -78,7 +78,7 @@ export enum SQFDataType {
     ParticleArray = `(Particle) ARRAY`,
     Color = "(Color) NUMBER[R,G,B]",
     ColorAlpha = "(Color) NUMBER[R,G,B,A]",
-    MinMidMax = "(Min/Mid/Max) NUMBER[min,mid,max]",
+    MinMidMax = "(Random) NUMBER[min,mid,max]",
     UnitLoadout = "(Unit-Loadout) ARRAY",
 }
 
