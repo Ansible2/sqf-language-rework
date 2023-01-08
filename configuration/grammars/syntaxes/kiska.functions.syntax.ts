@@ -546,11 +546,17 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
                 [SQFDataType.Object, SQFArray.of(SQFDataType.Object)],
-                [SQFDataType.String, SQFArray.of(SQFDataType.String)],
+                [
+                    SQFDataType.HashMap,
+                    SQFDataType.String,
+                    SQFArray.of(SQFDataType.String),
+                    SQFArray.ofAnyOfThese([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                    ]),
+                ],
                 SQFDataType.Boolean,
                 SQFDataType.String,
-                SQFDataType.Number,
-                kiskaCallbackType,
                 [SQFDataType.HashMap, SQFDataType.Config],
             ]),
         },
@@ -676,8 +682,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Number,
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Group,
-                SQFDataType.Behaviour,
-                SQFDataType.Config,
+                SQFDataType.Object,
             ]),
         },
     },
@@ -2726,8 +2731,8 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group]),
+            returnTypes: [SQFDataType.Boolean,SQFDataType.Nothing],
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group,SQFDataType.Boolean]),
         },
     },
     KISKA_fnc_GCH_isOpen: {
@@ -2750,6 +2755,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Boolean,
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Group,
+                SQFDataType.Boolean,
                 SQFDataType.Boolean,
             ]),
         },
@@ -3090,6 +3096,81 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 [SQFDataType.Object, SQFArray.of(SQFDataType.Object)],
                 SQFDataType.Boolean,
             ]),
+        },
+    },
+    KISKA_fnc_ambientAnim_getAttachToLogicGroup: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group]),
+        },
+    },
+    KISKA_fnc_ambientAnim_getAttachLogicGroupsMap: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_ambientAnim_getNearestAttachLogicGroup: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Object, SQFDataType.Position2d],
+            ]),
+            returnTypes: SQFDataType.Group,
+        },
+    },
+    KISKA_fnc_ambientAnim_setStoredLoadout: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.UnitLoadout,
+            ]),
+        },
+    },
+    KISKA_fnc_bases_initReinforceFromClass: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                [SQFDataType.Group, SQFArray.of(SQFDataType.Group)],
+                SQFDataType.Config,
+            ]),
+        },
+    },
+    KISKA_fnc_GCH_doesGroupHaveAnotherPlayer: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Group
+            ]),
+            returnTypes: SQFDataType.Boolean
+        },
+    },
+    KISKA_fnc_GCH_dontExcludePlayerGroupDefault: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_initDynamicSimConfig: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_resetMove: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
         },
     },
 };

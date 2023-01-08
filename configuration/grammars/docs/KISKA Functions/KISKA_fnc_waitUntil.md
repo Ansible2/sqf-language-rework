@@ -18,15 +18,15 @@ NOTHING
 #### Examples:
 ```sqf
 [
-{
-true
-},
-{
-hint "wait";
-},
-0.5,
-[],
-true
+    {
+        true
+    },
+    {
+        hint "wait";
+    },
+    0.5,
+    [],
+    true
 ] call KISKA_fnc_waitUntil;
 ```
 

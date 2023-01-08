@@ -14,8 +14,8 @@ NOTHING
 #### Examples:
 ```sqf
 [
-["#USER:myMenu_1","#USER:myMenu_2"],
-"hint str _this"
+    ["#USER:myMenu_1","#USER:myMenu_2"],
+    "hint str _this"
 ] spawn KISKA_fnc_commandMenuTree
 ```
 

@@ -6,6 +6,8 @@ Sets a group's exclusion from the Group Changer.
 
 1: **_isExcluded** *(BOOL)* - True to exclude group, false to include
 
+2: **_synchronize** *(BOOL)* - True to remoteExec this function and provide a JIP message
+
 #### Returns:
 *(BOOL)* - Returns true if the group is excluded or false if not
 

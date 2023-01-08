@@ -12,9 +12,8 @@ NOTHING
 #### Examples:
 ```sqf
 [
-missionConfigFile >> "KISKA_loadouts" >> ONL,
-unit1
-] spawn KISKA_fnc_assignUnitLoadout
-
+    missionConfigFile >> "KISKA_loadouts" >> ONL,
+    unit1
+] call KISKA_fnc_assignUnitLoadout
 ```
 

@@ -18,9 +18,9 @@ A slightly altered/optimized version of BIS_fnc_spawnVehicle. Has support for CU
 
 #### Returns:
 *(ARRAY)* -
-0: *(OBJECT)* - The created vehicle
-1: *(ARRAY)* - The vehicle crew (if soldier type, it will be the same as created vehicle)
-2: *(GROUP)* -  The group the crew is a part of
+    0: *(OBJECT)* - The created vehicle
+    1: *(ARRAY)* - The vehicle crew (if soldier type, it will be the same as created vehicle)
+    2: *(GROUP)* -  The group the crew is a part of
 
 #### Examples:
 ```sqf

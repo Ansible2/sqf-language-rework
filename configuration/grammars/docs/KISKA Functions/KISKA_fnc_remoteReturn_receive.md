@@ -16,11 +16,11 @@ NOTHING
 #### Examples:
 ```sqf
 [
-_code,
-_args,
-_scheduled,
-_uniqueId,
-clientOwner
+    _code,
+    _args,
+    _scheduled,
+    _uniqueId,
+    clientOwner
 ] remoteExecCall ["KISKA_fnc_remoteReturn_receive",_target];
 ```
 

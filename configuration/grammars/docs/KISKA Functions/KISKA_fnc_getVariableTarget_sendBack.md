@@ -18,11 +18,11 @@ NOTHING
 #### Examples:
 ```sqf
 [
-_namespace,
-_variableName,
-_saveVariable,
-_defaultValue,
-clientOwner
+    _namespace,
+    _variableName,
+    _saveVariable,
+    _defaultValue,
+    clientOwner
 ] remoteExecCall ["KISKA_fnc_getVariableTarget_sendBack",_target];
 ```
 

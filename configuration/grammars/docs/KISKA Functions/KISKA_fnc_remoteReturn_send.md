@@ -16,8 +16,8 @@ Gets a remote return from a scripting command on a target machine. Basically rem
 #### Examples:
 ```sqf
 [] spawn {
-// need to call for direct return but in scheduled environment
-_clientIdFromServer = ["owner (_this select 0)",[player],2] call KISKA_fnc_remoteReturn_send;
+    // need to call for direct return but in scheduled environment
+    _clientIdFromServer = ["owner (_this select 0)",[player],2] call KISKA_fnc_remoteReturn_send;
 };
 ```
 

@@ -15,8 +15,8 @@ private _return = ["kiska_ext_sr_startrecording"] call KISKA_fnc_SR_callExtensio
 ```
 ```sqf
 private _return = [
-"kiska_ext_sr_addgrammarxml",
-["my grammar","...gramarxml"]
+    "kiska_ext_sr_addgrammarxml",
+    ["my grammar","...gramarxml"]
 ] call KISKA_fnc_SR_callExtension;
 ```
 
