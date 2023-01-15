@@ -2403,6 +2403,17 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
+    KISKA_fnc_recordDrivePath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
     KISKA_fnc_pushBackToArray_interface: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
