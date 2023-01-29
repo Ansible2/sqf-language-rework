@@ -48,28 +48,30 @@ export function getWordAtPosition(
     let indexOfLastChar: number = startingIndex;
     let indexDown: number = startingIndex;
     let indexUp: number = startingIndex;
-    const maxIndexOfLine = textOnLineHovered.length - 1;
     let foundWord: boolean = false;
     let foundStart: boolean = false;
     let foundEnd: boolean = false;
     while (!foundWord) {
         if (!foundStart) {
             const charBehind = textOnLineHovered[--indexDown];
-            if (charBehind !== undefined && isWordChar.test(charBehind)) {
+            const isValidCharBehind = charBehind !== undefined && isWordChar.test(charBehind);
+            if (isValidCharBehind) {
                 indexOfFirstChar = indexDown;
                 word = charBehind + word;
+            } else {
+                foundStart = true;
             }
-            foundStart = indexDown < 0;
         }
-
+        
         if (!foundEnd) {
             const charAhead = textOnLineHovered[++indexUp];
-            if (charAhead !== undefined && isWordChar.test(charAhead)) {
+            const isValidCharAhead = charAhead !== undefined && isWordChar.test(charAhead);
+            if (isValidCharAhead) {
                 indexOfLastChar = indexUp;
                 word += charAhead;
+            } else {
+                foundEnd = true;
             }
-
-            foundEnd = indexUp > maxIndexOfLine;
         }
 
         foundWord = foundEnd && foundStart;
