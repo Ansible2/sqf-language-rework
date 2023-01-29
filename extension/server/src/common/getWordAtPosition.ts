@@ -34,39 +34,45 @@ export function getWordAtPosition(
     };
 
     const textOnLineHovered = document.getText(fullRangeOfLineBeingHovered);
-     const startingIndex = startPosition.character;
+    const startingIndex = startPosition.character;
     const startingChar = textOnLineHovered.charAt(startingIndex);
 
     const isNonWordChar = new RegExp(/\W/);
-    const isWordChar = new RegExp(/\w/);
     if (isNonWordChar.test(startingChar)) {
         return null;
     }
-
-    let indexOfChar: number = startingIndex;
+    
+    const isWordChar = new RegExp(/\w/);
     let word = startingChar;
     let indexOfFirstChar: number = startingIndex;
-    while (indexOfChar >= 0) {
-        const charBehind = textOnLineHovered[--indexOfChar];
-        if (charBehind === undefined || isNonWordChar.test(charBehind)) {
-            break;
-        } else if (isWordChar.test(charBehind)) {
-            indexOfFirstChar = indexOfChar;
-            word = charBehind + word;
-        }
-    }
-
-    const maxIndexOfLine = textOnLineHovered.length - 1;
-    indexOfChar = startingIndex;
     let indexOfLastChar: number = startingIndex;
-    while (indexOfChar <= maxIndexOfLine) {
-        const charAhead = textOnLineHovered[++indexOfChar];
-        if (charAhead === undefined || isNonWordChar.test(charAhead)) {
-            break;
-        } else if (isWordChar.test(charAhead)) {
-            indexOfLastChar = indexOfChar;
-            word += charAhead;
+    let indexDown: number = startingIndex;
+    let indexUp: number = startingIndex;
+    const maxIndexOfLine = textOnLineHovered.length - 1;
+    let foundWord: boolean = false;
+    let foundStart: boolean = false;
+    let foundEnd: boolean = false;
+    while (!foundWord) {
+        if (!foundStart) {
+            const charBehind = textOnLineHovered[--indexDown];
+            if (charBehind !== undefined && isWordChar.test(charBehind)) {
+                indexOfFirstChar = indexDown;
+                word = charBehind + word;
+            }
+            foundStart = indexDown < 0;
         }
+
+        if (!foundEnd) {
+            const charAhead = textOnLineHovered[++indexUp];
+            if (charAhead !== undefined && isWordChar.test(charAhead)) {
+                indexOfLastChar = indexUp;
+                word += charAhead;
+            }
+
+            foundEnd = indexUp > maxIndexOfLine;
+        }
+
+        foundWord = foundEnd && foundStart;
     }
 
     const startsWithNumberRegex = new RegExp(/^\d/);

@@ -1,3 +1,4 @@
+import { performance } from "perf_hooks";
 import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
@@ -5,7 +6,7 @@ import {
     ICompletionParams,
     ICompletionProvider,
     IDocProvider,
-	ISqfCompletionItem,
+    ISqfCompletionItem,
 } from "../types/providers.types";
 import { ISQFServer } from "../types/server.types";
 
@@ -13,19 +14,19 @@ export class CompletionProvider implements ICompletionProvider {
     private readonly server: ISQFServer;
     private readonly docProvider: IDocProvider;
     private wasTriggeredByHash: boolean;
-    private completionItems: ISqfCompletionItem[] = [];
+    private completionItemMap: Map<string, ISqfCompletionItem[]>;
     private hashtagCompletionItems: ISqfCompletionItem[] = [];
 
     constructor(server: ISQFServer) {
+        this.completionItemMap = new Map();
         this.server = server;
         this.docProvider = this.server.docProvider;
         this.wasTriggeredByHash = false;
         this.loadCompletionItems();
     }
 
-    onCompletion(
-        params: ICompletionParams
-    ): ISqfCompletionItem[] {
+    onCompletion(params: ICompletionParams): ISqfCompletionItem[] {
+        const timeStart = performance.now();
         if (params.context?.triggerCharacter === "#") {
             this.wasTriggeredByHash = true;
             return this.hashtagCompletionItems;
@@ -52,7 +53,7 @@ export class CompletionProvider implements ICompletionProvider {
             this.wasTriggeredByHash = false;
         }
 
-        return this.completionItems;
+        return this.completionItemMap.get(word?.parsedWord.charAt(0)!)!;
     }
 
     /* ----------------------------------------------------------------------------
@@ -62,7 +63,6 @@ export class CompletionProvider implements ICompletionProvider {
         const severSQFItems: Map<string, CompiledSQFItem> =
             this.server.getSQFItemMap();
 
-        this.completionItems = [];
         this.hashtagCompletionItems = [];
         severSQFItems.forEach((sqfItem, itemName) => {
             const docMarkup = this.docProvider.createMarkupDoc(
@@ -89,7 +89,14 @@ export class CompletionProvider implements ICompletionProvider {
 
                 this.hashtagCompletionItems.push(item);
             } else {
-                this.completionItems.push(completionItem);
+                const firstLetter = itemName.charAt(0).toLowerCase();
+                let itemArray = this.completionItemMap.get(firstLetter);
+                if (!itemArray) {
+                    itemArray = [];
+                    this.completionItemMap.set(firstLetter, itemArray);
+                }
+
+                itemArray.push(completionItem);
             }
         });
     }
