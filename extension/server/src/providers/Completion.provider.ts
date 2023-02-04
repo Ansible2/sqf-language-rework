@@ -26,7 +26,6 @@ export class CompletionProvider implements ICompletionProvider {
     }
 
     onCompletion(params: ICompletionParams): ISqfCompletionItem[] {
-        const timeStart = performance.now();
         if (params.context?.triggerCharacter === "#") {
             this.wasTriggeredByHash = true;
             return this.hashtagCompletionItems;
@@ -53,7 +52,13 @@ export class CompletionProvider implements ICompletionProvider {
             this.wasTriggeredByHash = false;
         }
 
-        return this.completionItemMap.get(word?.parsedWord.charAt(0)!)!;
+        const firstChar = word?.parsedWord.charAt(0);
+        if (!firstChar) { return []; }
+
+        const completionItems = this.completionItemMap.get(firstChar.toLowerCase());
+        if (!completionItems) { return []; }
+
+        return completionItems;
     }
 
     /* ----------------------------------------------------------------------------
