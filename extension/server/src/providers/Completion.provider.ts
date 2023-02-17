@@ -1,5 +1,8 @@
 import { performance } from "perf_hooks";
-import { CompiledSQFItem, SQFCompletionItemKind } from "../../../../configuration/grammars/sqf.namespace";
+import {
+    CompiledSQFItem,
+    SQFCompletionItemKind,
+} from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
     DocumentationType,
@@ -16,10 +19,12 @@ export class CompletionProvider implements ICompletionProvider {
     private wasTriggeredByHash: boolean;
     private completionItemMap: Map<string, ISqfCompletionItem[]>;
     private completionItemsSet: Set<string>;
+    private otherDocumentWordsSet: Set<string>;
     private hashtagCompletionItems: ISqfCompletionItem[] = [];
 
     constructor(server: ISQFServer) {
         this.completionItemsSet = new Set();
+        this.otherDocumentWordsSet = new Set();
         this.completionItemMap = new Map();
         this.server = server;
         this.docProvider = this.server.docProvider;
@@ -44,7 +49,6 @@ export class CompletionProvider implements ICompletionProvider {
         params.position.character = params.position.character - 1;
         const word = getWordAtPosition(textDocument, params.position);
 
-
         if (this.wasTriggeredByHash && word?.leadingHash) {
             const filteredItems = this.hashtagCompletionItems.filter((item) =>
                 item.label.includes(word.parsedWord)
@@ -54,47 +58,53 @@ export class CompletionProvider implements ICompletionProvider {
             this.wasTriggeredByHash = false;
         }
 
-        
         const firstChar = word?.parsedWord.charAt(0);
         if (!firstChar) {
             return [];
         }
 
-        
         const completionItems = this.completionItemMap.get(
             firstChar.toLowerCase()
         );
         if (!completionItems) {
             return [];
         }
-        
+
         if (!word?.parsedWord) {
             return completionItems;
         }
-        
+
         /* ------------------------------------
             Provide completion for other words in file
         ------------------------------------ */
         const parsedWord = word.parsedWord.toLowerCase();
         // make sure the word being typed does not get put into completion list
         this.completionItemsSet.add(parsedWord);
+        this.otherDocumentWordsSet.add(parsedWord);
 
-        const otherWordsInDocument =
-            this.getWordsNotExcluded(
-                textDocument.getText(),
-                this.completionItemsSet
-            ).map((otherWord: string) => {
-                return {
+        const otherWordsInDocument: ISqfCompletionItem[] = [];
+
+        this.getWordsNotExcluded(
+            textDocument.getText(),
+            this.completionItemsSet
+        ).forEach((otherWord: string) => {
+            if (this.otherDocumentWordsSet.has(otherWord)) return;
+
+            this.otherDocumentWordsSet.add(otherWord);
+            otherWordsInDocument.push(
+                {
                     label: otherWord,
                     kind: SQFCompletionItemKind.Text,
-                };
-            });
+                } as ISqfCompletionItem
+            )
+        })
 
         this.completionItemsSet.delete(parsedWord);
+        this.otherDocumentWordsSet.clear();
 
         return [
+            ...otherWordsInDocument,
             ...completionItems,
-            ...(otherWordsInDocument as ISqfCompletionItem[]),
         ];
     }
 
@@ -105,11 +115,13 @@ export class CompletionProvider implements ICompletionProvider {
         inputString: string,
         exclusionSet: Set<string>
     ): string[] {
-        const commentsRemoved = inputString.replace(
+        const inputWithoutComments = inputString.replace(
             /\/\*[\s\S]*?\*\/|\/\/.*/g,
             ""
         );
-        const words = commentsRemoved.split(/\s+/);
+        const words = inputWithoutComments.match(/[a-z_]+\w*/gi);
+        if (!words) return [];
+
         const filteredWords = words.filter(
             (word) => !exclusionSet.has(word.toLowerCase())
         );
