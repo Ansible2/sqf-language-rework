@@ -14,6 +14,7 @@ import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
 import { docsAsJson } from "./docs/docs-json";
 import path = require("path");
 import { SqfMarkupKind } from "../../extension/server/src/types/providers.types";
+import { magicVariableSyntaxes } from "./syntaxes/magicVariables.syntax";
 
 const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     sqfCommandSyntaxes,
@@ -21,6 +22,7 @@ const syntaxes: IJSON<PreCompiledSQFItem>[] = [
     binFunctionSyntaxes,
     kiskaFunctionSyntaxes,
     preprocessorSyntaxes,
+    magicVariableSyntaxes,
 ];
 
 const compileDocumentation = (

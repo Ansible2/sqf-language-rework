@@ -86,15 +86,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
     },
-    _this: {
-        documentation:
-            "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
-        grammarType: SQFGrammarType.ReservedLiteral,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Any,
-        },
-    },
     select: {
         grammarType: SQFGrammarType.PropertyAccessor,
         syntaxes: [
