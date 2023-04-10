@@ -5,6 +5,7 @@ import { BuildContext, BuildPaths } from "./build-context";
 import { sqfGrammar } from "../configuration/grammars/sqf.grammar";
 
 import * as esbuild from "esbuild";
+import { extGrammar } from "../configuration/grammars/ext.grammar";
 
 async function doEsbuild() {
     console.log("Starting on esbuild...");
@@ -91,8 +92,11 @@ const build = async () => {
         sqfGrammar,
         jsonWriteOptions
     );
-    // TODO: write ext grammar to json file in grammar folder
-    // const writeExtGrammar: Promise<void> = jsonFile.writeFile(outPaths.files.extGrammar, extGrammar);
+    const writeExtGrammar: Promise<void> = jsonFile.writeFile(
+        outPaths.files.extGrammar,
+        extGrammar,
+		jsonWriteOptions
+    );
 
     /* ----------------------------------------------------------------------------
 		copy main static files
@@ -122,6 +126,7 @@ const build = async () => {
         copyChangelog,
         copyPackageJSON,
         writeSqfGrammar,
+        writeExtGrammar,
     ]);
 };
 
