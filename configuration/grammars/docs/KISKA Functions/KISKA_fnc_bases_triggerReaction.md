@@ -4,9 +4,7 @@ Acts as the default event for the reactive bases when a group calls for reinforc
 #### Parameters:
 0: **_group** *(GROUP)* - The group the event is triggering for
 
-1: **_combatBehaviour** *(STRING)* - The group's current behviour
-
-2: **_eventConfig** *(CONFIG)* - The eventhandler config (OPTIONAL)
+1: **_detectedTarget** *(OBJECT)* - The enemy unit that was detected
 
 #### Returns:
 NOTHING
@@ -15,7 +13,7 @@ NOTHING
 ```sqf
 [
     someGroup,
-    "combat"
+    anEnemyUnit
 ] call KISKA_fnc_bases_triggerReaction
 ```
 

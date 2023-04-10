@@ -16,13 +16,13 @@ Gets a variable from a remote target object, id, or string (uses remoteExec targ
 #### Examples:
 ```sqf
 [] spawn {
-// need to call for direct return
-private _serversSomeVariable = [
-"someVariable",
-missionNamespace,
-"",
-2
-] call KISKA_fnc_getVariableTarget;
+    // need to call for direct return
+    private _serversSomeVariable = [
+        "someVariable",
+        missionNamespace,
+        "",
+        2
+    ] call KISKA_fnc_getVariableTarget;
 };
 ```
 

@@ -20,9 +20,9 @@ Plays a sound 3D but the function accepts the CFGSounds name rather then the fil
 #### Examples:
 ```sqf
 [
-"BattlefieldJet1_3D",
-(getPosASL player) vectorAdd [50,50,100],
-2000
+    "BattlefieldJet1_3D",
+    (getPosASL player) vectorAdd [50,50,100],
+    2000
 ] call KISKA_fnc_playSound3D;
 ```
 

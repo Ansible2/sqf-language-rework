@@ -2,7 +2,7 @@
 Units will drive to point and get out of vehicle.
 
 #### Parameters:
-0: **_crew** : *(GROUP, ARRAY, or OBJECT)* - The units to move into the vehicle and drive
+0: **_crew** : *(GROUP, OBJECT[], or OBJECT)* - The units to move into the vehicle and drive
 
 1: **_vehicle** : *(OBJECT)* - The vehicle to put units into
 
@@ -12,7 +12,12 @@ Units will drive to point and get out of vehicle.
 
 4: **_speed** : *(STRING)* - The for the driver group to move at
 
-5: **_codeOnComplete** : *(CODE, STRING, or ARRAY)* - Code to run upon completion of disembark. See KISKA_fnc_callBackParams:0. *(OBJECT)* - The vehicle, crew (ARRAY), and crew groups (ARRAY)1. *(ARRAY (of OBJECTs))* - The crew of the vehicle2. *(ARRAY (of GROUPs))* - All the groups that are in the vehicle crew
+5: **_codeOnComplete** : *(CODE, STRING, or ARRAY)* - Code to run upon completion of disembark. See KISKA_fnc_callBack
+Params:
+
+    - 0: *(OBJECT)* - The vehicle, crew (ARRAY), and crew groups (ARRAY)
+    - 1: *(OBJECT[])* - The crew of the vehicle
+    - 2: *(GROUP[])* - All the groups that are in the vehicle crew
 
 #### Returns:
 *(BOOL)* - false if encountered error, true if success

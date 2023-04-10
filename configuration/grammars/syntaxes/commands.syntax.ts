@@ -86,15 +86,6 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         ],
     },
-    _this: {
-        documentation:
-            "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
-        grammarType: SQFGrammarType.ReservedLiteral,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Any,
-        },
-    },
     select: {
         grammarType: SQFGrammarType.PropertyAccessor,
         syntaxes: [
@@ -1513,7 +1504,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Nothing,
             rightOperandTypes: SQFDataType.String,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     allow3DMode: {
         syntaxes: {
@@ -2507,7 +2498,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
                 rightOperandTypes: SQFDataType.String,
             },
         ],
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     ASLToAGL: {
         syntaxes: {
@@ -21175,9 +21166,9 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
             returnTypes: SQFDataType.Any,
-            rightOperandTypes: [SQFDataType.Code, SQFDataType.Boolean],
+            rightOperandTypes: SQFCode.returns(SQFDataType.Boolean),
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     uiSleep: {
         syntaxes: {
@@ -22392,7 +22383,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Any,
             rightOperandTypes: SQFDataType.Any,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     forceUnicode: {
         syntaxes: {
@@ -22422,7 +22413,7 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Any,
             rightOperandTypes: SQFDataType.Any,
         },
-        grammarType: SQFGrammarType.Command,
+        grammarType: SQFGrammarType.ControlStatement,
     },
     getTextRaw: {
         syntaxes: {

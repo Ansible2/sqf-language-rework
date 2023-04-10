@@ -9,7 +9,7 @@ export interface IDocumentRange {
 }
 
 export interface ITextDocument {
-    getText(range: IDocumentRange): string;
+    getText(range?: IDocumentRange): string;
 }
 
 export interface ITextDocuments {

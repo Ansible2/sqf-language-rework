@@ -4,7 +4,7 @@ Stops a unit's use of KISKA_fnc_ambientAnim and returns them to the state they w
 #### Parameters:
 0: **_unit** *(OBJECT)* - The unit who is running KISKA ambient anims
 
-1: **_triggeredByDeletion** *(BOOL)* - If this stop was initiated by the deleteEventhandler
+1: **_triggeredByDeletion** *(BOOL)* - If this stop was initiated by the delete Eventhandler
 
 #### Returns:
 NOTHING

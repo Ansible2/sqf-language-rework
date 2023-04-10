@@ -1,11 +1,15 @@
-import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
+import { performance } from "perf_hooks";
+import {
+    CompiledSQFItem,
+    SQFCompletionItemKind,
+} from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
     DocumentationType,
     ICompletionParams,
     ICompletionProvider,
     IDocProvider,
-	ISqfCompletionItem,
+    ISqfCompletionItem,
 } from "../types/providers.types";
 import { ISQFServer } from "../types/server.types";
 
@@ -13,19 +17,22 @@ export class CompletionProvider implements ICompletionProvider {
     private readonly server: ISQFServer;
     private readonly docProvider: IDocProvider;
     private wasTriggeredByHash: boolean;
-    private completionItems: ISqfCompletionItem[] = [];
+    private completionItemMap: Map<string, ISqfCompletionItem[]>;
+    private completionItemsSet: Set<string>;
+    private otherDocumentWordsSet: Set<string>;
     private hashtagCompletionItems: ISqfCompletionItem[] = [];
 
     constructor(server: ISQFServer) {
+        this.completionItemsSet = new Set();
+        this.otherDocumentWordsSet = new Set();
+        this.completionItemMap = new Map();
         this.server = server;
         this.docProvider = this.server.docProvider;
         this.wasTriggeredByHash = false;
         this.loadCompletionItems();
     }
 
-    onCompletion(
-        params: ICompletionParams
-    ): ISqfCompletionItem[] {
+    onCompletion(params: ICompletionParams): ISqfCompletionItem[] {
         if (params.context?.triggerCharacter === "#") {
             this.wasTriggeredByHash = true;
             return this.hashtagCompletionItems;
@@ -46,13 +53,79 @@ export class CompletionProvider implements ICompletionProvider {
             const filteredItems = this.hashtagCompletionItems.filter((item) =>
                 item.label.includes(word.parsedWord)
             );
-
             return filteredItems;
         } else {
             this.wasTriggeredByHash = false;
         }
 
-        return this.completionItems;
+        const firstChar = word?.parsedWord.charAt(0);
+        if (!firstChar) {
+            return [];
+        }
+
+        const completionItems = this.completionItemMap.get(
+            firstChar.toLowerCase()
+        );
+        if (!completionItems) {
+            return [];
+        }
+
+        if (!word?.parsedWord) {
+            return completionItems;
+        }
+
+        /* ------------------------------------
+            Provide completion for other words in file
+        ------------------------------------ */
+        const parsedWord = word.parsedWord.toLowerCase();
+        // make sure the word being typed does not get put into completion list
+        this.completionItemsSet.add(parsedWord);
+        this.otherDocumentWordsSet.add(parsedWord);
+
+        const otherWordsInDocument: ISqfCompletionItem[] = [];
+
+        this.getWordsNotExcluded(
+            textDocument.getText(),
+            this.completionItemsSet
+        ).forEach((otherWord: string) => {
+            if (this.otherDocumentWordsSet.has(otherWord)) return;
+
+            this.otherDocumentWordsSet.add(otherWord);
+            otherWordsInDocument.push(
+                {
+                    label: otherWord,
+                    kind: SQFCompletionItemKind.Text,
+                } as ISqfCompletionItem
+            )
+        })
+
+        this.completionItemsSet.delete(parsedWord);
+        this.otherDocumentWordsSet.clear();
+
+        return [
+            ...otherWordsInDocument,
+            ...completionItems,
+        ];
+    }
+
+    /* ----------------------------------------------------------------------------
+		getWordsNotExcluded
+	---------------------------------------------------------------------------- */
+    public getWordsNotExcluded(
+        inputString: string,
+        exclusionSet: Set<string>
+    ): string[] {
+        const inputWithoutComments = inputString.replace(
+            /\/\*[\s\S]*?\*\/|\/\/.*/g,
+            ""
+        );
+        const words = inputWithoutComments.match(/[a-z_]+\w*/gi);
+        if (!words) return [];
+
+        const filteredWords = words.filter(
+            (word) => !exclusionSet.has(word.toLowerCase())
+        );
+        return filteredWords;
     }
 
     /* ----------------------------------------------------------------------------
@@ -62,7 +135,6 @@ export class CompletionProvider implements ICompletionProvider {
         const severSQFItems: Map<string, CompiledSQFItem> =
             this.server.getSQFItemMap();
 
-        this.completionItems = [];
         this.hashtagCompletionItems = [];
         severSQFItems.forEach((sqfItem, itemName) => {
             const docMarkup = this.docProvider.createMarkupDoc(
@@ -89,8 +161,17 @@ export class CompletionProvider implements ICompletionProvider {
 
                 this.hashtagCompletionItems.push(item);
             } else {
-                this.completionItems.push(completionItem);
+                const firstLetter = itemName.charAt(0).toLowerCase();
+                let itemArray = this.completionItemMap.get(firstLetter);
+                if (!itemArray) {
+                    itemArray = [];
+                    this.completionItemMap.set(firstLetter, itemArray);
+                }
+
+                itemArray.push(completionItem);
             }
+
+            this.completionItemsSet.add(itemName.toLowerCase());
         });
     }
 }

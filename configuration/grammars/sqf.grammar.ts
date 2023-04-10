@@ -257,16 +257,16 @@ const grammarRepo: IRawRepository = {
         name: "constant.language.null.sqf",
     },
     "numeric-literal": {
-        // TODO seperate if possible
-        match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
-        name: "constant.numeric.sqf",
+      // TODO seperate if possible
+      match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
+      name: "constant.numeric.sqf",
     },
     "reserved-literal": {
-        match: getSingleWordRegex(reservedLiterals),
-        name: "variable.language.reserved.sqf",
+      match: getSingleWordRegex(reservedLiterals),
+      name: "constant.language.reserved.sqf",
     },
-
-    /* ----------------------------------------------------------------------------
+	
+	/* ----------------------------------------------------------------------------
 		preprocessor
 	---------------------------------------------------------------------------- */
     "preprocessor-commands": {

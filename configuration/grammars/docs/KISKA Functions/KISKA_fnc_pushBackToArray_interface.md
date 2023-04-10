@@ -14,9 +14,9 @@ Pushes back a value to a global array. Checks if machine hasInterface before pus
 #### Examples:
 ```sqf
 [
-"myGlobalArrayVar",
-someInfoHere,
-missionNamespace
+    "myGlobalArrayVar",
+    someInfoHere,
+    missionNamespace
 ] call KISKA_fnc_pushBackToArray_interface;
 ```
 

@@ -21,8 +21,8 @@ NOTHING
 ```
 ```sqf
 [
-"track",
-[10,60]// start ten seconds into the song, and play for 60 seconds
+    "track",
+    [10,60]// start ten seconds into the song, and play for 60 seconds
 ] spawn KISKA_fnc_playMusic;
 ```
 
