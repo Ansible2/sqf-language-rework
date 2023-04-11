@@ -5,83 +5,38 @@ import {
 } from "vscode-textmate/release/rawGrammar";
 
 const patterns: IRawRule[] = [
+    { include: "#comments" },
     { include: "#strings" },
     { include: "#numbers" },
-    { include: "#comments" },
-    { name: "storage.type", match: "\\b(class)\\b" },
-    {
-        begin: "^\\s*((#)\\s*(include(?:_next)?|import))\\b\\s*",
-        beginCaptures: {
-            "1": { name: "keyword.control.directive.$3.ext" },
-            "2": { name: "punctuation.definition.directive.ext" },
-        },
-        end: "(?=(?://|/\\*))|(?<!\\\\)(?=\\n)",
-        name: "meta.preprocessor.include.ext",
-        patterns: [
-            { include: "#line_continuation_character" },
-            {
-                begin: '"',
-                beginCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.begin.ext",
-                    },
-                },
-                end: '"',
-                endCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.end.ext",
-                    },
-                },
-                name: "string.quoted.double.include.ext",
-            },
-            {
-                begin: "<",
-                beginCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.begin.ext",
-                    },
-                },
-                end: ">",
-                endCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.end.ext",
-                    },
-                },
-                name: "string.quoted.other.lt-gt.include.ext",
-            },
-        ],
-    },
-    {
-        begin: "(?x)\n^\\s* ((\\#)\\s*define) \\s+    # define\n((?<id>[a-zA-Z_$][\\w$]*))      # macro name\n(?:\n  (\\()\n    (\n      \\s* \\g<id> \\s*         # first argument\n      ((,) \\s* \\g<id> \\s*)*  # additional arguments\n      (?:\\.\\.\\.)?            # varargs ellipsis?\n    )\n  (\\))\n)?",
-        beginCaptures: {
-            "1": { name: "keyword.control.directive.define.c" },
-            "2": { name: "punctuation.definition.directive.c" },
-            "3": { name: "entity.name.function.preprocessor.c" },
-            "5": { name: "punctuation.definition.parameters.begin.c" },
-            "6": { name: "variable.parameter.preprocessor.c" },
-            "8": { name: "punctuation.separator.parameters.c" },
-            "9": { name: "punctuation.definition.parameters.end.c" },
-        },
-        end: "(?=(?://|/\\*))|(?<!\\\\)(?=\\n)",
-        name: "meta.preprocessor.macro.ext",
-    },
+    { include: "#classes" },
 ];
 
 const grammarRepo: IRawRepository = {
     $base: {},
     $self: {},
-    line_continuation_character: {
+
+    /* ----------------------------------------------------------------------------
+        classes
+	---------------------------------------------------------------------------- */
+    classes: {
         patterns: [
             {
-                match: "(\\\\)\\n",
+                match: "(?i)\\b(class)\\s+([a-z\\d]+)\\b",
                 captures: {
                     "1": {
-                        name: "constant.character.escape.line-continuation.c",
+                        name: "storage.type.class.ext",
+                    },
+                    "2": {
+                        name: "entity.name.class.ext",
                     },
                 },
             },
         ],
     },
+
+    /* ----------------------------------------------------------------------------
+		numbers
+	---------------------------------------------------------------------------- */
     numbers: {
         patterns: [
             {
@@ -90,124 +45,49 @@ const grammarRepo: IRawRepository = {
             },
         ],
     },
+
+    /* ----------------------------------------------------------------------------
+		Comments
+	---------------------------------------------------------------------------- */
     comments: {
         patterns: [
             {
-                captures: {
-                    "1": { name: "meta.toc-list.banner.block.c" },
-                },
-                match: "^/\\* =(\\s*.*?)\\s*= \\*/$\\n?",
-                name: "comment.block.c",
-            },
-            {
                 begin: "/\\*",
-                beginCaptures: {
-                    "0": {
-                        name: "punctuation.definition.comment.begin.c",
-                    },
-                },
                 end: "\\*/",
-                endCaptures: {
-                    "0": {
-                        name: "punctuation.definition.comment.end.c",
-                    },
-                },
-                name: "comment.block.c",
+                name: "comment.block.sqf",
             },
             {
-                match: "\\*/.*\\n",
-                name: "invalid.illegal.stray-comment-end.c",
-            },
-            {
-                captures: {
-                    "1": { name: "meta.toc-list.banner.line.c" },
-                },
-                match: "^// =(\\s*.*?)\\s*=\\s*$\\n?",
-                name: "comment.line.banner.cpp",
-            },
-            {
-                begin: "(^[ \\t]+)?(?=//)",
-                beginCaptures: {
-                    "1": {
-                        name: "punctuation.whitespace.comment.leading.cpp",
-                    },
-                },
-                end: "(?!\\G)",
-                patterns: [
-                    {
-                        begin: "//",
-                        beginCaptures: {
-                            "0": {
-                                name: "punctuation.definition.comment.cpp",
-                            },
-                        },
-                        end: "(?=\\n)",
-                        name: "comment.line.double-slash.cpp",
-                        patterns: [{ include: "#line_continuation_character" }],
-                    },
-                ],
+                match: "(?<=^.*)(\\/\\/).*\\n?",
+                name: "comment.line.sqf",
             },
         ],
     },
+
+    /* ----------------------------------------------------------------------------
+		String
+	---------------------------------------------------------------------------- */
     strings: {
+        name: "string.ext",
         patterns: [
-            {
-                begin: '(u|u8|U|L)?"',
-                beginCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.begin.ext",
-                    },
-                    "1": { name: "meta.encoding.ext" },
-                },
-                end: '"',
-                endCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.end.ext",
-                    },
-                },
-                name: "string.quoted.double.ext",
-                patterns: [
-                    {
-                        match: "\\\\u\\h{4}|\\\\U\\h{8}",
-                        name: "constant.character.escape.ext",
-                    },
-                    {
-                        match: "\\\\['\"?\\\\abfnrtv]",
-                        name: "constant.character.escape.ext",
-                    },
-                    {
-                        match: "\\\\[0-7]{1,3}",
-                        name: "constant.character.escape.ext",
-                    },
-                    {
-                        match: "\\\\x\\h+",
-                        name: "constant.character.escape.ext",
-                    },
-                ],
-            },
-            {
-                begin: '(u|u8|U|L)?R"(?:([^ ()\\\\\\t]{0,16})|([^ ()\\\\\\t]*))\\(',
-                beginCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.begin.ext",
-                    },
-                    "1": { name: "meta.encoding.ext" },
-                    "3": {
-                        name: "invalid.illegal.delimiter-too-long.ext",
-                    },
-                },
-                end: '\\)\\2(\\3)"',
-                endCaptures: {
-                    "0": {
-                        name: "punctuation.definition.string.end.ext",
-                    },
-                    "1": {
-                        name: "invalid.illegal.delimiter-too-long.ext",
-                    },
-                },
-                name: "string.quoted.double.raw.ext",
-            },
+            { include: "#qstring-single" },
+            { include: "#qstring-double" },
+            { include: "#qstring-triple" },
         ],
+    },
+    "qstring-triple": {
+        begin: '"""',
+        end: '"""',
+        name: "string.triple.sqf",
+    },
+    "qstring-double": {
+        begin: '"',
+        end: '"',
+        name: "string.double.sqf",
+    },
+    "qstring-single": {
+        begin: "'",
+        end: "'",
+        name: "string.single.sqf",
     },
     "reserved-literal": {
         match: "\\s*(?i)(class|#include|#define|#if|#endif|#ifdef|#ifndef|#else|#endif|__LINE__|__FILE__|__has_include|__DATE_ARR__|__DATE_STR__|__DATE_STR_ISO8601__|__TIME__|__TIME_UTC__|__COUNTER__|__TIMESTAMP_UTC__|__COUNTER_RESET__|__RAND_INT8__|__RAND_INT16__|__RAND_INT32__|__RAND_INT64__|__RAND_UINT8__|__RAND_UINT16__|__RAND_UINT32__|__RAND_UINT64__|__GAME_VER__|__GAME_VER_MAJ__|__GAME_VER_MIN__|__GAME_BUILD__|__ARMA__|__ARMA3__|__A3_DEBUG__|__EXEC|__EVAL)\\b",
@@ -216,7 +96,6 @@ const grammarRepo: IRawRepository = {
 };
 
 export const extGrammar: IRawGrammar = {
-    // scopeName: "source.arma-config",
     scopeName: "source.ext",
     fileTypes: ["ext", "hpp", "h", "cpp", "c", "sqm", "arma.cfg"],
     name: "arma-config",
