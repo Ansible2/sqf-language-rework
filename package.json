@@ -44,11 +44,7 @@
         "vscode-textmate": "^9.0.0"
     },
     "categories": [
-        "Programming Languages",
-        "Snippets",
-        "Themes",
-        "Linters",
-        "Debuggers"
+        "Programming Languages"
     ],
     "contributes": {
         "languages": [
@@ -72,7 +68,9 @@
                 ],
                 "extensions": [
                     ".ext",
-                    ".hpp"
+                    ".hpp",
+                    ".cpp",
+                    ".sqm"
                 ],
                 "configuration": "./configuration/language-configs/ext.configuration.json"
             }
