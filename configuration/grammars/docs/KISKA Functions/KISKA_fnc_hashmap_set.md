@@ -8,7 +8,7 @@ Sets a key/value pair in a hashmap but also supports objects and groups as keys.
 
 2: **_value** *(ANY)* - The value to associate witht the key
 
-3: **_insertOnly** *(BOOL)* - Can set overwrite an existing key
+3: **_insertOnly** *(BOOL)* - When `true`, if the key already exists in the hashmap,  the value will not be overwritten
 
 #### Returns:
 *(BOOL)* - False if key is new, true if overwriting

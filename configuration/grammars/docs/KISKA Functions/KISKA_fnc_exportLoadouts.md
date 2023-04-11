@@ -1,5 +1,5 @@
 #### Description:
-Sends a vehicle to a given point and fastropes the given units from the helicopter. Pilots should ideally be placed in "CARELESS" behaviour when around enemies.
+Exports a given unit or units loadout into an array or loadouts. This can be either a standard array or formatted for config files.
 
 #### Parameters:
 0: **_units** *(OBJECT[] or OBJECT)* - The units to get the loadouts of

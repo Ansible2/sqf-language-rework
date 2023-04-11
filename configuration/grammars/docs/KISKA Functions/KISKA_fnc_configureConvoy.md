@@ -4,10 +4,11 @@ Creates several convoy vehicles and/or configures their groups to be ready to ac
 #### Parameters:
 0: **_side** *(SIDE)* - What side this convoy is on
 
-1: **_spawnInfo** *(ARRAY)* - An array of either or both option types:Option 1: *(ARRAY)* [spawnPosition (positionATL or OBJECT), spawnDirection, className] -
+1: **_spawnInfo** *(ARRAY)* - An array of either or both option types:- Option 1: *(ARRAY)* [spawnPosition (positionATL or OBJECT), spawnDirection (NUMBER), className (STRING)] -
     Vehicle will be created from from the class name and spawned at the given position
-    using KISKA_fnc_spawnVehicleOption 2: *(OBJECT)* -
-    Must be a land vehicle with a driverThese ideally will be in sequential order of how they line up to the lead vehiclewhich is the 0 index vehicle
+    using KISKA_fnc_spawnVehicle- Option 2: *(OBJECT)* - Must be a land vehicle with a driverThese ideally will be in sequential order of how they line up to the lead vehiclewhich is the 0 index vehicle
+
+2: **_handleBehaviour** *(BOOL)* - Whether or not to adjust the convoy drivers group's behaviour and AI features in order to make the convoy more reliably calm.
 
 #### Returns:
 *(ARRAY)* -

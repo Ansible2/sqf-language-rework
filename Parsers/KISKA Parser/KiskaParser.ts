@@ -165,6 +165,9 @@ class KiskaPageConverter {
         const descriptionMatch = headerComment.match(
             /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i
         );
+
+        // TODO: exclude editing things in the description beteen
+        // "```sqf" and "```"
         if (descriptionMatch) {
             // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
             // should seperate the ( {2,}) into one afterthe first replace(?)

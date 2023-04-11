@@ -19,11 +19,30 @@ NOTHING
 
 #### Examples:
 ```sqf
+//  basic example
 [
     _vehicle,
     _position,
     (fullCrew [_vehicle,"cargo"]) apply {
         _x select 0
+    },
+    {hint "fastrope done"},
+    28,
+    [[0,0,0]]
+] call KISKA_fnc_ACE_fastRope;
+```
+```sqf
+// using code instead to defer the list of units to drop
+// until the helicopter is over the drop point
+[
+    _vehicle,
+    _position,
+    {
+        params ["_vehicle"];
+
+        (fullCrew [_vehicle,"cargo"]) apply {
+            _x select 0
+        }
     },
     {hint "fastrope done"},
     28,

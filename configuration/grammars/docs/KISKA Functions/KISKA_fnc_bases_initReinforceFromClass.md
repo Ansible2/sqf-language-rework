@@ -16,3 +16,4 @@ NOTHING
     SomeBaseConfig >> "infantry" >> "someUnitClass"
 ] call KISKA_fnc_bases_initReinforceFromClass;
 ```
+
