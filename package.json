@@ -50,10 +50,6 @@
         "Linters",
         "Debuggers"
     ],
-    "activationEvents": [
-        "onLanguage:sqf",
-        "onLanguage:ext"
-    ],
     "contributes": {
         "languages": [
             {
