@@ -143,6 +143,107 @@ interface KiskaPage {
 }
 
 class KiskaPageConverter {
+    private static parseDescriptionSection(
+        headerComment: string
+    ): string | null {
+        const descriptionMatch = headerComment.match(
+            /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i
+        );
+
+        if (!descriptionMatch) return null;
+
+        const unParsedDescription = descriptionMatch[0];
+
+        // TODO: exclude editing things in the description beteen
+        // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
+        // should seperate the ( {2,}) into one afterthe first replace(?)
+
+        // console.log(descriptionMatch[0]);
+        let parsedDescription = descriptionMatch[0].replace(/[\n\r\t]+/gi, " ");
+        parsedDescription = parsedDescription.replace(/ {2,}/gi, " ");
+        // console.log(kiskaPage.description);
+
+        return parsedDescription;
+    }
+
+    private static parseReturnsSection(headerComment: string): string | null {
+        const returnMatch = headerComment.match(
+            /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i
+        );
+        if (!returnMatch) return null;
+
+        let returnsSectionParsed = returnMatch[0];
+        returnsSectionParsed = returnsSectionParsed
+            .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+            .replace(/(\<)(.*?)(\>)/gi, "*($2)*")
+            .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**");
+
+        return returnsSectionParsed;
+    }
+
+    private static parseParametersSection(
+        headerComment: string
+    ): string[] | null {
+        const parametersMatch = headerComment.match(
+            /(?<=parameters:\r*\n*)([\s\S]*?)(?=(Examples:|returns:))/i
+        );
+        if (!parametersMatch) return null;
+
+        const parametersFull = parametersMatch[0].concat("<END>");
+        const individualParametersMatch = parametersFull.match(
+            /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim
+        );
+
+        const hasNoParameters =
+            !individualParametersMatch || individualParametersMatch.length < 1;
+        if (hasNoParameters) return ["NONE"];
+
+        const parametersParsed: string[] = [];
+        individualParametersMatch.forEach((parameter) => {
+            const parameterFormatted = parameter
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(/\n{1}(?!( {4,}|\t+|\n))/gi, "")
+                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
+                .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
+
+            parametersParsed.push(parameterFormatted);
+        });
+
+        return parametersParsed;
+    }
+
+    private static parseExamplesSection(
+        headerComment: string
+    ): string[] | null {
+        const examplesMatch = headerComment.match(
+            /(?<=Example\w*:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|returns:))/i
+        );
+
+        if (!examplesMatch) return null;
+        const examplesFull = examplesMatch[0];
+
+        const individualExamplesMatch = examplesFull.match(
+            /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\s+\(end\))/gi
+        );
+        const hasNoExamples =
+            !individualExamplesMatch || individualExamplesMatch.length < 1;
+        if (hasNoExamples) return ["NONE"];
+
+        const examplesParsed: string[] = [];
+        individualExamplesMatch?.forEach((example) => {
+            examplesParsed.push(
+                example.replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "").replace(
+                    // examples are indented twice
+                    /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
+                    ""
+                )
+            );
+        });
+
+        return examplesParsed;
+    }
+
     public static parseKiskaPage(filePath: string): KiskaPage | null {
         const filename = path.basename(filePath);
         const fileAsString = fs.readFileSync(filePath, "utf-8").trim();
@@ -162,88 +263,24 @@ class KiskaPageConverter {
 
         const headerComment = headerRegexMatch[0];
 
-        const descriptionMatch = headerComment.match(
-            /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i
-        );
-
-        // TODO: exclude editing things in the description beteen
-        // "```sqf" and "```"
-        if (descriptionMatch) {
-            // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
-            // should seperate the ( {2,}) into one afterthe first replace(?)
-
-            // console.log(descriptionMatch[0]);
-            kiskaPage.description = descriptionMatch[0].replace(
-                /[\n\r\t]+/gi,
-                " "
-            );
-            kiskaPage.description = kiskaPage.description.replace(
-                / {2,}/gi,
-                " "
-            );
-            // console.log(kiskaPage.description);
+        const descriptionParsed = this.parseDescriptionSection(headerComment);
+        if (descriptionParsed) {
+            kiskaPage.description = descriptionParsed;
         }
 
-        const returnMatch = headerComment.match(
-            /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i
-        );
-        if (returnMatch) {
-            kiskaPage.return = returnMatch[0];
-            kiskaPage.return = kiskaPage.return
-                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                .replace(/(\<)(.*?)(\>)/gi, "*($2)*")
-                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**");
+        const returnsParsed = this.parseReturnsSection(headerComment);
+        if (returnsParsed) {
+            kiskaPage.return = returnsParsed;
         }
 
-        const parametersMatch = headerComment.match(
-            /(?<=parameters:\r*\n*)([\s\S]*?)(?=(Examples:|returns:))/i
-        );
-        if (parametersMatch) {
-            const parametersFull = parametersMatch[0].concat("<END>");
-            const individualParametersMatch = parametersFull.match(
-                /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim
-            );
-
-            kiskaPage.parameters = [];
-            if (
-                !individualParametersMatch ||
-                individualParametersMatch.length < 1
-            ) {
-                kiskaPage.parameters.push("NONE");
-            } else {
-                individualParametersMatch?.forEach((parameter) => {
-                    const parameterFormatted = parameter
-                        .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                        .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                        .replace(/\n{1}(?!( {4,}|\t+|\n))/gi, "")
-                        .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
-                        .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
-
-                    kiskaPage.parameters?.push(parameterFormatted);
-                });
-            }
+        const parametersParsed = this.parseParametersSection(headerComment);
+        if (parametersParsed) {
+            kiskaPage.parameters = parametersParsed;
         }
 
-        const examplesMatch = headerComment.match(
-            /(?<=Example\w*:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|returns:))/i
-        );
-        if (examplesMatch) {
-            const examplesFull = examplesMatch[0];
-            kiskaPage.examples = [];
-            const individualExamplesMatch = examplesFull.match(
-                /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi
-            );
-            individualExamplesMatch?.forEach((example) => {
-                kiskaPage.examples?.push(
-                    example
-                        .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                        .replace(
-                            // examples are indented twice
-                            /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
-                            ""
-                        )
-                );
-            });
+        const examplesParsed = this.parseExamplesSection(headerComment);
+        if (examplesParsed) {
+            kiskaPage.examples = examplesParsed;
         }
 
         return kiskaPage;
