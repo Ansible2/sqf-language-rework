@@ -10,5 +10,5 @@ NONE
 #### Examples:
 ```sqf
 private _volume = call KISKA_fnc_randomMusic_getVolume;
-   ```
+```
 

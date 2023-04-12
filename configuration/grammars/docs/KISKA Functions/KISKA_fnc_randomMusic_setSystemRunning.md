@@ -11,5 +11,5 @@ NOTHING
 ```sqf
 // set to running
 [true] call KISKA_fnc_randomMusic_setSystemRunning;
-   ```
+```
 

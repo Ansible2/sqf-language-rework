@@ -16,5 +16,7 @@ Ejects the unit from their airecraft and Used to reduce network messages.
 NOTHING
 
 #### Examples:
-
+```sqf
+NONE
+```
 

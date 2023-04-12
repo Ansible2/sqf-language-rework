@@ -10,5 +10,5 @@ NONE
 #### Examples:
 ```sqf
 private _interval = call KISKA_fnc_randomMusic_getTrackInterval;
-   ```
+```
 

@@ -17,9 +17,9 @@ NOTHING
 ```sqf
 // space tracks by 20 seconds exactly each
 [-1,arrayOfTracks,20] call KISKA_fnc_randomMusic;
-   ```
+```
 ```sqf
 // space tracks by UP TO 20 seconds each
 [-1,arrayOfTracks,[20]] call KISKA_fnc_randomMusic;
-   ```
+```
 

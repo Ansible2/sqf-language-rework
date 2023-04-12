@@ -11,6 +11,5 @@ Simply checks a config name to see if it is loaded under CFGPatches
 ```sqf
 
 ["OPTRE_Core"] call KISKA_fnc_isPatchLoaded;
-
 ```
 
