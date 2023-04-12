@@ -1,6 +1,6 @@
 import * as path from "path";
 import { BikiParser } from "./Biki Parser/BikiParser";
-import { KiskaParsers as KiskaParser } from "./KISKA Parser/KiskaParser";
+import { KiskaParser as KiskaParser } from "./KISKA Parser/KiskaParser";
 // https://community.bistudio.com/wiki/Special:Export/
 const parseType = process.argv[2];
 

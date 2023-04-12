@@ -45,7 +45,7 @@ interface ParsedKiskaPage {
     filename: string;
 }
 
-export class KiskaParsers implements Parser {
+export class KiskaParser implements Parser {
     /* ----------------------------------------------------------------------------
 		getPages
 	---------------------------------------------------------------------------- */
@@ -87,7 +87,7 @@ export class KiskaParsers implements Parser {
             if (kiskaPage.examples) {
                 pageArray.push("#### Examples:\n");
                 const examples = kiskaPage.examples
-                    .map((example) => `\`\`\`sqf\n${example}\`\`\``)
+                    .map((example) => `\`\`\`sqf\n${example}\n\`\`\``)
                     .join("\n")
                     .trim();
                 pageArray.push(examples);
@@ -152,17 +152,43 @@ class KiskaPageConverter {
 
         if (!descriptionMatch) return null;
 
-        const unParsedDescription = descriptionMatch[0];
+        let parsedDescription = descriptionMatch[0];
+        const exampleMatches = Array.from(parsedDescription.matchAll(
+            /(\(begin example\)\r*\n+)([\S\s]+?)(\s*\(end\))/gi
+        ));
+        
+        const hasExamples = exampleMatches && exampleMatches.length > 0;
+        if (hasExamples) {
+            exampleMatches.forEach((exampleMatch: RegExpMatchArray,index: number) => {
+                const wholeExampleText = exampleMatch[0];
+                const exampleIdentifier = `<example-${index}>`;
+                parsedDescription = parsedDescription.replace(wholeExampleText, exampleIdentifier);
+            });
+        }
+
 
         // TODO: exclude editing things in the description beteen
         // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
         // should seperate the ( {2,}) into one afterthe first replace(?)
 
-        // console.log(descriptionMatch[0]);
-        let parsedDescription = descriptionMatch[0].replace(/[\n\r\t]+/gi, " ");
+        parsedDescription = parsedDescription.replace(/[\n\r\t]+/gi, " ");
         parsedDescription = parsedDescription.replace(/ {2,}/gi, " ");
-        // console.log(kiskaPage.description);
 
+        if (hasExamples) {
+            exampleMatches.forEach((exampleMatch: RegExpMatchArray, index: number) => {
+                const exampleIdentifier = `<example-${index}>`;
+                const exampleCode = exampleMatch[2]
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(
+                    // examples are indented twice
+                    /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
+                    ""
+                );
+                parsedDescription = parsedDescription.replace(exampleIdentifier,`\n\`\`\`sqf\n${exampleCode}\n\`\`\`\n`);
+            });
+        }
+        
+        
         return parsedDescription;
     }
 
@@ -224,21 +250,22 @@ class KiskaPageConverter {
         const examplesFull = examplesMatch[0];
 
         const individualExamplesMatch = examplesFull.match(
-            /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\s+\(end\))/gi
+            /(?<=\(begin example\)\r*\n+)[\S\s]+?(?=\s*\(end\))/gi
         );
         const hasNoExamples =
             !individualExamplesMatch || individualExamplesMatch.length < 1;
         if (hasNoExamples) return ["NONE"];
 
         const examplesParsed: string[] = [];
-        individualExamplesMatch?.forEach((example) => {
-            examplesParsed.push(
-                example.replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "").replace(
+        individualExamplesMatch.forEach((example) => {
+            const exampleParsed = example
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(
                     // examples are indented twice
                     /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
                     ""
-                )
-            );
+                );
+            examplesParsed.push(exampleParsed);
         });
 
         return examplesParsed;
@@ -263,22 +290,22 @@ class KiskaPageConverter {
 
         const headerComment = headerRegexMatch[0];
 
-        const descriptionParsed = this.parseDescriptionSection(headerComment);
+        const descriptionParsed = KiskaPageConverter.parseDescriptionSection(headerComment);
         if (descriptionParsed) {
             kiskaPage.description = descriptionParsed;
         }
 
-        const returnsParsed = this.parseReturnsSection(headerComment);
+        const returnsParsed = KiskaPageConverter.parseReturnsSection(headerComment);
         if (returnsParsed) {
             kiskaPage.return = returnsParsed;
         }
 
-        const parametersParsed = this.parseParametersSection(headerComment);
+        const parametersParsed = KiskaPageConverter.parseParametersSection(headerComment);
         if (parametersParsed) {
             kiskaPage.parameters = parametersParsed;
         }
 
-        const examplesParsed = this.parseExamplesSection(headerComment);
+        const examplesParsed = KiskaPageConverter.parseExamplesSection(headerComment);
         if (examplesParsed) {
             kiskaPage.examples = examplesParsed;
         }
