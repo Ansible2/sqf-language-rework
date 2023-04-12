@@ -6,9 +6,10 @@ import {
 
 const patterns: IRawRule[] = [
     { include: "#comments" },
+    { include: "#arrayProperty" },
     { include: "#strings" },
     { include: "#numbers" },
-    { include: "#classes" },
+    { include: "#classDefinition" },
 ];
 
 const grammarRepo: IRawRepository = {
@@ -18,32 +19,52 @@ const grammarRepo: IRawRepository = {
     /* ----------------------------------------------------------------------------
         classes
 	---------------------------------------------------------------------------- */
-    classes: {
-        patterns: [
-            {
-                match: "(?i)\\b(class)\\s+([a-z\\d]+)\\b",
-                captures: {
-                    "1": {
-                        name: "storage.type.class.ext",
-                    },
-                    "2": {
-                        name: "entity.name.class.ext",
-                    },
-                },
+    classDefinition: {
+        match: "(?i)\\b(class)\\s+([a-z\\d]+)\\s*((:{1})\\s*([a-z\\d]+){1}){0,1}",
+        captures: {
+            "1": {
+                name: "storage.type.class.ext",
             },
-        ],
+            "2": {
+                name: "entity.name.class.ext",
+            },
+            "5": {
+                name: "entity.name.class.inheirited.ext",
+            },
+        },
     },
 
     /* ----------------------------------------------------------------------------
 		numbers
 	---------------------------------------------------------------------------- */
     numbers: {
+        match: "\\b((0(x|X)[0-9a-fA-F]([0-9a-fA-F']*[0-9a-fA-F])?)|(0(b|B)[01]([01']*[01])?)|(([0-9]([0-9']*[0-9])?\\.?[0-9]*([0-9']*[0-9])?)|(\\.[0-9]([0-9']*[0-9])?))((e|E)(\\+|-)?[0-9]([0-9']*[0-9])?)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b",
+        name: "constant.numeric.ext",
+    },
+
+    /* ----------------------------------------------------------------------------
+		arrays
+	---------------------------------------------------------------------------- */
+    arrayProperty: {
+        begin: "([a-zA-Z\\d]+)(\\[\\])\\s*=\\s*{",
+        beginCaptures: {
+            "1": {
+                name: "variable.other.property.array.ext",
+            },
+            "2": {
+                name: "variable.other.property.array.marker.ext",
+            },
+        },
+        end: "}\\s*;",
         patterns: [
             {
-                match: "\\b((0(x|X)[0-9a-fA-F]([0-9a-fA-F']*[0-9a-fA-F])?)|(0(b|B)[01]([01']*[01])?)|(([0-9]([0-9']*[0-9])?\\.?[0-9]*([0-9']*[0-9])?)|(\\.[0-9]([0-9']*[0-9])?))((e|E)(\\+|-)?[0-9]([0-9']*[0-9])?)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b",
-                name: "constant.numeric.ext",
-            },
-        ],
+                name: "variable.other.property.array.item.ext",
+                patterns: [
+                    { include: "#strings" },
+                    { include: "#numbers" },
+                ]
+            }
+        ]
     },
 
     /* ----------------------------------------------------------------------------
