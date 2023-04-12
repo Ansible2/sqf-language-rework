@@ -46,7 +46,7 @@ const grammarRepo: IRawRepository = {
 		arrays
 	---------------------------------------------------------------------------- */
     arrayProperty: {
-        begin: "([a-zA-Z\\d]+)(\\[\\])\\s*=\\s*{",
+        begin: "([a-zA-Z\\d]+)(\\[\\])",
         beginCaptures: {
             "1": {
                 name: "variable.other.property.array.ext",
@@ -57,6 +57,9 @@ const grammarRepo: IRawRepository = {
         },
         end: "}\\s*;",
         patterns: [
+            {
+                match: "=(?=\\s*{)"
+            },
             {
                 name: "variable.other.property.array.item.ext",
                 patterns: [
