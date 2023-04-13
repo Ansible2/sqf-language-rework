@@ -2,7 +2,7 @@
     "name": "sqf-language-rework",
     "displayName": "SQF Language Rework",
     "description": "",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "engines": {
         "vscode": "^1.70.0"
     },
@@ -11,6 +11,10 @@
         "url": "https://github.com/Ansible2/sqf-language-rework"
     },
     "main": "extension/client/src/extension",
+    "activationEvents": [
+        "onLanguage:sqf",
+        "onLanguage:ext"
+    ],
     "scripts": {
         "vsce": "npm run build && cd .out && vsce package",
         "postinstall": "cd ./extension/client && npm install && cd ../server && npm install && cd ..",
