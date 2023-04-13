@@ -39,8 +39,8 @@ const grammarRepo: IRawRepository = {
             {
                 name: "variable.other.property.ext",
                 patterns: [
-                    { include: "$self" },
                     { include: "#comments" },
+                    { include: "$self" },
                     { include: "#arrayProperty" },
                     { include: "#classProperty" },
                 ]
@@ -102,8 +102,8 @@ const grammarRepo: IRawRepository = {
                 name: "variable.other.property.array.item.ext",
                 patterns: [
                     { include: "#comments" },
-                    { include: "#strings" },
                     { include: "#arrayProperty" },
+                    { include: "#strings" },
                     { include: "#numbers" },
                 ]
             }
