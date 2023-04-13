@@ -20,7 +20,7 @@ const grammarRepo: IRawRepository = {
         classes
 	---------------------------------------------------------------------------- */
     classes: {
-        begin: "(?i)\\b(class)\\s+([a-z\\d]+)\\s*((:{1})\\s*([a-z\\d]+){1}){0,1}",
+        begin: "(?i)\\b(class)\\s+([a-z_\\d]+)\\s*((:{1})\\s*([a-z_\\d]+){1}){0,1}",
         beginCaptures: {
             "1": {
                 name: "storage.type.class.ext",
@@ -50,7 +50,7 @@ const grammarRepo: IRawRepository = {
     },
 
     classProperty: {
-        begin: "([a-zA-Z\\d]+)",
+        begin: "(?i)([a-za-z_\\d]+)",
         beginCaptures: {
             "1": {
                 name: "variable.other.property.name.ext",
@@ -83,7 +83,7 @@ const grammarRepo: IRawRepository = {
 		arrays
 	---------------------------------------------------------------------------- */
     arrayProperty: {
-        begin: "([a-zA-Z\\d]+)(\\[\\])",
+        begin: "(?i)([a-za-z_\\d]+)(\\[\\])",
         beginCaptures: {
             "1": {
                 name: "variable.other.property.name.array.ext",
