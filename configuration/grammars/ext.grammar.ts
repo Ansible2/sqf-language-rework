@@ -6,10 +6,10 @@ import {
 
 const patterns: IRawRule[] = [
     { include: "#comments" },
-    { include: "#arrayProperty" },
+    { include: "#classes" },
+    // { include: "#arrayProperty" },
     { include: "#strings" },
     { include: "#numbers" },
-    { include: "#classDefinition" },
 ];
 
 const grammarRepo: IRawRepository = {
@@ -19,9 +19,9 @@ const grammarRepo: IRawRepository = {
     /* ----------------------------------------------------------------------------
         classes
 	---------------------------------------------------------------------------- */
-    classDefinition: {
-        match: "(?i)\\b(class)\\s+([a-z\\d]+)\\s*((:{1})\\s*([a-z\\d]+){1}){0,1}",
-        captures: {
+    classes: {
+        begin: "(?i)\\b(class)\\s+([a-z\\d]+)\\s*((:{1})\\s*([a-z\\d]+){1}){0,1}",
+        beginCaptures: {
             "1": {
                 name: "storage.type.class.ext",
             },
@@ -32,6 +32,43 @@ const grammarRepo: IRawRepository = {
                 name: "entity.name.class.inheirited.ext",
             },
         },
+        patterns: [
+            {
+                match: "\\s*{"
+            },
+            {
+                name: "variable.other.property.ext",
+                patterns: [
+                    { include: "$self" },
+                    { include: "#comments" },
+                    { include: "#arrayProperty" },
+                    { include: "#classProperty" },
+                ]
+            },
+        ],
+        end: "}\\s*;",
+    },
+
+    classProperty: {
+        begin: "([a-zA-Z\\d]+)",
+        beginCaptures: {
+            "1": {
+                name: "variable.other.property.name.ext",
+            },
+        },
+        end: ";",
+        patterns: [
+            {
+                match: "="
+            },
+            {
+                name: "variable.other.property.array.item.ext",
+                patterns: [
+                    { include: "#strings" },
+                    { include: "#numbers" },
+                ]
+            }
+        ]
     },
 
     /* ----------------------------------------------------------------------------
@@ -49,7 +86,7 @@ const grammarRepo: IRawRepository = {
         begin: "([a-zA-Z\\d]+)(\\[\\])",
         beginCaptures: {
             "1": {
-                name: "variable.other.property.array.ext",
+                name: "variable.other.property.name.array.ext",
             },
             "2": {
                 name: "variable.other.property.array.marker.ext",
