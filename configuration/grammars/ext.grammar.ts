@@ -8,6 +8,7 @@ const patterns: IRawRule[] = [
     { include: "#comments" },
     { include: "#classes" },
     { include: "#arrayProperty" },
+    { include: "#property" },
     { include: "#strings" },
     { include: "#numbers" },
 ];
@@ -20,7 +21,7 @@ const grammarRepo: IRawRepository = {
         classes
 	---------------------------------------------------------------------------- */
     classes: {
-        begin: "(?i)\\b(class)\\s+([a-z_\\d]+)",
+        begin: "(?i)\\b(class)\\s+([a-z_]+[a-z_\\d]*)",
         beginCaptures: {
             "1": {
                 name: "storage.type.class.ext",
@@ -31,7 +32,7 @@ const grammarRepo: IRawRepository = {
         },
         patterns: [
             {
-                match: "(?i)\\s*(:{1})\\s*([a-z_\\d]+){1}",
+                match: "(?i)\\s*(:{1})\\s*([a-z_]+[a-z_\\d]*){1}",
                 captures: {
                     "2": {
                         name: "entity.name.class.inheirited.ext"
@@ -47,34 +48,31 @@ const grammarRepo: IRawRepository = {
                     { include: "#comments" },
                     { include: "$self" },
                     { include: "#arrayProperty" },
-                    { include: "#classProperty" },
+                    { include: "#property" },
                 ]
             },
         ],
         end: "}\\s*;",
     },
 
-    classProperty: {
-        begin: "(?i)([a-za-z_\\d]+)",
+    property: {
+        begin: "(?i)([a-z_]+[a-z_\\d]*)\\s*=",
         beginCaptures: {
             "1": {
                 name: "variable.other.property.name.ext",
             },
         },
-        end: ";",
         patterns: [
             {
-                match: "="
-            },
-            {
-                name: "variable.other.property.array.item.ext",
+                name: "variable.other.property.value.ext",
                 patterns: [
                     { include: "#comments" },
                     { include: "#strings" },
                     { include: "#numbers" },
                 ]
             }
-        ]
+        ],
+        end: ";",
     },
 
     /* ----------------------------------------------------------------------------
@@ -107,7 +105,6 @@ const grammarRepo: IRawRepository = {
                 name: "variable.other.property.array.item.ext",
                 patterns: [
                     { include: "#comments" },
-                    { include: "#arrayProperty" },
                     { include: "#strings" },
                     { include: "#numbers" },
                 ]
@@ -159,7 +156,7 @@ const grammarRepo: IRawRepository = {
         name: "string.single.sqf",
     },
     "reserved-literal": {
-        match: "\\s*(?i)(class|#include|#define|#if|#endif|#ifdef|#ifndef|#else|#endif|__LINE__|__FILE__|__has_include|__DATE_ARR__|__DATE_STR__|__DATE_STR_ISO8601__|__TIME__|__TIME_UTC__|__COUNTER__|__TIMESTAMP_UTC__|__COUNTER_RESET__|__RAND_INT8__|__RAND_INT16__|__RAND_INT32__|__RAND_INT64__|__RAND_UINT8__|__RAND_UINT16__|__RAND_UINT32__|__RAND_UINT64__|__GAME_VER__|__GAME_VER_MAJ__|__GAME_VER_MIN__|__GAME_BUILD__|__ARMA__|__ARMA3__|__A3_DEBUG__|__EXEC|__EVAL)\\b",
+        match: "\\s*(?i)(#include|#define|#if|#endif|#ifdef|#ifndef|#else|#endif|__LINE__|__FILE__|__has_include|__DATE_ARR__|__DATE_STR__|__DATE_STR_ISO8601__|__TIME__|__TIME_UTC__|__COUNTER__|__TIMESTAMP_UTC__|__COUNTER_RESET__|__RAND_INT8__|__RAND_INT16__|__RAND_INT32__|__RAND_INT64__|__RAND_UINT8__|__RAND_UINT16__|__RAND_UINT32__|__RAND_UINT64__|__GAME_VER__|__GAME_VER_MAJ__|__GAME_VER_MIN__|__GAME_BUILD__|__ARMA__|__ARMA3__|__A3_DEBUG__|__EXEC|__EVAL)\\b",
         name: "variable.language.reserved.ext",
     },
 };
