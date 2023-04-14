@@ -7,7 +7,7 @@ import {
 const patterns: IRawRule[] = [
     { include: "#comments" },
     { include: "#classes" },
-    // { include: "#arrayProperty" },
+    { include: "#arrayProperty" },
     { include: "#strings" },
     { include: "#numbers" },
 ];
@@ -20,7 +20,7 @@ const grammarRepo: IRawRepository = {
         classes
 	---------------------------------------------------------------------------- */
     classes: {
-        begin: "(?i)\\b(class)\\s+([a-z_\\d]+)\\s*((:{1})\\s*([a-z_\\d]+){1}){0,1}",
+        begin: "(?i)\\b(class)\\s+([a-z_\\d]+)",
         beginCaptures: {
             "1": {
                 name: "storage.type.class.ext",
@@ -28,11 +28,16 @@ const grammarRepo: IRawRepository = {
             "2": {
                 name: "entity.name.class.ext",
             },
-            "5": {
-                name: "entity.name.class.inheirited.ext",
-            },
         },
         patterns: [
+            {
+                match: "(?i)\\s*(:{1})\\s*([a-z_\\d]+){1}",
+                captures: {
+                    "2": {
+                        name: "entity.name.class.inheirited.ext"
+                    }
+                },
+            },
             {
                 match: "\\s*{"
             },
