@@ -190,39 +190,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         },
     },
-    KISKA_fnc_configureConvoy: {
-        grammarType: SQFGrammarType.Function,
-        syntaxes: {
-            type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: {
-                operation: SQFArrayComparator.Exact,
-                types: [
-                    SQFDataType.Group,
-                    {
-                        operation: SQFArrayComparator.OneOf,
-                        types: SQFDataType.Object,
-                    },
-                ],
-            },
-            leftOperandTypes: {
-                operation: SQFArrayComparator.Exact,
-                types: [
-                    SQFDataType.Side,
-                    [
-                        SQFDataType.Object,
-                        {
-                            operation: SQFArrayComparator.Exact,
-                            types: [
-                                [SQFDataType.Object, SQFDataType.PositionATL],
-                                SQFDataType.Number,
-                                SQFDataType.String,
-                            ],
-                        },
-                    ],
-                ],
-            },
-        },
-    },
     KISKA_fnc_defend: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
