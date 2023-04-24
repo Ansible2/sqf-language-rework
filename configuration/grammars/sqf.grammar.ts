@@ -295,7 +295,7 @@ const grammarRepo: IRawRepository = {
         name: "variable.other.local",
     },
     "var-global": {
-        match: getSingleWordRegex("\\b([a-z]\\w+)"),
+        match: getSingleWordRegex("\\b([a-z]\\w*)"),
         name: "variable.other.global",
     },
     functions: {
