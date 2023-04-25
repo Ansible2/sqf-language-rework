@@ -153,30 +153,41 @@ class KiskaPageConverter {
         if (!descriptionMatch) return null;
 
         let parsedDescription = descriptionMatch[0];
-        const exampleMatches = Array.from(parsedDescription.matchAll(
+        const sqfExampleMatches = Array.from(parsedDescription.matchAll(
             /(\(begin example\)\r*\n+)([\S\s]+?)(\s*\(end\))/gi
         ));
-        
-        const hasExamples = exampleMatches && exampleMatches.length > 0;
-        if (hasExamples) {
-            exampleMatches.forEach((exampleMatch: RegExpMatchArray,index: number) => {
+        const hasSqfExamples = sqfExampleMatches && sqfExampleMatches.length > 0;
+        if (hasSqfExamples) {
+            sqfExampleMatches.forEach((exampleMatch: RegExpMatchArray,index: number) => {
                 const wholeExampleText = exampleMatch[0];
-                const exampleIdentifier = `<example-${index}>`;
+                const exampleIdentifier = `<sqf-example-${index}>`;
+                parsedDescription = parsedDescription.replace(wholeExampleText, exampleIdentifier);
+            });
+        }
+
+        const configExampleMatches = Array.from(parsedDescription.matchAll(
+            /(\(begin config example\)\r*\n+)([\S\s]+?)(\s*\(end\))/gi
+        ));
+        const hasConfigExamples = configExampleMatches && configExampleMatches.length > 0;
+        if (hasConfigExamples) {
+            configExampleMatches.forEach((exampleMatch: RegExpMatchArray,index: number) => {
+                const wholeExampleText = exampleMatch[0];
+                const exampleIdentifier = `<config-example-${index}>`;
                 parsedDescription = parsedDescription.replace(wholeExampleText, exampleIdentifier);
             });
         }
 
 
-        // TODO: exclude editing things in the description beteen
+        // TODO: exclude editing things in the description between
         // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
         // should seperate the ( {2,}) into one afterthe first replace(?)
 
         parsedDescription = parsedDescription.replace(/[\n\r\t]+/gi, " ");
         parsedDescription = parsedDescription.replace(/ {2,}/gi, " ");
 
-        if (hasExamples) {
-            exampleMatches.forEach((exampleMatch: RegExpMatchArray, index: number) => {
-                const exampleIdentifier = `<example-${index}>`;
+        if (hasSqfExamples) {
+            sqfExampleMatches.forEach((exampleMatch: RegExpMatchArray, index: number) => {
+                const exampleIdentifier = `<sqf-example-${index}>`;
                 const exampleCode = exampleMatch[2]
                 .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
                 .replace(
@@ -185,6 +196,19 @@ class KiskaPageConverter {
                     ""
                 );
                 parsedDescription = parsedDescription.replace(exampleIdentifier,`\n\`\`\`sqf\n${exampleCode}\n\`\`\`\n`);
+            });
+        }
+        if (hasConfigExamples) {
+            configExampleMatches.forEach((exampleMatch: RegExpMatchArray, index: number) => {
+                const exampleIdentifier = `<config-example-${index}>`;
+                const exampleCode = exampleMatch[2]
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(
+                    // examples are indented twice
+                    /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
+                    ""
+                );
+                parsedDescription = parsedDescription.replace(exampleIdentifier,`\n\`\`\`hpp\n${exampleCode}\n\`\`\`\n`);
             });
         }
         

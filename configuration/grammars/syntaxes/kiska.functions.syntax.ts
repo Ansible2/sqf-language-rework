@@ -813,6 +813,25 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                         SQFDataType.Number,
                     ]),
                 ]),
+                SQFArray.ofOneOfThese([
+                    SQFDataType.String,
+                    SQFArray.ofExactly([
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                    ]),
+                ]),
+                SQFArray.ofExactly([
+                    SQFDataType.String,
+                    SQFArray.of(SQFDataType.String),
+                ]),
+                SQFArray.ofExactly([
+                    SQFDataType.String,
+                    SQFArray.of(SQFDataType.String),
+                ]),
+                SQFArray.ofExactly([
+                    SQFDataType.String,
+                    SQFArray.of(SQFDataType.String),
+                ]),
             ]),
         },
     },
@@ -2709,8 +2728,11 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: [SQFDataType.Boolean,SQFDataType.Nothing],
-            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group,SQFDataType.Boolean]),
+            returnTypes: [SQFDataType.Boolean, SQFDataType.Nothing],
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Group,
+                SQFDataType.Boolean,
+            ]),
         },
     },
     KISKA_fnc_GCH_isOpen: {
@@ -3124,10 +3146,8 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Group
-            ]),
-            returnTypes: SQFDataType.Boolean
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group]),
+            returnTypes: SQFDataType.Boolean,
         },
     },
     KISKA_fnc_GCH_dontExcludePlayerGroupDefault: {
@@ -3145,8 +3165,410 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_resetMove: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_addVehicle: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
             leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object
+                SQFDataType.HashMap,
+                SQFDataType.Object,
+                SQFDataType.Number,
+                SQFDataType.Number,
+            ]),
+            returnTypes: SQFDataType.Number,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_addVehicleKilledEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_clearVehicleDebugFollowedPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Boolean,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_clearVehicleDebugFollowPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Boolean,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_create: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFArray.of(SQFDataType.Object),
+                SQFDataType.Boolean,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_delete: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getBumperPosition: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.PositionWorld,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getConvoyHashMapFromVehicle: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.HashMap,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getConvoyLeader: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap]),
+            returnTypes: SQFDataType.Object,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getConvoyStatemachine: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap]),
+            returnTypes: SQFDataType.Location,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getConvoyVehicles: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.HashMap,
+                SQFDataType.Number,
+            ]),
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getDefaultSeperation: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap]),
+            returnTypes: SQFDataType.Number,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getPointBuffer: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap]),
+            returnTypes: SQFDataType.Number,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleAtIndex: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.HashMap,
+                SQFDataType.Number,
+            ]),
+            returnTypes: SQFDataType.Object,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleDebugFollowedPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleDebugFollowPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFArray.of(SQFDataType.Object),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleDebugMarkerType_followedPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.String,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleDebugMarkerType_followPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.String,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleDrivePath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFArray.of(SQFDataType.PositionATL),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleIndex: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.Number,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleKilledEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.Code,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleLastAddedPoint: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: [SQFDataType.PositionATL, SQFDataType.Nothing],
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_getVehicleSeperation: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.Number,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_handleDeadDriver_default: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.HashMap,
+                SQFDataType.Object,
+                SQFDataType.Object,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_handleUnconsciousDriver_default: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.HashMap,
+                SQFDataType.Object,
+                SQFDataType.Object,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_handleVehicleCantMove_default: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.HashMap,
+                SQFDataType.Object,
+                SQFDataType.Object,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_handleVehicleKilled_default: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.HashMap,
+                SQFDataType.Object,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_isVehicleInDebug: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            returnTypes: SQFDataType.Boolean,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_modifyVehicleDrivePath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Number,
+                SQFArray.of(SQFDataType.PositionATL),
+            ]),
+            returnTypes: SQFDataType.Boolean,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_onEachFrame: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFDataType.Object,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_removeVehicle: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_removeVehicleKilledEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setDefaultSeperation: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Number,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setPointBuffer: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Number,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setVehicleDebug: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Boolean,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setVehicleDebugMarkerType_followedPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.String,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setVehicleDebugMarkerType_followPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.String,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setVehicleDriveOnPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Boolean,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setVehicleKilledEvent: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFCode.returns(SQFDataType.Nothing).takes(
+                    SQFArray.ofExactly([
+                        SQFDataType.Object,
+                        SQFDataType.Object,
+                        SQFDataType.Object,
+                    ])
+                ),
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_setVehicleSeperation: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                SQFDataType.Number,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_shouldVehicleDriveOnPath: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+            ]),
+            returnTypes: SQFDataType.Boolean,
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_stopVehicle: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+            ]),
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_convoy_syncLatestDrivePoint: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.HashMap,
             ]),
             type: SQFSyntaxType.UnscheduledFunction,
         },

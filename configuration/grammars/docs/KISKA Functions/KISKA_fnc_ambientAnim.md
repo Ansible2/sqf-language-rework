@@ -14,16 +14,14 @@ Provides an updated version of BIS_fnc_ambientAnim in a tighter package that all
     following params. If you still want the unit to be animated in this case, pass `{}`, `""`, or `[]`
         
         - 0: **_unit** *(OBJECT)* - The unit
-        - 1: **_unitInfoMap** *(HASHMAP)* - The current state of the _unitInfoMap which stores animation info for the system
-        The rest of these params are exactly as passed to the initial KISKA_fnc_ambientAnim call
-        - 2: **_animationParams** *(ARRAY, STRING[], (STRING,NUMBER)[], or STRING)*
-        - 3: **_exitOnCombat** *(BOOL)*
-        - 4: **_equipmentLevel** *(ARRAY or STRING)*
-        - 5: **_animationMap** *(HASHMAP or CONFIG)*
+        - 1: **_animationParams** *(STRING[], (STRING,NUMBER)[], or STRING)*
+        - 2: **_exitOnCombat** *(BOOL)*
+        - 3: **_equipmentLevel** *(STRING[], (STRING,NUMBER)[], or STRING)*
+        - 4: **_animationMap** *(HASHMAP or CONFIG)*
 
 2: **_exitOnCombat** *(BOOL)* - True for unit to return to the state it was in prior toKISKA_fnc_ambientAnim being called when they are enter combat behaviour.
 
-3: **_equipmentLevel** *(STRING)* - A quick means of temporarily adjusting a unit's equipment to match a scene. Options:- "": no changes- "NONE": no goggles, headgear, vest, weapon, nvgs, backpack- "LIGHT": no goggles, headgear, vest, backpack- "MEDIUM": no goggles, headgear- "FULL": no goggles
+3: **_equipmentLevel** *(ARRAY or STRING)* - A quick means of temporarily adjusting a unit's equipment to match a scene. Options:- "": no changes- "NONE": no goggles, headgear, vest, weapon, nvgs, backpack- "LIGHT": no goggles, headgear, vest, backpack- "MEDIUM": no goggles, headgear- "FULL": no goggles
 
 4: **_animationMap** *(HASHMAP or CONFIG)* - See KISKA_fnc_ambientAnim_createMapFromConfigThis is a hashmap that will searched for information for a specific _animSetA config can be passed and will be parsed/cached.
 

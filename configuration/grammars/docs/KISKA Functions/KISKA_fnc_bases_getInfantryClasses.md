@@ -11,7 +11,7 @@ Selects the most specific config's infantryClasses property and returns its valu
 ```sqf
 [
     [
-        missionConfigFile >> "KISKA_Bases" >> "myBase"
+        missionConfigFile >> "KISKA_Bases" >> "myBase",
         missionConfigFile >> "KISKA_Bases" >> "myBase" >> "Infantry",
         missionConfigFile >> "KISKA_Bases" >> "myBase" >> "Infantry" >> "myInfantryClass"
     ]
