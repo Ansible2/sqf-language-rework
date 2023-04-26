@@ -986,7 +986,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_randomMusic: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            type: SQFSyntaxType.ScheduledFunction,
+            type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Number,
                 SQFArray.of(SQFDataType.String),
