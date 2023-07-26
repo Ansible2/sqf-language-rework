@@ -21,8 +21,22 @@ private _weight1 = 0.5;
 private _weight2 = 0.5;
 
 private _randomWeightedValue = [
-    ["thing1", _weight1,
-    "thing2", _weight2],
+    [
+        "thing1", _weight1,
+        "thing2", _weight2
+    ],
+    ""
+] call KISKA_fnc_selectRandom;
+```
+```sqf
+private _weight1 = 0.5;
+private _weight2 = 0.5;
+
+private _randomWeightedValue = [
+    [
+        ["thing1", "thing2"],
+        [_weight1, _weight2]
+    ],
     ""
 ] call KISKA_fnc_selectRandom;
 ```

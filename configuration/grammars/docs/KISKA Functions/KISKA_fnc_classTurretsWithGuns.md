@@ -5,7 +5,7 @@ Checks a given vehicle class to see if it has turrets that have guns and returns
 0: **_classToCheck** *(STRING)* - The vehicle class to check
 
 #### Returns:
-*(ARRAY)* - The turret paths
+*(NUMBER[][])* - The turret paths
 
 #### Examples:
 ```sqf

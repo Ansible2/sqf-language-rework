@@ -20193,7 +20193,16 @@ const sqfCommandSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.BinaryOperator,
             returnTypes: SQFDataType.Nothing,
-            leftOperandTypes: SQFDataType.Namespace,
+            leftOperandTypes: [
+                SQFDataType.Namespace,
+                SQFDataType.Group,
+                SQFDataType.Object,
+                SQFDataType.Location,
+                SQFDataType.Control,
+                SQFDataType.Display,
+                SQFDataType.Task,
+                SQFDataType.TeamMember,
+            ],
             rightOperandTypes: [
                 SQFDataType.Boolean,
                 SQFDataType.Number,

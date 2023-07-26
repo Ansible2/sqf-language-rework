@@ -2,7 +2,7 @@
 Spawns a helicopter (or uses an existing one) to partol a given area for a period of time and engage enemy targets in a given area.
 
 #### Parameters:
-0: **_centerPosition** : *(ARRAY(AGL), OBJECT)* - The position around which the helicopter will patrol
+0: **_centerPosition** : *(Position[], OBJECT)* - The position around which the helicopter will patrol
 
 1: **_radius** : *(NUMBER)* - The size of the radius to patrol around
 
@@ -21,17 +21,19 @@ Spawns a helicopter (or uses an existing one) to partol a given area for a perio
 8: **_postSupportCode** : *(CODE, ARRAY, or STRING)* - Code to execute after the support completes.
     See KISKA_fnc_callBack.
     The default behaviour is for the aircraft to move 2000 meters away and for
-    its complete crew and self to be deleted.
+     its complete crew and self to be deleted. The _postSupportCode should return a `BOOL`
+     that if `false` will NOT perform the default behaviour in addition to the callback.
     Parameters:
     - 0: *(OBJECT)* - The helicopter confucting support
     - 1: *(GROUP)* - The group the pilot belongs to
-    - 2: *(ARRAY)* - The full vehicle crew
-    - 3: *(ARRAY)* - The position the helicopter was supporting
+    - 2: *(OBJECT[])* - The full vehicle crew
+    - 3: *(OBJECT)* - The unit that *should* be the pilot of the helicopter
+    - 4: *(ARRAY)* - The position the helicopter was supporting
 
 #### Returns:
 ARRAY - The vehicle info
     0: *(OBJECT)* - The vehicle created
-    1: *(ARRAY)* - The vehicle crew
+    1: *(OBJECT[])* - The vehicle crew
     2: *(GROUP)* - The group the crew is a part of
 
 #### Examples:
