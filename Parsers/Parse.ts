@@ -1,6 +1,6 @@
 import * as path from "path";
-import { BikiParser } from "./Biki Parser/BikiParser";
-import { KiskaParsers as KiskaParser } from "./KISKA Parser/KiskaParser";
+import { KiskaParser } from "./KISKA Parser/KiskaParser";
+import { BikiParser } from "./BIKI Parser/BikiParser";
 // https://community.bistudio.com/wiki/Special:Export/
 const parseType = process.argv[2];
 
@@ -20,8 +20,8 @@ switch (parseType?.toLowerCase()) {
 	case 'biki:functions': {
 		try {
 			const parser = new BikiParser();
-			const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/functions.MediaWiki.xml"));
-			// const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/functionsShort.xml"));
+			// const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/Biki Seed Files/functions.MediaWiki.xml"));
+			const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/Test Seed Files/functionsShort.xml"));
 			const parsedPages = parser.parsePages(pages);
 			parser.doWithParsedPages(parsedPages);
 		} catch (error) {

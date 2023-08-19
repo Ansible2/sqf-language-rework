@@ -45,7 +45,7 @@ interface ParsedKiskaPage {
     filename: string;
 }
 
-export class KiskaParsers implements Parser {
+export class KiskaParser implements Parser {
     /* ----------------------------------------------------------------------------
 		getPages
 	---------------------------------------------------------------------------- */
