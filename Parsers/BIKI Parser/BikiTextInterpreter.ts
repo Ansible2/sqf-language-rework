@@ -3,7 +3,7 @@ import { WikiPageDetailType, WikiPageType } from "./BikiTypes";
 import { SQFGrammarTypeMap } from "./SQFCommandsGrammarMap";
 
 interface DetailTypeChecker {
-    checkFunction: (a: string) => boolean;
+    doesMatchDetailType: (a: string) => boolean;
     wikiType: WikiPageDetailType;
 }
 
@@ -210,37 +210,37 @@ export class BikiTextInterpreter {
 
     private static readonly detailTypeCheckers: DetailTypeChecker[] = [
         {
-            checkFunction: this.isFunctionExecution,
+            doesMatchDetailType: this.isFunctionExecution,
             wikiType: WikiPageDetailType.FunctionExecution,
         },
         {
-            checkFunction: this.isPageType,
+            doesMatchDetailType: this.isPageType,
             wikiType: WikiPageDetailType.PageType,
         },
-        { checkFunction: this.isSyntax, wikiType: WikiPageDetailType.Syntax },
+        { doesMatchDetailType: this.isSyntax, wikiType: WikiPageDetailType.Syntax },
         {
-            checkFunction: this.isParameter,
+            doesMatchDetailType: this.isParameter,
             wikiType: WikiPageDetailType.Parameter,
         },
         {
-            checkFunction: this.isReturnType,
+            doesMatchDetailType: this.isReturnType,
             wikiType: WikiPageDetailType.Return,
         },
-        { checkFunction: this.isExample, wikiType: WikiPageDetailType.Example },
+        { doesMatchDetailType: this.isExample, wikiType: WikiPageDetailType.Example },
         {
-            checkFunction: this.isDescription,
+            doesMatchDetailType: this.isDescription,
             wikiType: WikiPageDetailType.Description,
         },
         {
-            checkFunction: this.isArgLocality,
+            doesMatchDetailType: this.isArgLocality,
             wikiType: WikiPageDetailType.ArgLocality,
         },
         {
-            checkFunction: this.isEffectLocality,
+            doesMatchDetailType: this.isEffectLocality,
             wikiType: WikiPageDetailType.EffectLocality,
         },
         {
-            checkFunction: this.isServerExec,
+            doesMatchDetailType: this.isServerExec,
             wikiType: WikiPageDetailType.ServerExecution,
         },
     ];
@@ -249,10 +249,8 @@ export class BikiTextInterpreter {
 		getDetailType
 	---------------------------------------------------------------------------- */
     public getDetailType(detail: string): WikiPageDetailType {
-        for (const { checkFunction, wikiType } of BikiTextInterpreter.detailTypeCheckers) {
-            if (checkFunction(detail)) {
-                return wikiType;
-            }
+        for (const { doesMatchDetailType, wikiType } of BikiTextInterpreter.detailTypeCheckers) {
+            if (doesMatchDetailType(detail)) return wikiType;
         }
 
         return WikiPageDetailType.Unknown;
