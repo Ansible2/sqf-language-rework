@@ -126,7 +126,7 @@ export class MediaWikiConverter {
             // this can match the parent array type
             // /((?<==\s*\w+: \[\[)array(?=\]\] -))/i
 
-            // this combined one can match all, would need to remove the parent Arra type in some way (programmaticaly or regex wise)
+            // this combined one can match all sub types of an array, but this would need to be heavily tested against more cases
             // (?<=((?<==\s*\w+: \[\[)array(?=\]\] -))[\s\S]*?)((?<=\d+:\s*\[\[)([\S\D]+?)(?=\]\] -))
 
             // BIS_fnc_unitPlay
