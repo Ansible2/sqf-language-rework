@@ -93,8 +93,8 @@ export class MediaWikiConverter {
     /* ----------------------------------------------------------------------------
         getSQFDataTypes
     ---------------------------------------------------------------------------- */
-    private static getSQFDataTypes(input: string): SQFDataType[] {
-        const edgeReturn = MediaWikiConverter.findEdgeCaseMatches(input);
+    private static parseReturnOrParameterTypes(pageDetail: WikiPageDetail): SQFDataType[] {
+        const edgeReturn = MediaWikiConverter.findEdgeCaseMatches(pageDetail.detailFull);
         if (edgeReturn.length > 0) {
             return edgeReturn;
         }
@@ -138,9 +138,9 @@ export class MediaWikiConverter {
 
 
 
-        const typeMatches: RegExpMatchArray | null = input.match(/(?<=\[\[)([\S\D]+?)(?=\]\] -)/gi);
+        const typeMatches: RegExpMatchArray | null = pageDetail.detailFull.match(/(?<=\[\[)([\S\D]+?)(?=\]\] -)/gi);
         if (!typeMatches) {
-            console.log(`Could not find type in string: ${input}`);
+            console.log(`Could not find type in string: ${pageDetail.detailFull}`);
             return [];
         }
 
@@ -241,7 +241,9 @@ export class MediaWikiConverter {
         const isReturn = pageDetail.type === WikiPageDetailType.Return;
         if (!isParameter && !isReturn) return;
 
-        const typesParsed = MediaWikiConverter.getSQFDataTypes(pageDetail.detailFull);
+        const typesParsed = MediaWikiConverter.parseReturnOrParameterTypes(pageDetail);
+        console.log("typesParsed",typesParsed);
+        
         if (typesParsed.length < 1) {
             console.log("Could not parse any types for a detail on command", pageDetail.pageTitle);
             console.log("Detail:", pageDetail.detailFull);
@@ -309,7 +311,9 @@ export class MediaWikiConverter {
 
         if (parsingSyntaxes.length < 1) return [];
 
-        for (const pageDetail of pageDetails) {
+        for (const pageDetail of pageDetails) {       
+            console.log('pageDetail.detailContent',pageDetail.detailFull);
+                 
             if (
                 pageDetail.type === WikiPageDetailType.Return ||
                 pageDetail.type === WikiPageDetailType.Parameter
@@ -321,6 +325,8 @@ export class MediaWikiConverter {
                 );
             }
         }
+
+        console.log("parsingSyntaxes:",parsingSyntaxes[0].syntax);
 
         const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
             return MediaWikiConverter.convertParsingSyntax(pageDetails[0].pageTitle, syntax);

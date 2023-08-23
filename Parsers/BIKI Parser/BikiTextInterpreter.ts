@@ -260,7 +260,7 @@ export class BikiTextInterpreter {
 		getSQFGrammarType
 	---------------------------------------------------------------------------- */
     public getSQFGrammarType(name: string): SQFGrammarType {
-        const nameLowered = (name = name.toLowerCase());
+        const nameLowered = name.toLowerCase();
         if (nameLowered.includes("_fnc_")) {
             return SQFGrammarType.Function;
         }
