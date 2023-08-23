@@ -83,7 +83,7 @@ export class MediaWikiConverter {
 
         const edgeArrayMatch = input.includes("|r1= in format [x,y] in meters");
         if (edgeArrayMatch) {
-            const typeCovnerted = MediaWikiConverter.textInterpreter.getSQFDataType("Array");
+            const typeCovnerted = MediaWikiConverter.textInterpreter.getSQFDataType("POSITION2D");
             return [typeCovnerted];
         }
 
@@ -99,7 +99,46 @@ export class MediaWikiConverter {
             return edgeReturn;
         }
 
-        const typeMatches: RegExpMatchArray | null = input.match(/(?<=\[\[)([\S\D]*?)(?=\]\])/gi);
+        // TODO: implement comprehensive regex matching/parsing of parameter types from the wiki
+        // Search the commands.MediaWiki.xml and functions.MediaWiki.xml for other cases
+        /*
+            Example Test Cases:
+
+
+            // weaponCargo command
+                |p1= box: [[Object]]
+                |r1= [[Array]] of [[String]] - list of present classes
+
+            -------------------------------------------------
+
+            // this can match the first instance of [[type]]
+            // /((?<==\s*\w+: \[\[)([\S\D]+?)(?=\]\] -))/i
+
+            // BIS_fnc_unitCapture
+                |p4= Firing: [[Boolean]] - (Optional, default [[false]]) if set to [[true]], will record the input unit's weapon fire data as well
+                |p5= startTime: [[Number]] - (Optional, default 0) starting time offset for the frame time
+
+            -------------------------------------------------
+
+            // this can match sub array items
+            // /((?<=\d+:\s*\[\[)([\S\D]+?)(?=\]\] -))/gi
+
+            // this can match the parent array type
+            // /((?<==\s*\w+: \[\[)array(?=\]\] -))/i
+
+            // this combined one can match all sub types of an array, but this would need to be heavily tested against more cases
+            // (?<=((?<==\s*\w+: \[\[)array(?=\]\] -))[\s\S]*?)((?<=\d+:\s*\[\[)([\S\D]+?)(?=\]\] -))
+
+            // BIS_fnc_unitPlay
+                |p3= varDone: [[Array]] - (Optional, default []) Variable to set on specified Object once playback has finished in format:
+                *0: [[Object]] - Target object
+                *1: [[String]] - Variable name
+
+        */
+
+
+
+        const typeMatches: RegExpMatchArray | null = input.match(/(?<=\[\[)([\S\D]+?)(?=\]\] -)/gi);
         if (!typeMatches) {
             console.log(`Could not find type in string: ${input}`);
             return [];
@@ -706,7 +745,6 @@ export class MediaWikiConverter {
 
             if (detail.type === WikiPageDetailType.Description) {
                 description = MediaWikiConverter.formatBikiText(detail.detailContent);
-
                 return;
             }
 
