@@ -169,7 +169,7 @@ class KiskaPageConverter {
             // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
             // should seperate the ( {2,}) into one afterthe first replace(?)
 
-            // console.log(descriptionMatch[0]);
+            // console.debug(descriptionMatch[0]);
             kiskaPage.description = descriptionMatch[0].replace(
                 /[\n\r\t]+/gi,
                 " "
@@ -178,7 +178,7 @@ class KiskaPageConverter {
                 / {2,}/gi,
                 " "
             );
-            // console.log(kiskaPage.description);
+            // console.debug(kiskaPage.description);
         }
 
         const returnMatch = headerComment.match(

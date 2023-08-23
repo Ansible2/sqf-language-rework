@@ -136,9 +136,16 @@ export class MediaWikiConverter {
 
         */
 
+        const arrayMatches = pageDetail.detailFull.match(
+            /(?<=((?<==\s*\w+: \[\[)array(?=\]\] -))[\s\S]*?)((?<=\d+:\s*\[\[)([\S\D]+?)(?=\]\] -))/gi
+        );
+        if (arrayMatches) {
+            console.debug("arrayMatches", arrayMatches);
+        }
 
-
-        const typeMatches: RegExpMatchArray | null = pageDetail.detailFull.match(/(?<=\[\[)([\S\D]+?)(?=\]\] -)/gi);
+        const typeMatches: RegExpMatchArray | null = pageDetail.detailFull.match(
+            /(?<=\[\[)([\S\D]+?)(?=\]\] -)/gi
+        );
         if (!typeMatches) {
             console.log(`Could not find type in string: ${pageDetail.detailFull}`);
             return [];
@@ -242,8 +249,8 @@ export class MediaWikiConverter {
         if (!isParameter && !isReturn) return;
 
         const typesParsed = MediaWikiConverter.parseReturnOrParameterTypes(pageDetail);
-        console.log("typesParsed",typesParsed);
-        
+        console.debug("typesParsed", typesParsed);
+
         if (typesParsed.length < 1) {
             console.log("Could not parse any types for a detail on command", pageDetail.pageTitle);
             console.log("Detail:", pageDetail.detailFull);
@@ -311,9 +318,9 @@ export class MediaWikiConverter {
 
         if (parsingSyntaxes.length < 1) return [];
 
-        for (const pageDetail of pageDetails) {       
-            console.log('pageDetail.detailContent',pageDetail.detailFull);
-                 
+        for (const pageDetail of pageDetails) {
+            console.log("pageDetail.detailContent", pageDetail.detailFull);
+
             if (
                 pageDetail.type === WikiPageDetailType.Return ||
                 pageDetail.type === WikiPageDetailType.Parameter
@@ -326,7 +333,7 @@ export class MediaWikiConverter {
             }
         }
 
-        console.log("parsingSyntaxes:",parsingSyntaxes[0].syntax);
+        console.log("parsingSyntaxes:", parsingSyntaxes[0].syntax);
 
         const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
             return MediaWikiConverter.convertParsingSyntax(pageDetails[0].pageTitle, syntax);

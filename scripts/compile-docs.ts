@@ -21,7 +21,6 @@ async function main() {
 
     console.log("parsing docs...");
     await Promise.all(promises);
-
     console.log("writing to file...");
 
     // docs are written to .js instead of .ts primarily to avoid overloading the ts language server
