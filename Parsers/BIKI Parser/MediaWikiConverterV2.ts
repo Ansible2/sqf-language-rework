@@ -18,13 +18,10 @@ import * as fs from "fs";
 import * as path from "path";
 
 interface ParsingSyntax {
-    detailIndex: number;
-    syntax: {
-        returnType?: SQFDataType;
-        parameters_1?: SQFDataType[];
-        parameters_2?: SQFDataType[];
-        syntaxType?: SQFSyntaxType;
-    };
+    returnType?: SQFDataType[];
+    leftParameters?: SQFDataType[];
+    rightParameters?: SQFDataType[];
+    syntaxType?: SQFSyntaxType;
 }
 
 interface ParsedPage {
@@ -34,17 +31,6 @@ interface ParsedPage {
     effectLocality?: SQFEffect;
     serverExecution?: boolean;
     grammarType: SQFGrammarType;
-}
-
-function findLastIndex<T>(
-    array: Array<T>,
-    predicate: (value: T, index: number, obj: T[]) => boolean
-): number {
-    let l = array.length;
-    while (l--) {
-        if (predicate(array[l], l, array)) return l;
-    }
-    return -1;
 }
 
 function isSyntaxTypeFunction(type: SQFSyntaxType): boolean {
@@ -75,13 +61,11 @@ export class MediaWikiConverter {
         if (pageDetails.length < 1) return "";
 
         this.documentationWriter.writeDocumentation(page.title, pageDetails);
-        this.currentParsedPageIsFunction = this.isPageFunction(pageDetails);
-
-        let parsedSyntaxes: ParsedSyntax[] = this.getParsedSyntaxes(pageDetails);
+        const parsedSyntaxes: ParsedSyntax[] = this.getParsedSyntaxes(pageDetails);
         const grammarType: SQFGrammarType = this.textInterpreter.getSQFGrammarType(
             page.title.toLowerCase()
         );
-        parsedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
+        // const consolidatedSyntaxes = this.consolidateSyntaxes(parsedSyntaxes);
     }
 
     /* ----------------------------------------------------------------------------
@@ -136,39 +120,97 @@ export class MediaWikiConverter {
         getParsedSyntaxes
     ---------------------------------------------------------------------------- */
     private getParsedSyntaxes(pageDetails: WikiPageDetail[]): ParsedSyntax[] {
+        const pageIsFunction = this.isPageFunction(pageDetails);
         const parsingSyntaxes: ParsingSyntax[] = [];
-
-        pageDetails.forEach((detail: WikiPageDetail) => {
-            if (detail.type !== WikiPageDetailType.Syntax) return;
-
-            parsingSyntaxes.push({
-                detailIndex: detail.index,
-                syntax: {},
-            });
-        });
-
-        if (parsingSyntaxes.length < 1) return [];
 
         for (const pageDetail of pageDetails) {
             console.log("pageDetail.detailFull", pageDetail.detailFull);
+            if (pageDetail.type === WikiPageDetailType.Syntax) {
+                const emptyParsingSyntax = {};
+                parsingSyntaxes.push(emptyParsingSyntax);
+                continue;
+            } else if (parsingSyntaxes.length < 1) {
+                continue;
+            }
 
-            if (
-                pageDetail.type === WikiPageDetailType.Return ||
-                pageDetail.type === WikiPageDetailType.Parameter
-            ) {
-                this.addPageDetailToSyntax(
-                    parsingSyntaxes,
-                    pageDetail,
-                    isSyntaxTypeFunction(this.currentParsedPageType)
+            const isParameter = pageDetail.type === WikiPageDetailType.Parameter;
+            const isReturn = pageDetail.type === WikiPageDetailType.Return;
+            if (!isParameter && !isReturn) continue;
+
+            const pageDetailTypesParsed: SQFDataType[] =
+                this.parseReturnOrParameterTypes(pageDetail);
+            console.debug("DEBUG: pageDetailTypesParsed", pageDetailTypesParsed);
+            if (pageDetailTypesParsed.length < 1) {
+                console.log(
+                    "Could not parse any types for a detail on command",
+                    pageDetail.pageTitle
                 );
+                console.log("Detail:", pageDetail.detailFull);
+                continue;
+            }
+
+            const latestParsingSyntax: ParsingSyntax = parsingSyntaxes[parsingSyntaxes.length - 1];
+            if (isParameter && !pageIsFunction) {
+                // if a (non-function) syntax has only one parameter type set, it means it is a unary operator
+                // otherwise it would be a binary operator, so we default to unary until told
+                // there are more paramters
+                if (latestParsingSyntax.rightParameters) {
+                    latestParsingSyntax.leftParameters = latestParsingSyntax.rightParameters;
+                    latestParsingSyntax.rightParameters = pageDetailTypesParsed;
+
+                    // some commands (!= & == for example)
+                    // list param 'b' as being identical to 'a'
+                    const rightParametersAreIdentical =
+                        latestParsingSyntax.rightParameters.includes(SQFDataType.IDENTICAL) &&
+                        latestParsingSyntax.rightParameters.length === 1;
+                    const leftParametersAreIdentical =
+                        latestParsingSyntax.leftParameters.includes(SQFDataType.IDENTICAL) &&
+                        latestParsingSyntax.leftParameters.length === 1;
+
+                    if (rightParametersAreIdentical) {
+                        latestParsingSyntax.rightParameters = [
+                            ...latestParsingSyntax.leftParameters,
+                        ];
+                    } else if (leftParametersAreIdentical) {
+                        latestParsingSyntax.leftParameters = [
+                            ...latestParsingSyntax.rightParameters,
+                        ];
+                    }
+                } else {
+                    latestParsingSyntax.rightParameters = pageDetailTypesParsed;
+                }
+
+                continue;
+            }
+
+            if (isParameter && pageIsFunction) {
+                if (!latestParsingSyntax.leftParameters) {
+                    latestParsingSyntax.leftParameters = [];
+                }
+
+                latestParsingSyntax.leftParameters.push(...pageDetailTypesParsed);
+                continue;
+            }
+
+            if (isReturn) {
+                latestParsingSyntax.returnType = pageDetailTypesParsed;
+                continue;
             }
         }
 
-        console.log("parsingSyntaxes:", parsingSyntaxes[0].syntax);
-        const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
-            return this.convertParsingSyntax(pageDetails[0].pageTitle, syntax);
-        });
-        return parsedSyntaxes;
+        // TODO:
+        // console.log("parsingSyntaxes:", parsingSyntaxes[0].syntax);
+        // const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
+        //     return this.convertParsingSyntax(pageDetails[0].pageTitle, syntax);
+        // });
+        // return parsedSyntaxes;
+    }
+
+    /* ----------------------------------------------------------------------------
+        parseReturnOrParameterTypes
+    ---------------------------------------------------------------------------- */
+    private parseReturnOrParameterTypes(pageDetail: WikiPageDetail): SQFDataType[] {
+        // TODO:
     }
 
     /* ----------------------------------------------------------------------------
