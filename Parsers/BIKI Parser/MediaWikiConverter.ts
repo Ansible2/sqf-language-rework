@@ -238,6 +238,11 @@ export class MediaWikiConverter {
         pageDetail: WikiPageDetail,
         isFunctionSyntax: boolean = false
     ) {
+        // in the wiki page detail array from the xml doc
+        // the syntax of any set of parameters and return types (pageDetail)
+        // will be an earlier index
+        // if a syntax has a later index, it means that the pageDetail must
+        // be for another syntax
         const indexOfSyntax = findLastIndex(
             parsingSyntaxes,
             (syntax) => syntax.detailIndex < pageDetail.index
