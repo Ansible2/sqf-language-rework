@@ -104,10 +104,82 @@ export class MediaWikiConverter {
         /*
             Example Test Cases:
 
+            // nearEntities
+                |p1= position: [[Object]] or [[Array]] in format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]] - center of the sphere
 
-            // weaponCargo command
+            -------------------------------------------------
+
+            // isGameFocused
+                |r1= [[Boolean]] - [[true]] if game window is focused, [[false]] if not
+            
+            -------------------------------------------------
+
+            // namedProperties
+                |p1= object: [[Object]]
+                |r1= [[Array]] of [[Array]]s of [[String]]s, in format: &lt;nowiki&gt;[&lt;/nowiki&gt;[namedProperty1, propertyValue1], [namedProperty2, propertyValue2], ...]
+
+            -------------------------------------------------
+
+            // BIS_fnc_loadInventory
+                |p1= [[Object]] - unit to receive the loadout
+                |p2= [[Config]] or [[Array]] - can be one of:
+                * [[Config]]: config entry of loadout found in either {{hl|CfgVehicles}} or {{hl|CfgRespawnInventory}}
+                * [[Array]] in format [&lt;nowiki/&gt;[[Namespace]], [[Group]] or [[Object]], [[String]]] or [[BIS_fnc_saveInventory]]'s output
+
+            -------------------------------------------------
+
+            // addAction
+                |p2= '''title''': [[String]] - the action name displayed in the action menu, may contain [[Structured Text]]. Because of that '''&lt;''' and '''&gt;''' symbols will be interpreted as opening and closing XML tags. To avoid this use {{hl|&amp;amp;lt;}} for '''&amp;lt;''' and {{hl|&amp;amp;gt;}} for '''&amp;gt;'''. The title text appearance can be changed with [[setUserActionText]]
+                |p3= '''script''': [[String]] or [[Code]] - either path to the script file, relative to the mission folder or string with code or the actual script code. If the string is a path to script file, the script file '''must''' have extension .[[SQS Syntax|SQS]] or .[[SQF Syntax|SQF]]. The script, whether it is a file or a code, will run in [[Scheduler#Scheduled Environment|scheduled environment]], i.e. it is ok to use [[sleep]]. Parameters array passed to the script upon activation in ''[[Magic Variables#this|_this]]'' variable is:
+                &lt;sqf&gt;params ["_target", "_caller", "_actionId", "_arguments"];&lt;/sqf&gt;
+                * '''target''': [[Object]] - the object which the action is assigned to
+                * '''caller''': [[Object]] - the unit that activated the action
+                * '''actionID''': [[Number]] - activated action's ID (same as [[addAction]]'s return value)
+                * '''arguments''': [[Anything]] - arguments given to the script if you are using the extended syntax
+                |p9= '''condition''': [[String]] - (Optional, default "true") expression that must return [[true]] for the action to be shown. '''Special variables''' passed to the script code are:
+                * ''_target'': [[Object]] - The object to which action is attached or, if the object is a unit inside of vehicle, the vehicle
+                * ''_this'': [[Object]] - Caller person to whom the action is shown (or not shown if ''condition'' returns [[false]])
+                * ''_originalTarget'': [[Object]] - The original object to which the action is attached, regardless if the object/unit is in a vehicle or not
+                * ''_actionId'': [[Number]] - checked action's ID (same as [[addAction]]'s return value)
+                {{Feature|warning|If the player is the group leader, has an action added to them, and selects a subordinate, {{hl|''_this''}} alternatively switches between the player and this selected unit - RPT logging {{hl|Unknown attribute itemsCmd}} in the process.}}
+                {{Feature|important|
+                * ''condition'' is evaluated on each frame in [[Scheduler#Unscheduled Environment|unscheduled environment]].
+                * ''condition'' is '''not''' evaluated if a dialog is open.
+                * If action is added to an object and not to the [[player]], ''condition'' will only get evaluated if the player is closer than ~50m to the object surface and is looking at the object.
+                * If action is added to [[player]], ''condition'' is evaluated all the time.
+                }}
+            
+            -------------------------------------------------
+
+            // BIS_fnc_curatorAutomatic
+                |p2= sides: [[Array]] - Array of [[side|sides]] of the placed entities
+
+            -------------------------------------------------
+
+            // BIS_fnc_selectRandomWeighted
+                |p21= items: [[Array]] - items array of [[Anything]]
+                |p22= weights: [[Array]] - weights array of [[Number]]s
+
+            -------------------------------------------------
+
+            // BIS_fnc_locations
+                |p21= objects: Array of [[Object]]s or [[Location]]s - list of specific locations to be registered
+
+            -------------------------------------------------
+
+            // BIS_fnc_nearestHelipad
+                |p1= position: [[Array]] format [[Position]] - (Optional, default [[position]] [[vehicle]] [[player]]) Center position
+            
+            -------------------------------------------------
+
+            // BIS_fnc_loadInventory
+                |p3= [[Array]] - (Optional, default []) array of [[String]]s that define what part of the loadout to ignore, e.g ["weapons", "uniform"]
+                
+            -------------------------------------------------
+
+            // weaponCargo command    
                 |p1= box: [[Object]]
-                |r1= [[Array]] of [[String]] - list of present classes
+                |r1= [[Array]] of [[String]] - list of present classes                
 
             -------------------------------------------------
 
