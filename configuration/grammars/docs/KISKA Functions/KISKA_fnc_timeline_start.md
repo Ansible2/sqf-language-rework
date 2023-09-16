@@ -71,10 +71,7 @@ private _endTime = time + 10;
 0: **_timeline** *(ARRAY)* - An array of timeline events that will happen. See description above for formats
 
 1: **_onTimelineStopped** *(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack),code that will be executed once a timeline is stopped. 
-    
-    Parameters:
-    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.
-    - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID
+    Parameters:- 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.- 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID
 
 #### Returns:
 *(STRING)* - The id of the new timeline

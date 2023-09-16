@@ -10,12 +10,7 @@ Spawns a configed KISKA base.
 
 3: **_priority** *(NUMBER)* - a number signifying how important this group's call will be(if a group is responding to another call, they will break away from it for this call if higher)
 
-4: **_onEnemyDetected** *(CODE or STRING)* - Code that will be executed when the group enters combat.Must return a boolean that denotes whether to execute default functionality that happenswith the event (see KISKA_fnc_bases_triggerReaction).
-    Parameters:
-    - 0: *(GROUP)* - The group the event is triggering for
-    - 1: *(OBJECT)* - The enemy unit that was detected
-    - 2: *(ARRAY)* - An array of GROUPs that can respond to the call (based on _canCallIds)
-    - 3: *(NUMBER)* - The same _priority
+4: **_onEnemyDetected** *(CODE or STRING)* - Code that will be executed when the group enters combat.Must return a boolean that denotes whether to execute default functionality that happenswith the event (see KISKA_fnc_bases_triggerReaction).Parameters:- 0: *(GROUP)* - The group the event is triggering for- 1: *(OBJECT)* - The enemy unit that was detected- 2: *(ARRAY)* - An array of GROUPs that can respond to the call (based on _canCallIds)- 3: *(NUMBER)* - The same _priority
 
 #### Returns:
 *(NUMBER)* - The event id of the EnemyDetected group eventhandler
