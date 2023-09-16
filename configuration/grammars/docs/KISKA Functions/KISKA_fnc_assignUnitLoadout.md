@@ -12,7 +12,7 @@ NOTHING
 #### Examples:
 ```sqf
 [
-    missionConfigFile >> "KISKA_loadouts" >> ONL,
+    missionConfigFile >> "KISKA_loadouts" >> "ONL",
     unit1
 ] call KISKA_fnc_assignUnitLoadout
 ```

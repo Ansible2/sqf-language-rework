@@ -77,7 +77,7 @@ private _endTime = time + 10;
     - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID
 
 #### Returns:
-*(NUMBER)* - The id of the new timeline
+*(STRING)* - The id of the new timeline
 
 #### Examples:
 ```sqf
@@ -97,6 +97,6 @@ private _timeline = [
         {hint "executed event #2 ~3 seconds after event 1 completed"}, 2
     ]
 ];
-private _timelineId = [_timeline,{hint "timeline end"}] call KISKA_fnc_startTimeline;
+private _timelineId = [_timeline,{hint "timeline end"}] call KISKA_fnc_timeline_start;
 ```
 

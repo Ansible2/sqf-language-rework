@@ -10,6 +10,8 @@ Gets a variable from a remote target object, id, or string (uses remoteExec targ
 
 3: **_target** : *(NUMBER, OBJECT, or STRING)* - Where the _target is local will be where the variable is taken from (the machine to get the variable from)
 
+4: **_awaitParams** : *([NUMBER,NUMBER,BOOL])* - How the get from the target should be awaitedParameters:- 0: *(NUMBER)* - The sleep time between each check for the variable being received- 1: *(NUMBER)* - The max time to wait for (this is not total game time but time slept)- 2: *(BOOL)* - Whether or not the sleep time should be exponential (double every iteration)
+
 #### Returns:
 *(ANY)* - Whatever the variable is, nil otherwise
 

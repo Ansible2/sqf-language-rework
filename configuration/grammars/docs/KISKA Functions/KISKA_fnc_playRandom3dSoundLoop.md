@@ -11,9 +11,9 @@ Randomly plays sounds (or music) in 3d space from a given list at one or multipl
 
 2: **_timeBetweenSounds** *(NUMBER or ARRAY)* - A buffer time between each sound once one completes. If array, random syntax of random [min,mid,max] is used to get buffer each time a sound completes.
 
-3: **_soundParams** *(ARRAY)* - An array of parameters for playSound3D:0. _distance *(NUMBER)* - Distance at which the sound can be heard1. _volume *(NUMBER)* - Range from 0-52. _isInside *(BOOL)* - Is _origin inside3. _pitch *(NUMBER)* - Range from 0-5
+3: **_soundParams** *(ARRAY)* - An array of parameters for playSound3D:- 0. _distance *(NUMBER)* - Distance at which the sound can be heard- 1. _volume *(NUMBER)* - Range from 0-5- 2. _isInside *(BOOL)* - Is _origin inside- 3. _pitch *(NUMBER)* - Range from 0-5
 
-4: **_onSoundPlayed** *(ARRAY, CODE, STRING)* - A callback function that executes each time a sound is played(See KISKA_fnc_callback). Parameters are:0. *(NUMBER)* - An id that can be used with KISKA_fnc_stopRandom3dSoundLoop to stop sounds1. *(OBJECT or ARRAY)* - The position the sound is playing at2. *(CONFIG)* - The config of the current sound being played
+4: **_onSoundPlayed** *(ARRAY, CODE, STRING)* - A callback function that executes each time a sound is played(See KISKA_fnc_callback). Parameters are:- 0. *(NUMBER)* - An id that can be used with KISKA_fnc_stopRandom3dSoundLoop to stop sounds- 1. *(OBJECT or ARRAY)* - The position the sound is playing at- 2. *(CONFIG)* - The config of the current sound being played
 
 #### Returns:
 *(NUMBER)* - An id that can be used with KISKA_fnc_stopRandom3dSoundLoop to stop
