@@ -1604,42 +1604,56 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
-    KISKA_fnc_executeTimelineEvent: {
+    KISKA_fnc_timeline_executeEvent: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
                 SQFArray.of(kiskaTimelineEventType),
-                SQFDataType.Number,
+                SQFDataType.String,
                 SQFDataType.HashMap,
                 SQFDataType.Any,
             ]),
         },
     },
-    KISKA_fnc_getOverallTimelineMap: {
+    KISKA_fnc_timeline_getMainMap: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
         },
     },
-    KISKA_fnc_getTimelineMap: {
+    KISKA_fnc_timeline_getIsRunningMap: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
             returnTypes: SQFDataType.HashMap,
         },
     },
-    KISKA_fnc_isTimelineRunning: {
+    KISKA_fnc_timeline_getInfoMap: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number, SQFDataType.Boolean]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_timeline_isRunning: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, SQFDataType.Boolean]),
             returnTypes: SQFDataType.Boolean,
         },
     },
-    KISKA_fnc_startTimeline: {
+    KISKA_fnc_timeline_setIsRunning: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, SQFDataType.Boolean]),
+        },
+    },
+    KISKA_fnc_timeline_start: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
@@ -1649,11 +1663,11 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
-    KISKA_fnc_stopTimeline: {
+    KISKA_fnc_timeline_stop: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number, kiskaCallbackType]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, kiskaCallbackType]),
         },
     },
     KISKA_fnc_addArsenal: {
