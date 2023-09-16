@@ -15,22 +15,16 @@ import {
 const kiskaCallbackType = [
     SQFDataType.Code,
     SQFDataType.String,
-    SQFArray.ofExactly([
-        SQFDataType.Array,
-        [SQFDataType.Code, SQFDataType.String],
-    ]),
+    SQFArray.ofExactly([SQFDataType.Array, [SQFDataType.Code, SQFDataType.String]]),
 ];
 
 const kiskaCallbackTypeThatReturns = (codeReturn: SQFSyntaxTypes) => {
     return [
         SQFCode.returns(codeReturn),
         SQFDataType.String,
-        SQFArray.ofExactly([
-            SQFDataType.Array,
-            [SQFCode.returns(codeReturn), SQFDataType.String],
-        ]),
-    ]
-}
+        SQFArray.ofExactly([SQFDataType.Array, [SQFCode.returns(codeReturn), SQFDataType.String]]),
+    ];
+};
 
 const kiskaTimelineEventType = [
     kiskaCallbackType,
@@ -100,9 +94,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Object,
                 [
-                    SQFCode.returns(SQFDataType.Number).takes(
-                        SQFDataType.Object
-                    ),
+                    SQFCode.returns(SQFDataType.Number).takes(SQFDataType.Object),
                     SQFDataType.String,
                     SQFDataType.Array,
                 ],
@@ -141,11 +133,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.ScheduledFunction,
             leftOperandTypes: {
                 operation: SQFArrayComparator.Exact,
-                types: [
-                    SQFDataType.Object,
-                    SQFDataType.Number,
-                    SQFDataType.Number,
-                ],
+                types: [SQFDataType.Object, SQFDataType.Number, SQFDataType.Number],
             },
         },
     },
@@ -312,10 +300,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Object,
-                SQFArray.ofAnyOfThese([
-                    SQFDataType.Object,
-                    SQFDataType.PositionAGL,
-                ]),
+                SQFArray.ofAnyOfThese([SQFDataType.Object, SQFDataType.PositionAGL]),
                 SQFDataType.SpeedMode,
                 SQFDataType.Boolean,
             ]),
@@ -340,10 +325,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.Boolean,
             leftOperandTypes: SQFArray.ofExactly([
                 [SQFDataType.Object, SQFDataType.Group],
-                [
-                    SQFDataType.Object,
-                    SQFArray.of([SQFDataType.Object, SQFDataType.PositionAGL]),
-                ],
+                [SQFDataType.Object, SQFArray.of([SQFDataType.Object, SQFDataType.PositionAGL])],
                 SQFDataType.Number,
                 SQFDataType.Boolean,
                 SQFDataType.Behaviour,
@@ -359,11 +341,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.Object,
-                    SQFDataType.Group,
-                    SQFArray.of(SQFDataType.Object),
-                ],
+                [SQFDataType.Object, SQFDataType.Group, SQFArray.of(SQFDataType.Object)],
                 SQFDataType.Object,
                 SQFDataType.Boolean,
             ]),
@@ -407,10 +385,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Number,
                 SQFDataType.Number,
                 SQFArray.of(SQFDataType.String),
-                SQFArray.ofAnyOfThese([
-                    SQFDataType.Position,
-                    SQFDataType.Object,
-                ]),
+                SQFArray.ofAnyOfThese([SQFDataType.Position, SQFDataType.Object]),
                 SQFDataType.Boolean,
                 SQFDataType.Boolean,
                 SQFDataType.Side,
@@ -503,20 +478,14 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.String,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.String]),
         },
     },
     KISKA_fnc_ambientAnim_stop: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
         },
     },
     KISKA_fnc_ambientAnim: {
@@ -529,10 +498,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                     SQFDataType.HashMap,
                     SQFDataType.String,
                     SQFArray.of(SQFDataType.String),
-                    SQFArray.ofAnyOfThese([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofAnyOfThese([SQFDataType.String, SQFDataType.Number]),
                 ],
                 SQFDataType.Boolean,
                 SQFDataType.String,
@@ -545,9 +511,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_createFromConfig_infantry: {
@@ -555,9 +519,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_createFromConfig_landVehicles: {
@@ -565,9 +527,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_createFromConfig_patrols: {
@@ -575,9 +535,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_createFromConfig_simples: {
@@ -585,9 +543,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_createFromConfig_turrets: {
@@ -595,9 +551,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_createFromConfig: {
@@ -605,9 +559,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_getHashmap: {
@@ -615,9 +567,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.HashMap,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
         },
     },
     KISKA_fnc_bases_getInfantryClasses: {
@@ -625,9 +575,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFArray.of(SQFDataType.String),
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFArray.of(SQFDataType.Config),
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFArray.of(SQFDataType.Config)]),
         },
     },
     KISKA_fnc_bases_getSide: {
@@ -635,9 +583,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Side,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFArray.of(SQFDataType.Config),
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFArray.of(SQFDataType.Config)]),
         },
     },
     KISKA_fnc_bases_setupReactivity: {
@@ -659,10 +605,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Number,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Group,
-                SQFDataType.Object,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group, SQFDataType.Object]),
         },
     },
     KISKA_fnc_ciwsAlarm: {
@@ -693,10 +636,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Boolean,
                 SQFArray.of([
                     SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Boolean,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Boolean]),
                 ]),
             ]),
         },
@@ -738,10 +678,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Any,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.HashMap,
-                SQFDataType.Any,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap, SQFDataType.Any]),
         },
     },
     KISKA_fnc_hashmap_get: {
@@ -761,10 +698,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.HashMap,
-                SQFDataType.Any,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap, SQFDataType.Any]),
         },
     },
     KISKA_fnc_hashmap_set: {
@@ -799,51 +733,27 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Object,
                 SQFArray.ofOneOfThese([
                     SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number]),
                 ]),
                 SQFArray.ofOneOfThese([
                     SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number]),
                 ]),
                 SQFArray.ofOneOfThese([
                     SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number]),
                 ]),
                 SQFArray.ofOneOfThese([
                     SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number]),
                 ]),
                 SQFArray.ofOneOfThese([
                     SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number]),
                 ]),
-                SQFArray.ofExactly([
-                    SQFDataType.String,
-                    SQFArray.of(SQFDataType.String),
-                ]),
-                SQFArray.ofExactly([
-                    SQFDataType.String,
-                    SQFArray.of(SQFDataType.String),
-                ]),
-                SQFArray.ofExactly([
-                    SQFDataType.String,
-                    SQFArray.of(SQFDataType.String),
-                ]),
+                SQFArray.ofExactly([SQFDataType.String, SQFArray.of(SQFDataType.String)]),
+                SQFArray.ofExactly([SQFDataType.String, SQFArray.of(SQFDataType.String)]),
+                SQFArray.ofExactly([SQFDataType.String, SQFArray.of(SQFDataType.String)]),
             ]),
         },
     },
@@ -853,11 +763,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFArray.of(SQFDataType.Object),
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.Object,
-                    SQFDataType.Group,
-                    SQFArray.of(SQFDataType.Object),
-                ],
+                [SQFDataType.Object, SQFDataType.Group, SQFArray.of(SQFDataType.Object)],
                 SQFArray.of(SQFDataType.UnitLoadout),
             ]),
         },
@@ -955,9 +861,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFArray.of(SQFDataType.String),
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFArray.of(SQFDataType.String)]),
         },
         server: true,
     },
@@ -965,9 +869,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFArray.of(SQFDataType.String),
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFArray.of(SQFDataType.String)]),
         },
         server: true,
     },
@@ -1023,9 +925,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Config],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Config]]),
             returnTypes: SQFDataType.Number,
         },
     },
@@ -1103,9 +1003,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Object, SQFDataType.Group],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Object, SQFDataType.Group]]),
         },
         server: true,
     },
@@ -1126,9 +1024,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Object, SQFDataType.Group],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Object, SQFDataType.Group]]),
         },
     },
     KISKA_fnc_updateRallyPointNotification: {
@@ -1198,10 +1094,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 [
                     SQFDataType.String,
                     SQFDataType.Config,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number]),
                 ],
                 [SQFDataType.Number, SQFDataType.MinMidMax],
                 SQFArray.ofExactly([
@@ -1308,11 +1201,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.String,
                 SQFDataType.String,
-                SQFArray.ofExactly([
-                    SQFDataType.String,
-                    SQFDataType.Number,
-                    SQFDataType.Any,
-                ]),
+                SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number, SQFDataType.Any]),
             ]),
             returnTypes: SQFDataType.Number,
         },
@@ -1470,10 +1359,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Side,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Side, SQFDataType.Number]),
             returnTypes: SQFArray.of(SQFDataType.String),
         },
     },
@@ -1506,10 +1392,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Object,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Object]),
         },
     },
     KISKA_fnc_arsenalSupplyDrop: {
@@ -1534,13 +1417,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.ScheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
                 [SQFDataType.Object, SQFDataType.PositionASL],
-                [
-                    SQFDataType.Number,
-                    SQFArray.ofExactly([
-                        SQFDataType.Number,
-                        SQFDataType.String,
-                    ]),
-                ],
+                [SQFDataType.Number, SQFArray.ofExactly([SQFDataType.Number, SQFDataType.String])],
                 SQFDataType.Number,
                 SQFDataType.String,
                 SQFDataType.Side,
@@ -1662,11 +1539,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.ScheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.Marker,
-                    SQFDataType.Object,
-                    SQFDataType.PositionATL,
-                ],
+                [SQFDataType.Marker, SQFDataType.Object, SQFDataType.PositionATL],
                 SQFDataType.String,
                 SQFDataType.Number,
                 SQFDataType.Number,
@@ -1698,10 +1571,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 [
                     SQFDataType.Object,
                     SQFDataType.Config,
-                    SQFArray.ofExactly([
-                        SQFDataType.Object,
-                        SQFDataType.Boolean,
-                    ]),
+                    SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
                     SQFDataType.Position,
                 ],
                 [SQFDataType.String, SQFDataType.Config],
@@ -1765,10 +1635,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Number,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number, SQFDataType.Boolean]),
             returnTypes: SQFDataType.Boolean,
         },
     },
@@ -1786,10 +1653,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Number,
-                kiskaCallbackType,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number, kiskaCallbackType]),
         },
     },
     KISKA_fnc_addArsenal: {
@@ -1836,11 +1700,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Number,
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.Object,
-                    SQFDataType.Position2d,
-                    SQFDataType.PositionAGL,
-                ],
+                [SQFDataType.Object, SQFDataType.Position2d, SQFDataType.PositionAGL],
                 SQFDataType.Number,
                 SQFDataType.Array,
                 SQFDataType.Number,
@@ -1985,10 +1845,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Any,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
         },
     },
     KISKA_fnc_errorNotification: {
@@ -2034,9 +1891,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Config,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFArray.of(SQFDataType.String),
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFArray.of(SQFDataType.String)]),
         },
     },
     KISKA_fnc_findIfBool: {
@@ -2064,9 +1919,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Waypoint,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Object, SQFDataType.Group],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Object, SQFDataType.Group]]),
         },
     },
     KISKA_fnc_getFromNetId: {
@@ -2074,10 +1927,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: [SQFDataType.Object, SQFDataType.Group],
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.String,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, SQFDataType.Boolean]),
         },
     },
     KISKA_fnc_getMissionLayerObjects: {
@@ -2085,9 +1935,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFArray.of(SQFDataType.Object),
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.String, SQFDataType.Number],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.String, SQFDataType.Number]]),
         },
     },
     KISKA_fnc_getMostSpecificCfgValue: {
@@ -2103,16 +1951,8 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.String,
                 SQFArray.of(SQFDataType.Config),
-                SQFArray.ofAnyOfThese([
-                    SQFDataType.Array,
-                    SQFDataType.Number,
-                    SQFDataType.String,
-                ]),
-                SQFArray.ofAnyOfThese([
-                    SQFDataType.Array,
-                    SQFDataType.Number,
-                    SQFDataType.String,
-                ]),
+                SQFArray.ofAnyOfThese([SQFDataType.Array, SQFDataType.Number, SQFDataType.String]),
+                SQFArray.ofAnyOfThese([SQFDataType.Array, SQFDataType.Number, SQFDataType.String]),
             ]),
         },
     },
@@ -2121,10 +1961,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Number,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Number,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number, SQFDataType.Number]),
         },
     },
     KISKA_fnc_getRelativeVectorAndPos: {
@@ -2136,10 +1973,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFDataType.Vector,
                 SQFDataType.Vector,
             ]),
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Object,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Object]),
         },
     },
     KISKA_fnc_getVariableTarget_sendBack: {
@@ -2186,10 +2020,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFArray.ofExactly([
-                SQFDataType.Vector,
-                SQFDataType.Vector,
-            ]),
+            returnTypes: SQFArray.ofExactly([SQFDataType.Vector, SQFDataType.Vector]),
             leftOperandTypes: SQFArray.ofExactly([
                 [SQFDataType.Object, SQFDataType.PositionASL],
                 [SQFDataType.Object, SQFDataType.PositionASL],
@@ -2228,9 +2059,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Group, SQFDataType.Object],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Group, SQFDataType.Object]]),
         },
     },
     KISKA_fnc_isMainMenu: {
@@ -2280,13 +2109,8 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            returnTypes: SQFArray.ofOneOfThese([
-                SQFDataType.Object,
-                SQFDataType.EdenEntity,
-            ]),
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFArray.of(SQFDataType.Position),
-            ]),
+            returnTypes: SQFArray.ofOneOfThese([SQFDataType.Object, SQFDataType.EdenEntity]),
+            leftOperandTypes: SQFArray.ofExactly([SQFArray.of(SQFDataType.Position)]),
         },
     },
     KISKA_fnc_monitorFPS: {
@@ -2305,9 +2129,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.String,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Object, SQFDataType.Group],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Object, SQFDataType.Group]]),
         },
     },
     KISKA_fnc_notification: {
@@ -2586,11 +2408,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.Object,
-                    SQFDataType.Group,
-                    SQFArray.of(SQFDataType.Object),
-                ],
+                [SQFDataType.Object, SQFDataType.Group, SQFArray.of(SQFDataType.Object)],
                 SQFDataType.Boolean,
                 SQFDataType.Boolean,
             ]),
@@ -2619,10 +2437,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 [
                     SQFDataType.Object,
                     SQFDataType.Group,
-                    SQFArray.ofAnyOfThese([
-                        SQFDataType.Object,
-                        SQFDataType.Group,
-                    ]),
+                    SQFArray.ofAnyOfThese([SQFDataType.Object, SQFDataType.Group]),
                 ],
                 SQFDataType.Boolean,
             ]),
@@ -2687,10 +2502,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Number]),
         },
     },
     KISKA_fnc_GCH_getPlayerSide: {
@@ -2719,10 +2531,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Group,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group, SQFDataType.Boolean]),
         },
         server: true,
     },
@@ -2731,9 +2540,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Group, SQFDataType.Object],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Group, SQFDataType.Object]]),
         },
     },
     KISKA_fnc_GCH_isGroupExcluded: {
@@ -2741,10 +2548,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: [SQFDataType.Boolean, SQFDataType.Nothing],
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Group,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group, SQFDataType.Boolean]),
         },
     },
     KISKA_fnc_GCH_isOpen: {
@@ -2777,10 +2581,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             returnTypes: SQFDataType.Boolean,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Group,
-                SQFDataType.Object,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group, SQFDataType.Object]),
         },
         server: true,
     },
@@ -2892,13 +2693,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
-                ],
+                [SQFDataType.String, SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number])],
             ]),
         },
         effect: SQFEffect.GLOBAL,
@@ -2908,13 +2703,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
             leftOperandTypes: SQFArray.ofExactly([
-                [
-                    SQFDataType.String,
-                    SQFArray.ofExactly([
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                    ]),
-                ],
+                [SQFDataType.String, SQFArray.ofExactly([SQFDataType.String, SQFDataType.Number])],
                 SQFDataType.Boolean,
             ]),
         },
@@ -3065,10 +2854,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Control,
-                SQFDataType.String,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Control, SQFDataType.String]),
         },
     },
     KISKA_fnc_VDL_onLoad: {
@@ -3128,9 +2914,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                [SQFDataType.Object, SQFDataType.Position2d],
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([[SQFDataType.Object, SQFDataType.Position2d]]),
             returnTypes: SQFDataType.Group,
         },
     },
@@ -3138,10 +2922,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.UnitLoadout,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.UnitLoadout]),
         },
     },
     KISKA_fnc_bases_initReinforceFromClass: {
@@ -3204,20 +2985,14 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_convoy_clearVehicleDebugFollowedPath: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
     KISKA_fnc_convoy_clearVehicleDebugFollowPath: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
@@ -3241,10 +3016,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_convoy_getBumperPosition: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
             returnTypes: SQFDataType.PositionWorld,
             type: SQFSyntaxType.UnscheduledFunction,
         },
@@ -3276,10 +3048,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_convoy_getConvoyVehicles: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.HashMap,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap, SQFDataType.Number]),
             returnTypes: SQFArray.of(SQFDataType.Object),
             type: SQFSyntaxType.UnscheduledFunction,
         },
@@ -3303,10 +3072,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_convoy_getVehicleAtIndex: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.HashMap,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.HashMap, SQFDataType.Number]),
             returnTypes: SQFDataType.Object,
             type: SQFSyntaxType.UnscheduledFunction,
         },
@@ -3474,60 +3240,42 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_convoy_setDefaultSeperation: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Number]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
     KISKA_fnc_convoy_setPointBuffer: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Number]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
     KISKA_fnc_convoy_setVehicleDebug: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
     KISKA_fnc_convoy_setVehicleDebugMarkerType_followedPath: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.String,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.String]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
     KISKA_fnc_convoy_setVehicleDebugMarkerType_followPath: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.String,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.String]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
     KISKA_fnc_convoy_setVehicleDriveOnPath: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Boolean,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Boolean]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
@@ -3537,11 +3285,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([
                 SQFDataType.Object,
                 SQFCode.returns(SQFDataType.Nothing).takes(
-                    SQFArray.ofExactly([
-                        SQFDataType.Object,
-                        SQFDataType.Object,
-                        SQFDataType.Object,
-                    ])
+                    SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Object, SQFDataType.Object])
                 ),
             ]),
             type: SQFSyntaxType.UnscheduledFunction,
@@ -3550,10 +3294,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
     KISKA_fnc_convoy_setVehicleSeperation: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.Object,
-                SQFDataType.Number,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Object, SQFDataType.Number]),
             type: SQFSyntaxType.UnscheduledFunction,
         },
     },
@@ -3619,20 +3360,15 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.String,
-            ]),
-            returnTypes: SQFDataType.Boolean
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+            returnTypes: SQFDataType.Boolean,
         },
     },
     KISKA_fnc_managedRun_updateCode: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([
-                SQFDataType.String,
-                kiskaCallbackType,
-            ]),
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, kiskaCallbackType]),
         },
     },
 };
