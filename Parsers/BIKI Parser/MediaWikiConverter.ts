@@ -103,6 +103,20 @@ export class MediaWikiConverter {
         // Search the commands.MediaWiki.xml and functions.MediaWiki.xml for other cases
         /*
             Example Test Cases:
+            
+            // inArea
+                |p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+                |p2= area: [[Object]], [[String]], [[Location]]
+                * [[Object]] - trigger
+                * [[String]] - marker name
+                * [[Location]] - location
+                |r1= [[Boolean]]
+                |s2= position [[inArea]] [center, a, b, angle, isRectangle, c]
+                |p21= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+                |p22= center: [[Array]] or [[Object]] - center of the area in format [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D), [[Object]] or [[Group]]
+ 
+
+            -------------------------------------------------
 
             // nearEntities
                 |p1= position: [[Object]] or [[Array]] in format [[Position#PositionAGL|PositionAGL]] or [[Position#Introduction|Position2D]] - center of the sphere
@@ -150,12 +164,14 @@ export class MediaWikiConverter {
                 }}
             
             -------------------------------------------------
-
+            
+            /(?<=([\w\d]+:) (\[\[array\]\]) -.*array of \[\[)[\w\|]+(?=\]\])/gi
             // BIS_fnc_curatorAutomatic
                 |p2= sides: [[Array]] - Array of [[side|sides]] of the placed entities
 
             -------------------------------------------------
-
+            
+            /(?<=([\w\d]+:) (\[\[array\]\]) -.*array of \[\[)[\w\|]+(?=\]\])/gi
             // BIS_fnc_selectRandomWeighted
                 |p21= items: [[Array]] - items array of [[Anything]]
                 |p22= weights: [[Array]] - weights array of [[Number]]s
@@ -179,12 +195,13 @@ export class MediaWikiConverter {
 
             // weaponCargo command    
                 |p1= box: [[Object]]
+                /(?<== \[\[array\]\] of \[\[)[\w\|]+(?=\]\])/gi
                 |r1= [[Array]] of [[String]] - list of present classes                
 
             -------------------------------------------------
 
             // this can match the first instance of [[type]]
-            // /((?<==\s*\w+: \[\[)([\S\D]+?)(?=\]\] -))/i
+            // /((?<==\s*\w+: \[\[)([\w\|]+?)(?=\]\] -))/i
 
             // BIS_fnc_unitCapture
                 |p4= Firing: [[Boolean]] - (Optional, default [[false]]) if set to [[true]], will record the input unit's weapon fire data as well
@@ -193,13 +210,13 @@ export class MediaWikiConverter {
             -------------------------------------------------
 
             // this can match sub array items
-            // /((?<=\d+:\s*\[\[)([\S\D]+?)(?=\]\] -))/gi
+            // /((?<=\d+:\s*\[\[)([\w\|]+?)(?=\]\] -))/gi
 
             // this can match the parent array type
             // /((?<==\s*\w+: \[\[)array(?=\]\] -))/i
 
             // this combined one can match all sub types of an array, but this would need to be heavily tested against more cases
-            // (?<=((?<==\s*\w+: \[\[)array(?=\]\] -))[\s\S]*?)((?<=\d+:\s*\[\[)([\S\D]+?)(?=\]\] -))
+            // (?<=((?<==\s*\w+: \[\[)array(?=\]\] -))[\s\S]*?)((?<=\d+:\s*\[\[)([\w\|]+?)(?=\]\] -))
 
             // BIS_fnc_unitPlay
                 |p3= varDone: [[Array]] - (Optional, default []) Variable to set on specified Object once playback has finished in format:
