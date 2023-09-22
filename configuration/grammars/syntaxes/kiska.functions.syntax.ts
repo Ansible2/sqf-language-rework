@@ -3385,6 +3385,14 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, kiskaCallbackType]),
         },
     },
+    KISKA_fnc_generateUniqueId: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+            returnTypes: SQFDataType.String,
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
