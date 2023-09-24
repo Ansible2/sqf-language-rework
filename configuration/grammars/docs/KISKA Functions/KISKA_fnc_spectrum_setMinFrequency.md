@@ -1,0 +1,14 @@
+#### Description:
+Sets the current min frequency of the spectrum device for the local machine.
+
+#### Parameters:
+0: **_min** : *(NUMBER)* - The frequency in MHz
+
+#### Returns:
+NOTHING
+
+#### Examples:
+```sqf
+[80] call KISKA_fnc_spectrum_setMinFrequency;
+```
+

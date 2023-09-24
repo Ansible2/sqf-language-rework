@@ -3393,6 +3393,179 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.String,
         },
     },
+    KISKA_fnc_spectrum_addSignal: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFArray.ofExactly([
+                    SQFDataType.Number,
+                    [SQFDataType.Object, SQFDataType.PositionASL],
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.String,
+        },
+    },
+    KISKA_fnc_spectrum_deleteSignal: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String, SQFDataType.Boolean]),
+        },
+    },
+    KISKA_fnc_spectrum_getMaxDecibels: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_spectrum_getMaxFrequency: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_spectrum_getMinDecibels: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_spectrum_getMinFrequency: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Number,
+        },
+    },
+    KISKA_fnc_spectrum_getSignalMap: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_spectrum_setMaxDecibels: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_spectrum_setMaxFrequency: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_spectrum_setMinDecibels: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_spectrum_setMinFrequency: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_spectrum_setSelectionWidth: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_spectrum_setSignalDecibels: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_spectrum_setSignalDistance: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_spectrum_setSignalFrequency: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                SQFDataType.Number,
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_spectrum_setSignalPosition: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.String,
+                [SQFDataType.Object, SQFDataType.PositionASL],
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
+    KISKA_fnc_spectrum_signalExists: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.String]),
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_spectrum_startSignalLoop: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+        },
+    },
+    KISKA_fnc_spectrum_updateSignal: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFArray.ofExactly([
+                    SQFDataType.String,
+                    SQFDataType.Number,
+                    [SQFDataType.Object, SQFDataType.PositionASL],
+                    SQFDataType.Number,
+                    SQFDataType.Number,
+                ]),
+                SQFDataType.Boolean,
+            ]),
+            returnTypes: SQFDataType.HashMap,
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
