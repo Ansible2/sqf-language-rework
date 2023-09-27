@@ -3566,6 +3566,34 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             returnTypes: SQFDataType.HashMap,
         },
     },
+    KISKA_fnc_spectrum_getSelection: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFArray.ofExactly([SQFDataType.Number, SQFDataType.Number]),
+        },
+    },
+    KISKA_fnc_spectrum_isInitialized: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_spectrum_isTransmitting: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            returnTypes: SQFDataType.Boolean,
+        },
+    },
+    KISKA_fnc_spectrum_setTransmitting: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Boolean]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
