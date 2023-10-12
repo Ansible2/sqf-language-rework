@@ -3594,6 +3594,17 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             leftOperandTypes: SQFArray.ofExactly([SQFDataType.Boolean]),
         },
     },
+    KISKA_fnc_getBoundingBoxDimensions: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Object,
+                [SQFDataType.Number, SQFDataType.String],
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
