@@ -87,6 +87,21 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             },
         },
     },
+    KISKA_fnc_hover: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: {
+                operation: SQFArrayComparator.Exact,
+                types: [
+                    SQFDataType.Object,
+                    [SQFDataType.PositionASL, SQFDataType.Object],
+                    SQFCode.returns(SQFDataType.Boolean),
+                    kiskaCallbackType,
+                ],
+            },
+        },
+    },
     KISKA_fnc_ACE_setOnPrepareFastrope: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
