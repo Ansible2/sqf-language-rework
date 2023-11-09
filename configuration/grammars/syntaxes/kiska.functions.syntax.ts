@@ -1804,7 +1804,7 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
-    KISKA_fnc_datalinkMsg: {
+    KISKA_fnc_dataLinkMsg: {
         grammarType: SQFGrammarType.Function,
         syntaxes: {
             type: SQFSyntaxType.UnscheduledFunction,
@@ -2923,13 +2923,6 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 [SQFDataType.Object, SQFArray.of(SQFDataType.Object)],
                 SQFDataType.Boolean,
             ]),
-        },
-    },
-    KISKA_fnc_ambientAnim_getAttachToLogicGroup: {
-        grammarType: SQFGrammarType.Function,
-        syntaxes: {
-            type: SQFSyntaxType.UnscheduledFunction,
-            leftOperandTypes: SQFArray.ofExactly([SQFDataType.Group]),
         },
     },
     KISKA_fnc_ambientAnim_getAttachLogicGroupsMap: {
