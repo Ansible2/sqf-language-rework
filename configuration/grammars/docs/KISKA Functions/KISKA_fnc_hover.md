@@ -1,5 +1,5 @@
 #### Description:
-Pilots should ideally be placed in "CARELESS" behaviour when around enemies.
+Sends a vehicle to a given point to hover. Pilots should ideally be placed in "CARELESS" behaviour when around enemies.
 
 #### Parameters:
 0: **_vehicle** *(OBJECT)* - The helicopter/vtol to hover

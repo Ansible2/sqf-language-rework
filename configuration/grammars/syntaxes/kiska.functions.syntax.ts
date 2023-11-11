@@ -3613,6 +3613,16 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
             ]),
         },
     },
+    KISKA_fnc_sortStringsNumerically: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFArray.of(SQFDataType.String),
+                SQFDataType.Boolean,
+            ]),
+        },
+    },
 };
 
 Object.keys(kiskaFunctionSyntaxes).forEach((command: string) => {
