@@ -1,5 +1,5 @@
 #### Description:
-Takes an array or strings, where each string must end with an underscore and a digit (example: "something_1") and can handle one extra sub level digit ("something_1_1").
+Takes an array or strings, where each string must end with an underscore and a digit (`"something_1"`) and can handle one extra sub level digit (`"something_1_1"`).
 
 #### Parameters:
 0: **_strings** *(STRING[])* - Default: `[]` - The strings you would like to sort
@@ -11,6 +11,9 @@ Takes an array or strings, where each string must end with an underscore and a d
 
 #### Examples:
 ```sqf
-NONE
+[
+    ["myString_2","myString_3","myString_1_1","myString_1"]
+] call KISKA_fnc_sortStringsNumerically;
+// returns -> `["myString_1","myString_1_1","myString_2","myString_3"]`
 ```
 
