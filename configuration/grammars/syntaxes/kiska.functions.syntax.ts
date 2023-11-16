@@ -3611,6 +3611,11 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 [SQFDataType.Number, SQFDataType.String],
                 SQFDataType.Boolean,
             ]),
+            returnTypes: SQFArray.ofExactly([
+                SQFDataType.Number,
+                SQFDataType.Number,
+                SQFDataType.Number,
+            ]),
         },
     },
     KISKA_fnc_sortStringsNumerically: {
@@ -3621,6 +3626,19 @@ const kiskaFunctionSyntaxes: IJSON<PreCompiledSQFItem> = {
                 SQFArray.of(SQFDataType.String),
                 SQFDataType.Boolean,
             ]),
+            returnTypes: SQFArray.of(SQFDataType.String),
+        },
+    },
+    KISKA_fnc_setWaypointExecStatement: {
+        grammarType: SQFGrammarType.Function,
+        syntaxes: {
+            type: SQFSyntaxType.UnscheduledFunction,
+            leftOperandTypes: SQFArray.ofExactly([
+                SQFDataType.Waypoint,
+                kiskaCallbackType,
+                SQFDataType.String,
+            ]),
+            returnTypes: SQFDataType.String,
         },
     },
 };
