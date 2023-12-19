@@ -1,59 +1,56 @@
 import * as path from "path";
+import fs from "fs";
 import { KiskaParser } from "./KISKA Parser/KiskaParser";
 import { BikiParser } from "./BIKI Parser/BikiParser";
+import { DocParser, ParsedPage } from "./SQFParser.namespace";
 // https://community.bistudio.com/wiki/Special:Export/
 const parseType = process.argv[2];
 
-switch (parseType?.toLowerCase()) {
-	case 'biki:commands': {
-		try {
-			const parser = new BikiParser();
-			const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/commands.MediaWiki.xml"));
-			const parsedPages = parser.parsePages(pages);
-			parser.doWithParsedPages(parsedPages);
-		} catch (error) {
-			console.log("An error happened while parsing pages:");
-			console.log(error);
-		}
-		break;
-	}
-	case 'biki:functions': {
-		try {
-			const parser = new BikiParser();
-			// const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/Biki Seed Files/functions.MediaWiki.xml"));
-			const pages = parser.getPages(path.resolve(__dirname,"./Seed Files/Test Seed Files/EdgeCases.xml"));
-			const parsedPages = parser.parsePages(pages);
-			parser.doWithParsedPages(parsedPages);
-		} catch (error) {
-			console.log("An error happened while parsing pages:");
-			console.log(error);
-		}
-		break;
-	}
-	case 'kiska': {
-		try {
-			const parser = new KiskaParser();
-			const pages = parser.getPages(
-				path.resolve(
-					"S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
-					// __dirname,
-					// "./Seed Files/Example Kiska Functions"
-				)
-			);
-			const parsedPages = parser.parsePages(pages);
-			parser.doWithParsedPages(parsedPages);
-		} catch (error) {
-			console.log("An error happened while parsing pages:");
-			console.log(error);
-		}
-		
-		break;
-	}
-
-	default: {
-		console.log(process.env);
-		console.log(`parseType: ${parseType} is invalid`);
-		break;
-	}
-		
+function convertPageToText(parsedPage: ParsedPage): string {
+    // TODO:
 }
+
+async function main() {
+    let parser: DocParser | undefined = undefined;
+    let outputFolder = "";
+    switch (parseType?.toLowerCase()) {
+        case "kiska": {
+            parser = new KiskaParser();
+            break;
+        }
+        default: {
+            console.log(process.env);
+            console.log(`parseType: ${parseType} is invalid`);
+        }
+    }
+
+    if (!parser) return;
+
+    try {
+        const pages = await parser.getPages();
+        const parsedPages = await parser.parsePages(pages);
+        const outputFolder = "./Parsers/.output";
+        if (!fs.existsSync(outputFolder)) {
+            fs.mkdirSync(outputFolder);
+        }
+
+        const parsedOutputFolder = `${outputFolder}/${parser.getOutputFolderName()}/docs`;
+        if (!fs.existsSync(parsedOutputFolder)) {
+            fs.mkdirSync(parsedOutputFolder);
+        }
+
+        const docsFolder = `${parsedOutputFolder}/docs`;
+        if (!fs.existsSync(docsFolder)) {
+            fs.mkdirSync(docsFolder);
+        }
+
+        parsedPages.forEach((parsedPage) => {
+            fs.writeFileSync(`${docsFolder}/${parsedPage.name}.md`, convertPageToText(parsedPage));
+        });
+    } catch (error) {
+        console.log("An error happened while parsing pages:");
+        console.error(error);
+    }
+}
+
+main();

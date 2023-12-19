@@ -1,4 +1,4 @@
-import { Parser } from "../SQFParser.namespace";
+import { DocParser, ParsedPage, Parser, SQFGrammarType } from "../SQFParser.namespace";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -6,7 +6,8 @@ import * as path from "path";
 // /(?<=\/\* \-+\n)([\s\S]*?)(?=\n+\-+ \*\/\n)/i
 
 // select Function name
-// /(?<=function:\s*)\b.*/gi
+// /(?<=function:\s*)\b.*/i
+// (?<=function:)([\s\S]*?)(?=\r*\n+)
 
 // select description
 // /(?<=description:\n*)([\s\S]*)(?=Parameters:)/i
@@ -40,127 +41,53 @@ function getAllFilesInDirectory(folder: string): string[] {
     return filePaths;
 }
 
-interface ParsedKiskaPage {
-    text: string;
-    filename: string;
-}
-
-export class KiskaParser implements Parser {
+export class KiskaParser implements DocParser {
     /* ----------------------------------------------------------------------------
 		getPages
 	---------------------------------------------------------------------------- */
-    public getPages(kiskaFunctionsFolder: string) {
+    public async getPages(): Promise<string[]> {
+        const kiskaFunctionsFolder = path.resolve(
+            "S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
+        );
         const filePaths = getAllFilesInDirectory(kiskaFunctionsFolder);
-        // take folder
-        // recursively search for all function files in all folders
-        // parse header comment from valid file
-        // add to return array
-        return filePaths;
+        return filePaths.map((filePath) => fs.readFileSync(filePath, "utf-8").trim());
     }
 
     /* ----------------------------------------------------------------------------
 		parsePages
 	---------------------------------------------------------------------------- */
-    public parsePages(filePaths: string[]): ParsedKiskaPage[] {
-        const parsedPages: KiskaPage[] = filePaths
-            .map(KiskaPageConverter.parseKiskaPage)
-            .filter((page) => page) as KiskaPage[];
-
-        const parsedKiskaPages = parsedPages.map((kiskaPage) => {
-            const pageArray = [
-                "#### Description:\n",
-                kiskaPage.description?.trim(),
-                "\n\n",
-            ];
-
-            if (kiskaPage.parameters) {
-                pageArray.push("#### Parameters:\n");
-                const parameters = kiskaPage.parameters.join("\n\n").trim();
-                pageArray.push(parameters);
-                pageArray.push("\n\n");
+    public async parsePages(pages: string[]): Promise<ParsedPage[]> {
+        const parsedPages: ParsedPage[] = [];
+        pages.forEach((page) => {
+            const parsedPage = this.parseKiskaPage(page);
+            if (parsedPage) {
+                parsedPages.push(parsedPage);
             }
-            if (kiskaPage.return) {
-                pageArray.push("#### Returns:\n");
-                pageArray.push(kiskaPage.return.trim());
-                pageArray.push("\n\n");
-            }
-            if (kiskaPage.examples) {
-                pageArray.push("#### Examples:\n");
-                const examples = kiskaPage.examples
-                    .map((example) => `\`\`\`sqf\n${example}\`\`\``)
-                    .join("\n")
-                    .trim();
-                pageArray.push(examples);
-                pageArray.push("\n\n");
-            }
-
-            const pageParsed = pageArray.join("");
-            return {
-                filename: kiskaPage.name,
-                text: pageParsed,
-            };
         });
 
-        return parsedKiskaPages;
+        return parsedPages;
     }
 
-    /* ----------------------------------------------------------------------------
-		doWithParsedPages
-	---------------------------------------------------------------------------- */
-    public doWithParsedPages(parsedPages: ParsedKiskaPage[]): void {
-        const outputFolder = "./Parsers/.output";
-        if (!fs.existsSync(outputFolder)) {
-            fs.mkdirSync(outputFolder);
-        }
-
-        const kiskaOutputFolder = `${outputFolder}/Kiska Parser`;
-        if (!fs.existsSync(kiskaOutputFolder)) {
-            fs.mkdirSync(kiskaOutputFolder);
-        }
-        const kiskaDocsFolder = `${kiskaOutputFolder}/docs`;
-        if (!fs.existsSync(kiskaDocsFolder)) {
-            fs.mkdirSync(kiskaDocsFolder);
-        }
-
-        parsedPages.forEach((parsedPage) => {
-            fs.writeFileSync(
-                `${kiskaDocsFolder}/${parsedPage.filename.replace(
-                    ".sqf",
-                    ".md"
-                )}`,
-                parsedPage.text
-            );
-        });
-    }
-}
-
-interface KiskaPage {
-    name: string;
-    description?: string;
-    parameters?: string[];
-    return?: string;
-    examples?: string[];
-}
-
-class KiskaPageConverter {
-    public static parseKiskaPage(filePath: string): KiskaPage | null {
-        const filename = path.basename(filePath);
-        const fileAsString = fs.readFileSync(filePath, "utf-8").trim();
-        const headerRegexMatch = fileAsString.match(
+    public parseKiskaPage(page: string): ParsedPage | null {
+        const headerRegexMatch = page.match(
             /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i
         );
 
-        const functionName = filename.replace("fn_", "KISKA_fnc_");
-        const kiskaPage: KiskaPage = {
-            name: functionName,
-        };
-
         if (!headerRegexMatch) {
-            console.log(functionName, "does not have a header comment");
+            console.warn("Could not find header comment");
             return null;
         }
 
         const headerComment = headerRegexMatch[0];
+
+        const functionName = headerComment.match(/(?<=function:\s*)\b.*/i)?.at(0);
+        const parsedPage: ParsedPage = {
+            name: functionName || "",
+            parsedSyntaxes: [],
+            description: "",
+            examples: [],
+            grammarType: SQFGrammarType.Function,
+        };
 
         const descriptionMatch = headerComment.match(
             /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i
@@ -168,28 +95,8 @@ class KiskaPageConverter {
         if (descriptionMatch) {
             // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
             // should seperate the ( {2,}) into one afterthe first replace(?)
-
-            // console.debug(descriptionMatch[0]);
-            kiskaPage.description = descriptionMatch[0].replace(
-                /[\n\r\t]+/gi,
-                " "
-            );
-            kiskaPage.description = kiskaPage.description.replace(
-                / {2,}/gi,
-                " "
-            );
-            // console.debug(kiskaPage.description);
-        }
-
-        const returnMatch = headerComment.match(
-            /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i
-        );
-        if (returnMatch) {
-            kiskaPage.return = returnMatch[0];
-            kiskaPage.return = kiskaPage.return
-                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                .replace(/(\<)(.*?)(\>)/gi, "*($2)*")
-                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**");
+            parsedPage.description = descriptionMatch[0].replace(/[\n\r\t]+/gi, " ");
+            parsedPage.description = parsedPage.description.replace(/ {2,}/gi, " ");
         }
 
         const parametersMatch = headerComment.match(
@@ -200,13 +107,9 @@ class KiskaPageConverter {
             const individualParametersMatch = parametersFull.match(
                 /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim
             );
-
-            kiskaPage.parameters = [];
-            if (
-                !individualParametersMatch ||
-                individualParametersMatch.length < 1
-            ) {
-                kiskaPage.parameters.push("NONE");
+            let parametersDescription = `#### Parameters:\n`;
+            if (!individualParametersMatch || individualParametersMatch.length < 1) {
+                parametersDescription += "NONE";
             } else {
                 individualParametersMatch?.forEach((parameter) => {
                     const parameterFormatted = parameter
@@ -216,9 +119,22 @@ class KiskaPageConverter {
                         .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
                         .replace(/(\<)(.*?)(\>)/gi, "*($2)*");
 
-                    kiskaPage.parameters?.push(parameterFormatted);
+                    parametersDescription += `${parameterFormatted}\n\n`;
                 });
             }
+            parsedPage.description = `${parsedPage.description}\n\n${parametersDescription}`;
+        }
+
+        const returnMatch = headerComment.match(
+            /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i
+        );
+        if (returnMatch) {
+            const returnDescription = returnMatch[0]
+                .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
+                .replace(/(\<)(.*?)(\>)/gi, "*($2)*")
+                .replace(/(?<=\d+:\s*)(_\w*\b)/gi, "**$1**")
+                .trim();
+            parsedPage.description = `${parsedPage.description}\n\n#### Returns:\n${returnDescription}`;
         }
 
         const examplesMatch = headerComment.match(
@@ -226,23 +142,24 @@ class KiskaPageConverter {
         );
         if (examplesMatch) {
             const examplesFull = examplesMatch[0];
-            kiskaPage.examples = [];
             const individualExamplesMatch = examplesFull.match(
                 /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi
             );
             individualExamplesMatch?.forEach((example) => {
-                kiskaPage.examples?.push(
-                    example
-                        .replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "")
-                        .replace(
-                            // examples are indented twice
-                            /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
-                            ""
-                        )
+                parsedPage.examples.push(
+                    example.replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "").replace(
+                        // examples are indented twice
+                        /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
+                        ""
+                    )
                 );
             });
         }
 
-        return kiskaPage;
+        return parsedPage;
+    }
+
+    getOutputFolderName(): string {
+        return "KISKA-Parser";
     }
 }

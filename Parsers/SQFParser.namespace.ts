@@ -10,10 +10,10 @@ export enum SQFGrammarType {
     NullLiteral = "SQFGrammarType.NullLiteral",
     PropertyAccessor = "SQFGrammarType.PropertyAccessor",
     Command = "SQFGrammarType.Command",
-	StringCompiler = "SQFGrammarType.StringCompiler",
-	FileCompiler = "SQFGrammarType.FileCompiler",
-	FileExecutor = "SQFGrammarType.FileExecutor",
-	CodeExecutor = "SQFGrammarType.CodeExecutor",
+    StringCompiler = "SQFGrammarType.StringCompiler",
+    FileCompiler = "SQFGrammarType.FileCompiler",
+    FileExecutor = "SQFGrammarType.FileExecutor",
+    CodeExecutor = "SQFGrammarType.CodeExecutor",
 }
 
 export enum SQFDataType {
@@ -79,15 +79,15 @@ export enum SQFSyntaxType {
     UnaryOperator = "SQFSyntaxType.UnaryOperator",
     BinaryOperator = "SQFSyntaxType.BinaryOperator",
     ScheduledFunction = "SQFSyntaxType.ScheduledFunction",
-	Empty = 'EMPTY',
+    Empty = "EMPTY",
 }
 
-export enum SQFEffect {
+export enum SQFEffectLocality {
     LOCAL = "SQFEffect.LOCAL",
     GLOBAL = "SQFEffect.GLOBAL",
 }
 
-export enum SQFArgument {
+export enum SQFArgumentLocality {
     LOCAL = "SQFArgument.LOCAL",
     GLOBAL = "SQFArgument.GLOBAL",
 }
@@ -106,4 +106,29 @@ export enum SyntaxMatchDifference {
 
 export interface IJSON<T> {
     [key: string]: T;
+}
+
+export interface ParsedSyntax {
+    returnType?: SQFDataType | SQFDataType[];
+    leftParameters?: SQFDataType | SQFDataType[];
+    rightParameters?: SQFDataType | SQFDataType[];
+    syntaxType?: SQFSyntaxType;
+}
+
+export interface ParsedPage {
+    name: string;
+    description: string;
+    examples: string[];
+    syntaxExamples?: string[];
+    parsedSyntaxes: ParsedSyntax[];
+    argumentLocality?: SQFArgumentLocality;
+    effectLocality?: SQFEffectLocality;
+    serverExecution?: boolean;
+    grammarType: SQFGrammarType;
+}
+
+export interface DocParser {
+    getPages(): Promise<string[]>;
+    parsePages(pages: string[]): Promise<ParsedPage[]>;
+    getOutputFolderName(): string;
 }
