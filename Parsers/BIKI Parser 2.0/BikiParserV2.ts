@@ -31,10 +31,10 @@ enum BikiPageDetailType {
 
 interface BikiPageDetail {
     type: BikiPageDetailType;
-    detailFull: string;
-    detailContent?: string;
-    detailNameFull?: string;
-    detailName?: string;
+    orginal: string;
+    content?: string;
+    fullName?: string;
+    name?: string;
 }
 
 export class BikiParserV2 implements DocParser {
@@ -93,7 +93,22 @@ export class BikiParserV2 implements DocParser {
         if (pageIsCategory) return null;
 
         const pageDetails = this.getBikiPageDetails(page);
-        if (pageDetails.length < 1) return null;
+        if (!pageDetails || pageDetails.details.length < 1) return null;
+
+        const detailsMap = pageDetails.detailsMap;
+        const examples: string[] = [];
+        if (detailsMap.has(BikiPageDetailType.Example)) {
+            const exampleDetails = detailsMap.get(BikiPageDetailType.Example);
+            exampleDetails?.forEach((detail) => {
+                // TODO: determine how to format examples
+                // ideally this wouldn't add markdown syntax and that would be left to the Parse.ts
+                // however, there are some examples that include other language
+                // examples (cpp in `callExtension`) and some that have text that
+                // is not inside a code block that should also be included
+                const exampleFormatted = this.textInterpreter.formatBikiCode(detail.content);
+                examples.push(exampleFormatted);
+            });
+        }
 
         return null;
     }
@@ -101,33 +116,44 @@ export class BikiParserV2 implements DocParser {
     /* ----------------------------------------------------------------------------
         getBikiPageDetails
     ---------------------------------------------------------------------------- */
-    private getBikiPageDetails(page: UnparsedBikiPage): BikiPageDetail[] {
+    private getBikiPageDetails(page: UnparsedBikiPage): {
+        details: BikiPageDetail[];
+        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>;
+    } | null {
         const matchPageDetailsRegEx =
             /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
         const pageDetails: IterableIterator<RegExpMatchArray> | undefined =
             page.text.matchAll(matchPageDetailsRegEx);
 
-        if (!pageDetails) return [];
+        if (!pageDetails) return null;
 
         const pageDetailsArray = [...pageDetails];
-        if (pageDetailsArray.length < 1) return [];
+        if (pageDetailsArray.length < 1) return null;
 
-        const detailsParsed: BikiPageDetail[] = [];
+        const allParsedDetails: BikiPageDetail[] = [];
+        const detailsMap: Map<BikiPageDetailType, BikiPageDetail[]> = new Map();
         pageDetailsArray.forEach((matchGroups: string[]) => {
             const detailFull = matchGroups.at(0)?.trimEnd();
             if (!detailFull) return;
 
             const pageDetail: BikiPageDetail = {
                 type: this.textInterpreter.getDetailType(detailFull),
-                detailFull,
-                detailName: matchGroups[2],
-                detailContent: matchGroups[3].trim(),
-                detailNameFull: `|${matchGroups[2]}=`,
+                orginal: detailFull,
+                name: matchGroups[2],
+                content: matchGroups[3].trim(),
+                fullName: `|${matchGroups[2]}=`,
             };
-            detailsParsed.push(pageDetail);
+
+            allParsedDetails.push(pageDetail);
+
+            if (detailsMap.has(pageDetail.type)) {
+                detailsMap.get(pageDetail.type)?.push(pageDetail);
+            } else {
+                detailsMap.set(pageDetail.type, [pageDetail]);
+            }
         });
 
-        return detailsParsed;
+        return { details: allParsedDetails, detailsMap };
     }
 }
 
@@ -215,4 +241,9 @@ class BikiTextInterpreter {
         const underscoredTitle = title.replace(/\ /g, "_");
         return underscoredTitle;
     }
+
+    /* ----------------------------------------------------------------------------
+        getPageTitleFormatted
+    ---------------------------------------------------------------------------- */
+    public name() {}
 }
