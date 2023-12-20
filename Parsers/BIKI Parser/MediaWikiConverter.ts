@@ -1,7 +1,7 @@
 import {
-    SQFArgument,
+    SQFArgumentLocality,
     SQFDataType,
-    SQFEffect,
+    SQFEffectLocality,
     SQFGrammarType,
     SQFSyntaxType,
     SyntaxMatchDifference,
@@ -30,8 +30,8 @@ interface ParsingSyntax {
 interface ParsedPage {
     title: string;
     syntaxes: ParsedSyntax[];
-    argumentLocality?: SQFArgument;
-    effectLocality?: SQFEffect;
+    argumentLocality?: SQFArgumentLocality;
+    effectLocality?: SQFEffectLocality;
     serverExecution?: boolean;
     grammarType: SQFGrammarType;
 }

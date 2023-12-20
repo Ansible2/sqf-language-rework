@@ -10,8 +10,8 @@ export class BikiParser implements Parser {
     constructor() {}
 
     /* ----------------------------------------------------------------------------
-		getPages
-	---------------------------------------------------------------------------- */
+        getPages
+    ---------------------------------------------------------------------------- */
     public getPages(xmlFilePath: string): any[] {
         const xmlPath = path.resolve(xmlFilePath);
         const xmlFileBuffer = fs.readFileSync(xmlPath);
@@ -23,19 +23,17 @@ export class BikiParser implements Parser {
     }
 
     /* ----------------------------------------------------------------------------
-		parsePages
-	---------------------------------------------------------------------------- */
+        parsePages
+    ---------------------------------------------------------------------------- */
     public parsePages(pages: WikiPage[]): string[] {
-        const parsedPages: string[] = pages.map(
-            MediaWikiConverter.parseWikiPage
-        );
+        const parsedPages: string[] = pages.map(MediaWikiConverter.parseWikiPage);
         // filter undefined or empty returns
         return parsedPages.filter((page) => page);
     }
 
     /* ----------------------------------------------------------------------------
-		doWithParsedPages
-	---------------------------------------------------------------------------- */
+        doWithParsedPages
+    ---------------------------------------------------------------------------- */
     public doWithParsedPages(parsedPages: string[]): void {
         const outputFolder = "./Parsers/.output";
         if (!fs.existsSync(outputFolder)) {

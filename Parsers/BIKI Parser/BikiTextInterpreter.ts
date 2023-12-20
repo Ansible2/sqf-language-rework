@@ -1,4 +1,10 @@
-import { IJSON, SQFGrammarType, SQFDataType, SQFEffect, SQFArgument } from "../SQFParser.namespace";
+import {
+    IJSON,
+    SQFGrammarType,
+    SQFDataType,
+    SQFEffectLocality,
+    SQFArgumentLocality,
+} from "../SQFParser.namespace";
 import { WikiPageDetailType, WikiPageType } from "./BikiTypes";
 import { SQFGrammarTypeMap } from "./SQFCommandsGrammarMap";
 
@@ -278,12 +284,12 @@ export class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
 		getEffectLocality
 	---------------------------------------------------------------------------- */
-    public getEffectLocality(pageDetail: string): SQFEffect | null {
+    public getEffectLocality(pageDetail: string): SQFEffectLocality | null {
         pageDetail = pageDetail.toLowerCase();
         if (pageDetail.includes("global")) {
-            return SQFEffect.GLOBAL;
+            return SQFEffectLocality.GLOBAL;
         } else if (pageDetail.includes("local")) {
-            return SQFEffect.LOCAL;
+            return SQFEffectLocality.LOCAL;
         }
 
         return null;
@@ -292,12 +298,12 @@ export class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
 		getEffectLocality
 	---------------------------------------------------------------------------- */
-    public getArgumentLocality(pageDetail: string): SQFArgument | null {
+    public getArgumentLocality(pageDetail: string): SQFArgumentLocality | null {
         pageDetail = pageDetail.toLowerCase();
         if (pageDetail.includes("global")) {
-            return SQFArgument.GLOBAL;
+            return SQFArgumentLocality.GLOBAL;
         } else if (pageDetail.includes("local")) {
-            return SQFArgument.LOCAL;
+            return SQFArgumentLocality.LOCAL;
         }
 
         return null;

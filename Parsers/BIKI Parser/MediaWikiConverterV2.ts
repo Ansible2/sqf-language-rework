@@ -373,7 +373,7 @@ class BikiSyntaxParser {
         }
 
         // TODO:
-        console.debug("parsingSyntaxes:", parsingSyntaxes[0].syntax);
+        console.debug("parsingSyntaxes:", parsingSyntaxes[0]);
         const parsedSyntaxes: ParsedSyntax[] = parsingSyntaxes.map((syntax) => {
             return this.convertParsingSyntax(pageDetails[0].pageTitle, syntax);
         });
@@ -385,6 +385,7 @@ class BikiSyntaxParser {
     ---------------------------------------------------------------------------- */
     private parseReturnOrParameterTypes(pageDetail: WikiPageDetail): SQFDataType[] {
         // TODO:
+        return [];
     }
 
     /* ----------------------------------------------------------------------------

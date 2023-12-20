@@ -1,4 +1,9 @@
-import { SQFArgument, SQFDataType, SQFEffect, SQFSyntaxType } from "../SQFParser.namespace";
+import {
+    SQFArgumentLocality,
+    SQFDataType,
+    SQFEffectLocality,
+    SQFSyntaxType,
+} from "../SQFParser.namespace";
 
 export interface WikiPage {
     title?: string;
@@ -8,34 +13,34 @@ export interface WikiPage {
 }
 
 export enum WikiPageType {
-	Function = "function",
-	Command = "command",
-	Unknown = "unknown",
+    Function = "function",
+    Command = "command",
+    Unknown = "unknown",
 }
 
 export enum WikiPageDetailType {
-	PageType,
-	Parameter,
-	Syntax,
-	Description,
-	ArgLocality,
-	EffectLocality,
-	Return,
-	Example,
-	Unknown,
-	FunctionExecution,
-	Group,
-	ServerExecution,
+    PageType,
+    Parameter,
+    Syntax,
+    Description,
+    ArgLocality,
+    EffectLocality,
+    Return,
+    Example,
+    Unknown,
+    FunctionExecution,
+    Group,
+    ServerExecution,
 }
 
 export interface WikiPageDetail {
-	pageTitle: string,
-	index: number,
-	type: WikiPageDetailType,
-	detailFull: string,
-	detailContent?: string,
-	detailNameFull?: string,
-	detailName?: string,
+    pageTitle: string;
+    index: number;
+    type: WikiPageDetailType;
+    detailFull: string;
+    detailContent?: string;
+    detailNameFull?: string;
+    detailName?: string;
 }
 
 export interface ParsedSyntax {
@@ -48,6 +53,6 @@ export interface ParsedSyntax {
 
 export interface ParsedWikiPage {
     syntaxes: ParsedSyntax[];
-    argumentLocality?: SQFArgument;
-    effectLocality?: SQFEffect;
+    argumentLocality?: SQFArgumentLocality;
+    effectLocality?: SQFEffectLocality;
 }
