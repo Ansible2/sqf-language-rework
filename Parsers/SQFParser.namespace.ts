@@ -115,6 +115,10 @@ export interface ParsedSyntax {
     syntaxType?: SQFSyntaxType;
 }
 
+export interface UnparsedPage {
+    text: string;
+}
+
 export interface ParsedPage {
     name: string;
     description: string;
@@ -128,7 +132,7 @@ export interface ParsedPage {
 }
 
 export interface DocParser {
-    getPages(): Promise<string[]>;
-    parsePages(pages: string[]): Promise<ParsedPage[]>;
+    getPages(): Promise<UnparsedPage[]>;
+    parsePages(pages: UnparsedPage[]): Promise<ParsedPage[]>;
     getOutputFolderName(): string;
 }

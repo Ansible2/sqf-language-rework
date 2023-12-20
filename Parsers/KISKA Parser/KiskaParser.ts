@@ -1,4 +1,10 @@
-import { DocParser, ParsedPage, Parser, SQFGrammarType } from "../SQFParser.namespace";
+import {
+    DocParser,
+    ParsedPage,
+    Parser,
+    SQFGrammarType,
+    UnparsedPage,
+} from "../SQFParser.namespace";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -43,23 +49,25 @@ function getAllFilesInDirectory(folder: string): string[] {
 
 export class KiskaParser implements DocParser {
     /* ----------------------------------------------------------------------------
-		getPages
-	---------------------------------------------------------------------------- */
-    public async getPages(): Promise<string[]> {
+        getPages
+    ---------------------------------------------------------------------------- */
+    public async getPages(): Promise<UnparsedPage[]> {
         const kiskaFunctionsFolder = path.resolve(
             "S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
         );
         const filePaths = getAllFilesInDirectory(kiskaFunctionsFolder);
-        return filePaths.map((filePath) => fs.readFileSync(filePath, "utf-8").trim());
+        return filePaths.map((filePath) => {
+            return { text: fs.readFileSync(filePath, "utf-8").trim() };
+        });
     }
 
     /* ----------------------------------------------------------------------------
-		parsePages
-	---------------------------------------------------------------------------- */
-    public async parsePages(pages: string[]): Promise<ParsedPage[]> {
+        parsePages
+    ---------------------------------------------------------------------------- */
+    public async parsePages(pages: UnparsedPage[]): Promise<ParsedPage[]> {
         const parsedPages: ParsedPage[] = [];
         pages.forEach((page) => {
-            const parsedPage = this.parseKiskaPage(page);
+            const parsedPage = this.parseKiskaPage(page.text);
             if (parsedPage) {
                 parsedPages.push(parsedPage);
             }

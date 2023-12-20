@@ -8,11 +8,11 @@ const parseType = process.argv[2];
 
 function convertPageToText(parsedPage: ParsedPage): string {
     // TODO:
+    return "";
 }
 
 async function main() {
     let parser: DocParser | undefined = undefined;
-    let outputFolder = "";
     switch (parseType?.toLowerCase()) {
         case "kiska": {
             parser = new KiskaParser();
