@@ -240,7 +240,7 @@ class BikiTextInterpreter {
         return underscoredTitle;
     }
 
-    private readonly ICON_NAME_TO_TEXT_MAP: IJSON<string> = {
+    private readonly GAME_KEY_TO_TEXT_MAP: IJSON<string> = {
         // collected from https://community.bistudio.com/wiki/Category:Templates
         ofp: "Operation Flashpoint",
         ofpe: "Operation Flashpoint: Elite",
@@ -262,7 +262,7 @@ class BikiTextInterpreter {
         const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
         const convertedCodeExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
-            const matchString: string | undefined = match.input;
+            const matchString = match.input;
             if (!matchString) continue;
             convertedCodeExamples.push(matchString);
             convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
@@ -297,7 +297,7 @@ class BikiTextInterpreter {
                 (convertedText = convertedText.replace(selector, replacement))
         );
 
-        const SELECT_GAME_VERSION_ICON = /\{\{GVI\|(\w+)\|([\d\.]+)(.*?)\}\}/gi;
+        const SELECT_GAME_VERSION_ICON = /\{\{GVI\|(\w+)\|([\d\.]+).*?\}\}/gi;
         const gameIconMatches = convertedText.matchAll(SELECT_GAME_VERSION_ICON);
         for (const match of gameIconMatches) {
             const originalString = match.input;
@@ -306,7 +306,7 @@ class BikiTextInterpreter {
             const iconCode = match.groups?.["$1"]?.toLowerCase();
             if (!iconCode) continue;
 
-            const gameName = this.ICON_NAME_TO_TEXT_MAP[iconCode];
+            const gameName = this.GAME_KEY_TO_TEXT_MAP[iconCode];
             if (!gameName) {
                 console.log("BikiTextInterpreter - could not locate icon name for", iconCode);
                 continue;
@@ -319,19 +319,26 @@ class BikiTextInterpreter {
             convertedText = convertedText.replace(originalString, `**(${replacementText})**`);
         }
 
+        Object.entries(this.GAME_KEY_TO_TEXT_MAP).forEach(([gameKey, gameName]) => {
+            convertedText = convertedText.replace(`/\{\{${gameKey}\}\}/gi`, gameName);
+        });
+
         // TODO:
         // File links - /\[\[File.*?\]\]/gi
         // Tables - /{{{![\s\S]*?}}}/gi
         // Notes - /{{Feature[\s\S]*}}/gi
         // External Links - /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
-        // game features :
+        // game features : /\{\{Feature\s*\|\s*(\w+)\s*\|([\W\w]+?)\}\}/ig
         // {{Feature|arma3|
         // * [[createCenter]] usage is not needed anymore as all centers are automatically created.
         // * When the last unit leaves its group, the group usually gets immediately auto-deleted, regardless of its auto-deletion setting.
         // }}
 
         for (const convertedExample of convertedCodeExamples) {
-            convertedText = convertedText.replace("<SQFCodeToReplace>", convertedExample);
+            convertedText = convertedText.replace(
+                "<SQFCodeToReplace>",
+                ["```sqf", convertedExample, "```"].join("\n")
+            );
         }
 
         return convertedText.trim();
