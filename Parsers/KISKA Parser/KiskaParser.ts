@@ -1,10 +1,4 @@
-import {
-    DocParser,
-    ParsedPage,
-    Parser,
-    SQFGrammarType,
-    UnparsedPage,
-} from "../SQFParser.namespace";
+import { DocParser, ParsedPage, SQFGrammarType, UnparsedPage } from "../SQFParser.namespace";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -154,13 +148,9 @@ export class KiskaParser implements DocParser {
                 /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi
             );
             individualExamplesMatch?.forEach((example) => {
-                parsedPage.examples.push(
-                    example.replace(/(\t{1}| {4}?(?!( {4}|\t{1})))/gi, "").replace(
-                        // examples are indented twice
-                        /(\t{1}| {4}?(?!( {4}|\t{1})))/gi,
-                        ""
-                    )
-                );
+                // examples are indented twice
+                const exampleText = example.replace(/(\t{2}| {8}?(?!( {8}|\t{2})))/gi, "");
+                parsedPage.examples.push(["```sqf", exampleText, "```"].join("\n"));
             });
         }
 

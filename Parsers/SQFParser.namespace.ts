@@ -108,15 +108,17 @@ export interface IJSON<T> {
     [key: string]: T;
 }
 
+export interface UnparsedPage {
+    text: string;
+}
+
+export interface TokenReplacement {}
+
 export interface ParsedSyntax {
     returnType?: SQFDataType | SQFDataType[];
     leftParameters?: SQFDataType | SQFDataType[];
     rightParameters?: SQFDataType | SQFDataType[];
     syntaxType?: SQFSyntaxType;
-}
-
-export interface UnparsedPage {
-    text: string;
 }
 
 export interface ParsedPage {

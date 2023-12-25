@@ -100,13 +100,11 @@ export class BikiParserV2 implements DocParser {
         if (detailsMap.has(BikiPageDetailType.Example)) {
             const exampleDetails = detailsMap.get(BikiPageDetailType.Example);
             exampleDetails?.forEach((detail) => {
-                // TODO: determine how to format examples
-                // ideally this wouldn't add markdown syntax and that would be left to the Parse.ts
-                // however, there are some examples that include other language
-                // examples (cpp in `callExtension`) and some that have text that
-                // is not inside a code block that should also be included
-                const exampleFormatted = this.textInterpreter.formatBikiCode(detail.content);
-                examples.push(exampleFormatted);
+                if (!detail.content) return;
+                const exampleInMarkdown = this.textInterpreter.convertTextToMarkdown(
+                    detail.content
+                );
+                examples.push(exampleInMarkdown);
             });
         }
 
@@ -243,7 +241,60 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-        getPageTitleFormatted
+        convertTextToMarkdown
     ---------------------------------------------------------------------------- */
-    public name() {}
+    public convertTextToMarkdown(text: string): string {
+        let convertedText = text;
+
+        const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
+        const convertedCodeExamples: string[] = [];
+        for (const match of sqfCodeBlockMatches) {
+            const matchString: string | undefined = match.input;
+            if (!matchString) continue;
+            convertedCodeExamples.push(matchString);
+            convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
+        }
+
+        const BIKI_BASE_URL = "https://community.bistudio.com/wiki";
+        const SIMPLE_REPLACEMENTS: [RegExp, string][] = [
+            // code references
+            [/\'\'+(.*?)\'\'+/gi, "`$1`"],
+            // emphasized text
+            [/{{hl\|(.*)}}/gi, "**$1**"],
+            // other commands
+            [/\[\[(\w+)\]\]/gi, "`$1`"],
+            // sqf code block start
+            [/\s*\<sqf\>\s*/gi, "\n```sqf\n"],
+            // sqf code block end
+            [/\s*\<\/sqf\>\s*/gi, "\n```\n"],
+            // other language code block
+            [
+                /(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi,
+                "```$2\n$4\n```",
+            ],
+            // spoilers
+            [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
+            // Described Internal Hyperlinks
+            [/\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi, `[$2](${BIKI_BASE_URL}/$1)`],
+            // Static Internal Hyperlinks
+            [/\[\[([\w/:\s]+)\]\]/gi, `[$1](${BIKI_BASE_URL}/$1)`],
+        ];
+        SIMPLE_REPLACEMENTS.forEach(
+            ([selector, replacement]) =>
+                (convertedText = convertedText.replace(selector, replacement))
+        );
+
+        // TODO:
+        // File links - /\[\[File.*?\]\]/gi
+        // Biki links - /(\[\[)([\s\D\|]*?)(\]\])/gi
+        // Tables - /{{{![\s\S]*?}}}/gi
+        // Notes - /{{Feature[\s\S]*}}/gi
+        // External Links - /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
+
+        for (const convertedExample of convertedCodeExamples) {
+            convertedText = convertedText.replace("<SQFCodeToReplace>", convertedExample);
+        }
+
+        return convertedText.trim();
+    }
 }
