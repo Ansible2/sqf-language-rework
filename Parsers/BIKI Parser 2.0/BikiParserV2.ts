@@ -240,6 +240,19 @@ class BikiTextInterpreter {
         return underscoredTitle;
     }
 
+    private readonly ICON_NAME_TO_TEXT_MAP: IJSON<string> = {
+        // collected from https://community.bistudio.com/wiki/Category:Templates
+        ofp: "Operation Flashpoint",
+        ofpe: "Operation Flashpoint: Elite",
+        ofpr: "Operation Flashpoint: Resistance",
+        arma: "Arma",
+        arma0: "Arma: Cold War Assault",
+        arma1: "Armed Assault",
+        arma2: "Arma 2",
+        arma2oa: "Arma 2: Operation Arrowhead",
+        arma3: "Arma 3",
+    };
+
     /* ----------------------------------------------------------------------------
         convertTextToMarkdown
     ---------------------------------------------------------------------------- */
@@ -284,12 +297,38 @@ class BikiTextInterpreter {
                 (convertedText = convertedText.replace(selector, replacement))
         );
 
+        const SELECT_GAME_VERSION_ICON = /\{\{GVI\|(\w+)\|([\d\.]+)(.*?)\}\}/gi;
+        const gameIconMatches = convertedText.matchAll(SELECT_GAME_VERSION_ICON);
+        for (const match of gameIconMatches) {
+            const originalString = match.input;
+            if (!originalString) continue;
+
+            const iconCode = match.groups?.["$1"]?.toLowerCase();
+            if (!iconCode) continue;
+
+            const gameName = this.ICON_NAME_TO_TEXT_MAP[iconCode];
+            if (!gameName) {
+                console.log("BikiTextInterpreter - could not locate icon name for", iconCode);
+                continue;
+            }
+
+            let replacementText = gameName;
+            const gameVersion = match.groups?.["$2"];
+            if (gameVersion) replacementText += `- ${gameVersion}`;
+
+            convertedText = convertedText.replace(originalString, `**(${replacementText})**`);
+        }
+
         // TODO:
         // File links - /\[\[File.*?\]\]/gi
-        // Biki links - /(\[\[)([\s\D\|]*?)(\]\])/gi
         // Tables - /{{{![\s\S]*?}}}/gi
         // Notes - /{{Feature[\s\S]*}}/gi
         // External Links - /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
+        // game features :
+        // {{Feature|arma3|
+        // * [[createCenter]] usage is not needed anymore as all centers are automatically created.
+        // * When the last unit leaves its group, the group usually gets immediately auto-deleted, regardless of its auto-deletion setting.
+        // }}
 
         for (const convertedExample of convertedCodeExamples) {
             convertedText = convertedText.replace("<SQFCodeToReplace>", convertedExample);
