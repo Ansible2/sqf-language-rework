@@ -120,6 +120,16 @@ export class BikiParserV2 implements DocParser {
         const descriptionDetail = detailsMap.get(BikiPageDetailType.Description)?.at(0);
         const description = this.textInterpreter.convertTextToMarkdown(descriptionDetail?.content);
 
+        const serverExecutionDetails = detailsMap.get(BikiPageDetailType.ServerExecution);
+        const serverExecution = serverExecutionDetails && serverExecutionDetails.length > 0;
+
+        const effectLocality = this.textInterpreter.getEffectLocality(
+            detailsMap.get(BikiPageDetailType.EffectLocality)?.at(0)?.content
+        );
+        const argumentLocality = this.textInterpreter.getArgumentLocality(
+            detailsMap.get(BikiPageDetailType.ArgLocality)?.at(0)?.content
+        );
+
         return {
             name: titleFormatted,
             description,
@@ -128,12 +138,9 @@ export class BikiParserV2 implements DocParser {
             syntaxExamples: [],
             // TODO:
             parsedSyntaxes: [],
-            // TODO:
-            argumentLocality: SQFArgumentLocality.GLOBAL,
-            // TODO:
-            effectLocality: SQFEffectLocality.GLOBAL,
-            // TODO:
-            serverExecution: false,
+            argumentLocality,
+            effectLocality,
+            serverExecution,
             grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
         };
     }
@@ -448,8 +455,8 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-		grammarTypeMap
-	---------------------------------------------------------------------------- */
+        grammarTypeMap
+    ---------------------------------------------------------------------------- */
     private static readonly grammarTypeMap: IJSON<SQFGrammarType> = SQFGrammarTypeMap;
 
     /* ----------------------------------------------------------------------------
@@ -469,5 +476,35 @@ class BikiTextInterpreter {
         }
 
         return SQFGrammarType.Command;
+    }
+
+    /* ----------------------------------------------------------------------------
+        getEffectLocality
+    ---------------------------------------------------------------------------- */
+    public getEffectLocality(pageDetailContent: string | undefined): SQFEffectLocality | undefined {
+        if (!pageDetailContent) return;
+
+        pageDetailContent = pageDetailContent.toLowerCase();
+        if (pageDetailContent.includes("global")) {
+            return SQFEffectLocality.GLOBAL;
+        } else if (pageDetailContent.includes("local")) {
+            return SQFEffectLocality.LOCAL;
+        }
+    }
+
+    /* ----------------------------------------------------------------------------
+    getEffectLocality
+    ---------------------------------------------------------------------------- */
+    public getArgumentLocality(
+        pageDetailContent: string | undefined
+    ): SQFArgumentLocality | undefined {
+        if (!pageDetailContent) return;
+
+        pageDetailContent = pageDetailContent.toLowerCase();
+        if (pageDetailContent.includes("global")) {
+            return SQFArgumentLocality.GLOBAL;
+        } else if (pageDetailContent.includes("local")) {
+            return SQFArgumentLocality.LOCAL;
+        }
     }
 }
