@@ -397,11 +397,15 @@ class BikiTextInterpreter {
             }
         });
 
+        const WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
+        convertedText = convertedText.replace(
+            /\{\{wikipedia\|(.*)\|(.*)\}\}/gi,
+            `[$2](${WIKIPEDIA_BASE_URL}/$1)`
+        );
         // TODO:
         // File links - /\[\[File.*?\]\]/gi
         // images
-        // Tables - /{{{![\s\S]*?}}}/gi
-        // External Links - /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
+        // Tables - {{{!}}}...
 
         for (const convertedExample of convertedCodeExamples) {
             convertedText = convertedText.replace(
