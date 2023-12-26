@@ -3,6 +3,7 @@ import {
     DocParser,
     IJSON,
     ParsedPage,
+    ParsedSyntax,
     SQFArgumentLocality,
     SQFEffectLocality,
     SQFGrammarType,
@@ -43,7 +44,7 @@ interface BikiPageDetail {
     orginal: string;
     content?: string;
     fullName?: string;
-    name?: string;
+    name: string;
 }
 
 export class BikiParserV2 implements DocParser {
@@ -141,18 +142,27 @@ export class BikiParserV2 implements DocParser {
             detailsMap.get(BikiPageDetailType.ArgLocality)?.at(0)?.content
         );
 
+        const parsedSyntaxes = this.getParsedSyntaxes(syntaxExamples.length, pageDetails.syntaxMap);
+
         return {
             name: titleFormatted,
             description,
             examples,
             syntaxExamples,
-            // TODO:
-            parsedSyntaxes: [],
+            parsedSyntaxes,
             argumentLocality,
             effectLocality,
             serverExecution,
             grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
         };
+    }
+
+    private getParsedSyntaxes(
+        numberOfSyntaxes: number,
+        syntaxMap: Map<number, BikiPageDetail[]>
+    ): ParsedSyntax[] {
+        // TODO: implement
+        return [];
     }
 
     /* ----------------------------------------------------------------------------
@@ -161,6 +171,7 @@ export class BikiParserV2 implements DocParser {
     private getBikiPageDetails(page: UnparsedBikiPage): {
         details: BikiPageDetail[];
         detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>;
+        syntaxMap: Map<number, BikiPageDetail[]>;
     } | null {
         const matchPageDetailsRegEx =
             /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
@@ -174,6 +185,7 @@ export class BikiParserV2 implements DocParser {
 
         const allParsedDetails: BikiPageDetail[] = [];
         const detailsMap: Map<BikiPageDetailType, BikiPageDetail[]> = new Map();
+        const syntaxMap: Map<number, BikiPageDetail[]> = new Map();
         pageDetailsArray.forEach((matchGroups: string[]) => {
             const detailFull = matchGroups.at(0)?.trimEnd();
             if (!detailFull) return;
@@ -193,9 +205,27 @@ export class BikiParserV2 implements DocParser {
             } else {
                 detailsMap.set(pageDetail.type, [pageDetail]);
             }
+
+            if (
+                pageDetail.type === BikiPageDetailType.Parameter ||
+                pageDetail.type === BikiPageDetailType.Return
+            ) {
+                const syntaxIndexString = pageDetail.name.match(/(?<=\w+)\d{1}/i)?.at(0);
+                if (!syntaxIndexString) {
+                    console.log("Could not locate syntax index in detail:", pageDetail);
+                    return;
+                }
+
+                const syntaxIndex = parseInt(syntaxIndexString);
+                if (detailsMap.has(syntaxIndex)) {
+                    detailsMap.get(syntaxIndex)?.push(pageDetail);
+                } else {
+                    detailsMap.set(syntaxIndex, [pageDetail]);
+                }
+            }
         });
 
-        return { details: allParsedDetails, detailsMap };
+        return { details: allParsedDetails, detailsMap, syntaxMap };
     }
 }
 

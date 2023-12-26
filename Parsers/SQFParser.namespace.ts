@@ -112,8 +112,6 @@ export interface UnparsedPage {
     text: string;
 }
 
-export interface TokenReplacement {}
-
 export interface ParsedSyntax {
     returnType?: SQFDataType | SQFDataType[];
     leftParameters?: SQFDataType | SQFDataType[];
