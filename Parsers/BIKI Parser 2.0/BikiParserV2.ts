@@ -1,7 +1,16 @@
 import { XMLParser } from "fast-xml-parser";
-import { DocParser, IJSON, ParsedPage, SQFGrammarType, UnparsedPage } from "../SQFParser.namespace";
+import {
+    DocParser,
+    IJSON,
+    ParsedPage,
+    SQFArgumentLocality,
+    SQFEffectLocality,
+    SQFGrammarType,
+    UnparsedPage,
+} from "../SQFParser.namespace";
 import path from "path";
 import fs from "fs";
+import { SQFGrammarTypeMap } from "../BIKI Parser/SQFCommandsGrammarMap";
 
 interface BikiPage {
     title?: string;
@@ -108,7 +117,25 @@ export class BikiParserV2 implements DocParser {
             });
         }
 
-        return null;
+        const descriptionDetail = detailsMap.get(BikiPageDetailType.Description)?.at(0);
+        const description = this.textInterpreter.convertTextToMarkdown(descriptionDetail?.content);
+
+        return {
+            name: titleFormatted,
+            description,
+            examples,
+            // TODO:
+            syntaxExamples: [],
+            // TODO:
+            parsedSyntaxes: [],
+            // TODO:
+            argumentLocality: SQFArgumentLocality.GLOBAL,
+            // TODO:
+            effectLocality: SQFEffectLocality.GLOBAL,
+            // TODO:
+            serverExecution: false,
+            grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
+        };
     }
 
     /* ----------------------------------------------------------------------------
@@ -196,7 +223,7 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         COMMAND_NAME_MAP
     ---------------------------------------------------------------------------- */
-    private readonly COMMAND_NAME_MAP: IJSON<string> = {
+    private static readonly COMMAND_NAME_MAP: IJSON<string> = {
         "a && b": "'&&'",
         "a or b": "'||'",
         "a hash b": "'#'",
@@ -232,7 +259,7 @@ class BikiTextInterpreter {
         }
 
         title = title.trim();
-        const mappedName = this.COMMAND_NAME_MAP[title];
+        const mappedName = BikiTextInterpreter.COMMAND_NAME_MAP[title];
         if (mappedName) return mappedName;
 
         // xml does not preserve underscores but replaces them with spaces
@@ -243,7 +270,7 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         TEMPLATE_KEY_MAP
     ---------------------------------------------------------------------------- */
-    private readonly TEMPLATE_KEY_MAP: IJSON<{
+    private static readonly TEMPLATE_KEY_MAP: IJSON<{
         text: string;
         gameVersionIcon?: boolean;
         feature?: boolean;
@@ -315,7 +342,9 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         convertTextToMarkdown
     ---------------------------------------------------------------------------- */
-    public convertTextToMarkdown(text: string): string {
+    public convertTextToMarkdown(text: string | undefined): string {
+        if (!text) return "";
+
         let convertedText = text;
 
         // code blocks are seperated to ensure that any code formatting is not overwritten
@@ -356,45 +385,47 @@ class BikiTextInterpreter {
                 (convertedText = convertedText.replace(selector, replacement))
         );
 
-        Object.entries(this.TEMPLATE_KEY_MAP).forEach(([templateKey, templateInfo]) => {
-            const replacementText = templateInfo.text;
-            const simpleTextRegex = new RegExp(`/\{\{${templateKey}\}\}/gi`);
-            convertedText = convertedText.replace(simpleTextRegex, replacementText);
+        Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
+            ([templateKey, templateInfo]) => {
+                const replacementText = templateInfo.text;
+                const simpleTextRegex = new RegExp(`/\{\{${templateKey}\}\}/gi`);
+                convertedText = convertedText.replace(simpleTextRegex, replacementText);
 
-            if (templateInfo.gameVersionIcon) {
-                const gameVersionRegex = new RegExp(
-                    `/\{\{GVI\|${templateKey}\|([\d\.]+).*?\}\}/gi`
-                );
-                const gameIconMatches = convertedText.matchAll(gameVersionRegex);
-                for (const match of gameIconMatches) {
-                    let newText = replacementText;
-                    const gameVersion = match[2];
-                    if (gameVersion) newText += ` v${gameVersion}`;
+                if (templateInfo.gameVersionIcon) {
+                    const gameVersionRegex = new RegExp(
+                        `/\{\{GVI\|${templateKey}\|([\d\.]+).*?\}\}/gi`
+                    );
+                    const gameIconMatches = convertedText.matchAll(gameVersionRegex);
+                    for (const match of gameIconMatches) {
+                        let newText = replacementText;
+                        const gameVersion = match[2];
+                        if (gameVersion) newText += ` v${gameVersion}`;
 
-                    const originalString = match[0];
-                    convertedText = convertedText.replace(originalString, `**(${newText})**`);
-                }
-            }
-
-            if (templateInfo.feature) {
-                const featureRegex = new RegExp(
-                    `/\{\{Feature\s*\|\s*${templateKey}\s*\|{0,1}([\W\w]+?)\}\}/gi`
-                );
-                const featureMatches = convertedText.matchAll(featureRegex);
-                for (const match of featureMatches) {
-                    let newText: string;
-                    const featureMessage = match[1];
-                    if (featureMessage) {
-                        newText = `**${replacementText}**: ${featureMessage}`;
-                    } else {
-                        newText = `**(${replacementText})**`;
+                        const originalString = match[0];
+                        convertedText = convertedText.replace(originalString, `**(${newText})**`);
                     }
+                }
 
-                    const originalString = match[0];
-                    convertedText = convertedText.replace(originalString, newText);
+                if (templateInfo.feature) {
+                    const featureRegex = new RegExp(
+                        `/\{\{Feature\s*\|\s*${templateKey}\s*\|{0,1}([\W\w]+?)\}\}/gi`
+                    );
+                    const featureMatches = convertedText.matchAll(featureRegex);
+                    for (const match of featureMatches) {
+                        let newText: string;
+                        const featureMessage = match[1];
+                        if (featureMessage) {
+                            newText = `**${replacementText}**: ${featureMessage}`;
+                        } else {
+                            newText = `**(${replacementText})**`;
+                        }
+
+                        const originalString = match[0];
+                        convertedText = convertedText.replace(originalString, newText);
+                    }
                 }
             }
-        });
+        );
 
         const WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
         convertedText = convertedText.replace(
@@ -414,5 +445,29 @@ class BikiTextInterpreter {
         }
 
         return convertedText.trim();
+    }
+
+    /* ----------------------------------------------------------------------------
+		grammarTypeMap
+	---------------------------------------------------------------------------- */
+    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = SQFGrammarTypeMap;
+
+    /* ----------------------------------------------------------------------------
+        getSQFGrammarType
+    ---------------------------------------------------------------------------- */
+    public getSQFGrammarType(name: string): SQFGrammarType {
+        const nameLowered = name.toLowerCase();
+        if (nameLowered.includes("_fnc_")) {
+            return SQFGrammarType.Function;
+        }
+
+        const type = BikiTextInterpreter.grammarTypeMap[nameLowered];
+        if (type) {
+            return type;
+        } else if (BikiTextInterpreter.grammarTypeMap[name]) {
+            return BikiTextInterpreter.grammarTypeMap[name];
+        }
+
+        return SQFGrammarType.Command;
     }
 }
