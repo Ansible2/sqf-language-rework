@@ -240,17 +240,73 @@ class BikiTextInterpreter {
         return underscoredTitle;
     }
 
-    private readonly GAME_KEY_TO_TEXT_MAP: IJSON<string> = {
+    private readonly TEMPLATE_KEY_MAP: IJSON<{
+        text: string;
+        gameVersionIcon?: boolean;
+        feature?: boolean;
+    }> = {
         // collected from https://community.bistudio.com/wiki/Category:Templates
-        ofp: "Operation Flashpoint",
-        ofpe: "Operation Flashpoint: Elite",
-        ofpr: "Operation Flashpoint: Resistance",
-        arma: "Arma",
-        arma0: "Arma: Cold War Assault",
-        arma1: "Armed Assault",
-        arma2: "Arma 2",
-        arma2oa: "Arma 2: Operation Arrowhead",
-        arma3: "Arma 3",
+        ofp: {
+            text: "Operation Flashpoint",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        ofpe: {
+            text: "Operation Flashpoint: Elite",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        ofpr: {
+            text: "Operation Flashpoint: Resistance",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        afm: {
+            text: "Arma 3: Advanced Helicopter Flight Model",
+            feature: true,
+        },
+        arma: {
+            text: "Arma",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        arma0: {
+            text: "Arma: Cold War Assault",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        arma1: {
+            text: "Armed Assault",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        arma2: {
+            text: "Arma 2",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        arma2oa: {
+            text: "Arma 2: Operation Arrowhead",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        arma3: {
+            text: "Arma 3",
+            gameVersionIcon: true,
+            feature: true,
+        },
+        important: {
+            text: "IMPORTANT",
+            feature: true,
+        },
+        informative: {
+            text: "NOTE",
+            feature: true,
+        },
+        warning: {
+            text: "WARNING",
+            feature: true,
+        },
     };
 
     /* ----------------------------------------------------------------------------
@@ -259,6 +315,8 @@ class BikiTextInterpreter {
     public convertTextToMarkdown(text: string): string {
         let convertedText = text;
 
+        // code blocks are seperated to ensure that any code formatting is not overwritten
+        // during formatting
         const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
         const convertedCodeExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
@@ -270,16 +328,18 @@ class BikiTextInterpreter {
 
         const BIKI_BASE_URL = "https://community.bistudio.com/wiki";
         const SIMPLE_REPLACEMENTS: [RegExp, string][] = [
-            // code references
-            [/\'\'+(.*?)\'\'+/gi, "`$1`"],
+            // bold text
+            [/\'\'\'+(.*?)\'\'\'+/gi, "**$1**"],
+            // italic text
+            [/\'\'+(.*?)\'\'+/gi, "_$1_"],
             // emphasized text
-            [/{{hl\|(.*)}}/gi, "**$1**"],
+            [/{{hl\|(.*)}}/gi, "`**$1**`"],
             // other commands
             [/\[\[(\w+)\]\]/gi, "`$1`"],
             // sqf code block start
-            [/\s*\<sqf\>\s*/gi, "\n```sqf\n"],
+            // [/\s*\<sqf\>\s*/gi, "\n```sqf\n"],
             // sqf code block end
-            [/\s*\<\/sqf\>\s*/gi, "\n```\n"],
+            // [/\s*\<\/sqf\>\s*/gi, "\n```\n"],
             // other language code block
             [
                 /(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi,
@@ -297,47 +357,56 @@ class BikiTextInterpreter {
                 (convertedText = convertedText.replace(selector, replacement))
         );
 
-        const SELECT_GAME_VERSION_ICON = /\{\{GVI\|(\w+)\|([\d\.]+).*?\}\}/gi;
-        const gameIconMatches = convertedText.matchAll(SELECT_GAME_VERSION_ICON);
-        for (const match of gameIconMatches) {
-            const originalString = match.input;
-            if (!originalString) continue;
+        Object.entries(this.TEMPLATE_KEY_MAP).forEach(([templateKey, templateInfo]) => {
+            const replacementText = templateInfo.text;
+            const simpleTextRegex = new RegExp(`/\{\{${templateKey}\}\}/gi`);
+            convertedText = convertedText.replace(simpleTextRegex, replacementText);
 
-            const iconCode = match.groups?.["$1"]?.toLowerCase();
-            if (!iconCode) continue;
+            if (templateInfo.gameVersionIcon) {
+                const gameVersionRegex = new RegExp(
+                    `/\{\{GVI\|${templateKey}\|([\d\.]+).*?\}\}/gi`
+                );
+                const gameIconMatches = convertedText.matchAll(gameVersionRegex);
+                for (const match of gameIconMatches) {
+                    let newText = replacementText;
+                    const gameVersion = match[2];
+                    if (gameVersion) newText += ` v${gameVersion}`;
 
-            const gameName = this.GAME_KEY_TO_TEXT_MAP[iconCode];
-            if (!gameName) {
-                console.log("BikiTextInterpreter - could not locate icon name for", iconCode);
-                continue;
+                    const originalString = match[0];
+                    convertedText = convertedText.replace(originalString, `**(${newText})**`);
+                }
             }
 
-            let replacementText = gameName;
-            const gameVersion = match.groups?.["$2"];
-            if (gameVersion) replacementText += `- ${gameVersion}`;
+            if (templateInfo.feature) {
+                const featureRegex = new RegExp(
+                    `/\{\{Feature\s*\|\s*${templateKey}\s*\|{0,1}([\W\w]+?)\}\}/gi`
+                );
+                const featureMatches = convertedText.matchAll(featureRegex);
+                for (const match of featureMatches) {
+                    let newText: string;
+                    const featureMessage = match[1];
+                    if (featureMessage) {
+                        newText = `**${replacementText}**: ${featureMessage}`;
+                    } else {
+                        newText = `**(${replacementText})**`;
+                    }
 
-            convertedText = convertedText.replace(originalString, `**(${replacementText})**`);
-        }
-
-        Object.entries(this.GAME_KEY_TO_TEXT_MAP).forEach(([gameKey, gameName]) => {
-            convertedText = convertedText.replace(`/\{\{${gameKey}\}\}/gi`, gameName);
+                    const originalString = match[0];
+                    convertedText = convertedText.replace(originalString, newText);
+                }
+            }
         });
 
         // TODO:
         // File links - /\[\[File.*?\]\]/gi
+        // images
         // Tables - /{{{![\s\S]*?}}}/gi
-        // Notes - /{{Feature[\s\S]*}}/gi
         // External Links - /(\{\{)(([\s\w\d]+)(\|))(.+?)((\|)([\s\w\d]*))?(\}\})/gi
-        // game features : /\{\{Feature\s*\|\s*(\w+)\s*\|([\W\w]+?)\}\}/ig
-        // {{Feature|arma3|
-        // * [[createCenter]] usage is not needed anymore as all centers are automatically created.
-        // * When the last unit leaves its group, the group usually gets immediately auto-deleted, regardless of its auto-deletion setting.
-        // }}
 
         for (const convertedExample of convertedCodeExamples) {
             convertedText = convertedText.replace(
                 "<SQFCodeToReplace>",
-                ["```sqf", convertedExample, "```"].join("\n")
+                ["\n```sqf", convertedExample, "```\n"].join("\n")
             );
         }
 
