@@ -5,6 +5,7 @@ import {
     ParsedPage,
     ParsedSyntax,
     SQFArgumentLocality,
+    SQFDataType,
     SQFEffectLocality,
     SQFGrammarType,
     UnparsedPage,
@@ -142,7 +143,10 @@ export class BikiParserV2 implements DocParser {
             detailsMap.get(BikiPageDetailType.ArgLocality)?.at(0)?.content
         );
 
-        const parsedSyntaxes = this.getParsedSyntaxes(syntaxExamples.length, pageDetails.syntaxMap);
+        const parsedSyntaxes: ParsedSyntax[] = [];
+        pageDetails.syntaxMap.forEach((detailsForSyntax) => {
+            parsedSyntaxes.push(this.parseSyntax(detailsForSyntax));
+        });
 
         return {
             name: titleFormatted,
@@ -157,12 +161,16 @@ export class BikiParserV2 implements DocParser {
         };
     }
 
-    private getParsedSyntaxes(
-        numberOfSyntaxes: number,
-        syntaxMap: Map<number, BikiPageDetail[]>
-    ): ParsedSyntax[] {
-        // TODO: implement
-        return [];
+    /* ----------------------------------------------------------------------------
+        parseSyntax
+    ---------------------------------------------------------------------------- */
+    private parseSyntax(syntaxPageDetails: BikiPageDetail[]): ParsedSyntax {
+        const parsedSyntax: ParsedSyntax = {};
+        for (const detail of syntaxPageDetails) {
+            // TODO: implement
+        }
+
+        return parsedSyntax;
     }
 
     /* ----------------------------------------------------------------------------
@@ -210,17 +218,17 @@ export class BikiParserV2 implements DocParser {
                 pageDetail.type === BikiPageDetailType.Parameter ||
                 pageDetail.type === BikiPageDetailType.Return
             ) {
-                const syntaxIndexString = pageDetail.name.match(/(?<=\w+)\d{1}/i)?.at(0);
-                if (!syntaxIndexString) {
+                const syntaxIdString = pageDetail.name.match(/(?<=\w+)\d{1}/i)?.at(0);
+                if (!syntaxIdString) {
                     console.log("Could not locate syntax index in detail:", pageDetail);
                     return;
                 }
 
-                const syntaxIndex = parseInt(syntaxIndexString);
-                if (detailsMap.has(syntaxIndex)) {
-                    detailsMap.get(syntaxIndex)?.push(pageDetail);
+                const syntaxId = parseInt(syntaxIdString);
+                if (detailsMap.has(syntaxId)) {
+                    detailsMap.get(syntaxId)?.push(pageDetail);
                 } else {
-                    detailsMap.set(syntaxIndex, [pageDetail]);
+                    detailsMap.set(syntaxId, [pageDetail]);
                 }
             }
         });
@@ -533,7 +541,7 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-    getEffectLocality
+        getArgumentLocality
     ---------------------------------------------------------------------------- */
     public getArgumentLocality(
         pageDetailContent: string | undefined
@@ -547,4 +555,78 @@ class BikiTextInterpreter {
             return SQFArgumentLocality.LOCAL;
         }
     }
+
+    /* ----------------------------------------------------------------------------
+        wikiTypeToDataTypeMap
+    ---------------------------------------------------------------------------- */
+    private static readonly wikiTypeConversionMap: IJSON<SQFDataType> = {
+        NUMBER: SQFDataType.Number,
+        SCALAR: SQFDataType.Number,
+        "DIARY RECORD": SQFDataType.DiaryRecord,
+        BOOLEAN: SQFDataType.Boolean,
+        BOOL: SQFDataType.Boolean,
+        TRUE: SQFDataType.Boolean,
+        FALSE: SQFDataType.Boolean,
+        ARRAY: SQFDataType.Array,
+        STRING: SQFDataType.String,
+        NOTHING: SQFDataType.Nothing,
+        NIL: SQFDataType.Nothing,
+        ANY: SQFDataType.Any,
+        ANYTHING: SQFDataType.Any,
+        NAMESPACE: SQFDataType.Namespace,
+        "EDEN ENTITY": SQFDataType.EdenEntity,
+        EDITOROBJECT: SQFDataType.Object,
+        "EDITOR OBJECT": SQFDataType.Object,
+        NAN: SQFDataType.NaN,
+        IF: SQFDataType.IfType,
+        "IF TYPE": SQFDataType.IfType,
+        WHILE: SQFDataType.WhileType,
+        "WHILE TYPE": SQFDataType.WhileType,
+        WITH: SQFDataType.WithType,
+        "WITH TYPE": SQFDataType.WithType,
+        FOR: SQFDataType.ForType,
+        "FOR TYPE": SQFDataType.ForType,
+        SWITCH: SQFDataType.SwitchType,
+        "SWITCH TYPE": SQFDataType.SwitchType,
+        EXCEPTION: SQFDataType.Exception,
+        "EXCEPTION TYPE": SQFDataType.Exception,
+        "EXCEPTION HANDLING": SQFDataType.Exception,
+        CODE: SQFDataType.Code,
+        OBJECT: SQFDataType.Object,
+        TARGET: SQFDataType.Object,
+        OBJECTRTD: SQFDataType.Object,
+        REMOTEEXEC: SQFDataType.String,
+        VECTOR: SQFDataType.Vector,
+        SIDE: SQFDataType.Side,
+        GROUP: SQFDataType.Group,
+        TEXT: SQFDataType.StructuredText,
+        "STRUCTURED TEXT": SQFDataType.StructuredText,
+        SCRIPT: SQFDataType.ScriptHandle,
+        "SCRIPT HANDLE": SQFDataType.ScriptHandle,
+        CONFIG: SQFDataType.Config,
+        DISPLAY: SQFDataType.Display,
+        CONTROL: SQFDataType.Control,
+        NETOBJECT: SQFDataType.NetObject,
+        TEAM_MEMBER: SQFDataType.TeamMember,
+        "TEAM MEMBER": SQFDataType.TeamMember,
+        HASHMAP: SQFDataType.HashMap,
+        TASK: SQFDataType.Task,
+        DIARY_RECORD: SQFDataType.DiaryRecord,
+        LOCATION: SQFDataType.Location,
+        HASHMAPKEY: SQFDataType.HashMapKey,
+        WAYPOINT: SQFDataType.Waypoint,
+        "COLOR (RGBA)": SQFDataType.ColorAlpha,
+        COLOR: SQFDataType.Color,
+        POSITION: SQFDataType.Position,
+        POSITION2D: SQFDataType.Position2d,
+        POSITION3D: SQFDataType.Position3d,
+        POSITIONATL: SQFDataType.PositionATL,
+        POSITIONASL: SQFDataType.PositionASL,
+        POSITIONAGLS: SQFDataType.PositionAGLS,
+        POSITIONAGL: SQFDataType.PositionAGL,
+        POSITIONRELATIVE: SQFDataType.PositionRelative,
+        "PARTICLE ARRAY": SQFDataType.ParticleArray,
+        PARTICLEARRAY: SQFDataType.ParticleArray,
+        IDENTICAL: SQFDataType.IDENTICAL,
+    };
 }
