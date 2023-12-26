@@ -240,6 +240,9 @@ class BikiTextInterpreter {
         return underscoredTitle;
     }
 
+    /* ----------------------------------------------------------------------------
+        TEMPLATE_KEY_MAP
+    ---------------------------------------------------------------------------- */
     private readonly TEMPLATE_KEY_MAP: IJSON<{
         text: string;
         gameVersionIcon?: boolean;
@@ -336,10 +339,6 @@ class BikiTextInterpreter {
             [/{{hl\|(.*)}}/gi, "`**$1**`"],
             // other commands
             [/\[\[(\w+)\]\]/gi, "`$1`"],
-            // sqf code block start
-            // [/\s*\<sqf\>\s*/gi, "\n```sqf\n"],
-            // sqf code block end
-            // [/\s*\<\/sqf\>\s*/gi, "\n```\n"],
             // other language code block
             [
                 /(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi,
