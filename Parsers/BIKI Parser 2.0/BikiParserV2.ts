@@ -105,15 +105,26 @@ export class BikiParserV2 implements DocParser {
         if (!pageDetails || pageDetails.details.length < 1) return null;
 
         const detailsMap = pageDetails.detailsMap;
+
         const examples: string[] = [];
-        if (detailsMap.has(BikiPageDetailType.Example)) {
-            const exampleDetails = detailsMap.get(BikiPageDetailType.Example);
-            exampleDetails?.forEach((detail) => {
+        const exampleDetails = detailsMap.get(BikiPageDetailType.Example);
+        if (exampleDetails) {
+            exampleDetails.forEach((detail) => {
                 if (!detail.content) return;
                 const exampleInMarkdown = this.textInterpreter.convertTextToMarkdown(
                     detail.content
                 );
                 examples.push(exampleInMarkdown);
+            });
+        }
+
+        const syntaxExamples: string[] = [];
+        const syntaxDetails = detailsMap.get(BikiPageDetailType.Syntax);
+        if (syntaxDetails) {
+            syntaxDetails.forEach((detail) => {
+                if (!detail.content) return;
+                const syntaxInMarkdown = this.textInterpreter.convertTextToMarkdown(detail.content);
+                syntaxExamples.push(syntaxInMarkdown);
             });
         }
 
@@ -134,8 +145,7 @@ export class BikiParserV2 implements DocParser {
             name: titleFormatted,
             description,
             examples,
-            // TODO:
-            syntaxExamples: [],
+            syntaxExamples,
             // TODO:
             parsedSyntaxes: [],
             argumentLocality,
