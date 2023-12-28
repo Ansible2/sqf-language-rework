@@ -73,6 +73,19 @@ export enum SQFDataType {
     IDENTICAL = "IDENTICAL",
 }
 
+export type SQFArray = string;
+export namespace SQFArray {
+    export function ofOneOfThese(types: SQFDataType[]): SQFArray {
+        return `SQFArray.ofOneOfThese(${types.join(",")})`;
+    }
+    export function ofAnyOfThese(types: SQFDataType[]): SQFArray {
+        return `SQFArray.ofAnyOfThese(${types.join(",")})`;
+    }
+    export function ofExactly(types: SQFDataType[]): SQFArray {
+        return `SQFArray.ofExactly(${types.join(",")})`;
+    }
+}
+
 export enum SQFSyntaxType {
     UnscheduledFunction = "SQFSyntaxType.UnscheduledFunction",
     NularOperator = "SQFSyntaxType.NularOperator",
@@ -111,28 +124,30 @@ export interface IJSON<T> {
 export interface UnparsedPage {
     text: string;
 }
+
+export type ParsedSyntaxDataType = SQFDataType | SQFDataType[] | SQFArray
 export interface ParsedFunctionSyntax {
     syntaxType: SQFSyntaxType.UnscheduledFunction | SQFSyntaxType.ScheduledFunction;
-    returnType: SQFDataType | SQFDataType[];
-    leftParameters: SQFDataType | SQFDataType[];
+    returnType: ParsedSyntaxDataType;
+    leftParameters: ParsedSyntaxDataType;
 }
 
 export interface ParsedUnaryCommandSyntax {
     syntaxType: SQFSyntaxType.UnaryOperator;
-    returnType: SQFDataType | SQFDataType[];
-    rightParameters: SQFDataType | SQFDataType[];
+    returnType: ParsedSyntaxDataType;
+    rightParameters: ParsedSyntaxDataType;
 }
 
 export interface ParsedBinaryCommandSyntax {
     syntaxType: SQFSyntaxType.BinaryOperator;
-    returnType: SQFDataType | SQFDataType[];
-    leftParameters: SQFDataType | SQFDataType[];
-    rightParameters: SQFDataType | SQFDataType[];
+    returnType: ParsedSyntaxDataType;
+    leftParameters: ParsedSyntaxDataType;
+    rightParameters: ParsedSyntaxDataType;
 }
 
 export interface ParsedNularCommandSyntax {
     syntaxType: SQFSyntaxType.NularOperator;
-    returnType: SQFDataType | SQFDataType[];
+    returnType: ParsedSyntaxDataType;
 }
 
 export type ParsedSyntax =

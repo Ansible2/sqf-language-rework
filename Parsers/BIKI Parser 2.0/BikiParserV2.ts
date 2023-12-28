@@ -4,7 +4,9 @@ import {
     IJSON,
     ParsedPage,
     ParsedSyntax,
+    ParsedSyntaxDataType,
     SQFArgumentLocality,
+    SQFArray,
     SQFDataType,
     SQFEffectLocality,
     SQFGrammarType,
@@ -172,9 +174,9 @@ export class BikiParserV2 implements DocParser {
         syntaxPageDetails: BikiPageDetail[],
         detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>
     ): ParsedSyntax {
-        let leftParameters: SQFDataType | SQFDataType[] | undefined;
-        let rightParameters: SQFDataType | SQFDataType[] | undefined;
-        let returnType: SQFDataType | SQFDataType[] | undefined;
+        let leftParameters: ParsedSyntaxDataType | undefined;
+        let rightParameters: ParsedSyntaxDataType | undefined;
+        let returnType: ParsedSyntaxDataType | undefined;
 
         const functionExecutionDetail = detailsMap.get(BikiPageDetailType.FunctionExecution)?.at(0);
         let functionSyntaxType:
@@ -706,13 +708,35 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         TYPE_PARSERS
     ---------------------------------------------------------------------------- */
-    private static readonly TYPE_PARSERS: any[] = [];
+    private static readonly TYPE_PARSERS: {
+        selectRegex: RegExp;
+        parseTypesFromMatch: (match: RegExpMatchArray) => ParsedSyntaxDataType;
+    }[] = [
+        {
+            // inAreaArray
+            // |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
+            selectRegex: /\[\[array\]\] of \[\[(\w+)\]\]s{0,1} and\/or \[\[(\w+)\]\]/i,
+            parseTypesFromMatch: (match: RegExpMatchArray) => {
+                const types = [match[1], match[2]].map(
+                    (matchedValue) => this.WIKI_TYPE_CONVERSION_MAP[matchedValue.toUpperCase()]
+                );
+                return SQFArray.ofAnyOfThese(types);
+            },
+        },
+    ];
 
     /* ----------------------------------------------------------------------------
         getDatatypeFromDetailContent
     ---------------------------------------------------------------------------- */
-    public getDatatypeFromDetailContent(content: string): SQFDataType | null {
-        // TDOO:
+    public getDatatypeFromDetailContent(content: string): ParsedSyntaxDataType | null {
+        for (const parserInfo of BikiTextInterpreter.TYPE_PARSERS) {
+            const match = content.match(parserInfo.selectRegex);
+            if (!match || !match.length) continue;
+
+            return parserInfo.parseTypesFromMatch(match);
+        }
+
+        // TODO:
         return null;
     }
 
