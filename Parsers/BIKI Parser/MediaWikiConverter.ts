@@ -123,6 +123,24 @@ export class MediaWikiConverter {
 
             -------------------------------------------------
 
+            // inareaArray
+                |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
+
+                |p2= area: [[Object]], [[Location]] or [[String]] - the defined area:
+                * [[Object]] - trigger
+                * [[Location]] - location
+                * [[String]] - marker name
+
+                |r1= [[Array]]: [[Object]]s and/or [[Position]]s inside the trigger area
+
+                |s2= positions [[inAreaArray]]  [center, a, b, angle, isRectangle, c]
+
+                |p21= positions: [[Array]] - [[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D
+
+                |p22= center: [[Array]] - center of the area in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+
+            -------------------------------------------------
+
             // isGameFocused
                 |r1= [[Boolean]] - [[true]] if game window is focused, [[false]] if not
             

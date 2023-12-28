@@ -8,6 +8,7 @@ import {
     SQFDataType,
     SQFEffectLocality,
     SQFGrammarType,
+    SQFSyntaxType,
     UnparsedPage,
 } from "../SQFParser.namespace";
 import path from "path";
@@ -43,8 +44,8 @@ enum BikiPageDetailType {
 interface BikiPageDetail {
     type: BikiPageDetailType;
     orginal: string;
-    content?: string;
-    fullName?: string;
+    content: string;
+    fullName: string;
     name: string;
 }
 
@@ -79,9 +80,13 @@ export class BikiParserV2 implements DocParser {
     async parsePages(pages: UnparsedBikiPage[]): Promise<ParsedPage[]> {
         const parsedPages: ParsedPage[] = [];
         pages.forEach((unparsedPage) => {
-            const parsedPage = this.parseBikiPage(unparsedPage);
-            if (!parsedPage) return;
-            parsedPages.push(parsedPage);
+            try {
+                const parsedPage = this.parseBikiPage(unparsedPage);
+                if (!parsedPage) return;
+                parsedPages.push(parsedPage);
+            } catch (error) {
+                console.log(error);
+            }
         });
 
         return parsedPages;
@@ -100,8 +105,7 @@ export class BikiParserV2 implements DocParser {
     private parseBikiPage(page: UnparsedBikiPage): ParsedPage | null {
         if (!page.title) return null;
         const titleFormatted = this.textInterpreter.getPageTitleFormatted(page);
-        const pageIsCategory = titleFormatted.startsWith("Category:");
-        if (pageIsCategory) return null;
+        if (this.textInterpreter.isPageCategory(titleFormatted)) return null;
 
         const pageDetails = this.getBikiPageDetails(page);
         if (!pageDetails || pageDetails.details.length < 1) return null;
@@ -145,7 +149,7 @@ export class BikiParserV2 implements DocParser {
 
         const parsedSyntaxes: ParsedSyntax[] = [];
         pageDetails.syntaxMap.forEach((detailsForSyntax) => {
-            parsedSyntaxes.push(this.parseSyntax(detailsForSyntax));
+            parsedSyntaxes.push(this.parseSyntax(detailsForSyntax, detailsMap));
         });
 
         return {
@@ -164,13 +168,82 @@ export class BikiParserV2 implements DocParser {
     /* ----------------------------------------------------------------------------
         parseSyntax
     ---------------------------------------------------------------------------- */
-    private parseSyntax(syntaxPageDetails: BikiPageDetail[]): ParsedSyntax {
-        const parsedSyntax: ParsedSyntax = {};
-        for (const detail of syntaxPageDetails) {
-            // TODO: implement
+    private parseSyntax(
+        syntaxPageDetails: BikiPageDetail[],
+        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>
+    ): ParsedSyntax {
+        let leftParameters: SQFDataType | SQFDataType[] | undefined;
+        let rightParameters: SQFDataType | SQFDataType[] | undefined;
+        let returnType: SQFDataType | SQFDataType[] | undefined;
+
+        const functionExecutionDetail = detailsMap.get(BikiPageDetailType.FunctionExecution)?.at(0);
+        let functionSyntaxType:
+            | SQFSyntaxType.UnscheduledFunction
+            | SQFSyntaxType.ScheduledFunction
+            | undefined;
+        if (functionExecutionDetail) {
+            functionSyntaxType =
+                this.textInterpreter.getFunctionSyntaxType(functionExecutionDetail);
         }
 
-        return parsedSyntax;
+        for (const detail of syntaxPageDetails) {
+            const dataType = this.textInterpreter.getDatatypeFromDetailContent(detail.content);
+            if (!dataType) {
+                console.log("Could not parse data type from content ->", detail.content);
+                continue;
+            }
+
+            if (detail.type === BikiPageDetailType.Return) {
+                returnType = dataType;
+                continue;
+            }
+
+            if (detail.type === BikiPageDetailType.Parameter) {
+                if (leftParameters) continue;
+            }
+        }
+
+        if (!returnType) {
+            throw new Error(`Could not find return type for details -> ${syntaxPageDetails}`);
+        }
+
+        // functions
+        if (functionSyntaxType && leftParameters && !rightParameters) {
+            return {
+                syntaxType: functionSyntaxType,
+                leftParameters,
+                returnType,
+            };
+        }
+
+        // nular
+        if (!functionSyntaxType && !leftParameters && !rightParameters) {
+            return {
+                syntaxType: SQFSyntaxType.NularOperator,
+                returnType,
+            };
+        }
+
+        // unary
+        if (!functionSyntaxType && !leftParameters && rightParameters) {
+            return {
+                syntaxType: SQFSyntaxType.UnaryOperator,
+                rightParameters,
+                returnType,
+            };
+        }
+
+        // binary
+        if (!functionSyntaxType && leftParameters && rightParameters) {
+            return {
+                syntaxType: SQFSyntaxType.BinaryOperator,
+                rightParameters,
+                leftParameters,
+                returnType,
+            };
+        }
+
+        throw new Error(`Did not parse valid syntax from provided details ${syntaxPageDetails}`);
     }
 
     /* ----------------------------------------------------------------------------
@@ -557,9 +630,9 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-        wikiTypeToDataTypeMap
+        WIKI_TYPE_CONVERSION_MAP
     ---------------------------------------------------------------------------- */
-    private static readonly wikiTypeConversionMap: IJSON<SQFDataType> = {
+    private static readonly WIKI_TYPE_CONVERSION_MAP: IJSON<SQFDataType> = {
         NUMBER: SQFDataType.Number,
         SCALAR: SQFDataType.Number,
         "DIARY RECORD": SQFDataType.DiaryRecord,
@@ -629,4 +702,43 @@ class BikiTextInterpreter {
         PARTICLEARRAY: SQFDataType.ParticleArray,
         IDENTICAL: SQFDataType.IDENTICAL,
     };
+
+    /* ----------------------------------------------------------------------------
+        TYPE_PARSERS
+    ---------------------------------------------------------------------------- */
+    private static readonly TYPE_PARSERS: any[] = [];
+
+    /* ----------------------------------------------------------------------------
+        getDatatypeFromDetailContent
+    ---------------------------------------------------------------------------- */
+    public getDatatypeFromDetailContent(content: string): SQFDataType | null {
+        // TDOO:
+        return null;
+    }
+
+    /* ----------------------------------------------------------------------------
+        getFunctionSyntaxType
+    ---------------------------------------------------------------------------- */
+    public getFunctionSyntaxType(
+        functionExecutionDetail: BikiPageDetail
+    ): SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction {
+        if (functionExecutionDetail.type !== BikiPageDetailType.FunctionExecution) {
+            throw new Error(
+                `Provided detail does is not a function execution detail! ${functionExecutionDetail}`
+            );
+        }
+
+        if (functionExecutionDetail.orginal.includes("spawn")) {
+            return SQFSyntaxType.ScheduledFunction;
+        }
+
+        return SQFSyntaxType.UnscheduledFunction;
+    }
+
+    /* ----------------------------------------------------------------------------
+        isPageCategory
+    ---------------------------------------------------------------------------- */
+    public isPageCategory(pageTitle: string): boolean {
+        return pageTitle.startsWith("Category:");
+    }
 }

@@ -79,7 +79,7 @@ export enum SQFSyntaxType {
     UnaryOperator = "SQFSyntaxType.UnaryOperator",
     BinaryOperator = "SQFSyntaxType.BinaryOperator",
     ScheduledFunction = "SQFSyntaxType.ScheduledFunction",
-    Empty = "EMPTY",
+    // Empty = "EMPTY",
 }
 
 export enum SQFEffectLocality {
@@ -111,13 +111,35 @@ export interface IJSON<T> {
 export interface UnparsedPage {
     text: string;
 }
-
-export interface ParsedSyntax {
-    returnType?: SQFDataType | SQFDataType[];
-    leftParameters?: SQFDataType | SQFDataType[];
-    rightParameters?: SQFDataType | SQFDataType[];
-    syntaxType?: SQFSyntaxType;
+export interface ParsedFunctionSyntax {
+    syntaxType: SQFSyntaxType.UnscheduledFunction | SQFSyntaxType.ScheduledFunction;
+    returnType: SQFDataType | SQFDataType[];
+    leftParameters: SQFDataType | SQFDataType[];
 }
+
+export interface ParsedUnaryCommandSyntax {
+    syntaxType: SQFSyntaxType.UnaryOperator;
+    returnType: SQFDataType | SQFDataType[];
+    rightParameters: SQFDataType | SQFDataType[];
+}
+
+export interface ParsedBinaryCommandSyntax {
+    syntaxType: SQFSyntaxType.BinaryOperator;
+    returnType: SQFDataType | SQFDataType[];
+    leftParameters: SQFDataType | SQFDataType[];
+    rightParameters: SQFDataType | SQFDataType[];
+}
+
+export interface ParsedNularCommandSyntax {
+    syntaxType: SQFSyntaxType.NularOperator;
+    returnType: SQFDataType | SQFDataType[];
+}
+
+export type ParsedSyntax =
+    | ParsedFunctionSyntax
+    | ParsedUnaryCommandSyntax
+    | ParsedBinaryCommandSyntax
+    | ParsedNularCommandSyntax;
 
 export interface ParsedPage {
     name: string;
