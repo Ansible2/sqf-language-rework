@@ -312,6 +312,16 @@ export class BikiParserV2 implements DocParser {
     }
 }
 
+interface BikiFunctionalTypeGetter {
+    matcher: (input: string) => boolean;
+    parser: (input: string) => ParsedSyntaxDataType;
+}
+
+interface BikiRegexTypeGetter {
+    matcher: RegExp;
+    parser: (match: RegExpMatchArray) => ParsedSyntaxDataType;
+}
+
 class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         getDetailType
@@ -693,34 +703,89 @@ class BikiTextInterpreter {
         "COLOR (RGBA)": SQFDataType.ColorAlpha,
         COLOR: SQFDataType.Color,
         POSITION: SQFDataType.Position,
+        "POSITION#POSITION|POSITION": SQFDataType.PositionAGL,
         POSITION2D: SQFDataType.Position2d,
+        "POSITION#POSITION2D|POSITION2D": SQFDataType.PositionAGL,
         POSITION3D: SQFDataType.Position3d,
+        "POSITION#POSITION3D|POSITION3D": SQFDataType.PositionAGL,
         POSITIONATL: SQFDataType.PositionATL,
+        "POSITION#POSITIONATL|POSITIONATL": SQFDataType.PositionAGL,
         POSITIONASL: SQFDataType.PositionASL,
+        "POSITION#POSITIONASL|POSITIONASL": SQFDataType.PositionAGL,
         POSITIONAGLS: SQFDataType.PositionAGLS,
+        "POSITION#POSITIONAGLS|POSITIONAGLS": SQFDataType.PositionAGL,
         POSITIONAGL: SQFDataType.PositionAGL,
+        "POSITION#POSITIONAGL|POSITIONAGL": SQFDataType.PositionAGL,
         POSITIONRELATIVE: SQFDataType.PositionRelative,
+        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE": SQFDataType.PositionRelative,
         "PARTICLE ARRAY": SQFDataType.ParticleArray,
         PARTICLEARRAY: SQFDataType.ParticleArray,
         IDENTICAL: SQFDataType.IDENTICAL,
     };
 
+    private static getSqfDataTypeFromWikiType(wikiType: string): SQFDataType {
+        const type = this.WIKI_TYPE_CONVERSION_MAP[wikiType.toUpperCase()];
+        if (!type) {
+            throw new Error(`Could not find data type to match wiki type: ${wikiType}`);
+        }
+
+        return type;
+    }
+
     /* ----------------------------------------------------------------------------
         TYPE_PARSERS
     ---------------------------------------------------------------------------- */
-    private static readonly TYPE_PARSERS: {
-        selectRegex: RegExp;
-        parseTypesFromMatch: (match: RegExpMatchArray) => ParsedSyntaxDataType;
-    }[] = [
+    private static readonly TYPE_PARSERS: (BikiRegexTypeGetter | BikiFunctionalTypeGetter)[] = [
+        {
+            matcher(input: string) {
+                return input.toLowerCase().startsWith("b: identical to ''a''");
+            },
+            parser: () => SQFDataType.IDENTICAL,
+        },
+        {
+            matcher(input: string) {
+                return input.toLowerCase().startsWith("nothing");
+            },
+            parser: () => SQFDataType.Nothing,
+        },
+        {
+            matcher(input: string) {
+                return input
+                    .toLowerCase()
+                    .startsWith("varspace: variable space in which variable can be set.");
+            },
+            parser: () => SQFDataType.Namespace,
+        },
+        {
+            matcher(input: string) {
+                return input.toLowerCase().startsWith("in format [x,y] in meters");
+            },
+            parser: () => SQFDataType.Position2d,
+        },
         {
             // inAreaArray
             // |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
-            selectRegex: /\[\[array\]\] of \[\[(\w+)\]\]s{0,1} and\/or \[\[(\w+)\]\]/i,
-            parseTypesFromMatch: (match: RegExpMatchArray) => {
+            matcher: /\[\[array\]\] of \[\[(\w+)\]\]s{0,1} and\/or \[\[(\w+)\]\]/i,
+            parser(match: RegExpMatchArray) {
                 const types = [match[1], match[2]].map(
-                    (matchedValue) => this.WIKI_TYPE_CONVERSION_MAP[matchedValue.toUpperCase()]
+                    BikiTextInterpreter.getSqfDataTypeFromWikiType
                 );
                 return SQFArray.ofAnyOfThese(types);
+            },
+        },
+        {
+            // inArea
+            // |p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+            matcher:
+                /\[\[(\w+)\]\] or \[\[(\w+)\]\] in format \[\[(.+?)\]\] or \[\[(.+?)\]\](\s*\(must be \[\[(.+?)\]\]){0,1}/i,
+            parser(match: RegExpMatchArray) {
+                let thirdType = match[4];
+                const specificThirdType = match.at(6);
+                if (specificThirdType) {
+                    thirdType = specificThirdType;
+                }
+                const unparsedTypes = [match[1], match[3], thirdType];
+                return unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
             },
         },
     ];
@@ -730,10 +795,17 @@ class BikiTextInterpreter {
     ---------------------------------------------------------------------------- */
     public getDatatypeFromDetailContent(content: string): ParsedSyntaxDataType | null {
         for (const parserInfo of BikiTextInterpreter.TYPE_PARSERS) {
-            const match = content.match(parserInfo.selectRegex);
-            if (!match || !match.length) continue;
+            if (parserInfo.matcher instanceof RegExp) {
+                const match = content.match(parserInfo.matcher);
+                if (!match || !match.length) continue;
 
-            return parserInfo.parseTypesFromMatch(match);
+                return (parserInfo as BikiRegexTypeGetter).parser(match)!;
+            } else {
+                const isMatch = parserInfo.matcher(content);
+                if (!isMatch) continue;
+
+                return (parserInfo as BikiFunctionalTypeGetter).parser(content)!;
+            }
         }
 
         // TODO:
