@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "rootDir": "../",
+        "esModuleInterop": true
+    },
+    "extends": "../tsconfig.json",
+    "include": ["../Parsers"],
+    "exclude": ["../.vscode-test", "../node_modules", "../build-process", "../scripts", "../extension", "../configuration"]
+}

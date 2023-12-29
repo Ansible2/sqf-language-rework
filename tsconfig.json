@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "target": "es2022",
-        "lib": ["es2022"],
+        "target": "ES2022",
+        "lib": ["ES2022"],
         "outDir": ".out",
         "rootDir": ".",
         "sourceMap": true,
@@ -13,8 +13,8 @@
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "strictPropertyInitialization": true,
-		"allowJs": true
+		"allowJs": true,
     },
     "include": ["extension", "configuration/grammars/syntaxes"],
-    "exclude": [".vscode-test", "node_modules", "build-process", "scripts"]
+    "exclude": [".vscode-test", "node_modules", "build-process", "scripts", "Parsers"]
 }
