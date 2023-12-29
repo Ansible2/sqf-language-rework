@@ -775,6 +775,7 @@ class BikiTextInterpreter {
         {
             // inAreaArray
             // |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
+            // /\[\[array\]\] of \[\[(\S+)\]\]s{0,1} and\/or \[\[(\S+)\]\]/i
             matcher: new RegExp(
                 `\\[\\[array\\]\\] of \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]s{0,1} and\\/or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
                 "i"
@@ -791,6 +792,7 @@ class BikiTextInterpreter {
             // |p2= area: [[Object]], [[String]], [[Location]]
             // |p2= mode: [[String]], [[Number]] or [[Array]]:
             // |p2= area: [[Object]], [[Location]] or [[String]] - the defined area:
+            // /((?<=[)\w]+?: )\[\[(\S+)\]\](?=, \[\[\S+\]\])|(?<!\[\[Array\]\] in format.*)(?<=\[\[\S+\]\], )\[\[(\S+)\]\]|(?<=\]\], \[\[\S+\]\],{0,1} or )\[\[(\S+)\]\](?=\s))/gi
             context: {
                 // (?<=[)\w]+?: )\[\[(\w+)\]\](?=, \[\[\w+\]\])
                 listStartRegex: new RegExp(
@@ -856,8 +858,10 @@ class BikiTextInterpreter {
         {
             // inArea
             // |p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+            // example test regex for other apps
+            // /\[\[(\S+)\]\] or \[\[(\S+)\]\](?: - center of the area){0,1} in format \[\[([\S]+)\]\](?:, | or )\[\[([\S]+)\]\](\s*\(must be \[\[([\S]+)\]\]){0,1}/i
             matcher: new RegExp(
-                `\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] in format \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](\\s*\\(must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
+                `\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?: - center of the area){0,1} in format \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?:, | or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](\\s*\\(must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
                 "i"
             ),
             parser(match: RegExpMatchArray) {
@@ -868,6 +872,12 @@ class BikiTextInterpreter {
                 }
                 const unparsedTypes = [match[1], match[3], thirdType];
                 return unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
+            },
+        },
+        {
+            matcher: new RegExp(``, "i"),
+            parser(match: RegExpMatchArray) {
+                return [];
             },
         },
     ];
