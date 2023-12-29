@@ -786,53 +786,69 @@ class BikiTextInterpreter {
                 return SQFArray.ofAnyOfThese(types);
             },
         },
-        // (?<=[)\w]+?: )\[\[(\w+)\]\](?=, \[\[\w+\]\])
-        // (?<!\[\[Array\]\] in format.*)(?<=\[\[\w+\]\], )\[\[(\w+)\]\]
-        // (?<=\]\], \[\[\w+\]\],{0,1} or )\[\[(\w+)\]\](?=\s)
         {
+            // |p22= '''targets''' (Optional, default: 0): [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - See the main syntax above for more details.
+            // |p2= area: [[Object]], [[String]], [[Location]]
+            // |p2= mode: [[String]], [[Number]] or [[Array]]:
+            // |p2= area: [[Object]], [[Location]] or [[String]] - the defined area:
             context: {
+                // (?<=[)\w]+?: )\[\[(\w+)\]\](?=, \[\[\w+\]\])
                 listStartRegex: new RegExp(
                     `(?<=[)\\w]+?: )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=, \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\])`,
                     "i"
                 ),
-            },
-            matcher(input: string, context?: { listStartRegex: RegExp }) {
-                if (context?.listStartRegex.test(input)) return true;
-
-                const middleToPossibleEndOfListRegex = new RegExp(
+                // (?<!\[\[Array\]\] in format.*)(?<=\[\[\w+\]\], )\[\[(\w+)\]\]
+                middleToPossibleEndOfListRegex: new RegExp(
                     `(?<!\\[\\[Array\\]\\] in format.*)(?<=\\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\], )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
                     "gi"
-                );
-                if (middleToPossibleEndOfListRegex.test(input)) return true;
-
-                const otherListEndingRegex = new RegExp(
+                ),
+                // (?<=\]\], \[\[\w+\]\],{0,1} or )\[\[(\w+)\]\](?=\s)
+                otherListEndingRegex: new RegExp(
                     `(?<=\\]\\], \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\],{0,1} or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=\\s)`,
                     "i"
-                );
-                if (otherListEndingRegex.test(input)) return true;
+                ),
+            },
+            matcher(
+                input: string,
+                context?: {
+                    listStartRegex: RegExp;
+                    middleToPossibleEndOfListRegex: RegExp;
+                    otherListEndingRegex: RegExp;
+                }
+            ) {
+                if (
+                    context?.listStartRegex.test(input) ||
+                    context?.otherListEndingRegex.test(input) ||
+                    context?.middleToPossibleEndOfListRegex.test(input)
+                ) {
+                    return true;
+                }
 
                 return false;
             },
-            parser(input: string, context?: { listStartRegex: RegExp }) {
+            parser(
+                input: string,
+                context?: {
+                    listStartRegex: RegExp;
+                    middleToPossibleEndOfListRegex: RegExp;
+                    otherListEndingRegex: RegExp;
+                }
+            ) {
+                if (!context) throw new Error(`Context was not included for list matching`);
+
                 const unparsedTypes: string[] = [];
-                const listStartRegex = new RegExp(
-                    `(?<=[)\\w]+?: )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=, \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\])`,
-                    "i"
-                );
-                // TODO:
-                // const listStartMatch = ;
 
-                const middleToPossibleEndOfListRegex = new RegExp(
-                    `(?<!\\[\\[Array\\]\\] in format.*)(?<=\\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\], )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
-                    "gi"
-                );
-                // if (middleToPossibleEndOfListRegex.test(input)) return true;
+                const listStartTypeMatch = input.match(context.listStartRegex)?.at(1);
+                if (listStartTypeMatch) unparsedTypes.push(listStartTypeMatch);
 
-                const otherListEndingRegex = new RegExp(
-                    `(?<=\\]\\], \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\],{0,1} or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=\\s)`,
-                    "i"
-                );
-                // if (otherListEndingRegex.test(input)) return true;
+                const listBodyMatches = input.matchAll(context.middleToPossibleEndOfListRegex);
+                for (const match of listBodyMatches) {
+                    const typeMatch = match[1];
+                    unparsedTypes.push(typeMatch);
+                }
+
+                const possibleListEndTypeMatch = input.match(context.listStartRegex)?.at(1);
+                if (possibleListEndTypeMatch) unparsedTypes.push(possibleListEndTypeMatch);
 
                 return unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
             },
