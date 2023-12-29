@@ -313,13 +313,15 @@ export class BikiParserV2 implements DocParser {
 }
 
 interface BikiFunctionalTypeGetter {
-    matcher: (input: string) => boolean;
-    parser: (input: string) => ParsedSyntaxDataType;
+    matcher: (input: string, context?: any) => boolean;
+    parser: (input: string, context?: any) => ParsedSyntaxDataType;
+    context?: any;
 }
 
 interface BikiRegexTypeGetter {
     matcher: RegExp;
-    parser: (match: RegExpMatchArray) => ParsedSyntaxDataType;
+    parser: (match: RegExpMatchArray, context?: any) => ParsedSyntaxDataType;
+    context?: any;
 }
 
 class BikiTextInterpreter {
@@ -528,12 +530,13 @@ class BikiTextInterpreter {
         Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
             ([templateKey, templateInfo]) => {
                 const replacementText = templateInfo.text;
-                const simpleTextRegex = new RegExp(`/\{\{${templateKey}\}\}/gi`);
+                const simpleTextRegex = new RegExp(`\\{\\{${templateKey}\\}\\}`, "gi");
                 convertedText = convertedText.replace(simpleTextRegex, replacementText);
 
                 if (templateInfo.gameVersionIcon) {
                     const gameVersionRegex = new RegExp(
-                        `/\{\{GVI\|${templateKey}\|([\d\.]+).*?\}\}/gi`
+                        `\\{\\{GVI\\|${templateKey}\\|([\\d\\.]+).*?\\}\\}`,
+                        "gi"
                     );
                     const gameIconMatches = convertedText.matchAll(gameVersionRegex);
                     for (const match of gameIconMatches) {
@@ -548,7 +551,8 @@ class BikiTextInterpreter {
 
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
-                        `/\{\{Feature\s*\|\s*${templateKey}\s*\|{0,1}([\W\w]+?)\}\}/gi`
+                        `\\{\\{Feature\\s*\\|\\s*${templateKey}\\s*\\|{0,1}([\\W\\w]+?)\\}\\}`,
+                        "gi"
                     );
                     const featureMatches = convertedText.matchAll(featureRegex);
                     for (const match of featureMatches) {
@@ -703,17 +707,19 @@ class BikiTextInterpreter {
         "COLOR (RGBA)": SQFDataType.ColorAlpha,
         COLOR: SQFDataType.Color,
         POSITION: SQFDataType.Position,
-        "POSITION#POSITION|POSITION": SQFDataType.PositionAGL,
+        "POSITION#POSITION|POSITION": SQFDataType.Position,
         POSITION2D: SQFDataType.Position2d,
-        "POSITION#POSITION2D|POSITION2D": SQFDataType.PositionAGL,
+        "POSITION#POSITION2D|POSITION2D": SQFDataType.Position2d,
+        "Position#Introduction|Position2D": SQFDataType.Position2d,
         POSITION3D: SQFDataType.Position3d,
-        "POSITION#POSITION3D|POSITION3D": SQFDataType.PositionAGL,
+        "POSITION#POSITION3D|POSITION3D": SQFDataType.Position3d,
+        "Position#Introduction|Position3D": SQFDataType.Position3d,
         POSITIONATL: SQFDataType.PositionATL,
-        "POSITION#POSITIONATL|POSITIONATL": SQFDataType.PositionAGL,
+        "POSITION#POSITIONATL|POSITIONATL": SQFDataType.PositionATL,
         POSITIONASL: SQFDataType.PositionASL,
-        "POSITION#POSITIONASL|POSITIONASL": SQFDataType.PositionAGL,
+        "POSITION#POSITIONASL\\|POSITIONASL": SQFDataType.PositionASL,
         POSITIONAGLS: SQFDataType.PositionAGLS,
-        "POSITION#POSITIONAGLS|POSITIONAGLS": SQFDataType.PositionAGL,
+        "POSITION#POSITIONAGLS|POSITIONAGLS": SQFDataType.PositionAGLS,
         POSITIONAGL: SQFDataType.PositionAGL,
         "POSITION#POSITIONAGL|POSITIONAGL": SQFDataType.PositionAGL,
         POSITIONRELATIVE: SQFDataType.PositionRelative,
@@ -731,6 +737,10 @@ class BikiTextInterpreter {
 
         return type;
     }
+
+    private static readonly WIKI_TYPES_REGEX_STRING = Object.keys(
+        BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP
+    ).map((typeName) => typeName.replaceAll("|", "\\|"));
 
     /* ----------------------------------------------------------------------------
         TYPE_PARSERS
@@ -765,7 +775,10 @@ class BikiTextInterpreter {
         {
             // inAreaArray
             // |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
-            matcher: /\[\[array\]\] of \[\[(\w+)\]\]s{0,1} and\/or \[\[(\w+)\]\]/i,
+            matcher: new RegExp(
+                `\\[\\[array\\]\\] of \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]s{0,1} and\\/or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
+                "i"
+            ),
             parser(match: RegExpMatchArray) {
                 const types = [match[1], match[2]].map(
                     BikiTextInterpreter.getSqfDataTypeFromWikiType
@@ -773,11 +786,64 @@ class BikiTextInterpreter {
                 return SQFArray.ofAnyOfThese(types);
             },
         },
+        // (?<=[)\w]+?: )\[\[(\w+)\]\](?=, \[\[\w+\]\])
+        // (?<!\[\[Array\]\] in format.*)(?<=\[\[\w+\]\], )\[\[(\w+)\]\]
+        // (?<=\]\], \[\[\w+\]\],{0,1} or )\[\[(\w+)\]\](?=\s)
+        {
+            context: {
+                listStartRegex: new RegExp(
+                    `(?<=[)\\w]+?: )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=, \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\])`,
+                    "i"
+                ),
+            },
+            matcher(input: string, context?: { listStartRegex: RegExp }) {
+                if (context?.listStartRegex.test(input)) return true;
+
+                const middleToPossibleEndOfListRegex = new RegExp(
+                    `(?<!\\[\\[Array\\]\\] in format.*)(?<=\\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\], )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
+                    "gi"
+                );
+                if (middleToPossibleEndOfListRegex.test(input)) return true;
+
+                const otherListEndingRegex = new RegExp(
+                    `(?<=\\]\\], \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\],{0,1} or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=\\s)`,
+                    "i"
+                );
+                if (otherListEndingRegex.test(input)) return true;
+
+                return false;
+            },
+            parser(input: string, context?: { listStartRegex: RegExp }) {
+                const unparsedTypes: string[] = [];
+                const listStartRegex = new RegExp(
+                    `(?<=[)\\w]+?: )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=, \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\])`,
+                    "i"
+                );
+                // TODO:
+                // const listStartMatch = ;
+
+                const middleToPossibleEndOfListRegex = new RegExp(
+                    `(?<!\\[\\[Array\\]\\] in format.*)(?<=\\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\], )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
+                    "gi"
+                );
+                // if (middleToPossibleEndOfListRegex.test(input)) return true;
+
+                const otherListEndingRegex = new RegExp(
+                    `(?<=\\]\\], \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\],{0,1} or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=\\s)`,
+                    "i"
+                );
+                // if (otherListEndingRegex.test(input)) return true;
+
+                return unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
+            },
+        },
         {
             // inArea
             // |p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
-            matcher:
-                /\[\[(\w+)\]\] or \[\[(\w+)\]\] in format \[\[(.+?)\]\] or \[\[(.+?)\]\](\s*\(must be \[\[(.+?)\]\]){0,1}/i,
+            matcher: new RegExp(
+                `\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] in format \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](\\s*\\(must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
+                "i"
+            ),
             parser(match: RegExpMatchArray) {
                 let thirdType = match[4];
                 const specificThirdType = match.at(6);
@@ -799,12 +865,15 @@ class BikiTextInterpreter {
                 const match = content.match(parserInfo.matcher);
                 if (!match || !match.length) continue;
 
-                return (parserInfo as BikiRegexTypeGetter).parser(match)!;
+                return (parserInfo as BikiRegexTypeGetter).parser(match, parserInfo.context)!;
             } else {
-                const isMatch = parserInfo.matcher(content);
+                const isMatch = parserInfo.matcher(content, parserInfo.context);
                 if (!isMatch) continue;
 
-                return (parserInfo as BikiFunctionalTypeGetter).parser(content)!;
+                return (parserInfo as BikiFunctionalTypeGetter).parser(
+                    content,
+                    parserInfo.context
+                )!;
             }
         }
 
