@@ -859,19 +859,35 @@ class BikiTextInterpreter {
             // inArea
             // |p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
             // example test regex for other apps
-            // /\[\[(\S+)\]\] or \[\[(\S+)\]\](?: - center of the area){0,1} in format \[\[([\S]+)\]\](?:, | or )\[\[([\S]+)\]\](\s*\(must be \[\[([\S]+)\]\]){0,1}/i
+            // /(?:\[\[(\S+)\]\] or |: ){0,1}\[\[(\S+)\]\](?: - center of the area){0,1} in format \[\[([\S]+)\]\](?:, | or )\[\[([\S]+)\]\](\s*\(must be \[\[([\S]+)\]\]){0,1}/i
             matcher: new RegExp(
-                `\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?: - center of the area){0,1} in format \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?:, | or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](\\s*\\(must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
+                `(?:\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or |: ){0,1}\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?: - center of the area){0,1} in format \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?:, | or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](\\s*\\(must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
                 "i"
             ),
             parser(match: RegExpMatchArray) {
+                const parsedTypes: ParsedSyntaxDataType = [];
+
+                const firstTypeMatch = match.at(1);
+                if (firstTypeMatch) {
+                    const firstType =
+                        BikiTextInterpreter.getSqfDataTypeFromWikiType(firstTypeMatch);
+                    if (firstType !== SQFDataType.Array) parsedTypes.push(firstType);
+                }
+
+                const secondTypeMatch = match.at(3);
+                if (secondTypeMatch) {
+                    const secondType =
+                        BikiTextInterpreter.getSqfDataTypeFromWikiType(secondTypeMatch);
+                    if (secondType !== SQFDataType.Array) parsedTypes.push(secondType);
+                }
+
                 let thirdType = match[4];
                 const specificThirdType = match.at(6);
                 if (specificThirdType) {
                     thirdType = specificThirdType;
                 }
-                const unparsedTypes = [match[1], match[3], thirdType];
-                return unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
+
+                return parsedTypes;
             },
         },
         {
