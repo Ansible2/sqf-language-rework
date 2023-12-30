@@ -150,8 +150,10 @@ export class BikiParserV2 implements DocParser {
         );
 
         const parsedSyntaxes: ParsedSyntax[] = [];
-        pageDetails.syntaxMap.forEach((detailsForSyntax) => {
-            parsedSyntaxes.push(this.parseSyntax(detailsForSyntax, detailsMap));
+        pageDetails.syntaxMap.forEach((detailsForSyntax, syntaxNumber) => {
+            parsedSyntaxes.push(
+                this.parseSyntax(detailsForSyntax, detailsMap, syntaxNumber, page.title)
+            );
         });
 
         return {
@@ -172,15 +174,12 @@ export class BikiParserV2 implements DocParser {
     ---------------------------------------------------------------------------- */
     private parseSyntax(
         syntaxPageDetails: BikiPageDetail[],
-        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>
+        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>,
+        syntaxNumber: number,
+        pageTitle: string
     ): ParsedSyntax {
-        // TODO: some syntaxes are more proglematic and can't be parsed
-        // piece by piece. "inArea" for example, has sub portions of an array listed as
-        // full parameters for it's alternate syntax.
-        // There needs to be another layer to intercept exceptions to general rules such
-        // as with inArea.
-        // This requires knowing which syntax is being parsed, what the page title is,
-        // what the criteria is to give a defined ParsedSyntax, and what that ParsedSyntax is
+        const definedSyntax = this.textInterpreter.getDefinedSyntax(syntaxNumber, pageTitle);
+        if (definedSyntax) return definedSyntax;
 
         let leftParameters: ParsedSyntaxDataType | undefined;
         let rightParameters: ParsedSyntaxDataType | undefined;
@@ -955,5 +954,13 @@ class BikiTextInterpreter {
     ---------------------------------------------------------------------------- */
     public isPageCategory(pageTitle: string): boolean {
         return pageTitle.startsWith("Category:");
+    }
+
+    /* ----------------------------------------------------------------------------
+        getDefinedSyntax
+    ---------------------------------------------------------------------------- */
+    public getDefinedSyntax(syntaxNumber: number, pageTitle: string): ParsedSyntax | null {
+        // TODO: implement for inArea commands
+        return null;
     }
 }
