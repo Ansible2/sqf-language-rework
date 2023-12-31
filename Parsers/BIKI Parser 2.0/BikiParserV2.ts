@@ -41,6 +41,7 @@ enum BikiPageDetailType {
     FunctionExecution,
     Group,
     ServerExecution,
+    // TODO: add "multiplayer" detail to description, shows up as "|mp="
 }
 
 interface BikiPageDetail {
@@ -49,6 +50,13 @@ interface BikiPageDetail {
     content: string;
     fullName: string;
     name: string;
+}
+
+interface BikiSyntax {
+    parameterDetails: BikiPageDetail[];
+    syntaxDetail: BikiPageDetail;
+    returnDetail: BikiPageDetail;
+    syntaxTitle: string;
 }
 
 export class BikiParserV2 implements DocParser {
@@ -150,10 +158,8 @@ export class BikiParserV2 implements DocParser {
         );
 
         const parsedSyntaxes: ParsedSyntax[] = [];
-        pageDetails.syntaxMap.forEach((detailsForSyntax, syntaxNumber) => {
-            parsedSyntaxes.push(
-                this.parseSyntax(detailsForSyntax, detailsMap, syntaxNumber, page.title)
-            );
+        pageDetails.syntaxMap.forEach((bikiSyntax) => {
+            parsedSyntaxes.push(this.parseSyntax(bikiSyntax, detailsMap));
         });
 
         return {
@@ -173,17 +179,16 @@ export class BikiParserV2 implements DocParser {
         parseSyntax
     ---------------------------------------------------------------------------- */
     private parseSyntax(
-        syntaxPageDetails: BikiPageDetail[],
-        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>,
-        syntaxNumber: number,
-        pageTitle: string
+        bikiSyntax: BikiSyntax,
+        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>
     ): ParsedSyntax {
-        const definedSyntax = this.textInterpreter.getDefinedSyntax(syntaxNumber, pageTitle);
-        if (definedSyntax) return definedSyntax;
+        // TODO: this still may be desired in some cases
+        // const definedSyntax = this.textInterpreter.getDefinedSyntax(bikiSyntax);
+        // if (definedSyntax) return definedSyntax;
 
         let leftParameters: ParsedSyntaxDataType | undefined;
         let rightParameters: ParsedSyntaxDataType | undefined;
-        let returnType: ParsedSyntaxDataType | undefined;
+        let returnType: ParsedSyntaxDataType = SQFDataType.Nothing;
 
         const functionExecutionDetail = detailsMap.get(BikiPageDetailType.FunctionExecution)?.at(0);
         let functionSyntaxType:
@@ -195,29 +200,72 @@ export class BikiParserV2 implements DocParser {
                 this.textInterpreter.getFunctionSyntaxType(functionExecutionDetail);
         }
 
-        for (const detail of syntaxPageDetails) {
-            const dataType = this.textInterpreter.getDatatypeFromDetailContent(detail.content);
+        if (!bikiSyntax.syntaxDetail) {
+            throw new Error(`syntax detail was not provided -> ${bikiSyntax}`);
+        }
+
+        const { leftParameterCount, rightParameterCount, rightIsArray, leftIsArray } =
+            this.textInterpreter.getSyntaxParameterSideInfo(
+                bikiSyntax.syntaxDetail.content,
+                bikiSyntax.syntaxTitle
+            );
+
+        let usedLeftParameterCount = 0;
+        let usedRightParameterCount = 0;
+        const leftParamsCollection: ParsedSyntaxDataType[] = [];
+        const rightParamsCollection: ParsedSyntaxDataType[] = [];
+        for (const parameterDetail of bikiSyntax.parameterDetails) {
+            const dataType = this.textInterpreter.getDatatypeFromDetailContent(
+                parameterDetail.content
+            );
             if (!dataType) {
-                console.log("Could not parse data type from content ->", detail.content);
+                throw new Error(
+                    `Could not parse parameter data type from content -> ${parameterDetail}`
+                );
+            }
+
+            if (usedLeftParameterCount !== leftParameterCount) {
+                usedLeftParameterCount++;
+                if (leftIsArray) {
+                    leftParamsCollection.push(dataType);
+                } else {
+                    leftParameters = dataType;
+                }
                 continue;
             }
 
-            if (detail.type === BikiPageDetailType.Return) {
-                returnType = dataType;
+            if (usedRightParameterCount !== rightParameterCount) {
+                usedRightParameterCount++;
+                if (rightIsArray) {
+                    rightParamsCollection.push(dataType);
+                } else {
+                    rightParameters = dataType;
+                }
                 continue;
-            }
-
-            if (detail.type === BikiPageDetailType.Parameter) {
-                if (leftParameters) continue;
             }
         }
 
-        if (!returnType) {
-            throw new Error(`Could not find return type for details -> ${syntaxPageDetails}`);
+        // TODO: in the case of createHashMapFromArray, it would be an array of x not exactly x
+        if (leftIsArray) {
+            leftParameters = this.textInterpreter.combineDataTypeArray(leftParamsCollection);
+        }
+        if (rightIsArray) {
+            rightParameters = this.textInterpreter.combineDataTypeArray(rightParamsCollection);
+        }
+
+        if (bikiSyntax.returnDetail) {
+            const returnDatatype = this.textInterpreter.getDatatypeFromDetailContent(
+                bikiSyntax.returnDetail.content
+            );
+            if (!returnDatatype) {
+                throw new Error(
+                    `Could not parse return data type from return detail -> ${bikiSyntax}`
+                );
+            }
         }
 
         // functions
-        if (functionSyntaxType && leftParameters && !rightParameters) {
+        if (functionSyntaxType && leftParameters) {
             return {
                 syntaxType: functionSyntaxType,
                 leftParameters,
@@ -252,7 +300,7 @@ export class BikiParserV2 implements DocParser {
             };
         }
 
-        throw new Error(`Did not parse valid syntax from provided details ${syntaxPageDetails}`);
+        throw new Error(`Did not parse valid syntax from provided details ${bikiSyntax}`);
     }
 
     /* ----------------------------------------------------------------------------
@@ -261,7 +309,7 @@ export class BikiParserV2 implements DocParser {
     private getBikiPageDetails(page: UnparsedBikiPage): {
         details: BikiPageDetail[];
         detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>;
-        syntaxMap: Map<number, BikiPageDetail[]>;
+        syntaxMap: Map<number, BikiSyntax>;
     } | null {
         const matchPageDetailsRegEx =
             /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
@@ -275,7 +323,7 @@ export class BikiParserV2 implements DocParser {
 
         const allParsedDetails: BikiPageDetail[] = [];
         const detailsMap: Map<BikiPageDetailType, BikiPageDetail[]> = new Map();
-        const syntaxMap: Map<number, BikiPageDetail[]> = new Map();
+        const syntaxMap: Map<number, BikiSyntax> = new Map();
         pageDetailsArray.forEach((matchGroups: string[]) => {
             const detailFull = matchGroups.at(0)?.trimEnd();
             if (!detailFull) return;
@@ -296,22 +344,38 @@ export class BikiParserV2 implements DocParser {
                 detailsMap.set(pageDetail.type, [pageDetail]);
             }
 
-            if (
-                pageDetail.type === BikiPageDetailType.Parameter ||
-                pageDetail.type === BikiPageDetailType.Return
-            ) {
-                const syntaxIdString = pageDetail.name.match(/(?<=\w+)\d{1}/i)?.at(0);
-                if (!syntaxIdString) {
-                    console.log("Could not locate syntax index in detail:", pageDetail);
-                    return;
-                }
+            const isParameter = pageDetail.type === BikiPageDetailType.Parameter;
+            const isSyntaxExample = pageDetail.type === BikiPageDetailType.Syntax;
+            const isReturn = pageDetail.type === BikiPageDetailType.Syntax;
+            if (!isParameter && !isSyntaxExample && !isReturn) return;
 
-                const syntaxId = parseInt(syntaxIdString);
-                if (detailsMap.has(syntaxId)) {
-                    detailsMap.get(syntaxId)?.push(pageDetail);
-                } else {
-                    detailsMap.set(syntaxId, [pageDetail]);
-                }
+            const syntaxIdString = pageDetail.name.match(/(?<=\w+)\d{1}/i)?.at(0);
+            if (!syntaxIdString) {
+                throw new Error(`Could not locate syntax index in detail: ${pageDetail}`);
+            }
+            const syntaxId = parseInt(syntaxIdString);
+            let bikiSyntax = syntaxMap.get(syntaxId);
+            if (!bikiSyntax) {
+                bikiSyntax = {
+                    parameterDetails: [],
+                    syntaxTitle: page.title,
+                } as unknown as BikiSyntax;
+                syntaxMap.set(syntaxId, bikiSyntax);
+            }
+
+            if (isParameter) {
+                bikiSyntax.parameterDetails.push(pageDetail);
+                return;
+            }
+
+            if (isReturn) {
+                bikiSyntax.returnDetail = pageDetail;
+                return;
+            }
+
+            if (isSyntaxExample) {
+                bikiSyntax.syntaxDetail = pageDetail;
+                return;
             }
         });
 
@@ -933,6 +997,8 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         getFunctionSyntaxType
     ---------------------------------------------------------------------------- */
+    // TODO: remove any concept of a page detail from the text interpreter
+    // be it moving functions around or changing their parameters to not know about it
     public getFunctionSyntaxType(
         functionExecutionDetail: BikiPageDetail
     ): SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction {
@@ -957,10 +1023,61 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
+        getNumberOfParametersOnEachSide
+    ---------------------------------------------------------------------------- */
+    public getSyntaxParameterSideInfo(
+        syntaxExample: string,
+        pageName: string
+    ): {
+        leftParameterCount: number;
+        rightParameterCount: number;
+        leftIsArray: boolean;
+        rightIsArray: boolean;
+    } {
+        let leftParameterCount = 0;
+        let rightParameterCount = 0;
+        let leftIsArray = false;
+        let rightIsArray = false;
+
+        // test regex
+        // /(?<=\[\[\w+\]\].*)(?<=,\s*|(?:\s+|^)\[)\w+(?=,|\]$|\],|\]\s)/gi
+        const rightParametersArrayRegex = new RegExp(
+            `(?<=\\[\\[${pageName}\\]\\].*)(?<=,\\s*|(?:\\s+|^)\\[)\\w+(?=,|\\]$|\\],|\\]\\s)`,
+            "gi"
+        );
+        const rightSideArrayMatches = syntaxExample.matchAll(rightParametersArrayRegex);
+        if (rightSideArrayMatches) {
+            rightParameterCount = Array.from(rightSideArrayMatches).length;
+            rightIsArray = true;
+            // has right side params
+        } else {
+            const hasRightSideParameterRegex = new RegExp(`\\w+\\s+\\[\\[${pageName}\\]\\]`, "i");
+            if (hasRightSideParameterRegex.test(syntaxExample)) rightParameterCount = 1;
+        }
+
+        // test regex
+        // /(?<=,\s*|(?:\s+|^)\[)\w+(?=,|\]$|\],|\]\s)(?=.*\[\[\w+\]\])/gi
+        const leftParametersArrayRegex = new RegExp(
+            `(?<=,\\s*|(?:\\s+|^)\\[)\w+(?=,|\\]$|\\],|\\]\\s)(?=.*\\[\\[${pageName}\\]\\])`,
+            "gi"
+        );
+        const leftSideArrayMatches = syntaxExample.matchAll(leftParametersArrayRegex);
+        if (leftSideArrayMatches) {
+            leftParameterCount = Array.from(leftSideArrayMatches).length;
+            leftIsArray = true;
+        } else {
+            const hasLeftSideParameterRegex = new RegExp(`\\[\\[${pageName}\\]\\]\\s+\\w+`, "i");
+            if (hasLeftSideParameterRegex.test(syntaxExample)) leftParameterCount = 1;
+        }
+
+        return { leftParameterCount, rightParameterCount, leftIsArray, rightIsArray };
+    }
+
+    /* ----------------------------------------------------------------------------
         getDefinedSyntax
     ---------------------------------------------------------------------------- */
-    public getDefinedSyntax(syntaxNumber: number, pageTitle: string): ParsedSyntax | null {
-        // TODO: implement for inArea commands
-        return null;
-    }
+    // public getDefinedSyntax(syntaxNumber: number, pageTitle: string): ParsedSyntax | null {
+    //     // TODO: implement for inArea commands
+    //     return null;
+    // }
 }
