@@ -933,15 +933,21 @@ class BikiTextInterpreter {
         {
             // inAreaArray
             // |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
-            // /\[\[array\]\] of \[\[(\S+)\]\]s{0,1} and\/or \[\[(\S+)\]\]/i
+            // |r1= [[Array]]: [[Object]]s and/or [[Position]]s inside the trigger area
+            // |p21= positions: [[Array]] - [[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D
+            // /\[\[array\]\]\s*(?:of|-|:)\s*\[\[(\S+)\]\]s{0,1} and\/or \[\[(\S+)\]\](?:.*must be \[\[(\S+)\]\]){0,1}/i
             matcher: new RegExp(
-                `\\[\\[array\\]\\] of \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]s{0,1} and\\/or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
+                `\\[\\[array\\]\\]\s*(?:of|-|:)\s*\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]s{0,1} and\\/or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?:.*must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
                 "i"
             ),
             parser(match: RegExpMatchArray) {
-                const types = [match[1], match[2]].map(
-                    BikiTextInterpreter.getSqfDataTypeFromWikiType
-                );
+                const unparsedTypes: string[] = [match[1], match[2]];
+                const specificPositionTypeMatch = match.at(3);
+                if (specificPositionTypeMatch) {
+                    unparsedTypes.push(specificPositionTypeMatch);
+                }
+
+                const types = unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
                 return SQFArray.ofAnyOfThese(types);
             },
         },
