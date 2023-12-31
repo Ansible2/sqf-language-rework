@@ -75,13 +75,13 @@ export enum SQFDataType {
 
 export type SQFArray = string;
 export namespace SQFArray {
-    export function ofOneOfThese(types: SQFDataType[]): SQFArray {
+    export function ofOneOfThese(types: ParsedSyntaxDataType[]): SQFArray {
         return `SQFArray.ofOneOfThese(${types.join(",")})`;
     }
-    export function ofAnyOfThese(types: SQFDataType[]): SQFArray {
+    export function ofAnyOfThese(types: ParsedSyntaxDataType[]): SQFArray {
         return `SQFArray.ofAnyOfThese(${types.join(",")})`;
     }
-    export function ofExactly(types: SQFDataType[]): SQFArray {
+    export function ofExactly(types: ParsedSyntaxDataType[]): SQFArray {
         return `SQFArray.ofExactly(${types.join(",")})`;
     }
 }
@@ -125,7 +125,7 @@ export interface UnparsedPage {
     text: string;
 }
 
-export type ParsedSyntaxDataType = SQFDataType | SQFDataType[] | SQFArray
+export type ParsedSyntaxDataType = SQFDataType | SQFDataType[] | SQFArray;
 export interface ParsedFunctionSyntax {
     syntaxType: SQFSyntaxType.UnscheduledFunction | SQFSyntaxType.ScheduledFunction;
     returnType: ParsedSyntaxDataType;

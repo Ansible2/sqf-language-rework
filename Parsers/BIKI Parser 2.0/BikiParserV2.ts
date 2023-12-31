@@ -247,10 +247,10 @@ export class BikiParserV2 implements DocParser {
 
         // TODO: in the case of createHashMapFromArray, it would be an array of x not exactly x
         if (leftIsArray) {
-            leftParameters = this.textInterpreter.combineDataTypeArray(leftParamsCollection);
+            leftParameters = this.textInterpreter.combineDataTypesAsArray(leftParamsCollection);
         }
         if (rightIsArray) {
-            rightParameters = this.textInterpreter.combineDataTypeArray(rightParamsCollection);
+            rightParameters = this.textInterpreter.combineDataTypesAsArray(rightParamsCollection);
         }
 
         if (bikiSyntax.returnDetail) {
@@ -349,10 +349,11 @@ export class BikiParserV2 implements DocParser {
             const isReturn = pageDetail.type === BikiPageDetailType.Syntax;
             if (!isParameter && !isSyntaxExample && !isReturn) return;
 
-            const syntaxIdString = pageDetail.name.match(/(?<=\w+)\d{1}/i)?.at(0);
-            if (!syntaxIdString) {
-                throw new Error(`Could not locate syntax index in detail: ${pageDetail}`);
-            }
+            // the first syntax parameters do not include the syntax id of "1"
+            // only the parameters for syntaxes past the first include a number past 1
+            const syntaxIdString =
+                pageDetail.name.match(/(?<=\w+)\d{1}(?=\d)|(?<=s)\d/i)?.at(0) || "1";
+
             const syntaxId = parseInt(syntaxIdString);
             let bikiSyntax = syntaxMap.get(syntaxId);
             if (!bikiSyntax) {
@@ -775,6 +776,7 @@ class BikiTextInterpreter {
         LOCATION: SQFDataType.Location,
         HASHMAPKEY: SQFDataType.HashMapKey,
         WAYPOINT: SQFDataType.Waypoint,
+        "Color|Color (RGBA)": SQFDataType.ColorAlpha,
         "COLOR (RGBA)": SQFDataType.ColorAlpha,
         COLOR: SQFDataType.Color,
         POSITION: SQFDataType.Position,
@@ -842,6 +844,12 @@ class BikiTextInterpreter {
                 return input.toLowerCase().startsWith("in format [x,y] in meters");
             },
             parser: () => SQFDataType.Position2d,
+        },
+        {
+            matcher(input: string) {
+                return input.toLowerCase().includes("[[color]] - rgba color");
+            },
+            parser: () => SQFDataType.ColorAlpha,
         },
         {
             // inAreaArray
@@ -1071,6 +1079,13 @@ class BikiTextInterpreter {
         }
 
         return { leftParameterCount, rightParameterCount, leftIsArray, rightIsArray };
+    }
+
+    /* ----------------------------------------------------------------------------
+        getNumberOfParametersOnEachSide
+    ---------------------------------------------------------------------------- */
+    public combineDataTypesAsArray(types: ParsedSyntaxDataType[]): SQFArray {
+        return SQFArray.ofExactly(types);
     }
 
     /* ----------------------------------------------------------------------------
