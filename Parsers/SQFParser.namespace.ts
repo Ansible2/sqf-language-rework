@@ -75,13 +75,13 @@ export enum SQFDataType {
 
 export type SQFArray = string;
 export namespace SQFArray {
-    export function ofOneOfThese(types: ParsedSyntaxDataType[]): SQFArray {
+    export function ofOneOfThese(...types: ParsedSyntaxDataType[]): SQFArray {
         return `SQFArray.ofOneOfThese(${types.join(",")})`;
     }
-    export function ofAnyOfThese(types: ParsedSyntaxDataType[]): SQFArray {
+    export function ofAnyOfThese(...types: ParsedSyntaxDataType[]): SQFArray {
         return `SQFArray.ofAnyOfThese(${types.join(",")})`;
     }
-    export function ofExactly(types: ParsedSyntaxDataType[]): SQFArray {
+    export function ofExactly(...types: ParsedSyntaxDataType[]): SQFArray {
         return `SQFArray.ofExactly(${types.join(",")})`;
     }
 }

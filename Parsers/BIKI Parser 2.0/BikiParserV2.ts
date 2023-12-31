@@ -158,10 +158,10 @@ export class BikiParserV2 implements DocParser {
         );
 
         const parsedSyntaxes: ParsedSyntax[] = [];
+        // TODO: what happens for pages that have no syntaxes to parse? (BIS_fnc_createMenu for example)
         pageDetails.syntaxMap.forEach((bikiSyntax) => {
             parsedSyntaxes.push(this.parseSyntax(bikiSyntax, detailsMap));
         });
-
         return {
             name: titleFormatted,
             description,
@@ -182,9 +182,8 @@ export class BikiParserV2 implements DocParser {
         bikiSyntax: BikiSyntax,
         detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>
     ): ParsedSyntax {
-        // TODO: this still may be desired in some cases
-        // const definedSyntax = this.textInterpreter.getDefinedSyntax(bikiSyntax);
-        // if (definedSyntax) return definedSyntax;
+        const definedSyntax = this.getDefinedSyntax(bikiSyntax);
+        if (definedSyntax) return definedSyntax;
 
         let leftParameters: ParsedSyntaxDataType | undefined;
         let rightParameters: ParsedSyntaxDataType | undefined;
@@ -381,6 +380,86 @@ export class BikiParserV2 implements DocParser {
         });
 
         return { details: allParsedDetails, detailsMap, syntaxMap };
+    }
+
+    /* ----------------------------------------------------------------------------
+    getDefinedSyntax
+    ---------------------------------------------------------------------------- */
+    private static readonly STATIC_SYNTAX_MATCHERS: {
+        matcher: (bikiSyntax: BikiSyntax) => boolean;
+        parser: (bikiSyntax: BikiSyntax) => ParsedSyntax;
+    }[] = [
+        {
+            matcher(bikiSyntax) {
+                return bikiSyntax.syntaxDetail.orginal.includes("[idc, [row, column], color]");
+            },
+            parser() {
+                return {
+                    syntaxType: SQFSyntaxType.UnaryOperator,
+                    returnType: SQFDataType.Nothing,
+                    rightParameters: SQFArray.ofExactly(
+                        SQFDataType.Number,
+                        SQFArray.ofExactly(SQFDataType.Number, SQFDataType.Number),
+                        SQFDataType.ColorAlpha
+                    ),
+                };
+            },
+        },
+        {
+            matcher(bikiSyntax) {
+                return bikiSyntax.syntaxDetail.orginal
+                    .toLowerCase()
+                    .includes(
+                        "[[createHashMapFromArray]] [[key1, value1], [key2, value2]]".toLowerCase()
+                    );
+            },
+            parser() {
+                return {
+                    syntaxType: SQFSyntaxType.UnaryOperator,
+                    rightParameters: SQFArray.ofAnyOfThese(
+                        SQFArray.ofExactly(SQFDataType.HashMapKey, SQFDataType.Any)
+                    ),
+                    returnType: SQFDataType.HashMap,
+                };
+            },
+        },
+        {
+            matcher(bikiSyntax) {
+                return bikiSyntax.syntaxTitle.toLowerCase() === "addaction";
+            },
+            parser() {
+                return {
+                    syntaxType: SQFSyntaxType.BinaryOperator,
+                    leftParameters: SQFDataType.Object,
+                    rightParameters: SQFArray.ofExactly(
+                        SQFDataType.String,
+                        [SQFDataType.String, SQFDataType.Code],
+                        SQFDataType.Any,
+                        SQFDataType.Number,
+                        SQFDataType.Boolean,
+                        SQFDataType.Boolean,
+                        SQFDataType.String,
+                        SQFDataType.String,
+                        SQFDataType.Number,
+                        SQFDataType.Boolean,
+                        SQFDataType.String,
+                        SQFDataType.String,
+                        SQFDataType.Number
+                    ),
+                    returnType: SQFDataType.Number,
+                };
+            },
+        },
+    ];
+
+    private getDefinedSyntax(bikiSyntax: BikiSyntax): ParsedSyntax | null {
+        for (const definedSyntax of BikiParserV2.STATIC_SYNTAX_MATCHERS) {
+            if (definedSyntax.matcher(bikiSyntax)) {
+                return definedSyntax.parser(bikiSyntax);
+            }
+        }
+
+        return null;
     }
 }
 
@@ -1085,14 +1164,6 @@ class BikiTextInterpreter {
         getNumberOfParametersOnEachSide
     ---------------------------------------------------------------------------- */
     public combineDataTypesAsArray(types: ParsedSyntaxDataType[]): SQFArray {
-        return SQFArray.ofExactly(types);
+        return SQFArray.ofExactly(...types);
     }
-
-    /* ----------------------------------------------------------------------------
-        getDefinedSyntax
-    ---------------------------------------------------------------------------- */
-    // public getDefinedSyntax(syntaxNumber: number, pageTitle: string): ParsedSyntax | null {
-    //     // TODO: implement for inArea commands
-    //     return null;
-    // }
 }
