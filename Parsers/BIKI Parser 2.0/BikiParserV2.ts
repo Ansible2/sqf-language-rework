@@ -3,16 +3,14 @@ import {
     DocParser,
     IJSON,
     ParsedPage,
+    ParsedParameter,
     ParsedSyntax,
-    ParsedSyntaxDataType,
     SQFArgumentLocality,
-    SQFArray,
-    SQFDataType,
     SQFEffectLocality,
     SQFGrammarType,
-    SQFSyntaxType,
     UnparsedPage,
 } from "../SQFParser.namespace";
+import { SQFDataType } from "../../configuration/grammars/sqf.namespace";
 import path from "path";
 import fs from "fs";
 import { SQFGrammarTypeMap } from "../BIKI Parser/SQFCommandsGrammarMap";
@@ -134,16 +132,6 @@ export class BikiParserV2 implements DocParser {
             });
         }
 
-        const syntaxExamples: string[] = [];
-        const syntaxDetails = detailsMap.get(BikiPageDetailType.Syntax);
-        if (syntaxDetails) {
-            syntaxDetails.forEach((detail) => {
-                if (!detail.content) return;
-                const syntaxInMarkdown = this.textInterpreter.convertTextToMarkdown(detail.content);
-                syntaxExamples.push(syntaxInMarkdown);
-            });
-        }
-
         const descriptionDetail = detailsMap.get(BikiPageDetailType.Description)?.at(0);
         const description = this.textInterpreter.convertTextToMarkdown(descriptionDetail?.content);
 
@@ -157,17 +145,19 @@ export class BikiParserV2 implements DocParser {
             detailsMap.get(BikiPageDetailType.ArgLocality)?.at(0)?.content
         );
 
-        const parsedSyntaxes: ParsedSyntax[] = [];
+        const syntaxes: ParsedSyntax[] = [];
         // TODO: what happens for pages that have no syntaxes to parse? (BIS_fnc_createMenu for example)
         pageDetails.syntaxMap.forEach((bikiSyntax) => {
-            parsedSyntaxes.push(this.parseSyntax(bikiSyntax, detailsMap));
+            const parsedSyntax = this.parseSyntax(bikiSyntax);
+            if (!parsedSyntax) return;
+
+            syntaxes.push(parsedSyntax);
         });
         return {
             name: titleFormatted,
             description,
             examples,
-            syntaxExamples,
-            parsedSyntaxes,
+            syntaxes,
             argumentLocality,
             effectLocality,
             serverExecution,
@@ -178,128 +168,31 @@ export class BikiParserV2 implements DocParser {
     /* ----------------------------------------------------------------------------
         parseSyntax
     ---------------------------------------------------------------------------- */
-    private parseSyntax(
-        bikiSyntax: BikiSyntax,
-        detailsMap: Map<BikiPageDetailType, BikiPageDetail[]>
-    ): ParsedSyntax {
-        const definedSyntax = this.getDefinedSyntax(bikiSyntax);
-        if (definedSyntax) return definedSyntax;
+    private parseSyntax(bikiSyntax: BikiSyntax): ParsedSyntax | null {
+        const syntax: ParsedSyntax = { parameters: [] };
+        const syntaxExample = this.textInterpreter.convertTextToMarkdown(
+            bikiSyntax.syntaxDetail.content
+        );
 
-        let leftParameters: ParsedSyntaxDataType | undefined;
-        let rightParameters: ParsedSyntaxDataType | undefined;
-        let returnType: ParsedSyntaxDataType = SQFDataType.Nothing;
-
-        const functionExecutionDetail = detailsMap.get(BikiPageDetailType.FunctionExecution)?.at(0);
-        let functionSyntaxType:
-            | SQFSyntaxType.UnscheduledFunction
-            | SQFSyntaxType.ScheduledFunction
-            | undefined;
-        if (functionExecutionDetail) {
-            functionSyntaxType =
-                this.textInterpreter.getFunctionSyntaxType(functionExecutionDetail);
+        if (syntaxExample) {
+            syntax.outline = syntaxExample;
         }
 
-        if (!bikiSyntax.syntaxDetail) {
-            throw new Error(`syntax detail was not provided -> ${bikiSyntax}`);
-        }
-
-        const { leftParameterCount, rightParameterCount, rightIsArray, leftIsArray } =
-            this.textInterpreter.getSyntaxParameterSideInfo(
-                bikiSyntax.syntaxDetail.content,
-                bikiSyntax.syntaxTitle
-            );
-
-        let usedLeftParameterCount = 0;
-        let usedRightParameterCount = 0;
-        const leftParamsCollection: ParsedSyntaxDataType[] = [];
-        const rightParamsCollection: ParsedSyntaxDataType[] = [];
-        for (const parameterDetail of bikiSyntax.parameterDetails) {
-            const dataType = this.textInterpreter.getDatatypeFromDetailContent(
+        syntax.parameters = bikiSyntax.parameterDetails.map((parameterDetail) => {
+            const markdownContent = this.textInterpreter.convertTextToMarkdown(
                 parameterDetail.content
             );
-            if (!dataType) {
-                throw new Error(
-                    `Could not parse parameter data type from content -> ${parameterDetail}`
-                );
-            }
+            return this.textInterpreter.parseParameter(markdownContent);
+        });
 
-            if (usedLeftParameterCount !== leftParameterCount) {
-                usedLeftParameterCount++;
-                if (leftIsArray) {
-                    leftParamsCollection.push(dataType);
-                } else {
-                    leftParameters = dataType;
-                }
-                continue;
-            }
-
-            if (usedRightParameterCount !== rightParameterCount) {
-                usedRightParameterCount++;
-                if (rightIsArray) {
-                    rightParamsCollection.push(dataType);
-                } else {
-                    rightParameters = dataType;
-                }
-                continue;
-            }
+        const returnText = this.textInterpreter.convertTextToMarkdown(
+            bikiSyntax.returnDetail.content
+        );
+        if (returnText) {
+            syntax.returns = returnText;
         }
 
-        // TODO: in the case of createHashMapFromArray, it would be an array of x not exactly x
-        if (leftIsArray) {
-            leftParameters = this.textInterpreter.combineDataTypesAsArray(leftParamsCollection);
-        }
-        if (rightIsArray) {
-            rightParameters = this.textInterpreter.combineDataTypesAsArray(rightParamsCollection);
-        }
-
-        if (bikiSyntax.returnDetail) {
-            const returnDatatype = this.textInterpreter.getDatatypeFromDetailContent(
-                bikiSyntax.returnDetail.content
-            );
-            if (!returnDatatype) {
-                throw new Error(
-                    `Could not parse return data type from return detail -> ${bikiSyntax}`
-                );
-            }
-        }
-
-        // functions
-        if (functionSyntaxType && leftParameters) {
-            return {
-                syntaxType: functionSyntaxType,
-                leftParameters,
-                returnType,
-            };
-        }
-
-        // nular
-        if (!functionSyntaxType && !leftParameters && !rightParameters) {
-            return {
-                syntaxType: SQFSyntaxType.NularOperator,
-                returnType,
-            };
-        }
-
-        // unary
-        if (!functionSyntaxType && !leftParameters && rightParameters) {
-            return {
-                syntaxType: SQFSyntaxType.UnaryOperator,
-                rightParameters,
-                returnType,
-            };
-        }
-
-        // binary
-        if (!functionSyntaxType && leftParameters && rightParameters) {
-            return {
-                syntaxType: SQFSyntaxType.BinaryOperator,
-                rightParameters,
-                leftParameters,
-                returnType,
-            };
-        }
-
-        throw new Error(`Did not parse valid syntax from provided details ${bikiSyntax}`);
+        return syntax;
     }
 
     /* ----------------------------------------------------------------------------
@@ -381,98 +274,6 @@ export class BikiParserV2 implements DocParser {
 
         return { details: allParsedDetails, detailsMap, syntaxMap };
     }
-
-    /* ----------------------------------------------------------------------------
-    getDefinedSyntax
-    ---------------------------------------------------------------------------- */
-    private static readonly STATIC_SYNTAX_MATCHERS: {
-        matcher: (bikiSyntax: BikiSyntax) => boolean;
-        parser: (bikiSyntax: BikiSyntax) => ParsedSyntax;
-    }[] = [
-        {
-            matcher(bikiSyntax) {
-                return bikiSyntax.syntaxDetail.orginal.includes("[idc, [row, column], color]");
-            },
-            parser() {
-                return {
-                    syntaxType: SQFSyntaxType.UnaryOperator,
-                    returnType: SQFDataType.Nothing,
-                    rightParameters: SQFArray.ofExactly(
-                        SQFDataType.Number,
-                        SQFArray.ofExactly(SQFDataType.Number, SQFDataType.Number),
-                        SQFDataType.ColorAlpha
-                    ),
-                };
-            },
-        },
-        {
-            matcher(bikiSyntax) {
-                return bikiSyntax.syntaxDetail.orginal
-                    .toLowerCase()
-                    .includes(
-                        "[[createHashMapFromArray]] [[key1, value1], [key2, value2]]".toLowerCase()
-                    );
-            },
-            parser() {
-                return {
-                    syntaxType: SQFSyntaxType.UnaryOperator,
-                    rightParameters: SQFArray.ofAnyOfThese(
-                        SQFArray.ofExactly(SQFDataType.HashMapKey, SQFDataType.Any)
-                    ),
-                    returnType: SQFDataType.HashMap,
-                };
-            },
-        },
-        {
-            matcher(bikiSyntax) {
-                return bikiSyntax.syntaxTitle.toLowerCase() === "addaction";
-            },
-            parser() {
-                return {
-                    syntaxType: SQFSyntaxType.BinaryOperator,
-                    leftParameters: SQFDataType.Object,
-                    rightParameters: SQFArray.ofExactly(
-                        SQFDataType.String,
-                        [SQFDataType.String, SQFDataType.Code],
-                        SQFDataType.Any,
-                        SQFDataType.Number,
-                        SQFDataType.Boolean,
-                        SQFDataType.Boolean,
-                        SQFDataType.String,
-                        SQFDataType.String,
-                        SQFDataType.Number,
-                        SQFDataType.Boolean,
-                        SQFDataType.String,
-                        SQFDataType.String,
-                        SQFDataType.Number
-                    ),
-                    returnType: SQFDataType.Number,
-                };
-            },
-        },
-    ];
-
-    private getDefinedSyntax(bikiSyntax: BikiSyntax): ParsedSyntax | null {
-        for (const definedSyntax of BikiParserV2.STATIC_SYNTAX_MATCHERS) {
-            if (definedSyntax.matcher(bikiSyntax)) {
-                return definedSyntax.parser(bikiSyntax);
-            }
-        }
-
-        return null;
-    }
-}
-
-interface BikiFunctionalTypeGetter {
-    matcher: (input: string, context?: any) => boolean;
-    parser: (input: string, context?: any) => ParsedSyntaxDataType;
-    context?: any;
-}
-
-interface BikiRegexTypeGetter {
-    matcher: RegExp;
-    parser: (match: RegExpMatchArray, context?: any) => ParsedSyntaxDataType;
-    context?: any;
 }
 
 class BikiTextInterpreter {
@@ -633,6 +434,103 @@ class BikiTextInterpreter {
     };
 
     /* ----------------------------------------------------------------------------
+        WIKI_TYPE_CONVERSION_MAP
+    ---------------------------------------------------------------------------- */
+    private static readonly WIKI_TYPE_CONVERSION_MAP: IJSON<SQFDataType> = {
+        NUMBER: SQFDataType.Number,
+        SCALAR: SQFDataType.Number,
+        "DIARY RECORD": SQFDataType.DiaryRecord,
+        BOOLEAN: SQFDataType.Boolean,
+        BOOL: SQFDataType.Boolean,
+        TRUE: SQFDataType.Boolean,
+        FALSE: SQFDataType.Boolean,
+        ARRAY: SQFDataType.Array,
+        STRING: SQFDataType.String,
+        NOTHING: SQFDataType.Nothing,
+        NIL: SQFDataType.Nothing,
+        ANY: SQFDataType.Any,
+        ANYTHING: SQFDataType.Any,
+        NAMESPACE: SQFDataType.Namespace,
+        "EDEN ENTITY": SQFDataType.EdenEntity,
+        EDITOROBJECT: SQFDataType.Object,
+        "EDITOR OBJECT": SQFDataType.Object,
+        NAN: SQFDataType.NaN,
+        IF: SQFDataType.IfType,
+        "IF TYPE": SQFDataType.IfType,
+        WHILE: SQFDataType.WhileType,
+        "WHILE TYPE": SQFDataType.WhileType,
+        WITH: SQFDataType.WithType,
+        "WITH TYPE": SQFDataType.WithType,
+        FOR: SQFDataType.ForType,
+        "FOR TYPE": SQFDataType.ForType,
+        SWITCH: SQFDataType.SwitchType,
+        "SWITCH TYPE": SQFDataType.SwitchType,
+        EXCEPTION: SQFDataType.Exception,
+        "EXCEPTION TYPE": SQFDataType.Exception,
+        "EXCEPTION HANDLING": SQFDataType.Exception,
+        CODE: SQFDataType.Code,
+        OBJECT: SQFDataType.Object,
+        TARGET: SQFDataType.Object,
+        OBJECTRTD: SQFDataType.Object,
+        REMOTEEXEC: SQFDataType.String,
+        VECTOR: SQFDataType.Vector,
+        SIDE: SQFDataType.Side,
+        GROUP: SQFDataType.Group,
+        TEXT: SQFDataType.StructuredText,
+        "STRUCTURED TEXT": SQFDataType.StructuredText,
+        SCRIPT: SQFDataType.ScriptHandle,
+        "SCRIPT HANDLE": SQFDataType.ScriptHandle,
+        CONFIG: SQFDataType.Config,
+        DISPLAY: SQFDataType.Display,
+        CONTROL: SQFDataType.Control,
+        NETOBJECT: SQFDataType.NetObject,
+        TEAM_MEMBER: SQFDataType.TeamMember,
+        "TEAM MEMBER": SQFDataType.TeamMember,
+        HASHMAP: SQFDataType.HashMap,
+        TASK: SQFDataType.Task,
+        DIARY_RECORD: SQFDataType.DiaryRecord,
+        LOCATION: SQFDataType.Location,
+        HASHMAPKEY: SQFDataType.HashMapKey,
+        WAYPOINT: SQFDataType.Waypoint,
+        "Color|Color (RGBA)": SQFDataType.ColorAlpha,
+        "COLOR (RGBA)": SQFDataType.ColorAlpha,
+        COLOR: SQFDataType.Color,
+        POSITION: SQFDataType.Position,
+        "POSITION#POSITION|POSITION": SQFDataType.Position,
+        POSITION2D: SQFDataType.Position2d,
+        "POSITION#POSITION2D|POSITION2D": SQFDataType.Position2d,
+        "Position#Introduction|Position2D": SQFDataType.Position2d,
+        POSITION3D: SQFDataType.Position3d,
+        "POSITION#POSITION3D|POSITION3D": SQFDataType.Position3d,
+        "Position#Introduction|Position3D": SQFDataType.Position3d,
+        POSITIONATL: SQFDataType.PositionATL,
+        "POSITION#POSITIONATL|POSITIONATL": SQFDataType.PositionATL,
+        POSITIONASL: SQFDataType.PositionASL,
+        "POSITION#POSITIONASL\\|POSITIONASL": SQFDataType.PositionASL,
+        POSITIONAGLS: SQFDataType.PositionAGLS,
+        "POSITION#POSITIONAGLS|POSITIONAGLS": SQFDataType.PositionAGLS,
+        POSITIONAGL: SQFDataType.PositionAGL,
+        "POSITION#POSITIONAGL|POSITIONAGL": SQFDataType.PositionAGL,
+        POSITIONRELATIVE: SQFDataType.PositionRelative,
+        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE": SQFDataType.PositionRelative,
+        "PARTICLE ARRAY": SQFDataType.ParticleArray,
+        PARTICLEARRAY: SQFDataType.ParticleArray,
+    };
+
+    private static readonly WIKI_TYPES_REGEX_STRING = Object.keys(
+        BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP
+    ).map((typeName) => typeName.replaceAll("|", "\\|"));
+
+    private parseWikiType(wikiType: string): SQFDataType {
+        const type = BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP[wikiType.toUpperCase()];
+        if (!type) {
+            throw new Error(`Could not find data type to match wiki type: ${wikiType}`);
+        }
+
+        return type;
+    }
+
+    /* ----------------------------------------------------------------------------
         convertTextToMarkdown
     ---------------------------------------------------------------------------- */
     public convertTextToMarkdown(text: string | undefined): string {
@@ -649,6 +547,15 @@ class BikiTextInterpreter {
             if (!matchString) continue;
             convertedCodeExamples.push(matchString);
             convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
+        }
+
+        const dataTypeMatches = text.matchAll(
+            new RegExp(`\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\]\]`, "gi")
+        );
+        for (const match of dataTypeMatches) {
+            const originalTypeText = match[0];
+            const specificType = match[1];
+            text = text.replaceAll(originalTypeText, `\`${this.parseWikiType(specificType)}\``);
         }
 
         const BIKI_BASE_URL = "https://community.bistudio.com/wiki";
@@ -797,318 +704,6 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-        WIKI_TYPE_CONVERSION_MAP
-    ---------------------------------------------------------------------------- */
-    private static readonly WIKI_TYPE_CONVERSION_MAP: IJSON<SQFDataType> = {
-        NUMBER: SQFDataType.Number,
-        SCALAR: SQFDataType.Number,
-        "DIARY RECORD": SQFDataType.DiaryRecord,
-        BOOLEAN: SQFDataType.Boolean,
-        BOOL: SQFDataType.Boolean,
-        TRUE: SQFDataType.Boolean,
-        FALSE: SQFDataType.Boolean,
-        ARRAY: SQFDataType.Array,
-        STRING: SQFDataType.String,
-        NOTHING: SQFDataType.Nothing,
-        NIL: SQFDataType.Nothing,
-        ANY: SQFDataType.Any,
-        ANYTHING: SQFDataType.Any,
-        NAMESPACE: SQFDataType.Namespace,
-        "EDEN ENTITY": SQFDataType.EdenEntity,
-        EDITOROBJECT: SQFDataType.Object,
-        "EDITOR OBJECT": SQFDataType.Object,
-        NAN: SQFDataType.NaN,
-        IF: SQFDataType.IfType,
-        "IF TYPE": SQFDataType.IfType,
-        WHILE: SQFDataType.WhileType,
-        "WHILE TYPE": SQFDataType.WhileType,
-        WITH: SQFDataType.WithType,
-        "WITH TYPE": SQFDataType.WithType,
-        FOR: SQFDataType.ForType,
-        "FOR TYPE": SQFDataType.ForType,
-        SWITCH: SQFDataType.SwitchType,
-        "SWITCH TYPE": SQFDataType.SwitchType,
-        EXCEPTION: SQFDataType.Exception,
-        "EXCEPTION TYPE": SQFDataType.Exception,
-        "EXCEPTION HANDLING": SQFDataType.Exception,
-        CODE: SQFDataType.Code,
-        OBJECT: SQFDataType.Object,
-        TARGET: SQFDataType.Object,
-        OBJECTRTD: SQFDataType.Object,
-        REMOTEEXEC: SQFDataType.String,
-        VECTOR: SQFDataType.Vector,
-        SIDE: SQFDataType.Side,
-        GROUP: SQFDataType.Group,
-        TEXT: SQFDataType.StructuredText,
-        "STRUCTURED TEXT": SQFDataType.StructuredText,
-        SCRIPT: SQFDataType.ScriptHandle,
-        "SCRIPT HANDLE": SQFDataType.ScriptHandle,
-        CONFIG: SQFDataType.Config,
-        DISPLAY: SQFDataType.Display,
-        CONTROL: SQFDataType.Control,
-        NETOBJECT: SQFDataType.NetObject,
-        TEAM_MEMBER: SQFDataType.TeamMember,
-        "TEAM MEMBER": SQFDataType.TeamMember,
-        HASHMAP: SQFDataType.HashMap,
-        TASK: SQFDataType.Task,
-        DIARY_RECORD: SQFDataType.DiaryRecord,
-        LOCATION: SQFDataType.Location,
-        HASHMAPKEY: SQFDataType.HashMapKey,
-        WAYPOINT: SQFDataType.Waypoint,
-        "Color|Color (RGBA)": SQFDataType.ColorAlpha,
-        "COLOR (RGBA)": SQFDataType.ColorAlpha,
-        COLOR: SQFDataType.Color,
-        POSITION: SQFDataType.Position,
-        "POSITION#POSITION|POSITION": SQFDataType.Position,
-        POSITION2D: SQFDataType.Position2d,
-        "POSITION#POSITION2D|POSITION2D": SQFDataType.Position2d,
-        "Position#Introduction|Position2D": SQFDataType.Position2d,
-        POSITION3D: SQFDataType.Position3d,
-        "POSITION#POSITION3D|POSITION3D": SQFDataType.Position3d,
-        "Position#Introduction|Position3D": SQFDataType.Position3d,
-        POSITIONATL: SQFDataType.PositionATL,
-        "POSITION#POSITIONATL|POSITIONATL": SQFDataType.PositionATL,
-        POSITIONASL: SQFDataType.PositionASL,
-        "POSITION#POSITIONASL\\|POSITIONASL": SQFDataType.PositionASL,
-        POSITIONAGLS: SQFDataType.PositionAGLS,
-        "POSITION#POSITIONAGLS|POSITIONAGLS": SQFDataType.PositionAGLS,
-        POSITIONAGL: SQFDataType.PositionAGL,
-        "POSITION#POSITIONAGL|POSITIONAGL": SQFDataType.PositionAGL,
-        POSITIONRELATIVE: SQFDataType.PositionRelative,
-        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE": SQFDataType.PositionRelative,
-        "PARTICLE ARRAY": SQFDataType.ParticleArray,
-        PARTICLEARRAY: SQFDataType.ParticleArray,
-        IDENTICAL: SQFDataType.IDENTICAL,
-    };
-
-    private static getSqfDataTypeFromWikiType(wikiType: string): SQFDataType {
-        const type = this.WIKI_TYPE_CONVERSION_MAP[wikiType.toUpperCase()];
-        if (!type) {
-            throw new Error(`Could not find data type to match wiki type: ${wikiType}`);
-        }
-
-        return type;
-    }
-
-    private static readonly WIKI_TYPES_REGEX_STRING = Object.keys(
-        BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP
-    ).map((typeName) => typeName.replaceAll("|", "\\|"));
-
-    /* ----------------------------------------------------------------------------
-        TYPE_PARSERS
-    ---------------------------------------------------------------------------- */
-    private static readonly TYPE_PARSERS: (BikiRegexTypeGetter | BikiFunctionalTypeGetter)[] = [
-        {
-            matcher(input: string) {
-                return input.toLowerCase().startsWith("b: identical to ''a''");
-            },
-            parser: () => SQFDataType.IDENTICAL,
-        },
-        {
-            matcher(input: string) {
-                return input.toLowerCase().startsWith("nothing");
-            },
-            parser: () => SQFDataType.Nothing,
-        },
-        {
-            matcher(input: string) {
-                return input
-                    .toLowerCase()
-                    .startsWith("varspace: variable space in which variable can be set.");
-            },
-            parser: () => SQFDataType.Namespace,
-        },
-        {
-            matcher(input: string) {
-                return input.toLowerCase().startsWith("in format [x,y] in meters");
-            },
-            parser: () => SQFDataType.Position2d,
-        },
-        {
-            matcher(input: string) {
-                return input.toLowerCase().includes("[[color]] - rgba color");
-            },
-            parser: () => SQFDataType.ColorAlpha,
-        },
-        {
-            // inAreaArray
-            // |p1= positions: [[Array]] of [[Object]]s and/or [[Position]]s
-            // |r1= [[Array]]: [[Object]]s and/or [[Position]]s inside the trigger area
-            // |p21= positions: [[Array]] - [[Object]]s and/or [[Position]]s to check. [[Position]]s must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D
-            // /\[\[array\]\]\s*(?:of|-|:)\s*\[\[(\S+)\]\]s{0,1} and\/or \[\[(\S+)\]\](?:.*must be \[\[(\S+)\]\]){0,1}/i
-            matcher: new RegExp(
-                `\\[\\[array\\]\\]\s*(?:of|-|:)\s*\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]s{0,1} and\\/or \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?:.*must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
-                "i"
-            ),
-            parser(match: RegExpMatchArray) {
-                const unparsedTypes: string[] = [match[1], match[2]];
-                const specificPositionTypeMatch = match.at(3);
-                if (specificPositionTypeMatch) {
-                    unparsedTypes.push(specificPositionTypeMatch);
-                }
-
-                const types = unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
-                return SQFArray.ofAnyOfThese(types);
-            },
-        },
-        {
-            // |p22= '''targets''' (Optional, default: 0): [[Number]], [[Object]], [[String]], [[Side]], [[Group]] or [[Array]] - See the main syntax above for more details.
-            // |p2= area: [[Object]], [[String]], [[Location]]
-            // |p2= mode: [[String]], [[Number]] or [[Array]]:
-            // |p2= area: [[Object]], [[Location]] or [[String]] - the defined area:
-            // /((?<=[)\w]+?: )\[\[(\S+)\]\](?=, \[\[\S+\]\])|(?<!\[\[Array\]\] in format.*)(?<=\[\[\S+\]\], )\[\[(\S+)\]\]|(?<=\]\], \[\[\S+\]\],{0,1} or )\[\[(\S+)\]\](?=\s))/gi
-            context: {
-                // (?<=[)\w]+?: )\[\[(\w+)\]\](?=, \[\[\w+\]\])
-                listStartRegex: new RegExp(
-                    `(?<=[)\\w]+?: )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=, \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\])`,
-                    "i"
-                ),
-                // (?<!\[\[Array\]\] in format.*)(?<=\[\[\w+\]\], )\[\[(\w+)\]\]
-                middleToPossibleEndOfListRegex: new RegExp(
-                    `(?<!\\[\\[Array\\]\\] in format.*)(?<=\\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\], )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`,
-                    "gi"
-                ),
-                // (?<=\]\], \[\[\w+\]\],{0,1} or )\[\[(\w+)\]\](?=\s)
-                otherListEndingRegex: new RegExp(
-                    `(?<=\\]\\], \\[\\[${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING}\\]\\],{0,1} or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?=\\s)`,
-                    "i"
-                ),
-            },
-            matcher(
-                input: string,
-                context?: {
-                    listStartRegex: RegExp;
-                    middleToPossibleEndOfListRegex: RegExp;
-                    otherListEndingRegex: RegExp;
-                }
-            ) {
-                if (
-                    context?.listStartRegex.test(input) ||
-                    context?.otherListEndingRegex.test(input) ||
-                    context?.middleToPossibleEndOfListRegex.test(input)
-                ) {
-                    return true;
-                }
-
-                return false;
-            },
-            parser(
-                input: string,
-                context?: {
-                    listStartRegex: RegExp;
-                    middleToPossibleEndOfListRegex: RegExp;
-                    otherListEndingRegex: RegExp;
-                }
-            ) {
-                if (!context) throw new Error(`Context was not included for list matching`);
-
-                const unparsedTypes: string[] = [];
-
-                const listStartTypeMatch = input.match(context.listStartRegex)?.at(1);
-                if (listStartTypeMatch) unparsedTypes.push(listStartTypeMatch);
-
-                const listBodyMatches = input.matchAll(context.middleToPossibleEndOfListRegex);
-                for (const match of listBodyMatches) {
-                    const typeMatch = match[1];
-                    unparsedTypes.push(typeMatch);
-                }
-
-                const possibleListEndTypeMatch = input.match(context.listStartRegex)?.at(1);
-                if (possibleListEndTypeMatch) unparsedTypes.push(possibleListEndTypeMatch);
-
-                return unparsedTypes.map(BikiTextInterpreter.getSqfDataTypeFromWikiType);
-            },
-        },
-        {
-            // inArea
-            // |p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
-            // example test regex for other apps
-            // /(?:\[\[(\S+)\]\] or |: ){0,1}\[\[(\S+)\]\](?: - center of the area){0,1} in format \[\[([\S]+)\]\](?:, | or )\[\[([\S]+)\]\](\s*\(must be \[\[([\S]+)\]\]){0,1}/i
-            matcher: new RegExp(
-                `(?:\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\] or |: ){0,1}\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?: - center of the area){0,1} in format \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](?:, | or )\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\](\\s*\\(must be \\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]){0,1}`,
-                "i"
-            ),
-            parser(match: RegExpMatchArray) {
-                const parsedTypes: ParsedSyntaxDataType = [];
-
-                const firstTypeMatch = match.at(1);
-                if (firstTypeMatch) {
-                    const firstType =
-                        BikiTextInterpreter.getSqfDataTypeFromWikiType(firstTypeMatch);
-                    if (firstType !== SQFDataType.Array) parsedTypes.push(firstType);
-                }
-
-                const secondTypeMatch = match.at(3);
-                if (secondTypeMatch) {
-                    const secondType =
-                        BikiTextInterpreter.getSqfDataTypeFromWikiType(secondTypeMatch);
-                    if (secondType !== SQFDataType.Array) parsedTypes.push(secondType);
-                }
-
-                let thirdType = match[4];
-                const specificThirdType = match.at(6);
-                if (specificThirdType) {
-                    thirdType = specificThirdType;
-                }
-                parsedTypes.push(BikiTextInterpreter.getSqfDataTypeFromWikiType(thirdType));
-
-                return parsedTypes;
-            },
-        },
-        {
-            matcher: new RegExp(``, "i"),
-            parser(match: RegExpMatchArray) {
-                return [];
-            },
-        },
-    ];
-
-    /* ----------------------------------------------------------------------------
-        getDatatypeFromDetailContent
-    ---------------------------------------------------------------------------- */
-    public getDatatypeFromDetailContent(content: string): ParsedSyntaxDataType | null {
-        for (const parserInfo of BikiTextInterpreter.TYPE_PARSERS) {
-            if (parserInfo.matcher instanceof RegExp) {
-                const match = content.match(parserInfo.matcher);
-                if (!match || !match.length) continue;
-
-                return (parserInfo as BikiRegexTypeGetter).parser(match, parserInfo.context)!;
-            } else {
-                const isMatch = parserInfo.matcher(content, parserInfo.context);
-                if (!isMatch) continue;
-
-                return (parserInfo as BikiFunctionalTypeGetter).parser(
-                    content,
-                    parserInfo.context
-                )!;
-            }
-        }
-
-        return null;
-    }
-
-    /* ----------------------------------------------------------------------------
-        getFunctionSyntaxType
-    ---------------------------------------------------------------------------- */
-    // TODO: remove any concept of a page detail from the text interpreter
-    // be it moving functions around or changing their parameters to not know about it
-    public getFunctionSyntaxType(
-        functionExecutionDetail: BikiPageDetail
-    ): SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction {
-        if (functionExecutionDetail.type !== BikiPageDetailType.FunctionExecution) {
-            throw new Error(
-                `Provided detail does is not a function execution detail! ${functionExecutionDetail}`
-            );
-        }
-
-        if (functionExecutionDetail.orginal.includes("spawn")) {
-            return SQFSyntaxType.ScheduledFunction;
-        }
-
-        return SQFSyntaxType.UnscheduledFunction;
-    }
-
-    /* ----------------------------------------------------------------------------
         isPageCategory
     ---------------------------------------------------------------------------- */
     public isPageCategory(pageTitle: string): boolean {
@@ -1116,60 +711,13 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-        getNumberOfParametersOnEachSide
+        isPageCategory
     ---------------------------------------------------------------------------- */
-    public getSyntaxParameterSideInfo(
-        syntaxExample: string,
-        pageName: string
-    ): {
-        leftParameterCount: number;
-        rightParameterCount: number;
-        leftIsArray: boolean;
-        rightIsArray: boolean;
-    } {
-        let leftParameterCount = 0;
-        let rightParameterCount = 0;
-        let leftIsArray = false;
-        let rightIsArray = false;
-
-        // test regex
-        // /(?<=\[\[\w+\]\].*)(?<=,\s*|(?:\s+|^)\[)\w+(?=,|\]$|\],|\]\s)/gi
-        const rightParametersArrayRegex = new RegExp(
-            `(?<=\\[\\[${pageName}\\]\\].*)(?<=,\\s*|(?:\\s+|^)\\[)\\w+(?=,|\\]$|\\],|\\]\\s)`,
-            "gi"
-        );
-        const rightSideArrayMatches = syntaxExample.matchAll(rightParametersArrayRegex);
-        if (rightSideArrayMatches) {
-            rightParameterCount = Array.from(rightSideArrayMatches).length;
-            rightIsArray = true;
-            // has right side params
-        } else {
-            const hasRightSideParameterRegex = new RegExp(`\\w+\\s+\\[\\[${pageName}\\]\\]`, "i");
-            if (hasRightSideParameterRegex.test(syntaxExample)) rightParameterCount = 1;
-        }
-
-        // test regex
-        // /(?<=,\s*|(?:\s+|^)\[)\w+(?=,|\]$|\],|\]\s)(?=.*\[\[\w+\]\])/gi
-        const leftParametersArrayRegex = new RegExp(
-            `(?<=,\\s*|(?:\\s+|^)\\[)\w+(?=,|\\]$|\\],|\\]\\s)(?=.*\\[\\[${pageName}\\]\\])`,
-            "gi"
-        );
-        const leftSideArrayMatches = syntaxExample.matchAll(leftParametersArrayRegex);
-        if (leftSideArrayMatches) {
-            leftParameterCount = Array.from(leftSideArrayMatches).length;
-            leftIsArray = true;
-        } else {
-            const hasLeftSideParameterRegex = new RegExp(`\\[\\[${pageName}\\]\\]\\s+\\w+`, "i");
-            if (hasLeftSideParameterRegex.test(syntaxExample)) leftParameterCount = 1;
-        }
-
-        return { leftParameterCount, rightParameterCount, leftIsArray, rightIsArray };
-    }
-
-    /* ----------------------------------------------------------------------------
-        getNumberOfParametersOnEachSide
-    ---------------------------------------------------------------------------- */
-    public combineDataTypesAsArray(types: ParsedSyntaxDataType[]): SQFArray {
-        return SQFArray.ofExactly(...types);
+    public parseParameter(parameterContent: string): ParsedParameter {
+        // TODO:
+        return {
+            name: "",
+            description: "",
+        };
     }
 }

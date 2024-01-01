@@ -16,85 +16,6 @@ export enum SQFGrammarType {
     CodeExecutor = "SQFGrammarType.CodeExecutor",
 }
 
-export enum SQFDataType {
-    Empty = "SQFDataType.Empty",
-    Array = "SQFDataType.Array",
-    Boolean = "SQFDataType.Boolean",
-    Code = "SQFDataType.Code",
-    Config = "SQFDataType.Config",
-    Control = "SQFDataType.Control",
-    DiaryRecord = "SQFDataType.DiaryRecord",
-    Display = "SQFDataType.Display",
-    Exception = "SQFDataType.Exception",
-    EdenEntity = "SQFDataType.EdenEntity",
-    EdenId = "SQFDataType.EdenId",
-    EditorObject = "SQFDataType.EditorObject",
-    Group = "SQFDataType.Group",
-    HashMap = "SQFDataType.HashMap",
-    Location = "SQFDataType.Location",
-    Namespace = "SQFDataType.Namespace",
-    Number = "SQFDataType.Number",
-    NetObject = "SQFDataType.NetObject",
-    Object = "SQFDataType.Object",
-    ScriptHandle = "SQFDataType.ScriptHandle",
-    Side = "SQFDataType.Side",
-    String = "SQFDataType.String",
-    StructuredText = "SQFDataType.StructuredText",
-    Task = "SQFDataType.Task",
-    Team = "SQFDataType.Team",
-    TeamMember = "SQFDataType.TeamMember",
-    NaN = "SQFDataType.NaN",
-    Any = "SQFDataType.Any",
-    Nothing = "SQFDataType.Nothing",
-    Void = "SQFDataType.Void",
-    Vector = "SQFDataType.Vector",
-    Variable = "SQFDataType.Variable",
-    IfType = "SQFDataType.IfType",
-    SwitchType = "SQFDataType.SwitchType",
-    WhileType = "SQFDataType.WhileType",
-    WithType = "SQFDataType.WithType",
-    ForType = "SQFDataType.ForType",
-    HashMapKey = "SQFDataType.HashMapKey",
-    Waypoint = "SQFDataType.Waypoint",
-    Position = "SQFDataType.Position",
-    Position3d = "SQFDataType.Position3d",
-    Position2d = "SQFDataType.Position2d",
-    PositionWorld = "SQFDataType.PositionWorld",
-    PositionASL = "SQFDataType.PositionASL",
-    PositionAGL = "SQFDataType.PositionAGL",
-    PositionAGLS = "SQFDataType.PositionAGLS",
-    PositionATL = "SQFDataType.PositionATL",
-    PositionASLW = "SQFDataType.PositionASLW",
-    PositionConfig = "SQFDataType.PositionConfig",
-    PositionRelative = "SQFDataType.PositionRelative",
-    ParticleArray = "SQFDataType.ParticleArray",
-    Color = "SQFDataType.Color",
-    ColorAlpha = "SQFDataType.ColorAlpha",
-    IDENTICAL = "IDENTICAL",
-}
-
-export type SQFArray = string;
-export namespace SQFArray {
-    export function ofOneOfThese(...types: ParsedSyntaxDataType[]): SQFArray {
-        return `SQFArray.ofOneOfThese(${types.join(",")})`;
-    }
-    export function ofAnyOfThese(...types: ParsedSyntaxDataType[]): SQFArray {
-        return `SQFArray.ofAnyOfThese(${types.join(",")})`;
-    }
-    export function ofExactly(...types: ParsedSyntaxDataType[]): SQFArray {
-        return `SQFArray.ofExactly(${types.join(",")})`;
-    }
-}
-
-export enum SQFSyntaxType {
-    UnscheduledFunction = "SQFSyntaxType.UnscheduledFunction",
-    NularOperator = "SQFSyntaxType.NularOperator",
-    UnaryOperator = "SQFSyntaxType.UnaryOperator",
-    BinaryOperator = "SQFSyntaxType.BinaryOperator",
-    ScheduledFunction = "SQFSyntaxType.ScheduledFunction",
-    // Empty = "EMPTY",
-}
-
 export enum SQFEffectLocality {
     LOCAL = "SQFEffect.LOCAL",
     GLOBAL = "SQFEffect.GLOBAL",
@@ -125,43 +46,22 @@ export interface UnparsedPage {
     text: string;
 }
 
-export type ParsedSyntaxDataType = SQFDataType | SQFDataType[] | SQFArray;
-export interface ParsedFunctionSyntax {
-    syntaxType: SQFSyntaxType.UnscheduledFunction | SQFSyntaxType.ScheduledFunction;
-    returnType: ParsedSyntaxDataType;
-    leftParameters: ParsedSyntaxDataType;
+export interface ParsedParameter {
+    name: string;
+    description: string;
 }
 
-export interface ParsedUnaryCommandSyntax {
-    syntaxType: SQFSyntaxType.UnaryOperator;
-    returnType: ParsedSyntaxDataType;
-    rightParameters: ParsedSyntaxDataType;
+export interface ParsedSyntax {
+    outline?: string;
+    parameters: ParsedParameter[];
+    returns?: string;
 }
-
-export interface ParsedBinaryCommandSyntax {
-    syntaxType: SQFSyntaxType.BinaryOperator;
-    returnType: ParsedSyntaxDataType;
-    leftParameters: ParsedSyntaxDataType;
-    rightParameters: ParsedSyntaxDataType;
-}
-
-export interface ParsedNularCommandSyntax {
-    syntaxType: SQFSyntaxType.NularOperator;
-    returnType: ParsedSyntaxDataType;
-}
-
-export type ParsedSyntax =
-    | ParsedFunctionSyntax
-    | ParsedUnaryCommandSyntax
-    | ParsedBinaryCommandSyntax
-    | ParsedNularCommandSyntax;
 
 export interface ParsedPage {
     name: string;
     description: string;
     examples: string[];
-    syntaxExamples?: string[];
-    parsedSyntaxes: ParsedSyntax[];
+    syntaxes: ParsedSyntax[];
     argumentLocality?: SQFArgumentLocality;
     effectLocality?: SQFEffectLocality;
     serverExecution?: boolean;
