@@ -47,8 +47,8 @@ export interface UnparsedPage {
 }
 
 export interface ParsedParameter {
-    name: string;
-    description: string;
+    name: string | null;
+    description: string | null;
 }
 
 export interface ParsedSyntax {

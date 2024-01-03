@@ -714,10 +714,9 @@ class BikiTextInterpreter {
         isPageCategory
     ---------------------------------------------------------------------------- */
     public parseParameter(parameterContent: string): ParsedParameter {
-        // TODO:
         return {
-            name: "",
-            description: "",
+            name: parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
+            description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+).+/i)?.at(0) || null,
         };
     }
 }
