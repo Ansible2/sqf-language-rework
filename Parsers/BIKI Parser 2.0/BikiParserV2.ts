@@ -67,7 +67,10 @@ export class BikiParserV2 implements DocParser {
     ---------------------------------------------------------------------------- */
     async getPages(): Promise<UnparsedBikiPage[]> {
         // const functionsPath = path.resolve(__dirname,"./Seed Files/Biki Seed Files/functions.MediaWiki.xml");
-        const xmlPath = path.resolve(__dirname, "./Seed Files/commands.MediaWiki.xml");
+        const xmlPath = path.resolve(
+            __dirname,
+            "../Seed Files/BIS Seed Files/commands.MediaWiki.xml"
+        );
         const xmlFileBuffer = fs.readFileSync(xmlPath);
         const xmlAsJSON = this.xmlParser.parse(xmlFileBuffer);
         const wikiPages: BikiPage[] = xmlAsJSON.mediawiki.page;
@@ -93,7 +96,7 @@ export class BikiParserV2 implements DocParser {
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
             } catch (error) {
-                console.log(error);
+                console.error(unparsedPage.title, error);
             }
         });
 
@@ -112,6 +115,7 @@ export class BikiParserV2 implements DocParser {
     ---------------------------------------------------------------------------- */
     private parseBikiPage(page: UnparsedBikiPage): ParsedPage | null {
         if (!page.title) return null;
+
         const titleFormatted = this.textInterpreter.getPageTitleFormatted(page);
         if (this.textInterpreter.isPageCategory(titleFormatted)) return null;
 
@@ -238,13 +242,15 @@ export class BikiParserV2 implements DocParser {
 
             const isParameter = pageDetail.type === BikiPageDetailType.Parameter;
             const isSyntaxExample = pageDetail.type === BikiPageDetailType.Syntax;
-            const isReturn = pageDetail.type === BikiPageDetailType.Syntax;
+            const isReturn = pageDetail.type === BikiPageDetailType.Return;
             if (!isParameter && !isSyntaxExample && !isReturn) return;
 
             // the first syntax parameters do not include the syntax id of "1"
             // only the parameters for syntaxes past the first include a number past 1
             const syntaxIdString =
-                pageDetail.name.match(/(?<=\w+)\d{1}(?=\d)|(?<=s)\d/i)?.at(0) || "1";
+                pageDetail.name
+                    .match(/(?<=\|s)\d|(?<=\|r)\d|(?<=\|p)(?:\d(?=\d)|(?=\d{1}))/i)
+                    ?.at(0) || "1";
 
             const syntaxId = parseInt(syntaxIdString);
             let bikiSyntax = syntaxMap.get(syntaxId);
