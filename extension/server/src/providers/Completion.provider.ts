@@ -38,9 +38,7 @@ export class CompletionProvider implements ICompletionProvider {
             return this.hashtagCompletionItems;
         }
 
-        const textDocument = this.server
-            .getTextDocuments()
-            .get(params.textDocument.uri);
+        const textDocument = this.server.getTextDocuments().get(params.textDocument.uri);
         if (!textDocument) {
             return [];
         }
@@ -63,19 +61,18 @@ export class CompletionProvider implements ICompletionProvider {
             return [];
         }
 
-        const completionItems = this.completionItemMap.get(
-            firstChar.toLowerCase()
-        );
+        const completionItems = this.completionItemMap.get(firstChar.toLowerCase());
         if (!completionItems) {
             return [];
         }
 
+        // when just opening completion menu with no input
         if (!word?.parsedWord) {
             return completionItems;
         }
 
         /* ------------------------------------
-            Provide completion for other words in file
+            Provide completion for other words in file that might be trying to match
         ------------------------------------ */
         const parsedWord = word.parsedWord.toLowerCase();
         // make sure the word being typed does not get put into completion list
@@ -84,47 +81,33 @@ export class CompletionProvider implements ICompletionProvider {
 
         const otherWordsInDocument: ISqfCompletionItem[] = [];
 
-        this.getWordsNotExcluded(
-            textDocument.getText(),
-            this.completionItemsSet
-        ).forEach((otherWord: string) => {
-            if (this.otherDocumentWordsSet.has(otherWord)) return;
+        this.getWordsNotExcluded(textDocument.getText(), this.completionItemsSet).forEach(
+            (otherWord: string) => {
+                if (this.otherDocumentWordsSet.has(otherWord)) return;
 
-            this.otherDocumentWordsSet.add(otherWord);
-            otherWordsInDocument.push(
-                {
+                this.otherDocumentWordsSet.add(otherWord);
+                otherWordsInDocument.push({
                     label: otherWord,
                     kind: SQFCompletionItemKind.Text,
-                } as ISqfCompletionItem
-            )
-        })
+                } as ISqfCompletionItem);
+            }
+        );
 
         this.completionItemsSet.delete(parsedWord);
         this.otherDocumentWordsSet.clear();
 
-        return [
-            ...otherWordsInDocument,
-            ...completionItems,
-        ];
+        return [...otherWordsInDocument, ...completionItems];
     }
 
     /* ----------------------------------------------------------------------------
 		getWordsNotExcluded
 	---------------------------------------------------------------------------- */
-    public getWordsNotExcluded(
-        inputString: string,
-        exclusionSet: Set<string>
-    ): string[] {
-        const inputWithoutComments = inputString.replace(
-            /\/\*[\s\S]*?\*\/|\/\/.*/g,
-            ""
-        );
+    public getWordsNotExcluded(inputString: string, exclusionSet: Set<string>): string[] {
+        const inputWithoutComments = inputString.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, "");
         const words = inputWithoutComments.match(/[a-z_]+\w*/gi);
         if (!words) return [];
 
-        const filteredWords = words.filter(
-            (word) => !exclusionSet.has(word.toLowerCase())
-        );
+        const filteredWords = words.filter((word) => !exclusionSet.has(word.toLowerCase()));
         return filteredWords;
     }
 
@@ -132,8 +115,7 @@ export class CompletionProvider implements ICompletionProvider {
 		loadCompletionItems
 	---------------------------------------------------------------------------- */
     private loadCompletionItems(): void {
-        const severSQFItems: Map<string, CompiledSQFItem> =
-            this.server.getSQFItemMap();
+        const severSQFItems: Map<string, CompiledSQFItem> = this.server.getSQFItemMap();
 
         this.hashtagCompletionItems = [];
         severSQFItems.forEach((sqfItem, itemName) => {

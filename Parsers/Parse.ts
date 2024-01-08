@@ -1,13 +1,13 @@
 import * as path from "path";
-import fs from "fs";
+import fs from "fs-extra";
 import { KiskaParser } from "./KISKA Parser/KiskaParser";
 import { BikiParser } from "./BIKI Parser/BikiParser";
-import { DocParser, ParsedPage } from "./SQFParser.namespace";
+import { DocParser, ParsedItem } from "./SQFParser.namespace";
 import { BikiParserV2 } from "./BIKI Parser 2.0/BikiParserV2";
 // https://community.bistudio.com/wiki/Special:Export/
 const parseType = process.argv[2];
 
-function convertPageToText(parsedPage: ParsedPage): string {
+function convertPageToText(parsedPage: ParsedItem): string {
     // TODO:
     return "";
 }
@@ -20,7 +20,7 @@ async function main() {
             break;
         }
         case "biki:commands": {
-            parser = new BikiParserV2()
+            parser = new BikiParserV2();
             break;
         }
         default: {
@@ -34,15 +34,15 @@ async function main() {
     try {
         const pages = await parser.getPages();
         const parsedPages = await parser.parsePages(pages);
-        // const outputFolder = "./Parsers/.output";
-        // if (!fs.existsSync(outputFolder)) {
-        //     fs.mkdirSync(outputFolder);
-        // }
+        const outputFolder = "./Parsers/.output";
 
-        // const parsedOutputFolder = `${outputFolder}/${parser.getOutputFolderName()}/docs`;
-        // if (!fs.existsSync(parsedOutputFolder)) {
-        //     fs.mkdirSync(parsedOutputFolder);
-        // }
+        fs.emptyDirSync(outputFolder);
+
+        const parsedOutputFolder = `${outputFolder}/${parser.getOutputFolderName()}/docs`;
+        if (!fs.existsSync(parsedOutputFolder)) {
+            fs.mkdirSync(parsedOutputFolder);
+        }
+        fs.ensureDirSync(outputFolder);
 
         // const docsFolder = `${parsedOutputFolder}/docs`;
         // if (!fs.existsSync(docsFolder)) {

@@ -1,4 +1,4 @@
-import { DocParser, ParsedPage, SQFGrammarType, UnparsedPage } from "../SQFParser.namespace";
+import { DocParser, ParsedItem, SQFGrammarType, UnparsedItem } from "../SQFParser.namespace";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -40,12 +40,12 @@ function getAllFilesInDirectory(folder: string): string[] {
 
     return filePaths;
 }
-
+// TODO: refactor for new parsed page syntax
 export class KiskaParser implements DocParser {
     /* ----------------------------------------------------------------------------
         getPages
     ---------------------------------------------------------------------------- */
-    public async getPages(): Promise<UnparsedPage[]> {
+    public async getPages(): Promise<UnparsedItem[]> {
         const kiskaFunctionsFolder = path.resolve(
             "S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
         );
@@ -58,8 +58,8 @@ export class KiskaParser implements DocParser {
     /* ----------------------------------------------------------------------------
         parsePages
     ---------------------------------------------------------------------------- */
-    public async parsePages(pages: UnparsedPage[]): Promise<ParsedPage[]> {
-        const parsedPages: ParsedPage[] = [];
+    public async parsePages(pages: UnparsedItem[]): Promise<ParsedItem[]> {
+        const parsedPages: ParsedItem[] = [];
         pages.forEach((page) => {
             const parsedPage = this.parseKiskaPage(page.text);
             if (parsedPage) {
@@ -70,7 +70,7 @@ export class KiskaParser implements DocParser {
         return parsedPages;
     }
 
-    public parseKiskaPage(page: string): ParsedPage | null {
+    public parseKiskaPage(page: string): ParsedItem | null {
         const headerRegexMatch = page.match(
             /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i
         );
@@ -83,9 +83,9 @@ export class KiskaParser implements DocParser {
         const headerComment = headerRegexMatch[0];
 
         const functionName = headerComment.match(/(?<=function:\s*)\b.*/i)?.at(0);
-        const parsedPage: ParsedPage = {
+        const parsedPage: ParsedItem = {
             name: functionName || "",
-            parsedSyntaxes: [],
+            syntaxes: [],
             description: "",
             examples: [],
             grammarType: SQFGrammarType.Function,

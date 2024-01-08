@@ -4,10 +4,6 @@ import {
     PreCompiledSQFItem,
     SQFSyntaxType,
     SQFDataType,
-    SQFArrayComparator,
-    SQFArgument,
-    SQFEffect,
-    SQFCode,
     SQFArray,
 } from "../sqf.namespace";
 
@@ -258,7 +254,6 @@ Object.keys(preprocessorSyntaxes).forEach((command: string) => {
     }
 });
 
-
 export const configPreprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
     ...preprocessorSyntaxes,
     __EXEC: {
@@ -273,11 +268,7 @@ export const configPreprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
         syntaxes: {
             type: SQFSyntaxType.UnaryOperator,
             rightOperandTypes: SQFDataType.Code,
-            returnTypes: [
-                SQFDataType.Array,
-                SQFDataType.Number,
-                SQFDataType.String,
-            ],
+            returnTypes: [SQFDataType.Array, SQFDataType.Number, SQFDataType.String],
         },
     },
 };

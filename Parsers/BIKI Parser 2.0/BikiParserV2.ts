@@ -2,18 +2,19 @@ import { XMLParser } from "fast-xml-parser";
 import {
     DocParser,
     IJSON,
-    ParsedPage,
+    ParsedItem,
     ParsedParameter,
     ParsedSyntax,
+    UnparsedItem,
+} from "../SQFParser.namespace";
+import {
     SQFArgumentLocality,
+    SQFDataType,
     SQFEffectLocality,
     SQFGrammarType,
-    UnparsedPage,
-} from "../SQFParser.namespace";
-import { SQFDataType } from "../../configuration/grammars/sqf.namespace";
+} from "../../configuration/grammars/sqf.namespace";
 import path from "path";
 import fs from "fs";
-import { SQFGrammarTypeMap } from "../BIKI Parser/SQFCommandsGrammarMap";
 
 interface BikiPage {
     title?: string;
@@ -22,7 +23,7 @@ interface BikiPage {
     };
 }
 
-interface UnparsedBikiPage extends UnparsedPage {
+interface UnparsedBikiPage extends UnparsedItem {
     title: string;
 }
 
@@ -88,8 +89,8 @@ export class BikiParserV2 implements DocParser {
     /* ----------------------------------------------------------------------------
         parsePages
     ---------------------------------------------------------------------------- */
-    async parsePages(pages: UnparsedBikiPage[]): Promise<ParsedPage[]> {
-        const parsedPages: ParsedPage[] = [];
+    async parsePages(pages: UnparsedBikiPage[]): Promise<ParsedItem[]> {
+        const parsedPages: ParsedItem[] = [];
         pages.forEach((unparsedPage) => {
             try {
                 const parsedPage = this.parseBikiPage(unparsedPage);
@@ -113,7 +114,7 @@ export class BikiParserV2 implements DocParser {
     /* ----------------------------------------------------------------------------
         parseBikiPage
     ---------------------------------------------------------------------------- */
-    private parseBikiPage(page: UnparsedBikiPage): ParsedPage | null {
+    private parseBikiPage(page: UnparsedBikiPage): ParsedItem | null {
         if (!page.title) return null;
 
         const titleFormatted = this.textInterpreter.getPageTitleFormatted(page);
@@ -157,15 +158,22 @@ export class BikiParserV2 implements DocParser {
 
             syntaxes.push(parsedSyntax);
         });
+
         return {
-            name: titleFormatted,
-            description,
-            examples,
-            syntaxes,
-            argumentLocality,
-            effectLocality,
-            serverExecution,
-            grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
+            documentation: {
+                name: titleFormatted,
+                description,
+                examples,
+                syntaxes,
+                argumentLocality,
+                effectLocality,
+                serverExecution,
+                documentationLink: this.textInterpreter.getDocumentationLink(titleFormatted),
+            },
+            configuration: {
+                label: this.textInterpreter.getLabel(titleFormatted),
+                grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
+            },
         };
     }
 
@@ -656,30 +664,6 @@ class BikiTextInterpreter {
     }
 
     /* ----------------------------------------------------------------------------
-        grammarTypeMap
-    ---------------------------------------------------------------------------- */
-    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = SQFGrammarTypeMap;
-
-    /* ----------------------------------------------------------------------------
-        getSQFGrammarType
-    ---------------------------------------------------------------------------- */
-    public getSQFGrammarType(name: string): SQFGrammarType {
-        const nameLowered = name.toLowerCase();
-        if (nameLowered.includes("_fnc_")) {
-            return SQFGrammarType.Function;
-        }
-
-        const type = BikiTextInterpreter.grammarTypeMap[nameLowered];
-        if (type) {
-            return type;
-        } else if (BikiTextInterpreter.grammarTypeMap[name]) {
-            return BikiTextInterpreter.grammarTypeMap[name];
-        }
-
-        return SQFGrammarType.Command;
-    }
-
-    /* ----------------------------------------------------------------------------
         getEffectLocality
     ---------------------------------------------------------------------------- */
     public getEffectLocality(pageDetailContent: string | undefined): SQFEffectLocality | undefined {
@@ -724,5 +708,181 @@ class BikiTextInterpreter {
             name: parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
             description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+).+/i)?.at(0) || null,
         };
+    }
+
+    /* ----------------------------------------------------------------------------
+        grammarTypeMap
+    ---------------------------------------------------------------------------- */
+    private static readonly grammarTypeMap: IJSON<SQFGrammarType> = {
+        if: SQFGrammarType.ControlStatement,
+        apply: SQFGrammarType.ControlStatement,
+        foreach: SQFGrammarType.ControlStatement,
+        or: SQFGrammarType.ConditionOperator,
+        and: SQFGrammarType.ConditionOperator,
+        "a && b": SQFGrammarType.ConditionOperator,
+        "a or b": SQFGrammarType.ConditionOperator,
+        true: SQFGrammarType.BooleanLiteral,
+        false: SQFGrammarType.BooleanLiteral,
+        private: SQFGrammarType.AccessModifier,
+        "a % b": SQFGrammarType.ManipulativeOperator,
+        "a == b": SQFGrammarType.ComparisonOperator,
+        "! a": SQFGrammarType.ConditionOperator,
+        not: SQFGrammarType.ConditionOperator,
+        controlnull: SQFGrammarType.NullLiteral,
+        displaynull: SQFGrammarType.NullLiteral,
+        diaryrecordnull: SQFGrammarType.NullLiteral,
+        getor: SQFGrammarType.NullLiteral,
+        netobjnull: SQFGrammarType.NullLiteral,
+        grpnull: SQFGrammarType.NullLiteral,
+        locationnull: SQFGrammarType.NullLiteral,
+        nil: SQFGrammarType.NullLiteral,
+        objnull: SQFGrammarType.NullLiteral,
+        scriptnull: SQFGrammarType.NullLiteral,
+        tasknull: SQFGrammarType.NullLiteral,
+        teammembernull: SQFGrammarType.NullLiteral,
+        confignull: SQFGrammarType.NullLiteral,
+        switch: SQFGrammarType.ControlStatement,
+        try: SQFGrammarType.ControlStatement,
+        catch: SQFGrammarType.ControlStatement,
+        case: SQFGrammarType.ControlStatement,
+        for: SQFGrammarType.ControlStatement,
+        step: SQFGrammarType.ControlStatement,
+        break: SQFGrammarType.ControlStatement,
+        default: SQFGrammarType.ControlStatement,
+        breakOut: SQFGrammarType.ControlStatement,
+        breakTo: SQFGrammarType.ControlStatement,
+        breakWith: SQFGrammarType.ControlStatement,
+        continue: SQFGrammarType.ControlStatement,
+        call: SQFGrammarType.CodeExecutor,
+        spawn: SQFGrammarType.CodeExecutor,
+        continueWith: SQFGrammarType.ControlStatement,
+        else: SQFGrammarType.ControlStatement,
+        exit: SQFGrammarType.ControlStatement,
+        forEachMemberTeam: SQFGrammarType.ControlStatement,
+        exitWith: SQFGrammarType.ControlStatement,
+        sleep: SQFGrammarType.ControlStatement,
+        uisleep: SQFGrammarType.ControlStatement,
+        then: SQFGrammarType.ControlStatement,
+        throw: SQFGrammarType.ControlStatement,
+        to: SQFGrammarType.ControlStatement,
+        waitUntil: SQFGrammarType.ControlStatement,
+        with: SQFGrammarType.ControlStatement,
+        halt: SQFGrammarType.ControlStatement,
+        while: SQFGrammarType.ControlStatement,
+        goto: SQFGrammarType.ControlStatement,
+        assert: SQFGrammarType.ControlStatement,
+        do: SQFGrammarType.ControlStatement,
+        terminate: SQFGrammarType.ControlStatement,
+        forEachMemberAgent: SQFGrammarType.ControlStatement,
+        from: SQFGrammarType.ControlStatement,
+        get: SQFGrammarType.PropertyAccessor,
+        set: SQFGrammarType.PropertyAccessor,
+        select: SQFGrammarType.PropertyAccessor,
+        getordefault: SQFGrammarType.PropertyAccessor,
+        getordefaultcall: SQFGrammarType.PropertyAccessor,
+        "a hash b": SQFGrammarType.PropertyAccessor,
+        insert: SQFGrammarType.PropertyAccessor,
+        this: SQFGrammarType.ReservedLiteral,
+        _this: SQFGrammarType.ReservedLiteral,
+        _x: SQFGrammarType.ReservedLiteral,
+        _forEachIndex: SQFGrammarType.ReservedLiteral,
+        _exception: SQFGrammarType.ReservedLiteral,
+        _thisScript: SQFGrammarType.ReservedLiteral,
+        _thisFSM: SQFGrammarType.ReservedLiteral,
+        thisList: SQFGrammarType.ReservedLiteral,
+        thisTrigger: SQFGrammarType.ReservedLiteral,
+        west: SQFGrammarType.ReservedLiteral,
+        east: SQFGrammarType.ReservedLiteral,
+        resistance: SQFGrammarType.ReservedLiteral,
+        civilian: SQFGrammarType.ReservedLiteral,
+        independent: SQFGrammarType.ReservedLiteral,
+        blufor: SQFGrammarType.ReservedLiteral,
+        opfor: SQFGrammarType.ReservedLiteral,
+        compile: SQFGrammarType.StringCompiler,
+        compilescript: SQFGrammarType.FileCompiler,
+        compilefinal: SQFGrammarType.StringCompiler,
+        exec: SQFGrammarType.FileExecutor,
+        execFSM: SQFGrammarType.FileExecutor,
+        execVM: SQFGrammarType.FileExecutor,
+        preprocessFile: SQFGrammarType.FileCompiler,
+        loadfile: SQFGrammarType.FileCompiler,
+        preprocessFileLineNumbers: SQFGrammarType.FileCompiler,
+    };
+
+    /* ----------------------------------------------------------------------------
+        getSQFGrammarType
+    ---------------------------------------------------------------------------- */
+    public getSQFGrammarType(name: string): SQFGrammarType {
+        const nameLowered = name.toLowerCase();
+        if (nameLowered.includes("_fnc_")) {
+            return SQFGrammarType.Function;
+        }
+
+        const type = BikiTextInterpreter.grammarTypeMap[nameLowered];
+        if (type) {
+            return type;
+        } else if (BikiTextInterpreter.grammarTypeMap[name]) {
+            return BikiTextInterpreter.grammarTypeMap[name];
+        }
+
+        return SQFGrammarType.Command;
+    }
+
+    /* ----------------------------------------------------------------------------
+        getDocumentationLink
+    ---------------------------------------------------------------------------- */
+    public getDocumentationLink(name: string): string {
+        const urlMap: IJSON<string> = {
+            "a % b": "a_%25_b",
+            "a times b": "a_*_b",
+            "a divide b": "a_/_b",
+            "a switch b": "a_:_b",
+            "a less b": "a_less_b",
+            "a greater b": "a_greater_b",
+            "a less= b": "a_less=_b",
+            "a greater= b": "a_greater=_b",
+            "a == b": "a_==_b",
+            "config greater greater name": "config_greater_greater_name",
+            "a ^ b": "a_^_b",
+        };
+
+        const urlName = urlMap[name.toLowerCase()];
+        if (urlName) {
+            name = urlName;
+        }
+
+        return `https://community.bistudio.com/wiki/${name}`;
+    }
+
+    /* ----------------------------------------------------------------------------
+        getLabel
+    ---------------------------------------------------------------------------- */
+    public getLabel(name: string): string {
+        // todo get docs for "false" and "="
+        const labelMap: IJSON<string> = {
+            "a or b": "||",
+            "! a": "!",
+            "a != b": "!=",
+            "a hash b": "#",
+            "a % b": "%",
+            "a && b": "&&",
+            "a times b": "*",
+            "a divide b": "/",
+            "a switch b": ":",
+            "a less b": "<",
+            "a greater b": ">",
+            "a less= b": "<=",
+            "a greater= b": ">=",
+            "a == b": "==",
+            "config greater greater name": ">>",
+            "a ^ b": "^",
+        };
+
+        const alternateLabel = labelMap[name.toLowerCase()];
+        if (alternateLabel) {
+            return alternateLabel;
+        }
+
+        return name;
     }
 }

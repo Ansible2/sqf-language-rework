@@ -2,7 +2,7 @@ import {
     IRawGrammar,
     IRawRepository,
 } from "vscode-textmate/release/rawGrammar";
-import { CompiledSQFItem, SQFGrammarType } from "./sqf.namespace";
+import { SQFGrammarType } from "./sqf.namespace";
 import { getSqfItems } from "./sqf.syntax";
 
 const accessModifiers: string[] = [];

@@ -67,7 +67,7 @@ export class NodeSQFServer implements ISQFServer {
         this.connection.onCompletion(
             this.completionProvider.onCompletion.bind(
                 this.completionProvider
-            ) as ServerRequestHandler<
+            ) as unknown as ServerRequestHandler<
                 CompletionParams,
                 CompletionList | CompletionItem[] | null | undefined,
                 CompletionItem[],
