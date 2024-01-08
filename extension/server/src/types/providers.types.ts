@@ -1,4 +1,4 @@
-import { CompiledSQFItem, SQFMarkupContent } from "../../../../configuration/grammars/sqf.namespace";
+import { SQFCompletionItemKind } from "../../../../configuration/grammars/sqf.namespace";
 import { IDocumentPosition } from "./textDocument.types";
 
 export enum DocumentationType {
@@ -6,9 +6,9 @@ export enum DocumentationType {
     HoverItem = 2,
 }
 
-export enum SqfMarkupKind {
-    PlainText = "plaintext",
-    Markdown = "markdown",
+export interface SQFMarkupContent {
+    kind: string;
+    value: string;
 }
 
 export interface ISqfHover {
@@ -25,14 +25,6 @@ export interface ISqfHoverParams {
 export interface IHoverProvider {
     onHover(params: ISqfHoverParams): ISqfHover;
 }
-
-export interface IDocProvider {
-    createMarkupDoc(
-        sqfItem: CompiledSQFItem,
-        docType: DocumentationType
-    ): SQFMarkupContent;
-}
-
 export interface ICompletionParams {
     context?: {
         triggerCharacter: string;
@@ -43,14 +35,15 @@ export interface ICompletionParams {
     position: IDocumentPosition;
 }
 
-export interface ISqfCompletionItem extends CompiledSQFItem {
+export interface SQFItem {
+    label: string;
+    documentation: SQFMarkupContent | null;
+    kind: SQFCompletionItemKind;
     filterText?: string;
     insertText?: string;
 }
 
 export interface ICompletionProvider {
-    onCompletion(params: ICompletionParams): ISqfCompletionItem[];
-    onCompletionResolve?(
-        completionItem: ISqfCompletionItem
-    ): ISqfCompletionItem;
+    onCompletion(params: ICompletionParams): SQFItem[];
+    onCompletionResolve?(completionItem: SQFItem): SQFItem;
 }

@@ -1,13 +1,6 @@
-import {
-    SQFGrammarType,
-    IJSON,
-    PreCompiledSQFItem,
-    SQFSyntaxType,
-    SQFDataType,
-    SQFArray,
-} from "../sqf.namespace";
+import { SQFGrammarType, IJSON, SQFDataType } from "../sqf.namespace";
 
-export const preprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
+export const preprocessorSyntaxes: IJSON<SQFItemConfig> = {
     "#define": {
         grammarType: SQFGrammarType.PreprocessorCommand,
         syntaxes: {

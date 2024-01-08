@@ -35,11 +35,6 @@ export enum SQFCompletionItemKind {
     TypeParameter,
 }
 
-export interface SQFMarkupContent {
-    kind: string;
-    value: string;
-}
-
 export enum SQFCompletionItemTag {
     Deprecated = 1,
 }
@@ -133,33 +128,4 @@ export enum SQFGrammarType {
     NamespaceLiteral = "namespace",
 }
 
-// TODO: decide interfaces for getting from ParsedItem -> CompletionItem
-// however that will be handled on the language server. Currently this is done
-// by mixing CompiledSQFItem, but this should be simplified significantly
-// and the doc provider/completion provider and compiling
-interface SQFItem {
-    labelDetails?: {
-        detail: string;
-        description: string;
-    };
-    grammarType: SQFGrammarType;
-    data?: any;
-    tags?: SQFCompletionItemTag[];
-    syntaxes: SQFSyntax[] | SQFSyntax;
-    kind?: SQFCompletionItemKind;
-    effect?: SQFEffect;
-    argument?: SQFArgument;
-    server?: boolean;
-    getDocLink?: (itemName: string) => string;
-}
-
-export interface CompiledSQFItem extends SQFItem {
-    // in order to search without case sensetivity
-    // but still display properly cased names in menus
-    // a label is created when compiled so that the key can
-    // be made lowercase
-    label: string;
-    documentation: SQFMarkupContent;
-    detail?: string; // detail should probably be avoided
-    kind: SQFCompletionItemKind;
-}
+export interface SQFItemConfig {}

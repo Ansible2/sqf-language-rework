@@ -16,25 +16,19 @@ import {
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
 import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
-import { CompiledSQFItem } from "../../../configuration/grammars/sqf.namespace";
 import { HoverProvider } from "./providers/Hover.provider";
-import { DocProvider } from "./providers/Doc.provider";
 import { CompletionProvider } from "./providers/Completion.provider";
 import { ITextDocuments } from "./types/textDocument.types";
 import { ISQFServer } from "./types/server.types";
-import {
-    IHoverProvider,
-    IDocProvider,
-    ICompletionProvider,
-} from "./types/providers.types";
+import { IHoverProvider, ICompletionProvider, SQFItem } from "./types/providers.types";
 
+type FirstCharOfName = string;
 export class NodeSQFServer implements ISQFServer {
     public readonly hoverProvider: IHoverProvider;
-    public readonly docProvider: IDocProvider;
     public readonly completionProvider: ICompletionProvider;
 
     private readonly textDocuments: TextDocuments<TextDocument>;
-    private readonly sqfItems: Map<string, CompiledSQFItem>;
+    private readonly sqfItems: Map<string, SQFItem>;
     private readonly connection: _Connection;
     private readonly hasCompletionResolver: boolean = false;
 
@@ -46,7 +40,6 @@ export class NodeSQFServer implements ISQFServer {
         this.connection = createConnection(ProposedFeatures.all);
         this.textDocuments = new TextDocuments(TextDocument);
 
-        this.docProvider = new DocProvider(this);
         this.hoverProvider = new HoverProvider(this);
         this.completionProvider = new CompletionProvider(this);
 
@@ -54,9 +47,7 @@ export class NodeSQFServer implements ISQFServer {
         // Also include all preview / proposed LSP features.
         this.connection.onInitialize(this.initializeConnection.bind(this));
         this.connection.onHover(
-            this.hoverProvider.onHover.bind(
-                this.hoverProvider
-            ) as ServerRequestHandler<
+            this.hoverProvider.onHover.bind(this.hoverProvider) as ServerRequestHandler<
                 HoverParams,
                 Hover | null | undefined,
                 never,
@@ -79,9 +70,7 @@ export class NodeSQFServer implements ISQFServer {
         if (completionResolver) {
             this.hasCompletionResolver = true;
             this.connection.onCompletionResolve(
-                completionResolver.bind(
-                    this.completionProvider
-                ) as unknown as RequestHandler<
+                completionResolver.bind(this.completionProvider) as unknown as RequestHandler<
                     CompletionItem,
                     CompletionItem,
                     void
@@ -117,7 +106,7 @@ export class NodeSQFServer implements ISQFServer {
     /* ----------------------------------------------------------------------------
 		getSQFItemMap
 	---------------------------------------------------------------------------- */
-    public getSQFItemMap(): Map<string, CompiledSQFItem> {
+    public getSQFItemMap(): Map<string, SQFItem> {
         return this.sqfItems;
     }
 

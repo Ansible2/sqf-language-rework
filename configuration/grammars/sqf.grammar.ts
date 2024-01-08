@@ -1,9 +1,7 @@
-import {
-    IRawGrammar,
-    IRawRepository,
-} from "vscode-textmate/release/rawGrammar";
+import { IRawGrammar, IRawRepository } from "vscode-textmate/release/rawGrammar";
 import { SQFGrammarType } from "./sqf.namespace";
-import { getSqfItems } from "./sqf.syntax";
+import { getSqfItems, getSqfItemsConfigs } from "./sqf.syntax";
+import { SQFItem } from "../../extension/server/src/types/providers.types";
 
 const accessModifiers: string[] = [];
 const manipulativeOperators: string[] = [];
@@ -23,12 +21,13 @@ const fileCompilers: string[] = [];
 const preprocessorCommands: string[] = [];
 const namespaceLiterals: string[] = [];
 
-const sqfItems: Map<string, CompiledSQFItem> = getSqfItems();
-sqfItems.forEach((sqfItem, itemName) => {
+const itemConfigs = getSqfItemsConfigs();
+itemConfigs.forEach((itemConfig) => {
     // format things like (!, #, +, |, etc...) as literals
+    // TODO: get itemName form itemConfig
     itemName = itemName.replace(/(\W)/g, "\\$1");
 
-    switch (sqfItem.grammarType) {
+    switch (itemConfig) {
         case SQFGrammarType.AccessModifier: {
             accessModifiers.push(itemName);
             break;
@@ -257,16 +256,16 @@ const grammarRepo: IRawRepository = {
         name: "constant.language.null.sqf",
     },
     "numeric-literal": {
-      // TODO seperate if possible
-      match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
-      name: "constant.numeric.sqf",
+        // TODO seperate if possible
+        match: "(?i)(?<![a-zA-Z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-zA-Z])|((\\$|0x)[0-9a-fA-F]+))",
+        name: "constant.numeric.sqf",
     },
     "reserved-literal": {
-      match: getSingleWordRegex(reservedLiterals),
-      name: "constant.language.reserved.sqf",
+        match: getSingleWordRegex(reservedLiterals),
+        name: "constant.language.reserved.sqf",
     },
-	
-	/* ----------------------------------------------------------------------------
+
+    /* ----------------------------------------------------------------------------
 		preprocessor
 	---------------------------------------------------------------------------- */
     "preprocessor-commands": {
@@ -312,10 +311,7 @@ const grammarRepo: IRawRepository = {
 	---------------------------------------------------------------------------- */
     other: {
         name: "meta.expression.sqf",
-        patterns: [
-            { include: "#access-modifier" },
-            { include: "#property-accessor" },
-        ],
+        patterns: [{ include: "#access-modifier" }, { include: "#property-accessor" }],
     },
     // "#" may need extra backslashes to be literal (\\#)
     "property-accessor": {
@@ -360,9 +356,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.variable.local.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords
-            .concat("{")
-            .join("|")})`,
+        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords.concat("{").join("|")})`,
         beginCaptures: {
             // TODO: the lack of concretes here (regex without *)
             // seems to be causing w* to be used over other things

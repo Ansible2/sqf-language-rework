@@ -1,20 +1,17 @@
 import { ISQFServer } from "../types/server.types";
-import { CompiledSQFItem } from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
 import {
     IHoverProvider,
-    IDocProvider,
     DocumentationType,
     ISqfHover,
     ISqfHoverParams,
+    SQFItem,
 } from "../types/providers.types";
 
 export class HoverProvider implements IHoverProvider {
     private readonly server: ISQFServer;
-    private readonly docProvider: IDocProvider;
     constructor(server: ISQFServer) {
         this.server = server;
-        this.docProvider = this.server.docProvider;
     }
 
     /* ----------------------------------------------------------------------------
@@ -47,22 +44,12 @@ export class HoverProvider implements IHoverProvider {
     /* ----------------------------------------------------------------------------
 		getHoverItem
 	---------------------------------------------------------------------------- */
-    public getHoverItem(
-        syntaxItemName: string,
-        sqfItems: Map<string, CompiledSQFItem>
-    ): ISqfHover | undefined {
-        const syntaxItem: CompiledSQFItem | undefined = sqfItems.get(
-            syntaxItemName.toLowerCase()
-        );
-        if (!syntaxItem) return;
-
-        const contents = this.docProvider.createMarkupDoc(
-            syntaxItem,
-            DocumentationType.HoverItem
-        );
+    public getHoverItem(syntaxItemName: string, sqfItems: Map<string, SQFItem>): ISqfHover | null {
+        const sqfItem = sqfItems.get(syntaxItemName.toLowerCase());
+        if (!sqfItem?.documentation) return null;
 
         const hoverItem: ISqfHover = {
-            contents: contents,
+            contents: sqfItem.documentation,
         };
         return hoverItem;
     }

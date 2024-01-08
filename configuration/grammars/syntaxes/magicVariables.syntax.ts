@@ -1,10 +1,4 @@
-import {
-    SQFGrammarType,
-    SQFSyntaxType,
-    SQFDataType,
-    IJSON,
-    PreCompiledSQFItem,
-} from "../sqf.namespace";
+import { SQFGrammarType, SQFDataType, IJSON, SQFItemConfig } from "../sqf.namespace";
 
 const getBISWikiLink = (itemName: string): string => {
     const convertUrlMap: IJSON<string> = {
@@ -23,7 +17,7 @@ const getBISWikiLink = (itemName: string): string => {
     return `https://community.bistudio.com/wiki/${itemName}`;
 };
 
-const magicVariableSyntaxes: IJSON<PreCompiledSQFItem> = {
+const magicVariableSyntaxes: IJSON<SQFItemConfig> = {
     _this: {
         documentation:
             "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
@@ -52,8 +46,7 @@ const magicVariableSyntaxes: IJSON<PreCompiledSQFItem> = {
         },
     },
     _forEachIndex: {
-        documentation:
-            "Represents the (zero-based) index of a `forEach` `_x` element.",
+        documentation: "Represents the (zero-based) index of a `forEach` `_x` element.",
         grammarType: SQFGrammarType.ReservedLiteral,
         syntaxes: {
             type: SQFSyntaxType.NularOperator,
