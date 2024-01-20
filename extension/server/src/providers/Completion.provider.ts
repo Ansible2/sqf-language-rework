@@ -1,6 +1,10 @@
-import { SQFCompletionItemKind } from "../../../../configuration/grammars/sqf.namespace";
 import { getWordAtPosition } from "../common/getWordAtPosition";
-import { ICompletionParams, ICompletionProvider, SQFItem } from "../types/providers.types";
+import {
+    ICompletionParams,
+    ICompletionProvider,
+    SQFCompletionItemKind,
+    SQFItem,
+} from "../types/providers.types";
 import { ISQFServer } from "../types/server.types";
 
 type FirstCharOfName = string;
@@ -110,16 +114,7 @@ export class CompletionProvider implements ICompletionProvider {
         this.hashtagCompletionItems = [];
         severSQFItems.forEach((sqfItem, itemName) => {
             if (sqfItem.label.startsWith("#")) {
-                // items with leading # (preprocessor commands) are
-                // filiterd out when included with a # as their filtertext (label by default).
-                const labelWithoutHashtag = sqfItem.label.slice(1, sqfItem.label.length);
-                const item: SQFItem = {
-                    ...sqfItem,
-                    filterText: labelWithoutHashtag,
-                    insertText: labelWithoutHashtag,
-                };
-
-                this.hashtagCompletionItems.push(item);
+                this.hashtagCompletionItems.push(sqfItem);
             } else {
                 const firstLetter = itemName.charAt(0).toLowerCase();
                 let itemArray = this.completionItemMap.get(firstLetter);

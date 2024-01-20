@@ -45,7 +45,7 @@ export class KiskaParser implements DocParser {
     /* ----------------------------------------------------------------------------
         getPages
     ---------------------------------------------------------------------------- */
-    public async getPages(): Promise<UnparsedItem[]> {
+    public async getUnparsedItems(): Promise<UnparsedItem[]> {
         const kiskaFunctionsFolder = path.resolve(
             "S:/Arma Working Folder/My Mods/Functional Mods/Function Library/No PBO/KISKA Function Library/addons"
         );
@@ -58,7 +58,7 @@ export class KiskaParser implements DocParser {
     /* ----------------------------------------------------------------------------
         parsePages
     ---------------------------------------------------------------------------- */
-    public async parsePages(pages: UnparsedItem[]): Promise<ParsedItem[]> {
+    public async convertToItemConfigs(pages: UnparsedItem[]): Promise<ParsedItem[]> {
         const parsedPages: ParsedItem[] = [];
         pages.forEach((page) => {
             const parsedPage = this.parseKiskaPage(page.text);
@@ -157,7 +157,7 @@ export class KiskaParser implements DocParser {
         return parsedPage;
     }
 
-    getOutputFolderName(): string {
+    getOutputFileName(): string {
         return "KISKA-Parser";
     }
 }

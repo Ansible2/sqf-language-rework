@@ -1,12 +1,6 @@
 import { ISQFServer } from "../types/server.types";
 import { getWordAtPosition } from "../common/getWordAtPosition";
-import {
-    IHoverProvider,
-    DocumentationType,
-    ISqfHover,
-    ISqfHoverParams,
-    SQFItem,
-} from "../types/providers.types";
+import { IHoverProvider, ISqfHover, ISqfHoverParams, SQFItem } from "../types/providers.types";
 
 export class HoverProvider implements IHoverProvider {
     private readonly server: ISQFServer;

@@ -15,14 +15,23 @@ import {
     _Connection,
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
-import { getSqfItems } from "../../../configuration/grammars/sqf.syntax";
 import { HoverProvider } from "./providers/Hover.provider";
 import { CompletionProvider } from "./providers/Completion.provider";
 import { ITextDocuments } from "./types/textDocument.types";
 import { ISQFServer } from "./types/server.types";
-import { IHoverProvider, ICompletionProvider, SQFItem } from "./types/providers.types";
+import {
+    IHoverProvider,
+    ICompletionProvider,
+    SQFItem,
+    SQFCompletionItemKind,
+    SQFCompletionItemTag,
+} from "./types/providers.types";
+import {
+    SQFGrammarType,
+    SQFItemConfig,
+    getSqfItemConfigs,
+} from "../../../configuration/grammars/sqf.namespace";
 
-type FirstCharOfName = string;
 export class NodeSQFServer implements ISQFServer {
     public readonly hoverProvider: IHoverProvider;
     public readonly completionProvider: ICompletionProvider;
@@ -36,7 +45,7 @@ export class NodeSQFServer implements ISQFServer {
 		constructor
 	---------------------------------------------------------------------------- */
     constructor() {
-        this.sqfItems = getSqfItems();
+        this.sqfItems = this.initializeSqfItemsMap();
         this.connection = createConnection(ProposedFeatures.all);
         this.textDocuments = new TextDocuments(TextDocument);
 
@@ -108,6 +117,89 @@ export class NodeSQFServer implements ISQFServer {
 	---------------------------------------------------------------------------- */
     public getSQFItemMap(): Map<string, SQFItem> {
         return this.sqfItems;
+    }
+
+    private initializeSqfItemsMap(): Map<string, SQFItem> {
+        const map = new Map<string, SQFItem>();
+
+        const itemConfigs = getSqfItemConfigs();
+        itemConfigs.forEach((itemConfig: SQFItemConfig) => {
+            const item = this.convertItemConfig(itemConfig);
+            map.set(item.label, item);
+        });
+
+        return map;
+    }
+
+    private convertItemConfig(itemConfig: SQFItemConfig): SQFItem {
+        let filterText: string | undefined;
+        let insertText: string | undefined;
+
+        const label = itemConfig.configuration.label;
+        // items with leading "#" (preprocessor commands) are
+        // filiterd out when included with a # as their filtertext (label by default).
+        if (label.startsWith("#")) {
+            const labelWithoutHashtag = label.slice(1, label.length);
+            filterText = labelWithoutHashtag;
+            insertText = labelWithoutHashtag;
+        }
+
+        const tags: SQFCompletionItemTag[] = [];
+        if (itemConfig.configuration.deprecated) {
+            tags.push(SQFCompletionItemTag.Deprecated);
+        }
+
+        return {
+            label,
+            documentation: {
+                kind: "markdown",
+                value: this.convertDocumentation(itemConfig),
+            },
+            kind: this.getCompletionItemKindFromGrammarType(itemConfig.configuration.grammarType),
+            filterText,
+            insertText,
+            tags,
+        };
+    }
+
+    private convertDocumentation(itemConfig: SQFItemConfig): string {
+        // TODO: implement doc creation
+        return "EXAMPLE DOC";
+    }
+
+    private getCompletionItemKindFromGrammarType(
+        grammarType: SQFGrammarType
+    ): SQFCompletionItemKind {
+        switch (grammarType) {
+            case SQFGrammarType.ReservedLiteral:
+            case SQFGrammarType.ControlStatement:
+            case SQFGrammarType.AccessModifier: {
+                return SQFCompletionItemKind.Keyword;
+            }
+            case SQFGrammarType.ComparisonOperator: {
+                return SQFCompletionItemKind.Operator;
+            }
+            case SQFGrammarType.ConditionOperator: {
+                return SQFCompletionItemKind.Operator;
+            }
+            case SQFGrammarType.Function: {
+                return SQFCompletionItemKind.Function;
+            }
+            case SQFGrammarType.ManipulativeOperator: {
+                return SQFCompletionItemKind.Operator;
+            }
+            case SQFGrammarType.BooleanLiteral:
+            case SQFGrammarType.NullLiteral: {
+                return SQFCompletionItemKind.Constant;
+            }
+            case SQFGrammarType.PropertyAccessor: {
+                return SQFCompletionItemKind.Property;
+            }
+            case SQFGrammarType.Command:
+            default: {
+                return SQFCompletionItemKind.Method;
+            }
+        }
     }
 
     /* ----------------------------------------------------------------------------

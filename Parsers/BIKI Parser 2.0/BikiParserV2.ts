@@ -1,17 +1,14 @@
 import { XMLParser } from "fast-xml-parser";
+import { DocParser, IJSON, UnparsedItem } from "../SQFParser.namespace";
 import {
-    DocParser,
-    IJSON,
-    ParsedItem,
-    ParsedParameter,
-    ParsedSyntax,
-    UnparsedItem,
-} from "../SQFParser.namespace";
-import {
+    ExampleConfig,
     SQFArgumentLocality,
     SQFDataType,
     SQFEffectLocality,
     SQFGrammarType,
+    SQFItemConfig,
+    SQFParameterConfig,
+    SQFSyntaxConfig,
 } from "../../configuration/grammars/sqf.namespace";
 import path from "path";
 import fs from "fs";
@@ -64,9 +61,9 @@ export class BikiParserV2 implements DocParser {
 
     constructor() {}
     /* ----------------------------------------------------------------------------
-        getPages
+        getUnparsedItems
     ---------------------------------------------------------------------------- */
-    async getPages(): Promise<UnparsedBikiPage[]> {
+    async getUnparsedItems(): Promise<UnparsedBikiPage[]> {
         // const functionsPath = path.resolve(__dirname,"./Seed Files/Biki Seed Files/functions.MediaWiki.xml");
         const xmlPath = path.resolve(
             __dirname,
@@ -87,10 +84,10 @@ export class BikiParserV2 implements DocParser {
     }
 
     /* ----------------------------------------------------------------------------
-        parsePages
+        convertToItemConfigs
     ---------------------------------------------------------------------------- */
-    async parsePages(pages: UnparsedBikiPage[]): Promise<ParsedItem[]> {
-        const parsedPages: ParsedItem[] = [];
+    async convertToItemConfigs(pages: UnparsedBikiPage[]): Promise<SQFItemConfig[]> {
+        const parsedPages: SQFItemConfig[] = [];
         pages.forEach((unparsedPage) => {
             try {
                 const parsedPage = this.parseBikiPage(unparsedPage);
@@ -105,16 +102,16 @@ export class BikiParserV2 implements DocParser {
     }
 
     /* ----------------------------------------------------------------------------
-        getOutputFolderName
+        getOutputFileName
     ---------------------------------------------------------------------------- */
-    getOutputFolderName(): string {
-        return "Biki Parser";
+    getOutputFileName(): string {
+        return "commands.syntax";
     }
 
     /* ----------------------------------------------------------------------------
         parseBikiPage
     ---------------------------------------------------------------------------- */
-    private parseBikiPage(page: UnparsedBikiPage): ParsedItem | null {
+    private parseBikiPage(page: UnparsedBikiPage): SQFItemConfig | null {
         if (!page.title) return null;
 
         const titleFormatted = this.textInterpreter.getPageTitleFormatted(page);
@@ -125,7 +122,7 @@ export class BikiParserV2 implements DocParser {
 
         const detailsMap = pageDetails.detailsMap;
 
-        const examples: string[] = [];
+        const examples: ExampleConfig[] = [];
         const exampleDetails = detailsMap.get(BikiPageDetailType.Example);
         if (exampleDetails) {
             exampleDetails.forEach((detail) => {
@@ -133,7 +130,7 @@ export class BikiParserV2 implements DocParser {
                 const exampleInMarkdown = this.textInterpreter.convertTextToMarkdown(
                     detail.content
                 );
-                examples.push(exampleInMarkdown);
+                examples.push({ text: exampleInMarkdown });
             });
         }
 
@@ -150,7 +147,7 @@ export class BikiParserV2 implements DocParser {
             detailsMap.get(BikiPageDetailType.ArgLocality)?.at(0)?.content
         );
 
-        const syntaxes: ParsedSyntax[] = [];
+        const syntaxes: SQFSyntaxConfig[] = [];
         // TODO: what happens for pages that have no syntaxes to parse? (BIS_fnc_createMenu for example)
         pageDetails.syntaxMap.forEach((bikiSyntax) => {
             const parsedSyntax = this.parseSyntax(bikiSyntax);
@@ -161,7 +158,6 @@ export class BikiParserV2 implements DocParser {
 
         return {
             documentation: {
-                name: titleFormatted,
                 description,
                 examples,
                 syntaxes,
@@ -180,8 +176,8 @@ export class BikiParserV2 implements DocParser {
     /* ----------------------------------------------------------------------------
         parseSyntax
     ---------------------------------------------------------------------------- */
-    private parseSyntax(bikiSyntax: BikiSyntax): ParsedSyntax | null {
-        const syntax: ParsedSyntax = { parameters: [] };
+    private parseSyntax(bikiSyntax: BikiSyntax): SQFSyntaxConfig | null {
+        const syntax: SQFSyntaxConfig = { parameters: [] };
         const syntaxExample = this.textInterpreter.convertTextToMarkdown(
             bikiSyntax.syntaxDetail.content
         );
@@ -703,7 +699,7 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         isPageCategory
     ---------------------------------------------------------------------------- */
-    public parseParameter(parameterContent: string): ParsedParameter {
+    public parseParameter(parameterContent: string): SQFParameterConfig {
         return {
             name: parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
             description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+).+/i)?.at(0) || null,

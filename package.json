@@ -18,8 +18,7 @@
         "parse:biki:commands": "ts-node ./Parsers/Parse.ts biki:commands",
         "parse:biki:functions": "ts-node ./Parsers/Parse.ts biki:functions",
         "parse:kiska": "ts-node ./Parsers/Parse.ts kiska",
-        "build": "npm run compile:docs && npm run build:script",
-        "build:script": "ts-node ./build-process/build",
+        "build": "ts-node ./build-process/build",
         "install:prod": "cd .out && npm ci --production",
         "compile:docs": "ts-node ./scripts/compile-docs.ts"
     },

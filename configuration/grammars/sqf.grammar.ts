@@ -1,7 +1,5 @@
 import { IRawGrammar, IRawRepository } from "vscode-textmate/release/rawGrammar";
-import { SQFGrammarType } from "./sqf.namespace";
-import { getSqfItems, getSqfItemsConfigs } from "./sqf.syntax";
-import { SQFItem } from "../../extension/server/src/types/providers.types";
+import { SQFGrammarType, SQFItemConfig, getSqfItemConfigs } from "./sqf.namespace";
 
 const accessModifiers: string[] = [];
 const manipulativeOperators: string[] = [];
@@ -21,13 +19,11 @@ const fileCompilers: string[] = [];
 const preprocessorCommands: string[] = [];
 const namespaceLiterals: string[] = [];
 
-const itemConfigs = getSqfItemsConfigs();
-itemConfigs.forEach((itemConfig) => {
+getSqfItemConfigs().forEach((itemConfig: SQFItemConfig) => {
     // format things like (!, #, +, |, etc...) as literals
-    // TODO: get itemName form itemConfig
-    itemName = itemName.replace(/(\W)/g, "\\$1");
+    const itemName = itemConfig.configuration.label.replace(/(\W)/g, "\\$1");
 
-    switch (itemConfig) {
+    switch (itemConfig.configuration.grammarType) {
         case SQFGrammarType.AccessModifier: {
             accessModifiers.push(itemName);
             break;

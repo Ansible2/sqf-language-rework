@@ -1,4 +1,4 @@
-import { SQFCompletionItemKind } from "../../../../configuration/grammars/sqf.namespace";
+import { CompletionItem } from "vscode-languageserver";
 import { IDocumentPosition } from "./textDocument.types";
 
 export enum DocumentationType {
@@ -6,8 +6,40 @@ export enum DocumentationType {
     HoverItem = 2,
 }
 
+export enum SQFCompletionItemKind {
+    Text,
+    Method,
+    Function,
+    Constructor,
+    Field,
+    Variable,
+    Class,
+    Interface,
+    Module,
+    Property,
+    Unit,
+    Value,
+    Enum,
+    Keyword,
+    Snippet,
+    Color,
+    File,
+    Reference,
+    Folder,
+    EnumMember,
+    Constant,
+    Struct,
+    Event,
+    Operator,
+    TypeParameter,
+}
+
+export enum SQFCompletionItemTag {
+    Deprecated = 1,
+}
+
 export interface SQFMarkupContent {
-    kind: string;
+    kind: "markdown" | "plaintext";
     value: string;
 }
 
@@ -35,12 +67,18 @@ export interface ICompletionParams {
     position: IDocumentPosition;
 }
 
-export interface SQFItem {
+type Modify<T, R> = Omit<T, keyof R> & R;
+export interface SQFItem
+    extends Modify<
+        CompletionItem,
+        { kind: SQFCompletionItemKind; documentation: SQFMarkupContent | null }
+    > {
     label: string;
     documentation: SQFMarkupContent | null;
     kind: SQFCompletionItemKind;
     filterText?: string;
     insertText?: string;
+    tags?: SQFCompletionItemTag[];
 }
 
 export interface ICompletionProvider {

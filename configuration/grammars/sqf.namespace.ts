@@ -1,3 +1,6 @@
+import { magicVariableSyntaxes } from "./syntaxes/magicVariables.syntax";
+import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
+
 export enum SQFEffectLocality {
     LOCAL = "Local Effect",
     GLOBAL = "Global Effect",
@@ -5,38 +8,6 @@ export enum SQFEffectLocality {
 export enum SQFArgumentLocality {
     LOCAL = "Local Argument",
     GLOBAL = "Global Argument",
-}
-
-export enum SQFCompletionItemKind {
-    Text,
-    Method,
-    Function,
-    Constructor,
-    Field,
-    Variable,
-    Class,
-    Interface,
-    Module,
-    Property,
-    Unit,
-    Value,
-    Enum,
-    Keyword,
-    Snippet,
-    Color,
-    File,
-    Reference,
-    Folder,
-    EnumMember,
-    Constant,
-    Struct,
-    Event,
-    Operator,
-    TypeParameter,
-}
-
-export enum SQFCompletionItemTag {
-    Deprecated = 1,
 }
 
 export interface IJSON<T> {
@@ -107,7 +78,6 @@ export enum SQFDataType {
     UnitLoadout = "(Unit-Loadout) ARRAY",
 }
 
-// TODO: there may still be some value in having this information
 export enum SQFGrammarType {
     Function = "function",
     AccessModifier = "access-modifier",
@@ -128,4 +98,61 @@ export enum SQFGrammarType {
     NamespaceLiteral = "namespace",
 }
 
-export interface SQFItemConfig {}
+export interface SQFParameterConfig {
+    name: string | null;
+    description: string | null;
+}
+
+export enum ExampleLanguage {
+    CPP = "cpp",
+    SQF = "sqf",
+}
+
+export interface ExampleConfig {
+    /** A markdown formatted set of code example code */
+    text: string;
+    /** A optional inclusion of language if simple markdown formatting of a code block ```<lang>...``` is desired to be automatically added by the server */
+    language?: ExampleLanguage;
+}
+
+export interface SQFSyntaxConfig {
+    /** A markdown formatted example of the basic syntax (e.g. "`isNull` entity") */
+    outline?: string;
+    /** A list of parameters and their explanations for this syntax */
+    parameters: SQFParameterConfig[];
+    /** A description of what the given syntax will return in markdown format */
+    returns?: string;
+}
+
+export interface SQFItemConfig {
+    documentation: {
+        /** An overview description of the item; should be formatted as markdown */
+        description: string;
+        /** Examples that should be markdown formatted */
+        examples: ExampleConfig[];
+        /** A guide to the particular syntaxes of item */
+        syntaxes: SQFSyntaxConfig[];
+        /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
+        argumentLocality?: SQFArgumentLocality;
+        /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
+        serverExecution?: boolean;
+        /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
+        effectLocality?: SQFEffectLocality;
+        /** When the pop-up documentation for the item is opened, if present, this link will be provided to open a webpage to the original docs */
+        documentationLink?: string;
+    };
+    configuration: {
+        /** The text that will be used for auto complete */
+        label: string;
+        /** Whether the item should be marked as deprecated in the completion menu and documentation */
+        deprecated?: boolean;
+        /** The type of item (function, control statement, preprocessor command, etc.) */
+        grammarType: SQFGrammarType;
+    };
+}
+
+const itemConfigMaps: IJSON<SQFItemConfig>[] = [preprocessorSyntaxes, magicVariableSyntaxes];
+
+export function getSqfItemConfigs(): SQFItemConfig[] {
+    return itemConfigMaps.flatMap((configMap) => Object.values(configMap));
+}
