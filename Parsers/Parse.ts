@@ -1,6 +1,6 @@
 import * as path from "path";
 import fs from "fs-extra";
-import { KiskaParser } from "./KISKA Parser/KiskaParser";
+// import { KiskaParser } from "./KISKA Parser/KiskaParser";
 import { BikiParserV2 } from "./BIKI Parser 2.0/BikiParserV2";
 import { DocParser } from "./SQFParser.namespace";
 
@@ -10,7 +10,7 @@ async function main() {
     let parser: DocParser | undefined = undefined;
     switch (parseType?.toLowerCase()) {
         case "kiska": {
-            parser = new KiskaParser();
+            // parser = new KiskaParser();
             break;
         }
         case "biki:commands": {
@@ -28,8 +28,9 @@ async function main() {
     try {
         const unparsedItems = await parser.getUnparsedItems();
         const itemConfigs = await parser.convertToItemConfigs(unparsedItems);
-        const outputFolder = "./Parsers/.output";
-        // TODO: write config to files
+        const outputFilePath = `./Parsers/.output/${parser.getOutputFileName()}.ts`;
+        const contents = `const stuff = ${JSON.stringify(itemConfigs, null, 4)}`;
+        fs.writeFileSync(outputFilePath, contents, { encoding: "utf-8" });
     } catch (error) {
         console.log("An error happened while parsing pages:");
         console.error(error);

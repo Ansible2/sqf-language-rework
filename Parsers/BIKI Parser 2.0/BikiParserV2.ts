@@ -356,10 +356,10 @@ class BikiTextInterpreter {
         getPageTitleFormatted
     ---------------------------------------------------------------------------- */
     public getPageTitleFormatted(page: UnparsedBikiPage): string {
-        let title = "";
-        if (typeof page.title === "boolean") {
+        let title = page.title;
+        if (typeof title === "boolean") {
             // ensuring it is not mistaken by JS for an actual bool value
-            title = new Boolean(page.title).toString();
+            title = new Boolean(title).toString();
         }
 
         title = title.trim();
@@ -367,7 +367,7 @@ class BikiTextInterpreter {
         if (mappedName) return mappedName;
 
         // xml does not preserve underscores but replaces them with spaces
-        const underscoredTitle = title.replace(/\ /g, "_");
+        const underscoredTitle = title.replaceAll(" ", "_");
         return underscoredTitle;
     }
 
@@ -583,6 +583,7 @@ class BikiTextInterpreter {
                 /(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi,
                 "```$2\n$4\n```",
             ],
+            [/<br>/gi, "\n"],
             // spoilers
             [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
             // Described Internal Hyperlinks
@@ -656,7 +657,7 @@ class BikiTextInterpreter {
             );
         }
 
-        return convertedText.trim();
+        return convertedText.replaceAll("<sqf>", "").replaceAll("</sqf>", "").trim();
     }
 
     /* ----------------------------------------------------------------------------
