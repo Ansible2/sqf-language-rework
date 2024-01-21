@@ -1,5 +1,5 @@
-import { magicVariableSyntaxes } from "./syntaxes/magicVariables.syntax";
-import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
+// import { magicVariableSyntaxes } from "./syntaxes/magicVariables.syntax";
+// import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
 
 export enum SQFEffectLocality {
     LOCAL = "Local Effect",
@@ -127,11 +127,11 @@ export interface SQFSyntaxConfig {
 export interface SQFItemConfig {
     documentation: {
         /** An overview description of the item; should be formatted as markdown */
-        description: string;
+        description?: string;
         /** Examples that should be markdown formatted */
-        examples: ExampleConfig[];
+        examples?: ExampleConfig[];
         /** A guide to the particular syntaxes of item */
-        syntaxes: SQFSyntaxConfig[];
+        syntaxes?: SQFSyntaxConfig[];
         /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
         argumentLocality?: SQFArgumentLocality;
         /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
@@ -151,7 +151,9 @@ export interface SQFItemConfig {
     };
 }
 
-const itemConfigMaps: IJSON<SQFItemConfig>[] = [preprocessorSyntaxes, magicVariableSyntaxes];
+const itemConfigMaps: IJSON<SQFItemConfig>[] = [
+    /*preprocessorSyntaxes, magicVariableSyntaxes*/
+];
 
 export function getSqfItemConfigs(): SQFItemConfig[] {
     return itemConfigMaps.flatMap((configMap) => Object.values(configMap));
