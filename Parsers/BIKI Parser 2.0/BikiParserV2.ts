@@ -291,35 +291,26 @@ class BikiTextInterpreter {
         getDetailType
     ---------------------------------------------------------------------------- */
     public getDetailType(detail: string): BikiPageDetailType {
-        const isSyntax = !!detail.match(/^\|s\d*\=/);
-        if (isSyntax) return BikiPageDetailType.Syntax;
+        if (!!detail.match(/^\|s\d*\=/)) return BikiPageDetailType.Syntax;
 
-        const isParameter = !!detail.match(/^\|p\d*=/);
-        if (isParameter) return BikiPageDetailType.Parameter;
+        if (!!detail.match(/^\|p\d*=/)) return BikiPageDetailType.Parameter;
 
-        const isServerExec = detail.toLowerCase().startsWith("|serverexec");
-        if (isServerExec) return BikiPageDetailType.ServerExecution;
+        if (detail.toLowerCase().startsWith("|serverexec"))
+            return BikiPageDetailType.ServerExecution;
 
-        const isReturnType = !!detail.match(/^\|r\d*=/);
-        if (isReturnType) return BikiPageDetailType.Return;
+        if (!!detail.match(/^\|r\d*=/)) return BikiPageDetailType.Return;
 
-        const isExample = !!detail.match(/^\|x\d*\=/);
-        if (isExample) return BikiPageDetailType.Example;
+        if (!!detail.match(/^\|x\d*\=/)) return BikiPageDetailType.Example;
 
-        const isDescription = detail.startsWith("|descr");
-        if (isDescription) return BikiPageDetailType.Description;
+        if (detail.startsWith("|descr")) return BikiPageDetailType.Description;
 
-        const isArgLocality = detail.startsWith("|arg");
-        if (isArgLocality) return BikiPageDetailType.ArgLocality;
+        if (detail.startsWith("|arg")) return BikiPageDetailType.ArgLocality;
 
-        const isEffectLocality = detail.startsWith("|eff");
-        if (isEffectLocality) return BikiPageDetailType.EffectLocality;
+        if (detail.startsWith("|eff")) return BikiPageDetailType.EffectLocality;
 
-        const isPageType = detail.startsWith("|type");
-        if (isPageType) return BikiPageDetailType.PageType;
+        if (detail.startsWith("|type")) return BikiPageDetailType.PageType;
 
-        const isFunctionExecution = !!detail.match(/^\|exec\s*\=/);
-        if (isFunctionExecution) return BikiPageDetailType.FunctionExecution;
+        if (!!detail.match(/^\|exec\s*\=/)) return BikiPageDetailType.FunctionExecution;
 
         return BikiPageDetailType.Unknown;
     }
