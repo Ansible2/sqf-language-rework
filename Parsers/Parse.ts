@@ -27,9 +27,15 @@ async function main() {
 
     try {
         const unparsedItems = await parser.getUnparsedItems();
-        const itemConfigs = await parser.convertToItemConfigs(unparsedItems);
-        const outputFilePath = `./Parsers/.output/${parser.getOutputFileName()}.ts`;
-        const contents = `const stuff = ${JSON.stringify(itemConfigs, null, 4)}`;
+        const itemConfigs = (await parser.convertToItemConfigs(unparsedItems)).sort((a, b) =>
+            a.configuration.label.toLowerCase().localeCompare(b.configuration.label.toLowerCase())
+        );
+        const outputFilePath = path.resolve(
+            __dirname,
+            `./.output/${parser.getOutputFileName()}.ts`
+        );
+        const contents = `export const configs = ${JSON.stringify(itemConfigs, null, 4)}`;
+        fs.ensureFileSync(outputFilePath);
         fs.writeFileSync(outputFilePath, contents, { encoding: "utf-8" });
     } catch (error) {
         console.log("An error happened while parsing pages:");
