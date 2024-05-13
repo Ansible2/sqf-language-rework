@@ -32,9 +32,13 @@ async function main() {
         );
         const outputFilePath = path.resolve(
             __dirname,
-            `./.output/${parser.getOutputFileName()}.ts`
+            `../configuration/grammars/syntaxes/${parser.getOutputFileName()}.ts`
         );
-        const contents = `export const configs = ${JSON.stringify(itemConfigs, null, 4)}`;
+        const contents = `import { SQFItemConfig } from "../sqf.namespace";\n\nexport const configs: SQFItemConfig[] = ${JSON.stringify(
+            itemConfigs,
+            null,
+            4
+        )}`;
         fs.ensureFileSync(outputFilePath);
         fs.writeFileSync(outputFilePath, contents, { encoding: "utf-8" });
     } catch (error) {
