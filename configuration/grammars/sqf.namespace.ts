@@ -1,4 +1,5 @@
 import { configs as sqfCommandConfigs } from "./syntaxes/commands.syntax";
+import { scriptPreprocessorCommands } from "./syntaxes/preprocessor.syntax";
 
 export enum SQFEffectLocality {
     LOCAL = "Local Effect",
@@ -154,5 +155,6 @@ export function getSqfItemConfigs(): SQFItemConfig[] {
     return [
         // Place any new syntax imports here
         ...sqfCommandConfigs,
+        ...scriptPreprocessorCommands,
     ];
 }

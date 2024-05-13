@@ -1,10 +1,4 @@
-import {
-    SQFGrammarType,
-    IJSON,
-    SQFDataType,
-    SQFItemConfig,
-    ExampleLanguage,
-} from "../sqf.namespace";
+import { ExampleLanguage, SQFGrammarType, SQFItemConfig } from "../sqf.namespace";
 
 export const scriptPreprocessorCommands: SQFItemConfig[] = [
     {
@@ -527,279 +521,228 @@ export const scriptPreprocessorCommands: SQFItemConfig[] = [
             grammarType: SQFGrammarType.PreprocessorCommand,
         },
     },
+    {
+        documentation: {
+            description: "Provides alternative code to `#if`, `#ifdef`, `#ifndef` checks.",
+            examples: [
+                {
+                    text: [
+                        "#ifndef NAME",
+                        `\t// ...text that will be used if "NAME" is -not- defined...`,
+                        "#else",
+                        `\t// ...text that will be used if "NAME" -is- defined...`,
+                        "#endif",
+                    ].join("\n"),
+                    language: ExampleLanguage.CPP,
+                },
+            ],
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##else",
+        },
+        configuration: {
+            label: "#else",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
+    {
+        documentation: {
+            description:
+                "This ends a conditional block as shown in the descriptions of `#ifdef` and `#ifndef` above.",
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##endif",
+        },
+        configuration: {
+            label: "#endif",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
+    {
+        documentation: {
+            description: "Undefine (delete) a macro previously set by the use of #define.",
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##undef",
+            examples: [{ text: "#undef NAME", language: ExampleLanguage.CPP }],
+        },
+        configuration: {
+            label: "#undef",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
+    {
+        documentation: {
+            description:
+                "Checks condition and processes content if condition returns 1. Skips content if it returns 0.",
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##if",
+            examples: [
+                {
+                    text: [
+                        "#if __A3_DEBUG__ // Check if game is started in debug mode",
+                        `#include "debug.hpp" // Include some file if debug mode is enabled`,
+                        "#endif",
+                    ].join("\n"),
+                    language: ExampleLanguage.CPP,
+                },
+            ],
+        },
+        configuration: {
+            label: "#if",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
+    {
+        documentation: {
+            description:
+                "A simple if-then construction to check whether a certain set of definitions has already been made. IFDEFs cannot be nested. The preprocessor will generate errors for all inner definitions if the outer definition doesn't exist.",
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##ifdef",
+            examples: [
+                {
+                    text: [
+                        "#ifdef NAME",
+                        `\t// ...text that will be used if "NAME" is defined...`,
+                        "#endif",
+                    ].join("\n"),
+                    language: ExampleLanguage.CPP,
+                },
+            ],
+        },
+        configuration: {
+            label: "#ifdef",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
+    {
+        documentation: {
+            description: "Same as `#ifdef`, but checks for absence of definition instead.",
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##ifndef",
+            examples: [
+                {
+                    text: [
+                        "#ifndef NAME",
+                        `\t// ...text that will be used if "NAME" isn't defined...`,
+                        "#endif",
+                    ].join("\n"),
+                    language: ExampleLanguage.CPP,
+                },
+            ],
+        },
+        configuration: {
+            label: "#ifndef",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
+    {
+        documentation: {
+            description: [
+                "Copies the code from a target file and pastes it where #include directive is.",
+                ``,
+                "```cpp",
+                `#include "file.hpp"`,
+                `// Brackets are equivalent to quotation marks and may be used in their place.`,
+                `#include <file.txt>`,
+                "```",
+                ``,
+                `Source directory is:`,
+                `- For any file without starting the include path with \\ - the file's current directory`,
+                "- When starting with \\ - the internal filesystem root (see Addon Development) or the Game's working directory (only with `-filePatching` enabled)",
+                ``,
+                `#### Path Definitions:`,
+                `A path beginning can be defined as follow:`,
+                ``,
+                `- drive (only with -filePatching enabled):`,
+                "```cpp",
+                `#include "D:\\file.txt"`,
+                "```",
+                ``,
+                "- PBO (keep in mind that in this case, if the PBO's file name will be changed, all `#include` referencing it will need to be updated):",
+                "```cpp",
+                `// Arma 3\\@myMod\\addons\\myAddon.pbo\\file.txt;`,
+                `#include "\\myMod\\myAddon\\file.txt"`,
+                "```",
+                ``,
+                "To move to parent directory use `..` (two dots) (Supported since Arma 3 1.50)",
+                "```cpp",
+                '#include "..\\file.sqf"',
+                "```",
+                "",
+                "Preprocessor does not support the use of macros for pre-defined file names.",
+                "```cpp",
+                '#define path "codestrip.txt"',
+                "#include path // this will cause an error",
+                "```",
+            ].join("\n"),
+            examples: [],
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands##include",
+        },
+        configuration: {
+            label: "#include",
+            grammarType: SQFGrammarType.PreprocessorCommand,
+        },
+    },
 ];
 
-export const preprocessorSyntaxes: IJSON<SQFItemConfig> = {
-    "#define": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Variable,
+export const configPreprocessorSyntaxes: SQFItemConfig[] = [
+    ...scriptPreprocessorCommands,
+    {
+        documentation: {
+            description: [
+                "With this Config Parser macro expressions can be evaluated, including previously assigned internal variables. Unlike `__EXEC`, `__EVAL` supports multiple parentheses:",
+                "",
+                "```cpp",
+                "w = __EVAL(safeZoneW - (5 * ((1 / (getResolution select 2)) * 1.25 * 4)));",
+                "```",
+                "",
+                '`__EVAL` macros must be assigned to a config property and the expression must be terminated with `;`. `__EVAL` can only return `Number` or `String`: . Any other type is represented as `String`, even Boolean type, which will result in either `"true"` or `"false"`.',
+                "",
+                "#### WARNING:",
+                "`__EVAL` does not like curly brackets `{}`; if code is needed in the expression, use `compile` `String` instead:",
+                "",
+                "```sqf",
+                "result = __EVAL(call { 123 }); // ERROR",
+                "```",
+                "",
+                "```sqf",
+                'result = __EVAL(call compile "123"); // OK',
+                "```",
+                "",
+                "#### CAUTION:",
+                "`__EXEC` and `__EVAL` macros are not suitable for SQF/SQS scripts but can be used in configs, including `description.ext`. Both global and local variables set in `__EXEC` are available in `__EVAL`",
+            ].join("\n"),
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands#__EVAL",
+        },
+        configuration: {
+            label: "__EVAL",
+            grammarType: SQFGrammarType.PreprocessorCommand,
         },
     },
-    "#include": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.String,
+    {
+        documentation: {
+            description: [
+                "This Config Parser macro allows to assign values to internal variables or just execute arbitrary code. The code inside `__EXEC` macros runs in `parsingNamespace` and variables defined in it will also be created in `parsingNamespace`. ",
+                "",
+                "The variables can then be used to create more complex macros:",
+                "```sqf",
+                "__EXEC(cat = 5 + 1;)",
+                "__EXEC(lev = cat - 2;)",
+                '_cat = parsingNamespace getVariable "cat"; // 6',
+                '_lev = parsingNamespace getVariable "lev"; // 4',
+                "```",
+                "",
+                "#### CAUTION:",
+                "Config Parser keywords cannot be used in preprocessor Macros, e.g `#if`!",
+                "",
+                "#### WARING:",
+                "`__EXEC` doesn't like round brackets `()` inside expressions. If grouping is needed, perhaps values could be calculated inside the brackets separately and assigned to local variables:",
+                "```cpp",
+                "__EXEC(a = (1+2);) // ERROR",
+                "```",
+                "",
+                "```cpp",
+                "__EXEC(_expr = 1+2;)",
+                "__EXEC(a = _expr;) // OK",
+                "```",
+            ].join("\n"),
+            documentationLink: "https://community.bistudio.com/wiki/PreProcessor_Commands#__EXEC",
+        },
+        configuration: {
+            label: "__EXEC",
+            grammarType: SQFGrammarType.PreprocessorCommand,
         },
     },
-    "#undef": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Variable,
-        },
-    },
-    "#if": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Number,
-        },
-    },
-    "#ifdef": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Variable,
-        },
-    },
-    "#ifndef": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Variable,
-        },
-    },
-    "#else": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-        },
-    },
-    "#endif": {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-        },
-    },
-    __LINE__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __FILE__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Text,
-        },
-    },
-    __has_include: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.String,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __DATE_ARR__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFArray.of(SQFDataType.Number),
-        },
-    },
-    __DATE_STR__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.String,
-        },
-    },
-    __DATE_STR_ISO8601__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.String,
-        },
-    },
-    __TIME__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Text,
-        },
-    },
-    __TIME_UTC__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Text,
-        },
-    },
-    __COUNTER__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-        },
-    },
-    __TIMESTAMP_UTC__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __COUNTER_RESET__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-        },
-    },
-    __RAND_INT8__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_UINT8__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_INT16__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_UINT16__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_INT32__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_UINT32__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_INT64__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __RAND_UINT64__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __GAME_VER__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Text,
-        },
-    },
-    __GAME_VER_MAJ__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Text,
-        },
-    },
-    __GAME_VER_MIN__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Text,
-        },
-    },
-    __GAME_BUILD__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __ARMA__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __ARMA3__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-    __A3_DEBUG__: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-};
-
-Object.keys(preprocessorSyntaxes).forEach((command: string) => {
-    const item = preprocessorSyntaxes[command];
-
-    if (!item.documentation) {
-        const docFolder = "./Preprocessor Commands";
-        item.documentation = docFolder;
-    }
-});
-
-export const configPreprocessorSyntaxes: IJSON<PreCompiledSQFItem> = {
-    ...preprocessorSyntaxes,
-    __EXEC: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Code,
-        },
-    },
-    __EVAL: {
-        grammarType: SQFGrammarType.PreprocessorCommand,
-        syntaxes: {
-            type: SQFSyntaxType.UnaryOperator,
-            rightOperandTypes: SQFDataType.Code,
-            returnTypes: [SQFDataType.Array, SQFDataType.Number, SQFDataType.String],
-        },
-    },
-};
-
-Object.keys(configPreprocessorSyntaxes).forEach((command: string) => {
-    const item = configPreprocessorSyntaxes[command];
-
-    if (!item.documentation) {
-        const docFolder = "./Preprocessor Commands";
-        item.documentation = docFolder;
-    }
-});
+];
