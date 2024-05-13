@@ -1,6 +1,3 @@
-import { configs as sqfCommandConfigs } from "./syntaxes/commands.syntax";
-import { scriptPreprocessorCommands } from "./syntaxes/preprocessor.syntax";
-
 export enum SQFEffectLocality {
     LOCAL = "Local Effect",
     GLOBAL = "Global Effect",
@@ -149,12 +146,4 @@ export interface SQFItemConfig {
         /** The type of item (function, control statement, preprocessor command, etc.) */
         grammarType: SQFGrammarType | string;
     };
-}
-
-export function getSqfItemConfigs(): SQFItemConfig[] {
-    return [
-        // Place any new syntax imports here
-        ...sqfCommandConfigs,
-        ...scriptPreprocessorCommands,
-    ];
 }

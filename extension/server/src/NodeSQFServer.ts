@@ -26,11 +26,8 @@ import {
     SQFCompletionItemKind,
     SQFCompletionItemTag,
 } from "./types/providers.types";
-import {
-    SQFGrammarType,
-    SQFItemConfig,
-    getSqfItemConfigs,
-} from "../../../configuration/grammars/sqf.namespace";
+import { SQFGrammarType, SQFItemConfig } from "../../../configuration/grammars/sqf.namespace";
+import { getSqfItemConfigs } from "../../../configuration/grammars/config";
 
 export class NodeSQFServer implements ISQFServer {
     public readonly hoverProvider: IHoverProvider;
@@ -168,7 +165,7 @@ export class NodeSQFServer implements ISQFServer {
     }
 
     private getCompletionItemKindFromGrammarType(
-        grammarType: SQFGrammarType
+        grammarType: SQFGrammarType | string
     ): SQFCompletionItemKind {
         switch (grammarType) {
             case SQFGrammarType.ReservedLiteral:
