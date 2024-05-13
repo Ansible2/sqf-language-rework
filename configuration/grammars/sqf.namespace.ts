@@ -1,5 +1,4 @@
-// import { magicVariableSyntaxes } from "./syntaxes/magicVariables.syntax";
-// import { preprocessorSyntaxes } from "./syntaxes/preprocessor.syntax";
+import { configs as sqfCommandConfigs } from "./syntaxes/commands.syntax";
 
 export enum SQFEffectLocality {
     LOCAL = "Local Effect",
@@ -112,7 +111,7 @@ export interface ExampleConfig {
     /** A markdown formatted set of code example code */
     text: string;
     /** A optional inclusion of language if simple markdown formatting of a code block ```<lang>...``` is desired to be automatically added by the server */
-    language?: ExampleLanguage;
+    language?: ExampleLanguage | string;
 }
 
 export interface SQFSyntaxConfig {
@@ -133,11 +132,11 @@ export interface SQFItemConfig {
         /** A guide to the particular syntaxes of item */
         syntaxes?: SQFSyntaxConfig[];
         /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
-        argumentLocality?: SQFArgumentLocality;
+        argumentLocality?: SQFArgumentLocality | string;
         /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
         serverExecution?: boolean;
         /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
-        effectLocality?: SQFEffectLocality;
+        effectLocality?: SQFEffectLocality | string;
         /** When the pop-up documentation for the item is opened, if present, this link will be provided to open a webpage to the original docs */
         documentationLink?: string;
     };
@@ -147,14 +146,13 @@ export interface SQFItemConfig {
         /** Whether the item should be marked as deprecated in the completion menu and documentation */
         deprecated?: boolean;
         /** The type of item (function, control statement, preprocessor command, etc.) */
-        grammarType: SQFGrammarType;
+        grammarType: SQFGrammarType | string;
     };
 }
 
-const itemConfigMaps: IJSON<SQFItemConfig>[] = [
-    /*preprocessorSyntaxes, magicVariableSyntaxes*/
-];
-
 export function getSqfItemConfigs(): SQFItemConfig[] {
-    return itemConfigMaps.flatMap((configMap) => Object.values(configMap));
+    return [
+        // Place any new syntax imports here
+        ...sqfCommandConfigs,
+    ];
 }
