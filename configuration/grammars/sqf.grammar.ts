@@ -114,9 +114,6 @@ function getSingleWordRegexSpecialStart(words: string | string[]): string {
     return `(?i)(?<=(\\s+|^))(${words})\\b`;
 }
 
-// TODO: something is wrong with either the grammar to the config now
-// the syntax highlighting does not work anymore for commands and numbers though the token inspector implies
-// that is works for other things like strings
 const grammarRepo: IRawRepository = {
     $base: {},
     $self: {},
@@ -284,7 +281,8 @@ const grammarRepo: IRawRepository = {
         name: "meta.expression.sqf",
         patterns: [
             { include: "#commands" },
-            { include: "#functions" },
+            // TODO: need to actually have functions parsed or else they mess up the regex
+            // { include: "#functions" },
             { include: "#var-local" },
             { include: "#var-global" },
         ],

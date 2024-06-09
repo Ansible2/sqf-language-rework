@@ -68,6 +68,7 @@ export class BikiParserV2 implements DocParser {
         const xmlPath = path.resolve(
             __dirname,
             "../Seed Files/BIS Seed Files/commands.MediaWiki.xml"
+            // "../Seed Files/Test Seed Files/EdgeCases.xml"
         );
         const xmlFileBuffer = fs.readFileSync(xmlPath);
         const xmlAsJSON = this.xmlParser.parse(xmlFileBuffer);
@@ -94,7 +95,7 @@ export class BikiParserV2 implements DocParser {
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
             } catch (error) {
-                console.error(unparsedPage.title, error);
+                console.error(`Error while parsing BIKI entry: "${unparsedPage.title}"`, error);
             }
         });
 
@@ -319,28 +320,28 @@ class BikiTextInterpreter {
         COMMAND_NAME_MAP
     ---------------------------------------------------------------------------- */
     private static readonly COMMAND_NAME_MAP: IJSON<string> = {
-        "a && b": "'&&'",
-        "a or b": "'||'",
-        "a hash b": "'#'",
-        "a != b": "'!='",
-        "! a": "'!'",
-        "a % b": "'%'",
-        "a less= b": "'<='",
-        "a greater b": "'>'",
-        "a ^ b": "'^'",
-        "a / b": "'/'",
-        "a * b": "'*'",
-        "a = b": "'='",
-        "a : b": "':'",
-        "a less b": "'<'",
-        "a == b": "'=='",
-        "a greater= b": "'>='",
-        "+": "'+'",
-        "-": "'-'",
-        false: "'false'",
-        true: "'true'",
-        toString: "'toString'",
-        "config greater greater name": "'>>'",
+        "a && b": "&&",
+        "a or b": "||",
+        "a hash b": "#",
+        "a != b": "!=",
+        "! a": "!",
+        "a % b": "%",
+        "a less= b": "<=",
+        "a greater b": ">",
+        "a ^ b": "^",
+        "a / b": "/",
+        "a * b": "*",
+        "a = b": "=",
+        "a : b": ":",
+        "a less b": "<",
+        "a == b": "==",
+        "a greater= b": ">=",
+        // "+": "'+'",
+        // "-": "'-'",
+        // false: "'false'",
+        // true: "'true'",
+        toString: "toString",
+        "config greater greater name": ">>",
     };
 
     /* ----------------------------------------------------------------------------
@@ -707,6 +708,7 @@ class BikiTextInterpreter {
         foreach: SQFGrammarType.ControlStatement,
         or: SQFGrammarType.ConditionOperator,
         and: SQFGrammarType.ConditionOperator,
+        toString: SQFGrammarType.Command,
         "a && b": SQFGrammarType.ConditionOperator,
         "a or b": SQFGrammarType.ConditionOperator,
         true: SQFGrammarType.BooleanLiteral,
@@ -716,6 +718,13 @@ class BikiTextInterpreter {
         "a == b": SQFGrammarType.ComparisonOperator,
         "! a": SQFGrammarType.ConditionOperator,
         not: SQFGrammarType.ConditionOperator,
+        localnamespace: SQFGrammarType.NamespaceLiteral,
+        currentnamespace: SQFGrammarType.NamespaceLiteral,
+        missionnamespace: SQFGrammarType.NamespaceLiteral,
+        missionprofilenamespace: SQFGrammarType.NamespaceLiteral,
+        parsingnamespace: SQFGrammarType.NamespaceLiteral,
+        profilenamespace: SQFGrammarType.NamespaceLiteral,
+        uinamespace: SQFGrammarType.NamespaceLiteral,
         controlnull: SQFGrammarType.NullLiteral,
         displaynull: SQFGrammarType.NullLiteral,
         diaryrecordnull: SQFGrammarType.NullLiteral,
