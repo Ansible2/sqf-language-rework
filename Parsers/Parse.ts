@@ -14,7 +14,11 @@ async function main() {
             break;
         }
         case "biki:commands": {
-            parser = new BikiParserV2();
+            parser = new BikiParserV2("commands");
+            break;
+        }
+        case "biki:functions": {
+            parser = new BikiParserV2("functions");
             break;
         }
         default: {
@@ -26,7 +30,20 @@ async function main() {
     if (!parser) return;
 
     try {
-        const unparsedItems = await parser.getUnparsedItems();
+        const SEED_FILE_PATH = path.resolve(__dirname, "./Seed Files", parser.SEED_FILE_NAME);
+
+        const collectLatestDocument = true;
+        if (collectLatestDocument) {
+            console.log("Getting latest seed file...");
+            const seedFileContent = await parser.getLatestSeedFile();
+            console.log("Writing file to", SEED_FILE_PATH, "...");
+            fs.writeFileSync(SEED_FILE_PATH, seedFileContent);
+            console.log("Completed file write!");
+        }
+
+        console.log("Collecting unparsed items...");
+        const unparsedItems = await parser.getUnparsedItems(SEED_FILE_PATH);
+        console.log("Converting items to configs...");
         const itemConfigs = (await parser.convertToItemConfigs(unparsedItems)).sort((a, b) =>
             a.configuration.label.toLowerCase().localeCompare(b.configuration.label.toLowerCase())
         );
@@ -39,11 +56,14 @@ async function main() {
             null,
             4
         )}`;
+        console.log("Writing ouput file to", outputFilePath, "...");
         fs.ensureFileSync(outputFilePath);
         fs.writeFileSync(outputFilePath, contents, { encoding: "utf-8" });
+        console.log("----------SUCCESS!----------");
     } catch (error) {
         console.log("An error happened while parsing pages:");
         console.error(error);
+        console.log("----------FAIL----------");
     }
 }
 

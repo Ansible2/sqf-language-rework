@@ -10,7 +10,6 @@ import {
     SQFParameterConfig,
     SQFSyntaxConfig,
 } from "../../configuration/grammars/sqf.namespace";
-import path from "path";
 import fs from "fs";
 
 interface BikiPage {
@@ -58,19 +57,42 @@ interface BikiSyntax {
 export class BikiParserV2 implements DocParser {
     private xmlParser = new XMLParser();
     private textInterpreter = new BikiTextInterpreter();
+    public readonly SEED_FILE_NAME;
 
-    constructor() {}
+    constructor(private parseType: "functions" | "commands") {
+        if (parseType === "functions") {
+            this.SEED_FILE_NAME = "commands.MediaWiki.xml";
+        } else if (parseType === "commands") {
+            this.SEED_FILE_NAME = "functions.MediaWiki.xml";
+        } else {
+            this.SEED_FILE_NAME = "UNDEFINED_BIKI_PARSE_TYPE";
+        }
+    }
+
     /* ----------------------------------------------------------------------------
         getUnparsedItems
     ---------------------------------------------------------------------------- */
-    async getUnparsedItems(): Promise<UnparsedBikiPage[]> {
-        // const functionsPath = path.resolve(__dirname,"./Seed Files/Biki Seed Files/functions.MediaWiki.xml");
-        const xmlPath = path.resolve(
-            __dirname,
-            "../Seed Files/BIS Seed Files/commands.MediaWiki.xml"
-            // "../Seed Files/Test Seed Files/EdgeCases.xml"
-        );
-        const xmlFileBuffer = fs.readFileSync(xmlPath);
+    async getLatestSeedFile(): Promise<string> {
+        let latestSeedFile = "";
+        // TODO:
+        if (this.parseType === "functions") {
+        } else if (this.parseType === "commands") {
+        }
+        // curl --location 'https://community.bistudio.com/wiki/Special:Export/' \
+        // --form 'catname="Arma 3: Scripting Commands"' \
+        // --form 'title="Special:Export/"' \
+        // --form 'addcat="Add"' \
+        // --form 'pages=""' \
+        // --form 'curonly="1"' \
+        // --form 'wpEditToken="+\\"'
+        return latestSeedFile;
+    }
+
+    /* ----------------------------------------------------------------------------
+        getUnparsedItems
+    ---------------------------------------------------------------------------- */
+    async getUnparsedItems(seedFilePath: string): Promise<UnparsedBikiPage[]> {
+        const xmlFileBuffer = fs.readFileSync(seedFilePath);
         const xmlAsJSON = this.xmlParser.parse(xmlFileBuffer);
         const wikiPages: BikiPage[] = xmlAsJSON.mediawiki.page;
 

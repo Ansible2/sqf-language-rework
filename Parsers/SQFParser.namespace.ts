@@ -14,8 +14,12 @@ export interface UnparsedItem {
     text: string;
 }
 
+type SeedFileContent = string;
+
 export interface DocParser {
-    getUnparsedItems(): Promise<UnparsedItem[]>;
+    readonly SEED_FILE_NAME: string;
+    getUnparsedItems(seedFilePath: string): Promise<UnparsedItem[]>;
     convertToItemConfigs(pages: UnparsedItem[]): Promise<SQFItemConfig[]>;
     getOutputFileName(): string;
+    getLatestSeedFile(): Promise<SeedFileContent>;
 }
