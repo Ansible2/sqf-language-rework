@@ -1,1 +1,0 @@
-This keyword gets replaced with the CURRENT file being processed.
