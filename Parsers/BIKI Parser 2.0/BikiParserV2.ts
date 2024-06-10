@@ -61,9 +61,9 @@ export class BikiParserV2 implements DocParser {
 
     constructor(private parseType: "functions" | "commands") {
         if (parseType === "functions") {
-            this.SEED_FILE_NAME = "commands.MediaWiki.xml";
-        } else if (parseType === "commands") {
             this.SEED_FILE_NAME = "functions.MediaWiki.xml";
+        } else if (parseType === "commands") {
+            this.SEED_FILE_NAME = "commands.MediaWiki.xml";
         } else {
             this.SEED_FILE_NAME = "UNDEFINED_BIKI_PARSE_TYPE";
         }
@@ -73,19 +73,49 @@ export class BikiParserV2 implements DocParser {
         getUnparsedItems
     ---------------------------------------------------------------------------- */
     async getLatestSeedFile(): Promise<string> {
-        let latestSeedFile = "";
-        // TODO:
+        let bikiCategory: string = "";
         if (this.parseType === "functions") {
+            // TODO:
+            bikiCategory = "";
         } else if (this.parseType === "commands") {
+            bikiCategory = "Arma 3: Scripting Commands";
+        } else {
+            throw new Error("Unknown parseType", this.parseType);
         }
-        // curl --location 'https://community.bistudio.com/wiki/Special:Export/' \
-        // --form 'catname="Arma 3: Scripting Commands"' \
-        // --form 'title="Special:Export/"' \
-        // --form 'addcat="Add"' \
-        // --form 'pages=""' \
-        // --form 'curonly="1"' \
-        // --form 'wpEditToken="+\\"'
-        return latestSeedFile;
+
+        const formData = new FormData();
+        formData.append("catname", bikiCategory);
+        formData.append("title", "Special:Export/");
+        formData.append("addcat", "Add");
+        formData.append("pages", "");
+        formData.append("curonly", "1");
+        formData.append("wpEditToken", "+\\");
+
+        const BIKI_EXPORT_URL = "https://community.bistudio.com/wiki/Special:Export/";
+        const BIKI_EXPORT_METHOD = "POST";
+        const getPageNamesResponse = await fetch(BIKI_EXPORT_URL, {
+            body: formData,
+            method: BIKI_EXPORT_METHOD,
+        }).then((response) => response.text());
+
+        const namesCollection = getPageNamesResponse
+            .match(/(?<=id='ooui-php-2'.*?>)[\s\S]+?(?=<\/)/i)
+            ?.at(0);
+        if (!namesCollection) {
+            throw new Error("Empty names collection!");
+        }
+
+        const pages = new Set<string>();
+        for (const name of namesCollection.split("\n")) {
+            if (name.startsWith("Category:")) continue;
+            pages.add(encodeURIComponent(name.trim()));
+        }
+
+        formData.set("pages", Array.from(pages).join("%0D%0A"));
+        return await fetch(BIKI_EXPORT_URL, {
+            body: formData,
+            method: BIKI_EXPORT_METHOD,
+        }).then((response) => response.text());
     }
 
     /* ----------------------------------------------------------------------------
