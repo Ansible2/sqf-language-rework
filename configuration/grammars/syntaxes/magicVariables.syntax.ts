@@ -1,70 +1,39 @@
-import { SQFGrammarType, SQFDataType, IJSON, SQFItemConfig } from "../sqf.namespace";
+import { SQFGrammarType, SQFItemConfig } from "../sqf.namespace";
 
-const getBISWikiLink = (itemName: string): string => {
-    const convertUrlMap: IJSON<string> = {
-        _this: "Magic_Variables#this",
-        _x: "Magic_Variables#x",
-        _y: "Magic_Variables#y",
-        _exception: "Magic_Variables#exception",
-        _forEachIndex: "Magic_Variables#forEachIndex",
-        _thisArgs: "Magic_Variables#thisArgs",
-    };
-
-    if (itemName in Object.keys(convertUrlMap)) {
-        itemName = convertUrlMap[itemName];
-    }
-
-    return `https://community.bistudio.com/wiki/${itemName}`;
-};
-
-const magicVariableSyntaxes: IJSON<SQFItemConfig> = {
-    _this: {
-        documentation:
-            "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
-        grammarType: SQFGrammarType.ReservedLiteral,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Any,
+export const magicVariableSyntaxes: SQFItemConfig[] = [
+    {
+        documentation: {
+            description:
+                "Is used to make arguments of a script call (call, exec, execVM, spawn) visible and accessible to the script, also used in Event Handlers to pass appropriate params.",
+            examples: [],
+            documentationLink: "https://community.bistudio.com/wiki/Magic_Variables#this",
+        },
+        configuration: {
+            label: "_this",
+            grammarType: SQFGrammarType.ReservedLiteral,
         },
     },
-    _x: {
-        documentation:
-            "Represents the current element during a loop with: `apply`, `count`, `configClasses`, `configProperties`, `findIf`, `forEach`, `select`.",
-        grammarType: SQFGrammarType.ReservedLiteral,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Any,
+    {
+        documentation: {
+            description:
+                "Represents the current element during a loop with: `apply`, `count`, `configClasses`, `configProperties`, `findIf`, `forEach`, `select`.",
+            examples: [],
+            documentationLink: "https://community.bistudio.com/wiki/Magic_Variables#x",
+        },
+        configuration: {
+            label: "_x",
+            grammarType: SQFGrammarType.ReservedLiteral,
         },
     },
-    _y: {
-        documentation:
-            "Iterating over a HashMap with `forEach` will return the key as `_x` and the value as `_y`.",
-        grammarType: SQFGrammarType.ReservedLiteral,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.HashMapKey,
+    {
+        documentation: {
+            description: "Represents the (zero-based) index of a `forEach` `_x` element.",
+            examples: [],
+            documentationLink: "https://community.bistudio.com/wiki/Magic_Variables#forEachIndex",
+        },
+        configuration: {
+            label: "_forEachIndex",
+            grammarType: SQFGrammarType.ReservedLiteral,
         },
     },
-    _forEachIndex: {
-        documentation: "Represents the (zero-based) index of a `forEach` `_x` element.",
-        grammarType: SQFGrammarType.ReservedLiteral,
-        syntaxes: {
-            type: SQFSyntaxType.NularOperator,
-            returnTypes: SQFDataType.Number,
-        },
-    },
-};
-
-Object.keys(magicVariableSyntaxes).forEach((command: string) => {
-    const item = magicVariableSyntaxes[command];
-    if (!item.getDocLink) {
-        item.getDocLink = getBISWikiLink;
-    }
-
-    if (!item.documentation) {
-        const magicVariableDocsFolder = "./Magic Variables";
-        item.documentation = magicVariableDocsFolder;
-    }
-});
-
-export { magicVariableSyntaxes };
+];
