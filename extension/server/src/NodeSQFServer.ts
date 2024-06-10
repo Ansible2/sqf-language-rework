@@ -160,8 +160,34 @@ export class NodeSQFServer implements ISQFServer {
     }
 
     private convertDocumentation(itemConfig: SQFItemConfig): string {
+        const document: string[] = [];
+        const itemDocumentation = itemConfig.documentation;
+
+        const documentationLink = itemDocumentation.documentationLink;
+        if (documentationLink) {
+            document.push(`*[Open Documentation](${documentationLink})*`);
+        }
+
+        let headerLine = [];
+        if (itemDocumentation.argumentLocality) {
+            headerLine.push(`[${itemDocumentation.argumentLocality}]`);
+        }
+        if (itemDocumentation.effectLocality) {
+            headerLine.push(`[${itemDocumentation.effectLocality}]`);
+        }
+        if (itemDocumentation.serverExecution) {
+            headerLine.push("[Server Executed]");
+        }
+        if (headerLine.length) {
+            document.push(headerLine.join(" "));
+        }
+
+        if (itemDocumentation.description) {
+            document.push(itemDocumentation.description);
+        }
+
         // TODO: implement doc creation
-        return "EXAMPLE DOC";
+        return document.join("\n\n");
     }
 
     private getCompletionItemKindFromGrammarType(
@@ -179,9 +205,6 @@ export class NodeSQFServer implements ISQFServer {
             case SQFGrammarType.ConditionOperator: {
                 return SQFCompletionItemKind.Operator;
             }
-            case SQFGrammarType.Function: {
-                return SQFCompletionItemKind.Function;
-            }
             case SQFGrammarType.ManipulativeOperator: {
                 return SQFCompletionItemKind.Operator;
             }
@@ -192,9 +215,10 @@ export class NodeSQFServer implements ISQFServer {
             case SQFGrammarType.PropertyAccessor: {
                 return SQFCompletionItemKind.Property;
             }
+            case SQFGrammarType.Function:
             case SQFGrammarType.Command:
             default: {
-                return SQFCompletionItemKind.Method;
+                return SQFCompletionItemKind.Function;
             }
         }
     }

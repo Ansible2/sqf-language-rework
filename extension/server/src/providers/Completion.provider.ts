@@ -73,7 +73,6 @@ export class CompletionProvider implements ICompletionProvider {
         this.otherDocumentWordsSet.add(parsedWord);
 
         const otherWordsInDocument: SQFItem[] = [];
-
         this.getWordsNotExcluded(textDocument.getText(), this.completionItemNamesSet).forEach(
             (otherWord: string) => {
                 if (this.otherDocumentWordsSet.has(otherWord)) return;
