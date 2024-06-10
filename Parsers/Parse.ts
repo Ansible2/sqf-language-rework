@@ -4,11 +4,31 @@ import fs from "fs-extra";
 import { BikiParserV2 } from "./BIKI Parser 2.0/BikiParserV2";
 import { DocParser } from "./SQFParser.namespace";
 
-// https://community.bistudio.com/wiki/Special:Export/
-const parseType = process.argv[2];
+let parseType = "";
+let command = "parse";
+process.argv.slice(2).forEach((argLine) => {
+    const [arg, value] = argLine.split("=");
+    switch (arg) {
+        case "--command": {
+            command = value;
+            break;
+        }
+        case "--parseType": {
+            parseType = value;
+            break;
+        }
+        default: {
+            console.log("Unknown parameter passed:", argLine);
+            break;
+        }
+    }
+});
+command = command.toLowerCase();
+parseType = parseType.toLowerCase();
+
 async function main() {
     let parser: DocParser | undefined = undefined;
-    switch (parseType?.toLowerCase()) {
+    switch (parseType) {
         case "kiska": {
             // parser = new KiskaParser();
             break;
@@ -32,7 +52,7 @@ async function main() {
     try {
         const SEED_FILE_PATH = path.resolve(__dirname, "./Seed Files", parser.SEED_FILE_NAME);
 
-        const collectLatestDocument = true;
+        const collectLatestDocument = command === "update";
         if (collectLatestDocument) {
             console.log("Getting latest seed file...");
             const seedFileContent = await parser.getLatestSeedFile();

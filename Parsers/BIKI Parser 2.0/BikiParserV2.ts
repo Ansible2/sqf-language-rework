@@ -75,8 +75,7 @@ export class BikiParserV2 implements DocParser {
     async getLatestSeedFile(): Promise<string> {
         let bikiCategory: string = "";
         if (this.parseType === "functions") {
-            // TODO:
-            bikiCategory = "";
+            bikiCategory = "Arma 3: Functions";
         } else if (this.parseType === "commands") {
             bikiCategory = "Arma 3: Scripting Commands";
         } else {
@@ -87,7 +86,6 @@ export class BikiParserV2 implements DocParser {
         formData.append("catname", bikiCategory);
         formData.append("title", "Special:Export/");
         formData.append("addcat", "Add");
-        formData.append("pages", "");
         formData.append("curonly", "1");
         formData.append("wpEditToken", "+\\");
 
@@ -98,6 +96,7 @@ export class BikiParserV2 implements DocParser {
             method: BIKI_EXPORT_METHOD,
         }).then((response) => response.text());
 
+        // ooui-php-2 is the id of the textarea input that the pages are loaded to
         const namesCollection = getPageNamesResponse
             .match(/(?<=id='ooui-php-2'.*?>)[\s\S]+?(?=<\/)/i)
             ?.at(0);
@@ -111,7 +110,9 @@ export class BikiParserV2 implements DocParser {
             pages.add(encodeURIComponent(name.trim()));
         }
 
-        formData.set("pages", Array.from(pages).join("%0D%0A"));
+        formData.append("pages", Array.from(pages).join("\n"));
+        formData.delete("addcat");
+        formData.delete("catname");
         return await fetch(BIKI_EXPORT_URL, {
             body: formData,
             method: BIKI_EXPORT_METHOD,
