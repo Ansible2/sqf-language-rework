@@ -159,7 +159,13 @@ export class BikiParserV2 implements DocParser {
         getOutputFileName
     ---------------------------------------------------------------------------- */
     getOutputFileName(): string {
-        return "commands.syntax";
+        if (this.parseType === "commands") {
+            return "biki.commands.syntax";
+        } else if (this.parseType === "functions") {
+            return "biki.functions.syntax";
+        } else {
+            throw new Error("Unknown parseType", this.parseType);
+        }
     }
 
     /* ----------------------------------------------------------------------------
