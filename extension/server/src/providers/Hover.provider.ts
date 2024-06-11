@@ -11,7 +11,6 @@ export class HoverProvider implements IHoverProvider {
     /* ----------------------------------------------------------------------------
 		onHover
 	---------------------------------------------------------------------------- */
-    // TODO: hovering on some commands (missionNamespace, setTimeMultiplier, and null literal) just does nothing
     public onHover(params: ISqfHoverParams): ISqfHover {
         const documentUri = params.textDocument.uri;
         const emptyHoverReturn = {} as ISqfHover;

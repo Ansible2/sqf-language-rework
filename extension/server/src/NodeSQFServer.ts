@@ -122,7 +122,7 @@ export class NodeSQFServer implements ISQFServer {
         const itemConfigs = getSqfItemConfigs();
         itemConfigs.forEach((itemConfig: SQFItemConfig) => {
             const item = this.convertItemConfig(itemConfig);
-            map.set(item.label, item);
+            map.set(item.label.toLowerCase(), item);
         });
 
         return map;
