@@ -659,7 +659,7 @@ class BikiTextInterpreter {
         const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
         const convertedCodeExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
-            const matchString = match.input;
+            const matchString = match[0];
             if (!matchString) continue;
             convertedCodeExamples.push(matchString);
             convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
