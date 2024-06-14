@@ -218,7 +218,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns [ config](https://community.bistudio.com/wiki/Config%20) entry with given name (alias of [[[a / b]]](https://community.bistudio.com/wiki/%5B%5Ba%20%2F%20b%5D%5D), slightly faster but with [lower precedence](https://community.bistudio.com/wiki/Operators%23Order%20of%20Precedence))",
+            "description": "Returns [ config](https://community.bistudio.com/wiki/Config%20) entry with given name (alias of [a / b](https://community.bistudio.com/wiki/a%20%2F%20b), slightly faster but with [lower precedence](https://community.bistudio.com/wiki/Operators%23Order%20of%20Precedence))",
             "examples": [
                 {
                     "text": "```sqf\nconfigFile >> \"CfgVehicles\";\n```"
@@ -367,7 +367,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Make a unit perform an action. See [[[:Category:Actions]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AActions%5D%5D) for action names and syntaxes.\n**Arma**: 3|\nSince {{arma3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n}}\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action [\"GetInDriver\", car]; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.",
+            "description": "Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/%3ACategory%3AActions) for action names and syntaxes.\n**Arma**: 3|\nSince {{arma3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n}}\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action [\"GetInDriver\", car]; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.",
             "examples": [
                 {
                     "text": "```sqf\nplayer action [\"SitDown\", player];\n```"
@@ -438,7 +438,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns `Array` containing [dikCodes](https://community.bistudio.com/wiki/DIK_KeyCodes) of keys, buttons and combos assigned to the given user action. Action names could be found in config class ControllerSchemes or [user action names](https://community.bistudio.com/wiki/%3ACategory%3AKey%20Actions) or user profile, for example:\n```cpp\nkeyWatch[] = { 24 };\n```\nTo retrieve the value, use the property name without 'key':\n\n```sqf\nactionKeys \"Watch\"; // 24\n```\n\nIn addition, some of the actions are also listed in here: [[[inputAction/actions]]](https://community.bistudio.com/wiki/%5B%5BinputAction%2Factions%5D%5D)",
+            "description": "Returns `Array` containing [dikCodes](https://community.bistudio.com/wiki/DIK_KeyCodes) of keys, buttons and combos assigned to the given user action. Action names could be found in config class ControllerSchemes or [user action names](https://community.bistudio.com/wiki/%3ACategory%3AKey%20Actions) or user profile, for example:\n```cpp\nkeyWatch[] = { 24 };\n```\nTo retrieve the value, use the property name without 'key':\n\n```sqf\nactionKeys \"Watch\"; // 24\n```\n\nIn addition, some of the actions are also listed in here: [inputAction/actions](https://community.bistudio.com/wiki/inputAction%2Factions)",
             "examples": [
                 {
                     "text": "```sqf\n_arrayOfNumbers = actionKeys \"ReloadMagazine\";\n```"
@@ -472,7 +472,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Gives a broken down version of `actionKeys` return. Returns an `Array` containing the breakdowns of the [dikCodes](https://community.bistudio.com/wiki/DIK_KeyCodes) of keys, buttons and combos assigned to the given user action.\n\nAction names can be found in config class ControllerSchemes or [user action names](https://community.bistudio.com/wiki/%3ACategory%3AKey%20Actions) or user profile (see {{Link|#Example 1}}).\n\nIn addition, some of the actions are also listed here: [[[inputAction/actions]]](https://community.bistudio.com/wiki/%5B%5BinputAction%2Factions%5D%5D)\n\nThe Key Device can be one of several types:\n{{Columns|3|\n* `**\"KEYBOARD\"**`\n* `**\"MOUSE_BUTTON\"**`\n* `**\"MOUSE_AXIS\"**`\n* `**\"JOYSTICK_BUTTON\"**`\n* `**\"JOYSTICK_AXIS\"**`\n* `**\"JOYSTICK_POV\"**`\n* `**\"XINPUT\"**` - (Xbox) Controller Input\n* `**\"TRACKER\"**` - Motion Tracking (TrackIR, Tobii etc)\n}}",
+            "description": "Gives a broken down version of `actionKeys` return. Returns an `Array` containing the breakdowns of the [dikCodes](https://community.bistudio.com/wiki/DIK_KeyCodes) of keys, buttons and combos assigned to the given user action.\n\nAction names can be found in config class ControllerSchemes or [user action names](https://community.bistudio.com/wiki/%3ACategory%3AKey%20Actions) or user profile (see {{Link|#Example 1}}).\n\nIn addition, some of the actions are also listed here: [inputAction/actions](https://community.bistudio.com/wiki/inputAction%2Factions)\n\nThe Key Device can be one of several types:\n{{Columns|3|\n* `**\"KEYBOARD\"**`\n* `**\"MOUSE_BUTTON\"**`\n* `**\"MOUSE_AXIS\"**`\n* `**\"JOYSTICK_BUTTON\"**`\n* `**\"JOYSTICK_AXIS\"**`\n* `**\"JOYSTICK_POV\"**`\n* `**\"XINPUT\"**` - (Xbox) Controller Input\n* `**\"TRACKER\"**` - Motion Tracking (TrackIR, Tobii etc)\n}}",
             "examples": [
                 {
                     "text": "To retrieve the following key's data, use the property name without 'key':\n```cpp\nkeyWatch[] = { 24 };\n```\n\n```sqf\nactionKeysEx \"Watch\"; // [[[24, \"KEYBOARD\"], [], false]]\n```"
@@ -486,7 +486,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "userAction",
-                            "description": "`String` - user action name (see [[[inputAction/actions]]](https://community.bistudio.com/wiki/%5B%5BinputAction%2Factions%5D%5D))"
+                            "description": "`String` - user action name (see [inputAction/actions](https://community.bistudio.com/wiki/inputAction%2Factions))"
                         }
                     ],
                     "outline": "`actionKeysEx` userAction",
@@ -528,7 +528,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`actionKeysImages` [userAction, maxKeys]",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/actionKeysImages"
@@ -807,7 +807,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`activeTitleEffectParams` layer",
-                    "returns": "`Array` in format [type, effect, speed, showInMap] or [], where:\n* type: `String` - type of effect, can be `**\"OBJ\"}}, {{hl|\"RSC\"}} or {{hl|\"TXT\"**`\n* effect: `String` - [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D) (`**\"PLAIN\"}}, {{hl|\"BLACK OUT\"**` etc)\n* speed: `Number` - effect speed multiplier\n* showInMap: `Boolean` - `true` if effect is available over map"
+                    "returns": "`Array` in format [type, effect, speed, showInMap] or [], where:\n* type: `String` - type of effect, can be `**\"OBJ\"}}, {{hl|\"RSC\"}} or {{hl|\"TXT\"**`\n* effect: `String` - [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type) (`**\"PLAIN\"}}, {{hl|\"BLACK OUT\"**` etc)\n* speed: `Number` - effect speed multiplier\n* showInMap: `Boolean` - `true` if effect is available over map"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/activeTitleEffectParams"
@@ -838,7 +838,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "to",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) - entity to which entities will be connected to"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) - entity to which entities will be connected to"
                         }
                     ],
                     "outline": "`add3DENConnection` [type, from, to]",
@@ -955,7 +955,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add backpack(s) to the cargo space of vehicle. Classname list of available backpacks is [here](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks).\nFor a list of possible backpacks, see:\n* **(Arma 2)** [[[Arma 2: Operation Arrowhead: Backpacks]]](https://community.bistudio.com/wiki/%5B%5BArma%202%3A%20Operation%20Arrowhead%3A%20Backpacks%5D%5D)\n* **(Arma 3)** [[[Arma 3: CfgVehicles Equipment]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20CfgVehicles%20Equipment%5D%5D) (starting with `**B_**`)\n**Arma**: 3|In {{arma3, arguments for this command are local {{Icon|localArgument|32}}. For the global variant, see `addBackpackCargoGlobal`.}}",
+            "description": "Add backpack(s) to the cargo space of vehicle. Classname list of available backpacks is [here](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks).\nFor a list of possible backpacks, see:\n* **(Arma 2)** [Arma 2: Operation Arrowhead: Backpacks](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks)\n* **(Arma 3)** [Arma 3: CfgVehicles Equipment](https://community.bistudio.com/wiki/Arma%203%3A%20CfgVehicles%20Equipment) (starting with `**B_**`)\n**Arma**: 3|In {{arma3, arguments for this command are local {{Icon|localArgument|32}}. For the global variant, see `addBackpackCargoGlobal`.}}",
             "examples": [
                 {
                     "text": "```sqf\nthis addBackpackCargo [\"TK_RPG_Backpack_EP1\", 2];\n```"
@@ -1013,7 +1013,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "packClassName",
-                            "description": "`String` - see the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - see the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "count",
@@ -1412,7 +1412,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "code",
-                            "description": "`Code` or `String` - code that should be executed when the Event Handler fires; executed in `missionNamespace` by default. Several [[[Magic Variables]]](https://community.bistudio.com/wiki/%5B%5BMagic%20Variables%5D%5D) are available:"
+                            "description": "`Code` or `String` - code that should be executed when the Event Handler fires; executed in `missionNamespace` by default. Several [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) are available:"
                         }
                     ],
                     "outline": "target `addEventHandler` [type, code]",
@@ -1944,7 +1944,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "magazineName",
-                            "description": "`String` - magazine name. See the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - magazine name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "unitName",
@@ -1952,7 +1952,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "magazineName",
-                            "description": "`String` - magazine name. See the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - magazine name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "ammoCount",
@@ -2028,7 +2028,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "magazineName",
-                            "description": "`String` - magazine name. See [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - magazine name. See [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "count",
@@ -2065,7 +2065,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "magazineName",
-                            "description": "`String` - magazine name. See [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - magazine name. See [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "count",
@@ -2131,7 +2131,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "magazineName",
-                            "description": "`String` - magazine class name. See the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - magazine class name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "count",
@@ -2213,7 +2213,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "ammoCount",
@@ -2301,7 +2301,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [[[Arma 3: Mission Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Mission%20Event%20Handlers%5D%5D)",
+            "description": "Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers)",
             "examples": [
                 {
                     "text": "```sqf\n_id = addMissionEventHandler [\"PlayerDisconnected\", { systemChat str _this }];\n```"
@@ -2565,7 +2565,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "target",
-                            "description": "`Object`, `Group` or [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "`Object`, `Group` or [Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "code",
@@ -2630,7 +2630,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "resourceN",
@@ -2783,7 +2783,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add given member to given team. Effect is local, unless both member and team are local to PC on which command is executed, then effect is global.\n\n\n\n The same [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) can be member of several different `teams` at the same time.",
+            "description": "Add given member to given team. Effect is local, unless both member and team are local to PC on which command is executed, then effect is global.\n\n\n\n The same [Team Member](https://community.bistudio.com/wiki/Team%20Member) can be member of several different `teams` at the same time.",
             "examples": [
                 {
                     "text": "```sqf\n_team addTeamMember _teamMember;\n```"
@@ -2794,11 +2794,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "member",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "team `addTeamMember` member",
@@ -2925,7 +2925,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "keyName",
-                            "description": "`String` - action key name - see [[[inputAction/actions]]](https://community.bistudio.com/wiki/%5B%5BinputAction%2Factions%5D%5D)"
+                            "description": "`String` - action key name - see [inputAction/actions](https://community.bistudio.com/wiki/inputAction%2Factions)"
                         },
                         {
                             "name": "event",
@@ -2950,7 +2950,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds a specified vehicle for use by a specified AI led group.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Adds a specified vehicle for use by a specified AI led group.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_grp addVehicle _vehicle;\n```"
@@ -3084,7 +3084,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "weapon",
-                            "description": "`String` - weapon class name. See the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - weapon class name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         }
                     ],
                     "outline": "object `addWeapon` weapon",
@@ -3117,7 +3117,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "weaponName",
-                            "description": "`String` - weapon name. See [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values"
+                            "description": "`String` - weapon name. See [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values"
                         },
                         {
                             "name": "count",
@@ -3154,7 +3154,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "weaponName",
-                            "description": "`String` - weapon name. See the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values"
+                            "description": "`String` - weapon name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values"
                         },
                         {
                             "name": "count",
@@ -3294,7 +3294,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "weaponName",
-                            "description": "`String` - weapon name. See the topic [[[:Category:Weapons]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AWeapons%5D%5D) for reference about possible values."
+                            "description": "`String` - weapon name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
                         },
                         {
                             "name": "count",
@@ -3333,7 +3333,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `addWeaponTurret` [weaponName, turretPath]",
@@ -3485,7 +3485,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`agent` teamMember",
@@ -3511,7 +3511,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`agents`",
-                    "returns": "`Array` of [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)s"
+                    "returns": "`Array` of [Team Member](https://community.bistudio.com/wiki/Team%20Member)s"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/agents"
@@ -3698,7 +3698,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Gets the side of an airport, set by `setAirportSide`. Default side is `sideUnknown`.\n**NOTE**: See [[[Arma: Airport IDs]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20Airport%20IDs%5D%5D) for a list of airport ids.",
+            "description": "Gets the side of an airport, set by `setAirportSide`. Default side is `sideUnknown`.\n**NOTE**: See [Arma: Airport IDs](https://community.bistudio.com/wiki/Arma%3A%20Airport%20IDs) for a list of airport ids.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _airportSide = airportSide 0;\n```"
@@ -3814,7 +3814,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`all3DENEntities`",
-                    "returns": "`Array` in format [[[Array of Eden Entities]]](https://community.bistudio.com/wiki/%5B%5BArray%20of%20Eden%20Entities%5D%5D)"
+                    "returns": "`Array` in format [Array of Eden Entities](https://community.bistudio.com/wiki/Array%20of%20Eden%20Entities)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/all3DENEntities"
@@ -3826,7 +3826,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of all layers that have currently active title effect. Numbers equal to or greater than 0 represent cut layers, where as -1 represents title layer (see [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)). Named layers are represented by their respective index.**NOTE**: Effects created with `titleText`, `titleRsc` and `titleObj` commands do not have a numbered layer, so they are represented as -1 layer in the result. Effects created with `cutText`, `cutRsc` and `cutObj` are created either on layer 0, if no layer is specified, or on the given layer, if the layer index is specified, so they are represented by the layer index.",
+            "description": "Returns a list of all layers that have currently active title effect. Numbers equal to or greater than 0 represent cut layers, where as -1 represents title layer (see [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)). Named layers are represented by their respective index.**NOTE**: Effects created with `titleText`, `titleRsc` and `titleObj` commands do not have a numbered layer, so they are represented as -1 layer in the result. Effects created with `cutText`, `cutRsc` and `cutObj` are created either on layer 0, if no layer is specified, or on the given layer, if the layer index is specified, so they are represented by the layer index.",
             "examples": [
                 {
                     "text": "```sqf\ncutText [\"Hello World!\" ,\"PLAIN\", 2];\nhint str allActiveTitleEffects; // [0]\n```"
@@ -4067,7 +4067,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "person `allDiaryRecords` subject",
-                    "returns": "`Array` - all diary records for the given subject in the following format: [id, title, text, icon, task, taskState, showTitle, date, record], where:\n* id: `Number` - record id\n* title: `String` - record title\n* text: `String` - record text\n* icon: `String` - record icon\n* task: `Task` - record task\n* taskState: `String` - record task state\n* showTitle: `Boolean` - `true` if tile is shown\n* date: `Array` - `date` in format [year, month, day, hour, minute, second] \n* record: [[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D) - record reference"
+                    "returns": "`Array` - all diary records for the given subject in the following format: [id, title, text, icon, task, taskState, showTitle, date, record], where:\n* id: `Number` - record id\n* title: `String` - record title\n* text: `String` - record text\n* icon: `String` - record icon\n* task: `Task` - record task\n* taskState: `String` - record task state\n* showTitle: `Boolean` - `true` if tile is shown\n* date: `Array` - `date` in format [year, month, day, hour, minute, second] \n* record: [Diary Record](https://community.bistudio.com/wiki/Diary%20Record) - record reference"
                 }
             ],
             "argumentLocality": "Global Argument",
@@ -4609,7 +4609,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set if the units given in the list are allowed to enter vehicles.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Set if the units given in the list are allowed to enter vehicles.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n[_soldier1, _soldier2] allowGetIn true;\n```"
@@ -4817,7 +4817,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`allTurrets` [vehicle, includeFFV]",
-                    "returns": "`Array` of `Array`s format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                    "returns": "`Array` of `Array`s format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/allTurrets"
@@ -4916,7 +4916,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "namespace",
-                            "description": "`Namespace`, `Object`, `Group`, `Task`, `Location`, [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D), {{GVI|arma3|2.02"
+                            "description": "`Namespace`, `Object`, `Group`, `Task`, `Location`, [Team Member](https://community.bistudio.com/wiki/Team%20Member), {{GVI|arma3|2.02"
                         }
                     ],
                     "outline": "`allVariables` namespace",
@@ -5124,7 +5124,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Activates given object animation. Animation is defined in CfgModels [animations](https://community.bistudio.com/wiki/Model%20Config%23Animations) class. Class names listed in CfgVehicles [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) bound to \"Proxy\" controller can also be animated with `animate` command (see [[[Arma 3: createVehicle/vehicles]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createVehicle%2Fvehicles%5D%5D)).\n**Arma**: 3|\n* It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimised for multiplayer\n* Since {{arma3 v1.58 animation names can be obtained with `animationNames`}}\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
+            "description": "Activates given object animation. Animation is defined in CfgModels [animations](https://community.bistudio.com/wiki/Model%20Config%23Animations) class. Class names listed in CfgVehicles [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) bound to \"Proxy\" controller can also be animated with `animate` command (see [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)).\n**Arma**: 3|\n* It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimised for multiplayer\n* Since {{arma3 v1.58 animation names can be obtained with `animationNames`}}\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
             "examples": [
                 {
                     "text": "```sqf\n_building animate [\"maindoor\", 1];\n```"
@@ -5218,7 +5218,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Animates a door on a vehicle. Animation is defined in config file in `CfgVehicles` -> [ AnimationSources](https://community.bistudio.com/wiki/Model_Config%23AnimationSources). Wanted animation phase is set with phase param. This command works only on animation sources with \"door\" controller. Door_L in the example below can be animated with `animateDoor` but not CargoRamp_Open: `**heli `animateDoor` [\"Door_L\", 1];}}**IMPORTANT**:  `animateDoor` {{hl|phase param will be rounded: anything >0.5 will be rounded to 1 and <{{=}}0.5 will be rounded to 0. Therefore it is not possible to open a door half way with this command**`  \n\n```cpp\nclass AnimationSources\n{\n\tclass CargoRamp_Open\n\t{\n\t\tsource = \"user\";\n\t\tanimPeriod = 5;\n\t\tinitPhase = 0;\n\t};\n\tclass Door_L\n\t{\n\t\tsource = \"door\";\n\t\tanimPeriod = 1.6;\n\t};\n};\n```\nTo animate doors or other sources that have \"user\" controller, use `animate` command, or even better, `animateSource` (recommended). Sources with \"hit\" controller can be animated with `setHitPointDamage` command applied to the name contained in hitpoint property. For availability of animation sources and their controller types see: [[[Arma 3: createVehicle/vehicles]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createVehicle%2Fvehicles%5D%5D)",
+            "description": "Animates a door on a vehicle. Animation is defined in config file in `CfgVehicles` -> [ AnimationSources](https://community.bistudio.com/wiki/Model_Config%23AnimationSources). Wanted animation phase is set with phase param. This command works only on animation sources with \"door\" controller. Door_L in the example below can be animated with `animateDoor` but not CargoRamp_Open: `**heli `animateDoor` [\"Door_L\", 1];}}**IMPORTANT**:  `animateDoor` {{hl|phase param will be rounded: anything >0.5 will be rounded to 1 and <{{=}}0.5 will be rounded to 0. Therefore it is not possible to open a door half way with this command**`  \n\n```cpp\nclass AnimationSources\n{\n\tclass CargoRamp_Open\n\t{\n\t\tsource = \"user\";\n\t\tanimPeriod = 5;\n\t\tinitPhase = 0;\n\t};\n\tclass Door_L\n\t{\n\t\tsource = \"door\";\n\t\tanimPeriod = 1.6;\n\t};\n};\n```\nTo animate doors or other sources that have \"user\" controller, use `animate` command, or even better, `animateSource` (recommended). Sources with \"hit\" controller can be animated with `setHitPointDamage` command applied to the name contained in hitpoint property. For availability of animation sources and their controller types see: [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)",
             "examples": [
                 {
                     "text": "```sqf\nTaru animateDoor [\"Door_1_source\", 1];\n```"
@@ -5307,13 +5307,13 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Process an animation of the object. If `animate` uses class name from `CfgModels` _Animations_, `animateSource` uses name defined by the _source_ property. AnimationSources can animate multiple `animate` Animations. AnimationSource is defined in [CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles)' [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) (see [[[Arma 3: createVehicle/vehicles]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createVehicle%2Fvehicles%5D%5D)).\n\n**Arma**: 3| It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimized for MP\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
+            "description": "Process an animation of the object. If `animate` uses class name from `CfgModels` _Animations_, `animateSource` uses name defined by the _source_ property. AnimationSources can animate multiple `animate` Animations. AnimationSource is defined in [CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles)' [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) (see [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)).\n\n**Arma**: 3| It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimized for MP\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
             "examples": [
                 {
                     "text": "```sqf\nhouse animateSource [\"Door_1_source\", 1, true];\n```"
                 },
                 {
-                    "text": "Create UGV and manipulate its turret (Not possible to do with `animate` command. See [[[Arma 3: createVehicle/vehicles]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createVehicle%2Fvehicles%5D%5D) for reference)\n\n```sqf\n\nugv = \"B_UGV_01_F\" createVehicle (player getRelPos [5, 0]);\nugv addAction [\"Show Turret\",\n{\n\tugv animateSource [\"Turret\", 0];\n\tugv animateSource [\"MainTurret\", rad 0, true];\n\tugv animateSource [\"MainGun\", rad 0, true];\n}];\nugv addAction [\"Hide Turret\",\t{ ugv animateSource [\"Turret\", 1] }];\nugv addAction [\"Turret Left\",\t{ ugv animateSource [\"MainTurret\",\t rad 90] }];\nugv addAction [\"Turret Right\",\t{ ugv animateSource [\"MainTurret\",\t-rad 90] }];\nugv addAction [\"Turret Up\",\t\t{ ugv animateSource [\"MainGun\",\t\t rad 30] }];\nugv addAction [\"Turret Down\",\t{ ugv animateSource [\"MainGun\",\t\t-rad 20] }];\n\n```"
+                    "text": "Create UGV and manipulate its turret (Not possible to do with `animate` command. See [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles) for reference)\n\n```sqf\n\nugv = \"B_UGV_01_F\" createVehicle (player getRelPos [5, 0]);\nugv addAction [\"Show Turret\",\n{\n\tugv animateSource [\"Turret\", 0];\n\tugv animateSource [\"MainTurret\", rad 0, true];\n\tugv animateSource [\"MainGun\", rad 0, true];\n}];\nugv addAction [\"Hide Turret\",\t{ ugv animateSource [\"Turret\", 1] }];\nugv addAction [\"Turret Left\",\t{ ugv animateSource [\"MainTurret\",\t rad 90] }];\nugv addAction [\"Turret Right\",\t{ ugv animateSource [\"MainTurret\",\t-rad 90] }];\nugv addAction [\"Turret Up\",\t\t{ ugv animateSource [\"MainGun\",\t\t rad 30] }];\nugv addAction [\"Turret Down\",\t{ ugv animateSource [\"MainGun\",\t\t-rad 20] }];\n\n```"
                 },
                 {
                     "text": "```sqf\n\nbarGate animateSource [\"Door_1_sound_source\", 1]; // Open\nbarGate animateSource [\"Door_1_sound_source\", 0]; // Close\n\n```"
@@ -5765,7 +5765,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Assign a unit as cargo of a vehicle. Used together with `orderGetIn` to order a unit to get in as cargo into a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the cargo space of the vehicle.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Assign a unit as cargo of a vehicle. Used together with `orderGetIn` to order a unit to get in as cargo into a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the cargo space of the vehicle.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 assignAsCargo _truck;\n[_soldier1] orderGetIn true;\n```"
@@ -5798,7 +5798,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Assigns the character to a specific cargo / passenger index of the given vehicle.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Assigns the character to a specific cargo / passenger index of the given vehicle.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\nplayer assignAsCargoIndex [myHelicopter, 1];\n```"
@@ -5833,7 +5833,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Assign a unit as commander of a vehicle. Used together with `orderGetIn` to order subordinate units to get in as commander of a specific vehicle.\nBefore usage of this command a subordinate unit has not got the option to get into the commander place of the vehicle.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Assign a unit as commander of a vehicle. Used together with `orderGetIn` to order subordinate units to get in as commander of a specific vehicle.\nBefore usage of this command a subordinate unit has not got the option to get into the commander place of the vehicle.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 assignAsCommander _tank;\n[_soldier1] orderGetIn true;\n```"
@@ -5866,7 +5866,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Assign a unit as driver of a vehicle. Used together with `orderGetIn` to order subordinate units to get in as driver of a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the driver place of the vehicle.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Assign a unit as driver of a vehicle. Used together with `orderGetIn` to order subordinate units to get in as driver of a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the driver place of the vehicle.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 assignAsDriver _tank;\n[_soldier1] orderGetIn true;\n```"
@@ -5899,7 +5899,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Assign a unit as gunner of a vehicle. Used together with `orderGetIn` to order subordinate units to get in as gunner of a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the gunner place of the vehicle.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Assign a unit as gunner of a vehicle. Used together with `orderGetIn` to order subordinate units to get in as gunner of a specific vehicle. Before usage of this command a subordinate unit has not got the option to get into the gunner place of the vehicle.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 assignAsGunner _tank;\n[_soldier1] orderGetIn true;\n```"
@@ -5932,7 +5932,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Assigns the soldier to turret.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Assigns the soldier to turret.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\nplayer assignAsTurret [BIS_vehicle, [0,1]];\n```"
@@ -5951,7 +5951,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "unit `assignAsTurret` [vehicle, turretPath]",
@@ -6229,7 +6229,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the vehicle to which a unit is assigned, usually with _assignAsXXX_ command. If no vehicle is assigned `objNull` is returned.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Returns the vehicle to which a unit is assigned, usually with _assignAsXXX_ command. If no vehicle is assigned `objNull` is returned.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_vehicle = assignedVehicle player;\n```"
@@ -6260,7 +6260,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the role a unit is assigned to within its assigned vehicle.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Returns the role a unit is assigned to within its assigned vehicle.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_RoleArray = assignedVehicleRole player;\n```"
@@ -6413,7 +6413,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "target",
-                            "description": "`Object` - airport object. For example an aircraft carrier, see [[[Arma 3: Dynamic Airport Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Airport%20Configuration%5D%5D)"
+                            "description": "`Object` - airport object. For example an aircraft carrier, see [Arma 3: Dynamic Airport Configuration](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Airport%20Configuration)"
                         }
                     ],
                     "outline": "plane `assignToAirport` target",
@@ -7264,7 +7264,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the position of the original (loaded) center of an object in model coordinates. Despite its name, it has nothing to do with `boundingBox` or `boundingBoxReal`, it returns offset where `**[0, 0, 0]**` was [[[Object Builder]]](https://community.bistudio.com/wiki/%5B%5BObject%20Builder%5D%5D) / [[[Oxygen 2]]](https://community.bistudio.com/wiki/%5B%5BOxygen%202%5D%5D) when model was created.",
+            "description": "Returns the position of the original (loaded) center of an object in model coordinates. Despite its name, it has nothing to do with `boundingBox` or `boundingBoxReal`, it returns offset where `**[0, 0, 0]**` was [Object Builder](https://community.bistudio.com/wiki/Object%20Builder) / [Oxygen 2](https://community.bistudio.com/wiki/Oxygen%202) when model was created.",
             "examples": [
                 {
                     "text": "```sqf\n_center = boundingCenter TruckOne;\n```"
@@ -7625,7 +7625,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the action assigned to a control of the currently active user dialog. Can be used for buttons and active texts. Read [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs and controls.",
+            "description": "Returns the action assigned to a control of the currently active user dialog. Can be used for buttons and active texts. Read [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs and controls.",
             "examples": [
                 {
                     "text": "```sqf\n\nbuttonSetAction [100, { player exec \"reply.sqs\" }]\n_action = buttonAction 100; // Returns { player exec \"reply.sqs\" }\n\n```"
@@ -7657,7 +7657,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Feature|obsolete|Use `ctrlAddEventHandler` instead.}}\nSet the action of a control of the currently active user dialog. The script statement is executed on button release and `**_this**` is available, but contains \"\"; See [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs. Works with:\n* `CT_BUTTON`\n* `CT_XBUTTON`\n* `CT_ACTIVETEXT`\n* `CT_SHORTCUTBUTTON`",
+            "description": "{{Feature|obsolete|Use `ctrlAddEventHandler` instead.}}\nSet the action of a control of the currently active user dialog. The script statement is executed on button release and `**_this**` is available, but contains \"\"; See [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs. Works with:\n* `CT_BUTTON`\n* `CT_XBUTTON`\n* `CT_ACTIVETEXT`\n* `CT_SHORTCUTBUTTON`",
             "examples": [
                 {
                     "text": "```sqf\nbuttonSetAction [100, \"player exec \"\"reply.sqs\"\"\"];\n```"
@@ -7707,10 +7707,10 @@ export const configs: SQFItemConfig[] = [
             "description": "**Prior to Arma 3** it returns if the player is currently playing in cadet or veteran mode.",
             "examples": [
                 {
-                    "text": "[[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D): <sqs>? (cadetMode) : _AIsoldier setSkill 0.1</sqs>"
+                    "text": "[SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax): <sqs>? (cadetMode) : _AIsoldier setSkill 0.1</sqs>"
                 },
                 {
-                    "text": "[[[SQF Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQF%20Syntax%5D%5D): \n```sqf\nif (cadetMode) then { _AIsoldier setSkill 0.1 };\n```"
+                    "text": "[SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax): \n```sqf\nif (cadetMode) then { _AIsoldier setSkill 0.1 };\n```"
                 }
             ],
             "syntaxes": [
@@ -7957,10 +7957,10 @@ export const configs: SQFItemConfig[] = [
             "description": "Smoothly conduct the changes that were assigned to a camera within the given time. If the time is set to zero, the changes are done immediately. For `**camPrepareXXX**` commands use `camCommitPrepared`.",
             "examples": [
                 {
-                    "text": "[[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D):\n<sqs>\n; create a camera object\n_cam = \"camera\" camCreate [5600,4800,10]\n_cam camSetTarget player\n_cam cameraEffect [\"internal\", \"BACK\"]\n_cam camCommit 0\n\n; smoothly move the camera to its new position in 6 seconds\n_cam camSetPos [5680,4720,20]\n_cam camCommit 6\n@camCommitted _cam\n\n; proceed\n</sqs>"
+                    "text": "[SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax):\n<sqs>\n; create a camera object\n_cam = \"camera\" camCreate [5600,4800,10]\n_cam camSetTarget player\n_cam cameraEffect [\"internal\", \"BACK\"]\n_cam camCommit 0\n\n; smoothly move the camera to its new position in 6 seconds\n_cam camSetPos [5680,4720,20]\n_cam camCommit 6\n@camCommitted _cam\n\n; proceed\n</sqs>"
                 },
                 {
-                    "text": "[[[SQF Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQF%20Syntax%5D%5D):\n\n```sqf\n\nprivate \"_cam\";\n\n// create a camera object\n_cam = \"camera\" camCreate [position player select 0, position player select 1, 2];\n_cam camSetTarget player;\n_cam cameraEffect [\"internal\", \"BACK\"];\n_cam camCommit 0;\n\n// smoothly move the camera to its new position in 6 seconds\n_cam camSetPos [position player select 0, (position player select 1) + 10, 20];\n_cam camCommit 6;\nwaitUntil { camCommitted _cam; };\n\n```"
+                    "text": "[SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax):\n\n```sqf\n\nprivate \"_cam\";\n\n// create a camera object\n_cam = \"camera\" camCreate [position player select 0, position player select 1, 2];\n_cam camSetTarget player;\n_cam cameraEffect [\"internal\", \"BACK\"];\n_cam camCommit 0;\n\n// smoothly move the camera to its new position in 6 seconds\n_cam camSetPos [position player select 0, (position player select 1) + 10, 20];\n_cam camCommit 6;\nwaitUntil { camCommitted _cam; };\n\n```"
                 }
             ],
             "syntaxes": [
@@ -9655,7 +9655,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`case` b",
-                    "returns": "[[[Switch Type]]](https://community.bistudio.com/wiki/%5B%5BSwitch%20Type%5D%5D)"
+                    "returns": "[Switch Type](https://community.bistudio.com/wiki/Switch%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/case"
@@ -9994,7 +9994,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         },
                         {
                             "name": "attribute",
@@ -10025,7 +10025,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entities",
-                            "description": "`Array` of [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "`Array` of [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`clear3DENInventory`  entities",
@@ -11494,7 +11494,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This command is an alias for `**`compile`(Final) (prefixHeader + `preprocessFileLineNumbers` path)**`. See description of `preprocessFileLineNumbers` for more details.\n\nIn addition, this command can also compile [[[SQF Bytecode]]](https://community.bistudio.com/wiki/%5B%5BSQF%20Bytecode%5D%5D) files, which can reduce compilation time.",
+            "description": "This command is an alias for `**`compile`(Final) (prefixHeader + `preprocessFileLineNumbers` path)**`. See description of `preprocessFileLineNumbers` for more details.\n\nIn addition, this command can also compile [SQF Bytecode](https://community.bistudio.com/wiki/SQF%20Bytecode) files, which can reduce compilation time.",
             "examples": [
                 {
                     "text": "```sqf\n\ncompileScript [\"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\"];\n// has the same functionality as \ncompile preprocessFileLineNumbers \"a3\\props_f_enoch\\military\\equipment\\scripts\\meteo.sqf\";\n\n```"
@@ -11556,7 +11556,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) by joining the given [ structured](https://community.bistudio.com/wiki/Structured%20Text%20) or [ plain](https://community.bistudio.com/wiki/String%20) text arguments.",
+            "description": "Creates a [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) by joining the given [ structured](https://community.bistudio.com/wiki/Structured%20Text%20) or [ plain](https://community.bistudio.com/wiki/String%20) text arguments.",
             "examples": [
                 {
                     "text": "```sqf\nhint composeText [\"Image: \", image \"\\a3\\Data_f\\Flags\\flag_Altis_co.paa\"];\n```"
@@ -11570,11 +11570,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "arguments",
-                            "description": "`Array` of `String` and/or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - use [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) where necessary (see {{Link|#Example 2}})"
+                            "description": "`Array` of `String` and/or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - use [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) where necessary (see {{Link|#Example 2}})"
                         }
                     ],
                     "outline": "`composeText` arguments",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/composeText"
@@ -11948,7 +11948,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Connects the client to the provided server.\n**NOTE**: \n* only works on the [Main Menu](https://community.bistudio.com/wiki/Arma%203%3A%20Main%20Menu).\n* must be executed from [ UI context](https://community.bistudio.com/wiki/isUIContext%20), such as _onButtonDown_ or similar events (see [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D)).",
+            "description": "Connects the client to the provided server.\n**NOTE**: \n* only works on the [Main Menu](https://community.bistudio.com/wiki/Arma%203%3A%20Main%20Menu).\n* must be executed from [ UI context](https://community.bistudio.com/wiki/isUIContext%20), such as _onButtonDown_ or similar events (see [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers)).",
             "examples": [
                 {
                     "text": "```sqf\nconnectToServer [\"192.168.0.2\", 2302, \"test\"];\n```"
@@ -12470,7 +12470,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Create new [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D). Used for creating individual entities; to create a [composition](https://community.bistudio.com/wiki/Eden_Editor%3A_Composition) (e.g., infantry squad), use `create3DENComposition` and to create a [layer](https://community.bistudio.com/wiki/Eden_Editor%3A_Layer) use `add3DENLayer`.\n\nThis is the only way to add new editable entities to an [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) scenario. Other 'create' commands like `createVehicle` or `createUnit` will still work, but the resulting entity will not be editable.",
+            "description": "Create new [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity). Used for creating individual entities; to create a [composition](https://community.bistudio.com/wiki/Eden_Editor%3A_Composition) (e.g., infantry squad), use `create3DENComposition` and to create a [layer](https://community.bistudio.com/wiki/Eden_Editor%3A_Layer) use `add3DENLayer`.\n\nThis is the only way to add new editable entities to an [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) scenario. Other 'create' commands like `createVehicle` or `createUnit` will still work, but the resulting entity will not be editable.",
             "examples": [
                 {
                     "text": "```sqf\ndude1 = create3DENEntity [\"Object\", \"B_Soldier_F\", screenToWorld [0.5, 0.5]];\n```"
@@ -12525,7 +12525,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "group `create3DENEntity` [mode, class, position]",
-                    "returns": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D)"
+                    "returns": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/create3DENEntity"
@@ -12666,7 +12666,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "record",
-                            "description": "`Object`, `Task` or [[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)"
+                            "description": "`Object`, `Task` or [Diary Record](https://community.bistudio.com/wiki/Diary%20Record)"
                         },
                         {
                             "name": "text",
@@ -12742,7 +12742,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "player `createDiaryRecord` [subject, textInfo, task, taskState, showTitle]",
-                    "returns": "[[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)"
+                    "returns": "[Diary Record](https://community.bistudio.com/wiki/Diary%20Record)"
                 }
             ],
             "argumentLocality": "Local Argument",
@@ -12901,7 +12901,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds a point guarded by the given side (scripted way of adding equivalent of \"GUARDED BY\" trigger in [Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor)). A closest AI group in the given side with assigned \"GUARD\" waypoint will attempt to secure this guard point. The actual guarded position is determined via the following rules:\n* Given \"position\" is always considered. It could be `Object`, `Group`, [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction). In every case, z coordinate will be ignored and point will be placed on nearest surface.\n* If \"objectMapID\" is not negative, the position of the object with the given ID is used (Overrides \"position\"). -1 to ignore this argument. z of the object position will be intact.\n* If the given \"vehicle\" is valid, the position of the vehicle is extracted and guarded (Overrides both \"position\" and \"objectMapID\"). `objNull` to ignore. z of the vehicle position will be intact.\nTo be used with \"GUARD\" [waypoint](https://community.bistudio.com/wiki/setWaypointType).\n**NOTE**: To know how does the \"GUARD\" waypoint work, see [[[Waypoint:Guard]]](https://community.bistudio.com/wiki/%5B%5BWaypoint%3AGuard%5D%5D).",
+            "description": "Adds a point guarded by the given side (scripted way of adding equivalent of \"GUARDED BY\" trigger in [Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor)). A closest AI group in the given side with assigned \"GUARD\" waypoint will attempt to secure this guard point. The actual guarded position is determined via the following rules:\n* Given \"position\" is always considered. It could be `Object`, `Group`, [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction). In every case, z coordinate will be ignored and point will be placed on nearest surface.\n* If \"objectMapID\" is not negative, the position of the object with the given ID is used (Overrides \"position\"). -1 to ignore this argument. z of the object position will be intact.\n* If the given \"vehicle\" is valid, the position of the vehicle is extracted and guarded (Overrides both \"position\" and \"objectMapID\"). `objNull` to ignore. z of the vehicle position will be intact.\nTo be used with \"GUARD\" [waypoint](https://community.bistudio.com/wiki/setWaypointType).\n**NOTE**: To know how does the \"GUARD\" waypoint work, see [Waypoint:Guard](https://community.bistudio.com/wiki/Waypoint%3AGuard).",
             "examples": [
                 {
                     "text": "```sqf\ncreateGuardedPoint [east, [0,0], -1, vehicle player];\n```"
@@ -13119,7 +13119,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "channel",
-                            "description": "`Number` - (Optional, default -1) the marker channel - see [[[Channel IDs]]](https://community.bistudio.com/wiki/%5B%5BChannel%20IDs%5D%5D) (for multiplayer)"
+                            "description": "`Number` - (Optional, default -1) the marker channel - see [Channel IDs](https://community.bistudio.com/wiki/Channel%20IDs) (for multiplayer)"
                         },
                         {
                             "name": "creator",
@@ -13335,7 +13335,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Create object with given shape defined as path to .p3d model. Supported `LOD`s include [Geometry](https://community.bistudio.com/wiki/LOD%23Geometry), [Fire Geometry](https://community.bistudio.com/wiki/LOD%23Fire_Geometry), [Roadway](https://community.bistudio.com/wiki/LOD%23Roadway), [View Geometry](https://community.bistudio.com/wiki/LOD%23ViewGeometry) and [ShadowVolume](https://community.bistudio.com/wiki/LOD%23ShadowVolume). Supported features include collision, texturing, animation, penetration, AI spotting occlusion, and surface specific sounds (like footsteps). Unsupported features include PhysX, damage, AI pathfinding (causes walking through walls), and built-in lights.\n\n\n\nGiven the simulation limitations, global decorative objects can be created with very little network traffic. Objects that could be exclusively created with this command are: trees, bushes, rocks, bridges, roads, vehicle wrecks, custom models in mission, and other objects without a class in config. The height of the placement position might need to be adjusted experimentally.\n\n**NOTE**: \n* See [[[Arma 3: Simple Objects]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Simple%20Objects%5D%5D) to learn more about simple objects.\n* See [[[Arma 3: createSimpleObject/objects]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createSimpleObject%2Fobjects%5D%5D) for a p3d models' list.\n* See [[[Arma 3: Livonia Props]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Livonia%20Props%5D%5D) for `Livonia` furniture.\n\n\nPlease note that:\n* `addAction` does not work with simple objects.\n* objects created with {{Link|#Syntax 1 cannot be textured. Some objects may also have inverted default direction. \n* objects created with {{Link|#Syntax 2}} can be textured. The default direction should match the direction of the object if it was created with `createVehicle`.\n* only as of **(Arma 3)** do simple objects support `getVariable` and `setVariable`.\n}}",
+            "description": "Create object with given shape defined as path to .p3d model. Supported `LOD`s include [Geometry](https://community.bistudio.com/wiki/LOD%23Geometry), [Fire Geometry](https://community.bistudio.com/wiki/LOD%23Fire_Geometry), [Roadway](https://community.bistudio.com/wiki/LOD%23Roadway), [View Geometry](https://community.bistudio.com/wiki/LOD%23ViewGeometry) and [ShadowVolume](https://community.bistudio.com/wiki/LOD%23ShadowVolume). Supported features include collision, texturing, animation, penetration, AI spotting occlusion, and surface specific sounds (like footsteps). Unsupported features include PhysX, damage, AI pathfinding (causes walking through walls), and built-in lights.\n\n\n\nGiven the simulation limitations, global decorative objects can be created with very little network traffic. Objects that could be exclusively created with this command are: trees, bushes, rocks, bridges, roads, vehicle wrecks, custom models in mission, and other objects without a class in config. The height of the placement position might need to be adjusted experimentally.\n\n**NOTE**: \n* See [Arma 3: Simple Objects](https://community.bistudio.com/wiki/Arma%203%3A%20Simple%20Objects) to learn more about simple objects.\n* See [Arma 3: createSimpleObject/objects](https://community.bistudio.com/wiki/Arma%203%3A%20createSimpleObject%2Fobjects) for a p3d models' list.\n* See [Arma 3: Livonia Props](https://community.bistudio.com/wiki/Arma%203%3A%20Livonia%20Props) for `Livonia` furniture.\n\n\nPlease note that:\n* `addAction` does not work with simple objects.\n* objects created with {{Link|#Syntax 1 cannot be textured. Some objects may also have inverted default direction. \n* objects created with {{Link|#Syntax 2}} can be textured. The default direction should match the direction of the object if it was created with `createVehicle`.\n* only as of **(Arma 3)** do simple objects support `getVariable` and `setVariable`.\n}}",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _pos = player getRelPos [10, 0];\nprivate _tank = createSimpleObject [\"a3\\armor_f_beta\\apc_tracked_01\\apc_tracked_01_rcws_f.p3d\", _pos];\n_tank setPos (_pos vectorAdd (getPosWorld _tank vectorDiff (_tank modelToWorld [0,0,0])));\n\n_tank hideSelection [\"zasleh\", true];\n_tank hideSelection [\"zasleh2\", true];\n_tank hideSelection [\"clan\", true];\n \n_tank animate [\"Wheel_podkoloL3\", 0.5, true];\n_tank animate [\"Wheel_podkoloL6\", 0.5, true];\n\n```"
@@ -13389,7 +13389,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a new `Task` and adds it to the Diary.\n**Arma**: 3|Using the **[[[Arma 3: Task Framework]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Task%20Framework%5D%5D)** instead is recommended\n**NOTE**: When task is added as a child, it appears as subcategory to the parent task in the Tasks menu and can be parent to another child task. However this is cosmetic appearance as each task has own id and can be referenced directly via diary link.",
+            "description": "Creates a new `Task` and adds it to the Diary.\n**Arma**: 3|Using the **[Arma 3: Task Framework](https://community.bistudio.com/wiki/Arma%203%3A%20Task%20Framework)** instead is recommended\n**NOTE**: When task is added as a child, it appears as subcategory to the parent task in the Tasks menu and can be parent to another child task. However this is cosmetic appearance as each task has own id and can be referenced directly via diary link.",
             "examples": [
                 {
                     "text": "```sqf\n_currentTask = player createSimpleTask [\"NewTask\"];\n```"
@@ -13586,7 +13586,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "type",
@@ -13641,7 +13641,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`createTeam` [type, name]",
-                    "returns": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                    "returns": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/createTeam"
@@ -13782,7 +13782,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates an empty object of given classname type.\nSee [[[Arma 3: Assets]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Assets%5D%5D) / [[[Arma 3: createVehicle/vehicles]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createVehicle%2Fvehicles%5D%5D), or [[[:Category:CfgVehicles]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3ACfgVehicles%5D%5D) for earlier games.\n\n**NOTE**: \n* To create objects of type `**\"Logic\"**`, use `createUnit`.\n* To create an editable [ Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3A%20Eden%20Editor) entity, see `create3DENEntity`.\n\n\n**Arma**: 3|\nTo avoid vehicle randomisation in {{arma3, set the `**BIS_enableRandomization**` variable immediately after creating the vehicle:\n\n```sqf\n\nprivate _vehicle = \"C_Offroad_01_F\" createVehicle position player;\n_vehicle setVariable [\"BIS_enableRandomization\", false];\n\n```\n\nSee the [[[Arma 3: Vehicle Customisation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Vehicle%20Customisation%5D%5D) page for more information and settings.\n}}",
+            "description": "Creates an empty object of given classname type.\nSee [Arma 3: Assets](https://community.bistudio.com/wiki/Arma%203%3A%20Assets) / [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles), or [:Category:CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles) for earlier games.\n\n**NOTE**: \n* To create objects of type `**\"Logic\"**`, use `createUnit`.\n* To create an editable [ Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3A%20Eden%20Editor) entity, see `create3DENEntity`.\n\n\n**Arma**: 3|\nTo avoid vehicle randomisation in {{arma3, set the `**BIS_enableRandomization**` variable immediately after creating the vehicle:\n\n```sqf\n\nprivate _vehicle = \"C_Offroad_01_F\" createVehicle position player;\n_vehicle setVariable [\"BIS_enableRandomization\", false];\n\n```\n\nSee the [Arma 3: Vehicle Customisation](https://community.bistudio.com/wiki/Arma%203%3A%20Vehicle%20Customisation) page for more information and settings.\n}}",
             "examples": [
                 {
                     "text": "```sqf\n_jeep = \"Jeep\" createVehicle position player;\n```"
@@ -14392,11 +14392,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "handler",
-                            "description": "`String` - handler name, see [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D)"
+                            "description": "`String` - handler name, see [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers)"
                         },
                         {
                             "name": "function",
-                            "description": "`String`, since **(Arma 3)** also `Code` - script. Several [[[Magic Variables]]](https://community.bistudio.com/wiki/%5B%5BMagic%20Variables%5D%5D) are available:"
+                            "description": "`String`, since **(Arma 3)** also `Code` - script. Several [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) are available:"
                         }
                     ],
                     "outline": "control `ctrlAddEventHandler` [handler, function]",
@@ -14439,7 +14439,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Process an animation of 3D [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D). Command uses name defined by source property and works similar like `animateSource` command.",
+            "description": "Process an animation of 3D [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration). Command uses name defined by source property and works similar like `animateSource` command.",
             "examples": [
                 {
                     "text": "```sqf\n_control3D ctrlAnimateModel [\"Close\", 1];\n```"
@@ -14859,7 +14859,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enables or disables a control of the currently active user dialog.\nDisabled controls cannot be clicked onto.\nRead [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs and controls.",
+            "description": "Enables or disables a control of the currently active user dialog.\nDisabled controls cannot be clicked onto.\nRead [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs and controls.",
             "examples": [
                 {
                     "text": "```sqf\nctrlEnable [100, false];\n```"
@@ -14903,7 +14903,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns if a control on the currently active user dialog is enabled. Disabled controls cannot be focused. Read [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs and controls.",
+            "description": "Returns if a control on the currently active user dialog is enabled. Disabled controls cannot be focused. Read [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs and controls.",
             "examples": [
                 {
                     "text": "```sqf\n\nif !(ctrlEnabled 100) then\n{\n\tctrlEnable [100, true];\n};\n\n```"
@@ -15237,7 +15237,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the default cursor that appears when interacting with a map control to a custom one. Use an empty string to restore the default cursor.\n**IMPORTANT**: Before Arma 3, if the specified cursor does not exist the default is used and no error is produced.\n\nIn Arma 3, this would result in the following error: `**\"No entry 'bin\\config.bin/CfgWrapperUI/Cursors'\"**`.\n\nThe cursor is the name of a config entry from _CfgWrapperUI / Cursors_. This command has the following specifics:\n* When used on the Main Map (<sqf inline>findDisplay 12 displayCtrl 51), it is possible to override multiple default cursors. For example, while leaving default \"Arrow\" intact, it is possible to just override \"Scroll\" with e.g \"Wait\" (See {{Link|#Example 3}})\n* When used on a custom map, for example user made Mini Map, there is only one single cursor \"\" for everything, therefore only this cursor can be overridden (see {{Link|#Example 4}} on how to override it)\nSome possible class names (See [[[ctrlMapCursor/cursors]]](https://community.bistudio.com/wiki/%5B%5BctrlMapCursor%2Fcursors%5D%5D) for the whole list):\n{{Columns|4|\n* Arrow\n* Track\n* Move\n* Scroll\n* Rotate\n* Track3D\n* Move3D\n* Rotate3D\n* Raise3D\n* Wait\n* HC_move\n* HC_overFriendly\n* HC_overEnemy\n* HC_overMission\n* HC_unsel\n}}",
+            "description": "Changes the default cursor that appears when interacting with a map control to a custom one. Use an empty string to restore the default cursor.\n**IMPORTANT**: Before Arma 3, if the specified cursor does not exist the default is used and no error is produced.\n\nIn Arma 3, this would result in the following error: `**\"No entry 'bin\\config.bin/CfgWrapperUI/Cursors'\"**`.\n\nThe cursor is the name of a config entry from _CfgWrapperUI / Cursors_. This command has the following specifics:\n* When used on the Main Map (<sqf inline>findDisplay 12 displayCtrl 51), it is possible to override multiple default cursors. For example, while leaving default \"Arrow\" intact, it is possible to just override \"Scroll\" with e.g \"Wait\" (See {{Link|#Example 3}})\n* When used on a custom map, for example user made Mini Map, there is only one single cursor \"\" for everything, therefore only this cursor can be overridden (see {{Link|#Example 4}} on how to override it)\nSome possible class names (See [ctrlMapCursor/cursors](https://community.bistudio.com/wiki/ctrlMapCursor%2Fcursors) for the whole list):\n{{Columns|4|\n* Arrow\n* Track\n* Move\n* Scroll\n* Rotate\n* Track3D\n* Move3D\n* Rotate3D\n* Raise3D\n* Wait\n* HC_move\n* HC_overFriendly\n* HC_overEnemy\n* HC_overMission\n* HC_unsel\n}}",
             "examples": [
                 {
                     "text": "```sqf\n_map ctrlMapCursor [\"Track\", \"Arrow\"];\n```"
@@ -16119,7 +16119,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Feature|obsolete|Use `ctrlAddEventHandler` instead as it can stack event handlers.|arma2|1.00}}\nSets given event handler of given control: any previously added event handler is removed.\n\n**NOTE**: \n* See [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D) for the full list of handler names\n* See also [[[DIK KeyCodes]]](https://community.bistudio.com/wiki/%5B%5BDIK%20KeyCodes%5D%5D) for a list of key code constants relevant to key-related events like [KeyDown](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyDown) and [KeyUp](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyUp)\n\n\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**).",
+            "description": "{{Feature|obsolete|Use `ctrlAddEventHandler` instead as it can stack event handlers.|arma2|1.00}}\nSets given event handler of given control: any previously added event handler is removed.\n\n**NOTE**: \n* See [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) for the full list of handler names\n* See also [DIK KeyCodes](https://community.bistudio.com/wiki/DIK%20KeyCodes) for a list of key code constants relevant to key-related events like [KeyDown](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyDown) and [KeyUp](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyUp)\n\n\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**).",
             "examples": [
                 {
                     "text": "```sqf\n_control ctrlSetEventHandler [\"KeyDown\", \"\"];\n```"
@@ -16995,7 +16995,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets model for 3D-[Dialogs](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) (see [[[Arma 3: createSimpleObject/objects]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20createSimpleObject%2Fobjects%5D%5D) for a p3d models' list).",
+            "description": "Sets model for 3D-[Dialogs](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) (see [Arma 3: createSimpleObject/objects](https://community.bistudio.com/wiki/Arma%203%3A%20createSimpleObject%2Fobjects) for a p3d models' list).",
             "examples": [
                 {
                     "text": "```sqf\n_control3D ctrlSetModel \"\\a3\\Ui_f\\objects\\Compass.p3d\";\n```"
@@ -17458,7 +17458,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set the [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) which will be displayed in [[DialogControls-Text#CT_STRUCTURED_TEXT.3D13|structured text control]].",
+            "description": "Set the [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) which will be displayed in [[DialogControls-Text#CT_STRUCTURED_TEXT.3D13|structured text control]].",
             "examples": [
                 {
                     "text": "```sqf\n_control ctrlSetStructuredText parseText \"First line<img image=data\\isniper.paa /><br />Second line\"\n```"
@@ -17479,7 +17479,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "structuredText",
-                            "description": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                            "description": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                         }
                     ],
                     "outline": "control `ctrlSetStructuredText` structuredText",
@@ -17495,7 +17495,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets the text of a control of the currently active user dialog or display.\nThis command can be used for static texts, buttons, edit lines and active texts as well as for images, where you can use it to set the image path.\n\n\nRead [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs and controls.\n\nUse `endl` to insert line breaks.\n\nSince {{GVI|arma3|2.06",
+            "description": "Sets the text of a control of the currently active user dialog or display.\nThis command can be used for static texts, buttons, edit lines and active texts as well as for images, where you can use it to set the image path.\n\n\nRead [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs and controls.\n\nUse `endl` to insert line breaks.\n\nSince {{GVI|arma3|2.06",
             "examples": [
                 {
                     "text": "```sqf\nctrlSetText [100, \"Hello world\"]; // for Dialogs\n```"
@@ -17923,7 +17923,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Shows or hides a control, or group of controls together with all the controls inside that group of controls.\n\nRead [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs and controls.\n\n{{ Feature | Informative | <sqf inline>ctrlShow **will hide or show every single control inside a ControlsGroup, even if they are placed inside of a ControlsGroup, which itself is inside of a ControlsGroup and so on.**\nKeep that in mind when designing a Graphical User Interface. }}",
+            "description": "Shows or hides a control, or group of controls together with all the controls inside that group of controls.\n\nRead [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs and controls.\n\n{{ Feature | Informative | <sqf inline>ctrlShow **will hide or show every single control inside a ControlsGroup, even if they are placed inside of a ControlsGroup, which itself is inside of a ControlsGroup and so on.**\nKeep that in mind when designing a Graphical User Interface. }}",
             "examples": [
                 {
                     "text": "```sqf\nctrlShow [100, false];\n```"
@@ -18224,7 +18224,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns number representing the type of control, which is also defined by _type_ property in config. For more information see [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D)",
+            "description": "Returns number representing the type of control, which is also defined by _type_ property in config. For more information see [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration)",
             "examples": [
                 {
                     "text": "```sqf\n_type = ctrlType _rscEdit; // 2\n```"
@@ -18305,7 +18305,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns if a control of the currently active user dialog is shown or not. Read [[[Arma: GUI Configuration]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20GUI%20Configuration%5D%5D) for more information about user dialogs and controls.",
+            "description": "Returns if a control of the currently active user dialog is shown or not. Read [Arma: GUI Configuration](https://community.bistudio.com/wiki/Arma%3A%20GUI%20Configuration) for more information about user dialogs and controls.",
             "examples": [
                 {
                     "text": "```sqf\n_bool = ctrlVisible 100;\n```"
@@ -19112,7 +19112,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `currentMagazineDetailTurret` turretPath",
@@ -19143,7 +19143,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `currentMagazineTurret` turretPath",
@@ -19268,7 +19268,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns array with all [ uncompleted](https://community.bistudio.com/wiki/taskCompleted%20) tasks for the given agent.\n`getVariable` could be used on `Task` to get the following special local variables from the task:\n* `**\"_this\"**` [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) - the `teamMember` `agent` the task is assigned to\n* `**\"_taskType\"**` `String` - the name of the task (see `registeredTasks`)\n* `**\"_thisCreated\"**` `Number` - 1 or 0\n* `**\"_thisRunning\"**` `Number` - 1 or 0\n* `**\"_totalCreated\"**` `Number` - total number of tasks\n* `**\"_totalRunning\"**` `Number` - total number of running tasks\n* `**\"_task\"**``Task` - often null",
+            "description": "Returns array with all [ uncompleted](https://community.bistudio.com/wiki/taskCompleted%20) tasks for the given agent.\n`getVariable` could be used on `Task` to get the following special local variables from the task:\n* `**\"_this\"**` [Team Member](https://community.bistudio.com/wiki/Team%20Member) - the `teamMember` `agent` the task is assigned to\n* `**\"_taskType\"**` `String` - the name of the task (see `registeredTasks`)\n* `**\"_thisCreated\"**` `Number` - 1 or 0\n* `**\"_thisRunning\"**` `Number` - 1 or 0\n* `**\"_totalCreated\"**` `Number` - total number of tasks\n* `**\"_totalRunning\"**` `Number` - total number of running tasks\n* `**\"_task\"**``Task` - often null",
             "examples": [
                 {
                     "text": "```sqf\ncurrentTasks teamMember _agent;\n```"
@@ -19279,7 +19279,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) - `teamMember` `agent`"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member) - `teamMember` `agent`"
                         }
                     ],
                     "outline": "`currentTasks` teamMember",
@@ -19360,7 +19360,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D) - path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path) - path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret"
                         },
                         {
                             "name": "unit",
@@ -19487,7 +19487,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `currentWeaponTurret` turretPath",
@@ -19567,7 +19567,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the target pointed at by the player (usually with cross-hairs). The target has to be known to the player to some degree (`knowsAbout` > 0). If target is completely unknown, command returns `objNull`.\n\n\nA valid target could belong to an enemy or a friendly side. Buildings are normally known to player and so are valid targets. Try `nearTargets` to see what else is considered a target.\nWhile friendly targets are usually known to the player, enemy targets can be totally unknown, especially if \"auto-spotting\" (or sometimes called \"auto-reporting\") is switched off. To check if auto-spotting is enabled: <sqf inline>difficultyEnabled \"autospot\".\n\n\n`cursorTarget` also returns locked target for the duration of the lock even if there is another target under the cursor. As soon as missile is fired, `cursorTarget` switches to current known target under cursor or `objNull`.\nTargeting ({{Controls|T}} in Arma 3) works regardless of the state of \"auto-spotting\".\n\n\nAdding a target to the known list could be done with `reveal` command. When auto-spotting is enabled, zooming on the enemy target with cross-hairs usually reveals the target.\nAs friendly targets are always known, zooming on friendly target could improve `knowsAbout` value.\n\n\n[[[Side Relations]]](https://community.bistudio.com/wiki/%5B%5BSide%20Relations%5D%5D) can also influence target knowledge. For example `east` target is unknown target for `civilian`, but making them friends with `setFriend` instantly improves `civilian` knowledge of the `east`.",
+            "description": "Returns the target pointed at by the player (usually with cross-hairs). The target has to be known to the player to some degree (`knowsAbout` > 0). If target is completely unknown, command returns `objNull`.\n\n\nA valid target could belong to an enemy or a friendly side. Buildings are normally known to player and so are valid targets. Try `nearTargets` to see what else is considered a target.\nWhile friendly targets are usually known to the player, enemy targets can be totally unknown, especially if \"auto-spotting\" (or sometimes called \"auto-reporting\") is switched off. To check if auto-spotting is enabled: <sqf inline>difficultyEnabled \"autospot\".\n\n\n`cursorTarget` also returns locked target for the duration of the lock even if there is another target under the cursor. As soon as missile is fired, `cursorTarget` switches to current known target under cursor or `objNull`.\nTargeting ({{Controls|T}} in Arma 3) works regardless of the state of \"auto-spotting\".\n\n\nAdding a target to the known list could be done with `reveal` command. When auto-spotting is enabled, zooming on the enemy target with cross-hairs usually reveals the target.\nAs friendly targets are always known, zooming on friendly target could improve `knowsAbout` value.\n\n\n[Side Relations](https://community.bistudio.com/wiki/Side%20Relations) can also influence target knowledge. For example `east` target is unknown target for `civilian`, but making them friends with `setFriend` instantly improves `civilian` knowledge of the `east`.",
             "examples": [
                 {
                     "text": "```sqf\nalive cursorTarget;\n```"
@@ -19751,7 +19751,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values"
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values"
                         },
                         {
                             "name": "speed",
@@ -19775,7 +19775,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values."
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values."
                         },
                         {
                             "name": "speed",
@@ -19799,7 +19799,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values"
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values"
                         },
                         {
                             "name": "speed",
@@ -19852,7 +19852,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "effect",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values."
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values."
                         },
                         {
                             "name": "speed",
@@ -19876,7 +19876,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "effect",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values."
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values."
                         },
                         {
                             "name": "speed",
@@ -19929,7 +19929,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values."
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values."
                         },
                         {
                             "name": "speed",
@@ -19941,7 +19941,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "isStructuredText",
-                            "description": "`Boolean` - (Optional, default `false`) `true` to switch support for [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) formatting - see {{Link|#Example 4}}"
+                            "description": "`Boolean` - (Optional, default `false`) `true` to switch support for [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) formatting - see {{Link|#Example 4}}"
                         },
                         {
                             "name": "drawOverHUD",
@@ -19957,7 +19957,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values."
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values."
                         },
                         {
                             "name": "speed",
@@ -19969,7 +19969,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "isStructuredText",
-                            "description": "`Boolean` - (Optional, default `false`) `true` to switch support for [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) formatting - see {{Link|#Example 4}}"
+                            "description": "`Boolean` - (Optional, default `false`) `true` to switch support for [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) formatting - see {{Link|#Example 4}}"
                         },
                         {
                             "name": "drawOverHUD",
@@ -20255,7 +20255,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines a [[[Switch Type]]](https://community.bistudio.com/wiki/%5B%5BSwitch%20Type%5D%5D) default case - does **not** need a colon to define its block. See `switch` for more information.",
+            "description": "Defines a [Switch Type](https://community.bistudio.com/wiki/Switch%20Type) default case - does **not** need a colon to define its block. See `switch` for more information.",
             "examples": [
                 {
                     "text": "```sqf\nswitch (_condition) do\n{\n\tcase 1: { hint \"1\" };\n\tcase 2: { hint \"2\" };\n\tdefault { hint \"default\" }; // no colon after default\n};\n```"
@@ -20323,7 +20323,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entities",
-                            "description": "`Array` of [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "`Array` of [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`delete3DENEntities`  entities",
@@ -20706,7 +20706,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "resources",
@@ -20821,7 +20821,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`deleteTeam` team",
@@ -21412,7 +21412,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Starts gathering [[[Arma 3: Dynamic Simulation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Simulation%5D%5D) diagnostic data.",
+            "description": "Starts gathering [Arma 3: Dynamic Simulation](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Simulation) diagnostic data.",
             "examples": [
                 {
                     "text": "```sqf\ndiag_dynamicSimulationStart;\n```"
@@ -21446,7 +21446,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - see [[[Arma 3: Diagnostics Exe]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Diagnostics%20Exe%5D%5D)"
+                            "description": "`String` - see [Arma 3: Diagnostics Exe](https://community.bistudio.com/wiki/Arma%203%3A%20Diagnostics%20Exe)"
                         },
                         {
                             "name": "state",
@@ -21477,7 +21477,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - see [[[Arma 3: Diagnostics Exe]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Diagnostics%20Exe%5D%5D)"
+                            "description": "`String` - see [Arma 3: Diagnostics Exe](https://community.bistudio.com/wiki/Arma%203%3A%20Diagnostics%20Exe)"
                         }
                     ],
                     "outline": "`diag_enabled`  mode",
@@ -22017,7 +22017,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the terrain height of the cell in which given position lies. This command is only available with [[[Arma 3: Diagnostics Exe]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Diagnostics%20Exe%5D%5D).\n[[File:A3 diag setTerrainHeight.png|thumb|350px|See {{Link|#Example 1}} for the code]]\n**WARNING**: This causes an instant CTD when _position_ is out of the map! (`**&lt; 0 and/or {{hl|&gt; `worldSize`}})**`\n{{Feature|obsolete|This command is subject to be removed and replaced with: `setTerrainHeight`|arma3|2.10}}",
+            "description": "Changes the terrain height of the cell in which given position lies. This command is only available with [Arma 3: Diagnostics Exe](https://community.bistudio.com/wiki/Arma%203%3A%20Diagnostics%20Exe).\n[[File:A3 diag setTerrainHeight.png|thumb|350px|See {{Link|#Example 1}} for the code]]\n**WARNING**: This causes an instant CTD when _position_ is out of the map! (`**&lt; 0 and/or {{hl|&gt; `worldSize`}})**`\n{{Feature|obsolete|This command is subject to be removed and replaced with: `setTerrainHeight`|arma3|2.10}}",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\t_start vectorAdd [_xStep, _yStep, 0] diag_setTerrainHeight _h;\n\t\t};\n\t};\n};\n\nprivate _desiredTerrainHeight = 150;\n[getPosWorld player, 50, 50, _desiredTerrainHeight] spawn _fnc_flattenTerrain;\n\n```"
@@ -22134,7 +22134,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - see [[[Arma 3: Diagnostics Exe]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Diagnostics%20Exe%5D%5D)"
+                            "description": "`String` - see [Arma 3: Diagnostics Exe](https://community.bistudio.com/wiki/Arma%203%3A%20Diagnostics%20Exe)"
                         }
                     ],
                     "outline": "`diag_toggle` mode",
@@ -22172,7 +22172,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "A non-existent [[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D). To compare non-existent objects use `isNull` or `isEqualTo`:\n\n```sqf\n\ndiaryRecordNull == diaryRecordNull;\t\t// false\nisNull diaryRecordNull;\t\t\t\t\t\t// true\ndiaryRecordNull isEqualTo diaryRecordNull;\t// true\n\n```\n\n\n**NOTE**: \nBefore Arma 3 v2.00, `isNull` did not work with the diary record type and `diaryRecordNull` did not exist.\nIn order to verify a null record, it is possible to create a variable and compare against it:\n\n```sqf\n\nprivate _diaryRecordNull = objNull createDiaryRecord [];\nprivate _createdRecord = player createDiaryRecord [\"Diary\", [\"Title\", \"Description\"]];\nif (_createdRecord isEqualTo _diaryRecordNull) then { hint \"Failed\"; };\n\n```",
+            "description": "A non-existent [Diary Record](https://community.bistudio.com/wiki/Diary%20Record). To compare non-existent objects use `isNull` or `isEqualTo`:\n\n```sqf\n\ndiaryRecordNull == diaryRecordNull;\t\t// false\nisNull diaryRecordNull;\t\t\t\t\t\t// true\ndiaryRecordNull isEqualTo diaryRecordNull;\t// true\n\n```\n\n\n**NOTE**: \nBefore Arma 3 v2.00, `isNull` did not work with the diary record type and `diaryRecordNull` did not exist.\nIn order to verify a null record, it is possible to create a variable and compare against it:\n\n```sqf\n\nprivate _diaryRecordNull = objNull createDiaryRecord [];\nprivate _createdRecord = player createDiaryRecord [\"Diary\", [\"Title\", \"Description\"]];\nif (_createdRecord isEqualTo _diaryRecordNull) then { hint \"Failed\"; };\n\n```",
             "examples": [
                 {
                     "text": "```sqf\nisNull diaryRecordNull; // true\n```"
@@ -22191,7 +22191,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`diaryRecordNull`",
-                    "returns": "[[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)"
+                    "returns": "[Diary Record](https://community.bistudio.com/wiki/Diary%20Record)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/diaryRecordNull"
@@ -22439,7 +22439,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `directionStabilizationEnabled` turretPath",
@@ -22875,7 +22875,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds an event handler to the given display. See [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D) for the full list of event names.\nIf applicable, see `DIK_KeyCodes` for a list of key code constants, which are relevant to key related user interface events like: [KeyDown](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers%23onKeyDown) & [KeyUp](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers%23onKeyUp).\n**IMPORTANT**: Display EHs are processed from last to first added; an input override should be set up in the first added EH.\n**NOTE**: The event handler ID can be accessed inside the event handler code using the <sqf inline>_thisEventHandler [magic variable](https://community.bistudio.com/wiki/Magic_Variables%23thisEventHandler).",
+            "description": "Adds an event handler to the given display. See [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) for the full list of event names.\nIf applicable, see `DIK_KeyCodes` for a list of key code constants, which are relevant to key related user interface events like: [KeyDown](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers%23onKeyDown) & [KeyUp](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers%23onKeyUp).\n**IMPORTANT**: Display EHs are processed from last to first added; an input override should be set up in the first added EH.\n**NOTE**: The event handler ID can be accessed inside the event handler code using the <sqf inline>_thisEventHandler [magic variable](https://community.bistudio.com/wiki/Magic_Variables%23thisEventHandler).",
             "examples": [
                 {
                     "text": "```sqf\nmoduleName_keyDownEHId = findDisplay 46 displayAddEventHandler [\"KeyDown\", \"hint str _this;\"];\n```"
@@ -23096,7 +23096,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly. This implies telling the engine whether it is default code should be executed. \nSee [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D) for the full list of handler names.\n\nIf applicable, see [[[DIK KeyCodes]]](https://community.bistudio.com/wiki/%5B%5BDIK%20KeyCodes%5D%5D) for a list of key code constants, which are relevant to key related user interface events like {{Link|User Interface Event Handlers#onKeyDown|onKeyDown}} and {{Link|User Interface Event Handlers#onKeyUp|onKeyUp}}.\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**).",
+            "description": "Sets given event handler of given display.\nThe return code of the provided function should indicate whether this event was handled correctly. This implies telling the engine whether it is default code should be executed. \nSee [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) for the full list of handler names.\n\nIf applicable, see [DIK KeyCodes](https://community.bistudio.com/wiki/DIK%20KeyCodes) for a list of key code constants, which are relevant to key related user interface events like {{Link|User Interface Event Handlers#onKeyDown|onKeyDown}} and {{Link|User Interface Event Handlers#onKeyUp|onKeyUp}}.\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**).",
             "examples": [
                 {
                     "text": "```sqf\n_control displaySetEventHandler [\"KeyDown\", \"\"];\n```"
@@ -23389,7 +23389,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "construct",
-                            "description": "[[[While Type]]](https://community.bistudio.com/wiki/%5B%5BWhile%20Type%5D%5D) (`while`), [[[With Type]]](https://community.bistudio.com/wiki/%5B%5BWith%20Type%5D%5D) (`with`), [[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D) (`for`), [[[Switch Type]]](https://community.bistudio.com/wiki/%5B%5BSwitch%20Type%5D%5D) (`switch`)"
+                            "description": "[While Type](https://community.bistudio.com/wiki/While%20Type) (`while`), [With Type](https://community.bistudio.com/wiki/With%20Type) (`with`), [For Type](https://community.bistudio.com/wiki/For%20Type) (`for`), [Switch Type](https://community.bistudio.com/wiki/Switch%20Type) (`switch`)"
                         },
                         {
                             "name": "code",
@@ -23420,7 +23420,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "action",
-                            "description": "`String` - see [[[Eden Editor: Actions]]](https://community.bistudio.com/wiki/%5B%5BEden%20Editor%3A%20Actions%5D%5D)"
+                            "description": "`String` - see [Eden Editor: Actions](https://community.bistudio.com/wiki/Eden%20Editor%3A%20Actions)"
                         }
                     ],
                     "outline": "`do3DENAction`  action",
@@ -23908,7 +23908,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "fill",
-                            "description": "`String` - fill texture file or [[[Procedural Textures]]](https://community.bistudio.com/wiki/%5B%5BProcedural%20Textures%5D%5D). Note that the file texture will not rotate with rectangle, use `drawIcon` for that. If fill texture is not empty, set line color to white [1,1,1,1]"
+                            "description": "`String` - fill texture file or [Procedural Textures](https://community.bistudio.com/wiki/Procedural%20Textures). Note that the file texture will not rotate with rectangle, use `drawIcon` for that. If fill texture is not empty, set line color to white [1,1,1,1]"
                         }
                     ],
                     "outline": "map `drawEllipse` [centre, a, b, angle, color, fill]",
@@ -24262,7 +24262,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Used to draw locations in [[[2D Editor]]](https://community.bistudio.com/wiki/%5B%5B2D%20Editor%5D%5D).",
+            "description": "Used to draw locations in [2D Editor](https://community.bistudio.com/wiki/2D%20Editor).",
             "examples": [
                 {
                     "text": "-"
@@ -24369,7 +24369,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "fill",
-                            "description": "`String` - fill texture file or [[[Procedural Textures]]](https://community.bistudio.com/wiki/%5B%5BProcedural%20Textures%5D%5D). Note that the file texture will not rotate with rectangle, use `drawIcon` for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]"
+                            "description": "`String` - fill texture file or [Procedural Textures](https://community.bistudio.com/wiki/Procedural%20Textures). Note that the file texture will not rotate with rectangle, use `drawIcon` for that. If fill texture is not empty, set line color to white <sqf inline>[1,1,1,1]"
                         }
                     ],
                     "outline": "map `drawRectangle` [centre, halfWidth, halfHeight, angle, color, fill]",
@@ -24408,7 +24408,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "fill",
-                            "description": "`String` - (Optional, default `**\"\"**`) fill texture file or [[[Procedural Textures]]](https://community.bistudio.com/wiki/%5B%5BProcedural%20Textures%5D%5D). See note in description for more info."
+                            "description": "`String` - (Optional, default `**\"\"**`) fill texture file or [Procedural Textures](https://community.bistudio.com/wiki/Procedural%20Textures). See note in description for more info."
                         }
                     ],
                     "outline": "map `drawTriangle` [vertices, color, fill]",
@@ -25385,7 +25385,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `enableDirectionStabilization` [enabled, turretPath]",
@@ -25401,7 +25401,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enables or disables [[[Arma 3: Dynamic Simulation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Simulation%5D%5D) for given non AI object.\n\n**NOTE**: This command has no effect on _mines_!",
+            "description": "Enables or disables [Arma 3: Dynamic Simulation](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Simulation) for given non AI object.\n\n**NOTE**: This command has no effect on _mines_!",
             "examples": [
                 {
                     "text": "```sqf\n_myObject enableDynamicSimulation true;\n```"
@@ -25434,7 +25434,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enables or disables the whole [[[Arma 3: Dynamic Simulation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Simulation%5D%5D) system",
+            "description": "Enables or disables the whole [Arma 3: Dynamic Simulation](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Simulation) system",
             "examples": [
                 {
                     "text": "```sqf\nenableDynamicSimulationSystem true;\n```"
@@ -25729,7 +25729,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "enable",
@@ -26063,7 +26063,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enable / disable [[[Team Switch]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Switch%5D%5D). The default setting is enabled.",
+            "description": "Enable / disable [Team Switch](https://community.bistudio.com/wiki/Team%20Switch). The default setting is enabled.",
             "examples": [
                 {
                     "text": "```sqf\nenableTeamSwitch true;\n```"
@@ -26788,7 +26788,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Execute a script using (the deprecated but still available) [[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D). [[[SQF Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQF%20Syntax%5D%5D) (and `execVM`) is the most recent scripting language.\n\nThe magic variable [_time](https://community.bistudio.com/wiki/Magic_Variables%23time) used within the script contains the elapsed time in seconds since the script started.\n**NOTE**: To see the active SQS scripts currently in the scheduler, use `diag_activeSQSScripts` command.",
+            "description": "Execute a script using (the deprecated but still available) [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax). [SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax) (and `execVM`) is the most recent scripting language.\n\nThe magic variable [_time](https://community.bistudio.com/wiki/Magic_Variables%23time) used within the script contains the elapsed time in seconds since the script started.\n**NOTE**: To see the active SQS scripts currently in the scheduler, use `diag_activeSQSScripts` command.",
             "examples": [
                 {
                     "text": "<sqs>[player, _jeep] exec \"getin.sqs\";</sqs>"
@@ -26943,7 +26943,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`execVM` filename",
-                    "returns": "[[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D)"
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle)"
                 }
             ],
             "argumentLocality": "Global Argument",
@@ -26960,7 +26960,7 @@ export const configs: SQFItemConfig[] = [
             "description": "Stops the execution of a [SQS script](https://community.bistudio.com/wiki/SQS%20Syntax).\n\nIt is ignored in [SQF Scripts](https://community.bistudio.com/wiki/SQF%20Syntax).",
             "examples": [
                 {
-                    "text": "[[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D):\n<sqs>? not alive player : exit</sqs>"
+                    "text": "[SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax):\n<sqs>? not alive player : exit</sqs>"
                 }
             ],
             "syntaxes": [
@@ -27002,7 +27002,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "ifType",
-                            "description": "[[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D)"
+                            "description": "[If Type](https://community.bistudio.com/wiki/If%20Type)"
                         },
                         {
                             "name": "code",
@@ -27652,7 +27652,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Finds a display by its IDD which can either be defined in `missionConfigFile` ([[Description.ext|description.ext]]) or `configFile` ([[config.cpp]]) or by its [UI On Texture](https://community.bistudio.com/wiki/Procedural%20Textures%23UI%20On%20Texture)'s unique name (see `displayUniqueName`).\n\nIf the specified display cannot be found, `displayNull` is returned.\n**IMPORTANT**: \nDedicated servers and [headless clients](https://community.bistudio.com/wiki/Arma%203%3A%20Headless%20Client) do not have a primary display (e.g <sqf inline>findDisplay 46 will return `displayNull`).\n\nDetect both with the `hasInterface` command.\n\n\n**NOTE**: For a list of (almost) all Arma 3's IDDs, see [[[Arma 3: IDD List]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20IDD%20List%5D%5D).",
+            "description": "Finds a display by its IDD which can either be defined in `missionConfigFile` ([[Description.ext|description.ext]]) or `configFile` ([[config.cpp]]) or by its [UI On Texture](https://community.bistudio.com/wiki/Procedural%20Textures%23UI%20On%20Texture)'s unique name (see `displayUniqueName`).\n\nIf the specified display cannot be found, `displayNull` is returned.\n**IMPORTANT**: \nDedicated servers and [headless clients](https://community.bistudio.com/wiki/Arma%203%3A%20Headless%20Client) do not have a primary display (e.g <sqf inline>findDisplay 46 will return `displayNull`).\n\nDetect both with the `hasInterface` command.\n\n\n**NOTE**: For a list of (almost) all Arma 3's IDDs, see [Arma 3: IDD List](https://community.bistudio.com/wiki/Arma%203%3A%20IDD%20List).",
             "examples": [
                 {
                     "text": "```sqf\n\n[] spawn\n{\n\twaitUntil { !isNull findDisplay 46 };\n\thint \"Mission Display is now available!\";\n};\n\n```"
@@ -28488,7 +28488,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This operator creates a [[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D) which is used in the for-constructs.\n**WARNING**: \nThe alternative syntax <sqf inline>for _array do _code is [slower](https://community.bistudio.com/wiki/Code%20Optimisation%23for) than the first syntax because the condition is checked in every iteration, and it has a few bugs.\n\nIt is only kept for backward compatibility; always use the first syntax <sqf inline>for \"_i\" from 0 to _end do _code.",
+            "description": "This operator creates a [For Type](https://community.bistudio.com/wiki/For%20Type) which is used in the for-constructs.\n**WARNING**: \nThe alternative syntax <sqf inline>for _array do _code is [slower](https://community.bistudio.com/wiki/Code%20Optimisation%23for) than the first syntax because the condition is checked in every iteration, and it has a few bugs.\n\nIt is only kept for backward compatibility; always use the first syntax <sqf inline>for \"_i\" from 0 to _end do _code.",
             "examples": [
                 {
                     "text": "```sqf\n\n// will output 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 (the to value being inclusive)\nfor \"_i\" from 1 to 10 do { systemChat str _i; };\n\n```"
@@ -28524,7 +28524,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`for` [init, condition, codeToExecute]",
-                    "returns": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                    "returns": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/for"
@@ -29082,7 +29082,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "command `forEachMember` team",
@@ -29109,7 +29109,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "command `forEachMemberAgent` team",
@@ -29136,7 +29136,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "command `forEachMemberTeam` team",
@@ -29426,7 +29426,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) similar to `format` command.",
+            "description": "Creates a [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) similar to `format` command.",
             "examples": [
                 {
                     "text": "```sqf\nhint formatText [\"Image: %1\", image \"\\a3\\Data_f\\Flags\\flag_Altis_co.paa\"];\n```"
@@ -29444,11 +29444,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "argumentN",
-                            "description": "`Anything` - use [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) where necessary (see [Example 2](https://community.bistudio.com/wiki/%23Example))"
+                            "description": "`Anything` - use [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) where necessary (see [Example 2](https://community.bistudio.com/wiki/%23Example))"
                         }
                     ],
                     "outline": "`formatText` [format, argument1, argument2, ...]",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/formatText"
@@ -29548,7 +29548,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "for",
-                            "description": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                            "description": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                         },
                         {
                             "name": "b",
@@ -29556,7 +29556,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "for `from` b",
-                    "returns": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                    "returns": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/from"
@@ -29579,7 +29579,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`fromEditor` teamMember",
@@ -29823,7 +29823,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "action",
-                            "description": "`String` - see [[[Eden Editor: Actions]]](https://community.bistudio.com/wiki/%5B%5BEden%20Editor%3A%20Actions%5D%5D)"
+                            "description": "`String` - see [Eden Editor: Actions](https://community.bistudio.com/wiki/Eden%20Editor%3A%20Actions)"
                         }
                     ],
                     "outline": "`get3DENActionState`  action",
@@ -29850,7 +29850,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         },
                         {
                             "name": "attribute",
@@ -29933,11 +29933,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`get3DENConnections`  entity",
-                    "returns": "`Array` in format: `**[[type1, to1], [type2, to2], ..., [typeN, toN]]**`\n* type: `String` - connection class from _Cfg3DEN >> Connections_\n* to: [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D): Entitiy the connection leads to"
+                    "returns": "`Array` in format: `**[[type1, to1], [type2, to2], ..., [typeN, toN]]**`\n* type: `String` - connection class from _Cfg3DEN >> Connections_\n* to: [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity): Entitiy the connection leads to"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/get3DENConnections"
@@ -29949,7 +29949,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) based on its [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D).",
+            "description": "Returns [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) based on its [Eden ID](https://community.bistudio.com/wiki/Eden%20ID).",
             "examples": [
                 {
                     "text": "```sqf\nmyEntity = get3DENEntity 1;\n```"
@@ -29960,11 +29960,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "ID",
-                            "description": "`Number` - [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "`Number` - [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`get3DENEntity`  ID",
-                    "returns": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D), `Number`\n* If the _ID_ points to an [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) the entity is returned\n* If it points to a [[[Eden Editor: Layer]]](https://community.bistudio.com/wiki/%5B%5BEden%20Editor%3A%20Layer%5D%5D) or [[[Eden Editor: Comment]]](https://community.bistudio.com/wiki/%5B%5BEden%20Editor%3A%20Comment%5D%5D) the _ID_ is returned\n* If no entity with given _ID_ exists `**-1**` is returned"
+                    "returns": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity), `Number`\n* If the _ID_ points to an [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) the entity is returned\n* If it points to a [Eden Editor: Layer](https://community.bistudio.com/wiki/Eden%20Editor%3A%20Layer) or [Eden Editor: Comment](https://community.bistudio.com/wiki/Eden%20Editor%3A%20Comment) the _ID_ is returned\n* If no entity with given _ID_ exists `**-1**` is returned"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/get3DENEntity"
@@ -29976,7 +29976,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns unique index of an [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D). This number remains the same even after saving and loading the scenario. **NOTE**: This ID is only available in [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
+            "description": "Returns unique index of an [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity). This number remains the same even after saving and loading the scenario. **NOTE**: This ID is only available in [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
             "examples": [
                 {
                     "text": "```sqf\nmyID = get3DENEntityID player;\n```"
@@ -29987,11 +29987,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`get3DENEntityID` entity",
-                    "returns": "`Number` - [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D) If ID is not available, -1 is returned"
+                    "returns": "`Number` - [Eden ID](https://community.bistudio.com/wiki/Eden%20ID) If ID is not available, -1 is returned"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/get3DENEntityID"
@@ -30079,7 +30079,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return all entities and sub-layer in [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) layer. In order to get all layer entities during a scenario use `getMissionLayerEntities`.",
+            "description": "Return all entities and sub-layer in [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) layer. In order to get all layer entities during a scenario use `getMissionLayerEntities`.",
             "examples": [
                 {
                     "text": "```sqf\n_myLayer = -1 add3DENLayer \"CTRG\";\nplayer set3DENLayer _myLayer;\n_entities = get3DENLayerEntities _myLayer;\n```"
@@ -30190,7 +30190,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) the mouse is hovering over in [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
+            "description": "Returns the [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) the mouse is hovering over in [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
             "examples": [
                 {
                     "text": "```sqf\nsystemChat str get3DENMouseOver; // returns e.g [\"Object\", B Alpha 1-1:1]\n```"
@@ -30200,7 +30200,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`get3DENMouseOver`",
-                    "returns": "`Array` in format [type, entity]:\n\n* type: `String` - can be one of:\n** \"Object\"\n** \"Group\"\n** \"Trigger\"\n** \"Logic\"\n** \"Waypoint\"\n** \"Marker\"\n* entity: [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D)"
+                    "returns": "`Array` in format [type, entity]:\n\n* type: `String` - can be one of:\n** \"Object\"\n** \"Group\"\n** \"Trigger\"\n** \"Logic\"\n** \"Waypoint\"\n** \"Marker\"\n* entity: [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/get3DENMouseOver"
@@ -32116,7 +32116,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns if sides are friendly or hostile. For a value smaller than 0.6 it results in being enemy, otherwise it is friendly. See also [[[Side Relations]]](https://community.bistudio.com/wiki/%5B%5BSide%20Relations%5D%5D).",
+            "description": "Returns if sides are friendly or hostile. For a value smaller than 0.6 it results in being enemy, otherwise it is friendly. See also [Side Relations](https://community.bistudio.com/wiki/Side%20Relations).",
             "examples": [
                 {
                     "text": "```sqf\nvalue = west getFriend east;\n```"
@@ -33911,7 +33911,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return a UniqueID of the given unit (player).\n\n**Arma**: 3|The returned string is the player's steamID64: <sqf inline>private _steamProfileUrl = \"http://steamcommunity.com/profiles/\" + (getPlayerUID player);\n\n**IMPORTANT**: Prior to [[Arma 2: Operation Arrowhead]] v1.60, the result always consisted of a [stringified](https://community.bistudio.com/wiki/str) number (see `getPlayerUIDOld`), but always had to be considered and processed as a `String`.<!--\n--> Converting it to a `Number` could cause precision problems, as `Number` cannot accurately represent integers above 16777216 (2<sup>24</sup>).<!--\n--> Moreover, games since [[Arma 2: Operation Arrowhead]] v1.61 provide a value that is not all-numeric.\n\n**NOTE**: Prior to [[[Arma 3]]](https://community.bistudio.com/wiki/%5B%5BArma%203%5D%5D) v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused `isPlayer` and `getPlayerUID` to incorrectly return `**`false` and {{hl|\"\"}} respectively, where the affected units were `not` `local`. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this bug report (GitHub)}} for more info. This was supposedly fixed, but you should remain vigilant toward false negatives nonetheless. **`",
+            "description": "Return a UniqueID of the given unit (player).\n\n**Arma**: 3|The returned string is the player's steamID64: <sqf inline>private _steamProfileUrl = \"http://steamcommunity.com/profiles/\" + (getPlayerUID player);\n\n**IMPORTANT**: Prior to [[Arma 2: Operation Arrowhead]] v1.60, the result always consisted of a [stringified](https://community.bistudio.com/wiki/str) number (see `getPlayerUIDOld`), but always had to be considered and processed as a `String`.<!--\n--> Converting it to a `Number` could cause precision problems, as `Number` cannot accurately represent integers above 16777216 (2<sup>24</sup>).<!--\n--> Moreover, games since [[Arma 2: Operation Arrowhead]] v1.61 provide a value that is not all-numeric.\n\n**NOTE**: Prior to [Arma 3](https://community.bistudio.com/wiki/Arma%203) v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused `isPlayer` and `getPlayerUID` to incorrectly return `**`false` and {{hl|\"\"}} respectively, where the affected units were `not` `local`. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this bug report (GitHub)}} for more info. This was supposedly fixed, but you should remain vigilant toward false negatives nonetheless. **`",
             "examples": [
                 {
                     "text": "```sqf\nprivate _uid = getPlayerUID player;\n```"
@@ -34799,7 +34799,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the calculated value of [[[simple expression]]](https://community.bistudio.com/wiki/%5B%5Bsimple%20expression%5D%5D) defined in config. Config could be any config entry, even [ mission config](https://community.bistudio.com/wiki/missionConfigFile%20) entry. It is more important that the vehicle is a transport and not any object. If the expression contains sound controllers, the controller values will be taken from the given vehicle.",
+            "description": "Returns the calculated value of [simple expression](https://community.bistudio.com/wiki/simple%20expression) defined in config. Config could be any config entry, even [ mission config](https://community.bistudio.com/wiki/missionConfigFile%20) entry. It is more important that the vehicle is a transport and not any object. If the expression contains sound controllers, the controller values will be taken from the given vehicle.",
             "examples": [
                 {
                     "text": "```sqf\n_result = (vehicle player) getSoundControllerResult (configFile >> \"cfgVehicles\" >> typeOf (vehicle player) >> \"sounds\" >> \"idle_ext\" >> \"volume\");\n```"
@@ -34892,7 +34892,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns value of the given stat.\n\nA list of possible StatNames can be found here: [[[Arma 3: Stat Names]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Stat%20Names%5D%5D)",
+            "description": "Returns value of the given stat.\n\nA list of possible StatNames can be found here: [Arma 3: Stat Names](https://community.bistudio.com/wiki/Arma%203%3A%20Stat%20Names)",
             "examples": [
                 {
                     "text": "```sqf\ngetStatValue \"ExpWarlockDown\"; // Checks if the \"Warlock Down\" Achivement was already aquired\n```"
@@ -35379,7 +35379,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "obj `getTurretOpticsMode` turretPath",
@@ -35424,7 +35424,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a **[[[Unit Loadout Array]]](https://community.bistudio.com/wiki/%5B%5BUnit%20Loadout%20Array%5D%5D)** with all assigned items, weapons, containers and their stored items.\n\n**NOTE**: \nThe config should contain the following standard entries:```cpp\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = { \"V_PlateCarrier1_rgr\", \"H_HelmetB\", \"ItemCompass\", \"ItemWatch\", \"ItemRadio\", \"NVGoggles\" };\n\tweapons[] = { \"arifle_MX_ACO_pointer_F\", \"hgun_P07_F\" };\n\titems[] = { \"FirstAidKit\", \"FirstAidKit\", \"FirstAidKit\" };\n\tmagazines[] = {\n\t\t\"30Rnd_65x39_caseless_mag\", \"16Rnd_9x21_Mag\",\n\t\t\"SmokeShell\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\"\n\t};\n};\n```",
+            "description": "Returns a **[Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)** with all assigned items, weapons, containers and their stored items.\n\n**NOTE**: \nThe config should contain the following standard entries:```cpp\nclass MyLoadout\n{\n\tuniformClass = \"U_B_CombatUniform_mcam\";\n\tbackpack = \"B_AssaultPack_mcamo\";\n\tlinkedItems[] = { \"V_PlateCarrier1_rgr\", \"H_HelmetB\", \"ItemCompass\", \"ItemWatch\", \"ItemRadio\", \"NVGoggles\" };\n\tweapons[] = { \"arifle_MX_ACO_pointer_F\", \"hgun_P07_F\" };\n\titems[] = { \"FirstAidKit\", \"FirstAidKit\", \"FirstAidKit\" };\n\tmagazines[] = {\n\t\t\"30Rnd_65x39_caseless_mag\", \"16Rnd_9x21_Mag\",\n\t\t\"SmokeShell\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\",\n\t\t\"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\", \"HandGrenade\"\n\t};\n};\n```",
             "examples": [
                 {
                     "text": "```sqf\ngetUnitLoadout player;\n```"
@@ -35467,7 +35467,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`getUnitLoadout` config",
-                    "returns": "`Array` format [[[Unit Loadout Array]]](https://community.bistudio.com/wiki/%5B%5BUnit%20Loadout%20Array%5D%5D)"
+                    "returns": "`Array` format [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/getUnitLoadout"
@@ -35670,7 +35670,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n{{{!}} class=\"wikitable\"\n!colspan=\"2\"{{!}}Primary syntax (`String`) !! colspan=\"2\"{{!}}Alternative syntax (`Array`)\n{{!}}-\n{{!}}**Code**\n{{!}}**Since**\n{{!}}**Code**\n{{!}}**Since**\n{{!}}-\n{{!}} `Namespace` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Namespace` getVariable `Array` {{!}}{{!}} Arma 2: Operation Arrowhead v1.60\n{{!}}-\n{{!}} `Object` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Object` getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Group` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Group` getVariable `Array` {{!}}{{!}} -\n{{!}}-\n{{!}} [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) getVariable `String` {{!}}{{!}} - {{!}}{{!}} [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Task` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Task` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Location` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Location` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Control` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Control` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}-\n{{!}} `Display` getVariable `String` {{!}}{{!}} Arma 3 v1.56 {{!}}{{!}} `Display` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}}\n\n**IMPORTANT**: When variable is [set](https://community.bistudio.com/wiki/setVariable) on a `Task`, it is not actually set on the task itself, but on the FSM attached to the task.\n\nIf there is no FSM, `getVariable` will not work.\n**Arma**: 3 | In the case of Alt Syntax usage in {{arma3, _defaultValue_ will be returned if:\n* Requested variable is either undefined or `nil`\n* Variable namespace is null (`objNull`, `grpNull`, etc.)}}",
+            "description": "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n{{{!}} class=\"wikitable\"\n!colspan=\"2\"{{!}}Primary syntax (`String`) !! colspan=\"2\"{{!}}Alternative syntax (`Array`)\n{{!}}-\n{{!}}**Code**\n{{!}}**Since**\n{{!}}**Code**\n{{!}}**Since**\n{{!}}-\n{{!}} `Namespace` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Namespace` getVariable `Array` {{!}}{{!}} Arma 2: Operation Arrowhead v1.60\n{{!}}-\n{{!}} `Object` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Object` getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Group` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Group` getVariable `Array` {{!}}{{!}} -\n{{!}}-\n{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member) getVariable `String` {{!}}{{!}} - {{!}}{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member) getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Task` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Task` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Location` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Location` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Control` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Control` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}-\n{{!}} `Display` getVariable `String` {{!}}{{!}} Arma 3 v1.56 {{!}}{{!}} `Display` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}}\n\n**IMPORTANT**: When variable is [set](https://community.bistudio.com/wiki/setVariable) on a `Task`, it is not actually set on the task itself, but on the FSM attached to the task.\n\nIf there is no FSM, `getVariable` will not work.\n**Arma**: 3 | In the case of Alt Syntax usage in {{arma3, _defaultValue_ will be returned if:\n* Requested variable is either undefined or `nil`\n* Variable namespace is null (`objNull`, `grpNull`, etc.)}}",
             "examples": [
                 {
                     "text": "```sqf\nprivate _variable = myTruck getVariable \"myVariable\"; // returns nil if \"myVariable\" is not set\n```"
@@ -35693,7 +35693,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "varspace",
-                            "description": "`Namespace`, `Object`, `Display`, `Control`, `Group`, `Location`, `Task`, [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D), `Display`, `Control`"
+                            "description": "`Namespace`, `Object`, `Display`, `Control`, `Group`, `Location`, `Task`, [Team Member](https://community.bistudio.com/wiki/Team%20Member), `Display`, `Control`"
                         },
                         {
                             "name": "name",
@@ -35701,7 +35701,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "varspace",
-                            "description": "`Namespace`, `Object`, `Display`, `Control`, `Group`, `Location`, `Task`, [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D), `Display`, `Control`"
+                            "description": "`Namespace`, `Object`, `Display`, `Control`, `Group`, `Location`, `Task`, [Team Member](https://community.bistudio.com/wiki/Team%20Member), `Display`, `Control`"
                         },
                         {
                             "name": "name",
@@ -36144,7 +36144,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Break script flow and go to given label (defined by **#** - **NOT** to be confused with [SQF](https://community.bistudio.com/wiki/SQF%20Syntax)'s [hash sign](https://community.bistudio.com/wiki/a_hash_b)!)\n**WARNING**: This command only works in [[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D).\n**NOTE**: Note that labels are not case sensitive and are searched for from the top of the script, so multiple occurrences of a label will only result in the topmost one ever being found.",
+            "description": "Break script flow and go to given label (defined by **#** - **NOT** to be confused with [SQF](https://community.bistudio.com/wiki/SQF%20Syntax)'s [hash sign](https://community.bistudio.com/wiki/a_hash_b)!)\n**WARNING**: This command only works in [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax).\n**NOTE**: Note that labels are not case sensitive and are searched for from the top of the script, so multiple occurrences of a label will only result in the topmost one ever being found.",
             "examples": [
                 {
                     "text": "<sqs>\ngoto \"myLabel\"\nplayer setDamage 1\n\n#myLabel\nhint \"you successfully avoided death!\"\n</sqs>"
@@ -37104,7 +37104,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return whether the [[[High Command]]](https://community.bistudio.com/wiki/%5B%5BHigh%20Command%5D%5D) bar is shown/active.",
+            "description": "Return whether the [High Command](https://community.bistudio.com/wiki/High%20Command) bar is shown/active.",
             "examples": [
                 {
                     "text": "```sqf\nif (hcShownBar) then { hint \"HC bar is active\"; };\n```"
@@ -37326,7 +37326,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Outputs a hint message to the right of the screen (left of the screen in Operation Flashpoint) with a sound (except in Armed Assault).\nTo split message in multiple lines either use [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) or `**\\n**` (in lower case).\n\n**Arma**: 1|{{arma1 hints are silent. For later titles, see `hintSilent`.}}",
+            "description": "Outputs a hint message to the right of the screen (left of the screen in Operation Flashpoint) with a sound (except in Armed Assault).\nTo split message in multiple lines either use [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) or `**\\n**` (in lower case).\n\n**Arma**: 1|{{arma1 hints are silent. For later titles, see `hintSilent`.}}",
             "examples": [
                 {
                     "text": "```sqf\n\n// outputs the following:\n// Press W to move forward.\n// Press S to move backwards.\nhint \"Press W to move forward.\\nPress S to move backwards.\"\n\n```"
@@ -37346,7 +37346,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "message",
-                            "description": "`String` or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - the message to display."
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - the message to display."
                         }
                     ],
                     "outline": "`hint` message",
@@ -37394,7 +37394,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "message",
-                            "description": "`String`, [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D), `Array` of `String`s or `Array` of [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                            "description": "`String`, [Structured Text](https://community.bistudio.com/wiki/Structured%20Text), `Array` of `String`s or `Array` of [Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                         }
                     ],
                     "outline": "title `hintC` message",
@@ -37453,7 +37453,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "text",
-                            "description": "`String` or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                         }
                     ],
                     "outline": "`hintSilent` text",
@@ -37616,7 +37616,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This operator creates a [[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D) which is used in the if-construct as described [[Control_Structures#if-Statement|here]].",
+            "description": "This operator creates a [If Type](https://community.bistudio.com/wiki/If%20Type) which is used in the if-construct as described [[Control_Structures#if-Statement|here]].",
             "examples": [
                 {
                     "text": "```sqf\n\n_retVal = if (1 > 0) then { \"It's true\" } else { \"It's false\" };\nhint str _retVal;\n\n```"
@@ -37634,7 +37634,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`if`  condition",
-                    "returns": "[[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D) - predicate which will execute 1st or 2nd option when used. This predicate is used in `then` or `exitWith` commands"
+                    "returns": "[If Type](https://community.bistudio.com/wiki/If%20Type) - predicate which will execute 1st or 2nd option when used. This predicate is used in `then` or `exitWith` commands"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/if"
@@ -37735,7 +37735,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`image` filename",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/image"
@@ -38470,7 +38470,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return the state of input devices mapped to given input action.\n\n\nFor Arma 3 inputActions and its bindings see: [[{{PAGENAME}}/actions]].\n\n\nFor earlier Arma editions  see [[[:Category:Key Actions]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AKey%20Actions%5D%5D).",
+            "description": "Return the state of input devices mapped to given input action.\n\n\nFor Arma 3 inputActions and its bindings see: [[{{PAGENAME}}/actions]].\n\n\nFor earlier Arma editions  see [:Category:Key Actions](https://community.bistudio.com/wiki/%3ACategory%3AKey%20Actions).",
             "examples": [
                 {
                     "text": "```sqf\ninputAction \"leanLeft\";\n```\n Returns 1 if the button mapped to \"leanLeft\" is pressed currently else 0."
@@ -38527,7 +38527,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the state of mouse button action, alone or in combination with key presses. For more information on codes and combos see [[[Arma_3:_Modded_Keybinding]]](https://community.bistudio.com/wiki/%5B%5BArma_3%3A_Modded_Keybinding%5D%5D) and `DIK_KeyCodes` but here are some examples of how codes could be hand constructed:\n\n* KEYBOARD_COMBO 16777216 (0x1000000)\n* DEVICE_MOUSE 65536 (0x10000)\n* HOLD_OFFSET 0\n* CLICK_OFFSET 128 (0x80)\n* DOUBLE_CLICK_OFFSET 256 (0x100)\n* SPECIAL_COMBINATIONS 1114112 (0x110000)\n<pre>\nClick + Hold: BUTTON + DEVICE_MOUSE + HOLD_OFFSET = BUTTON + 65536 + 0\nClick: BUTTON + DEVICE_MOUSE + CLICK_OFFSET = BUTTON + 65536 + 128 \nDouble Click: BUTTON + DEVICE_MOUSE + DOUBLE_CLICK_OFFSET = BUTTON + 65536 + 256\n\nRMB Click + Hold:  1 + 65536 + 0 = 65537\nRMB Click: 1 + 65536 + 128 = 65665\nRMB Double Click: 1 + 65536 + 256 = 65793\n\nCombo + Click + Hold: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + HOLD_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 0\nCombo + Click: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + CLICK_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 128\nCombo + Double Click: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + DOUBLE_CLICK_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 256\n\nLShift + RMB Click + Hold: 42 * 16777216 + 1114112 + 1 + 0 = 705757185\nLShift + RMB Click: 42 * 16777216 + 1114112 + 1 + 128 = 705757313\nLShift + RMB Double Click: 42 * 16777216 + 1114112 + 1 + 256 = 705757441\n</pre>",
+            "description": "Returns the state of mouse button action, alone or in combination with key presses. For more information on codes and combos see [Arma_3:_Modded_Keybinding](https://community.bistudio.com/wiki/Arma_3%3A_Modded_Keybinding) and `DIK_KeyCodes` but here are some examples of how codes could be hand constructed:\n\n* KEYBOARD_COMBO 16777216 (0x1000000)\n* DEVICE_MOUSE 65536 (0x10000)\n* HOLD_OFFSET 0\n* CLICK_OFFSET 128 (0x80)\n* DOUBLE_CLICK_OFFSET 256 (0x100)\n* SPECIAL_COMBINATIONS 1114112 (0x110000)\n<pre>\nClick + Hold: BUTTON + DEVICE_MOUSE + HOLD_OFFSET = BUTTON + 65536 + 0\nClick: BUTTON + DEVICE_MOUSE + CLICK_OFFSET = BUTTON + 65536 + 128 \nDouble Click: BUTTON + DEVICE_MOUSE + DOUBLE_CLICK_OFFSET = BUTTON + 65536 + 256\n\nRMB Click + Hold:  1 + 65536 + 0 = 65537\nRMB Click: 1 + 65536 + 128 = 65665\nRMB Double Click: 1 + 65536 + 256 = 65793\n\nCombo + Click + Hold: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + HOLD_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 0\nCombo + Click: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + CLICK_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 128\nCombo + Double Click: DIK * KEYBOARD_COMBO + SPECIAL_COMBINATIONS + BUTTON + DOUBLE_CLICK_OFFSET = DIK * 16777216 + 1114112 + BUTTON + 256\n\nLShift + RMB Click + Hold: 42 * 16777216 + 1114112 + 1 + 0 = 705757185\nLShift + RMB Click: 42 * 16777216 + 1114112 + 1 + 128 = 705757313\nLShift + RMB Double Click: 42 * 16777216 + 1114112 + 1 + 256 = 705757441\n</pre>",
             "examples": [
                 {
                     "text": "State of the RMB:\n\n```sqf\nonEachFrame { hintSilent str inputMouse 1 };\n```"
@@ -38902,7 +38902,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`isAgent` teamMember",
@@ -39465,7 +39465,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Performs strict comparison between var1 and var2 and returns `true` if equal, otherwise `false`. Strict means that it would check that both arguments are of the same data type and then compare the values.\n\n\nSome differences between `isEqualTo` and [[==]]:\n* It performs case sensitive comparison on `String`s\n* It doesn't throw error when comparing different types, i.e. (\"eleven\" `isEqualTo` 11)\n* It can compare `Array`s, [[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D)s and `Boolean`s (`alive` `player` `isEqualTo` `true`)\n* It can compare non-existent game objects (`grpNull` `isEqualTo` `grpNull`)\n* It is slightly faster than [[==]], especially when comparing `String`s\n* {{GVI|arma3|1.48",
+            "description": "Performs strict comparison between var1 and var2 and returns `true` if equal, otherwise `false`. Strict means that it would check that both arguments are of the same data type and then compare the values.\n\n\nSome differences between `isEqualTo` and [[==]]:\n* It performs case sensitive comparison on `String`s\n* It doesn't throw error when comparing different types, i.e. (\"eleven\" `isEqualTo` 11)\n* It can compare `Array`s, [Script Handle](https://community.bistudio.com/wiki/Script%20Handle)s and `Boolean`s (`alive` `player` `isEqualTo` `true`)\n* It can compare non-existent game objects (`grpNull` `isEqualTo` `grpNull`)\n* It is slightly faster than [[==]], especially when comparing `String`s\n* {{GVI|arma3|1.48",
             "examples": [
                 {
                     "text": "```sqf\n\n_arr1 = [1, [2, [3]]];\n_arr2 = [1, [2, [3]]];\nif (_arr1 isEqualTo _arr2) then { hint \"Arrays match!\" };\n\n```"
@@ -40384,7 +40384,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "This trick forces executing something in [Unscheduled Environment](https://community.bistudio.com/wiki/Scheduler):\n\n```sqf\n\n0 spawn {\n\tsystemChat str canSuspend;\t\t// chat shows true\n\tisNil { hint str canSuspend };\t// hint shows false\n};\n\n```"
                 },
                 {
-                    "text": "Operation Flashpoint `String` comparison workaround\n\n[[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D):\n<sqs>\n_nil = format [\"%1\", _undefinedVariable]\n? (format [\"%1\", variableToTest] == _nil) : hint \"variableToTest is nil\"\n</sqs>\n\n[[[SQF Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQF%20Syntax%5D%5D):\n\n```sqf\n\n_nil = format [\"%1\", _undefinedVariable];\nif (format [\"%1\", variableToTest] == _nil) then { hint \"variableToTest is nil\" };\n\n```"
+                    "text": "Operation Flashpoint `String` comparison workaround\n\n[SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax):\n<sqs>\n_nil = format [\"%1\", _undefinedVariable]\n? (format [\"%1\", variableToTest] == _nil) : hint \"variableToTest is nil\"\n</sqs>\n\n[SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax):\n\n```sqf\n\n_nil = format [\"%1\", _undefinedVariable];\nif (format [\"%1\", variableToTest] == _nil) then { hint \"variableToTest is nil\" };\n\n```"
                 }
             ],
             "syntaxes": [
@@ -40482,13 +40482,13 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Checks whether the tested item is null.\n\nWhich null type the item has to be equal to depends on the type of game entity tested:\n\n{{{!}} class=\"wikitable\" style=\"text-align: center\"\n! [Type](https://community.bistudio.com/wiki/%3ACategory%3AData%20Types)\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `Control`\n{{!}} `Display`\n{{!}} `Location`\n{{!}} `Task`\n{{!}} [Script](https://community.bistudio.com/wiki/Script%20Handle)\n{{!}} `Config`\n{{!}} [[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)\n{{!}} [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)\n{{!}}-\n! Null value\n{{!}} `objNull`\n{{!}} `grpNull`\n{{!}} `controlNull`\n{{!}} `displayNull`\n{{!}} `locationNull`\n{{!}} `taskNull`\n{{!}} `scriptNull`\n{{!}} `configNull`\n{{!}} `diaryRecordNull`\n{{!}} `teamMemberNull`\n{{!}}- style=\"font-size: .85em\"\n! Since\n{{!}} **(Operation Flashpoint)**\n{{!}} **(Operation Flashpoint)**\n{{!}} **(Armed Assault)**\n{{!}} **(Armed Assault)**\n{{!}} **(Arma 2)**\n{{!}} **(Arma 2)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}}\n\n{{Feature|important",
+            "description": "Checks whether the tested item is null.\n\nWhich null type the item has to be equal to depends on the type of game entity tested:\n\n{{{!}} class=\"wikitable\" style=\"text-align: center\"\n! [Type](https://community.bistudio.com/wiki/%3ACategory%3AData%20Types)\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `Control`\n{{!}} `Display`\n{{!}} `Location`\n{{!}} `Task`\n{{!}} [Script](https://community.bistudio.com/wiki/Script%20Handle)\n{{!}} `Config`\n{{!}} [Diary Record](https://community.bistudio.com/wiki/Diary%20Record)\n{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member)\n{{!}}-\n! Null value\n{{!}} `objNull`\n{{!}} `grpNull`\n{{!}} `controlNull`\n{{!}} `displayNull`\n{{!}} `locationNull`\n{{!}} `taskNull`\n{{!}} `scriptNull`\n{{!}} `configNull`\n{{!}} `diaryRecordNull`\n{{!}} `teamMemberNull`\n{{!}}- style=\"font-size: .85em\"\n! Since\n{{!}} **(Operation Flashpoint)**\n{{!}} **(Operation Flashpoint)**\n{{!}} **(Armed Assault)**\n{{!}} **(Armed Assault)**\n{{!}} **(Arma 2)**\n{{!}} **(Arma 2)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}}\n\n{{Feature|important",
             "examples": [
                 {
                     "text": "```sqf\n\nif (isNull obj) then\n{\n\thint \"obj variable is defined but obj is null\";\n};\n\n```"
                 },
                 {
-                    "text": "[[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D) support before **(Arma 3)**:\n\n```sqf\n\nprivate _nullRecord = objNull createDiaryRecord []; // wrong parameters = failure to create a record = null value\nprivate _createdRecord = player createDiaryRecord [\"Diary\", [\"title\", \"description\"]];\nif (_createdRecord isEqualTo _nullRecord) then { hint \"Failed\" };\n\n```\n\n\n[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) support before **(Arma 3)**:\n\n```sqf\nprivate _isNull = _teamMember isEqualTo teamMemberNull;\n```"
+                    "text": "[Diary Record](https://community.bistudio.com/wiki/Diary%20Record) support before **(Arma 3)**:\n\n```sqf\n\nprivate _nullRecord = objNull createDiaryRecord []; // wrong parameters = failure to create a record = null value\nprivate _createdRecord = player createDiaryRecord [\"Diary\", [\"title\", \"description\"]];\nif (_createdRecord isEqualTo _nullRecord) then { hint \"Failed\" };\n\n```\n\n\n[Team Member](https://community.bistudio.com/wiki/Team%20Member) support before **(Arma 3)**:\n\n```sqf\nprivate _isNull = _teamMember isEqualTo teamMemberNull;\n```"
                 }
             ],
             "syntaxes": [
@@ -40496,7 +40496,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "`Object`, `Control`, `Display`, `Group`, `Location`, `Task`, [[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D), `Config` or [[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)"
+                            "description": "`Object`, `Control`, `Display`, `Group`, `Location`, `Task`, [Script Handle](https://community.bistudio.com/wiki/Script%20Handle), `Config` or [Diary Record](https://community.bistudio.com/wiki/Diary%20Record)"
                         }
                     ],
                     "outline": "`isNull` entity",
@@ -40714,7 +40714,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns `true` if the given player is remote-controlling a unit.\n**IMPORTANT**: See also [[[Remote Control Tutorial]]](https://community.bistudio.com/wiki/%5B%5BRemote%20Control%20Tutorial%5D%5D).",
+            "description": "Returns `true` if the given player is remote-controlling a unit.\n**IMPORTANT**: See also [Remote Control Tutorial](https://community.bistudio.com/wiki/Remote%20Control%20Tutorial).",
             "examples": [
                 {
                     "text": "```sqf\n\nif (isRemoteControlling player) then\n{\n\thint format [\"You are controlling %1\", remoteControlled player];\n}\nelse\n{\n\thint \"Why not remote-control something?\";\n};\n\n```"
@@ -42147,7 +42147,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`keyImage`  dikCode",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/keyImage"
@@ -42287,7 +42287,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Order an AI airplane to land at a given airport. **ID** is the number to identify which map airport you want the airplane to land at. See [[[Arma: Airport IDs]]](https://community.bistudio.com/wiki/%5B%5BArma%3A%20Airport%20IDs%5D%5D) for more information.\n**Arma**: 3 | Since Arma 3 v1.68 it is possible to also make the airplane land at a [dynamic airport](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Airport%20Configuration) `object` (e.g. aircraft carrier, makeshift runway...) – see **Example 2**.\n**Arma**: 3 | Since Arma3 v2.18 it is also possible to make a helicopter land at a specific helipad. \n**NOTE**: To make a **helicopter** land there is also the `land` command.",
+            "description": "Order an AI airplane to land at a given airport. **ID** is the number to identify which map airport you want the airplane to land at. See [Arma: Airport IDs](https://community.bistudio.com/wiki/Arma%3A%20Airport%20IDs) for more information.\n**Arma**: 3 | Since Arma 3 v1.68 it is possible to also make the airplane land at a [dynamic airport](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Airport%20Configuration) `object` (e.g. aircraft carrier, makeshift runway...) – see **Example 2**.\n**Arma**: 3 | Since Arma3 v2.18 it is also possible to make a helicopter land at a specific helipad. \n**NOTE**: To make a **helicopter** land there is also the `land` command.",
             "examples": [
                 {
                     "text": "```sqf\n_plane1 landAt 1;\n```"
@@ -42417,7 +42417,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turret",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `laserTarget` turret",
@@ -44433,7 +44433,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Ceases the using of the vehicle by a group and unassigns vehicle from the group.\nIf the argument is a single unit, the vehicle will be unassigned from unit's group.\nAfter vehicle is unassigned from the group, each individual crew member then unassigned from the vehicle.\n\n\n\nIn short the command could be hypothetically presented as:\n\n\n```sqf\nleaveVehicle = un-addVehicle + unassignVehicle forEach crew\n```\n\n\nHowever, to make it more reliable, it is best to move unit out of the vehicle manually with `moveOut` and force unassign the vehicle with `unassignVehicle`.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Ceases the using of the vehicle by a group and unassigns vehicle from the group.\nIf the argument is a single unit, the vehicle will be unassigned from unit's group.\nAfter vehicle is unassigned from the group, each individual crew member then unassigned from the vehicle.\n\n\n\nIn short the command could be hypothetically presented as:\n\n\n```sqf\nleaveVehicle = un-addVehicle + unassignVehicle forEach crew\n```\n\n\nHowever, to make it more reliable, it is best to move unit out of the vehicle manually with `moveOut` and force unassign the vehicle with `unassignVehicle`.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_unit leaveVehicle _vehicle;\n```"
@@ -44763,7 +44763,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`lineBreak`",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/lineBreak"
@@ -47102,7 +47102,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "weaponName",
@@ -47744,7 +47744,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `lockedTurret` turretPath",
@@ -47841,7 +47841,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "lock",
@@ -48171,7 +48171,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`magazinesAllTurrets` [vehicle, excludePersonTurrets]",
-                    "returns": "`Array` - in the following format: [<nowiki/>[className, turretPath, ammoCount, id, creator],...]  where:\n* className: `String` - magazine class name\n* turretPath: `Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)\n* ammoCount: `Number` - how many rounds left in the magazine\n* id: `Number` - id of the magazine object. The number starts at 10,000,000. This gives it about 6,700,000 possible ids before the number starts losing precision and cannot be used in scripts.\n* creator: `Number` - `owner` / `clientOwner` of the PC that created the object"
+                    "returns": "`Array` - in the following format: [<nowiki/>[className, turretPath, ammoCount, id, creator],...]  where:\n* className: `String` - magazine class name\n* turretPath: `Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)\n* ammoCount: `Number` - how many rounds left in the magazine\n* id: `Number` - id of the magazine object. The number starts at 10,000,000. This gives it about 6,700,000 possible ids before the number starts losing precision and cannot be used in scripts.\n* creator: `Number` - `owner` / `clientOwner` of the PC that created the object"
                 }
             ],
             "argumentLocality": "Global Argument",
@@ -48467,7 +48467,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "vehicle",
@@ -48475,7 +48475,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "includeEmpty",
@@ -48515,7 +48515,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D). [-1] for driver turret is supported"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path). [-1] for driver turret is supported"
                         }
                     ],
                     "outline": "vehicle `magazineTurretAmmo` [magazineClass, turretPath]",
@@ -49236,7 +49236,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`members` team",
@@ -50767,7 +50767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the version of the current mission.\n* Mission from the [[[2D Editor]]](https://community.bistudio.com/wiki/%5B%5B2D%20Editor%5D%5D): 12\n* Mission from the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor): 15 and higher (for example current version for [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) mission in Arma 3 v1.57 is 51)",
+            "description": "Returns the version of the current mission.\n* Mission from the [2D Editor](https://community.bistudio.com/wiki/2D%20Editor): 12\n* Mission from the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor): 15 and higher (for example current version for [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) mission in Arma 3 v1.57 is 51)",
             "examples": [
                 {
                     "text": "```sqf\n_version = missionVersion;\n```"
@@ -51154,7 +51154,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Moves a unit into a vehicle cargo position (immediately and without animation).\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
+            "description": "Moves a unit into a vehicle cargo position (immediately and without animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne moveInCargo _jeepOne;\n```"
@@ -51239,7 +51239,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Moves soldier into vehicle driver position (immediate, no animation).\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen unless `moveOut` (since Arma 2) is used first to move the unit out of their vehicle (see {{Link|#Example 2).}}",
+            "description": "Moves soldier into vehicle driver position (immediate, no animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen unless `moveOut` (since Arma 2) is used first to move the unit out of their vehicle (see {{Link|#Example 2).}}",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne moveInDriver _tankOne;\n```"
@@ -51275,7 +51275,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Move soldier into vehicle gunner position (Immediate, no animation).\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
+            "description": "Move soldier into vehicle gunner position (Immediate, no animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne moveInGunner tankOne;\n```"
@@ -51308,7 +51308,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Moves the soldier into the vehicle's turret. (Immediately, without animation).\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
+            "description": "Moves the soldier into the vehicle's turret. (Immediately, without animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne moveInTurret [_tank, [0, 0]];\n```"
@@ -51327,7 +51327,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "unitName `moveInTurret` [vehicle, turretPath]",
@@ -52060,7 +52060,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of nearest terrain objects of the given types to the given position or object, within the specified distance. If more than one object is found they will be ordered according to 3D distance to the object (i.e. the closest one will be first in the array). \nIn contrast to `nearestObjects` this command returns terrain placed objects like trees, rocks and buildings which don't necessarily need an associated config class.\n\n\nPossible type names:\n{{Columns|7|\n* `**\"BUILDING\"**`\n* `**\"BUNKER\"**`\n* `**\"BUSH\"**`\n* `**\"BUSSTOP\"**`\n* `**\"CHAPEL\"**`\n* `**\"CHURCH\"**`\n* `**\"CROSS\"**`\n* `**\"FENCE\"**`\n* `**\"FOREST BORDER\"**`\n* `**\"FOREST SQUARE\"**`\n* `**\"FOREST TRIANGLE\"**`\n* `**\"FOREST\"**`\n* `**\"FORTRESS\"**`\n* `**\"FOUNTAIN\"**`\n* `**\"FUELSTATION\"**`\n* `**\"HIDE\"**`\n* `**\"HOSPITAL\"**`\n* `**\"HOUSE\"**`\n* `**\"LIGHTHOUSE\"**`\n* `**\"MAIN ROAD\"**`\n* `**\"POWER LINES\"**`\n* `**\"POWERSOLAR\"**`\n* `**\"POWERWAVE\"**`\n* `**\"POWERWIND\"**`\n* `**\"QUAY\"**`\n* `**\"RAILWAY\"**`\n* `**\"ROAD\"**`\n* `**\"ROCK\"**`\n* `**\"ROCKS\"**`\n* `**\"RUIN\"**`\n* `**\"SHIPWRECK\"**`\n* `**\"SMALL TREE\"**`\n* `**\"STACK\"**`\n* `**\"TOURISM\"**`\n* `**\"TRACK\"**`\n* `**\"TRAIL\"**`\n* `**\"TRANSMITTER\"**`\n* `**\"TREE\"**`\n* `**\"VIEW-TOWER\"**`\n* `**\"WALL\"**`\n* `**\"WATERTOWER\"**`\n}}\n\n**IMPORTANT**: The names are / The filter is based on the named property [map](https://community.bistudio.com/wiki/Arma%203%3A%20Named_Properties%23map) - not on the named property _class_ or any config definition!\n\n<spoiler text=\"Terrain object counts\">\n**NOTE**: Types which are missing are not present in the given world. [[[Virtual Reality]]](https://community.bistudio.com/wiki/%5B%5BVirtual%20Reality%5D%5D) has no terrain objects. Last updated **(Arma 3)**\n<big>`Stratis`</big>\n{{Columns|5|\n* BUSH: 47974\n* CHAPEL: 2\n* CROSS: 1\n* FENCE: 1728\n* FUELSTATION: 3\n* HIDE: 70975\n* HOUSE: 684\n* LIGHTHOUSE: 3\n* ROAD: 143\n* ROCK: 820\n* SHIPWRECK: 11\n* TRACK: 2063\n* TRANSMITTER: 11\n* TREE: 40110\n* WALL: 1355\n* WATERTOWER: 1\n}}\n\n<big>`Altis`</big>\n{{Columns|5|\n* BUSH: 747193\n* CHAPEL: 165\n* CHURCH: 54\n* CROSS: 48\n* FENCE: 47940\n* FUELSTATION: 32\n* HIDE: 655958\n* HOSPITAL: 1\n* HOUSE: 17472\n* LIGHTHOUSE: 7\n* MAIN ROAD: 2061\n* POWER LINES: 2224\n* POWERSOLAR: 10\n* POWERWAVE: 51\n* POWERWIND: 128\n* ROAD: 4849\n* ROCK: 5483\n* RUIN: 3\n* SHIPWRECK: 43\n* TOURISM: 1\n* TRACK: 26823\n* TRANSMITTER: 23\n* TREE: 263630\n* WALL: 38943\n* WATERTOWER: 10\n}}\n\n<big>[[[Malden 2035]]](https://community.bistudio.com/wiki/%5B%5BMalden%202035%5D%5D)</big>\n{{Columns|5|\n* BUSH: 288461\n* BUSSTOP: 45\n* CHAPEL: 14\n* CHURCH: 14\n* CROSS: 16\n* FENCE: 11189\n* FUELSTATION: 24\n* HIDE: 192553\n* HOUSE: 4062\n* LIGHTHOUSE: 15\n* MAIN ROAD: 1050\n* POWER LINES: 3427\n* POWERSOLAR: 1\n* ROAD: 1442\n* ROCK: 3513\n* SHIPWRECK: 23\n* TRACK: 3489\n* TRANSMITTER: 7\n* TREE: 101960\n* WALL: 14189\n* WATERTOWER: 63\n}}\n\n<big>`Tanoa`</big>\n{{Columns|5|\n* BUSH: 754347\n* CHURCH: 21\n* FENCE: 2912\n* FUELSTATION: 85\n* HIDE: 356904\n* HOUSE: 13389\n* MAIN ROAD: 2921\n* POWER LINES: 3985\n* POWERSOLAR: 2\n* POWERWIND: 19\n* RAILWAY: 2138\n* ROAD: 1485\n* ROCK: 8909\n* SHIPWRECK: 58\n* TOURISM: 35\n* TRACK: 9419\n* TRAIL: 6936\n* TRANSMITTER: 16\n* TREE: 506993\n* WALL: 20526\n* WATERTOWER: 73\n}}\n\n<big>`Livonia`</big>\n{{Columns|5|\n* BUILDING: 1262\n* BUNKER: 40\n* BUSH: 473543\n* BUSSTOP: 73\n* CHAPEL: 8\n* CHURCH: 17\n* FENCE: 48426\n* FOUNTAIN: 36\n* FUELSTATION: 7\n* HIDE: 474123\n* HOUSE: 6762\n* MAIN ROAD: 2118\n* POWER LINES: 2671\n* POWERSOLAR: 2\n* POWERWIND: 1\n* RAILWAY: 843\n* ROAD: 5378\n* ROCK: 744\n* SHIPWRECK: 4\n* STACK: 11\n* TRACK: 12834\n* TRANSMITTER: 15\n* TREE: 1881630\n* VIEW-TOWER: 239\n* WALL: 4418\n* WATERTOWER: 7\n}}\n\n<big>`Weferlingen`</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 731315\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 231818\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[Weferlingen (Winter)]]</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 519827\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 229792\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[[Cam Lao Nam]]](https://community.bistudio.com/wiki/%5B%5BCam%20Lao%20Nam%5D%5D)</big>\n{{Columns|5|\n* BUILDING: 390\n* BUNKER: 2622\n* BUSH: 1852844\n* CHURCH: 6\n* FENCE: 12346\n* FORTRESS: 2\n* FOUNTAIN: 3\n* FUELSTATION: 32\n* HIDE: 309385\n* HOUSE: 13319\n* LIGHTHOUSE: 3\n* MAIN ROAD: 4162\n* POWER LINES: 1591\n* POWERSOLAR: 5\n* POWERWIND: 5\n* RAILWAY: 1345\n* ROAD: 17621\n* ROCK: 60452\n* SHIPWRECK: 161\n* TOURISM: 18\n* TRACK: 6846\n* TRAIL: 7726\n* TRANSMITTER: 33\n* TREE: 1442842\n* VIEW-TOWER: 529\n* WALL: 19664\n* WATERTOWER: 32\n}}\n\n<big>[[[Khe Sanh]]](https://community.bistudio.com/wiki/%5B%5BKhe%20Sanh%5D%5D)</big>\n{{Columns|5|\n* BUILDING: 91\n* BUNKER: 4861\n* BUSH: 1299130\n* FENCE: 2196\n* FOUNTAIN: 2\n* FUELSTATION: 3\n* HIDE: 228731\n* HOUSE: 5754\n* POWER LINES: 801\n* ROAD: 7755\n* ROCK: 33853\n* TRACK: 8156\n* TRANSMITTER: 3\n* TREE: 1145377\n* VIEW-TOWER: 227\n* WALL: 9078\n* WATERTOWER: 13\n}}\n\n<big>[[[The Bra]]](https://community.bistudio.com/wiki/%5B%5BThe%20Bra%5D%5D)</big>\n{{Columns|5|\n* BUILDING: 8\n* BUNKER: 265\n* BUSH: 179428\n* FENCE: 251\n* HIDE: 56960\n* HOUSE: 522\n* POWER LINES: 25\n* ROAD: 7\n* ROCK: 671\n* SHIPWRECK: 2\n* TRACK: 584\n* TRAIL: 2767\n* TRANSMITTER: 1\n* TREE: 203443\n* VIEW-TOWER: 48\n* WALL: 2076\n}}\n\n<big>`Gabreta`</big>\n{{Columns|5|\n* BUILDING: 222\n* BUSH: 383449\n* BUSSTOP: 18\n* CHAPEL: 10\n* CHURCH: 11\n* CROSS: 17\n* FENCE: 25616\n* FORTRESS: 149\n* FOUNTAIN: 2\n* FUELSTATION: 11\n* HIDE: 582635\n* HOSPITAL: 1\n* HOUSE: 6352\n* MAIN ROAD: 4427\n* POWER LINES: 502\n* POWERSOLAR: 2\n* RAILWAY: 1923\n* ROAD: 8693\n* ROCK: 918\n* RUIN: 5\n* SHIPWRECK: 1\n* STACK: 6\n* TRACK: 10066\n* TRAIL: 1170\n* TRANSMITTER: 2\n* TREE: 3473175\n* VIEW-TOWER: 39\n* WALL: 6218\n* WATERTOWER: 8\n}}\n\n<big>[[Sefrou-Ramal]]</big>\n{{Columns|5|\n* BUILDING: 2\n* BUSH: 13669\n* FENCE: 5199\n* FUELSTATION: 2\n* HIDE: 23243\n* HOUSE: 1963\n* MAIN ROAD: 403\n* POWER LINES: 565\n* POWERWIND: 19\n* RAILWAY: 135\n* ROAD: 199\n* ROCK: 1183\n* TRACK: 3286\n* TRANSMITTER: 9\n* TREE: 7592\n* WALL: 3560\n* WATERTOWER: 2\n}}\n\n<big>[[[Spearhead 1944 Normandy]]](https://community.bistudio.com/wiki/%5B%5BSpearhead%201944%20Normandy%5D%5D)</big>\n{{Columns|5|\n* BUILDING: 2918\n* BUNKER: 1703\n* BUSH: 608441\n* CHURCH: 45\n* CROSS: 16\n* FENCE: 288630\n* FORTRESS: 196\n* FOUNTAIN: 1286\n* HIDE: 330656\n* HOUSE: 12837\n* MAIN ROAD: 1981\n* RAILWAY: 776\n* ROAD: 20237\n* ROCK: 837\n* RUIN: 1\n* SMALL TREE: 20\n* TRACK: 29761\n* TRAIL: 6365\n* TREE: 581549\n* VIEW-TOWER: 95\n* WALL: 60793\n* WATERTOWER: 34\n}}\n\n{{Wiki|extractionScript}}",
+            "description": "Returns a list of nearest terrain objects of the given types to the given position or object, within the specified distance. If more than one object is found they will be ordered according to 3D distance to the object (i.e. the closest one will be first in the array). \nIn contrast to `nearestObjects` this command returns terrain placed objects like trees, rocks and buildings which don't necessarily need an associated config class.\n\n\nPossible type names:\n{{Columns|7|\n* `**\"BUILDING\"**`\n* `**\"BUNKER\"**`\n* `**\"BUSH\"**`\n* `**\"BUSSTOP\"**`\n* `**\"CHAPEL\"**`\n* `**\"CHURCH\"**`\n* `**\"CROSS\"**`\n* `**\"FENCE\"**`\n* `**\"FOREST BORDER\"**`\n* `**\"FOREST SQUARE\"**`\n* `**\"FOREST TRIANGLE\"**`\n* `**\"FOREST\"**`\n* `**\"FORTRESS\"**`\n* `**\"FOUNTAIN\"**`\n* `**\"FUELSTATION\"**`\n* `**\"HIDE\"**`\n* `**\"HOSPITAL\"**`\n* `**\"HOUSE\"**`\n* `**\"LIGHTHOUSE\"**`\n* `**\"MAIN ROAD\"**`\n* `**\"POWER LINES\"**`\n* `**\"POWERSOLAR\"**`\n* `**\"POWERWAVE\"**`\n* `**\"POWERWIND\"**`\n* `**\"QUAY\"**`\n* `**\"RAILWAY\"**`\n* `**\"ROAD\"**`\n* `**\"ROCK\"**`\n* `**\"ROCKS\"**`\n* `**\"RUIN\"**`\n* `**\"SHIPWRECK\"**`\n* `**\"SMALL TREE\"**`\n* `**\"STACK\"**`\n* `**\"TOURISM\"**`\n* `**\"TRACK\"**`\n* `**\"TRAIL\"**`\n* `**\"TRANSMITTER\"**`\n* `**\"TREE\"**`\n* `**\"VIEW-TOWER\"**`\n* `**\"WALL\"**`\n* `**\"WATERTOWER\"**`\n}}\n\n**IMPORTANT**: The names are / The filter is based on the named property [map](https://community.bistudio.com/wiki/Arma%203%3A%20Named_Properties%23map) - not on the named property _class_ or any config definition!\n\n<spoiler text=\"Terrain object counts\">\n**NOTE**: Types which are missing are not present in the given world. [Virtual Reality](https://community.bistudio.com/wiki/Virtual%20Reality) has no terrain objects. Last updated **(Arma 3)**\n<big>`Stratis`</big>\n{{Columns|5|\n* BUSH: 47974\n* CHAPEL: 2\n* CROSS: 1\n* FENCE: 1728\n* FUELSTATION: 3\n* HIDE: 70975\n* HOUSE: 684\n* LIGHTHOUSE: 3\n* ROAD: 143\n* ROCK: 820\n* SHIPWRECK: 11\n* TRACK: 2063\n* TRANSMITTER: 11\n* TREE: 40110\n* WALL: 1355\n* WATERTOWER: 1\n}}\n\n<big>`Altis`</big>\n{{Columns|5|\n* BUSH: 747193\n* CHAPEL: 165\n* CHURCH: 54\n* CROSS: 48\n* FENCE: 47940\n* FUELSTATION: 32\n* HIDE: 655958\n* HOSPITAL: 1\n* HOUSE: 17472\n* LIGHTHOUSE: 7\n* MAIN ROAD: 2061\n* POWER LINES: 2224\n* POWERSOLAR: 10\n* POWERWAVE: 51\n* POWERWIND: 128\n* ROAD: 4849\n* ROCK: 5483\n* RUIN: 3\n* SHIPWRECK: 43\n* TOURISM: 1\n* TRACK: 26823\n* TRANSMITTER: 23\n* TREE: 263630\n* WALL: 38943\n* WATERTOWER: 10\n}}\n\n<big>[Malden 2035](https://community.bistudio.com/wiki/Malden%202035)</big>\n{{Columns|5|\n* BUSH: 288461\n* BUSSTOP: 45\n* CHAPEL: 14\n* CHURCH: 14\n* CROSS: 16\n* FENCE: 11189\n* FUELSTATION: 24\n* HIDE: 192553\n* HOUSE: 4062\n* LIGHTHOUSE: 15\n* MAIN ROAD: 1050\n* POWER LINES: 3427\n* POWERSOLAR: 1\n* ROAD: 1442\n* ROCK: 3513\n* SHIPWRECK: 23\n* TRACK: 3489\n* TRANSMITTER: 7\n* TREE: 101960\n* WALL: 14189\n* WATERTOWER: 63\n}}\n\n<big>`Tanoa`</big>\n{{Columns|5|\n* BUSH: 754347\n* CHURCH: 21\n* FENCE: 2912\n* FUELSTATION: 85\n* HIDE: 356904\n* HOUSE: 13389\n* MAIN ROAD: 2921\n* POWER LINES: 3985\n* POWERSOLAR: 2\n* POWERWIND: 19\n* RAILWAY: 2138\n* ROAD: 1485\n* ROCK: 8909\n* SHIPWRECK: 58\n* TOURISM: 35\n* TRACK: 9419\n* TRAIL: 6936\n* TRANSMITTER: 16\n* TREE: 506993\n* WALL: 20526\n* WATERTOWER: 73\n}}\n\n<big>`Livonia`</big>\n{{Columns|5|\n* BUILDING: 1262\n* BUNKER: 40\n* BUSH: 473543\n* BUSSTOP: 73\n* CHAPEL: 8\n* CHURCH: 17\n* FENCE: 48426\n* FOUNTAIN: 36\n* FUELSTATION: 7\n* HIDE: 474123\n* HOUSE: 6762\n* MAIN ROAD: 2118\n* POWER LINES: 2671\n* POWERSOLAR: 2\n* POWERWIND: 1\n* RAILWAY: 843\n* ROAD: 5378\n* ROCK: 744\n* SHIPWRECK: 4\n* STACK: 11\n* TRACK: 12834\n* TRANSMITTER: 15\n* TREE: 1881630\n* VIEW-TOWER: 239\n* WALL: 4418\n* WATERTOWER: 7\n}}\n\n<big>`Weferlingen`</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 731315\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 231818\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[Weferlingen (Winter)]]</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 519827\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 229792\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[Cam Lao Nam](https://community.bistudio.com/wiki/Cam%20Lao%20Nam)</big>\n{{Columns|5|\n* BUILDING: 390\n* BUNKER: 2622\n* BUSH: 1852844\n* CHURCH: 6\n* FENCE: 12346\n* FORTRESS: 2\n* FOUNTAIN: 3\n* FUELSTATION: 32\n* HIDE: 309385\n* HOUSE: 13319\n* LIGHTHOUSE: 3\n* MAIN ROAD: 4162\n* POWER LINES: 1591\n* POWERSOLAR: 5\n* POWERWIND: 5\n* RAILWAY: 1345\n* ROAD: 17621\n* ROCK: 60452\n* SHIPWRECK: 161\n* TOURISM: 18\n* TRACK: 6846\n* TRAIL: 7726\n* TRANSMITTER: 33\n* TREE: 1442842\n* VIEW-TOWER: 529\n* WALL: 19664\n* WATERTOWER: 32\n}}\n\n<big>[Khe Sanh](https://community.bistudio.com/wiki/Khe%20Sanh)</big>\n{{Columns|5|\n* BUILDING: 91\n* BUNKER: 4861\n* BUSH: 1299130\n* FENCE: 2196\n* FOUNTAIN: 2\n* FUELSTATION: 3\n* HIDE: 228731\n* HOUSE: 5754\n* POWER LINES: 801\n* ROAD: 7755\n* ROCK: 33853\n* TRACK: 8156\n* TRANSMITTER: 3\n* TREE: 1145377\n* VIEW-TOWER: 227\n* WALL: 9078\n* WATERTOWER: 13\n}}\n\n<big>[The Bra](https://community.bistudio.com/wiki/The%20Bra)</big>\n{{Columns|5|\n* BUILDING: 8\n* BUNKER: 265\n* BUSH: 179428\n* FENCE: 251\n* HIDE: 56960\n* HOUSE: 522\n* POWER LINES: 25\n* ROAD: 7\n* ROCK: 671\n* SHIPWRECK: 2\n* TRACK: 584\n* TRAIL: 2767\n* TRANSMITTER: 1\n* TREE: 203443\n* VIEW-TOWER: 48\n* WALL: 2076\n}}\n\n<big>`Gabreta`</big>\n{{Columns|5|\n* BUILDING: 222\n* BUSH: 383449\n* BUSSTOP: 18\n* CHAPEL: 10\n* CHURCH: 11\n* CROSS: 17\n* FENCE: 25616\n* FORTRESS: 149\n* FOUNTAIN: 2\n* FUELSTATION: 11\n* HIDE: 582635\n* HOSPITAL: 1\n* HOUSE: 6352\n* MAIN ROAD: 4427\n* POWER LINES: 502\n* POWERSOLAR: 2\n* RAILWAY: 1923\n* ROAD: 8693\n* ROCK: 918\n* RUIN: 5\n* SHIPWRECK: 1\n* STACK: 6\n* TRACK: 10066\n* TRAIL: 1170\n* TRANSMITTER: 2\n* TREE: 3473175\n* VIEW-TOWER: 39\n* WALL: 6218\n* WATERTOWER: 8\n}}\n\n<big>[[Sefrou-Ramal]]</big>\n{{Columns|5|\n* BUILDING: 2\n* BUSH: 13669\n* FENCE: 5199\n* FUELSTATION: 2\n* HIDE: 23243\n* HOUSE: 1963\n* MAIN ROAD: 403\n* POWER LINES: 565\n* POWERWIND: 19\n* RAILWAY: 135\n* ROAD: 199\n* ROCK: 1183\n* TRACK: 3286\n* TRANSMITTER: 9\n* TREE: 7592\n* WALL: 3560\n* WATERTOWER: 2\n}}\n\n<big>[Spearhead 1944 Normandy](https://community.bistudio.com/wiki/Spearhead%201944%20Normandy)</big>\n{{Columns|5|\n* BUILDING: 2918\n* BUNKER: 1703\n* BUSH: 608441\n* CHURCH: 45\n* CROSS: 16\n* FENCE: 288630\n* FORTRESS: 196\n* FOUNTAIN: 1286\n* HIDE: 330656\n* HOUSE: 12837\n* MAIN ROAD: 1981\n* RAILWAY: 776\n* ROAD: 20237\n* ROCK: 837\n* RUIN: 1\n* SMALL TREE: 20\n* TRACK: 29761\n* TRAIL: 6365\n* TREE: 581549\n* VIEW-TOWER: 95\n* WALL: 60793\n* WATERTOWER: 34\n}}\n\n{{Wiki|extractionScript}}",
             "examples": [
                 {
                     "text": "```sqf\nnearestTerrainObjects [player, [\"Tree\", \"Bush\"], 200];\n```"
@@ -52901,7 +52901,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines code performed when hc command mode changes either because of (Left Ctrl + Space) shortcut or `hcShowBar` scripting command. Groups hc mode must contain at least one group for this command to work (see [[[High Command]]](https://community.bistudio.com/wiki/%5B%5BHigh%20Command%5D%5D)). Attached code receives __isHighCommand_ boolean. \n**NOTE**: Since **Arma 3** _v1.57_ a stackable version of this EH is available: [CommandModeChanged](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23CommandModeChanged)",
+            "description": "Defines code performed when hc command mode changes either because of (Left Ctrl + Space) shortcut or `hcShowBar` scripting command. Groups hc mode must contain at least one group for this command to work (see [High Command](https://community.bistudio.com/wiki/High%20Command)). Attached code receives __isHighCommand_ boolean. \n**NOTE**: Since **Arma 3** _v1.57_ a stackable version of this EH is available: [CommandModeChanged](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23CommandModeChanged)",
             "examples": [
                 {
                     "text": "```sqf\n//Examples in-use can be found in:\n\n//ca\\modules\\HC\\data\\scripts\\HC_GUI.sqf\n//A3\\modules_f\\HC\\data\\scripts\\HC_GUI.sqf\n```"
@@ -53582,7 +53582,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Force all units in the array to get in or out of their assigned vehicles. Units must be assigned to a vehicle before this command will do anything.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Force all units in the array to get in or out of their assigned vehicles. Units must be assigned to a vehicle before this command will do anything.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n[_unitOne, _unitTwo] orderGetIn true;\n```"
@@ -53881,7 +53881,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a structured text by parsing the given XML description. Do not use `parseText` when displaying a localized text from [[Stringtable.xml]].\n\nA detailed explanation of all formatting possibilities can be found at [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D).",
+            "description": "Creates a structured text by parsing the given XML description. Do not use `parseText` when displaying a localized text from [[Stringtable.xml]].\n\nA detailed explanation of all formatting possibilities can be found at [Structured Text](https://community.bistudio.com/wiki/Structured%20Text).",
             "examples": [
                 {
                     "text": "```sqf\nprivate _Stxt = parseText \"First line<img image='data\\isniper.paa'/><br/>Second line\";\n```"
@@ -53902,7 +53902,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`parseText` text",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/parseText"
@@ -54076,7 +54076,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "**pixelGrid**",
-                    "returns": "`Number` - grid size, see [[[Arma 3: Pixel Grid System]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Pixel%20Grid%20System%5D%5D)"
+                    "returns": "`Number` - grid size, see [Arma 3: Pixel Grid System](https://community.bistudio.com/wiki/Arma%203%3A%20Pixel%20Grid%20System)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/pixelGrid"
@@ -54098,7 +54098,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "**pixelGridBase**",
-                    "returns": "`Number` - grid size, see [[[Arma 3: Pixel Grid System]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Pixel%20Grid%20System%5D%5D)"
+                    "returns": "`Number` - grid size, see [Arma 3: Pixel Grid System](https://community.bistudio.com/wiki/Arma%203%3A%20Pixel%20Grid%20System)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/pixelGridBase"
@@ -54120,7 +54120,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "**pixelGridNoUIScale**",
-                    "returns": "`Number` - grid size, see [[[Arma 3: Pixel Grid System]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Pixel%20Grid%20System%5D%5D)"
+                    "returns": "`Number` - grid size, see [Arma 3: Pixel Grid System](https://community.bistudio.com/wiki/Arma%203%3A%20Pixel%20Grid%20System)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/pixelGridNoUIScale"
@@ -54231,7 +54231,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person, a smooth transition to the given action will be initiated.\n\nFor Arma 3 actions see: [[[playAction/actions]]](https://community.bistudio.com/wiki/%5B%5BplayAction%2Factions%5D%5D).",
+            "description": "When used on a person, a smooth transition to the given action will be initiated.\n\nFor Arma 3 actions see: [playAction/actions](https://community.bistudio.com/wiki/playAction%2Factions).",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne playAction \"SitDown\";\n```"
@@ -54264,7 +54264,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person, a smooth transition to the given action will be initiated, but all previous playAction are discarded.\n**Arma**: 3|For {{arma3 actions, see [[[playAction/actions]]](https://community.bistudio.com/wiki/%5B%5BplayAction%2Factions%5D%5D).}}",
+            "description": "When used on a person, a smooth transition to the given action will be initiated, but all previous playAction are discarded.\n**Arma**: 3|For {{arma3 actions, see [playAction/actions](https://community.bistudio.com/wiki/playAction%2Factions).}}",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne playActionNow \"SitDown\";\n```"
@@ -54496,7 +54496,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person, smooth transition to given move will be done.\n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see {{Link|#Example 2}}).\n**NOTE**: see [[[:Category:Moves]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AMoves%5D%5D) for respective games animations.\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
+            "description": "When used on a person, smooth transition to given move will be done.\n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see {{Link|#Example 2}}).\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne playMove \"Stand\";\n```"
@@ -54535,7 +54535,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded. \n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see {{Link|#Example 2}}).\n**NOTE**: see [[[:Category:Moves]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AMoves%5D%5D) for respective games animations.\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
+            "description": "When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded. \n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see {{Link|#Example 2}}).\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
             "examples": [
                 {
                     "text": "```sqf\nplayer playMoveNow \"AmovPercMevaSlowWrflDf\";\n```"
@@ -54574,7 +54574,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Plays music defined in [[Description.ext#CfgMusic|Description.ext's CfgMusic]] or config.cpp. If the _musicName_ could not be found a message is logged into the .rpt file: `**Music <_musicName_> not found**`.\n* [[[Arma 3: CfgMusic]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20CfgMusic%5D%5D)\n* [[[Arma 2: CfgMusic]]](https://community.bistudio.com/wiki/%5B%5BArma%202%3A%20CfgMusic%5D%5D)\n* [[[ArmA: Armed Assault: CfgMusic]]](https://community.bistudio.com/wiki/%5B%5BArmA%3A%20Armed%20Assault%3A%20CfgMusic%5D%5D)\n* [[[Operation Flashpoint: CfgMusic]]](https://community.bistudio.com/wiki/%5B%5BOperation%20Flashpoint%3A%20CfgMusic%5D%5D)\n\n**NOTE**: To stop the music, use <sqf inline>playMusic \"\";.",
+            "description": "Plays music defined in [[Description.ext#CfgMusic|Description.ext's CfgMusic]] or config.cpp. If the _musicName_ could not be found a message is logged into the .rpt file: `**Music <_musicName_> not found**`.\n* [Arma 3: CfgMusic](https://community.bistudio.com/wiki/Arma%203%3A%20CfgMusic)\n* [Arma 2: CfgMusic](https://community.bistudio.com/wiki/Arma%202%3A%20CfgMusic)\n* [ArmA: Armed Assault: CfgMusic](https://community.bistudio.com/wiki/ArmA%3A%20Armed%20Assault%3A%20CfgMusic)\n* [Operation Flashpoint: CfgMusic](https://community.bistudio.com/wiki/Operation%20Flashpoint%3A%20CfgMusic)\n\n**NOTE**: To stop the music, use <sqf inline>playMusic \"\";.",
             "examples": [
                 {
                     "text": "```sqf\nplayMusic \"RadioAmbient1\";\n```"
@@ -54721,7 +54721,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filename",
-                            "description": "`String` - see [[[Arma 3: Sound Files]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Sound%20Files%5D%5D) for available file names or {{Link|#Example 3}} to use mission files"
+                            "description": "`String` - see [Arma 3: Sound Files](https://community.bistudio.com/wiki/Arma%203%3A%20Sound%20Files) for available file names or {{Link|#Example 3}} to use mission files"
                         },
                         {
                             "name": "soundSource",
@@ -54788,7 +54788,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "sound",
-                            "description": "`String` - `CfgSounds` class or file as used in `playSound3D` (see [[[Arma 3: Sound Files]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Sound%20Files%5D%5D) for available file names)"
+                            "description": "`String` - `CfgSounds` class or file as used in `playSound3D` (see [Arma 3: Sound Files](https://community.bistudio.com/wiki/Arma%203%3A%20Sound%20Files) for available file names)"
                         },
                         {
                             "name": "volume",
@@ -55119,7 +55119,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates [[[Post Process Effects]]](https://community.bistudio.com/wiki/%5B%5BPost%20Process%20Effects%5D%5D) specified by effect name and priority.\n\nSupported effects:\n{{Columns|4|\n* [[Post Process Effects#RadialBlur|\"RadialBlur\"]]\n* [[Post Process Effects#ChromAberration|\"ChromAberration\"]]\n* [[Post Process Effects#WetDistortion|\"WetDistortion\"]]\n* [[Post Process Effects#ColorCorrections|\"ColorCorrections\"]]\n* [[Post Process Effects#DynamicBlur|\"DynamicBlur\"]]\n* [[Post Process Effects#FilmGrain|\"FilmGrain\"]]\n* [[Post Process Effects#ColorInversion|\"ColorInversion\"]]\n* [[Post Process Effects#SSAO|\"SSAO\"]]\n* [[Post Process Effects#Resolution|\"Resolution\"]]\n}}",
+            "description": "Creates [Post Process Effects](https://community.bistudio.com/wiki/Post%20Process%20Effects) specified by effect name and priority.\n\nSupported effects:\n{{Columns|4|\n* [[Post Process Effects#RadialBlur|\"RadialBlur\"]]\n* [[Post Process Effects#ChromAberration|\"ChromAberration\"]]\n* [[Post Process Effects#WetDistortion|\"WetDistortion\"]]\n* [[Post Process Effects#ColorCorrections|\"ColorCorrections\"]]\n* [[Post Process Effects#DynamicBlur|\"DynamicBlur\"]]\n* [[Post Process Effects#FilmGrain|\"FilmGrain\"]]\n* [[Post Process Effects#ColorInversion|\"ColorInversion\"]]\n* [[Post Process Effects#SSAO|\"SSAO\"]]\n* [[Post Process Effects#Resolution|\"Resolution\"]]\n}}",
             "examples": [
                 {
                     "text": "```sqf\n_ppGrain = ppEffectCreate [\"filmGrain\", 2005];\n```"
@@ -55158,7 +55158,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Destroy [[[Post Process Effects]]](https://community.bistudio.com/wiki/%5B%5BPost%20Process%20Effects%5D%5D) given by handle or array of handles.",
+            "description": "Destroy [Post Process Effects](https://community.bistudio.com/wiki/Post%20Process%20Effects) given by handle or array of handles.",
             "examples": [
                 {
                     "text": "```sqf\nppEffectDestroy _hndl;\n```"
@@ -55192,7 +55192,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enable / disable [[[Post Process Effects]]](https://community.bistudio.com/wiki/%5B%5BPost%20Process%20Effects%5D%5D)\n**IMPORTANT**:  If effect fails to get enabled (can check it with `ppEffectEnabled`) try adding a little `sleep` in front of it.",
+            "description": "Enable / disable [Post Process Effects](https://community.bistudio.com/wiki/Post%20Process%20Effects)\n**IMPORTANT**:  If effect fails to get enabled (can check it with `ppEffectEnabled`) try adding a little `sleep` in front of it.",
             "examples": [
                 {
                     "text": "```sqf\n\"colorCorrections\" ppEffectEnable true;\n```"
@@ -55279,7 +55279,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Forces use of [[[Post Process Effects]]](https://community.bistudio.com/wiki/%5B%5BPost%20Process%20Effects%5D%5D) in NVG.",
+            "description": "Forces use of [Post Process Effects](https://community.bistudio.com/wiki/Post%20Process%20Effects) in NVG.",
             "examples": [
                 {
                     "text": "```sqf\n_ppGrain ppEffectForceInNVG true;\n```"
@@ -55441,7 +55441,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - see [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s"
+                            "description": "`String` - see [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s"
                         },
                         {
                             "name": "speed",
@@ -55504,7 +55504,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Reads and processes the content of the specified file. Preprocessor is C-like, supports comments using `**//}} or {{hl|/*}} and {{hl|*/**` and [[[PreProcessor Commands]]](https://community.bistudio.com/wiki/%5B%5BPreProcessor%20Commands%5D%5D).\nDue to the hard-drive access this command executes and the lack of caching this command should not be used in time-critical script loops.\n**WARNING**: If the file you are loading is not prepared using UTF-8 encoding and contains some characters [ with codes](https://community.bistudio.com/wiki/toArray%20) > 127, they might convert incorrectly.",
+            "description": "Reads and processes the content of the specified file. Preprocessor is C-like, supports comments using `**//}} or {{hl|/*}} and {{hl|*/**` and [PreProcessor Commands](https://community.bistudio.com/wiki/PreProcessor%20Commands).\nDue to the hard-drive access this command executes and the lack of caching this command should not be used in time-critical script loops.\n**WARNING**: If the file you are loading is not prepared using UTF-8 encoding and contains some characters [ with codes](https://community.bistudio.com/wiki/toArray%20) > 127, they might convert incorrectly.",
             "examples": [
                 {
                     "text": "```sqf\n_content = preprocessFile \"myFunction.sqf\";\n```"
@@ -55531,7 +55531,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the preprocessed content of the given file. The preprocessor is C-like, it supports comments using /* */ and [[[PreProcessor Commands]]](https://community.bistudio.com/wiki/%5B%5BPreProcessor%20Commands%5D%5D). The preprocessor also adds a default debug entrypoint for compiler at the begining of script: `**#line 1 \"aFilename\"**`\n\n\n\nThe **#line** keyword can be used in any script that are not preprocess, or with preprocess script with extra macro to protect reserverd sharp character. The format is:\n\n`****#line** <number> \"<name>\"**`\n\nfollowed by new line. <number> could be only positive integer and <name> could be any name. This will be used only if an error occurs in the script. The error will contain the line:\n`**File <filename>, line <linenumber>**`\n\nwhere <filename> will be the <name> you set and <linenumber> will be <number> + how many lines it is from the **#line** line. If the error happened on the line right under **#line** it will add 0 to <number>, if on second line, it will add 1 etc.\n\n\nIt is possible to use more than one **#line** keywords, but it seems having just one at the top for little script is enough to pinpoint position of the error easily. \n**WARNING**: If the file you are loading is not prepared using UTF-8 encoding and contains some characters [ with codes](https://community.bistudio.com/wiki/toArray%20) > 127, they might convert incorrectly",
+            "description": "Returns the preprocessed content of the given file. The preprocessor is C-like, it supports comments using /* */ and [PreProcessor Commands](https://community.bistudio.com/wiki/PreProcessor%20Commands). The preprocessor also adds a default debug entrypoint for compiler at the begining of script: `**#line 1 \"aFilename\"**`\n\n\n\nThe **#line** keyword can be used in any script that are not preprocess, or with preprocess script with extra macro to protect reserverd sharp character. The format is:\n\n`****#line** <number> \"<name>\"**`\n\nfollowed by new line. <number> could be only positive integer and <name> could be any name. This will be used only if an error occurs in the script. The error will contain the line:\n`**File <filename>, line <linenumber>**`\n\nwhere <filename> will be the <name> you set and <linenumber> will be <number> + how many lines it is from the **#line** line. If the error happened on the line right under **#line** it will add 0 to <number>, if on second line, it will add 1 etc.\n\n\nIt is possible to use more than one **#line** keywords, but it seems having just one at the top for little script is enough to pinpoint position of the error easily. \n**WARNING**: If the file you are loading is not prepared using UTF-8 encoding and contains some characters [ with codes](https://community.bistudio.com/wiki/toArray%20) > 127, they might convert incorrectly",
             "examples": [
                 {
                     "text": "```sqf\n_string = preprocessFileLineNumbers \"A3\\ui_f\\scripts\\IGUI\\RscUnitInfo.sqf\"\n```\n\n\nResult is: \n\n #line 1 \"A3\\ui_f\\scripts\\IGUI\\RscUnitInfo.sqf\"\n\n disableserialization;\n\n ........"
@@ -55960,7 +55960,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Reliably broadcasts `missionNamespace` variable and its **current** value to all computers (server/client).\n\nVariables broadcast with `publicVariable` during a mission will be available to [JIP](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) clients with the value they held at the time.\n\nSuch variables are persistent and sent to the JIP client before the first batch of client-side [[[Event Scripts]]](https://community.bistudio.com/wiki/%5B%5BEvent%20Scripts%5D%5D) (such as [[init.sqf]]) is run.\n**IMPORTANT**: Using `publicVariable` too frequently and/or with a lot of data can cause other aspects of the game to experience bandwidth problems.\n\n\nThe following [ Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) are supported:\n{{{!}} class=\"wikitable align-center\"\n! Type\n{{!}} `Number`\n{{!}} `Boolean`\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `String`\n{{!}} [Text](https://community.bistudio.com/wiki/Structured%20Text)\n{{!}} `Array`\n{{!}} `Code`\n{{!}} `Nothing` (`nil`)\n{{!}} `HashMap`\n{{!}}-\n! Since\n{{!}} colspan=\"4\" {{!}} **(Operation Flashpoint)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}}\n\n**IMPORTANT**: \nIt is not possible (and illogical) to transfer a local entity reference, such as [scripts](https://community.bistudio.com/wiki/Script%20Handle), [displays](https://community.bistudio.com/wiki/Display) or [local objects](https://community.bistudio.com/wiki/createVehicleLocal).\n\nAlso, note that [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) is not supported.",
+            "description": "Reliably broadcasts `missionNamespace` variable and its **current** value to all computers (server/client).\n\nVariables broadcast with `publicVariable` during a mission will be available to [JIP](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) clients with the value they held at the time.\n\nSuch variables are persistent and sent to the JIP client before the first batch of client-side [Event Scripts](https://community.bistudio.com/wiki/Event%20Scripts) (such as [[init.sqf]]) is run.\n**IMPORTANT**: Using `publicVariable` too frequently and/or with a lot of data can cause other aspects of the game to experience bandwidth problems.\n\n\nThe following [ Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) are supported:\n{{{!}} class=\"wikitable align-center\"\n! Type\n{{!}} `Number`\n{{!}} `Boolean`\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `String`\n{{!}} [Text](https://community.bistudio.com/wiki/Structured%20Text)\n{{!}} `Array`\n{{!}} `Code`\n{{!}} `Nothing` (`nil`)\n{{!}} `HashMap`\n{{!}}-\n! Since\n{{!}} colspan=\"4\" {{!}} **(Operation Flashpoint)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}}\n\n**IMPORTANT**: \nIt is not possible (and illogical) to transfer a local entity reference, such as [scripts](https://community.bistudio.com/wiki/Script%20Handle), [displays](https://community.bistudio.com/wiki/Display) or [local objects](https://community.bistudio.com/wiki/createVehicleLocal).\n\nAlso, note that [Team Member](https://community.bistudio.com/wiki/Team%20Member) is not supported.",
             "examples": [
                 {
                     "text": "```sqf\n\nTAG_MyPublicVariable = 0;\nTAG_MyPublicVariable = 1;\npublicVariable \"TAG_MyPublicVariable\";\t// other clients will receive the \"TAG_MyPublicVariable\" variable with a 1 value\n\nTAG_MyPublicVariable = 2;\t\t\t\t// needs to be broadcast again - synchronisation is not automatic\n\n```"
@@ -56579,7 +56579,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n_rNumber = random -10;\n```"
                 },
                 {
-                    "text": "Generate a random position inside a circle (see also [[[Example Code: Random Area Distribution]]](https://community.bistudio.com/wiki/%5B%5BExample%20Code%3A%20Random%20Area%20Distribution%5D%5D))\n\n```sqf\n_center getPos [_radius * sqrt random 1, random 360];\n```"
+                    "text": "Generate a random position inside a circle (see also [Example Code: Random Area Distribution](https://community.bistudio.com/wiki/Example%20Code%3A%20Random%20Area%20Distribution))\n\n```sqf\n_center getPos [_radius * sqrt random 1, random 360];\n```"
                 },
                 {
                     "text": "Select a random value from an array:\n\n```sqf\n\n_array = [\"apples\", \"pears\", \"bananas\", \"M16\"];\n\n_random = _array select floor random count _array;\t// before {{arma2}}\n_random = _array call BIS_fnc_selectRandom;\t\t\t// since {{arma2}}\n_random = selectRandom _array;\t\t\t\t\t\t// since {{arma3}} v1.56\n\n```"
@@ -56752,7 +56752,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Searches in a string with a regular expression.\n**NOTE**: See [[[Arma 3: Regular Expressions]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Regular%20Expressions%5D%5D).",
+            "description": "Searches in a string with a regular expression.\n**NOTE**: See [Arma 3: Regular Expressions](https://community.bistudio.com/wiki/Arma%203%3A%20Regular%20Expressions).",
             "examples": [
                 {
                     "text": "```sqf\n\"wooKie boOkie cookie\" regexFind [\".ookie/gio\"]; // [[[\"wooKie\", 0]], [<nowiki/>[\"boOkie\", 7]], [<nowiki/>[\"cookie\", 14]]]\n```"
@@ -56906,7 +56906,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) - `teamMember` `agent`"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member) - `teamMember` `agent`"
                         }
                     ],
                     "outline": "`registeredTasks` teamMember",
@@ -56933,7 +56933,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) - `teamMember` `agent`"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member) - `teamMember` `agent`"
                         },
                         {
                             "name": "entryName",
@@ -57025,7 +57025,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Switches on remote control of the unit. The command was {{Icon|globalArgument|32}} prior to **(Arma 3)**). For more info see [[[Remote Control Tutorial]]](https://community.bistudio.com/wiki/%5B%5BRemote%20Control%20Tutorial%5D%5D).\n\nIf the drone is remote it will get transferred to the player's PC.\n**NOTE**: See also `remoteControlled`, `isRemoteControlling`, and {{Link|#Example 4 for a getter workaround for earlier game versions.}}\n**WARNING**: Always use `switchCamera` first (when needed) before using `remoteControl` as doing it after may lead to unpredictable results.",
+            "description": "Switches on remote control of the unit. The command was {{Icon|globalArgument|32}} prior to **(Arma 3)**). For more info see [Remote Control Tutorial](https://community.bistudio.com/wiki/Remote%20Control%20Tutorial).\n\nIf the drone is remote it will get transferred to the player's PC.\n**NOTE**: See also `remoteControlled`, `isRemoteControlling`, and {{Link|#Example 4 for a getter workaround for earlier game versions.}}\n**WARNING**: Always use `switchCamera` first (when needed) before using `remoteControl` as doing it after may lead to unpredictable results.",
             "examples": [
                 {
                     "text": "Set player remote control of driver:\n\n```sqf\n\ndriver UAV switchCamera \"Internal\"; // switchCamera required\nplayer remoteControl driver UAV;\n// sometimes switchCamera is not needed\nplayer remoteControl driver UAV;\n\n```"
@@ -57067,7 +57067,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the player controlling the given unit if the argument is the unit, or the unit controlled by the player if the argument is the player.\n**IMPORTANT**: See also [[[Remote Control Tutorial]]](https://community.bistudio.com/wiki/%5B%5BRemote%20Control%20Tutorial%5D%5D).",
+            "description": "Returns the player controlling the given unit if the argument is the unit, or the unit controlled by the player if the argument is the player.\n**IMPORTANT**: See also [Remote Control Tutorial](https://community.bistudio.com/wiki/Remote%20Control%20Tutorial).",
             "examples": [
                 {
                     "text": "```sqf\nprivate _controllingPlayer = remoteControlled _dronePilot;\n```"
@@ -57098,7 +57098,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Asks the server to execute the given function or script command on the given target machine(s).\n* Functions are executed in the [scheduled environment](https://community.bistudio.com/wiki/Scheduler%23Scheduled%20Environment); suspension is allowed.\n* Script commands are executed in the [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment); suspension is not allowed (see {{Link|#Example 7}}).\n\nRead [[[Arma 3: Remote Execution]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Remote%20Execution%5D%5D) for more information about remote execution, security features and JIP techniques.\n\n**NOTE**: `remoteExec`/`remoteExecCall` can be used in single player as well, as it is considered as player-hosted multiplayer.\n\n**IMPORTANT**: The direct execution of `call` or `spawn` via `remoteExec` (or `remoteExecCall`) should be avoided to prevent issues in cases where the remote execution of `call` or `spawn` is blocked by [CfgRemoteExec](https://community.bistudio.com/wiki/Arma%203%3A%20CfgRemoteExec). It is instead recommended to create a function to be itself remote-executed.",
+            "description": "Asks the server to execute the given function or script command on the given target machine(s).\n* Functions are executed in the [scheduled environment](https://community.bistudio.com/wiki/Scheduler%23Scheduled%20Environment); suspension is allowed.\n* Script commands are executed in the [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment); suspension is not allowed (see {{Link|#Example 7}}).\n\nRead [Arma 3: Remote Execution](https://community.bistudio.com/wiki/Arma%203%3A%20Remote%20Execution) for more information about remote execution, security features and JIP techniques.\n\n**NOTE**: `remoteExec`/`remoteExecCall` can be used in single player as well, as it is considered as player-hosted multiplayer.\n\n**IMPORTANT**: The direct execution of `call` or `spawn` via `remoteExec` (or `remoteExecCall`) should be avoided to prevent issues in cases where the remote execution of `call` or `spawn` is blocked by [CfgRemoteExec](https://community.bistudio.com/wiki/Arma%203%3A%20CfgRemoteExec). It is instead recommended to create a function to be itself remote-executed.",
             "examples": [
                 {
                     "text": "How to write `remoteExec`/`remoteExecCall`:\n<code style=\"display: block\">{{Color|darkorange|hint}} {{Color|teal|\"Hello\"}};\n{{cc|becomes}}\n[{{Color|teal|\"Hello\"}}] remoteExec [\"{{Color|darkorange|hint}}\"];\n{{Color|teal|\"Hello\"}} remoteExec [\"{{Color|darkorange|hint}}\"]; {{cc|alternatively}}</code>\n\n<code style=\"display: block\">{{Color|green|unit1}} {{Color|darkorange|setFace}} {{Color|teal|\"Miller\"}};\n{{cc|becomes}}\n[{{Color|green|unit1}}, {{Color|teal|\"Miller\"}}] remoteExec [\"{{Color|darkorange|setFace}}\"];</code>\n\n<code style=\"display: block\">{{Color|darkorange|cutRsc}} {{Color|darkred|[\"\", \"BLACK OUT\"]}};\n{{cc|becomes}}\n[{{Color|darkred|[\"\", \"BLACK OUT\"]}}] remoteExec [\"{{Color|darkorange|cutRsc}}\"]; {{cc|double brackets are needed as the unary command takes an array}}</code>\n\n<code style=\"display: block\">\n{{cc|functions, however, do not need double squared brackets}}\n{{Color|teal|[\"line 1\", \"line 2\"]}} spawn {{Color|darkorange|BIS_fnc_infoText}};\n{{cc|becomes}}\n{{Color|teal|[\"line 1\", \"line 2\"]}} remoteExec [\"{{Color|darkorange|BIS_fnc_infoText}}\"];\n</code>"
@@ -57116,7 +57116,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "A tricky example: executing <sqf inline>player setAmmo [primaryWeapon player, 1]; (on machines where the player is in MyGroup):\n\n```sqf\n\n[player, [primaryWeapon player, 1]] remoteExec [\"setAmmo\", MyGroup];\t\t\t// WRONG: the local player object is used here!\n[{ player setAmmo [primaryWeapon player, 1]; }] remoteExec [\"call\", MyGroup];\t// CORRECT: the remote player object is used here\n\n```"
                 },
                 {
-                    "text": "**[[[Multiplayer Scripting]]](https://community.bistudio.com/wiki/%5B%5BMultiplayer%20Scripting%5D%5D) \"performance trick\"**\n\nThis <sqf inline>[0, -2] select isDedicated check is worth it to avoid **function** server-side calculations only. See also {{Link|#Example 9}} for an advanced solution.\n\n```sqf\n\n[\"message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t\t\t\t\t\t\t// not ideal - the function will still run on the dedicated server for nothing\n[\"message\"] remoteExec [\"BIS_fnc_infoText\", [0, -2] select isDedicated];\t// ideal - the dedicated server will not run the code, a player-hosted server will\n\n[\"message\"] remoteExec [\"hint\", [0, -2] select isDedicated];\t// the check is too expensive to be worthy - it becomes worthy if the server logs an RPT warning\n[\"message\"] remoteExec [\"hint\"];\t\t\t\t\t\t\t\t// the (dedicated) server will automatically ditch hint usage due to it not having an interface\n\nprivate _allPlayersTarget = [0, -2] select isDedicated;\t\t\t// caching the result for multiple usages makes it worthy - think of {{Link|Arma 3: Headless_Client|headless clients}} as well\n[\"message 1\"] remoteExec [\"hint\", _allPlayersTarget];\n[\"message 2\"] remoteExec [\"hint\", _allPlayersTarget];\n\n```\n\n**NOTE**: See {{Link|#Example 9 below for an advanced example.}}"
+                    "text": "**[Multiplayer Scripting](https://community.bistudio.com/wiki/Multiplayer%20Scripting) \"performance trick\"**\n\nThis <sqf inline>[0, -2] select isDedicated check is worth it to avoid **function** server-side calculations only. See also {{Link|#Example 9}} for an advanced solution.\n\n```sqf\n\n[\"message\"] remoteExec [\"BIS_fnc_infoText\"];\t\t\t\t\t\t\t\t// not ideal - the function will still run on the dedicated server for nothing\n[\"message\"] remoteExec [\"BIS_fnc_infoText\", [0, -2] select isDedicated];\t// ideal - the dedicated server will not run the code, a player-hosted server will\n\n[\"message\"] remoteExec [\"hint\", [0, -2] select isDedicated];\t// the check is too expensive to be worthy - it becomes worthy if the server logs an RPT warning\n[\"message\"] remoteExec [\"hint\"];\t\t\t\t\t\t\t\t// the (dedicated) server will automatically ditch hint usage due to it not having an interface\n\nprivate _allPlayersTarget = [0, -2] select isDedicated;\t\t\t// caching the result for multiple usages makes it worthy - think of {{Link|Arma 3: Headless_Client|headless clients}} as well\n[\"message 1\"] remoteExec [\"hint\", _allPlayersTarget];\n[\"message 2\"] remoteExec [\"hint\", _allPlayersTarget];\n\n```\n\n**NOTE**: See {{Link|#Example 9 below for an advanced example.}}"
                 },
                 {
                     "text": "<!-- This example is referenced in the Description section. -->\nAs said in the description: **commands** will be executed in an [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment)\n\n```sqf\n[{ sleep 1 }] remoteExec [\"call\"]; // will throw an error: it is forbidden to use sleep (or waitUntil, etc) in unscheduled environment\n```"
@@ -57133,7 +57133,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "**params**",
-                            "description": "`Anything` **but** [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - _order_<nowiki/>'s parameter **IMPORTANT**: [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) is **not** meant to be sent over network."
+                            "description": "`Anything` **but** [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - _order_<nowiki/>'s parameter **IMPORTANT**: [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) is **not** meant to be sent over network."
                         },
                         {
                             "name": "**order**",
@@ -57206,7 +57206,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the [ machine network ID](https://community.bistudio.com/wiki/Multiplayer_Scripting%23Machine_network_ID%20) of the client that initiated [[[Remote Execution]]](https://community.bistudio.com/wiki/%5B%5BRemote%20Execution%5D%5D).\n**IMPORTANT**: \nRunning this command\n* in a Single Player environment\n* outside of a remote-executed context\n* in a remote-executed context received from a [Headless Client](https://community.bistudio.com/wiki/Arma%203%3A%20Headless%20Client)\nwill return **0** by design. To check if the context is remote executed, use `isRemoteExecuted` or `isRemoteExecutedJIP`.",
+            "description": "Returns the [ machine network ID](https://community.bistudio.com/wiki/Multiplayer_Scripting%23Machine_network_ID%20) of the client that initiated [Remote Execution](https://community.bistudio.com/wiki/Remote%20Execution).\n**IMPORTANT**: \nRunning this command\n* in a Single Player environment\n* outside of a remote-executed context\n* in a remote-executed context received from a [Headless Client](https://community.bistudio.com/wiki/Arma%203%3A%20Headless%20Client)\nwill return **0** by design. To check if the context is remote executed, use `isRemoteExecuted` or `isRemoteExecutedJIP`.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _callerRE = remoteExecutedOwner;\n```"
@@ -57250,7 +57250,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "to",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) - connection target"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) - connection target"
                         }
                     ],
                     "outline": "`remove3DENConnection` [type, from, to]",
@@ -57904,7 +57904,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "keyName",
-                            "description": "`String` - see [[[inputAction/actions]]](https://community.bistudio.com/wiki/%5B%5BinputAction%2Factions%5D%5D)"
+                            "description": "`String` - see [inputAction/actions](https://community.bistudio.com/wiki/inputAction%2Factions)"
                         },
                         {
                             "name": "eventType",
@@ -58199,7 +58199,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "diaryRecord",
-                            "description": "[[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)"
+                            "description": "[Diary Record](https://community.bistudio.com/wiki/Diary%20Record)"
                         }
                     ],
                     "outline": "unit `removeDiaryRecord` [subject, diaryRecord]",
@@ -58320,7 +58320,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nplayer removeEventHandler [\"Killed\", 0];\n```"
                 },
                 {
-                    "text": "The [[[Magic Variables]]](https://community.bistudio.com/wiki/%5B%5BMagic%20Variables%5D%5D) <var>_thisEvent</var> and <var>_thisEventHandler</var> can be used to easily remove an Event Handler:\n\n```sqf\nplayer addEventHandler [\"FiredNear\", {\n\tsystemChat \"This Event Handler is now removing itself!\";\n\tplayer removeEventHandler [_thisEvent, _thisEventHandler];\n}];\n```"
+                    "text": "The [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) <var>_thisEvent</var> and <var>_thisEventHandler</var> can be used to easily remove an Event Handler:\n\n```sqf\nplayer addEventHandler [\"FiredNear\", {\n\tsystemChat \"This Event Handler is now removing itself!\";\n\tplayer removeEventHandler [_thisEvent, _thisEventHandler];\n}];\n```"
                 }
             ],
             "syntaxes": [
@@ -58787,7 +58787,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `removeMagazinesTurret` [magazineName, turretPath]",
@@ -58827,7 +58827,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `removeMagazineTurret` [magazineName, turretPath]",
@@ -59116,7 +59116,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Remove a unit from the list of units available for [[[Team Switch]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Switch%5D%5D).",
+            "description": "Remove a unit from the list of units available for [Team Switch](https://community.bistudio.com/wiki/Team%20Switch).",
             "examples": [
                 {
                     "text": "```sqf\nremoveSwitchableUnit _unit1;\n```"
@@ -59154,11 +59154,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "member",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "team `removeTeamMember` member",
@@ -59205,7 +59205,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Removes a UserAction event handler. For a list of available UserAction event handlers, see: [[[Arma 3: Mission Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Mission%20Event%20Handlers%5D%5D).",
+            "description": "Removes a UserAction event handler. For a list of available UserAction event handlers, see: [Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers).",
             "examples": [
                 {
                     "text": "```sqf\nremoveUserActionEventHandler [\"Reload\", \"Activate\", _reloadUAEH];\n```"
@@ -59216,7 +59216,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "keyName",
-                            "description": "`String` - action key name; see [[[inputAction/actions]]](https://community.bistudio.com/wiki/%5B%5BinputAction%2Factions%5D%5D)"
+                            "description": "`String` - action key name; see [inputAction/actions](https://community.bistudio.com/wiki/inputAction%2Factions)"
                         },
                         {
                             "name": "event",
@@ -59438,7 +59438,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `removeWeaponTurret` [weaponName, turretPath]",
@@ -59651,7 +59651,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "member",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`resources` member",
@@ -60701,7 +60701,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entities",
-                            "description": "`Array` of [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "`Array` of [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`save3DENInventory` entities",
@@ -61264,7 +61264,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Check if a script is finished running using the [[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D) returned by `execVM` or `spawn`.",
+            "description": "Check if a script is finished running using the [Script Handle](https://community.bistudio.com/wiki/Script%20Handle) returned by `execVM` or `spawn`.",
             "examples": [
                 {
                     "text": "```sqf\n\n_scriptHandle = [\"arguments\"] execVM \"scriptname.sqf\";\nwaitUntil { scriptDone _scriptHandle };\n\n```"
@@ -61275,7 +61275,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "handle",
-                            "description": "[[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D) - handle returned by `spawn` or `execVM`"
+                            "description": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle) - handle returned by `spawn` or `execVM`"
                         }
                     ],
                     "outline": "`scriptDone` handle",
@@ -61321,7 +61321,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "A non-existing or [completed](https://community.bistudio.com/wiki/scriptDone) [[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D). To compare non-existent scripts use `isNull` or `isEqualTo`:\n\n```sqf\n\nscriptNull == scriptNull;\t\t\t// ERROR! == cannot be used with script object\nisNull scriptNull;\t\t\t\t\t// true\nscriptNull isEqualTo scriptNull;\t// true\n\n```",
+            "description": "A non-existing or [completed](https://community.bistudio.com/wiki/scriptDone) [Script Handle](https://community.bistudio.com/wiki/Script%20Handle). To compare non-existent scripts use `isNull` or `isEqualTo`:\n\n```sqf\n\nscriptNull == scriptNull;\t\t\t// ERROR! == cannot be used with script object\nisNull scriptNull;\t\t\t\t\t// true\nscriptNull isEqualTo scriptNull;\t// true\n\n```",
             "examples": [
                 {
                     "text": "Wait until previous script is finished before starting a new one:\n\n```sqf\n\n0 spawn\n{\n\t_script = scriptNull;\n\tfor \"_i\" from 1 to 10 do\n\t{\n\t\twaitUntil { isNull _script };\n\t\t_script = _i spawn\n\t\t{\n\t\t\thint format [\"script %1 started\", _this];\n\t\t\tsleep 1;\n\t\t\thint format [\"script %1 finished\", _this];\n\t\t\tsleep 0.2;\n\t\t};\n\t};\n};\n\n```"
@@ -61337,7 +61337,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`scriptNull`",
-                    "returns": "[[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D) - NULL script"
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle) - NULL script"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/scriptNull"
@@ -61582,7 +61582,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "expression",
-                            "description": "`String` - arithmetic expression. [Simple expression](https://community.bistudio.com/wiki/Simple_Expression) var names containing values from 0 to 1 depending on location (see also [[[Ambient Parameters]]](https://community.bistudio.com/wiki/%5B%5BAmbient%20Parameters%5D%5D)):"
+                            "description": "`String` - arithmetic expression. [Simple expression](https://community.bistudio.com/wiki/Simple_Expression) var names containing values from 0 to 1 depending on location (see also [Ambient Parameters](https://community.bistudio.com/wiki/Ambient%20Parameters)):"
                         },
                         {
                             "name": "precision",
@@ -62186,7 +62186,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "muzzle",
@@ -62279,7 +62279,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "sender",
-                            "description": " [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": " [Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "[receiver,[type] or [type,parentTask],priority,name1,value1,name2,value2,...]",
@@ -62383,7 +62383,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Executes the given [server command](https://community.bistudio.com/wiki/Multiplayer_Server_Commands).\n**NOTE**: \n* Available commands for execution can be found with `serverCommandAvailable`\n* Commands that can be executed can be found with `serverCommandExecutable`\n\n\n**IMPORTANT**: If `serverCommand` is executed on a client, it must be executed from [UI context](https://community.bistudio.com/wiki/isUIContext), such as [[User Interface Event Handlers#onButtonDown|\"onButtonDown\"]] or similar events (see [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D)).",
+            "description": "Executes the given [server command](https://community.bistudio.com/wiki/Multiplayer_Server_Commands).\n**NOTE**: \n* Available commands for execution can be found with `serverCommandAvailable`\n* Commands that can be executed can be found with `serverCommandExecutable`\n\n\n**IMPORTANT**: If `serverCommand` is executed on a client, it must be executed from [UI context](https://community.bistudio.com/wiki/isUIContext), such as [[User Interface Event Handlers#onButtonDown|\"onButtonDown\"]] or similar events (see [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers)).",
             "examples": [
                 {
                     "text": "```sqf\nserverCommand \"#logout\";\n```"
@@ -62427,7 +62427,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns `true` if given `serverCommand` is available on current machine, `false` if not.\n\n{{{!}} class=\"wikitable align-center\"\n! rowspan=\"2\" {{!}} Arma 3 [[[Multiplayer Server Commands]]](https://community.bistudio.com/wiki/%5B%5BMultiplayer%20Server%20Commands%5D%5D)\n! colspan=\"4\" {{!}} Available to\n{{!}}-\n! Client\n! Voted [Admin](https://community.bistudio.com/wiki/admin)\n! Logged [Admin](https://community.bistudio.com/wiki/admin)\n! [Server Host](https://community.bistudio.com/wiki/isServer)\n{{!}}-\n{{!}} `**#login}}, {{hl|#userlist}}, {{hl| #beclient}}, {{hl| #vote**`\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**#kick}}, {{hl|#debug**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**#lock}}, {{hl|#unlock}}, {{hl|#maxping}}, {{hl|#maxdesync}}, {{hl|#maxpacketloss**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**#logout}}, {{hl|#restart}}, {{hl|#mission}}, {{hl|#missions}}, {{hl|#reassign}}, {{hl|#monitor}}, {{hl|#init**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} `**#shutdown}}, {{hl|#restartserver}}, {{hl|#exec}}, {{hl|#beserver}}, {{hl|#monitords}}, {{hl|#logentities}}, {{hl|#exportjipqueue**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} Specific builds only: `**#captureframe}}, {{hl|#enabletest}}, {{hl|#disabletest**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|unchecked}}\n{{!}}}\n\nTo check if a [server command](https://community.bistudio.com/wiki/Multiplayer%20Server%20Commands) can be executed in the current environment, use `serverCommandExecutable`.\n\n**NOTE**: The table above does not apply to the command's password variant on a dedicated server as everything is available to it.",
+            "description": "Returns `true` if given `serverCommand` is available on current machine, `false` if not.\n\n{{{!}} class=\"wikitable align-center\"\n! rowspan=\"2\" {{!}} Arma 3 [Multiplayer Server Commands](https://community.bistudio.com/wiki/Multiplayer%20Server%20Commands)\n! colspan=\"4\" {{!}} Available to\n{{!}}-\n! Client\n! Voted [Admin](https://community.bistudio.com/wiki/admin)\n! Logged [Admin](https://community.bistudio.com/wiki/admin)\n! [Server Host](https://community.bistudio.com/wiki/isServer)\n{{!}}-\n{{!}} `**#login}}, {{hl|#userlist}}, {{hl| #beclient}}, {{hl| #vote**`\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**#kick}}, {{hl|#debug**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**#lock}}, {{hl|#unlock}}, {{hl|#maxping}}, {{hl|#maxdesync}}, {{hl|#maxpacketloss**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**#logout}}, {{hl|#restart}}, {{hl|#mission}}, {{hl|#missions}}, {{hl|#reassign}}, {{hl|#monitor}}, {{hl|#init**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} `**#shutdown}}, {{hl|#restartserver}}, {{hl|#exec}}, {{hl|#beserver}}, {{hl|#monitords}}, {{hl|#logentities}}, {{hl|#exportjipqueue**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} Specific builds only: `**#captureframe}}, {{hl|#enabletest}}, {{hl|#disabletest**`\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|unchecked}}\n{{!}} {{Icon|checked}}\n{{!}} {{Icon|unchecked}}\n{{!}}}\n\nTo check if a [server command](https://community.bistudio.com/wiki/Multiplayer%20Server%20Commands) can be executed in the current environment, use `serverCommandExecutable`.\n\n**NOTE**: The table above does not apply to the command's password variant on a dedicated server as everything is available to it.",
             "examples": [
                 {
                     "text": "```sqf\n_can = serverCommandAvailable \"#kick\";\n```"
@@ -62457,7 +62457,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns `true` if the `serverCommand` can be performed on the machine and in this exact environment, otherwise `false`. serverCommand can be executed only from [[[User Interface Event Handlers]]](https://community.bistudio.com/wiki/%5B%5BUser%20Interface%20Event%20Handlers%5D%5D), and this command also checks if that's the case.",
+            "description": "Returns `true` if the `serverCommand` can be performed on the machine and in this exact environment, otherwise `false`. serverCommand can be executed only from [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers), and this command also checks if that's the case.",
             "examples": [
                 {
                     "text": "```sqf\n_canKick = serverCommandAvailable \"#kick\";\n```"
@@ -62629,7 +62629,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         },
                         {
                             "name": "class",
@@ -62664,7 +62664,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entitiesN",
-                            "description": "`Array` of [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "`Array` of [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         },
                         {
                             "name": "classN",
@@ -62750,7 +62750,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set layer for [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D).",
+            "description": "Set layer for [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity).",
             "examples": [
                 {
                     "text": "```sqf\n_myLayer = -1 add3DENLayer \"CTRG\";\nplayer set3DENLayer _myLayer;\n```"
@@ -62764,7 +62764,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entity",
-                            "description": "[[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D)"
+                            "description": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity)"
                         },
                         {
                             "name": "layerID",
@@ -62989,7 +62989,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "entities",
-                            "description": "`Array` of [[[Eden Entity]]](https://community.bistudio.com/wiki/%5B%5BEden%20Entity%5D%5D) or [[[Eden ID]]](https://community.bistudio.com/wiki/%5B%5BEden%20ID%5D%5D)"
+                            "description": "`Array` of [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) or [Eden ID](https://community.bistudio.com/wiki/Eden%20ID)"
                         }
                     ],
                     "outline": "`set3DENSelected` entities",
@@ -63460,7 +63460,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) created from the given [structured](https://community.bistudio.com/wiki/Structured%20Text) text and sets [ attributes](https://community.bistudio.com/wiki/Structured_Text%23Attributes%20) to the given values.\n**IMPORTANT**: Even though command accepts plain `String` too, the argument should be [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) in order for the set attributes to have an effect.\nAdditionally the result of the command should be fed to `composeText` (See {{Link|#Example 1) or `formatText`.\n}}",
+            "description": "Returns a [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) created from the given [structured](https://community.bistudio.com/wiki/Structured%20Text) text and sets [ attributes](https://community.bistudio.com/wiki/Structured_Text%23Attributes%20) to the given values.\n**IMPORTANT**: Even though command accepts plain `String` too, the argument should be [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) in order for the set attributes to have an effect.\nAdditionally the result of the command should be fed to `composeText` (See {{Link|#Example 1) or `formatText`.\n}}",
             "examples": [
                 {
                     "text": "```sqf\n\n_txt = text \"Red text, right align\";\n_txt setAttributes [\"color\", \"#FF0000\", \"align\", \"right\"];\nhint composeText [_txt];\n\n```"
@@ -63471,7 +63471,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "text",
-                            "description": "`String` or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - only passing [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) has any effect"
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - only passing [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) has any effect"
                         },
                         {
                             "name": "nameN",
@@ -63483,7 +63483,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "text `setAttributes` [name1, value1, name2, value2, ...]",
-                    "returns": "[[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D)"
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/setAttributes"
@@ -63528,7 +63528,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets individual unit behaviour **on every unit in a group**.\n**IMPORTANT**: This command doesn't set AI `Group` behaviour, see `setCombatBehaviour` or `setBehaviourStrong` for this.\n**NOTE**: See [[[AI Behaviour]]](https://community.bistudio.com/wiki/%5B%5BAI%20Behaviour%5D%5D) for details of the effect of this command on AI units.\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
+            "description": "Sets individual unit behaviour **on every unit in a group**.\n**IMPORTANT**: This command doesn't set AI `Group` behaviour, see `setCombatBehaviour` or `setBehaviourStrong` for this.\n**NOTE**: See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units.\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
             "examples": [
                 {
                     "text": "```sqf\n_group1 setBehaviour \"SAFE\";\n```"
@@ -63561,7 +63561,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets individual unit behaviour on every unit in a group and additionally tries to force this behaviour to the unit's group. Alternatively see `setCombatBehaviour`.\n**NOTE**: See [[[AI Behaviour]]](https://community.bistudio.com/wiki/%5B%5BAI%20Behaviour%5D%5D) for details of the effect of this command on AI units.\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
+            "description": "Sets individual unit behaviour on every unit in a group and additionally tries to force this behaviour to the unit's group. Alternatively see `setCombatBehaviour`.\n**NOTE**: See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units.\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
             "examples": [
                 {
                     "text": "```sqf\n_group1 setBehaviourStrong \"SAFE\";\n```"
@@ -63952,7 +63952,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax). The group in this case is a `Group` entity and not a simple collection of units. To retrieve unit or group behaviour see `combatBehaviour`. The behaviour is one of: \n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\"\n**NOTE**: See [[[AI Behaviour]]](https://community.bistudio.com/wiki/%5B%5BAI%20Behaviour%5D%5D) for details of the effect of this command on AI units. Group behaviour usually is \"CARELESS\" or \"SAFE\"\n\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
+            "description": "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax). The group in this case is a `Group` entity and not a simple collection of units. To retrieve unit or group behaviour see `combatBehaviour`. The behaviour is one of: \n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\"\n**NOTE**: See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units. Group behaviour usually is \"CARELESS\" or \"SAFE\"\n\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
             "examples": [
                 {
                     "text": "```sqf\nunit1 setCombatBehaviour \"SAFE\";\n```"
@@ -63996,7 +63996,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets AI [ group](https://community.bistudio.com/wiki/Group%20) combat mode (engagement rules). For individual unit's combat mode see `setUnitCombatMode`. Mode may be one of the following: \n* `**\"BLUE\"**` : Never fire, keep formation\n* `**\"GREEN\"**` : Hold fire, keep formation\n* `**\"WHITE\"**` : Hold fire, engage at will/loose formation\n* `**\"YELLOW\"**` : Fire at will, keep formation\n* `**\"RED\"**` : Fire at will, engage at will/loose formation\nSee [[[Combat Modes]]](https://community.bistudio.com/wiki/%5B%5BCombat%20Modes%5D%5D) for more information on combat modes.",
+            "description": "Sets AI [ group](https://community.bistudio.com/wiki/Group%20) combat mode (engagement rules). For individual unit's combat mode see `setUnitCombatMode`. Mode may be one of the following: \n* `**\"BLUE\"**` : Never fire, keep formation\n* `**\"GREEN\"**` : Hold fire, keep formation\n* `**\"WHITE\"**` : Hold fire, engage at will/loose formation\n* `**\"YELLOW\"**` : Fire at will, keep formation\n* `**\"RED\"**` : Fire at will, engage at will/loose formation\nSee [Combat Modes](https://community.bistudio.com/wiki/Combat%20Modes) for more information on combat modes.",
             "examples": [
                 {
                     "text": "```sqf\n_group1 setCombatMode \"BLUE\";\n```"
@@ -64493,7 +64493,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines custom mission text that is sent to [[[Arma 3: Analytics]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Analytics%5D%5D).",
+            "description": "Defines custom mission text that is sent to [Arma 3: Analytics](https://community.bistudio.com/wiki/Arma%203%3A%20Analytics).",
             "examples": [
                 {
                     "text": "```sqf\nsetCustomMissionData [\"someData\", \"someMoreData\"];\n```"
@@ -64520,7 +64520,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets value of the specified custom sound controller to be used in [[[simple expression]]](https://community.bistudio.com/wiki/%5B%5Bsimple%20expression%5D%5D)s in config. Returns `true` if value was set to the controller, `false` if command fails, for example if vehicle is not a transport or controller name is not recognised.\n**IMPORTANT**:  Custom sound controller name is <u>case sensitive</u> and of the following format:\n\n```sqf\nformat [\"CustomSoundController%1\", _number];\n```\n\nWhere `**_number is a number from 1 to `getCustomSoundControllerCount` (currently 32)**`",
+            "description": "Sets value of the specified custom sound controller to be used in [simple expression](https://community.bistudio.com/wiki/simple%20expression)s in config. Returns `true` if value was set to the controller, `false` if command fails, for example if vehicle is not a transport or controller name is not recognised.\n**IMPORTANT**:  Custom sound controller name is <u>case sensitive</u> and of the following format:\n\n```sqf\nformat [\"CustomSoundController%1\", _number];\n```\n\nWhere `**_number is a number from 1 to `getCustomSoundControllerCount` (currently 32)**`",
             "examples": [
                 {
                     "text": "Change value of CustomSoundController1 to 12\n\n```sqf\nsetCustomSoundController [vehicle player, \"CustomSoundController1\", 12];\n```"
@@ -64894,7 +64894,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "diaryRecord",
-                            "description": "[[[Diary Record]]](https://community.bistudio.com/wiki/%5B%5BDiary%20Record%5D%5D)"
+                            "description": "[Diary Record](https://community.bistudio.com/wiki/Diary%20Record)"
                         },
                         {
                             "name": "title",
@@ -65133,7 +65133,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets activation distance of [[[Arma 3: Dynamic Simulation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Simulation%5D%5D) for given category.",
+            "description": "Sets activation distance of [Arma 3: Dynamic Simulation](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Simulation) for given category.",
             "examples": [
                 {
                     "text": "```sqf\n\"Group\" setDynamicSimulationDistance 1000;\n```"
@@ -65164,7 +65164,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets activation distance multiplier of [[[Arma 3: Dynamic Simulation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Simulation%5D%5D) for the given class",
+            "description": "Sets activation distance multiplier of [Arma 3: Dynamic Simulation](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Simulation) for the given class",
             "examples": [
                 {
                     "text": "```sqf\n\"IsMoving\" setDynamicSimulationDistanceCoef 3;\n```"
@@ -65387,7 +65387,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set person's face. For a list of available faces, check [[[:Category:CfgIdentities]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3ACfgIdentities%5D%5D).\n{{Columns|3|\n* [[Operation Flashpoint: CfgIdentities#Faces|Operation Flashpoint faces]]\n* [[ArmA: Armed Assault: CfgIdentities#Faces|Armed Assault faces]]\n* [[Arma 2: CfgIdentities#Faces|Arma 2 faces]]\n* [[Arma 3: CfgIdentities#Faces|Arma 3 faces]]\n* [[Take On Helicopters: CfgIdentities#Faces|{{tkoh}} faces]]\n}}",
+            "description": "Set person's face. For a list of available faces, check [:Category:CfgIdentities](https://community.bistudio.com/wiki/%3ACategory%3ACfgIdentities).\n{{Columns|3|\n* [[Operation Flashpoint: CfgIdentities#Faces|Operation Flashpoint faces]]\n* [[ArmA: Armed Assault: CfgIdentities#Faces|Armed Assault faces]]\n* [[Arma 2: CfgIdentities#Faces|Arma 2 faces]]\n* [[Arma 3: CfgIdentities#Faces|Arma 3 faces]]\n* [[Take On Helicopters: CfgIdentities#Faces|{{tkoh}} faces]]\n}}",
             "examples": [
                 {
                     "text": "```sqf\nsoldier1 setFace \"WhiteHead_02\";\n```"
@@ -65862,7 +65862,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets how friendly a side is with another. The friendliness is set for one side, not for the other.  See also [[[Side Relations]]](https://community.bistudio.com/wiki/%5B%5BSide%20Relations%5D%5D).\n\n**Arma**: 3|Since {{arma3 this command can be used mid-mission. Before that it was intended to be used on mission start only, as changing value during mission could cause unexpected errors in AI behaviour (especially for groups already knowing about \"switched to enemy\" groups).\n}}",
+            "description": "Sets how friendly a side is with another. The friendliness is set for one side, not for the other.  See also [Side Relations](https://community.bistudio.com/wiki/Side%20Relations).\n\n**Arma**: 3|Since {{arma3 this command can be used mid-mission. Before that it was intended to be used on mission start only, as changing value during mission could cause unexpected errors in AI behaviour (especially for groups already knowing about \"switched to enemy\" groups).\n}}",
             "examples": [
                 {
                     "text": "```sqf\nwest setFriend [resistance, 0]; // west will not like resistance from now on\n```"
@@ -65916,7 +65916,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "fromEditor",
@@ -66768,11 +66768,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         },
                         {
                             "name": "leader",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "team `setLeader` leader",
@@ -67320,7 +67320,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D) - [-1] for driver turret is supported"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path) - [-1] for driver turret is supported"
                         }
                     ],
                     "outline": "vehicle `setMagazineTurretAmmo` [magazineClass, ammoCount, turretPath]",
@@ -67470,7 +67470,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets marker color. Marker color names and their corresponding RGBA values for Arma 3 could be found here: [[[Arma 3: CfgMarkerColors]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20CfgMarkerColors%5D%5D)\n**NOTE**: **Multiplayer optimisation:** Global marker commands always broadcast the _entire_ marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).",
+            "description": "Sets marker color. Marker color names and their corresponding RGBA values for Arma 3 could be found here: [Arma 3: CfgMarkerColors](https://community.bistudio.com/wiki/Arma%203%3A%20CfgMarkerColors)\n**NOTE**: **Multiplayer optimisation:** Global marker commands always broadcast the _entire_ marker state over the network. As such, the number of network messages exchanged when creating or editing a marker can be reduced by performing all but the last operation using local marker commands, then using a global marker command for the last change (and subsequent global broadcast of all changes applied to the marker).",
             "examples": [
                 {
                     "text": "```sqf\n\"MarkerOne\" setMarkerColor \"ColorBlack\";\n```"
@@ -67502,7 +67502,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets marker color for the given marker locally. Marker color names and their corresponding RGBA values for Arma 3 could be found in here: [[[Arma 3: CfgMarkerColors]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20CfgMarkerColors%5D%5D)",
+            "description": "Sets marker color for the given marker locally. Marker color names and their corresponding RGBA values for Arma 3 could be found in here: [Arma 3: CfgMarkerColors](https://community.bistudio.com/wiki/Arma%203%3A%20CfgMarkerColors)",
             "examples": [
                 {
                     "text": "```sqf\n\"MarkerOne\" setMarkerColorLocal \"ColorBlack\";\n```"
@@ -68691,7 +68691,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Applies given texture to object's selection. See also [[[Procedural Textures]]](https://community.bistudio.com/wiki/%5B%5BProcedural%20Textures%5D%5D) and [[[Retexturing with setObjectTexture]]](https://community.bistudio.com/wiki/%5B%5BRetexturing%20with%20setObjectTexture%5D%5D).\n**NOTE**: \n* Not all objects can be textured this way. To find out, run `getObjectTextures` command on an object. Empty array <sqf inline>[] usually indicates it cannot be textured.\n* All textures must have a resolution of 2<sup>a</sup> &times; 2<sup>b</sup> (e.g. 16&times;16, 16&times;32, 64&times;256, 512&times;512, ...). The largest texture size supported by the RV engine is 4096&times;4096.\n* Supported formats: .pac, .paa, .jpg, .jpeg, .ogg, .ogv",
+            "description": "Applies given texture to object's selection. See also [Procedural Textures](https://community.bistudio.com/wiki/Procedural%20Textures) and [Retexturing with setObjectTexture](https://community.bistudio.com/wiki/Retexturing%20with%20setObjectTexture).\n**NOTE**: \n* Not all objects can be textured this way. To find out, run `getObjectTextures` command on an object. Empty array <sqf inline>[] usually indicates it cannot be textured.\n* All textures must have a resolution of 2<sup>a</sup> &times; 2<sup>b</sup> (e.g. 16&times;16, 16&times;32, 64&times;256, 512&times;512, ...). The largest texture size supported by the RV engine is 4096&times;4096.\n* Supported formats: .pac, .paa, .jpg, .jpeg, .ogg, .ogv",
             "examples": [
                 {
                     "text": "```sqf\n_objectname setObjectTexture [0, \"\\pboname\\texture.paa\"];\n_objectname setObjectTexture [1, \"\\pboname\\texture2.paa\"];\n```"
@@ -69295,7 +69295,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Switches headlights of a vehicle on/off. Note that the vehicle has to be [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality), for global variant use [[[Arma 3: Actions]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Actions%5D%5D) \"[LightOn](https://community.bistudio.com/wiki/Arma_3_Actions%23LightOn)\"/\"[LightOff](https://community.bistudio.com/wiki/Arma_3_Actions%23LightOff)\"",
+            "description": "Switches headlights of a vehicle on/off. Note that the vehicle has to be [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality), for global variant use [Arma 3: Actions](https://community.bistudio.com/wiki/Arma%203%3A%20Actions) \"[LightOn](https://community.bistudio.com/wiki/Arma_3_Actions%23LightOn)\"/\"[LightOff](https://community.bistudio.com/wiki/Arma_3_Actions%23LightOff)\"",
             "examples": [
                 {
                     "text": "```sqf\ncar setPilotLight true;\n```"
@@ -69475,7 +69475,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Create a multiplayer role for the unit. The roles created this way are used for [Join In Progress](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) and [[[Team Switch]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Switch%5D%5D).",
+            "description": "Create a multiplayer role for the unit. The roles created this way are used for [Join In Progress](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) and [Team Switch](https://community.bistudio.com/wiki/Team%20Switch).",
             "examples": [
                 {
                     "text": "```sqf\nsetPlayable _aPerson;\n```"
@@ -70827,7 +70827,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets a value to a given stat. \n\nA list of possible StatNames can be found here: [[[Arma 3: Stat Names]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Stat%20Names%5D%5D)\n\nIts important to note that most Stats are restricted to scripts and missions in certain paths.\n\nFor example \"ExpWarlockDown\" is restricted to scripts in any subdirectory of `**\"a3\\Missions_F_Exp\\Campaign\\Missions\\\"**`",
+            "description": "Sets a value to a given stat. \n\nA list of possible StatNames can be found here: [Arma 3: Stat Names](https://community.bistudio.com/wiki/Arma%203%3A%20Stat%20Names)\n\nIts important to note that most Stats are restricted to scripts and missions in certain paths.\n\nFor example \"ExpWarlockDown\" is restricted to scripts in any subdirectory of `**\"a3\\Missions_F_Exp\\Campaign\\Missions\\\"**`",
             "examples": [
                 {
                     "text": "```sqf\nsetStatValue [\"ExpWarlockDown\", 1]; // Unlocks the \"Warlock Down\" Steam achivement\n```"
@@ -71790,7 +71790,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         },
                         {
                             "name": "opticModeIndex",
@@ -71910,7 +71910,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets **unit's** combat mode (engagement rules). For AI group combat mode see `setCombatMode`. Mode may be one of the following: \n* `**\"BLUE\"**` : Never fire, keep formation\n* `**\"GREEN\"**` : Hold fire, keep formation\n* `**\"WHITE\"**` : Hold fire, engage at will/loose formation\n* `**\"YELLOW\"**` : Fire at will, keep formation\n* `**\"RED\"**` : Fire at will, engage at will/loose formation\nSee [[[Combat Modes]]](https://community.bistudio.com/wiki/%5B%5BCombat%20Modes%5D%5D) for more information on combat modes.",
+            "description": "Sets **unit's** combat mode (engagement rules). For AI group combat mode see `setCombatMode`. Mode may be one of the following: \n* `**\"BLUE\"**` : Never fire, keep formation\n* `**\"GREEN\"**` : Hold fire, keep formation\n* `**\"WHITE\"**` : Hold fire, engage at will/loose formation\n* `**\"YELLOW\"**` : Fire at will, keep formation\n* `**\"RED\"**` : Fire at will, engage at will/loose formation\nSee [Combat Modes](https://community.bistudio.com/wiki/Combat%20Modes) for more information on combat modes.",
             "examples": [
                 {
                     "text": "```sqf\n_unit setUnitCombatMode \"YELLOW\";\n```"
@@ -72004,7 +72004,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "loadout",
-                            "description": "`Array` - [[[Unit Loadout Array]]](https://community.bistudio.com/wiki/%5B%5BUnit%20Loadout%20Array%5D%5D)"
+                            "description": "`Array` - [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
                         },
                         {
                             "name": "unit",
@@ -72012,7 +72012,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "loadout",
-                            "description": "`Array` - [[[Unit Loadout Array]]](https://community.bistudio.com/wiki/%5B%5BUnit%20Loadout%20Array%5D%5D)"
+                            "description": "`Array` - [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
                         },
                         {
                             "name": "fullMagazines",
@@ -72280,15 +72280,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "textMenu",
-                            "description": "`String` or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - text title shown in scroll action menu"
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - text title shown in scroll action menu"
                         },
                         {
                             "name": "textWindowBackground",
-                            "description": "`String` or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - (Optional, default \"\") background text"
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - (Optional, default \"\") background text"
                         },
                         {
                             "name": "textWindowForeground",
-                            "description": "`String` or [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) - (Optional, default \"\") foreground text"
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - (Optional, default \"\") foreground text"
                         }
                     ],
                     "outline": "object `setUserActionText` [actionIndex, textMenu, textWindowBackground, textWindowForeground]",
@@ -73171,7 +73171,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set rendering distance. Setting view distance to <= 0 resets the value to the client's options (set in `**Options → Video → General → Visibility → Overall**`).\n**NOTE**: In previous versions, client's max view distance was limited by the server's view distance.\n**IMPORTANT**: \nView distance also defines the maximum distance between a unit and any other unit they can [know about](https://community.bistudio.com/wiki/knowsAbout).\nHigher view distance will involve more AI simulation cycles for every unit, which causes low performance. See [[[Arma 3: Performance Optimisation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Performance%20Optimisation%5D%5D).\n\n\n{{{!}} class=\"wikitable\"\n! Game\n! min. scripted\n! min. UI\n! default\n! max. UI\n! max. scripted\n{{!}}-\n{{!}} Arma 3\n{{!}} 200\n{{!}} 500\n{{!}} **1600**\n{{!}} 12000\n{{!}} 40000\n{{!}}-\n{{!}} Arma 2: Operation Arrowhead\n{{!}} 200\n{{!}} 500\n{{!}} **2500**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Arma 2\n{{!}} 200\n{{!}} 500\n{{!}} **3000**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Armed Assault\n{{!}} 200\n{{!}} 500\n{{!}} **1200**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Operation Flashpoint\n{{!}} 500\n{{!}} 500\n{{!}} **900**\n{{!}} 5000\n{{!}} 5000\n{{!}}}",
+            "description": "Set rendering distance. Setting view distance to <= 0 resets the value to the client's options (set in `**Options → Video → General → Visibility → Overall**`).\n**NOTE**: In previous versions, client's max view distance was limited by the server's view distance.\n**IMPORTANT**: \nView distance also defines the maximum distance between a unit and any other unit they can [know about](https://community.bistudio.com/wiki/knowsAbout).\nHigher view distance will involve more AI simulation cycles for every unit, which causes low performance. See [Arma 3: Performance Optimisation](https://community.bistudio.com/wiki/Arma%203%3A%20Performance%20Optimisation).\n\n\n{{{!}} class=\"wikitable\"\n! Game\n! min. scripted\n! min. UI\n! default\n! max. UI\n! max. scripted\n{{!}}-\n{{!}} Arma 3\n{{!}} 200\n{{!}} 500\n{{!}} **1600**\n{{!}} 12000\n{{!}} 40000\n{{!}}-\n{{!}} Arma 2: Operation Arrowhead\n{{!}} 200\n{{!}} 500\n{{!}} **2500**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Arma 2\n{{!}} 200\n{{!}} 500\n{{!}} **3000**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Armed Assault\n{{!}} 200\n{{!}} 500\n{{!}} **1200**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Operation Flashpoint\n{{!}} 500\n{{!}} 500\n{{!}} **900**\n{{!}} 5000\n{{!}} 5000\n{{!}}}",
             "examples": [
                 {
                     "text": "```sqf\nsetViewDistance 2250;\n```"
@@ -73767,7 +73767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Attaches a script to a scripted waypoint. In early versions of Arma, command consisted of a script name and additional script arguments and the script had to use [[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D). The script receives the following arguments in [_this](https://community.bistudio.com/wiki/Magic%20Variables%23this) variable: [group, position, target] + [the optional passed arguments]. The optional arguments are `append`ed to the end of the arguments array.\n**Arma**: 3|In Arma 3, _command_ argument can be a reference to .sqf script (it will have to explicitly end with **`**.sqf**) or a reference to {{hl|.sqs}} script.**`",
+            "description": "Attaches a script to a scripted waypoint. In early versions of Arma, command consisted of a script name and additional script arguments and the script had to use [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax). The script receives the following arguments in [_this](https://community.bistudio.com/wiki/Magic%20Variables%23this) variable: [group, position, target] + [the optional passed arguments]. The optional arguments are `append`ed to the end of the arguments array.\n**Arma**: 3|In Arma 3, _command_ argument can be a reference to .sqf script (it will have to explicitly end with **`**.sqf**) or a reference to {{hl|.sqs}} script.**`",
             "examples": [
                 {
                     "text": "```sqf\n[_grp, 2] setWaypointScript \"find.sqs player\";\n```"
@@ -74520,7 +74520,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "panels",
-                            "description": "`Boolean` - (Optional, default `true`) show [[[Arma 3: Custom Info]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Custom%20Info%5D%5D)"
+                            "description": "`Boolean` - (Optional, default `true`) show [Arma 3: Custom Info](https://community.bistudio.com/wiki/Arma%203%3A%20Custom%20Info)"
                         },
                         {
                             "name": "kills",
@@ -75357,7 +75357,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "The Friendly side - friendly to all, see [[[Side Relations]]](https://community.bistudio.com/wiki/%5B%5BSide%20Relations%5D%5D).",
+            "description": "The Friendly side - friendly to all, see [Side Relations](https://community.bistudio.com/wiki/Side%20Relations).",
             "examples": [
                 {
                     "text": "```sqf\nif (side player == sideFriendly) then { hint \"I feel friendly today!\"; };\n```"
@@ -75379,7 +75379,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "The Logic [side](https://community.bistudio.com/wiki/Side). Side of [[[Game Logic]]](https://community.bistudio.com/wiki/%5B%5BGame%20Logic%5D%5D)s and `Modules`.",
+            "description": "The Logic [side](https://community.bistudio.com/wiki/Side). Side of [Game Logic](https://community.bistudio.com/wiki/Game%20Logic)s and `Modules`.",
             "examples": [
                 {
                     "text": "```sqf\n\nif (side _obj == sideLogic) then\n{\n\thint \"It is a logic!\";\n};\n\n```"
@@ -76313,7 +76313,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "arguments `spawn` code",
-                    "returns": "[[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D) - can be used to determine (_via_ `scriptDone` (also _via_ `isNull` in Arma 3)) when the spawned script has finished. In Arma 3, the handle is also available inside the spawned script in `**_thisScript**` variable"
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle) - can be used to determine (_via_ `scriptDone` (also _via_ `isNull` in Arma 3)) when the spawned script has finished. In Arma 3, the handle is also available inside the spawned script in `**_thisScript**` variable"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/spawn"
@@ -76614,7 +76614,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "for",
-                            "description": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                            "description": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                         },
                         {
                             "name": "stepSize",
@@ -76622,7 +76622,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "for `step` stepSize",
-                    "returns": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                    "returns": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/step"
@@ -77068,7 +77068,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`switch` value",
-                    "returns": "[[[Switch Type]]](https://community.bistudio.com/wiki/%5B%5BSwitch%20Type%5D%5D)"
+                    "returns": "[Switch Type](https://community.bistudio.com/wiki/Switch%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/switch"
@@ -77266,7 +77266,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Immediately applies given animation to the unit. For a smooth transition from the current animation, use `playMove`.\n**NOTE**: see [[[:Category:Moves]]](https://community.bistudio.com/wiki/%5B%5B%3ACategory%3AMoves%5D%5D) for respective games animations.\n\nThis command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).\nIf an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see {{Link|#Example 3}}).\n\n**NOTE**: It is a good practice to always use `playMoveNow` after `switchMove` to make sure the animation plays correctly when using the first syntax:\n\n```sqf\n\n_unit switchMove \"myMove\";\n_unit playMoveNow \"myMove\";\n\n```\n\nThe alternative syntax does this automatically.",
+            "description": "Immediately applies given animation to the unit. For a smooth transition from the current animation, use `playMove`.\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.\n\nThis command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).\nIf an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see {{Link|#Example 3}}).\n\n**NOTE**: It is a good practice to always use `playMoveNow` after `switchMove` to make sure the animation plays correctly when using the first syntax:\n\n```sqf\n\n_unit switchMove \"myMove\";\n_unit playMoveNow \"myMove\";\n\n```\n\nThe alternative syntax does this automatically.",
             "examples": [
                 {
                     "text": "Prone:\n\n```sqf\nplayer switchMove \"AmovPpneMstpSrasWrflDnon\";\n```"
@@ -78268,7 +78268,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`teamMember` person",
-                    "returns": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                    "returns": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/teamMember"
@@ -78280,7 +78280,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "A non-existent [[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D). To compare non-existent team members use `isNull` or `isEqualTo`:\n\n```sqf\n\nteamMemberNull == teamMemberNull;\t\t\t// false\nisNull teamMemberNull;\t\t\t\t\t\t// true\nteamMemberNull isEqualTo teamMemberNull;\t// true\n\n```",
+            "description": "A non-existent [Team Member](https://community.bistudio.com/wiki/Team%20Member). To compare non-existent team members use `isNull` or `isEqualTo`:\n\n```sqf\n\nteamMemberNull == teamMemberNull;\t\t\t// false\nisNull teamMemberNull;\t\t\t\t\t\t// true\nteamMemberNull isEqualTo teamMemberNull;\t// true\n\n```",
             "examples": [
                 {
                     "text": "```sqf\n!isNull teamMemberNull; // false\n```"
@@ -78296,7 +78296,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`teamMemberNull`",
-                    "returns": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                    "returns": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/teamMemberNull"
@@ -78319,7 +78319,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`teamName` team",
@@ -78357,7 +78357,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Invoke the [[[Team Switch]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Switch%5D%5D) dialog (force it even when conditions are not met).\nThere has to be at least one playable unit for team switch to work, and for this command to work in MP, respawn type in [[Description.ext|description.ext]] should be 5 (SIDE).\n**NOTE**: When player switches and leaves behind AI unit, you need to enable \"TeamSwitch\" AI on it <sqf inline>_unit enableAI \"TeamSwitch\" so that the unit continues with `waypoints`.",
+            "description": "Invoke the [Team Switch](https://community.bistudio.com/wiki/Team%20Switch) dialog (force it even when conditions are not met).\nThere has to be at least one playable unit for team switch to work, and for this command to work in MP, respawn type in [[Description.ext|description.ext]] should be 5 (SIDE).\n**NOTE**: When player switches and leaves behind AI unit, you need to enable \"TeamSwitch\" AI on it <sqf inline>_unit enableAI \"TeamSwitch\" so that the unit continues with `waypoints`.",
             "examples": [
                 {
                     "text": "```sqf\nteamSwitch;\n```"
@@ -78379,7 +78379,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Check if [[[Team Switch]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Switch%5D%5D) is currently enabled.\nTeam Switch is enabled by default.",
+            "description": "Check if [Team Switch](https://community.bistudio.com/wiki/Team%20Switch) is currently enabled.\nTeam Switch is enabled by default.",
             "examples": [
                 {
                     "text": "```sqf\n_isTeamSwitchEnabled = teamSwitchEnabled;\n```"
@@ -78412,7 +78412,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "team",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D)"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member)"
                         }
                     ],
                     "outline": "`teamType` team",
@@ -78439,7 +78439,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "scriptHandle",
-                            "description": "[[[Script Handle]]](https://community.bistudio.com/wiki/%5B%5BScript%20Handle%5D%5D)"
+                            "description": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle)"
                         },
                         {
                             "name": "FSMHandle",
@@ -78688,7 +78688,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Links an [[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D) with `Code` to be executed if said [[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D)'s condition is `true`; otherwise, \"`else`\" code is executed if provided.\n\nThe alternative syntax allows to set \"`then`\" code and \"`else`\" code in one array.\n**NOTE**: Variables declared inside _thenCode_ are private to that code block - see {{Link|Variables#Local Variables Scope.}}",
+            "description": "Links an [If Type](https://community.bistudio.com/wiki/If%20Type) with `Code` to be executed if said [If Type](https://community.bistudio.com/wiki/If%20Type)'s condition is `true`; otherwise, \"`else`\" code is executed if provided.\n\nThe alternative syntax allows to set \"`then`\" code and \"`else`\" code in one array.\n**NOTE**: Variables declared inside _thenCode_ are private to that code block - see {{Link|Variables#Local Variables Scope.}}",
             "examples": [
                 {
                     "text": "```sqf\nif (a > b) then { hint \"a is greater than b!\"; };\n```"
@@ -78708,7 +78708,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "ifType",
-                            "description": "[[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D)"
+                            "description": "[If Type](https://community.bistudio.com/wiki/If%20Type)"
                         },
                         {
                             "name": "thenCode",
@@ -78749,7 +78749,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "if (condition)",
-                            "description": "[[[If Type]]](https://community.bistudio.com/wiki/%5B%5BIf%20Type%5D%5D)  - if (condition) returns `true`, \"exception\" is thrown"
+                            "description": "[If Type](https://community.bistudio.com/wiki/If%20Type)  - if (condition) returns `true`, \"exception\" is thrown"
                         },
                         {
                             "name": "exception",
@@ -78858,7 +78858,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - can be one of [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s"
+                            "description": "`String` - can be one of [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s"
                         },
                         {
                             "name": "speed",
@@ -78920,7 +78920,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values"
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values"
                         },
                         {
                             "name": "speed",
@@ -78959,7 +78959,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - can be one of: \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\"; see [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values"
+                            "description": "`String` - can be one of: \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\"; see [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values"
                         },
                         {
                             "name": "speed",
@@ -79008,7 +79008,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [[[Title Effect Type]]](https://community.bistudio.com/wiki/%5B%5BTitle%20Effect%20Type%5D%5D)s for more information about these values."
+                            "description": "`String` - one of \"PLAIN\", \"PLAIN DOWN\", \"BLACK\", \"BLACK FADED\", \"BLACK OUT\", \"BLACK IN\", \"WHITE OUT\" and \"WHITE IN\". See [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)s for more information about these values."
                         },
                         {
                             "name": "speed",
@@ -79020,7 +79020,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "isStructuredText",
-                            "description": "`Boolean` - (Optional, default `false`) `true` to switch support for [[[Structured Text]]](https://community.bistudio.com/wiki/%5B%5BStructured%20Text%5D%5D) formatting - see {{Link|#Example 4}}"
+                            "description": "`Boolean` - (Optional, default `false`) `true` to switch support for [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) formatting - see {{Link|#Example 4}}"
                         }
                     ],
                     "outline": "`titleText` [text, type, speed,  showInMap, isStructuredText]",
@@ -79048,7 +79048,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "forType",
-                            "description": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                            "description": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                         },
                         {
                             "name": "b",
@@ -79056,7 +79056,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "forType `to` b",
-                    "returns": "[[[For Type]]](https://community.bistudio.com/wiki/%5B%5BFor%20Type%5D%5D)"
+                    "returns": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/to"
@@ -79515,7 +79515,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Controls the ability of given unit to activate entities with disabled [[[Arma 3: Dynamic Simulation]]](https://community.bistudio.com/wiki/%5B%5BArma%203%3A%20Dynamic%20Simulation%5D%5D). If `false` dynamically disabled entities will not be activated by this unit's presence. This command has the same effect as the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) attribute _Wake-Up Dynamic Simulation_.",
+            "description": "Controls the ability of given unit to activate entities with disabled [Arma 3: Dynamic Simulation](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Simulation). If `false` dynamically disabled entities will not be activated by this unit's presence. This command has the same effect as the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) attribute _Wake-Up Dynamic Simulation_.",
             "examples": [
                 {
                     "text": "```sqf\nplayer triggerDynamicSimulation false;\n```"
@@ -79840,7 +79840,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D). Also supports [-1] for driver turret"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path). Also supports [-1] for driver turret"
                         }
                     ],
                     "outline": "vehicle `turretLocal` turretPath",
@@ -79872,7 +79872,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D) - since {{GVI|arma3|2.08"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path) - since {{GVI|arma3|2.08"
                         }
                     ],
                     "outline": "vehicle `turretOwner` turretPath",
@@ -79908,7 +79908,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D) - since {{GVI|arma3|1.58"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path) - since {{GVI|arma3|1.58"
                         }
                     ],
                     "outline": "vehicle `turretUnit` turretPath",
@@ -79924,7 +79924,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds an item with given text to Tree View control. The position on Tree View where to add the item and the actual path to this item once added are different. If item is added to existing item, then parent item path is used. If no parent exists, empty array [] is used. See [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) for more information.",
+            "description": "Adds an item with given text to Tree View control. The position on Tree View where to add the item and the actual path to this item once added are different. If item is added to existing item, then parent item path is used. If no parent exists, empty array [] is used. See [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) for more information.",
             "examples": [
                 {
                     "text": "```sqf\n_index = _ctrl tvAdd [[], \"Parent Item\"];\n```"
@@ -79942,7 +79942,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "pathParent",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of parent item or [] if no parent exists"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of parent item or [] if no parent exists"
                         },
                         {
                             "name": "text",
@@ -79954,7 +79954,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "pathParent",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of parent item or [] if no parent exists"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of parent item or [] if no parent exists"
                         },
                         {
                             "name": "text",
@@ -80025,7 +80025,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - item [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D). [] will collapse the whole tree and it will disappear"
+                            "description": "`Array` - item [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path). [] will collapse the whole tree and it will disappear"
                         },
                         {
                             "name": "control",
@@ -80033,7 +80033,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - item [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D). [] will collapse the whole tree and it will disappear"
+                            "description": "`Array` - item [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path). [] will collapse the whole tree and it will disappear"
                         }
                     ],
                     "outline": "control `tvCollapse` path",
@@ -80153,7 +80153,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`tvCurSel` control",
-                    "returns": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of selected item"
+                    "returns": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of selected item"
                 }
             ],
             "argumentLocality": "Local Argument",
@@ -80209,7 +80209,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Removes an item with given [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) from Tree View.\n**IMPORTANT**: The paths of other items on the same branch after delete operation are updated accordingly; therefore, when deleting multiple entries, start with the one with the highest index and proceed in reverse order.",
+            "description": "Removes an item with given [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) from Tree View.\n**IMPORTANT**: The paths of other items on the same branch after delete operation are updated accordingly; therefore, when deleting multiple entries, start with the one with the highest index and proceed in reverse order.",
             "examples": [
                 {
                     "text": "```sqf\ntvDelete [101, [0, 0]];\n```"
@@ -80227,7 +80227,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the item"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the item"
                         },
                         {
                             "name": "control",
@@ -80235,7 +80235,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the item"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the item"
                         }
                     ],
                     "outline": "control `tvDelete` path",
@@ -80271,7 +80271,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - item [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D). [] will expand the whole tree if it was collapsed previously with []"
+                            "description": "`Array` - item [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path). [] will expand the whole tree if it was collapsed previously with []"
                         },
                         {
                             "name": "control",
@@ -80279,7 +80279,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - item [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D). [] will expand the whole tree if it was collapsed previously with []"
+                            "description": "`Array` - item [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path). [] will expand the whole tree if it was collapsed previously with []"
                         }
                     ],
                     "outline": "control `tvExpand` path",
@@ -80492,7 +80492,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the item"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the item"
                         },
                         {
                             "name": "color",
@@ -80504,7 +80504,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the item"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the item"
                         },
                         {
                             "name": "color",
@@ -81208,7 +81208,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the parent item to sort"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the parent item to sort"
                         },
                         {
                             "name": "reversed",
@@ -81220,7 +81220,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the parent item to sort"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the parent item to sort"
                         },
                         {
                             "name": "reversed",
@@ -81293,7 +81293,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the parent item to sort"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the parent item to sort"
                         },
                         {
                             "name": "ascending",
@@ -81305,7 +81305,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - [[[Tree View Path]]](https://community.bistudio.com/wiki/%5B%5BTree%20View%20Path%5D%5D) of the parent item to sort"
+                            "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the parent item to sort"
                         },
                         {
                             "name": "ascending",
@@ -81761,7 +81761,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Unassigns individual unit from a vehicle, usually previously assigned with _assignAsXXX_ command, i.e removes `assignedVehicleRole` of the unit.\nIf the unit is currently in that vehicle, the group leader will issue an order to disembark.\n**NOTE**: See [[[AI Group Vehicle Management]]](https://community.bistudio.com/wiki/%5B%5BAI%20Group%20Vehicle%20Management%5D%5D) for more information.",
+            "description": "Unassigns individual unit from a vehicle, usually previously assigned with _assignAsXXX_ command, i.e removes `assignedVehicleRole` of the unit.\nIf the unit is currently in that vehicle, the group leader will issue an order to disembark.\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.",
             "examples": [
                 {
                     "text": "```sqf\nunassignVehicle player;\n```"
@@ -82346,7 +82346,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "vehicle `unitTurret` gunner",
-                    "returns": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)\n- `**[-1]**` is returned if the `gunner` is also the `driver`.\nWhen no units are in any of vehicle's turret, empty array `**[]**` is returned."
+                    "returns": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)\n- `**[-1]**` is returned if the `gunner` is also the `driver`.\nWhen no units are in any of vehicle's turret, empty array `**[]**` is returned."
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/unitTurret"
@@ -82429,7 +82429,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamMember",
-                            "description": "[[[Team Member]]](https://community.bistudio.com/wiki/%5B%5BTeam%20Member%5D%5D) - `teamMember` `agent`"
+                            "description": "[Team Member](https://community.bistudio.com/wiki/Team%20Member) - `teamMember` `agent`"
                         },
                         {
                             "name": "name",
@@ -84217,7 +84217,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Gets the vehicle attached to the waypoint.\n\nA vehicle can be attached to a waypoint by\n* creating the waypoint on top of the vehicle in the [[[2D Editor]]](https://community.bistudio.com/wiki/%5B%5B2D%20Editor%5D%5D)\n* using `waypointAttachVehicle`",
+            "description": "Gets the vehicle attached to the waypoint.\n\nA vehicle can be attached to a waypoint by\n* creating the waypoint on top of the vehicle in the [2D Editor](https://community.bistudio.com/wiki/2D%20Editor)\n* using `waypointAttachVehicle`",
             "examples": [
                 {
                     "text": "```sqf\nwaypointAttachedVehicle [groupOne, 1];\n```"
@@ -85395,7 +85395,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "turretPath",
-                            "description": "`Array` format [[[Turret Path]]](https://community.bistudio.com/wiki/%5B%5BTurret%20Path%5D%5D)"
+                            "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
                         }
                     ],
                     "outline": "vehicle `weaponsTurret` turretPath",
@@ -85442,10 +85442,10 @@ export const configs: SQFItemConfig[] = [
             "description": "West (BLUFOR) [side](https://community.bistudio.com/wiki/Side).",
             "examples": [
                 {
-                    "text": "[[[SQS Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQS%20Syntax%5D%5D):\n<sqs>? side _unit == west : hint \"This is a western unit!\"</sqs>"
+                    "text": "[SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax):\n<sqs>? side _unit == west : hint \"This is a western unit!\"</sqs>"
                 },
                 {
-                    "text": "[[[SQF Syntax]]](https://community.bistudio.com/wiki/%5B%5BSQF%20Syntax%5D%5D):\n\n```sqf\n\nif (side _unit == west) then\n{\n\thint \"This is a western unit!\";\n};\n\n```"
+                    "text": "[SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax):\n\n```sqf\n\nif (side _unit == west) then\n{\n\thint \"This is a western unit!\";\n};\n\n```"
                 }
             ],
             "syntaxes": [
@@ -85518,7 +85518,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`while` condition",
-                    "returns": "[[[While Type]]](https://community.bistudio.com/wiki/%5B%5BWhile%20Type%5D%5D)"
+                    "returns": "[While Type](https://community.bistudio.com/wiki/While%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/while"
@@ -85645,7 +85645,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a [[[With Type]]](https://community.bistudio.com/wiki/%5B%5BWith%20Type%5D%5D) that is used inside a `do` construct in order to execute code inside a given namespace.\n**IMPORTANT**: To avoid the below-mentioned issue error (whether in [scheduled](https://community.bistudio.com/wiki/Scheduler%23Scheduled%20Environment) or [unscheduled](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment) environment) use `setVariable`/`getVariable` with the desired `Namespace`.",
+            "description": "Creates a [With Type](https://community.bistudio.com/wiki/With%20Type) that is used inside a `do` construct in order to execute code inside a given namespace.\n**IMPORTANT**: To avoid the below-mentioned issue error (whether in [scheduled](https://community.bistudio.com/wiki/Scheduler%23Scheduled%20Environment) or [unscheduled](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment) environment) use `setVariable`/`getVariable` with the desired `Namespace`.",
             "examples": [
                 {
                     "text": "```sqf\n_myWithType = with uiNamespace;\n```"
@@ -85663,7 +85663,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "`with` namespace",
-                    "returns": "[[[With Type]]](https://community.bistudio.com/wiki/%5B%5BWith%20Type%5D%5D)"
+                    "returns": "[With Type](https://community.bistudio.com/wiki/With%20Type)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/with"
