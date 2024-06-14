@@ -1,5 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import { DocParser, IJSON, UnparsedItem } from "../SQFParser.namespace";
+import { DocParser, IJSON, UnparsedItem, getStringReplacer } from "../SQFParser.namespace";
 import {
     ExampleConfig,
     SQFArgumentLocality,
@@ -53,6 +53,11 @@ interface BikiSyntax {
     returnDetail: BikiPageDetail;
     syntaxTitle: string;
 }
+
+// TODO: incorrectly parsed docs
+// objNull -> "description": "```sqf\nA non-existent [[Object]]. To compare non-existent objects use [[isNull]] or [[isEqualTo]]:\n\nobjNull == objNull;\t\t\t// false\nisNull objNull;\t\t\t\t// true\nobjNull isEqualTo objNull;\t// true\n\n```"
+// if -> "description": "Links an [If Type](https://community.bistudio.com/wiki/If Type) with `Code` to be executed if said [If Type](https://community.bistudio.com/wiki/If Type)'s condition is `true`; otherwise, \"`else`\" code is executed if provided.\n\nThe alternative syntax allows to set \"`then`\" code and \"`else`\" code in one array.\n**NOTE**: Variables declared inside _thenCode_ are private to that code block - see {{Link|Variables#Local Variables Scope.}}"
+// then -> "description": "Links an [If Type](https://community.bistudio.com/wiki/If Type) with `Code` to be executed if said [If Type](https://community.bistudio.com/wiki/If Type)'s condition is `true`; otherwise, \"`else`\" code is executed if provided.\n\nThe alternative syntax allows to set \"`then`\" code and \"`else`\" code in one array.\n**NOTE**: Variables declared inside _thenCode_ are private to that code block - see {{Link|Variables#Local Variables Scope.}}"
 
 export class BikiParserV2 implements DocParser {
     private xmlParser = new XMLParser();
@@ -591,6 +596,56 @@ class BikiTextInterpreter {
         return type;
     }
 
+    private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
+    private readonly BIKI_BASE_URL = "https://community.bistudio.com/wiki";
+    private readonly SIMPLE_REPLACEMENTS: [
+        RegExp,
+        string | ((substring: string, ...args: any[]) => string)
+    ][] = [
+        // bold text
+        [/\'\'\'+(.*?)\'\'\'+/gi, "**$1**"],
+        // italic text
+        [/\'\'+(.*?)\'\'+/gi, "_$1_"],
+        // emphasized text
+        [/{{hl\|(.*)}}/gi, "`**$1**`"],
+        // other commands
+        [/\[\[(\w+)\]\]/gi, "`$1`"],
+        // other language code block
+        [
+            /(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi,
+            "```$2\n$4\n```",
+        ],
+        [/<br>/gi, "\n"],
+        // spoilers
+        [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
+        // Described Internal Hyperlinks
+        [
+            /\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi,
+            getStringReplacer((replacementInfo) => {
+                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
+                const linkText = replacementInfo.captureGroups[2];
+                return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
+            }),
+        ],
+        [
+            /\{\{wikipedia\|(.*)\|(.*)\}\}/gi,
+            getStringReplacer((replacementInfo) => {
+                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
+                const linkText = replacementInfo.captureGroups[2];
+                return `[${linkText}](${this.WIKIPEDIA_BASE_URL}/${subUrl})`;
+            }),
+        ],
+        // Static Internal Hyperlinks
+        [
+            /\[\[([\w/:\s]+)\]\]/gi,
+            (capturedText) => {
+                return `[${capturedText}](${this.BIKI_BASE_URL}/${encodeURIComponent(
+                    capturedText
+                )})`;
+            },
+        ],
+    ];
+
     /* ----------------------------------------------------------------------------
         convertTextToMarkdown
     ---------------------------------------------------------------------------- */
@@ -619,32 +674,9 @@ class BikiTextInterpreter {
             text = text.replaceAll(originalTypeText, `\`${this.parseWikiType(specificType)}\``);
         }
 
-        const BIKI_BASE_URL = "https://community.bistudio.com/wiki";
-        const SIMPLE_REPLACEMENTS: [RegExp, string][] = [
-            // bold text
-            [/\'\'\'+(.*?)\'\'\'+/gi, "**$1**"],
-            // italic text
-            [/\'\'+(.*?)\'\'+/gi, "_$1_"],
-            // emphasized text
-            [/{{hl\|(.*)}}/gi, "`**$1**`"],
-            // other commands
-            [/\[\[(\w+)\]\]/gi, "`$1`"],
-            // other language code block
-            [
-                /(<syntaxhighlight\s*lang="(.*)">)(\s*)([\s\S]+?)(\s*<\/syntaxhighlight>)/gi,
-                "```$2\n$4\n```",
-            ],
-            [/<br>/gi, "\n"],
-            // spoilers
-            [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
-            // Described Internal Hyperlinks
-            [/\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi, `[$2](${BIKI_BASE_URL}/$1)`],
-            // Static Internal Hyperlinks
-            [/\[\[([\w/:\s]+)\]\]/gi, `[$1](${BIKI_BASE_URL}/$1)`],
-        ];
-        SIMPLE_REPLACEMENTS.forEach(
+        this.SIMPLE_REPLACEMENTS.forEach(
             ([selector, replacement]) =>
-                (convertedText = convertedText.replace(selector, replacement))
+                (convertedText = convertedText.replace(selector, replacement as string))
         );
 
         Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
@@ -691,11 +723,6 @@ class BikiTextInterpreter {
             }
         );
 
-        const WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
-        convertedText = convertedText.replace(
-            /\{\{wikipedia\|(.*)\|(.*)\}\}/gi,
-            `[$2](${WIKIPEDIA_BASE_URL}/$1)`
-        );
         // TODO:
         // File links - /\[\[File.*?\]\]/gi
         // images
