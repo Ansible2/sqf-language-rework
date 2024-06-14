@@ -27,7 +27,7 @@ export interface DocParser {
 interface IReplacementInfo {
     matchedString: string;
     indexOfMatch: number;
-    searchedString: string;
+    input: string;
     captureGroups: { [group: number]: string };
 }
 export function getStringReplacer(
@@ -37,17 +37,17 @@ export function getStringReplacer(
         const replacementInfo: IReplacementInfo = {
             matchedString: subString,
             indexOfMatch: -1,
-            searchedString: "",
+            input: "",
             captureGroups: {},
         };
 
         let lastCaptureGroup = 0;
         args.forEach((arg) => {
             // original string commes immediately after index
-            if (replacementInfo.indexOfMatch > -1) {
-                replacementInfo.searchedString = arg;
-            } else if (typeof arg === "number") {
+            if (typeof arg === "number") {
                 replacementInfo.indexOfMatch = arg;
+            } else if (replacementInfo.indexOfMatch > -1 && !replacementInfo.input) {
+                replacementInfo.input = arg;
             } else if (typeof arg === "string") {
                 replacementInfo.captureGroups[++lastCaptureGroup] = arg;
             }

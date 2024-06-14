@@ -54,11 +54,6 @@ interface BikiSyntax {
     syntaxTitle: string;
 }
 
-// TODO: incorrectly parsed docs
-// objNull -> "description": "```sqf\nA non-existent [[Object]]. To compare non-existent objects use [[isNull]] or [[isEqualTo]]:\n\nobjNull == objNull;\t\t\t// false\nisNull objNull;\t\t\t\t// true\nobjNull isEqualTo objNull;\t// true\n\n```"
-// if -> "description": "Links an [If Type](https://community.bistudio.com/wiki/If Type) with `Code` to be executed if said [If Type](https://community.bistudio.com/wiki/If Type)'s condition is `true`; otherwise, \"`else`\" code is executed if provided.\n\nThe alternative syntax allows to set \"`then`\" code and \"`else`\" code in one array.\n**NOTE**: Variables declared inside _thenCode_ are private to that code block - see {{Link|Variables#Local Variables Scope.}}"
-// then -> "description": "Links an [If Type](https://community.bistudio.com/wiki/If Type) with `Code` to be executed if said [If Type](https://community.bistudio.com/wiki/If Type)'s condition is `true`; otherwise, \"`else`\" code is executed if provided.\n\nThe alternative syntax allows to set \"`then`\" code and \"`else`\" code in one array.\n**NOTE**: Variables declared inside _thenCode_ are private to that code block - see {{Link|Variables#Local Variables Scope.}}"
-
 export class BikiParserV2 implements DocParser {
     private xmlParser = new XMLParser();
     private textInterpreter = new BikiTextInterpreter();
@@ -638,18 +633,18 @@ class BikiTextInterpreter {
         // Static Internal Hyperlinks
         [
             /\[\[([\w/:\s]+)\]\]/gi,
-            (capturedText) => {
-                return `[${capturedText}](${this.BIKI_BASE_URL}/${encodeURIComponent(
-                    capturedText
-                )})`;
-            },
+            getStringReplacer((replacementInfo) => {
+                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1].trim());
+                const linkText = replacementInfo.captureGroups[1].trim();
+                return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
+            }),
         ],
     ];
 
     /* ----------------------------------------------------------------------------
         convertTextToMarkdown
     ---------------------------------------------------------------------------- */
-    public convertTextToMarkdown(text: string | undefined): string {
+    public convertTextToMarkdown(text: string | undefined, debug = false): string {
         if (!text) return "";
 
         let convertedText = text;
