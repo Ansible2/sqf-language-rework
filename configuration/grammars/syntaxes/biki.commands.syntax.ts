@@ -31,11 +31,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "numberB",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "numberA [[-]] numberB",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "numberA",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "[[-]] numberA",
+                    "returns": "`Number` - the negative of _numberA_"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "arrayA",
                             "description": "`Array`"
@@ -268,7 +280,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "b",
                             "description": "`Boolean` - test condition or variable"
-                        },
+                        }
+                    ],
+                    "outline": "a [[a or b|{{!}}{{!}}]] b",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "a",
                             "description": "`Boolean` - test condition or variable"
@@ -389,7 +407,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "actionArray",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `action` actionArray",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "actionArray",
                             "description": "`Array`"
@@ -453,7 +477,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "userAction",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`actionKeys` userAction",
+                    "returns": "`Array` of `Number`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "userAction",
                             "description": "`String`"
@@ -517,7 +547,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "userAction",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`actionKeysImages` userAction",
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "userAction",
                             "description": "`String`"
@@ -552,7 +588,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "userAction",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`actionKeysNames`  userAction",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "userAction",
                             "description": "`String`"
@@ -594,7 +636,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "userAction",
                             "description": "`String` - name of the action"
-                        },
+                        }
+                    ],
+                    "outline": "`actionKeysNamesArray`  userAction",
+                    "returns": "`Array` of `String`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "userAction",
                             "description": "`String` - name of the action"
@@ -667,7 +715,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "actionArray",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `actionNow` actionArray",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "actionArray",
                             "description": "`Array`"
@@ -1945,7 +1999,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "magazineName",
                             "description": "`String` - magazine name. See the topic [:Category:Weapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons) for reference about possible values."
-                        },
+                        }
+                    ],
+                    "outline": "unitName `addMagazine` magazineName\n\n{{Icon|localArgument|32}}{{Icon|globalEffect|32}}",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unitName",
                             "description": "`Object` - person to add the magazines to"
@@ -2558,7 +2618,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - by default, the code is executed in `missionNamespace`"
-                        },
+                        }
+                    ],
+                    "outline": "varName `addPublicVariableEventHandler`  code",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "varName",
                             "description": "`String` - name of the variable set on target with `setVariable`"
@@ -3242,7 +3308,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "instant",
                             "description": "`Boolean` - (Optional, default `false`) `true` to skip animation"
-                        },
+                        }
+                    ],
+                    "outline": "unit `addWeaponItem` [weaponName, itemName, instant]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -3710,7 +3782,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "id",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`airportSide` id",
+                    "returns": "`Side`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "target",
                             "description": "`Object`"
@@ -3938,7 +4016,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "display",
                             "description": "`Display`"
-                        },
+                        }
+                    ],
+                    "outline": "`allControls` display",
+                    "returns": "`Array` of `Control`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlsGroup",
                             "description": "`Control` - `CT_CONTROLS_GROUP`"
@@ -4320,7 +4404,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "objectCollection",
                             "description": "`Number` - supported values:"
-                        },
+                        }
+                    ],
+                    "outline": "objectType `allObjects` objectCollection",
+                    "returns": "`Array` - array of `Object`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "objectType",
                             "description": "`String` - type of the objects (will exact match return of `typeOf`)"
@@ -4390,7 +4480,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "allow",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "vehicle `allowCrewInImmobile` allow",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -4806,7 +4902,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`allTurrets` vehicle",
+                    "returns": "`Array` of `Array`s format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -5045,7 +5147,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "b",
                             "description": "`Boolean` - test condition or variable"
-                        },
+                        }
+                    ],
+                    "outline": "a `and` b",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "a",
                             "description": "`Boolean` - test condition or variable"
@@ -5566,7 +5674,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - code to be executed on each element of the array. The current element value is stored in the magic variable [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)."
-                        },
+                        }
+                    ],
+                    "outline": "array `apply` code",
+                    "returns": "`Array` - resulting array"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashmap",
                             "description": "`HashMap`"
@@ -6146,7 +6260,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`assignedItems`  unit",
+                    "returns": "`Array` of `String`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - soldier"
@@ -6406,7 +6526,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "id",
                             "description": "`Number` - airport id"
-                        },
+                        }
+                    ],
+                    "outline": "plane `assignToAirport` id",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "plane",
                             "description": "`Object` - plane"
@@ -7194,7 +7320,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`boundingBox` object",
+                    "returns": "`Array` - an array with the extreme points of the model in format [PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative), as well as bounding box sphere diameter.\nFormat [<nowiki/>[xmin, ymin, zmin], [xmax, ymax, zmax], boundingSphereDiameter]."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "clippingType",
                             "description": "`Number` - clipping type could be:"
@@ -7232,7 +7364,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`boundingBoxReal` object",
+                    "returns": "`Array` - the extreme points of the model in format [PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative), as well as (since {{GVI|arma3|1.92"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "clippingType",
                             "description": "`Number` - can be one of:"
@@ -7240,7 +7378,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "clippingType `boundingBoxReal` object",
+                    "returns": "`Array` - the extreme points of the model in format [PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative), as well as bounding box sphere radius, to format [<nowiki/>[xmin, ymin, zmin], [xmax, ymax, zmax], boundingSphereRadius]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -7362,7 +7506,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String` - name of the scope which was previously set with `scopeName`. <sqf inline>\"\" will exit the current scope (see also `exitWith`)"
-                        },
+                        }
+                    ],
+                    "outline": "`breakOut`  name",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "value",
                             "description": "`Anything` - a value to return"
@@ -7637,7 +7787,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number` - button IDC"
-                        },
+                        }
+                    ],
+                    "outline": "`buttonAction`  idc",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -7679,7 +7835,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "action",
                             "description": "`String` - **[SQS](https://community.bistudio.com/wiki/SQS%20Syntax)** code body that should be executed when the button/active text is clicked"
-                        },
+                        }
+                    ],
+                    "outline": "`buttonSetAction` [idc, action]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": " `Control` - button control"
@@ -7831,7 +7993,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - `compile`d instructions"
-                        },
+                        }
+                    ],
+                    "outline": "`call` code",
+                    "returns": "`Anything` - the last value given in the function is returned - see the topic [Function](https://community.bistudio.com/wiki/Function%23Return_Values) for more information"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "args",
                             "description": "`Anything` - arguments that are passed to the function in the <sqf inline>_this variable."
@@ -7839,7 +8007,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - `compile`d instructions"
-                        },
+                        }
+                    ],
+                    "outline": "args `call` code",
+                    "returns": "`Anything` - the last value given in the function is returned. See the topic [Function](https://community.bistudio.com/wiki/Function%23Return_Values) for more information."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMapObj",
                             "description": "`HashMap` - the HashMap (not necessarily created through `createHashMapObject`) to call the method on"
@@ -7891,7 +8065,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "function",
                             "description": "`String` - data sent to the extension"
-                        },
+                        }
+                    ],
+                    "outline": "extension `callExtension` function",
+                    "returns": "`String` - data sent back from extension; If the extensiion was not found an empty String will be returned"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "extension",
                             "description": "`String` - extension name"
@@ -8661,7 +8841,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Position` - target location"
-                        },
+                        }
+                    ],
+                    "outline": "camera `camPrepareTarget` position",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "camera",
                             "description": "`Object` - object of type \"camera\""
@@ -8967,7 +9153,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "target",
                             "description": "`Object` - target location"
-                        },
+                        }
+                    ],
+                    "outline": "camera `camSetTarget` target",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "camera",
                             "description": "`Object` - object of type \"camera\""
@@ -9077,7 +9269,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "item",
                             "description": "`String` - config class"
-                        },
+                        }
+                    ],
+                    "outline": "object `canAdd` item",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object` - unit or container"
@@ -9093,7 +9291,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "ignoreSoldierMaxLoad",
                             "description": "`Boolean` - (Optional, default `false`) `true` to ignore 'soldierMaxLoad' param, container's `maxLoad` is still counted"
-                        },
+                        }
+                    ],
+                    "outline": "object `canAdd` [item, count, ignoreSoldierMaxLoad]",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
@@ -9101,7 +9305,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "item",
                             "description": "`String` - config class of magazine or attachment"
-                        },
+                        }
+                    ],
+                    "outline": "weapon `canAdd` item",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
@@ -9113,7 +9323,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "slot",
                             "description": "`String` - slot class name (defined under **WeaponSlotsInfo** class in weapon config)"
-                        },
+                        }
+                    ],
+                    "outline": "weapon `canAdd` [attachment, slot]",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
@@ -9156,7 +9372,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "item",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `canAddItemToBackpack` item",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -9203,7 +9425,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "item",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `canAddItemToUniform` item",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -9250,7 +9478,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "item",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `canAddItemToVest` item",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -9411,7 +9645,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "cargo",
                             "description": "`Object` - an entity"
-                        },
+                        }
+                    ],
+                    "outline": "heli `canSlingLoad` cargo",
+                    "returns": "`Boolean` - `true` if `setSlingLoad` is possible"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "typeOfHeli",
                             "description": "`String` - a config type of helicopter"
@@ -9865,7 +10105,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "feature",
                             "description": "`String` - can be one of:"
-                        },
+                        }
+                    ],
+                    "outline": "`checkAIFeature` feature",
+                    "returns": "`Boolean` - `true` if is enabled"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - unit to test AI feature for"
@@ -10626,7 +10872,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - code that is executed in **[Unscheduled Environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled_Environment)**"
-                        },
+                        }
+                    ],
+                    "outline": "`collect3DENHistory` code",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "text",
                             "description": "`String` - text of the entry that is added to the history list"
@@ -10833,7 +11085,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "chatText",
                             "description": "`String` - message to transmit"
-                        },
+                        }
+                    ],
+                    "outline": "unit `commandChat` chatText",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "side",
                             "description": "`Side` - side to which the message will be seen"
@@ -11115,7 +11373,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "radioName",
                             "description": "`String` - class name from CfgRadio"
-                        },
+                        }
+                    ],
+                    "outline": "unit `commandRadio` radioName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "side",
                             "description": "`Side` - side to which the transmission will be played"
@@ -11270,7 +11534,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Array` format `Position`"
-                        },
+                        }
+                    ],
+                    "outline": "units `commandWatch` position",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "units",
                             "description": "`Object` or `Array`"
@@ -11367,7 +11637,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
-                        },
+                        }
+                    ],
+                    "outline": "`compatibleItems` weapon",
+                    "returns": "`Array` of `String`s - compatible attachments"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
@@ -11408,7 +11684,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
-                        },
+                        }
+                    ],
+                    "outline": "`compatibleMagazines` weapon",
+                    "returns": "`Array` of `String`s - all magazines that can be loaded in **any muzzle** of the given weapon."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "weapon",
                             "description": "`String` - weapon class name"
@@ -12250,7 +12532,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "value",
                             "description": "`Array`, `String`, `Config` or `HashMap`"
-                        },
+                        }
+                    ],
+                    "outline": "`count` value",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "condition",
                             "description": "`Code` - condition that must return `true` for the tested element to be counted. The variable `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**` will contain the currently tested element"
@@ -12506,7 +12794,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "isEmpty",
                             "description": "`Boolean` - (Optional, default `false`) `true` to create vehicle without crew"
-                        },
+                        }
+                    ],
+                    "outline": "`create3DENEntity` [mode, class, position, isEmpty]",
+                    "returns": "[Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "group",
                             "description": "`Group` - group in which an AI character or waypoint is created."
@@ -12624,7 +12918,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "dialogName",
                             "description": "`String` - class name used in the description.ext, resource.cpp or config.cpp"
-                        },
+                        }
+                    ],
+                    "outline": "`createDialog`  dialogName",
+                    "returns": "`Boolean` -  `true` when the dialog was created successfully"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "dialogName",
                             "description": "`String` - class name used in the description.ext, resource.cpp or config.cpp"
@@ -12877,7 +13177,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "side",
                             "description": "`Side`"
-                        },
+                        }
+                    ],
+                    "outline": "`createGroup` side",
+                    "returns": "`Group` - `grpNull` if the group limit is reached"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "side",
                             "description": "`Side`"
@@ -12984,7 +13290,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "valueN",
                             "description": "`Anything`"
-                        },
+                        }
+                    ],
+                    "outline": "`createHashMapFromArray` [[key1, value1], [key2, value2]]",
+                    "returns": "`HashMap`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "keys",
                             "description": "`Array` of `HashMapKey`s"
@@ -13077,7 +13389,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "sizeY",
                             "description": "`Number` - in meters"
-                        },
+                        }
+                    ],
+                    "outline": "`createLocation` [className, position, sizeX, sizeY]",
+                    "returns": "`Location`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "location",
                             "description": "`Location` - a terrain's location. If a scripted location is provided, it is simply returned"
@@ -13275,7 +13593,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "missionRootDirectoryString",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "display `createMissionDisplay` missionRootDirectoryString",
+                    "returns": "`Display`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "display",
                             "description": "`Display`"
@@ -13361,7 +13685,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "local",
                             "description": "`Boolean` - (Optional, default `false`) `true` to create a local instance only"
-                        },
+                        }
+                    ],
+                    "outline": "`createSimpleObject` [shapeName, positionWorld, local]",
+                    "returns": "`Object` - created simple object"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "className",
                             "description": "`String` - `CfgVehicles` class name"
@@ -13741,7 +14071,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "special",
                             "description": "`String` - unit placement special, one of:"
-                        },
+                        }
+                    ],
+                    "outline": "group `createUnit` [type, position, markers, placement, special]",
+                    "returns": "`Object` - the created unit"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "type",
                             "description": "`String` - classname of unit to be created as per `CfgVehicles`"
@@ -13822,7 +14158,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Array` format `Position` - desired placement position. If the exact position is occupied, nearest empty position is used."
-                        },
+                        }
+                    ],
+                    "outline": "type `createVehicle` position",
+                    "returns": "`Object`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "type",
                             "description": "`String` - vehicle/object className"
@@ -13873,7 +14215,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle to populate with crew"
-                        },
+                        }
+                    ],
+                    "outline": "`createVehicleCrew` vehicle",
+                    "returns": "`Group` - the group of the created crew (since **(Arma 3)**; before that returned `Nothing`)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "group",
                             "description": "`Group` - group to put crew in"
@@ -13881,7 +14229,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle to populate with crew"
-                        },
+                        }
+                    ],
+                    "outline": "group `createVehicleCrew` vehicle",
+                    "returns": "`Group` - the group of the created crew or `grpNull`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "side",
                             "description": "`Side` - side to create crew on"
@@ -13926,7 +14280,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL)"
-                        },
+                        }
+                    ],
+                    "outline": "type `createVehicleLocal` position",
+                    "returns": "`Object`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "type",
                             "description": "`String` - vehicle/object className"
@@ -14348,7 +14708,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "control",
                             "description": "`Control`"
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlActivate` control",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control` - button based control (`CT_BUTTON`, `CT_XBUTTON`, `CT_SHORTCUTBUTTON`, `CT_ACTIVETEXT`)"
@@ -14670,7 +15036,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "control",
                             "description": "`Control` - `CT_CHECKBOXES` control. If control contain multiple checkboxes, only checkbox with index 0 is queried."
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlChecked` control",
+                    "returns": "`Boolean` - `true` checked, `false` unchecked"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control` - `CT_CHECKBOXES` control"
@@ -14878,7 +15250,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - `true` to enable the control, `false` to disable it"
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlEnable` [idc, enable]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlName",
                             "description": "`Control`"
@@ -14918,7 +15296,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number` - control's IDC"
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlEnabled` idc",
+                    "returns": "`Boolean` - `true` if the control is enabled, `false` if not"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlName",
                             "description": "`Control`"
@@ -16053,7 +16437,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "checked",
                             "description": "`Boolean` - `true` to check, `false` to uncheck the checkbox"
-                        },
+                        }
+                    ],
+                    "outline": "control `ctrlSetChecked` checked",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control` - `CT_CHECKBOXES` control"
@@ -16096,7 +16486,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "[[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlSetDisabledColor` [idc, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -17183,7 +17579,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "y",
                             "description": "`Number` - position in y"
-                        },
+                        }
+                    ],
+                    "outline": "controlName `ctrlSetPosition` [x, y]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlName",
                             "description": "`Control` - 2D control"
@@ -17203,7 +17605,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "h",
                             "description": "`Number` - height of the control"
-                        },
+                        }
+                    ],
+                    "outline": "controlName `ctrlSetPosition` [x, y, w, h]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlName",
                             "description": "`Control` - 3D control"
@@ -17514,7 +17922,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String` - text or image path, depending on the control type"
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlSetText` [idc, text]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -17942,7 +18356,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "show",
                             "description": "`Boolean` - for showing, use `true`. for hiding, use `false`."
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlShow` [idc, show]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlName",
                             "description": "`Control`"
@@ -18037,7 +18457,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number` - control ID"
-                        },
+                        }
+                    ],
+                    "outline": "`ctrlText`  idc",
+                    "returns": "`String` - the text or image path is returned, dependent on the control type"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlName",
                             "description": "`Control`"
@@ -19349,11 +19775,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "entity",
                             "description": "`Object` - unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode"
-                        },
+                        }
+                    ],
+                    "outline": "`currentVisionMode` entity",
+                    "returns": "`Number` - vision mode"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "entity",
                             "description": "`Object` - unit or vehicle. Unit query returns current vision mode of the unit. Vehicle query returns driver seat vision mode"
-                        },
+                        }
+                    ],
+                    "outline": "`currentVisionMode` [entity]",
+                    "returns": "`Array` in format [vision mode, FLIR index]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle with vision modes"
@@ -19361,7 +19799,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "turretPath",
                             "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path) - path to vehicle's turret. Use [-1] for driver turret, [] for default primary gunner turret"
-                        },
+                        }
+                    ],
+                    "outline": "vehicle `currentVisionMode` turretPath",
+                    "returns": "`Array` in format [vision mode, FLIR index]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - soldier"
@@ -19518,7 +19962,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`currentZeroing` object",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object` - unit or vehicle"
@@ -19707,7 +20157,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "duration",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "layer `cutFadeOut`  duration",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "layerName",
                             "description": "`String` - effect layer name. Layer names are CaSe SeNsItIvE"
@@ -19764,7 +20220,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "drawOverHUD",
                             "description": "`Boolean` - (Optional, default `true`) `false` to show the object under in-game HUD"
-                        },
+                        }
+                    ],
+                    "outline": "`cutObj` [class, type, speed, showInMap, drawOverHUD]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "layer",
                             "description": "`Number` - layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100"
@@ -19788,7 +20250,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "drawOverHUD",
                             "description": "`Boolean` - (Optional, default `true`) `false` to show the object under in-game HUD"
-                        },
+                        }
+                    ],
+                    "outline": "layer `cutObj` [class, type, speed, showInMap, drawOverHUD]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "layerName",
                             "description": "`String` - layer name on which the effect is shown. Layer names are CaSe SeNsItIvE"
@@ -19865,7 +20333,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "drawOverHUD",
                             "description": "`Boolean` - (Optional, default `true`) `false` to show the resource under in-game HUD"
-                        },
+                        }
+                    ],
+                    "outline": "`cutRsc` [class, effect, speed, showInMap, drawOverHUD]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "layer",
                             "description": "`Number` or `String`"
@@ -19946,7 +20420,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "drawOverHUD",
                             "description": "`Boolean` - (Optional, default `true`) `false` to show the text under in-game HUD"
-                        },
+                        }
+                    ],
+                    "outline": "`cutText` [text, type, speed, showInMap, isStructuredText, drawOverHUD]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "layer",
                             "description": "`Number` or `String`"
@@ -20364,7 +20844,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number` (see a note in description)"
-                        },
+                        }
+                    ],
+                    "outline": "array `deleteAt` index",
+                    "returns": "`Anything` - returns the deleted element or `Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap",
                             "description": "`HashMap`"
@@ -20372,7 +20858,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "key",
                             "description": "`HashMapKey`"
-                        },
+                        }
+                    ],
+                    "outline": "hashMap `deleteAt` key",
+                    "returns": "`Anything`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array`"
@@ -20852,7 +21344,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`deleteVehicle` object",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "objects",
                             "description": "`Array` of `Object`s"
@@ -20892,7 +21390,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "vehicle `deleteVehicleCrew` unit",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -22377,7 +22881,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "optionName",
                             "description": "`String` - difficulty option name; one of:"
-                        },
+                        }
+                    ],
+                    "outline": "`difficultyOption` optionName",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array` - any array, could be empty array []"
@@ -22959,7 +23469,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "display `displayCtrl` idc",
+                    "returns": "`Control`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "idc",
                             "description": "`Number`"
@@ -23241,7 +23757,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "param2",
                             "description": "`Object` or `Array` in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) or [Position2D](https://community.bistudio.com/wiki/Position%23Introduction)"
-                        },
+                        }
+                    ],
+                    "outline": "param1 `distance` param2",
+                    "returns": "`Number` - distance in meters or 1e10 if distance cannot be calculated"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "location1",
                             "description": "`Location` or `Array` in format `Position` or [Position2D](https://community.bistudio.com/wiki/Position%23Introduction)"
@@ -23249,7 +23771,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "location2",
                             "description": "`Location` or `Array` in format `Position` or [Position2D](https://community.bistudio.com/wiki/Position%23Introduction)"
-                        },
+                        }
+                    ],
+                    "outline": "location1 `distance` location2",
+                    "returns": "`Number` - distance in meters or 1e10 if distance cannot be calculated"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "a",
                             "description": "`Number`"
@@ -23324,7 +23852,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "var2",
                             "description": "`Object` or `Position`"
-                        },
+                        }
+                    ],
+                    "outline": "var1 `distanceSqr` var2",
+                    "returns": "`Number` - distance in meters or 1e10 if distance cannot be calculated"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "a",
                             "description": "`Number`"
@@ -23809,7 +24343,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Array` format `Position`"
-                        },
+                        }
+                    ],
+                    "outline": "unit(s) `doWatch` position",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit(s)",
                             "description": "`Object` or `Array`"
@@ -24922,7 +25462,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - `true` to enable, `false` to disable"
-                        },
+                        }
+                    ],
+                    "outline": "feature `enableAIFeature`  enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - unit to test AI feature for"
@@ -25035,7 +25581,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - (Optional, getter if not provided) `true` enable, `false`, disable"
-                        },
+                        }
+                    ],
+                    "outline": "`enableAudioFeature` [feature, enable]",
+                    "returns": "`Boolean` - previous state"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -25200,7 +25752,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - `true` to enable, `false` to disable (both VoN and chat)"
-                        },
+                        }
+                    ],
+                    "outline": "channelID `enableChannel` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "channelID",
                             "description": "`Number` - [channel ID](https://community.bistudio.com/wiki/Channel%20IDs)"
@@ -25527,7 +26085,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - `false` to disable ambient life and ambient sounds, `true` to re-enable it"
-                        },
+                        }
+                    ],
+                    "outline": "`enableEnvironment` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ambientLife",
                             "description": "`Boolean` - enable/disable ambient life (bees, rabbits, birds, snakes, fish)"
@@ -25615,7 +26179,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `enableInfoPanelComponent` [panelID, componentClassOrType, enable]",
+                    "returns": "`Boolean` - `true` if component was successfully enabled on the panel, `false` otherwise (e.g. component is not available for the object)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - the concerned vehicle"
@@ -25880,7 +26450,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "`enableSaving` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "enable",
                             "description": "`Boolean` - allow `saveGame` command usage and manual saving"
@@ -26270,7 +26846,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - `false` to prevent local `player` from being able to disassemble static weapons"
-                        },
+                        }
+                    ],
+                    "outline": "`enableWeaponDisassembly` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "entity",
                             "description": "`Object` - unit or static weapon"
@@ -26543,7 +27125,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "type",
                             "description": "`String` - if an empty string `**\"\"**` is provided, all entities are returned"
-                        },
+                        }
+                    ],
+                    "outline": "`entities` type",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "typesInclude",
                             "description": "`Array` - in format [type1, type2, ...typeN], where type is a `String`. Empty array [] means include every entity. Method used for filtering - `isKindOf`"
@@ -26872,11 +27460,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "fsmFilePath",
                             "description": "`String` - file with FSM code"
-                        },
+                        }
+                    ],
+                    "outline": "arguments `execFSM` fsmFilePath",
+                    "returns": "`Number` - FSM handle (also available as `**_thisFSM**` in the FSM)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "fsmFilePath",
                             "description": "`String` - file with FSM code"
-                        },
+                        }
+                    ],
+                    "outline": "`execFSM` fsmFilePath",
+                    "returns": "`Number` - FSM handle (also available as `**_thisFSM**` in the FSM)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "arguments",
                             "description": "`Anything` - arguments accessible as `**_this**` in the FSM"
@@ -26888,7 +27488,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "allowTermination",
                             "description": "`Boolean` - `true` to allow FSM termination with `terminate` command. Optional, default `false`"
-                        },
+                        }
+                    ],
+                    "outline": "arguments `execFSM` [fsmFilePath, allowTermination]",
+                    "returns": "`Number` - FSM handle (also available as `**_thisFSM**` in the FSM)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "fsmFilePath",
                             "description": "`String` - file with FSM code"
@@ -26936,7 +27542,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "filename",
                             "description": "`String` - path to the [SQF](https://community.bistudio.com/wiki/SQF%20Syntax) script file"
-                        },
+                        }
+                    ],
+                    "outline": "arguments `execVM` filename",
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "filename",
                             "description": "`String` - path to the [SQF](https://community.bistudio.com/wiki/SQF%20Syntax) script file"
@@ -27529,7 +28141,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "element",
                             "description": "`Anything` - array element to find"
-                        },
+                        }
+                    ],
+                    "outline": "array `find` element",
+                    "returns": "`Number` - zero-based position of the first array element that matches x, -1 if not found"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "string",
                             "description": "`String` - string to search in"
@@ -27537,7 +28155,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "substring",
                             "description": "`String` - substring to find"
-                        },
+                        }
+                    ],
+                    "outline": "string `find` substring",
+                    "returns": "`Number` - zero-based position of the first sequence of characters that matches substring, -1 if not found"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "string",
                             "description": "`String` - string to search in"
@@ -27670,7 +28294,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idd",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`findDisplay` idd",
+                    "returns": "`Display`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "displayName",
                             "description": "`String`"
@@ -27948,7 +28578,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "muzzle",
                             "description": "`String` - name of the muzzle to be fired"
-                        },
+                        }
+                    ],
+                    "outline": "unit `fire` muzzle",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -28296,7 +28932,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "altitude",
                             "description": "`Number` - flying altitude in meters"
-                        },
+                        }
+                    ],
+                    "outline": "aircraft `flyInHeight` altitude",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "aircraft",
                             "description": "`Object`"
@@ -28509,7 +29151,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "arguments",
                             "description": "`String` - declares the index variable name like \"_myVar\". `from` and `to` are required, `step` is optional."
-                        },
+                        }
+                    ],
+                    "outline": "`for` arguments",
+                    "returns": "[For Type](https://community.bistudio.com/wiki/For%20Type)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "init",
                             "description": "`Code` - loop variable definition"
@@ -29048,7 +29696,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "array",
                             "description": "`Array` - the array to iterate over"
-                        },
+                        }
+                    ],
+                    "outline": "code `forEach` array",
+                    "returns": "`Anything` - will return the value of last executed statement"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "code",
                             "description": "`Code` - code applied to each key-value pair - available variables:"
@@ -29641,7 +30295,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`fullCrew` vehicle",
+                    "returns": "`Array` - list of arrays in format [unit, role, cargoIndex, turretPath, personTurret, assignedUnit, positionName]:\n* unit: `Object`\n* role: `String` - not always lowercase before {{GVI|arma3|2.04"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -30715,7 +31375,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "asset",
                             "description": "`Object` or `String` - object reference or path to the model"
-                        },
+                        }
+                    ],
+                    "outline": "`getAssetDLCInfo` asset",
+                    "returns": "`Array` - array in format: [isDlc, isOwned, isInstalled, isAvailable, appID, DLCName], where:\n* isDlc: `Boolean` - the asset belongs to a DLC\n* isOwned: `Boolean` \n* isInstalled: `Boolean` \n* isAvailable: `Boolean` \n* appID: `String` - actual steam item ID or \"0\" for none or \"-1\" for unknown \n* DLCName: `String` - actual DLC name or \"\""
+                },
+                {
+                    "parameters": [
                         {
                             "name": "class",
                             "description": "`String` - class name of the asset"
@@ -31522,7 +32188,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getDir` object",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "pos1",
                             "description": "`Object`, [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) - from where"
@@ -31561,7 +32233,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getDirVisual` object",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "pos1",
                             "description": "`Object`, [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) - from where"
@@ -31867,7 +32545,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "entity",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getEntityInfo` entity",
+                    "returns": "`Array` in format [isMan, isAnimal, isDeadSet, deadSetTime, lastEntityCausingDamage, lastDamageTime, isUpsideDown, upsideDownTime, isStopped, canFloat, hasTerminalOpened, isWeaponholder, isWreck, isSmoking, isSetForDeletion], where:\n* 0 - isMan `Boolean` - `true` if the entity is a man\n* 1 - isAnimal: `Boolean` - `true` if the entity is an animal\n* 2 - isDeadSet: `Boolean` - `true` if the entity has dead flag set. Often has the same value as !`alive`, but is not the same, as `alive` checks the total damage.\n* 3 - deadSetTime: `Number` - for how long the entity was dead\n* 4 - lastEntityCausingDamage: `Object` - `objNull` or the entity that last caused damage to this entity. Is not the same as the killer but could be the same. Killed entity might not have this set either. The entity does not have to be dead in order to have last entity that caused damage assigned.\n* 5 - lastDamageTime: `Number` - how long ago was _lastEntityCausingDamage_ assigned\n* 6 - isUpsideDown: `Boolean` - `true` if the entity is upside down. The engine considers this to be <sqf inline>vectorUp ent select 2 < 0.3\n* 7 - upsideDownTime: `Number` - how long the entity was upside down.\n* 8 - isStopped: `Boolean` - `true` when the entity does not need to be actively simulated.\n* 9 - canFloat: `Boolean` - `true` if the entity is able to float on water.\n* 10 - hasTerminalOpened: `Boolean` - `true` if the UAV terminal is opened for the given entity.\n* 11 - isWeaponholder: `Boolean` - `true` if the entity is weaponholder.\n* 12 - isWreck: `Boolean` - `true` if the entity is wreck.\n* 13 - isSmoking: `Boolean` - `true` if the entity has smoke and fire destruction effect active.\n* 14 - isSetForDeletion: `Boolean` - `true` if the entity was set for deletion, but is not yet removed from the simulation.\n\n**NOTE**: \nIn multiplayer, following values update properly only when entity is `local`:\n* lastEntityCausingDamage\n* lastDamageTime\n* isStopped\nOther values are either static or update depending on how your client sees the entity right now.\n\nTimer values are never exact between clients and vary slightly depending on latency, JIP clients end up with large timer values close to game's `time` but get normal once associated value changes again:\n* deadSetTime\n* lastDamageTime\n* upsideDownTime"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "entity",
                             "description": "`Object`"
@@ -31984,7 +32668,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "id",
                             "description": "`Number` - event handler id returned by `addEventHandler`, `ctrlAddEventHandler`, `displayAddEventHandler`, or `addMPEventHandler`"
-                        },
+                        }
+                    ],
+                    "outline": "oper `getEventHandlerInfo` [type, id]",
+                    "returns": "`Array` in format [exists, isLast, total] or empty array [], where:\n* exists: `Boolean` - event handler exists\n* isLast: `Boolean` - will be executed last (relevant if last event handler modifies default engine behaviour)\n* total: `Number` - total number of event handlers added to the same event"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "type",
                             "description": "`String` - event handler name"
@@ -32170,7 +32860,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String` - name of the variable"
-                        },
+                        }
+                    ],
+                    "outline": "FSMhandle `getFSMVariable` name",
+                    "returns": "`Anything`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "FSMhandle",
                             "description": "`Number`"
@@ -32736,7 +33432,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "markerName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`getMarkerPos` markerName",
+                    "returns": "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) - format [x,y,0]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "markerName",
                             "description": "`String`"
@@ -32883,7 +33585,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "attribute",
                             "description": "`String` - attribute name"
-                        },
+                        }
+                    ],
+                    "outline": "`getMissionConfigValue` attribute",
+                    "returns": "`Number`, `String`, `Boolean` or `Array`, depending on the attribute value type. [Nil](https://community.bistudio.com/wiki/nil) when the attribute is undefined."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "attribute",
                             "description": "`String` - attribute name"
@@ -33991,11 +34699,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getPos` object",
+                    "returns": "`Array` format [PositionAGLS](https://community.bistudio.com/wiki/Position%23PositionAGLS) - where Z is the height over the surface underneath"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "location",
                             "description": "`Location`"
-                        },
+                        }
+                    ],
+                    "outline": "`getPos` location",
+                    "returns": "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) - see `locationPosition`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "origin",
                             "description": "`Object`, [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction)"
@@ -34344,7 +35064,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "direction",
                             "description": "`Number` - direction relative to object's current direction"
-                        },
+                        }
+                    ],
+                    "outline": "object `getRelPos` [distance, direction]",
+                    "returns": "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "obj1",
                             "description": "`Object` - parent object"
@@ -34455,7 +35181,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - transport"
-                        },
+                        }
+                    ],
+                    "outline": "`getRespawnVehicleInfo` vehicle",
+                    "returns": "`Array` in format [respawnDelay, respawnCount, deleteOldWreck, respawnOnServer, respawnFlying, respawnUnit, respawnMode, respawnSide, useRespawnMarkerDir, canRespawn, isRespawning, respawnMarkerName, respawnTimeRemaining, missionRespawnDelay, missionRespawnMode], where:\n\n* 0 - respawnDelay: `Number` - how long the vehicle will be in respawn queue after death. -1 - 'missionRespawnDelay' value is used.\n* 1 - respawnCount: `Number` - how many times left for the vehicle to respawn. -1 - indefinite, 0 - no more respawns\n* 2 - deleteOldWreck: `Boolean` - if `true` then the old wreck will be deleted when vehicle respawns.\n* 3 - respawnOnServer: `Boolean` - if `true` the wreck will be transfered to the server and vehicle will respawn on server.\n* 4 - respawnFlying: `Boolean` - if `true` vehicle will not be forced to the ground and if can fly and has pilot will be spawned flying.\n* 5 - respawnUnit: `Object` - pilot/driver unit that will be placed into the new vehicle.\n* 6 - respawnMode: `Number` - individual respawn mode for this vehicle. Any mode other than 2,3 or -1 means disabled respawn. -1 - use 'missionRespawnMode'\n* 7 - respawnSide: `Side` - what side markers to use for respawn. For example if 'respawnSide' set to `east` the markers with names 'respawn_vehicle_eastXXX' and 'respawn_eastXXX' will be used. \n* 8 - useRespawnMarkerDir: `Boolean` - align respawned vehicle with respawn marker direction or with wreck direction if no marker found or \"INSTANT\" mode is used. Otherwise, direction is random.\n* 9 - canRespawn: `Boolean` - `true` if vehicle is respawnable (all conditions for respawn are ok)\n* 10 - isRespawning: `Boolean` - `true` if vehicle is currently in the respawn queue awaiting respawn.\n* 11 - respawnMarkerName: `String` - Chosen vehicle respawn marker, when vehicle respawns it will use the marker params. The respawn marker is processed instantly uppon vehicle's death.\n* 12 - respawnTimeRemaining: `Number` - how long left before the respawn. -1 after vehicle has respawned or has respawn disabled.\n* 13 - missionRespawnDelay: `Number` - global mission vehicle respawn delay. script command > mission param > 3DEN param\n* 14 - missionRespawnMode: `Number` - global mission vehicle respawn mode. script command > mission param > 3DEN param"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - transport"
@@ -34657,7 +35389,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "shot",
                             "description": "`Object` - shot projectile"
-                        },
+                        }
+                    ],
+                    "outline": "`getShotInfo` shot",
+                    "returns": "`Array` in format [effectiveTimeToLive, fuseDistanceLeft, timeToExplosion, triggerIsForced, shownTracer, isReal, isSubmunitionTriggered, isSetForDeletion], where:\n\n* 0 - effectiveTimeToLive: `Number` - how much more shot has to live.\n* 1 - fuseDistanceLeft: `Number` - how long shot has to travel more to get fused (undebarrel grenade for example).\n* 2 - timeToExplosion: `Number` - how long before shot fuse explodes (hand grenade for example).\n* 3 - triggerIsForced: `Boolean` - `true` if shot ammo was triggered with `triggerAmmo`.\n* 4 - shownTracer: `Boolean` - `true` if the shot shown as tracer.\n* 5 - isReal: `Boolean` - `true` if the shot is considered in damage events.\n* 6 - isSubmunitionTriggered: `Boolean` - `true` if the shot contains submunition and it is triggered.\n* 7 - isSetForDeletion: `Boolean` - `true` if the shot is already set for deletion but not yet removed from the scene."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "shot",
                             "description": "`Object` - shot projectile"
@@ -35372,7 +36110,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "obj",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getTurretOpticsMode` obj",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "obj",
                             "description": "`Object`"
@@ -35448,7 +36192,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getUnitLoadout` unit",
+                    "returns": "`Array` format [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -35456,11 +36206,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "fullMagazines",
                             "description": "`Boolean` - `true` to top up used magazines"
-                        },
+                        }
+                    ],
+                    "outline": "`getUnitLoadout` [unit, fullMagazines]",
+                    "returns": "`Array` format [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "name",
                             "description": "`String` - `**CfgVehicles**` classname from which to extract the loadout"
-                        },
+                        }
+                    ],
+                    "outline": "`getUnitLoadout` name",
+                    "returns": "`Array` format [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "config",
                             "description": "`Config` - loadout config class"
@@ -35491,7 +36253,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`getUnitMovesInfo` unit",
+                    "returns": "`Array` in format:\n* 0 - moveProgress: `Number` - move progress in range 0-1\n* 1 - moveTime: `Number` - move elapsed time (`**move progress * move duration**`)\n* 2 - moveDuration: `Number` - move duration\n* 3 - moveFactor: `Number` - move blend factor\n* 4 - rtmStep: `Vector3D` - rtm step (how many meters the unit will move after finishing the animation)\n* 5 - gestureProgress: `Number` - gesture progress in range 0-1\n* 6 - gestureTime: `Number` - gesture elapsed time (`**gesture progress * gesture duration**`)\n* 7 - gestureDuration: `Number` - gesture duration\n* 8 - gestureFactor: `Number` - gesture blend factor"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -35592,7 +36360,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "playerID",
                             "description": "`String` - user DirectPlay ID (see `getPlayerID`, [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected))"
-                        },
+                        }
+                    ],
+                    "outline": "`getUserInfo` playerID",
+                    "returns": "`Array` in format [playerID, owner, playerUID, soldierName, displayName, steamProfileName, clientStateNumber, isHeadless, adminState, networkInfo, playerObject], where:\n* 0 - playerID: `String` - user DirectPlay ID (see `getPlayerID`, [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected))\n* 1 - owner: `Number` - user owner (see `owner`)\n* 2 - playerUID: `String` - player UID (see `getPlayerUID`)\n* 3 - soldierName: `String` - player name (see `profileName`)\n* 4 - displayName: `String` - player name including squad (see `name`, `squadParams`)\n* 5 - steamProfileName: `String` - steam profile name (see `profileNameSteam`)\n* 6 - clientStateNumber: `String` user client state (see `getClientStateNumber`)\n* 7 - isHeadless: `Boolean` - whether or not this is a headless client (see `hasInterface`, `isServer`)\n* 8 - adminState: `Number` - admin status of the user (see `admin`)\n* 9 - networkInfo: `Array` of `Number`s - format [ping, bandwidth, desync]\n* 10 - playerObject: `Object` - user player entity (see `player`, `selectPlayer`)\n\n**NOTE**: Returns an empty array if said player is not found."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "playerID",
                             "description": "`String` - user DirectPlay ID (see `getPlayerID`, [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected))"
@@ -35698,7 +36472,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String` - variable name in given namespace"
-                        },
+                        }
+                    ],
+                    "outline": "varspace `getVariable` name",
+                    "returns": "`Anything` or `Nothing` if the variable doesn't exist"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "varspace",
                             "description": "`Namespace`, `Object`, `Display`, `Control`, `Group`, `Location`, `Task`, [Team Member](https://community.bistudio.com/wiki/Team%20Member), `Display`, `Control`"
@@ -36321,7 +37101,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "group",
                             "description": "`Group`"
-                        },
+                        }
+                    ],
+                    "outline": "`groupId` group",
+                    "returns": "`String` - the group's name (e.g \"Alpha Red\")"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - a group's unit"
@@ -37198,7 +37984,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`hideObject` object",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -37241,7 +38033,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object` - object to hide"
-                        },
+                        }
+                    ],
+                    "outline": "`hideObjectGlobal` object",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -37387,7 +38185,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "message",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`hintC` message",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "title",
                             "description": "`String` - message title"
@@ -37689,7 +38493,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "target",
                             "description": "`Object` - which would be ignored"
-                        },
+                        }
+                    ],
+                    "outline": "group `ignoreTarget` target",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "group ",
                             "description": "`Object` or `Group` - which receives revealing information"
@@ -37865,7 +38675,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "array",
                             "description": "`Array` - array of values"
-                        },
+                        }
+                    ],
+                    "outline": "value `in` array",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - entity person"
@@ -37873,7 +38689,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - entity vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "unit `in` vehicle",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "`Array` - format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction)"
@@ -37881,7 +38703,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "location",
                             "description": "`Location`"
-                        },
+                        }
+                    ],
+                    "outline": "position `in` location",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "needle",
                             "description": "`String` - string to search **for**"
@@ -37889,7 +38717,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "haystack",
                             "description": "`String` - string to search **in**"
-                        },
+                        }
+                    ],
+                    "outline": "needle `in` haystack",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "key",
                             "description": "`HashMapKey`"
@@ -37931,7 +38765,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "area",
                             "description": "`Object`, `String`, `Location`"
-                        },
+                        }
+                    ],
+                    "outline": "position `inArea` area",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "`Object` or `Array` in format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) (must be [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) if area is checked in 3D)"
@@ -37999,7 +38839,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "area",
                             "description": "`Object`, `Location` or `String` - the defined area:"
-                        },
+                        }
+                    ],
+                    "outline": "positions `inAreaArray` area",
+                    "returns": "`Array`: `Object`s and/or `Position`s inside the trigger area"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "positions",
                             "description": "`Array` - `Object`s and/or `Position`s to check. `Position`s must be [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) if area is checked in 3D"
@@ -38233,7 +39079,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "componentClassOrType",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `infoPanelComponentEnabled` [panelID, componentClassOrType]",
+                    "returns": "`Boolean` - `true` if component was successfully enabled on the panel, `false` otherwise (e.g. component is not available for the object)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - the concerned vehicle"
@@ -38280,7 +39132,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "panelID",
                             "description": "`String` - \"left\" or \"right\" can be used as panel names"
-                        },
+                        }
+                    ],
+                    "outline": "unit `infoPanelComponents` panelID",
+                    "returns": "`Array` - format [className, componentType, isAccessible]:\n* className: `String` - component classname as defined in object/vehicle config\n* componentType: `String` - componentType - component type\n* isAccessible: `Boolean` - boolean flag that shows if component is currently accessible (lack of required item can make it temporarily inaccessible)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - the concerned vehicle"
@@ -38319,7 +39177,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object` - the concerned vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`infoPanels` unit",
+                    "returns": "`Array` - format [<nowiki/>[infoPanelId1, infoPanelShortcutId1], [infoPanelId2, infoPanelShortcutId2], ...]:\n* infoPanelId: `String` - name of the info panel class as defined in vehicle config\n* infopanelShortcutId: `String` - shortcut representation of _infopanelId_, currently are supported only shortcuts \"left\" and \"right\""
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - the concerned vehicle"
@@ -38542,7 +39406,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "button",
                             "description": "`Number` - button number 0..7: 0-LMB, 1-RMB, 2-MMB"
-                        },
+                        }
+                    ],
+                    "outline": "`inputMouse` button",
+                    "returns": "`Number` - the state of the button:\n* 0 - released\n* 1 - click\n* 2 - click + hold\n* 3 - double click\n* 4 - double click + hold"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "combocode",
                             "description": "`String` - code or combination (see `actionKeys`)"
@@ -38624,7 +39494,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "onlyIfUnique",
                             "description": "`Boolean` - only insert if the value is unique in the array, like `pushBackUnique`"
-                        },
+                        }
+                    ],
+                    "outline": "array `insert` [index, valuesToInsert, onlyIfUnique]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "string ",
                             "description": "`String`"
@@ -38636,7 +39512,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "substring",
                             "description": "`String` - string to insert"
-                        },
+                        }
+                    ],
+                    "outline": "string `insert` [index, substring]",
+                    "returns": "`String` - the new string"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap",
                             "description": "`HashMap`"
@@ -38648,7 +39530,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "valueN",
                             "description": "`Anything`"
-                        },
+                        }
+                    ],
+                    "outline": "hashMap `insert` [<nowiki/>[key1, value1], [key2, value2], ...]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap",
                             "description": "`HashMap`"
@@ -40102,7 +40990,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "typeName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "object `isKindOf` typeName",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "class1",
                             "description": "`String`"
@@ -40110,7 +41004,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "class2",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "class1 `isKindOf` class2",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "class1",
                             "description": "`String`"
@@ -40149,7 +41049,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "entity",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`isLaserOn` entity",
+                    "returns": "`Boolean` - `true` when laser is on, `false` otherwise"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - transport"
@@ -40192,7 +41098,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle with headlights"
-                        },
+                        }
+                    ],
+                    "outline": "`isLightOn` vehicle",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle with search light on a turret"
@@ -40393,11 +41305,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "variableName",
                             "description": "**`String`** - `missionNamespace`'s or local [variable](https://community.bistudio.com/wiki/Variables)'s [identifier](https://community.bistudio.com/wiki/Identifier) (e.g \"globalVariable\", \"_localVariable\")"
-                        },
+                        }
+                    ],
+                    "outline": "`isNil` variableName",
+                    "returns": "`Boolean` - `true` if variable is `nil` or undefined"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "code",
                             "description": "`Code` - code to evaluate:"
-                        },
+                        }
+                    ],
+                    "outline": "`isNil` code",
+                    "returns": "`Boolean` - `true` if _code_ returns `Nothing`, `false` otherwise"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "namespace",
                             "description": "`Namespace`, `Object`, `Group` or `HashMap`"
@@ -40667,7 +41591,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`isPlayer` unit",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "person",
                             "description": "`Object` - dead or alive unit"
@@ -41475,7 +42405,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`isWeaponDeployed` unit",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -42309,7 +43245,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "ID",
                             "description": "`Number` - [Airport ID](https://community.bistudio.com/wiki/Arma%3A%20Airport%20IDs)"
-                        },
+                        }
+                    ],
+                    "outline": "plane `landAt` ID",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "plane",
                             "description": "`Object`"
@@ -42317,7 +43259,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "airportObject",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "plane `landAt` airportObject",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "heli",
                             "description": "`Object` - Helicopter/VTOL aircraft"
@@ -42410,7 +43358,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "entity",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`laserTarget` entity",
+                    "returns": "`Object` - laser target or `objNull` if no laser target exists"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - transport"
@@ -42453,7 +43407,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String` - visible text"
-                        },
+                        }
+                    ],
+                    "outline": "`lbAdd` [idc, text]",
+                    "returns": "`Number` - index (row) of newly added item"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42493,7 +43453,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number` - control IDC"
-                        },
+                        }
+                    ],
+                    "outline": "`lbClear` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42533,7 +43499,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbColor` [idc, index]",
+                    "returns": "`Array` format [[Color|Color (RGBA)]]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42577,7 +43549,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbColorRight` [idc, index]",
+                    "returns": "`Array` in format [[Color|Color (RGBA)]]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42617,7 +43595,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbCurSel`  idc",
+                    "returns": "`Number` - selected index (row) or -1 if nothing is selected"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42655,7 +43639,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbData` [idc, index]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42699,7 +43689,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbDelete` [idc, index]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42774,7 +43770,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbPicture` [idc, index]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42816,7 +43818,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbPictureRight` [idc, index]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42889,7 +43897,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "[[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetColor` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42941,7 +43955,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetColorRight` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -42989,7 +44009,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetCurSel` [idc, index]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43035,7 +44061,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "data",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetData` [idc, index, data]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43088,7 +44120,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`String` - path to the picture"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPicture` [idc, index, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43140,7 +44178,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPictureColor` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43190,7 +44234,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPictureColorDisabled` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43240,7 +44290,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPictureColorSelected` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43290,7 +44346,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPictureRight` [idc, index, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43342,7 +44404,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPictureRightColor` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43392,7 +44460,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetPictureRightColorDisabled` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43477,7 +44551,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetSelectColor` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43527,7 +44607,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetSelectColorRight` [idc, index, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43616,7 +44702,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetText` [idc, index, name]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43703,7 +44795,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "tooltip",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetTooltip` [idc, index, tooltip]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43753,7 +44851,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "value",
                             "description": "`Number` - only integer values are supported"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSetValue` [idc, index, value]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43795,7 +44899,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number` - control's id"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSize` idc",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43837,7 +44947,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "control",
                             "description": "`Control`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSort` control",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -43845,11 +44961,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "sortOrder",
                             "description": "`String` - \"ASC\": ascending, \"DESC\": descending"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSort` [control, sortOrder]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSort` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "idc",
                             "description": "`Number`"
@@ -43934,7 +45062,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "control",
                             "description": "`Control`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbSortByValue`  control",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "idc",
                             "description": "`Number`"
@@ -43972,7 +45106,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbText` [idc, index]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -44016,7 +45156,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbTextRight` [idc, index]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -44057,7 +45203,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbTooltip` [idc, index]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -44099,7 +45251,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lbValue` [idc, index]",
+                    "returns": "`Number` - only integers"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -45211,7 +46369,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Number` - position of the new column where 0 means all the way to the left and 1 all the way to the right of the control"
-                        },
+                        }
+                    ],
+                    "outline": "control `lnbAddColumn` position",
+                    "returns": "`Number` or `nil` - returns the zero based index of the new column"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "controlOrIdc",
                             "description": "`Control`, `Number` - control or the idc of the control"
@@ -45255,7 +46419,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "data",
                             "description": "`Array` of `String`s"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbAddRow` [idc, data]",
+                    "returns": "`Number` - row index"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45292,7 +46462,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbClear` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45331,7 +46507,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbColor` [idc, [row, column]]",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -45378,7 +46560,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number` - index of the column"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbColorRight` [idc, [row, column]]",
+                    "returns": "`Array` - RGBA"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45417,7 +46605,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbCurSelRow` idc",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45456,7 +46650,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbData` [idc, [row, column]]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45501,7 +46701,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbDeleteColumn` [idc, index]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45609,7 +46815,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number` - index of Column"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbPicture` [idc, [row, column]]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -45658,7 +46870,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number` - index of the column"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbPictureRight` [idc, [row, column]]",
+                    "returns": "`String` - path of image"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45709,7 +46927,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` format [[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetColor` [idc, [row, column], color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45766,7 +46990,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` - color RGBA"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetColorRight` [idc, [row, column], color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45816,7 +47046,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "positions",
                             "description": "`Array` - positions of the columns"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetColumnsPos` [idc, positions]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control` - lnb control"
@@ -45855,7 +47091,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetCurSelRow` [idc, index]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45905,7 +47147,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "data",
                             "description": "`String` - the invisible text to add"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetData` [idc, [row, column], data]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -45963,7 +47211,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "picturePathOrName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetPicture` [idc, [row, column], picturePathOrName]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46021,7 +47275,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "colour",
                             "description": "[[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetPictureColor` [idc, [row, column], colour]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46076,7 +47336,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` - color RGBA"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetPictureColorRight` [idc, [row, column], color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46134,7 +47400,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "colour",
                             "description": "[[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetPictureColorSelected` [idc, [row, column], colour]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46189,7 +47461,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` - color RGBA"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetPictureColorSelectedRight` [idc, [row, column], color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46247,7 +47525,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`String` - the picture's file path"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetPictureRight` [idc, [row, column], path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46305,7 +47589,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "data",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetText` [idc, [row, column], data]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46365,7 +47655,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetTextRight` [idc, [row, column], text]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46423,7 +47719,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String` - tooltip text"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetTooltip` [idc, [row, column], text]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control` - control"
@@ -46478,7 +47780,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "value",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSetValue` [idc, [row, column], value]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -46562,7 +47870,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "reversed",
                             "description": "`Boolean` - (Optional, default `false`) `false`: descending / `true`: ascending"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSort` [idc, column, reversed]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -46663,7 +47977,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "reversed",
                             "description": "`Boolean` - (Optional, default `false`) `false`: descending / `true`: ascending"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbSortByValue` [idc, column, reversed]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -46747,7 +48067,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number` - index of the column"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbTextRight` [idc, [row, column]]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -46794,7 +48120,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "column",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`lnbValue` [idc, [row, column]]",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -47262,6 +48594,11 @@ export const configs: SQFItemConfig[] = [
                             "description": "`Object` or `Group` (since {{GVI|arma3|1.32"
                         }
                     ],
+                    "outline": "`local` object",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [],
                     "outline": "`local` variable = value <span style=\"margin-left: 7em\">**{{Color|red|From Arma 2 v1.00 until Arma 3 v1.54}}** - see **`private`** for later versions</span>",
                     "returns": "`Nothing`"
                 }
@@ -47417,7 +48754,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "locked",
                             "description": "`Boolean` - `true` to lock, `false` to unlock"
-                        },
+                        }
+                    ],
+                    "outline": "vehicleName `lock` locked",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicleName",
                             "description": "`Object`"
@@ -47468,7 +48811,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "turretPath",
                             "description": "`Array` - path to the turret with required camera"
-                        },
+                        }
+                    ],
+                    "outline": "vehicle `lockCameraTo` [target, turretPath]",
+                    "returns": "`Nothing`\n\n**IMPORTANT**: \n* This syntax only works with stabilized turrets.\n* When using this syntax, if target is out of possible view, the turret will move to its limit and get stuck there, with blocked input."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - UAV"
@@ -47519,7 +48868,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "lock",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "vehicle `lockCargo` lock",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -48122,7 +49477,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`magazines` vehicle",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
@@ -48160,7 +49521,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle with turrets"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesAllTurrets` vehicle",
+                    "returns": "`Array` - in the following format: [<nowiki/>[className, turretPath, ammoCount, id, creator],...]  where:\n* className: `String` - magazine class name\n* turretPath: `Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)\n* ammoCount: `Number` - how many rounds left in the magazine\n* id: `Number` - id of the magazine object. The number starts at 10,000,000. This gives it about 6,700,000 possible ids before the number starts losing precision and cannot be used in scripts.\n* creator: `Number` - `owner` / `clientOwner` of the PC that created the object"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - vehicle with turrets"
@@ -48199,7 +49566,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle or container. When transport is supplied, the command returns vehicle's magazines not the cargo. When container is supplied, the command behaves identically to `magazinesAmmoCargo`"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesAmmo` vehicle",
+                    "returns": "`Array` of `Array`s in format:\n* `String`: magazine class name\n* `Number`: magazine ammo count"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle."
@@ -48267,7 +49640,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "entity",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesAmmoFull` entity",
+                    "returns": "`Array` of `Array`s in format:\n* `String`: magazine class name\n* `Number`: magazine ammo count\n* `Boolean`: is magazine loaded\n* `Number`: magazine type:\n** -1 = n/a (default if magazine is not loaded)\n** 0 - grenade\n** 1 - primary weapon mag\n** 2 - handgun mag\n** 4 - secondary weapon mag\n** 4096 - binocular weapon mag\n** 65536 - vehicle mag\n* `String`: magazine location: \"Vest\", \"Uniform\", \"Backpack\", \"\" or `currentMuzzle` if the magazine is loaded\n* {{GVI|arma3|2.08"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
@@ -48305,7 +49684,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesDetail` vehicle",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
@@ -48344,7 +49729,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesDetailBackpack` unit",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - unit"
@@ -48383,7 +49774,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesDetailUniform` unit",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - unit"
@@ -48422,7 +49819,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`magazinesDetailVest` unit",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - unit"
@@ -48468,7 +49871,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "turretPath",
                             "description": "`Array` format [Turret Path](https://community.bistudio.com/wiki/Turret%20Path)"
-                        },
+                        }
+                    ],
+                    "outline": "vehicle `magazinesTurret` turretPath",
+                    "returns": "`Array` of `String`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -48658,7 +50067,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "mainmap `mapCenterOnCamera` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "minimap",
                             "description": "`Control`"
@@ -48935,7 +50350,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "markerName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`markerPos` markerName",
+                    "returns": "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) - [x, y, **0**], z is always 0"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "markerName",
                             "description": "`String`"
@@ -49271,7 +50692,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuAction` [idc, path]",
+                    "returns": "`String` - action"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Number`"
@@ -49314,7 +50741,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuAdd` [idc, path, text]",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49357,7 +50790,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuChecked` [idc, path]",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49392,7 +50831,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuClear` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49427,7 +50872,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuCollapse` [idc, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49466,7 +50917,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuData` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49505,7 +50962,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuDelete` [idc,path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49551,7 +51014,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - (Optional, default `true`) disabled if `false`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuEnable` [idc, path, enable]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49563,7 +51032,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean` - (Optional, default `true`) disabled if `false`"
-                        },
+                        }
+                    ],
+                    "outline": "control `menuEnable` [path, enable]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49602,7 +51077,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuEnabled` [idc, path]",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49641,7 +51122,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuExpand` [idc, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49676,7 +51163,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuHover` idc",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49711,7 +51204,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuPicture` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49754,7 +51253,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "action",
                             "description": "`String` - expression that should be executed when entry is clicked"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetAction` [idc, path, action]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49801,7 +51306,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "checked",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetCheck` [idc, path, checked]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49848,7 +51359,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "data",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetData` [idc, path, data]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49895,7 +51412,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "picture",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetPicture` [idc, path, picture]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49942,7 +51465,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "shortcut",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetShortcut` [idc, path, shortcut]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -49989,7 +51518,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetText` [idc, path, text]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50036,7 +51571,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "link",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetURL` [idc, path, link]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50083,7 +51624,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "value",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSetValue` [idc, path, value]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50126,7 +51673,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuShortcut` [idc, path]",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50165,7 +51718,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuShortcutText` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50204,7 +51763,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSize` [idc, path]",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50247,7 +51812,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "sortOrder",
                             "description": "`Boolean` - `true` to sort from A to Z, `false` to sort from Z to A"
-                        },
+                        }
+                    ],
+                    "outline": "`menuSort` [idc, path, sortOrder]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50290,7 +51861,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuText` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50329,7 +51906,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`menuURL` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -50404,7 +51987,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "hashMap2",
                             "description": "`HashMap` - all key-value pairs from this HashMap are added to _hashMap1_. If a key from _hashMap2_ already exists in _hashMap1_, it doesn't overwrite the value in _hashMap1_."
-                        },
+                        }
+                    ],
+                    "outline": "hashMap1 `merge` hashMap2",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap1",
                             "description": "`HashMap` - this HashMap will be modified"
@@ -51173,7 +52762,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `moveInCargo` vehicle",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -51391,7 +52986,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "soldier",
                             "description": "`Object` - unit (only a living unit before **(Arma 3)**)"
-                        },
+                        }
+                    ],
+                    "outline": "`moveOut` soldier",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "soldier",
                             "description": "`Object` - unit"
@@ -51609,7 +53210,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`name` object",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "location",
                             "description": "`Location`"
@@ -51643,7 +53250,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`namedProperties` object",
+                    "returns": "`Array` of `Array`s of `String`s, in format: <nowiki>[</nowiki>[namedProperty1, propertyValue1], [namedProperty2, propertyValue2], ...]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -51709,7 +53322,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "radius",
                             "description": "`Number` - radius of the sphere"
-                        },
+                        }
+                    ],
+                    "outline": "position `nearEntities` radius",
+                    "returns": "`Array` of `Object`s - not sorted"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "`Object` or `Array` in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) or [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) - center of the sphere"
@@ -51721,7 +53340,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "radius",
                             "description": "`Number` - radius of the sphere"
-                        },
+                        }
+                    ],
+                    "outline": "position `nearEntities` [type, radius]",
+                    "returns": "`Array` of `Object`s - not sorted"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "area",
                             "description": "`String`, `Object` or `Array`:"
@@ -51977,11 +53602,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "type",
                             "description": "`String` - type of object (see `typeOf`, [class type](https://community.bistudio.com/wiki/CfgVehicles))"
-                        },
+                        }
+                    ],
+                    "outline": "`nearestObject` [position, type]",
+                    "returns": "`Object` - nearest object, `objNull` otherwise"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "`Array` format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) - position to start search at"
-                        },
+                        }
+                    ],
+                    "outline": "`nearestObject` position",
+                    "returns": "`Object` - nearest object, `objNull` otherwise"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "[Position3D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) - position to start search at"
@@ -51989,7 +53626,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "typeOrId",
                             "description": "`String` - type of object (see `typeOf`, [class type](https://community.bistudio.com/wiki/CfgVehicles)) or {{GVI|arma3|2.10"
-                        },
+                        }
+                    ],
+                    "outline": "position `nearestObject` typeOrId",
+                    "returns": "`Object` - nearest object, `objNull` otherwise"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "`Array` format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) - position to start search at"
@@ -52140,7 +53783,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "radius",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "position `nearObjects` radius",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "position",
                             "description": "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL), [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or `Object`"
@@ -52251,7 +53900,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "radius",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "origin `nearSupplies` radius",
+                    "returns": "`Array` of `Object`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "origin",
                             "description": "`Object` or `Array` in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) or [Position2D](https://community.bistudio.com/wiki/Position%23Introduction)"
@@ -52539,7 +54194,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "menuName",
                             "description": "`String` - \"file\" or \"view\""
-                        },
+                        }
+                    ],
+                    "outline": "map `nMenuItems` menuName",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "map",
                             "description": "`Control`"
@@ -53139,7 +54800,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "command",
                             "description": "`String` or `Code` - code executed on click. The following variables are available:"
-                        },
+                        }
+                    ],
+                    "outline": "`onMapSingleClick` command",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "params",
                             "description": "`Anything`"
@@ -53440,7 +55107,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "show",
                             "description": "`Boolean` - if `true` opens map, if `false` closes map, provided it is not _forced_"
-                        },
+                        }
+                    ],
+                    "outline": "`openMap` show",
+                    "returns": "`Boolean` - equivalent of `visibleMap`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "show",
                             "description": "`Boolean` - if `true` opens map, if `false` closes map, provided it is not _forced_."
@@ -53559,7 +55232,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "b",
                             "description": "`Boolean` - test condition or variable"
-                        },
+                        }
+                    ],
+                    "outline": "a `or` b",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "a",
                             "description": "`Boolean` - test condition or variable"
@@ -53724,7 +55403,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "expectedArrayCount",
                             "description": "`Number` or `Array` - (Optional) a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted."
-                        },
+                        }
+                    ],
+                    "outline": "`param` [index, defaultValue, expectedDataTypes, expectedArrayCount]",
+                    "returns": "`Anything` - extracted value on success or default value otherwise. `Nothing` if syntax error occurred."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "argument",
                             "description": "`Anything` - a usual array of params is expected. If a non-array value is passed, it will be converted to 1 element array"
@@ -53795,7 +55480,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "elementN",
                             "description": "`String` or `Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`params` [element1, element2, ...]",
+                    "returns": "`Boolean` - `false` if error occurred or default value has been used, otherwise `true`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "argument",
                             "description": "`Anything` - a usual array of params is expected. If a non-array argument is passed, it will be converted to 1 element array"
@@ -54592,7 +56283,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "musicName",
                             "description": "`String` - music classname"
-                        },
+                        }
+                    ],
+                    "outline": "`playMusic` musicName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "musicName",
                             "description": "`String` - music classname"
@@ -54673,7 +56370,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "soundName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`playSound` soundName",
+                    "returns": "`Object` - the speaker object (`Nothing` before {{GVI|arma3|2.00"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "soundName",
                             "description": "`String`"
@@ -54867,7 +56570,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`position` object",
+                    "returns": "`Array` format [PositionAGLS](https://community.bistudio.com/wiki/Position%23PositionAGLS)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "location",
                             "description": "`Location`"
@@ -55051,7 +56760,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "commit",
                             "description": "`Number` - duration"
-                        },
+                        }
+                    ],
+                    "outline": "effect `ppEffectCommit` commit",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "handle",
                             "description": "`Number` - handle of the effect"
@@ -55059,7 +56774,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "commit",
                             "description": "`Number` - duration"
-                        },
+                        }
+                    ],
+                    "outline": "handle `ppEffectCommit` commit",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "handles",
                             "description": "`Array` of `Number`s - list of handles"
@@ -55100,7 +56821,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "effect",
                             "description": "`String` - effect name"
-                        },
+                        }
+                    ],
+                    "outline": "`ppEffectCommitted` effect",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "handle",
                             "description": "`Number` - effect handle"
@@ -55135,7 +56862,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "priority",
                             "description": "`Number` - unique priority, defines order of applying effect to the scene. If there is another effect using the same priority, creation will fail"
-                        },
+                        }
+                    ],
+                    "outline": "`ppEffectCreate` [name, priority]",
+                    "returns": "`Number` - handle or -1 if failed"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "nameN",
                             "description": "`String` - name of effect type"
@@ -55173,7 +56906,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "effect",
                             "description": "`Number` - effect handle"
-                        },
+                        }
+                    ],
+                    "outline": "`ppEffectDestroy` effect",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "effects",
                             "description": "`Array` of `Number`s - array of effect handles"
@@ -55214,7 +56953,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "effect `ppEffectEnable` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "effect",
                             "description": "`Number` - handle of the effect"
@@ -55222,7 +56967,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "effect `ppEffectEnable` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "effectArray",
                             "description": "`Array` of `Number`s - array of effect handles"
@@ -55260,7 +57011,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "effect",
                             "description": "`Number` - effect handle"
-                        },
+                        }
+                    ],
+                    "outline": "`ppEffectEnabled` effect",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "effect",
                             "description": "`String` - effect name"
@@ -55695,11 +57452,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "variableName",
                             "description": "`String` - e.g <sqf inline>\"_myVar\""
-                        },
+                        }
+                    ],
+                    "outline": "`private` variableName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "variableNameList",
                             "description": "`Array` of `String`s - e.g <sqf inline>[\"_target\", \"_damage\"]"
-                        },
+                        }
+                    ],
+                    "outline": "`private` variableNameList",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "_identifier",
                             "description": "underscored [variable name](https://community.bistudio.com/wiki/Identifier), for example <sqf inline>_myVar"
@@ -56594,7 +58363,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "x",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`random` x",
+                    "returns": "`Number` from 0 (included) to _x_, **ex**cluded\n{{Feature|important|_x_ was accidentally **in**cluded due to a bug introduced in {{GVI|arma2|1.00"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "min",
                             "description": "`Number`"
@@ -56606,7 +58381,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "max",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`random` [min, mid, max]",
+                    "returns": "`Number` in range from _min_ to _max_, weighted by _mid_ - **can** be higher than max (maximum value is `**min + max - mid**`)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "seed",
                             "description": "`Number` - an **integer**. Any float value will be truncated (e.g -0.9, -0.1, 0.1 or 0.9 will be read as **0**)"
@@ -56614,7 +58395,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "x",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "seed `random` x",
+                    "returns": "`Number` from 0 (included) to _x_ (**in**cluded)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "seed",
                             "description": "`Number`"
@@ -56971,7 +58758,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unitName",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`reload` unitName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - person"
@@ -57146,7 +58939,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "**JIP**",
                             "description": "(Optional, default `false`):"
-                        },
+                        }
+                    ],
+                    "outline": "params `remoteExec` [order, targets, JIP]",
+                    "returns": "* `nil` - In case of error.\n* `String` - In case of success.\n** If the **JIP** parameter was `false` or an empty string, the return value is \"\".\n** If the **JIP** parameter was `true` or a custom JIP ID, the JIP ID is returned.\n** If the **JIP** parameter was an `Object`, a `Group` or a `netId`, the (corresponding) `netId` is returned."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "**functionName**",
                             "description": "`String` - see the main syntax above for more details."
@@ -57431,7 +59230,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`removeAllAssignedItems` unit",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - soldier"
@@ -59613,7 +61418,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "count",
                             "description": "`Number` - the new array size"
-                        },
+                        }
+                    ],
+                    "outline": "array `resize` count",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array`"
@@ -59786,7 +61597,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "target",
                             "description": "`Object` - which is revealed"
-                        },
+                        }
+                    ],
+                    "outline": "toWhom `reveal` target",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "toWhom",
                             "description": "`Object` or `Group` - which receives revealing information"
@@ -59864,7 +61681,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "array",
                             "description": "`Array`"
-                        },
+                        }
+                    ],
+                    "outline": "`reverse` array",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "string",
                             "description": "`String` - string to be reversed"
@@ -59954,7 +61777,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "roadSegment",
                             "description": "`Object` - road segment"
-                        },
+                        }
+                    ],
+                    "outline": "`roadsConnectedTo` roadSegment",
+                    "returns": "`Array` of `Object`s - connected road segments"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "roadSegment",
                             "description": "`Object` - road segment"
@@ -60109,7 +61938,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "rope",
                             "description": "`Object` - the rope to which entity will be attached to"
-                        },
+                        }
+                    ],
+                    "outline": "[entity, toPoint, ropeEndDownVector] `ropeAttachTo` rope",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "entity",
                             "description": "`Object` - entity to be attached to the end of rope"
@@ -61206,7 +63041,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "screen",
                             "description": "`Array` - screen position [x,y] (see `SafeZone` for more info)"
-                        },
+                        }
+                    ],
+                    "outline": "`screenToWorld` screen",
+                    "returns": "`Array` - [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL), world position on surface [x,y,0]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "camera",
                             "description": "`Object` - camera object"
@@ -61241,7 +63082,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "screen",
                             "description": "`Array` - screen position [x,y] (see `SafeZone` for more info)"
-                        },
+                        }
+                    ],
+                    "outline": "`screenToWorldDirection` screen",
+                    "returns": "`Array` - `Vector3D` world vector"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "camera",
                             "description": "`Object` - camera object"
@@ -61500,7 +63347,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number` - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up."
-                        },
+                        }
+                    ],
+                    "outline": "array `select` index",
+                    "returns": "`Anything` - a <u>reference</u> to the array element given by its index\n**IMPORTANT**: When the index equals the size of the array, there is no error for out of range selection and `nil` is returned - see {{Link|#Example 8.}}"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array`"
@@ -61508,7 +63361,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "boolean",
                             "description": "`Boolean` - `false` selects the **first** element of the `Array`, `true` the **second** one"
-                        },
+                        }
+                    ],
+                    "outline": "array `select` boolean",
+                    "returns": "`Anything` - a <u>reference</u> to the array element"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "config",
                             "description": "`Config`"
@@ -61516,7 +63375,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "index",
                             "description": "`Number` - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up"
-                        },
+                        }
+                    ],
+                    "outline": "config `select` index",
+                    "returns": "`Config`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "string",
                             "description": "`String`"
@@ -61528,7 +63393,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "length",
                             "description": "`Number` - (Optional, default _string_<nowiki/>'s length) number of characters to select"
-                        },
+                        }
+                    ],
+                    "outline": "string `select` [start, length]",
+                    "returns": "`String`\n**NOTE**: Substring version of `select` operates with the ANSI charset; if Unicode support is desired, see `forceUnicode`."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array`"
@@ -61540,7 +63411,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "count",
                             "description": "`Number` - ({{GVI|arma3|2.14"
-                        },
+                        }
+                    ],
+                    "outline": "array `select` [start, count]",
+                    "returns": "`Array` - a <u>new array</u> from selection"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array`"
@@ -61721,7 +63598,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "object",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`selectionNames` object",
+                    "returns": "`Array` of `String`s - selection names"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -61772,7 +63655,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "selectionName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "object `selectionPosition` selectionName",
+                    "returns": "`Array` - [relative position](https://community.bistudio.com/wiki/Position%23PositionRelative) in model space. If selection does not exist, [0, 0, 0] is returned."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -61788,7 +63677,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "returnMode",
                             "description": "`String` - (Optional, default `**\"FirstPoint\"**`) can be one of:"
-                        },
+                        }
+                    ],
+                    "outline": "object `selectionPosition` [selectionName, LOD, returnMode]",
+                    "returns": "`Array` - [relative position](https://community.bistudio.com/wiki/Position%23PositionRelative) in model space. If selection does not exist, [0, 0, 0] is returned. If returnMode is `**\"BoundingBox\"**`, `Array` of `Array`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -62052,7 +63947,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "valuesAndWeights",
                             "description": "`Array` - array in format [value1, weight1, value2, weight2, ...], where:"
-                        },
+                        }
+                    ],
+                    "outline": "`selectRandomWeighted` valuesAndWeights",
+                    "returns": "`Anything` - random weighted value or `Nothing` if array is empty or all weights are 0"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "values",
                             "description": "`Array` of `Anything`"
@@ -62131,7 +64032,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "muzzleName",
                             "description": "`String` - name of the weapon or muzzle"
-                        },
+                        }
+                    ],
+                    "outline": "unitName `selectWeapon` muzzleName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object` - person. This argument has to be `local`, or it can be remote when executed on the [server](https://community.bistudio.com/wiki/isServer)"
@@ -62404,7 +64311,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "command ",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`serverCommand` command",
+                    "returns": "`Boolean` - `false` if a non valid command is used (\"#blah\"), false otherwise (was always `true` before {{GVI|arma3|1.40"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "password ",
                             "description": "`String` - case-sensitive password defined in [server config](https://community.bistudio.com/wiki/Arma%203%3A%20Server%20Config%20File) with `**serverCommandPassword**` param"
@@ -62587,7 +64500,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "value",
                             "description": "`Anything`"
-                        },
+                        }
+                    ],
+                    "outline": "array `set` [index, value]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap",
                             "description": "`HashMap`"
@@ -63111,7 +65030,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "side",
                             "description": "`Side`"
-                        },
+                        }
+                    ],
+                    "outline": "id `setAirportSide` side",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "target",
                             "description": "`Object`"
@@ -63846,7 +65771,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "status",
                             "description": "`Boolean` - `true` means `captive`"
-                        },
+                        }
+                    ],
+                    "outline": "unitName `setCaptive` status",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unitName",
                             "description": "`Object`"
@@ -63894,7 +65825,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "time",
                             "description": "`Number` - transition time, 0 for instant center of mass transfer"
-                        },
+                        }
+                    ],
+                    "outline": "myObject `setCenterOfMass` [centerOfMass, time]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "myObject",
                             "description": "`Object`"
@@ -63971,7 +65908,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "behaviour",
                             "description": "`String` - see description"
-                        },
+                        }
+                    ],
+                    "outline": "unit `setCombatBehaviour` behaviour",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "group",
                             "description": "`Group` - AI group"
@@ -64608,7 +66551,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "damage",
                             "description": "`Number` - range 0..1, 0 = pristine/healthy condition, 1 = entirely destroyed/killed"
-                        },
+                        }
+                    ],
+                    "outline": "object `setDamage` damage",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "object",
                             "description": "`Object`"
@@ -64723,7 +66672,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "description",
                             "description": "`String` - description text on the debriefing screen"
-                        },
+                        }
+                    ],
+                    "outline": "endType `setDebriefingText` [title, description]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "endType",
                             "description": "`String` - any name"
@@ -65296,7 +67251,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "statement",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "trigger `setEffectCondition` statement",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "waypoint",
                             "description": "`Waypoint` - `Array` format `Waypoint`"
@@ -65695,7 +67656,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "fog",
                             "description": "`Number` - fog density in range 0..1"
-                        },
+                        }
+                    ],
+                    "outline": "time `setFog` fog",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "time",
                             "description": "`Number` - transition time to the new value"
@@ -68109,7 +70076,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "mass",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "myObject `setMass` mass",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "myObject",
                             "description": "`Object`"
@@ -68355,7 +70328,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "track",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "trigger `setMusicEffect` track",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "waypoint",
                             "description": "`Array` - format `Waypoint`"
@@ -68434,7 +70413,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "thing `setName` name",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -68795,7 +70780,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "objectDistance",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`setObjectViewDistance` objectDistance",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "objectDistance",
                             "description": "`Number`"
@@ -69938,11 +71929,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "rain",
                             "description": "`Number` - new rain value in range 0..1."
-                        },
+                        }
+                    ],
+                    "outline": "time `setRain` rain",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "rainParams",
                             "description": "`Array` - array of custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | `**RainParticles**`]] params - see `rainParams`. Use empty array [] to reset to default config values"
-                        },
+                        }
+                    ],
+                    "outline": "`setRain` rainParams",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "config",
                             "description": "`Config` - config path to a custom class, which contains [[Arma 3: CfgWorlds Config Reference#class RainParticles | `**RainParticles**`]] class. Use `configNull` to reset to default config values"
@@ -70540,7 +72543,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "skill",
                             "description": "`Number` - general skill in range 0..1"
-                        },
+                        }
+                    ],
+                    "outline": "unit `setSkill` skill",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -70643,7 +72652,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "soundDet",
                             "description": "`String` - creates a dynamic sound object attached to a trigger defined in `CfgSFX` (mission or main config)"
-                        },
+                        }
+                    ],
+                    "outline": "trigger `setSoundEffect` [sound, voice, soundEnv, soundDet]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "waypoint",
                             "description": "`Array` - format `Waypoint`"
@@ -71783,7 +73798,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "mode",
                             "description": "`Number` - optic mode index"
-                        },
+                        }
+                    ],
+                    "outline": "obj `setTurretOpticsMode` mode",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "obj",
                             "description": "`Object`"
@@ -72005,7 +74026,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "loadout",
                             "description": "`Array` - [Unit Loadout Array](https://community.bistudio.com/wiki/Unit%20Loadout%20Array)"
-                        },
+                        }
+                    ],
+                    "outline": "unit `setUnitLoadout` loadout",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -72017,7 +74044,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "fullMagazines",
                             "description": "`Boolean` - partially emptied magazines will be refilled when the loadout is applied"
-                        },
+                        }
+                    ],
+                    "outline": "unit `setUnitLoadout` [loadout, fullMagazines]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -72025,7 +74058,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String` - class name (see description)"
-                        },
+                        }
+                    ],
+                    "outline": "unit `setUnitLoadout` name",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -74115,7 +76154,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "value",
                             "description": "`Number` - azimuth"
-                        },
+                        }
+                    ],
+                    "outline": "time `setWindDir` value",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "direction",
                             "description": "`Array` - flat wind direction and strength in format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction)"
@@ -74485,7 +76530,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enable",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "`showHUD` enable",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "scriptedHUD",
                             "description": "`Boolean` - show scripted HUD such as weapon crosshair, action menu and overlays created with `cutRsc` and `titleRsc`. Same as `showHUD`'s first syntax"
@@ -75284,7 +77335,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "chatText",
                             "description": "`String` - message to transmit"
-                        },
+                        }
+                    ],
+                    "outline": "unit `sideChat` chatText",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "side",
                             "description": "`Side` - side to which the message will be seen"
@@ -75423,7 +77480,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "radioName",
                             "description": "`String` - class name from `**CfgRadio**`"
-                        },
+                        }
+                    ],
+                    "outline": "unit `sideRadio` radioName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "side",
                             "description": "`Side` - side to which the transmission will be played"
@@ -75762,7 +77825,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`skill` unit",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -75895,7 +77964,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`sliderPosition` idc",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -75926,7 +78001,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number` - idc of the control"
-                        },
+                        }
+                    ],
+                    "outline": "`sliderRange` idc",
+                    "returns": "`Array` in format  [minValue, maxValue]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -75961,7 +78042,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "pos",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`sliderSetPosition` [idc, pos]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -76004,7 +78091,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "max",
                             "description": "`Number` - maximum value"
-                        },
+                        }
+                    ],
+                    "outline": "`sliderSetRange` [idc, min, max]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -76055,7 +78148,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "step",
                             "description": "`Number` - (Optional, default 0) slider step"
-                        },
+                        }
+                    ],
+                    "outline": "`sliderSetSpeed` [idc, line, page, step]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -76101,7 +78200,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`: Idc of the control"
-                        },
+                        }
+                    ],
+                    "outline": "`sliderSpeed` idc",
+                    "returns": "`Array` in format [minSpeed, maxSpeed, step] (command returns optional param 'step' since Arma 3 v2.07.148151)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -77153,7 +79258,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "mode",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "target `switchCamera` mode",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "target",
                             "description": "`Object`"
@@ -77191,7 +79302,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "moveName",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "soldier `switchGesture` moveName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "soldier",
                             "description": "`Object`"
@@ -77291,7 +79408,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "moveName",
                             "description": "`String` - animation state (see `animationState`)"
-                        },
+                        }
+                    ],
+                    "outline": "person `switchMove` moveName",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "person",
                             "description": "`Object` - unit"
@@ -78440,7 +80563,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "scriptHandle",
                             "description": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle)"
-                        },
+                        }
+                    ],
+                    "outline": "`terminate` scriptHandle",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "FSMHandle",
                             "description": "`Number` - The FSM script must be launched with 'allowTermination' flag for this command to work (see `execFSM`)."
@@ -78576,7 +80705,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "string",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`text` string",
+                    "returns": "[Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "location",
                             "description": "`Location`"
@@ -78746,7 +80881,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "expression",
                             "description": "`Anything`"
-                        },
+                        }
+                    ],
+                    "outline": "`throw` expression",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "if (condition)",
                             "description": "[If Type](https://community.bistudio.com/wiki/If%20Type)  - if (condition) returns `true`, \"exception\" is thrown"
@@ -79086,11 +81227,23 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "string",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`toArray` string",
+                    "returns": "`Array`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap",
                             "description": "`HashMap`"
-                        },
+                        }
+                    ],
+                    "outline": "`toArray` hashMap",
+                    "returns": "`Array` - array in format <nowiki>[</nowiki>[key, key, ...], [value, value, ...]]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "hashMap",
                             "description": "`HashMap`"
@@ -79144,7 +81297,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "decimals",
                             "description": "`Number` - number of decimals to display (range 0-20)"
-                        },
+                        }
+                    ],
+                    "outline": "number `toFixed` decimals",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "decimals",
                             "description": "`Number` - number of decimals to display (range 0-20). -1 to reset to default number of decimals"
@@ -79235,7 +81394,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "array",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`toString` array",
+                    "returns": "`String` - {{Link|https://en.wikipedia.org/wiki/Unicode}} numbers converted to `String` of characters"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "code",
                             "description": "`Code`"
@@ -79729,7 +81894,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "stringValue",
                             "description": "`String` - string to be trimmed. spaces, tabs and line returns are removed from both ends of _stringValue_."
-                        },
+                        }
+                    ],
+                    "outline": "`trim` stringValue",
+                    "returns": "`String` - trimmed string"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "string",
                             "description": "`String` - string to be trimmed"
@@ -79796,7 +81967,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code`"
-                        },
+                        }
+                    ],
+                    "outline": "`try` code",
+                    "returns": "[Exception Type](https://community.bistudio.com/wiki/Exception%20handling)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "args",
                             "description": "`Anything` - passed arguments, will be put in __this_ variable inside the \"code\""
@@ -79947,7 +82124,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvAdd` [idc, pathParent, text]",
+                    "returns": "`Number` - index of the added item relative to the branch it was added to"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -79986,7 +82169,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvClear` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80026,7 +82215,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` - item [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path). [] will collapse the whole tree and it will disappear"
-                        },
+                        }
+                    ],
+                    "outline": "`tvCollapse` [idc, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80066,7 +82261,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvCollapseAll` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80106,7 +82307,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`tvCount` [idc, path]",
+                    "returns": "`Number`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -80146,7 +82353,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvCurSel` idc",
+                    "returns": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of selected item"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80186,7 +82399,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`tvData` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80228,7 +82447,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` - [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path) of the item"
-                        },
+                        }
+                    ],
+                    "outline": "`tvDelete` [idc, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80272,7 +82497,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` - item [Tree View Path](https://community.bistudio.com/wiki/Tree%20View%20Path). [] will expand the whole tree if it was collapsed previously with []"
-                        },
+                        }
+                    ],
+                    "outline": "`tvExpand` [idc, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80312,7 +82543,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "idc",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvExpandAll` idc",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80383,7 +82620,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`tvPicture` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -80424,7 +82667,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` - path"
-                        },
+                        }
+                    ],
+                    "outline": "`tvPictureRight` [idc, path]",
+                    "returns": "`String` - path to picture"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -80497,7 +82746,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "`Array` - item text color"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetColor` [idc, path, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80546,7 +82801,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetCurSel` [idc, path]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80592,7 +82853,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "data",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetData` [idc, path, data]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -80647,7 +82914,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetPicture` [idc, path, name]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80697,7 +82970,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "[[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetPictureColor` [idc, path, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -80819,7 +83098,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "name",
                             "description": "`String` - picture texture"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetPictureRight` [idc, path, name]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -80869,7 +83154,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "color",
                             "description": "[[Color|Color (RGBA)]]"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetPictureRightColor` [idc, path, color]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -81059,7 +83350,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetText` [idc, path, text]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -81109,7 +83406,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "text",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetTooltip` [idc, path, text]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -81161,7 +83464,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "val",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "`tvSetValue` [idc, path, val]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -81213,7 +83522,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "reversed",
                             "description": "`Boolean` - (Optional, default `false`) `true` to reverse sort it"
-                        },
+                        }
+                    ],
+                    "outline": "control `tvSort` [path, reversed]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "idc",
                             "description": "`Number` - control idc"
@@ -81298,7 +83613,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "ascending",
                             "description": "`Boolean` - (Optional, default `false`) `true` to sort ascending, else descending"
-                        },
+                        }
+                    ],
+                    "outline": "control `tvSortByValue` [path, ascending]",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "idc",
                             "description": "`Number` - control idc"
@@ -81379,7 +83700,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`tvText` [idc, path]",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "control",
                             "description": "`Control`"
@@ -81421,7 +83748,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` - array containing path numbers"
-                        },
+                        }
+                    ],
+                    "outline": "`tvTooltip` [idc, path]",
+                    "returns": "`String` - tooltip text"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -81465,7 +83798,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "path",
                             "description": "`Array` of `Number`s"
-                        },
+                        }
+                    ],
+                    "outline": "`tvValue` [idc, path]",
+                    "returns": "`Number` - set value; if no value was set, 0 is returned"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "ctrl",
                             "description": "`Control`"
@@ -81505,7 +83844,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "location",
                             "description": "`Location`"
-                        },
+                        }
+                    ],
+                    "outline": "`type` location",
+                    "returns": "`String`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "task",
                             "description": "`Task`"
@@ -81953,7 +84298,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`uniqueUnitItems` unit",
+                    "returns": "`HashMap` in format itemClassname (`String`) &rarr; amount (`Number`)"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -82300,7 +84651,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "height",
                             "description": "`Number` - height above terrain level ([PositionATL](https://community.bistudio.com/wiki/Position%23PositionATL))"
-                        },
+                        }
+                    ],
+                    "outline": "units `unitsBelowHeight` height",
+                    "returns": "`Array` of `Object`s"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "group",
                             "description": "`Group` - AI group"
@@ -82588,7 +84945,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "enabled",
                             "description": "`Boolean`"
-                        },
+                        }
+                    ],
+                    "outline": "`useAISteeringComponent` enabled",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - the vehicle to enable/disable the feature for"
@@ -84266,7 +86629,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "objectID",
                             "description": "`Number`"
-                        },
+                        }
+                    ],
+                    "outline": "waypoint `waypointAttachObject` objectID",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "waypoint",
                             "description": "`Array` - format `Waypoint`"
@@ -85246,7 +87615,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`weaponsItems` vehicle",
+                    "returns": "`Array` of `Array`s of weapon items, format [weapon, muzzle, flashlight, optics, [magazine, ammo], [magazine, ammo], bipod]:\n* weapon: `String`\n* muzzle: `String`\n* flashlight: `String`\n* optics: `String`\n* [primaryMagazine, primaryAmmo]: `Array` - could be empty\n* [secondaryMagazine, secondaryAmmo]: `Array` - could be empty\n* bipod: `String`\n**IMPORTANT**: The weapons are listed in the order they were taken by the unit, with the most recent at the bottom of the array, e.g do **not** assume the first item is always the primary weapon."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - unit or vehicle"
@@ -85284,7 +87659,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicle",
                             "description": "`Object` ammobox or vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "`weaponsItemsCargo` vehicle",
+                    "returns": "`Array` - see `weaponsItems`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object` - ammobox or vehicle"
@@ -85328,7 +87709,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "unit",
                             "description": "`Object`"
-                        },
+                        }
+                    ],
+                    "outline": "`weaponState` unit",
+                    "returns": "`Array` in format [weapon, muzzle, firemode, magazine, ammoCount, roundReloadPhase, magazineReloadPhase], where:\n* weapon: `String`\n* muzzle: `String`\n* firemode: `String`\n* magazine: `String`\n* ammoCount: `Number`\n* {{GVI|arma3|2.06"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicle",
                             "description": "`Object`"
@@ -85348,7 +87735,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "firemode",
                             "description": "`String` - (Optional, default `**\"\"**`) firemode name"
-                        },
+                        }
+                    ],
+                    "outline": "`weaponState` [vehicle, turretPath, weapon, muzzle, firemode]",
+                    "returns": "`Array` in format [weapon, muzzle, firemode, magazine, ammoCount, roundReloadPhase, magazineReloadPhase], where:\n* weapon: `String`\n* muzzle: `String`\n* firemode: `String`\n* magazine: `String`\n* ammoCount: `Number`\n* {{GVI|arma3|2.06"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "unit",
                             "description": "`Object`"
@@ -85817,7 +88210,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "position",
                             "description": "`Array` - world position 2D [x,y] or [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL)"
-                        },
+                        }
+                    ],
+                    "outline": "`worldToScreen` position",
+                    "returns": "`Array` - screen position in `SafeZone` format [x, y]. Returns an empty array `**[]**` if not on-screen."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "camera",
                             "description": "`Object` - camera object"

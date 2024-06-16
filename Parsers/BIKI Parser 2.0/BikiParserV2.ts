@@ -125,7 +125,10 @@ export class BikiParserV2 implements DocParser {
     async getUnparsedItems(seedFilePath: string): Promise<UnparsedBikiPage[]> {
         const xmlFileBuffer = fs.readFileSync(seedFilePath);
         const xmlAsJSON = this.xmlParser.parse(xmlFileBuffer);
-        const wikiPages: BikiPage[] = xmlAsJSON.mediawiki.page;
+        // single page exports will not be arrays
+        const wikiPages: BikiPage[] = Array.isArray(xmlAsJSON.mediawiki.page)
+            ? xmlAsJSON.mediawiki.page
+            : [xmlAsJSON.mediawiki.page];
 
         const pages: UnparsedBikiPage[] = [];
         wikiPages.forEach((page) => {
@@ -173,6 +176,8 @@ export class BikiParserV2 implements DocParser {
     ---------------------------------------------------------------------------- */
     private parseBikiPage(page: UnparsedBikiPage): SQFItemConfig | null {
         if (!page.title) return null;
+
+        page = this.textInterpreter.handlePageExceptions(page);
 
         const titleFormatted = this.textInterpreter.getPageTitleFormatted(page);
         if (this.textInterpreter.isPageCategory(titleFormatted)) return null;
@@ -282,8 +287,9 @@ export class BikiParserV2 implements DocParser {
         if (pageDetailsArray.length < 1) return null;
 
         const allParsedDetails: BikiPageDetail[] = [];
-        const detailsMap: Map<BikiPageDetailType, BikiPageDetail[]> = new Map();
-        const syntaxMap: Map<number, BikiSyntax> = new Map();
+        const detailsMap = new Map<BikiPageDetailType, BikiPageDetail[]>();
+        const syntaxMap = new Map<number, BikiSyntax>();
+        let lastSyntaxId: number;
         pageDetailsArray.forEach((matchGroups: string[]) => {
             const detailFull = matchGroups.at(0)?.trimEnd();
             if (!detailFull) return;
@@ -309,14 +315,24 @@ export class BikiParserV2 implements DocParser {
             const isReturn = pageDetail.type === BikiPageDetailType.Return;
             if (!isParameter && !isSyntaxExample && !isReturn) return;
 
-            // the first syntax parameters do not include the syntax id of "1"
-            // only the parameters for syntaxes past the first include a number past 1
-            const syntaxIdString =
-                pageDetail.name
-                    .match(/(?<=\|s)\d|(?<=\|r)\d|(?<=\|p)(?:\d(?=\d)|(?=\d{1}))/i)
-                    ?.at(0) || "1";
+            let syntaxId: number;
+            if (isSyntaxExample) {
+                // the first syntax parameters do not include the syntax id of "1"
+                // only the parameters for syntaxes past the first include a number past 1
+                const syntaxIdString =
+                    pageDetail.name
+                        .match(/(?<=s)\d|(?<=r)\d|(?<=p)(?:\d(?=\d)|(?=\d{1}))/i)
+                        ?.at(0) || "1";
 
-            const syntaxId = parseInt(syntaxIdString);
+                syntaxId = parseInt(syntaxIdString);
+                lastSyntaxId = syntaxId;
+            } else {
+                // Some pages have improperly labeled parameters with the wrong
+                // id so this will just use the order of appearance instead of
+                // the apparent id.
+                syntaxId = lastSyntaxId;
+            }
+
             let bikiSyntax = syntaxMap.get(syntaxId);
             if (!bikiSyntax) {
                 bikiSyntax = {
@@ -644,7 +660,7 @@ class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         convertTextToMarkdown
     ---------------------------------------------------------------------------- */
-    public convertTextToMarkdown(text: string | undefined, debug = false): string {
+    public convertTextToMarkdown(text: string | undefined): string {
         if (!text) return "";
 
         let convertedText = text;
@@ -963,4 +979,17 @@ class BikiTextInterpreter {
 
         return name;
     }
+
+    /* ----------------------------------------------------------------------------
+        handlePageExceptions
+    ---------------------------------------------------------------------------- */
+    public handlePageExceptions(page: UnparsedBikiPage): UnparsedBikiPage {
+        const pageHandler = BIKI_EXCEPTIONS.get(page.title);
+        if (!pageHandler) return page;
+
+        return pageHandler(page);
+    }
 }
+
+type PageTitle = string;
+const BIKI_EXCEPTIONS = new Map<PageTitle, (page: UnparsedBikiPage) => UnparsedBikiPage>();
