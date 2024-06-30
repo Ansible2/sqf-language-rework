@@ -30,9 +30,12 @@ interface IReplacementInfo {
     input: string;
     captureGroups: { [group: number]: string };
 }
+
+type StringReplacementFunction = (substring: string, ...args: any[]) => string;
+type EasyStringReplacementFunction = (replacementInfo: IReplacementInfo) => string;
 export function getStringReplacer(
-    easyReplacer: (replacementInfo: IReplacementInfo) => string
-): (substring: string, ...args: any[]) => string {
+    easyReplacer: EasyStringReplacementFunction
+): StringReplacementFunction {
     return (subString: string, ...args: any[]) => {
         const replacementInfo: IReplacementInfo = {
             matchedString: subString,
