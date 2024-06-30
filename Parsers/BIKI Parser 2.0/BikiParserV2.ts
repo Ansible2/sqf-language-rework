@@ -328,7 +328,7 @@ export class BikiParserV2 implements DocParser {
                 lastSyntaxId = syntaxId;
             } else {
                 // Some pages have improperly labeled parameters with the wrong
-                // id so this will just use the order of appearance instead of
+                // syntax id so this will just use the order of appearance instead of
                 // the apparent id.
                 syntaxId = lastSyntaxId;
             }
@@ -607,6 +607,11 @@ class BikiTextInterpreter {
         return type;
     }
 
+    // TODO:
+    // link replacement [[Control_Structures#if-Statement|here]] (in "if" doc)
+    // {{Link|Variables#Local Variables Scope.}} (in "then" doc)
+    // {{Link|#Example 3}} (in "then" doc) these should probably not be turned into links, just text that says Example X
+
     private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
     private readonly BIKI_BASE_URL = "https://community.bistudio.com/wiki";
     private readonly SIMPLE_REPLACEMENTS: [
@@ -792,7 +797,7 @@ class BikiTextInterpreter {
     public parseParameter(parameterContent: string): SQFParameterConfig {
         return {
             name: parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
-            description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+).+/i)?.at(0) || null,
+            description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+)[\s\S]+/i)?.at(0) || null,
         };
     }
 
