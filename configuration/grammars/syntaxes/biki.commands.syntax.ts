@@ -605,7 +605,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "inputDevicePriority",
-                            "description": "`String` - result sorted by inputDevicePriority with values:"
+                            "description": "`String` - result sorted by inputDevicePriority with values:\n* `**\"Mouse\"**`\n* `**\"Keyboard\"**`\n* `**\"Stick\"**`\n* `**\"Gamepad\"**`\n* `**\"Tracker\"**`\n* `**\"Combo\"**` (mouse and keyboard combinations)\n* {{sic|`**\"Controler\"}}**` (any controller other than mouse or keyboard)\nOther values are considered as: \n* `**\"Unsorted\"**`"
                         }
                     ],
                     "outline": "`actionKeysNames` [userAction, maxKeys, inputDevicePriority]",
@@ -653,7 +653,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "inputDevicePriority",
-                            "description": "`String` - result sorted by `**inputDevicePriority**` with values:"
+                            "description": "`String` - result sorted by `**inputDevicePriority**` with values:\n* `**\"Mouse\"**`\n* `**\"Keyboard\"**`\n* `**\"Stick\"**`\n* `**\"Gamepad\"**`\n* `**\"Tracker\"**`\n* `**\"Combo\"**` (mouse and keyboard combinations)\n* {{sic|`**\"Controler\"}}**` (any controller other than mouse or keyboard)\nOther values are considered as: \n* `**\"Unsorted\"**`"
                         }
                     ],
                     "outline": "`actionKeysNamesArray` [userAction, maxKeys, inputDevicePriority]",
@@ -923,7 +923,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "code",
-                            "description": "`Code`"
+                            "description": "`Code`\n* Event Handler parameters are accessible via <sqf inline>_this\n* The Event Handler type is available as <sqf inline>_thisEvent\n* The Event Handler index is available as <sqf inline>_thisEventHandler"
                         }
                     ],
                     "outline": "`add3DENEventHandler` [type, code]",
@@ -1466,7 +1466,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "code",
-                            "description": "`Code` or `String` - code that should be executed when the Event Handler fires; executed in `missionNamespace` by default. Several [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) are available:"
+                            "description": "`Code` or `String` - code that should be executed when the Event Handler fires; executed in `missionNamespace` by default. Several [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) are available:\n* Event Handler parameters are accessible via <sqf inline>_this\n* The Event Handler type is available as <sqf inline>_thisEvent\n* The Event Handler index is available as <sqf inline>_thisEventHandler"
                         }
                     ],
                     "outline": "target `addEventHandler` [type, code]",
@@ -2379,7 +2379,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "expression",
-                            "description": "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires."
+                            "description": "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the `**_this**` variable\n* {{GVI|arma3|1.64"
                         },
                         {
                             "name": "arguments",
@@ -2419,7 +2419,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "expression",
-                            "description": "`String` or `Code` - expression to execute."
+                            "description": "`String` or `Code` - expression to execute.\n\nIf EH has some data to return upon event (e.g. the \"MPKilled\" EH will return an array with 2 elements: the killed unit, and the killer), it is passed in `**_this**` variable.\n**Arma**: 3|Since Arma 3 v.1.64 the EH handle is also stored in `**_thisEventHandler variable and is available during EH code execution.**`\n* Event Handler parameters are accessible via <sqf inline>_this\n* The Event Handler type is available as <sqf inline>_thisEvent\n* The Event Handler index is available as <sqf inline>_thisEventHandler"
                         }
                     ],
                     "outline": "object `addMPEventHandler` [type, expression]",
@@ -2455,7 +2455,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "function",
-                            "description": "`String` or `Code` - passed params array is [musicClassname, eventHandlerId] where:"
+                            "description": "`String` or `Code` - passed params array is [musicClassname, eventHandlerId] where:\n\n```sqf\nparams [\"_musicClassname\", \"_ehId\"];\n```\n\n* musicClassname: `String` - [[Description.ext#Music|CfgMusic]] class name\n* eventHandlerId: `Number` - event handler id"
                         }
                     ],
                     "outline": "`addMusicEventHandler` [type, function]",
@@ -2995,11 +2995,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "event",
-                            "description": "`String` - event name - see [UserAction Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23UserAction%20Event%20Handlers). Can be one of:"
+                            "description": "`String` - event name - see [UserAction Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23UserAction%20Event%20Handlers). Can be one of:\n* \"Activate\"\n* \"Deactivate\"\n* \"Analog\""
                         },
                         {
                             "name": "expression",
-                            "description": "`Code` - expression that will be executed in `missionNamespace` when event handler fires."
+                            "description": "`Code` - expression that will be executed in `missionNamespace` when event handler fires.\n\nThe Event Handler index is available as `**_thisEventHandler**` during Event Handler code execution.\n**IMPORTANT**:  _expression_ can only be `Code`, **not** `String`."
                         }
                     ],
                     "outline": "`addUserActionEventHandler` [keyName, event, expression]",
@@ -3447,7 +3447,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "weaponConfiguration",
-                            "description": "`Array` in format [weapon, muzzle, flashlight, optics, primaryMuzzle, secondaryMuzzle, bipod]"
+                            "description": "`Array` in format [weapon, muzzle, flashlight, optics, primaryMuzzle, secondaryMuzzle, bipod]\n* weapon: `String` - Weapon class name from [CfgWeapons](https://community.bistudio.com/wiki/%3ACategory%3ACfgWeapons)\n* muzzle: `String` - Muzzle attachment class name. Use \"\" if not needed.\n* flashlight: `String` - Side rail attachment class name. Use \"\" if not needed.\n* optics: `String` - Top rail attachment class name. Use \"\" if not needed.\n* primaryMuzzle: `Array` in format [primaryMuzzleMagazine, primaryAmmoCount] - Use [] if not needed\n** primaryMuzzleMagazine: `String` - Magazine class name\n** primaryAmmoCount: `Number` - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)\n* secondaryMuzzle: `Array` in format [secondaryMuzzleMagazine, secondaryAmmoCount] - Use [] if not needed\n** secondaryMuzzleMagazine: `String` - Magazine class name\n** secondaryAmmoCount: `Number` - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)\n* bipod: `String` - Underbarrel rail attachment class name. Use \"\" if not needed.\nThis array has the same format as the array returned by the `weaponsItems` command."
                         },
                         {
                             "name": "weaponsCount",
@@ -3493,7 +3493,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "weaponConfiguration",
-                            "description": "`Array` in format [weapon, muzzle, flashlight, optics, primaryMuzzle, secondaryMuzzle, bipod]"
+                            "description": "`Array` in format [weapon, muzzle, flashlight, optics, primaryMuzzle, secondaryMuzzle, bipod]\n* weapon: `String` - Weapon class name from [CfgWeapons](https://community.bistudio.com/wiki/%3ACategory%3ACfgWeapons)\n* muzzle: `String` - Muzzle attachment class name. Use \"\" if not needed.\n* flashlight: `String` - Side rail attachment class name. Use \"\" if not needed.\n* optics: `String` - Top rail attachment class name. Use \"\" if not needed.\n* primaryMuzzle: `Array` in format [primaryMuzzleMagazine, primaryAmmoCount] - Use [] if not needed\n** primaryMuzzleMagazine: `String` - Magazine class name\n** primaryAmmoCount: `Number` - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)\n* secondaryMuzzle: `Array` in format [secondaryMuzzleMagazine, secondaryAmmoCount] - Use [] if not needed\n** secondaryMuzzleMagazine: `String` - Magazine class name\n** secondaryAmmoCount: `Number` - Ammo count in magazine (will be clipped to values between 0 and the maximum capacity of the magazine class)\n* bipod: `String` - Underbarrel rail attachment class name. Use \"\" if not needed.\nThis array has the same format as the array returned by the `weaponsItems` command."
                         },
                         {
                             "name": "weaponsCount",
@@ -4277,7 +4277,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "objectOrModel",
-                            "description": "`Object` or `String`"
+                            "description": "`Object` or `String`\n* `Object` - object\n* `String` - model path (see `getModelInfo`)"
                         }
                     ],
                     "outline": "`allLODs` objectOrModel",
@@ -4399,11 +4399,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "objectType",
-                            "description": "`Number` - type can be a combination of types according to bit flag operation (see `getObjectType`):"
+                            "description": "`Number` - type can be a combination of types according to bit flag operation (see `getObjectType`):\n* -1 - {{GVI|arma3|2.12"
                         },
                         {
                             "name": "objectCollection",
-                            "description": "`Number` - supported values:"
+                            "description": "`Number` - supported values:\n* 0 - Slow (and very slow) entities: some houses, rubbles, street lamps, churches, etc\n* 1 - Normal entities: vehicles etc\n* 2 - Fast entities: shots and other high precision entities\n* 3 - Cloudlets: smokes, dust, etc\n* 4 - Out vehicles: objects that are not listed anywhere else, holders, etc\n* 5 - Animals: animals, birds, insects, etc\n* 6 - Mines: mines\n* 7 - {{GVI|arma3|2.12"
                         }
                     ],
                     "outline": "objectType `allObjects` objectCollection",
@@ -5447,7 +5447,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "speed",
-                            "description": "`Boolean` or `Number` - (Optional, default `false`)"
+                            "description": "`Boolean` or `Number` - (Optional, default `false`)\n* `Boolean` - when set to `true`, animation is instant\n* {{GVI|arma3|1.66"
                         }
                     ],
                     "outline": "object `animateSource` [source, phase, speed]",
@@ -7329,7 +7329,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "clippingType",
-                            "description": "`Number` - clipping type could be:"
+                            "description": "`Number` - clipping type could be:\n* 0 - ClipVisual (could significantly reduce the size of bounding boxes on buildings)\n* 1 - ClipShadow\n* 2 - ClipGeometry\n* 3 - ClipGeneral (Default, the same type that is used in main syntax)"
                         },
                         {
                             "name": "object",
@@ -7373,7 +7373,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "clippingType",
-                            "description": "`Number` - can be one of:"
+                            "description": "`Number` - can be one of:\n* 0 - ClipVisual (can significantly reduce bounding box's size on buildings)\n* 1 - ClipShadow\n* 2 - ClipGeometry\n* 3 - ClipGeneral (same type that is used in the main syntax)"
                         },
                         {
                             "name": "object",
@@ -7391,7 +7391,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD",
-                            "description": "`String` or `Number` - can be one of:"
+                            "description": "`String` or `Number` - can be one of:\n* `**\"Memory\"**`\n* `**\"Geometry\"**`\n* `**\"FireGeometry\"**`\n* `**\"LandContact\"**`\n* `**\"HitPoints\"**`\n* `**\"ViewGeometry\"**`\nWhen `Number` is used, command searches for a LOD with the similar [LOD resolution](https://community.bistudio.com/wiki/LOD%20resolutions)"
                         }
                     ],
                     "outline": "`boundingBoxReal` [object, LOD]",
@@ -7992,7 +7992,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`Code` - `compile`d instructions"
+                            "description": "`Code` - `compile`d instructions\n**Operation Flashpoint**: Operation Flashpoint takes `String`.\n**NOTE**: This way of calling has access to its parent scope's <sqf inline>_this, as all it does is creating a scope."
                         }
                     ],
                     "outline": "`call` code",
@@ -8006,7 +8006,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "code",
-                            "description": "`Code` - `compile`d instructions"
+                            "description": "`Code` - `compile`d instructions\n**Operation Flashpoint**: Operation Flashpoint takes `String`."
                         }
                     ],
                     "outline": "args `call` code",
@@ -8286,7 +8286,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "type",
-                            "description": "`String` - camera type, one of the following:"
+                            "description": "`String` - camera type, one of the following:\n* \"camera\"\n* \"seagull\" (a crow in Arma 2)\n* \"camconstruct\"\n* \"camcurator\" (Since {{Name|arma3zeus}})\n* \"crowe\" (crow - Arma 3)\n* or any vehicle class suitable to be spawned with camera"
                         },
                         {
                             "name": "position",
@@ -8367,7 +8367,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "effectPosition",
-                            "description": "`String` - position of the effect. Can be one of:"
+                            "description": "`String` - position of the effect. Can be one of:\n{{Columns|5|\n* `**\"TOP\"**`\n* `**\"LEFT\"**`\n* `**\"RIGHT\"**`\n* `**\"FRONT\"**`\n* `**\"BACK\"**`\n* `**\"LEFT FRONT\"**`\n* `**\"RIGHT FRONT\"**`\n* `**\"LEFT BACK\"**`\n* `**\"RIGHT BACK\"**`\n* `**\"LEFT TOP\"**`\n* `**\"RIGHT TOP\"**`\n* `**\"FRONT TOP\"**`\n* `**\"BACK TOP\"**`\n* `**\"BOTTOM\"**`\n}}\nThese are usually used with \"Fixed\" and \"FixedWithZoom\" effect types. If not sure which position to use, set it to `**\"BACK\"**`."
                         },
                         {
                             "name": "r2tName",
@@ -8919,7 +8919,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "direction",
-                            "description": "* `Number` (before **(Arma 3)**) - camera azimuth"
+                            "description": "* `Number` (before **(Arma 3)**) - camera azimuth\n* `Array` in format [x,y,z] (since **(Arma 3)**) - direction of camera. Must be a valid vector."
                         }
                     ],
                     "outline": "camera `camSetDir` direction",
@@ -10104,7 +10104,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "feature",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* `**\"AwareFormationSoft\"**`\n* `**\"CombatFormationSoft\"**`\n* AI skill - see {{Link|disableAI#Syntax 1}} (since Arma 3 v1.96)"
                         }
                     ],
                     "outline": "`checkAIFeature` feature",
@@ -11098,7 +11098,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "identity",
-                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:"
+                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:\n{{Columns|2|\n* \"Base\"\n* \"HQ\"\n* \"PAPA_BEAR\"\n* \"AirBase\"\n* \"BLU\"\n* \"OPF\"\n* \"IND\"\n* \"IND_G\"\n}}"
                         },
                         {
                             "name": "chatText",
@@ -11386,7 +11386,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "identity",
-                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:"
+                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:\n{{Columns|3|\n* \"Base\"\n* \"HQ\"\n* \"PAPA_BEAR\"\n* \"AirBase\"\n* \"BLU\"\n* \"OPF\"\n* \"IND\"\n* \"IND_G\"\n}}"
                         },
                         {
                             "name": "radioName",
@@ -12055,7 +12055,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "condition",
-                            "description": "`String` - (Optional, default \"true\") expression, which if returns `true`, adds current property to result"
+                            "description": "`String` - (Optional, default \"true\") expression, which if returns `true`, adds current property to result\n**IMPORTANT**: \n* The condition code passed to `configProperties` should only be used for **simple filter expressions** and nothing more.\n* Since **(Arma 3)** the following conditions are optimised for performance:\n** `**\"true\"**` (omitted condition)\n** `**\"isClass _x\"**`\n** `**\"isClass _x &amp;&amp; (...)\"**`"
                         },
                         {
                             "name": "inherit",
@@ -12541,7 +12541,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "condition",
-                            "description": "`Code` - condition that must return `true` for the tested element to be counted. The variable `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**` will contain the currently tested element"
+                            "description": "`Code` - condition that must return `true` for the tested element to be counted. The variable `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**` will contain the currently tested element\n**Arma**: 3|If array contains different data types, use `isEqualTo` instead of [[==]]!"
                         },
                         {
                             "name": "array",
@@ -12643,7 +12643,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "array",
-                            "description": "`Array` of `Object`s and/or `Group`s"
+                            "description": "`Array` of `Object`s and/or `Group`s\n**NOTE**: If the object in passed array is a `Group`, the leader of the group will be counted."
                         }
                     ],
                     "outline": "side `countSide`  array",
@@ -12785,7 +12785,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "class",
-                            "description": "`String` - entity class, defined in one of the following classes:"
+                            "description": "`String` - entity class, defined in one of the following classes:\n* `**CfgVehicles**` - objects and logic entities\n* `**CfgNonAIVehicles**` - triggers\n* `**CfgWaypoint**` - waypoints\n* `**CfgMarkers**` - markers"
                         },
                         {
                             "name": "position",
@@ -12803,7 +12803,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "group",
-                            "description": "`Group` - group in which an AI character or waypoint is created."
+                            "description": "`Group` - group in which an AI character or waypoint is created.\n* When missing for AI characters, a new group is created for them\n* When missing for waypoints, an error is logged and nothing is created\n* When used on any other mode, it is ignored and the entity is created as usual"
                         },
                         {
                             "name": "mode",
@@ -12861,7 +12861,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "special",
-                            "description": "`String` - one of:"
+                            "description": "`String` - one of:\n* `**\"NONE\"**` - will look for a suitable empty position near given position (subject to other placement params) before creating the agent\n* `**\"CAN_COLLIDE\"**` - creates the agent at given position (subject to other placement params), without checking if others objects can cross its 3D model"
                         }
                     ],
                     "outline": "`createAgent` [type, position, markers, placement, special]",
@@ -13026,7 +13026,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "textInfo",
-                            "description": "`String` or `Array` of `String`s - can be:"
+                            "description": "`String` or `Array` of `String`s - can be:\n* `String` - the record's content - its title will be empty\n* `Array` of `String`s - format [title, text, icon]:\n** title: `String`\n** text: `String`\n** {{GVI|arma3|2.10"
                         },
                         {
                             "name": "task",
@@ -13034,7 +13034,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "taskState",
-                            "description": "`String` - (Optional, default `**\"NONE\"**`) changes the state of the given task. Can be one of:"
+                            "description": "`String` - (Optional, default `**\"NONE\"**`) changes the state of the given task. Can be one of:\n{{Columns|3|\n* `**\"NONE\"**`\n* `**\"CREATED\"**`\n* `**\"ASSIGNED\"**`\n* `**\"SUCCEEDED\"**`\n* `**\"FAILED\"**`\n* `**\"CANCELED\"**`\n}}"
                         },
                         {
                             "name": "showTitle",
@@ -13190,7 +13190,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "deleteWhenEmpty",
-                            "description": "`Boolean` - `true` to [delete the group when empty](https://community.bistudio.com/wiki/deleteGroupWhenEmpty)."
+                            "description": "`Boolean` - `true` to [delete the group when empty](https://community.bistudio.com/wiki/deleteGroupWhenEmpty).\n* If set to `true`, forces a group to get deleted when empty - it does **not** prevent its deletion by other commands when set to `false`.\n* Deletion may take up to a minute after the last unit is removed."
                         }
                     ],
                     "outline": "`createGroup` [side, deleteWhenEmpty]",
@@ -13303,7 +13303,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "values",
-                            "description": "`Array` of `Anything`"
+                            "description": "`Array` of `Anything`\n**NOTE**: Size of _keys_ and size of _values_ arrays do not need to be equal. Missing values will be filled with `nil`."
                         }
                     ],
                     "outline": "keys `createHashMapFromArray` values",
@@ -13339,7 +13339,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "classDefinition",
-                            "description": "`HashMap` or `Array` of `Array`s, format [name, value]:"
+                            "description": "`HashMap` or `Array` of `Array`s, format [name, value]:\n_name_ can be anything like any other `HashMap`, but it must be a `String` for it to be used like an OOP object method (see {{Link|call#Syntax 3}}).\n\nSome special values, starting with `**#**`, are reserved and expect a specific _value_ type (they are all optional):\n* `**\"#create\"**`: `Code` - this is the hashmap object's constructor\n* `**\"#clone\"**`: `Code` - this is code happening when cloning is done on this hashmap object\n* `**\"#delete\"**`: `Code` - this is the hashmap object's destructor. It will always be executed inside `missionNamespace`.\n* `**\"#str\"**`: `Code` - code that is used to evaluate what is displayed when the `str` function is called on the object - **must** return `String`\n* `**\"#flags\"**`: `Array` of `String`s - case-_in_sensitive flags regarding this hashmap object\n** \"noCopy\": forbids copying, <sqf inline>+_hashMapObject will throw an error\n** \"sealed\": prevents from adding and removing any keys - key values can still be edited\n** \"unscheduled\": all methods (including `**#clone}} and {{hl|#create}}) will be executed in {{Link|Scheduler#Unscheduled Environment|unscheduled environment**`\n* `**\"#base\"**`: `Array` or `HashMap` - declaration of base class for inheritance\n* `**\"#type\"**`: `Any` - can be used to give a object a \"type name\", on inheritance types will be merged into an `Array`\nNote that all entries beginning with `**#**` are reserved, the engine might use these internally without their use being documented."
                         },
                         {
                             "name": "constructorArguments",
@@ -13815,7 +13815,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "markers",
-                            "description": "`Array` - if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position."
+                            "description": "`Array` - if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.\nIf any of the markers were given a Z coordinate with `setMarkerPos`, the sound will also be created at the given Z coordinate"
                         },
                         {
                             "name": "placement",
@@ -14005,7 +14005,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "makeGlobal",
-                            "description": "`Boolean` - (Optional - default `true`) locality flag"
+                            "description": "`Boolean` - (Optional - default `true`) locality flag\n* `true` - trigger is global {{Icon|globalEffect|24}}\n* `false` - trigger is local {{Icon|localEffect|24}}"
                         }
                     ],
                     "outline": "`createTrigger` [type, position, makeGlobal]",
@@ -14070,7 +14070,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "special",
-                            "description": "`String` - unit placement special, one of:"
+                            "description": "`String` - unit placement special, one of:\n* `**\"NONE\"**` - The unit will be created at the first available free position nearest to given position\n* `**\"FORM\"**` - Not implemented, currently functions the same as \"NONE\"\n* `**\"CAN_COLLIDE\"**` - The unit will be created exactly at the provided position\n* `**\"CARGO\"}} - The unit will be created in cargo of the group's vehicle, regardless of the passed position (see {{Link|#Example 5**`).<!--\n--> If group has no vehicle or there is no cargo space available, the unit will be placed according to `**\"NONE\"**`.<!--\n--> `**\"CARGO\"**` placement excludes cargo positions with personal FFV turrets. To check available cargo space use:\n{{{!}} style=\"width: 100%\"\n! **(Arma 3)** FFV\n{{!}} \n```sqf\nprivate _hasCargo = { isNull (_x select 0) } count (fullCrew [_veh, \"cargo\", true]) > 0;\n```\n\n{{!}}-\n! before\n{{!}} \n```sqf\n_hasCargo = _veh emptyPositions \"CARGO\" > 0;\n```\n\n{{!}}}"
                         }
                     ],
                     "outline": "group `createUnit` [type, position, markers, placement, special]",
@@ -14175,7 +14175,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "markers",
-                            "description": "`Array` of `String`s - (Optional, default <sqf inline>[]) if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position."
+                            "description": "`Array` of `String`s - (Optional, default <sqf inline>[]) if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.\nIf any of the markers were given z coordinate with `setMarkerPos`, the vehicle will also be created at given z coordinate."
                         },
                         {
                             "name": "placement",
@@ -14183,7 +14183,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "special",
-                            "description": "`String` - (Optional, default \"NONE\") can be one of the following:"
+                            "description": "`String` - (Optional, default \"NONE\") can be one of the following:\n* `**\"NONE\"**` - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there.\n* `**\"CAN_COLLIDE\"**` - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model.\n* `**\"FLY\"**` - if vehicle is capable of flying and has crew, it will be made airborne at default height.\nIf _special_ is \"\" or not specified, default `**\"NONE\"**` is used."
                         }
                     ],
                     "outline": "`createVehicle` [type, position, markers, placement, special]",
@@ -14297,7 +14297,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "markers",
-                            "description": "`Array` of `String`s - (Optional, default <sqf inline>[]) if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position."
+                            "description": "`Array` of `String`s - (Optional, default <sqf inline>[]) if the markers array contains any markers, the position is randomly picked from array of given markers plus desired placement position.\nIf any of the markers were given z coordinate with `setMarkerPos`, the vehicle will also be created at given z coordinate."
                         },
                         {
                             "name": "placement",
@@ -14305,7 +14305,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "special",
-                            "description": "`String` - (Optional, default \"NONE\") can be one of the following:"
+                            "description": "`String` - (Optional, default \"NONE\") can be one of the following:\n* `**\"NONE\"**` - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there.\n* `**\"CAN_COLLIDE\"**` - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model.\n* `**\"FLY\"**` - if vehicle is capable of flying and has crew, it will be made airborne at default height.\nIf _special_ is \"\" or not specified, default `**\"NONE\"**` is used."
                         }
                     ],
                     "outline": "`createVehicleLocal` [type, position, markers, placement, special]",
@@ -14762,7 +14762,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "function",
-                            "description": "`String`, since **(Arma 3)** also `Code` - script. Several [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) are available:"
+                            "description": "`String`, since **(Arma 3)** also `Code` - script. Several [Magic Variables](https://community.bistudio.com/wiki/Magic%20Variables) are available:\n* Event Handler parameters are accessible via `**_this**`\n* The Event Handler type is available as `**_thisEvent**`\n* The Event Handler index is available as `**_thisEventHandler**`"
                         }
                     ],
                     "outline": "control `ctrlAddEventHandler` [handler, function]",
@@ -14831,7 +14831,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "speed",
-                            "description": "`Boolean` or `Number` - (Optional, default `false`)"
+                            "description": "`Boolean` or `Number` - (Optional, default `false`)\n* `Boolean` - when set to `true`, animation is instant\n* {{GVI|arma3|1.66"
                         }
                     ],
                     "outline": "control `ctrlAnimateModel` [source, phase, speed]",
@@ -15184,7 +15184,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "idc",
-                            "description": "`Number` - IDC of the new control. Use -1 if not needed"
+                            "description": "`Number` - IDC of the new control. Use -1 if not needed\n**WARNING**: Be careful when setting the IDC to `**-1 if the GUI also contains a `CT_LISTNBOX` since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang=\"cpp\" inline>idc = -1;</syntaxhighlight>.**`"
                         },
                         {
                             "name": "controlsGroup",
@@ -17534,7 +17534,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` or `String` - can be one of the following:"
+                            "description": "`Number` or `String` - can be one of the following:\n* 0 / \"AUTO\" - control position (x, y, w, h) is always rounded to whole pixels (game default)\n* 1 / \"ON\" - control position (x, y, w, h) is rounded to whole pixels only when not animating\n* 2 / \"OFF\" - control position (x, y, w, h) is always precise, no pixel rounding applies here"
                         }
                     ],
                     "outline": "control `ctrlSetPixelPrecision` mode",
@@ -20342,7 +20342,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "layer",
-                            "description": "`Number` or `String`"
+                            "description": "`Number` or `String`\n* `Number` - layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100\n* `String` - {{GVI|arma3|1.58"
                         },
                         {
                             "name": "class",
@@ -20429,7 +20429,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "layer",
-                            "description": "`Number` or `String`"
+                            "description": "`Number` or `String`\n* `Number` - layer number on which the effect is shown, where 0 is the back most. Layer number is rounded to the nearest integer and also cannot be negative. Layer 99.5 will be treated as layer 100.\n* `String` - layer name on which the effect is shown. Layer names are CaSe SeNsItIvE."
                         },
                         {
                             "name": "text",
@@ -21801,7 +21801,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "type",
-                            "description": "`String` - type of visualisation. Can be one of:"
+                            "description": "`String` - type of visualisation. Can be one of:\n{{Columns|2|\n* \"Normal\"\n* \"Roadway\"\n* \"Geometry\"\n* \"ViewGeometry\"\n* \"FireGeometry\"\n* \"Paths\"\n* \"ShadowVolume\"\n* \"ShadowBuffer\"\n* \"Buoyancy\"\n* {{GVI|arma3|2.10"
                         }
                     ],
                     "outline": "`diag_drawMode` type",
@@ -22828,7 +22828,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "flagName",
-                            "description": "`String` - difficulty flag name. Following values are available:"
+                            "description": "`String` - difficulty flag name. Following values are available:\n\n<spoiler text=\"Arma 3 Flags\">\n{{Columns|5|\n* 3rdPersonView\n* armor\n* autoAim\n* autoGuideAT\n* autoSpot\n* autoTrimEnabled\n* cameraShake\n* clockIndicator\n* deathMessages\n* enemyTag\n* extendetInfoType\n* friendlyTag\n* hud\n* hudGroupInfo\n* hudPerm\n* hudWp\n* hudWpPerm\n* map\n* mineTag\n* netStats\n* roughLanding\n* stanceIndicator\n* stressDamageEnabled\n* unlimitedSaves\n* vonID\n* weaponCursor\n* windEnabled\n}}<spoiler text=\"Arma 2 Flags\">\n{{Columns|5|\n* 3rdPersonView\n* armor\n* autoSpot\n* autoGuideAT\n* autoAim\n* allowSeagull\n* clockIndicator\n* deathMessages\n* enemyTag\n* friendlyTag\n* hud\n* hudPerm\n* hudWp\n* hudWpPerm\n* map\n* netStats\n* suppressPlayer\n* tracers\n* realisticFatigue\n* ultraAI\n* unlimitedSaves\n* weaponCursor\n}}"
                         }
                     ],
                     "outline": "`difficultyEnabled` flagName",
@@ -22880,7 +22880,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "optionName",
-                            "description": "`String` - difficulty option name; one of:"
+                            "description": "`String` - difficulty option name; one of:\n{{Columns|5|\n* reducedDamage\n* groupIndicators\n* friendlyTags\n* enemyTags\n* detectedMines\n* commands\n* waypoints\n* weaponInfo\n* stanceIndicator\n* staminaBar\n* weaponCrosshair\n* visionAid\n* thirdPersonView\n* cameraShake\n* scoreTable\n* deathMessages\n* vonID\n* mapContent\n* autoReport\n* multipleSaves\n}}"
                         }
                     ],
                     "outline": "`difficultyOption` optionName",
@@ -23016,7 +23016,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "feature",
-                            "description": "`String` - possible values are:"
+                            "description": "`String` - possible values are:\n{{Columns|4|\n* {{GVI|arma3|1.66"
                         }
                     ],
                     "outline": "unit `disableAI` feature",
@@ -23403,7 +23403,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "eventName",
-                            "description": "`String` - event name"
+                            "description": "`String` - event name\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**)."
                         },
                         {
                             "name": "code",
@@ -23715,7 +23715,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "teamColor",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"RED\"\n* \"GREEN\"\n* \"BLUE\"\n* \"YELLOW\""
                         }
                     ],
                     "outline": "`dissolveTeam` teamColor",
@@ -24510,7 +24510,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "shadow",
-                            "description": "`Number` or `Boolean` - (Optional, default `false`) can be one of:"
+                            "description": "`Number` or `Boolean` - (Optional, default `false`) can be one of:\n* 0 (`false`): no shadow\n* 1: shadow (for text)\n* 2 (`true`): outline (works for text and for icon only if icon angle is 0)"
                         },
                         {
                             "name": "textSize",
@@ -24522,7 +24522,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "align",
-                            "description": "`String` - (Optional, default \"right\") text alignment. Can be:"
+                            "description": "`String` - (Optional, default \"right\") text alignment. Can be:\n* \"left\"\n* \"right\"\n* \"center\""
                         },
                         {
                             "name": "drawSideArrows",
@@ -24575,7 +24575,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "color",
-                            "description": "* `Array` format [[Color|Color (RGBA)]] - icon color"
+                            "description": "* `Array` format [[Color|Color (RGBA)]] - icon color\n* {{GVI|arma3|2.04"
                         },
                         {
                             "name": "position",
@@ -24599,7 +24599,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "shadow",
-                            "description": "(Optional, default 0)"
+                            "description": "(Optional, default 0)\n* `Number`:\n** **0:** no shadow\n** **1:** shadow (not used in this context, used in UI context)\n** **2:** outline\n* `Boolean`:\n** `true` - outline\n** `false` - no shadow"
                         },
                         {
                             "name": "textSize",
@@ -24611,7 +24611,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "textAlign",
-                            "description": "`String` - (Optional, default \"center\") text alignment, can be one of:"
+                            "description": "`String` - (Optional, default \"center\") text alignment, can be one of:\n* \"left\"\n* \"center\"\n* \"right\""
                         },
                         {
                             "name": "drawSideArrows",
@@ -25035,7 +25035,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "category",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n* `**\"Group\"**` - Infantry units and groups\n* `**\"Vehicle\"**` - Vehicles with crew\n* `**\"EmptyVehicle\"**` - All vehicles without crew\n* `**\"Prop\"**` - Static objects"
                         }
                     ],
                     "outline": "`dynamicSimulationDistance`  category",
@@ -25394,7 +25394,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "position",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n{{Columns|2|\n* `**\"Commander\"**`\n* `**\"Driver\"**`\n* `**\"Gunner\"**`\n* `**\"Cargo\"**` - all cargo positions, FFV or not\n* {{GVI|arma3|2.10"
                         }
                     ],
                     "outline": "vehicle `emptyPositions` position",
@@ -25457,7 +25457,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "feature",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n* `**\"AwareFormationSoft\"**`\n* `**\"CombatFormationSoft\"**`"
                         },
                         {
                             "name": "enable",
@@ -27270,7 +27270,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "seconds",
-                            "description": "`Number` - estimated time in seconds. Maximum value:"
+                            "description": "`Number` - estimated time in seconds. Maximum value:\n* Prior to Arma 3 v1.70: 7200 seconds (2 hours)\n* Since Arma 3 v1.70: 36000 (10 hours)"
                         }
                     ],
                     "outline": "`estimatedTimeLeft` seconds",
@@ -27391,7 +27391,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "script",
-                            "description": "`String` - the file path to the script. It should be given relatively to the mission folder, campaign scripts subfolder or global scripts folder and is searched there in the same order."
+                            "description": "`String` - the file path to the script. It should be given relatively to the mission folder, campaign scripts subfolder or global scripts folder and is searched there in the same order.\nIf you refer to a script packed together with an addon, the path should look like this: \"\\ADDON_PBO_NAME\\script.sqs\" where ADDON_PBO_NAME is the name of the addon's `PBO` file without extension."
                         }
                     ],
                     "outline": "argument `exec` script",
@@ -29548,7 +29548,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - mode of operation, can be:"
+                            "description": "`Number` - mode of operation, can be:\n* -1 - resets previously set Unicode flag\n* &nbsp;0 - sets Unicode flag until the end of script\n* &nbsp;1 - sets Unicode flag until after next supported command or until the end of script, whichever comes earlier"
                         }
                     ],
                     "outline": "`forceUnicode` mode",
@@ -29618,7 +29618,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "firemode",
-                            "description": "`String` - common options are \"Single\", \"Burst\", \"FullAuto\". For the full list of a weapon firemodes:"
+                            "description": "`String` - common options are \"Single\", \"Burst\", \"FullAuto\". For the full list of a weapon firemodes:\n\n\n```sqf\nhint str (getArray (configFile >> \"CfgWeapons\" >> currentWeapon player >> \"modes\"));\n```\n If _modes[]_ param in config for the weapon says _{\"this\"}_, then the same classname as for the weapon param (`currentWeapon` `player`) should be used as firemode param."
                         }
                     ],
                     "outline": "unit `forceWeaponFire` [muzzle, firemode]",
@@ -29691,7 +29691,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "{{!}} **(Arma 2",
-                            "description": "Operation Arrowhead)**"
+                            "description": "Operation Arrowhead)**\n{{!}} **(Arma 3)**\n{{!}} {{GVI|tkoh|1.00}}\n{{!}}-\n! `String` support\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}} colspan=\"4\" {{!}} {{Icon|unchecked}}\n{{!}}-\n! `Code` support\n{{!}} {{Icon|unchecked}}\n{{!}} colspan=\"5\" {{!}} {{Icon|checked}}\n{{!}}}\ncode: `String` only in Operation Flashpoint and Armed Assault, {{GVI|arma1|1.00"
                         },
                         {
                             "name": "array",
@@ -29705,7 +29705,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`Code` - code applied to each key-value pair - available variables:"
+                            "description": "`Code` - code applied to each key-value pair - available variables:\n* `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**`: key\n* `**[_y](https://community.bistudio.com/wiki/Magic%20Variables%23x)**`: value\n* `**[_forEachIndex](https://community.bistudio.com/wiki/Magic%20Variables%23forEachIndex)**`: iteration number"
                         },
                         {
                             "name": "hashMap ",
@@ -29823,7 +29823,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`Code` to execute on each array item - available variables:"
+                            "description": "`Code` to execute on each array item - available variables:\n* `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**`: iterated item\n* `**[_forEachIndex](https://community.bistudio.com/wiki/Magic%20Variables%23forEachIndex)**`: item's index"
                         },
                         {
                             "name": "array",
@@ -30308,7 +30308,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - role filter (case-insensitive). An invalid value (e.g \"\") will return all positions. Available values:"
+                            "description": "`String` - role filter (case-insensitive). An invalid value (e.g \"\") will return all positions. Available values:\n* \"driver\"\n* \"commander\"\n* \"gunner\"\n* \"turret\"\n* \"cargo\""
                         },
                         {
                             "name": "includeEmpty",
@@ -30674,7 +30674,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "type",
-                            "description": "`String` - name of transformation type. Can be:"
+                            "description": "`String` - name of transformation type. Can be:\n* `**\"r\"**` - Rotation\n* `**\"t\"**` - Translation\n* `**\"s\"**` - Scale"
                         }
                     ],
                     "outline": "`get3DENGrid`  type",
@@ -30913,7 +30913,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "type",
-                            "description": "`String` - entity type, can be one of:"
+                            "description": "`String` - entity type, can be one of:\n{{Columns|2|\n* `**\"object\"**`\n* `**\"group\"**`\n* `**\"trigger\"**`\n* `**\"logic\"**`\n* `**\"waypoint\"**`\n* `**\"marker\"**`\n* `**\"layer\"**`\n* `**\"comment\"**`\n* `**\"\"**` - everything but \"layer\" and \"comment\"\n}}"
                         }
                     ],
                     "outline": "`get3DENSelected` type",
@@ -31796,7 +31796,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "pylon",
-                            "description": "`Number` or `String`"
+                            "description": "`Number` or `String`\n* If `String` - pylon class name from `**TransportPylonsComponent &gt;&gt; pylons**` class \n* If `Number` - pylon ID\n* If an invalid pylon ID or class name is provided, such as 0 or \"\", all compatible magazines from all pylons are returned."
                         }
                     ],
                     "outline": "vehicle `getCompatiblePylonMagazines` pylon",
@@ -32353,7 +32353,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filter",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n* 0 - all\n* 1 - owned\n* 2 - not owned"
                         }
                     ],
                     "outline": "`getDLCs` filter",
@@ -33656,7 +33656,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "layerName",
-                            "description": "can be one of:"
+                            "description": "can be one of:\n* `String` - case-insensitive; layer name in the editor. If multiple layers with the same name are present in the scenario, the first found one is used\n* `Number` - layer ID in the editor"
                         }
                     ],
                     "outline": "`getMissionLayerEntities` layerName",
@@ -34189,7 +34189,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "slot",
-                            "description": "`Number` - can be one of:"
+                            "description": "`Number` - can be one of:\n* 0 - [Current weapon](https://community.bistudio.com/wiki/currentWeapon)\n* 1 - [Primary weapon](https://community.bistudio.com/wiki/primaryWeapon)\n* 2 - [Secondary weapon](https://community.bistudio.com/wiki/secondaryWeapon)\n* 3 - [Handgun](https://community.bistudio.com/wiki/handgunWeapon)"
                         }
                     ],
                     "outline": "unit `getOpticsMode` slot",
@@ -35280,7 +35280,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD",
-                            "description": "`String` or `Number` - can be one of:"
+                            "description": "`String` or `Number` - can be one of:\n{{Columns|2|\n* `**\"Memory\"**`\n* `**\"Geometry\"**`\n* `**\"FireGeometry\"**`\n* `**\"LandContact\"**`\n* `**\"HitPoints\"**`\n* `**\"ViewGeometry\"**`\n}}\nWhen `Number` is used, command searches for a LOD with the same [LOD resolution](https://community.bistudio.com/wiki/LOD%20resolutions)"
                         }
                     ],
                     "outline": "object `getSelectionBones` [selectionName, LOD]",
@@ -35490,7 +35490,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "slot",
-                            "description": "`Number` - can be one of:"
+                            "description": "`Number` - can be one of:\n{{Columns|4|\n* 603 - Goggles\n* 605 - Headgear\n* 608 - Map\n* 609 - Compass\n* 610 - Watch\n* 611 - Radio\n* 612 - GPS\n* 616 - HMD\n* 617 - Binoculars\n* 701 - Vest\n* 801 - Uniform\n* 901 - Backpack\n}}"
                         }
                     ],
                     "outline": "unit `getSlotItemName` slot",
@@ -36770,7 +36770,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "index",
-                            "description": "`Number` - 0 equals the starting position of the group."
+                            "description": "`Number` - 0 equals the starting position of the group.\n\nThe number used in this and other waypoint commands is _one more_ than the one displayed in the waypoint window in the editor. (i.e. if the editor labeled a WP `**\"0:MOVE\"}} the you would have to use {{hl|getWPPos [grp,1]**` to access this particular WP)"
                         }
                     ],
                     "outline": "`getWPPos` [groupOrUnit, index]",
@@ -37844,7 +37844,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "team",
-                            "description": "`String` - (Optional, default \"teamMain\") can be one of:"
+                            "description": "`String` - (Optional, default \"teamMain\") can be one of:\n* \"teamMain\"\n* \"teamRed\"\n* \"teamGreen\"\n* \"teamBlue\"\n* \"teamYellow\""
                         }
                     ],
                     "outline": "unit `hcSetGroup` [group, groupName, team]",
@@ -38764,7 +38764,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "area",
-                            "description": "`Object`, `String`, `Location`"
+                            "description": "`Object`, `String`, `Location`\n* `Object` - trigger\n* `String` - marker name\n* `Location` - location"
                         }
                     ],
                     "outline": "position `inArea` area",
@@ -38838,7 +38838,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "area",
-                            "description": "`Object`, `Location` or `String` - the defined area:"
+                            "description": "`Object`, `Location` or `String` - the defined area:\n* `Object` - trigger\n* `Location` - location\n* `String` - marker name"
                         }
                     ],
                     "outline": "positions `inAreaArray` area",
@@ -38899,11 +38899,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "positions",
-                            "description": "`Array` of `Object`s and/or `Position`s and/or `Location`s and/or `String`s and/or `Group`s, where:"
+                            "description": "`Array` of `Object`s and/or `Position`s and/or `Location`s and/or `String`s and/or `Group`s, where:\n* `Object`s - entities\n* `Position`s - 2D or 3D positions\n* `Location`s - locations\n* `String`s - markers\n* `Group`s - AI groups, the position is the `leader`'s position"
                         },
                         {
                             "name": "area",
-                            "description": "`Array` or `Object` or `Location` or `String`, where:"
+                            "description": "`Array` or `Object` or `Location` or `String`, where:\n* `Array` - in format:\n** [centre, a, b, angle, isRectangle, c] - area\n*** centre: `Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL)\n*** a: `Number` - area X size / 2, in metres\n*** b: `Number` - area Y size / 2, in metres\n*** angle: `Number` - area rotation in degrees\n*** isRectangle: `Boolean` - as the name says\n*** c: `Number` - area Z size / 2; -1 for infinite height\n** [point1, point2, point3, ...] - polygon\n* `Object` - trigger\n* `Location` - location\n* `String` - marker"
                         }
                     ],
                     "outline": "positions `inAreaArrayIndexes` area",
@@ -39547,7 +39547,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "keysAndValues",
-                            "description": "`Array` - in format depending on _splitArray_<nowiki/>'s value:"
+                            "description": "`Array` - in format depending on _splitArray_<nowiki/>'s value:\n* `true` - `**[<nowiki/>[key1, key2, ...], [value1, value2, ...]]**`\n* `false` - `**[<nowiki/>[key1, value1], [key2, value2], ...]}} (same as {{Link|#Syntax 3**`)"
                         }
                     ],
                     "outline": "hashMap `insert` [splitArray, [keysAndValues]]",
@@ -40680,11 +40680,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "overLandOrWater",
-                            "description": "`Number` - (Optional, default 0)"
+                            "description": "`Number` - (Optional, default 0)\n* 0: position cannot be over water\n* 2: position cannot be over land\n* -1 to ignore"
                         },
                         {
                             "name": "shoreLine",
-                            "description": "`Boolean` - (Optional, default `false`)"
+                            "description": "`Boolean` - (Optional, default `false`)\n* `true`: position is over shoreline (< ~25 m from water)\n* `false` to ignore"
                         },
                         {
                             "name": "ignoreObject",
@@ -41314,7 +41314,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`Code` - code to evaluate:"
+                            "description": "`Code` - code to evaluate:\n* the code **will** be executed; <sqf inline>isNil { player setDamage 1 }; _will_ kill the player\n* the code will not be allowed to [suspend](https://community.bistudio.com/wiki/canSuspend) while expression is evaluated, even if the parent scope allows it (see {{Link|#Example 4}})."
                         }
                     ],
                     "outline": "`isNil` code",
@@ -42833,11 +42833,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "fsmFile",
-                            "description": "`String` - (Optional) .fsm file path. Receives the following parameters:"
+                            "description": "`String` - (Optional) .fsm file path. Receives the following parameters:\n* **_sentenceId:** the sentence as defined in the .bikb file\n* **_topic:** TopicName registered via kbAddTopic\n* **_this:** the person that was talked to (receiver)\n* **_from:** the person that talked to the receiver and triggered the script"
                         },
                         {
                             "name": "eventHandler",
-                            "description": "`Code` or `String` - (Optional) code to execute - given String will be `compile`d. This is **not** an sqf file path."
+                            "description": "`Code` or `String` - (Optional) code to execute - given String will be `compile`d. This is **not** an sqf file path.\n\nParameters: identical to _fsmFile_ - see above."
                         }
                     ],
                     "outline": "person `kbAddTopic` [topicName, conversationFile, fsmFile, eventHandler]",
@@ -42917,7 +42917,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "argumentArrayN",
-                            "description": "`Array` - (Optional) in format [argumentName, argumentValue, argumentText, argumentSpeech]:"
+                            "description": "`Array` - (Optional) in format [argumentName, argumentValue, argumentText, argumentSpeech]:\n* argumentName: `String`\n* argumentValue: `Code`\n* argumentText: `String`\n* argumentSpeech: `Array` of `String`s - each string is an already defined word in config."
                         }
                     ],
                     "outline": "person `kbReact` [receiver, topicName, sentenceID, argumentArray1, argumentArray2, ...]",
@@ -42999,11 +42999,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "argumentArrayN",
-                            "description": "`Array` - (Optional) format [argumentName, argumentValue, argumentText, argumentSpeech]:"
+                            "description": "`Array` - (Optional) format [argumentName, argumentValue, argumentText, argumentSpeech]:\n* argumentName: `String`\n* argumentValue: `Code`\n* argumentText: `String`\n* argumentSpeech: `Array` of `String`s - each string is an already defined word in config."
                         },
                         {
                             "name": "forceRadio",
-                            "description": "`Boolean`, `Number` or `String` (_last value of the array_) - (Optional)"
+                            "description": "`Boolean`, `Number` or `String` (_last value of the array_) - (Optional)\n* `Boolean` true/false to force use of radio\n* `Number` 1-10 to force use of custom radio channel\n* `String` name of radio channel to use, from: 'GLOBAL', 'SIDE', 'GROUP', 'VEHICLE', 'DIRECT', 'COMMAND'"
                         }
                     ],
                     "outline": "person `kbTell` [receiver, topicName, sentenceClass, argumentArray1, argumentArray2, ..., forceRadio]",
@@ -43205,7 +43205,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"LAND\" - Complete stop\n* \"GET IN\" - Hovering very low, for another unit to get in\n* \"GET OUT\" - Hovering low, for another unit to get out\n* {{GVI|arma2|1.00"
                         }
                     ],
                     "outline": "helicopter `land` mode",
@@ -45015,7 +45015,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "sortByType",
-                            "description": "`String` - (Optional, default \"TEXT\") one of:"
+                            "description": "`String` - (Optional, default \"TEXT\") one of:\n* `**\"TEXT\"**`\n* `**\"VALUE\"**`\n* `**\"DATA\"**`"
                         },
                         {
                             "name": "reversedOrder",
@@ -46004,7 +46004,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "flags",
-                            "description": "`Number`"
+                            "description": "`Number`\n* 1 - CF_ONLY_WATER \n* 2 - CF_NEAREST_CONTACT \n* 4 - CF_ONLY_STATIC \n* 8 - CF_ONLY_DYNAMIC \n* 16 - CF_FIRST_CONTACT \n* 32 - CF_ALL_OBJECTS (Usable only with CF_FIRST_CONTACT and it will check one contact per object)\nFlags can be combined: 2 + 4 = 6 is CF_NEAREST_OBJECT + CF_ONLY_STATIC"
                         }
                     ],
                     "outline": "`lineIntersectsObjs` [begPos, endPos, ignoreObj1, ignoreObj2, sortByDistance, flags]",
@@ -46062,7 +46062,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD1",
-                            "description": "`String` - (Optional, default \"VIEW\") primary `LOD` to look for intersection. Can be one of:"
+                            "description": "`String` - (Optional, default \"VIEW\") primary `LOD` to look for intersection. Can be one of:\n* \"FIRE\"\n* \"VIEW\"\n* \"GEOM\"\n* \"IFIRE\" - (\"I\" stands for Indirect, _almost_ identical to \"FIRE\")\n* \"NONE\"\n* {{GVI|arma3|2.02"
                         },
                         {
                             "name": "LOD2",
@@ -46332,7 +46332,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "arrayOfTextAndValues",
-                            "description": "`Array` of `Array`s format <nowiki>[[text], [value], [data]]</nowiki>:"
+                            "description": "`Array` of `Array`s format <nowiki>[[text], [value], [data]]</nowiki>:\n* text: `String`\n* value: `Number`\n* data: `String`"
                         }
                     ],
                     "outline": "`lnbAddArray` [idc, arrayOfTextAndValues]",
@@ -47922,7 +47922,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "sortByType",
-                            "description": "`String` - (Optional, default \"TEXT\") one of:"
+                            "description": "`String` - (Optional, default \"TEXT\") one of:\n* `**\"TEXT\"**`\n* `**\"VALUE\"**`\n* `**\"DATA\"**`"
                         },
                         {
                             "name": "reversedOrder",
@@ -48767,7 +48767,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "lockstate",
-                            "description": "`Number` - can be one of the following:"
+                            "description": "`Number` - can be one of the following:\n\n0 - Unlocked\n\n1 - Default (player subordinate cannot enter until his leader says so)\n\n2 - Locked\n\n3 - Locked for player"
                         }
                     ],
                     "outline": "vehicleName `lock` lockstate",
@@ -48832,7 +48832,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "temporary",
-                            "description": "`Boolean` - if set to `true`, the engine will automatically remove the lock-on once the turret reaches its target."
+                            "description": "`Boolean` - if set to `true`, the engine will automatically remove the lock-on once the turret reaches its target.\nIf the target is out of turret's reach, the turret will move to the maximum of its capacity towards the target."
                         }
                     ],
                     "outline": "vehicle `lockCameraTo` [target, turretPath, temporary]",
@@ -52551,7 +52551,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "options",
-                            "description": "`Array` of `String`s - can be:{{{!}} class=\"wikitable\""
+                            "description": "`Array` of `String`s - can be:{{{!}} class=\"wikitable\"\n! Option\n! [Data Type](https://community.bistudio.com/wiki/%3ACategory%3AData%20Types)\n! Description\n{{!}}-\n{{!}} `**\"name\"**`\n{{!}} `String`\n{{!}} Name to be shown (Arma 3 instead of A3, etc.)\n{{!}}-\n{{!}} `**\"picture\"**`\n{{!}} `String`\n{{!}} Picture shown in Mod Launcher\n{{!}}-\n{{!}} `**\"logo\"**`\n{{!}} `String`\n{{!}} Logo to be shown in Main Menu\n{{!}}-\n{{!}} `**\"logoOver\"**`\n{{!}} `String`\n{{!}} Logo to be shown in Main Menu when mouse is over\n{{!}}-\n{{!}} `**\"logoSmall\"**`\n{{!}} `String`\n{{!}} Small version of logo, prepared for drawing small icons\n{{!}}-\n{{!}} `**\"tooltip\"**`\n{{!}} `String`\n{{!}} Tooltip to be shown on mouse over \n{{!}}-\n{{!}} `**\"tooltipOwned\"**`\n{{!}} `String`\n{{!}} Tooltip to be shown on mouse over the icon when DLC is owned by player\n{{!}}-\n{{!}} `**\"action\"**`\n{{!}} `String`\n{{!}} URL to be triggered when mod button is clicked\n{{!}}-\n{{!}} `**\"actionName\"**`\n{{!}} `String`\n{{!}} What to put on Action Button\n{{!}}-\n{{!}} `**\"overview\"**`\n{{!}} `String`\n{{!}} Overview text visible in expansion menu\n{{!}}-\n{{!}} `**\"hidePicture\"**`\n{{!}} `Boolean`\n{{!}} Do not show mod picture icon in the main menu mod list\n{{!}}-\n{{!}} `**\"hideName\"**`\n{{!}} `Boolean`\n{{!}} Do not show mod name in the main menu mod list\n{{!}}-\n{{!}} `**\"defaultMod\"**`\n{{!}} `Boolean`\n{{!}} Default mods cannot be moved or disabled by Mod Launcher\n{{!}}-\n{{!}} `**\"serverOnly\"**`\n{{!}} `Boolean`\n{{!}} Mod does not have to be installed on client in order to play on server with this mod running\n{{!}}-\n{{!}} `**\"active\"**`\n{{!}} `Boolean`\n{{!}} Active mod (activated through command line or stored in profile by mod launcher)\n**IMPORTANT**: Note that `**\"active\" does not actually tell if a mod is actually running.**`\n{{!}}}"
                         }
                     ],
                     "outline": "`modParams` [modClass, options]",
@@ -52694,7 +52694,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "useOffset",
-                            "description": "`Boolean`"
+                            "description": "`Boolean`\n* if `true` the camera will move to the _position_, add the offset defined in <sqf inline>configFile >> \"Cfg3DEN\" >> \"Camera\" >> \"moveOffset\" and look at the _position_.  Default camera offset: `**[0, -25, 25]**`\n* if `false`, the camera will be moved to the exact _position_"
                         }
                     ],
                     "outline": "`move3DENCamera` [position, useOffset]",
@@ -53263,7 +53263,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD",
-                            "description": "`String` or `Number` - can be one of:"
+                            "description": "`String` or `Number` - can be one of:\n* `**\"Memory\"**`\n* `**\"Geometry\"**`\n* `**\"FireGeometry\"**`\n* `**\"LandContact\"**`\n* `**\"HitPoints\"**`\n* `**\"ViewGeometry\"**`\nWhen `Number` is used, command searches for a LOD with the similar [LOD resolution](https://community.bistudio.com/wiki/LOD%20resolutions)"
                         }
                     ],
                     "outline": "object `namedProperties` [LOD]",
@@ -53349,7 +53349,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "area",
-                            "description": "`String`, `Object` or `Array`:"
+                            "description": "`String`, `Object` or `Array`:\n* `String` - marker name\n* `Object` - trigger\n* `Array` - format [center, a, b, angle, isRectangular, c] (see `inArea`)"
                         },
                         {
                             "name": "types",
@@ -54799,7 +54799,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "command",
-                            "description": "`String` or `Code` - code executed on click. The following variables are available:"
+                            "description": "`String` or `Code` - code executed on click. The following variables are available:\n* _pos: `Array` - Clicked position\n* _units: `Array` - Units which were selected (via function keys) **before** opening the map (_may be non-functional in Arma_)\n* _shift: `Boolean` - Whether {{Controls|Shift}} was pressed when clicking on the map\n* _alt: `Boolean` - Whether {{Controls|Alt}} was pressed when clicking on the map"
                         }
                     ],
                     "outline": "`onMapSingleClick` command",
@@ -54813,7 +54813,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "command",
-                            "description": "`String` or `Code` - code executed on click. The following variables are available:"
+                            "description": "`String` or `Code` - code executed on click. The following variables are available:\n* _this: `Anything` - Params passed to onMapSingleClick\n* _pos: `Array` - Clicked position\n* _units: `Array` - Units which were selected (via function keys) **before** opening the map (_may be non-functional in Arma_)\n* _shift: `Boolean` - Whether {{Controls|Shift}} was pressed when clicking on the map\n* _alt: `Boolean` - Whether {{Controls|Alt}} was pressed when clicking on the map"
                         }
                     ],
                     "outline": "params `onMapSingleClick` command",
@@ -54846,7 +54846,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`String` or `Code` - has access to the following variables:"
+                            "description": "`String` or `Code` - has access to the following variables:\n* **_id**: `Number` - is the unique DirectPlay ID. Quite useless as the number is too big for in-built string representation and gets rounded. It is also the same id used for user placed markers.\n* **_uid**: `String` - is `getPlayerUID` of the joining player. In Arma 3 it is also the same as Steam ID.\n* **_name**: `String` - is `profileName` of the joining player.\n* **(Arma 3)** **_jip**: `Boolean` - is a flag that indicates whether or not the player joined after the mission has started (**J**oined **I**n **P**rogress). `true` when the player is [JIP](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress), otherwise `false`.\n* **(Arma 3)** **_owner**: `Number` - is `owner` id of the joining player. Can be used for kick or ban purposes or just for `publicVariableClient`.\n* **(Arma 3)** **_idstr**: `String` - same as `**_id**` but in string format, so could be exactly compared to [ user marker](https://community.bistudio.com/wiki/allMapMarkers%20) ids."
                         }
                     ],
                     "outline": "`onPlayerConnected` code",
@@ -54877,7 +54877,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`String` or `Code` - code executed. The code will receive a number of special variables:"
+                            "description": "`String` or `Code` - code executed. The code will receive a number of special variables:\n* _id: `Number` - Is the unique DirectPlay ID. Quite useless as the number is too big for in-built string representation and gets rounded. It is also the same id used for user placed markers.\n* _uid: `String` - Is `getPlayerUID` of the leaving player. In Arma 3 it is also the same as Steam ID.\n* _name: `String` - Is `profileName` of the leaving player.\n* {{GVI|arma3|1.50"
                         }
                     ],
                     "outline": "`onPlayerDisconnected`  code",
@@ -55479,7 +55479,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "elementN",
-                            "description": "`String` or `Array`"
+                            "description": "`String` or `Array`\n* `String`:name of the `private` variable (must begin with underscore _, e.g. \"_myVar\")\n* `Array` format [variableName, defaultValue, expectedDataTypes, expectedArrayCount]:\n** variableName: `String` - name of a `private` variable (must begin with underscore _, e.g. \"_myVar\")\n** defaultValue: `Anything` - default value to return if input element is undefined, of the wrong type or of the wrong size (if array).\n** expectedDataTypes: `Array` of direct [Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) - (Optional) checks if passed value is one of listed Data Types. If not, default value is used instead. Empty array [] means every data type is accepted.\n** expectedArrayCount: `Number` or `Array` - (Optional) a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted."
                         }
                     ],
                     "outline": "`params` [element1, element2, ...]",
@@ -55493,7 +55493,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "elementN",
-                            "description": "`String` or `Array`"
+                            "description": "`String` or `Array`\n* `String`:name of the `private` variable (must begin with underscore _, e.g. \"_myVar\")\n* `Array` format [variableName, defaultValue, expectedDataTypes, expectedArrayCount]:\n** variableName: `String` - name of a `private` variable (must begin with underscore _, e.g. \"_myVar\")\n** defaultValue: `Anything` - default value to return if input element is undefined, of the wrong type or of the wrong size (if array).\n** expectedDataTypes: `Array` of direct [Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) - (Optional) checks if passed value is one of listed Data Types. If not, default value is used instead. Empty array [] means every data type is accepted.\n** expectedArrayCount: `Number` or `Array` - (Optional) a single size or array of sizes. If passed input value is an array, checks that it has a certain number of elements. If not, default value is used instead. Empty array [] means any size is accepted."
                         }
                     ],
                     "outline": "argument `params` [element1, element2, ...]",
@@ -56424,7 +56424,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filename",
-                            "description": "`String` - see [Arma 3: Sound Files](https://community.bistudio.com/wiki/Arma%203%3A%20Sound%20Files) for available file names or {{Link|#Example 3}} to use mission files"
+                            "description": "`String` - see [Arma 3: Sound Files](https://community.bistudio.com/wiki/Arma%203%3A%20Sound%20Files) for available file names or {{Link|#Example 3}} to use mission files\n\n{{Feature|important|\nSince {{GVI|arma3|2.10"
                         },
                         {
                             "name": "soundSource",
@@ -56436,7 +56436,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "soundPosition",
-                            "description": "`Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) - (Optional, default [0,0,0]) position for sound emitter, overrides _soundSource_"
+                            "description": "`Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) - (Optional, default [0,0,0]) position for sound emitter, overrides _soundSource_\n**NOTE**: If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource for _soundPosition_ instead of <sqf inline>_soundSource for _soundSource_.\n**IMPORTANT**: This parameter also takes `Object` but their [AGL](https://community.bistudio.com/wiki/Position%23PositionAGL) position is used instead of [ASL](https://community.bistudio.com/wiki/Position%23PositionASL) resulting in sound source being underground if they're above ground, always use [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) instead."
                         },
                         {
                             "name": "volume",
@@ -56444,7 +56444,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "soundPitch",
-                            "description": "`Number` - (Optional, default 1)"
+                            "description": "`Number` - (Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
                         },
                         {
                             "name": "distance",
@@ -56499,7 +56499,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "soundPitch",
-                            "description": "`Number` - (Optional, default 1)"
+                            "description": "`Number` - (Optional, default 1)\n* 1.0 &rarr; normal \n* 0.5 &rarr; Darth Vader\n* 2.0 &rarr; Chipmunks"
                         },
                         {
                             "name": "isEffect",
@@ -56612,7 +56612,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "cameraPos",
-                            "description": "[PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative) - relative camera position, format **[x, z, y]** (X = left-right, Z = below-above, Y = back-front)"
+                            "description": "[PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative) - relative camera position, format **[x, z, y]** (X = left-right, Z = below-above, Y = back-front)\n**IMPORTANT**: This command has Y and Z axes swapped around, which is different from the usual model space coordinates format ({{Link|Position|[x, y, z]).}}"
                         }
                     ],
                     "outline": "`positionCameraToWorld` cameraPos",
@@ -56717,7 +56717,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "effect",
-                            "description": "`String` or `Number`"
+                            "description": "`String` or `Number`\n* `String` - effect name\n* `Number` - effect handle"
                         },
                         {
                             "name": "settings",
@@ -57140,7 +57140,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "object",
-                            "description": "`Object` or `String`"
+                            "description": "`Object` or `String`\n* `Object` - existing object\n* `String` - object classname - an object of that type **must** exist in the mission for it to have effect"
                         }
                     ],
                     "outline": "distance `preloadObject` object",
@@ -58090,7 +58090,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "sentenceType",
-                            "description": "`Boolean` - (Optional, default `true`)"
+                            "description": "`Boolean` - (Optional, default `true`)\n* `true` - use _Protocol_ message color from <sqf inline>getArray (configFile >> \"RscChatListDefault\" >> \"colorMessageProtocol\")\n* `false` - use _Normal_ message color from <sqf inline>getArray (configFile >> \"RscChatListDefault\" >> \"colorMessage\")"
                         }
                     ],
                     "outline": "`radioChannelCreate` [color, label, callSign, units, sentenceType]",
@@ -58182,7 +58182,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "callSign",
-                            "description": "`String` - custom call sign - available special parameters:"
+                            "description": "`String` - custom call sign - available special parameters:\n{{Columns|3|\n* `**$KEY**` (reference to a localised text)\n* `**%CHANNEL_LABEL**`\n* `**%UNIT_SIDE**`\n* `**%UNIT_NAME**`\n* `**%UNIT_RANK**`\n* `**%UNIT_ID**`\n* `**%UNIT_REF**`\n* `**%UNIT_GRP_NAME**`\n* `**%UNIT_GRP_LEADER**`\n* `**%UNIT_VEH_NAME**`\n* `**%UNIT_VEH_POSITION**`\n}}"
                         }
                     ],
                     "outline": "customChannelID `radioChannelSetCallSign` callSign",
@@ -58934,11 +58934,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**targets**",
-                            "description": "(Optional, default 0):"
+                            "description": "(Optional, default 0):\n* `Number` (See also [Machine network ID](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Machine%20network%20ID)):\n** **0:** the order will be executed globally, i.e. on the server and every connected client, including the machine where `remoteExec` originated\n** **2:** the order will only be executed on the server - is both dedicated and hosted server. See [for more info](https://community.bistudio.com/wiki/Multiplayer_Scripting%23Different_machines_and_how_to_target_them)\n** **Other number:** the order will be executed on the machine where `clientOwner` matches the given number\n** **Negative number:** the effect is inverted: **-2** means every client but not the server, **-12** means the server and every client, except for the client where `clientOwner` returns 12\n* `Object` - the order will be executed where the given object is [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality)\n* `String` - interpreted as an `Identifier` (variable name); the function / command will be executed where the object or group identified by the variable with the provided name is [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality)\n* `Side` - the order will be executed on machines where the player is on the specified side\n* `Group` - the order will be executed on machines **where the player is in the specified group** (**not** where said group is local!)\n* `Array` - array of any combination of the types listed above"
                         },
                         {
                             "name": "**JIP**",
-                            "description": "(Optional, default `false`):"
+                            "description": "(Optional, default `false`):\n* `Boolean` - if `true`, a unique JIP ID is generated and the `remoteExec` statement is added to the JIP queue from which it will be executed for every JIP\n* `String`:\n** if the string is empty, it is interpreted as `false`\n** if the string is in format \"`Number`:`Number`\" (e.g. \"0:0\"), it is interpreted as a `netId` (see below)\n** else the string is treated as a custom JIP ID and the `remoteExec` statement is added to the JIP queue, replacing statements that have the same JIP ID\n* `Object`, `Group` or `netId` - the persistent execution of the `remoteExec` statement is attached to the given object or group, replacing any previous statement that has the same JIP ID.\nWhen the object / group is deleted, the `remoteExec` statement is automatically removed from the JIP queue\n\nThe **JIP** parameter can only be used if the **targets** parameter is 0 or a negative number.\n\nSee also [Example 3](https://community.bistudio.com/wiki/%23Example%203) on how to remove statements from the JIP queue."
                         }
                     ],
                     "outline": "params `remoteExec` [order, targets, JIP]",
@@ -59713,7 +59713,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "eventType",
-                            "description": "`String` - event name; see [UserAction Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23UserAction%20Event%20Handlers). Can be one of:"
+                            "description": "`String` - event name; see [UserAction Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23UserAction%20Event%20Handlers). Can be one of:\n* \"Activate\"\n* \"Deactivate\"\n* \"Analog\""
                         }
                     ],
                     "outline": "`removeAllUserActionEventHandlers` [keyName, eventType]",
@@ -61025,7 +61025,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "event",
-                            "description": "`String` - event name - see [UserAction Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23UserAction%20Event%20Handlers). Can be one of:"
+                            "description": "`String` - event name - see [UserAction Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23UserAction%20Event%20Handlers). Can be one of:\n* \"Activate\"\n* \"Deactivate\"\n* \"Analog\""
                         },
                         {
                             "name": "index",
@@ -62815,11 +62815,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "from",
-                            "description": "`Object` or `Array` of `Object`s"
+                            "description": "`Object` or `Array` of `Object`s\n* `Object` - the sound source\n* `Array` - format [from, to]:\n** from: `Object` - sound source\n** to: `Object` - target"
                         },
                         {
                             "name": "sound",
-                            "description": "`String` or `Array`"
+                            "description": "`String` or `Array`\n* `String` - class name of the sound to be played. Defined in CfgSounds including [[Description.ext]]\n* `Array` - format [sound, maxTitlesDistance, speed]:\n** sound: `String` - class name of the sound to be played. Defined in CfgSounds including [[Description.ext]]\n** maxTitlesDistance: `Number` (Optional, default 100) - max. distance in meters at which the sound can be heard\n** speed: `Number` (Optional, default 1) - pitch of the sound"
                         }
                     ],
                     "outline": "from `say` sound",
@@ -62851,11 +62851,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "from",
-                            "description": "`Object` or `Array` of `Object`s"
+                            "description": "`Object` or `Array` of `Object`s\n* `Object` - the sound source\n* `Array` - format [from, to]:\n** from: `Object` - sound source\n** to: `Object` - target"
                         },
                         {
                             "name": "sound",
-                            "description": "`String` or `Array`"
+                            "description": "`String` or `Array`\n* `String` - class name of the sound to be played. Defined in CfgSounds including [[Description.ext]]\n* `Array` - format [sound, maxTitlesDistance, speed]:\n** sound: `String` - class name of the sound to be played. Defined in CfgSounds including [[Description.ext]]\n** maxTitlesDistance: `Number` (Optional, default 100) - max. distance in meters at which the sound can be heard\n** speed: `Number` (Optional, default 1) - pitch of the sound"
                         }
                     ],
                     "outline": "from `say2D` sound",
@@ -62890,11 +62890,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "from",
-                            "description": "`Object` or `Array` of `Object`s"
+                            "description": "`Object` or `Array` of `Object`s\n* `Object` - origin of the sound\n* `Array` - format is [from, to] where:\n** from: `Object` - origin of the sound\n** to: `Object` - target"
                         },
                         {
                             "name": "sound",
-                            "description": "`String` or `Array`"
+                            "description": "`String` or `Array`\n* `String` - classname of the sound to be played. Defined in `CfgSounds` including [[Description.ext]]\n* `Array` format [sound, maxDistance, pitch, isSpeech, offset, simulateSpeedOfSound] where:\n** sound: `String` - classname of the sound to be played. Defined in [[Description.ext#CfgSounds|CfgSounds]] including [[Description.ext]]\n** maxDistance: `Number` - (Optional, default 100) maximum distance in meters at which the sound can be heard\n** pitch: `Number` - (Optional, default 1) pitch of the sound\n** {{GVI|arma3|1.92"
                         }
                     ],
                     "outline": "from `say3D` sound",
@@ -63013,7 +63013,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filename",
-                            "description": "`String` - desired path and name relative to `**&lt;PROFILEDIR&gt;\\Screenshots\\**` (see `Profile`)."
+                            "description": "`String` - desired path and name relative to `**&lt;PROFILEDIR&gt;\\Screenshots\\**` (see `Profile`).\n\nIf empty string \"\" used, the filename will be autogenerated in format: `**YYYY_MM_DD_hh_mm_ss.png**`"
                         }
                     ],
                     "outline": "`screenshot` filename",
@@ -63346,7 +63346,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "index",
-                            "description": "`Number` - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up."
+                            "description": "`Number` - index 0 denotes the first element, 1 the second, etc. If index has decimal places it gets rounded down for fractions less than or equal .5, otherwise it gets rounded up.\n\n{{GVI|arma3|2.12"
                         }
                     ],
                     "outline": "array `select` index",
@@ -63424,7 +63424,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "expression",
-                            "description": "`Code` - expression that is expected to return `Boolean` or `Nothing`."
+                            "description": "`Code` - expression that is expected to return `Boolean` or `Nothing`.\nIf `true` is returned, the original array value of currently tested element [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x) will be added to the output array"
                         }
                     ],
                     "outline": "array `select` expression",
@@ -63459,7 +63459,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "expression",
-                            "description": "`String` - arithmetic expression. [Simple expression](https://community.bistudio.com/wiki/Simple_Expression) var names containing values from 0 to 1 depending on location (see also [Ambient Parameters](https://community.bistudio.com/wiki/Ambient%20Parameters)):"
+                            "description": "`String` - arithmetic expression. [Simple expression](https://community.bistudio.com/wiki/Simple_Expression) var names containing values from 0 to 1 depending on location (see also [Ambient Parameters](https://community.bistudio.com/wiki/Ambient%20Parameters)):\n{{Columns|5|\n* forest\n* trees\n* meadow\n* hills\n* houses\n* sea\n* coast\n* night\n* rain\n* windy\n* deadBody\n* waterDepth\n* camDepth\n}}"
                         },
                         {
                             "name": "precision",
@@ -63498,7 +63498,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "subject",
-                            "description": "`String` - subject name, for example \"Diary\" (see also `Diary`). "
+                            "description": "`String` - subject name, for example \"Diary\" (see also `Diary`). \n**NOTE**: \nIn order to open a specific record inside a subject one can append `**:Record#**` to the subject name. \n\n```sqf\n\nplayer selectDiarySubject \"Diary:Record0\"; // selects the first record in the diary subject (from bottom to top)\nplayer selectDiarySubject \"Diary:Record1\"; // selects the second record\n\n```"
                         }
                     ],
                     "outline": "player `selectDiarySubject` subject",
@@ -63611,7 +63611,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD",
-                            "description": "`String` or `Number`"
+                            "description": "`String` or `Number`\n* `String` - LOD name; can be one of:\n** \"Memory\"\n** \"Geometry\"\n** \"FireGeometry\"\n** \"LandContact\"\n** \"HitPoints\"\n** {{GVI|arma3|2.06"
                         }
                     ],
                     "outline": "object `selectionNames` LOD",
@@ -63672,11 +63672,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD",
-                            "description": "`String` or `Number` - can be one of:"
+                            "description": "`String` or `Number` - can be one of:\n* `**\"Memory\"**`\n* `**\"Geometry\"**`\n* `**\"FireGeometry\"**`\n* `**\"LandContact\"**`\n* `**\"HitPoints\"**`\n* {{GVI|arma3|2.06"
                         },
                         {
                             "name": "returnMode",
-                            "description": "`String` - (Optional, default `**\"FirstPoint\"**`) can be one of:"
+                            "description": "`String` - (Optional, default `**\"FirstPoint\"**`) can be one of:\n* `**\"FirstPoint\"**`\n* `**\"AveragePoint\"**`\n* `**\"BoundingBox\"**`"
                         }
                     ],
                     "outline": "object `selectionPosition` [selectionName, LOD, returnMode]",
@@ -63702,7 +63702,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "returnMode",
-                            "description": "`String` - (Optional, default `**\"FirstPoint\"**`) can be one of:"
+                            "description": "`String` - (Optional, default `**\"FirstPoint\"**`) can be one of:\n* `**\"FirstPoint\"**`\n* `**\"AveragePoint\"**`\n* `**\"BoundingBox\"**`"
                         }
                     ],
                     "outline": "`selectionPosition` [object, selectionName, LODIndex, isVisual, returnMode]",
@@ -63741,7 +63741,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD",
-                            "description": "`String` or `Number` - the LOD that contains the selection:"
+                            "description": "`String` or `Number` - the LOD that contains the selection:\n* `String` - can be one of:\n** \"Memory\"\n** \"Geometry\"\n** \"FireGeometry\"\n** \"LandContact\"\n** \"HitPoints\"\n** \"ViewGeometry\"\n* `Number` - command searches for a LOD with the similar [resolution](https://community.bistudio.com/wiki/LOD%20resolutions) (see `allLODs`)."
                         }
                     ],
                     "outline": "object `selectionVectorDirAndUp` [selectionName, LOD]",
@@ -63946,7 +63946,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "valuesAndWeights",
-                            "description": "`Array` - array in format [value1, weight1, value2, weight2, ...], where:"
+                            "description": "`Array` - array in format [value1, weight1, value2, weight2, ...], where:\n* value: `Anything` - weighted value\n* weight: `Number` - values relative weight"
                         }
                     ],
                     "outline": "`selectRandomWeighted` valuesAndWeights",
@@ -64031,7 +64031,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "muzzleName",
-                            "description": "`String` - name of the weapon or muzzle"
+                            "description": "`String` - name of the weapon or muzzle\n**IMPORTANT**: For weapons that have **more than one muzzle**, you have to input the **muzzleName** and not the **weaponName**.\n* In Operation Flashpoint, in most cases, both names are the same. But check.\n* In Armed Assault the weaponNames and muzzleNames are different.\n* For muzzle names see [CfgWeapons](https://community.bistudio.com/wiki/%3ACategory%3AWeapons)."
                         }
                     ],
                     "outline": "unitName `selectWeapon` muzzleName",
@@ -64618,7 +64618,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "type",
-                            "description": "`String` - name of transformation type. Can be:"
+                            "description": "`String` - name of transformation type. Can be:\n* `**\"r\"**` - Rotation\n* `**\"t\"**` - Translation\n* `**\"s\"**` - Scale"
                         },
                         {
                             "name": "value",
@@ -65468,7 +65468,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "behaviour",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\""
                         }
                     ],
                     "outline": "groupOrUnit `setBehaviour` behaviour",
@@ -65501,7 +65501,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "behaviour",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\""
                         }
                     ],
                     "outline": "groupName `setBehaviourStrong` behaviour",
@@ -65736,7 +65736,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "modeIndex",
-                            "description": "`Number` - TI mode. Can be:"
+                            "description": "`Number` - TI mode. Can be:\n* 0 - White Hot\n* 1 - Black Hot\n* 2 - Light Green Hot / Darker Green cold\n* 3 - Black Hot / Darker Green cold\n* 4 - Light Red Hot /Darker Red Cold\n* 5 - Black Hot / Darker Red Cold\n* 6 - White Hot . Darker Red Cold\n* 7 - Thermal (Shade of Red and Green, Bodies are white)"
                         }
                     ],
                     "outline": "state `setCamUseTI` modeIndex",
@@ -66098,7 +66098,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "autoThrust",
-                            "description": "`Boolean`"
+                            "description": "`Boolean`\n* `true` - cruise Control: the vehicle will maintain this speed until brakes is applied or driver dies or leaves the vehicle\n* `false` - Speed Limiter: the vehicle will not accelerate above set speed"
                         }
                     ],
                     "outline": "vehicle `setCruiseControl` [speed, autoThrust]",
@@ -66166,7 +66166,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "action",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"Place\"\n* \"Edit\"\n* \"Delete\"\n* \"Destroy\"\n* \"Group\"\n* \"Synchronize\""
                         },
                         {
                             "name": "coef",
@@ -66572,11 +66572,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "{{Icon|serverExec|28}} killer",
-                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill."
+                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.\n* it can be used to show \"killed by player\" in debriefing statistics and kill messages in the chat (if death messages are enabled).\n* it will alter the killer's `rating` as if the killer directly killed the unit\n* it will be listed as <sqf inline>_killer parameter in the [Killed](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23Killed) event handler\n* MP restricted similar to `setShotParents`, will be ignored unless executed on the server or headless client in MP"
                         },
                         {
                             "name": "{{Icon|serverExec|28}} instigator",
-                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage."
+                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage.\n* if a tank is a killer, the tank gunner that pulled the trigger is instigator\n* it will be listed as <sqf inline>_instigator parameter in the [Killed](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23Killed) event handler\n* MP restricted similar to `setShotParents`, will be ignored unless executed on the server or headless client in MP\n** the above MP restriction does not apply to trees, poles and walls"
                         }
                     ],
                     "outline": "object `setDamage` [damage, useEffects, killer, instigator]",
@@ -67099,7 +67099,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "category",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* `**\"Group\"**` - infantry units. Set to a reasonable distance, player should not see disabled infantry units. Default value 500m\n* `**\"Vehicle\"**` - vehicles with crew. Set to a reasonable distance, player should not see disabled vehicles. Default value 350m\n* `**\"EmptyVehicle\"**` - all vehicles without crew. Separated from Props as Empty Vehicles have often more complex damage states and selective destruction. Their activation distance should be larger than the one used for Props. Default value 250m\n* `**\"Prop\"**` - static objects. Anything from a small tin can to a building. Default value 50m"
                         },
                         {
                             "name": "distance",
@@ -67130,7 +67130,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "class",
-                            "description": "`String` - multiplier class, currently only:"
+                            "description": "`String` - multiplier class, currently only:\n* `**\"IsMoving\"**` - Multiplies the entity activation distance by set value if the entity is moving. Default: 2"
                         },
                         {
                             "name": "multiplier",
@@ -67332,7 +67332,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "engineIndex",
-                            "description": "`Number` - index of the engine"
+                            "description": "`Number` - index of the engine\n* engine index 0: engine #1\n* engine index 1: engine #2\n* engine index 2: engine #3\n* engine index -1: all engines"
                         }
                     ],
                     "outline": "helicopter `setEngineRpmRTD` [rpm, engineIndex]",
@@ -67616,7 +67616,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "texture",
-                            "description": "`String` - flag texture. If texture is `**\"\"**`, flag is not drawn. Custom texture can be used:"
+                            "description": "`String` - flag texture. If texture is `**\"\"**`, flag is not drawn. Custom texture can be used:\n* Prior Arma 3: Dimension 200x200, file extension .jpg\n* Since Arma 3: Dimension 512×256, file extension .paa"
                         }
                     ],
                     "outline": "flag `setFlagTexture` texture",
@@ -67741,7 +67741,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "formation",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n{{Columns|2|\n* \"COLUMN\"\n* \"STAG COLUMN\"\n* \"WEDGE\"\n* \"ECH LEFT\"\n* \"ECH RIGHT\"\n* \"VEE\"\n* \"LINE\"\n* {{GVI|arma1|1.00"
                         }
                     ],
                     "outline": "group `setFormation` formation",
@@ -68091,7 +68091,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "properties",
-                            "description": "`Array` in format [color, text, scale, visibility, WPvisibility WPcolor], where:"
+                            "description": "`Array` in format [color, text, scale, visibility, WPvisibility WPcolor], where:\n* color: `Array` - icon color in format [r,g,b,a]\n* text: `String` - icon text\n* scale: `Number` - icon scale\n* visibility: `Boolean` - icon visibility\n* WPvisibility: `Boolean` - waypoint visibility\n* WPcolor: `Array` - waypoint color in format [r,g,b,a]"
                         }
                     ],
                     "outline": "group `setGroupIconParams` properties",
@@ -68383,11 +68383,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "killer",
-                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill."
+                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill.\n* it can be used to show \"killed by player\" in debriefing statistics and kill messages in the chat (if death messages are enabled).\n* it will alter the killer's `rating` as if the killer directly killed the unit.\n* it will be listed as <sqf inline>_killer parameter in the [Killed](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23Killed) event handler."
                         },
                         {
                             "name": "instigator",
-                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage."
+                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage.\n* if a tank is a killer, the tank gunner that pulled the trigger is instigator\n* it will be listed as <sqf inline>_instigator parameter in the [Killed](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23Killed) event handler."
                         },
                         {
                             "name": "breakRotor",
@@ -68431,7 +68431,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "damage",
-                            "description": "`Number` - level of damage"
+                            "description": "`Number` - level of damage\n* 0: no damage\n* 1: full damage"
                         },
                         {
                             "name": "useEffects",
@@ -68439,11 +68439,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "killer",
-                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill. "
+                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill. \n\n* It can be used to show \"killed by player\" in debriefing statistics and kill messages in the chat (if death messages are enabled). \n\n* It will alter the killer's `rating` as if the killer directly killed the unit. \n\n* It will be listed as <sqf inline>_killer parameter in the [Killed](https://community.bistudio.com/wiki/Arma_3%3A_Event_Handlers%23Killed) event handler."
                         },
                         {
                             "name": "instigator",
-                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage."
+                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage.\n* if a tank is a killer, the tank gunner that pulled the trigger is instigator\n* it will be listed as <sqf inline>_instigator parameter in the [Killed](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23Killed) event handler."
                         },
                         {
                             "name": "breakRotor",
@@ -68495,11 +68495,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "{{Icon|serverExec|28}} killer",
-                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill. "
+                            "description": "`Object` - (Optional, default `objNull`) the entity that caused the damage. If the damage leads to the death of the unit, the killer will be used as the object that caused the kill. \n\n* It can be used to show \"killed by player\" in debriefing statistics and kill messages in the chat (if death messages are enabled). \n\n* It will alter the killer's `rating` as if the killer directly killed the unit. \n\n* It will be listed as <sqf inline>_killer parameter in the [Killed](https://community.bistudio.com/wiki/Arma_3%3A_Event_Handlers%23Killed) event handler."
                         },
                         {
                             "name": "{{Icon|serverExec|28}} instigator",
-                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage."
+                            "description": "`Object` - (Optional, default `objNull`) the person that instigated the damage.\n* if a tank is a killer, the tank gunner that pulled the trigger is instigator\n* it will be listed as <sqf inline>_instigator parameter in the [Killed](https://community.bistudio.com/wiki/Arma%203%3A%20Event%20Handlers%23Killed) event handler."
                         },
                         {
                             "name": "breakRotor",
@@ -69388,7 +69388,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "brush",
-                            "description": "`String` - (case-insensitive) can be one of:"
+                            "description": "`String` - (case-insensitive) can be one of:\n{{Columns|4|\n* \"Solid\"\n* {{GVI|arma3|0.50"
                         }
                     ],
                     "outline": "markerName `setMarkerBrush` brush",
@@ -69616,7 +69616,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "path",
-                            "description": "`Array` - `**[x1, y1, x2, y2, ... xn, yn]**`"
+                            "description": "`Array` - `**[x1, y1, x2, y2, ... xn, yn]**`\n**IMPORTANT**: \nBe aware that this command expects an array with a minimum array size of 4 and that the array count always needs to be dividable by 2 and return a whole number. Code:\n\n```sqf\ncount path >= 4 && count path mod 2 == 0; // true → valid path\n```"
                         }
                     ],
                     "outline": "marker `setMarkerPolyline` path",
@@ -69808,7 +69808,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "shape",
-                            "description": "`String` - the shape, can be one of:"
+                            "description": "`String` - the shape, can be one of:\n* `**\"ICON\"**`\n* `**\"RECTANGLE\"**`\n* `**\"ELLIPSE\"**`\n* `**\"POLYLINE\"**`"
                         }
                     ],
                     "outline": "markerName `setMarkerShape` shape",
@@ -69840,7 +69840,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "shape",
-                            "description": "`String` - the shape, can be one of:"
+                            "description": "`String` - the shape, can be one of:\n* `**\"ICON\"**`\n* `**\"RECTANGLE\"**`\n* `**\"ELLIPSE\"**`\n* `**\"POLYLINE\"**`"
                         }
                     ],
                     "outline": "markerName `setMarkerShapeLocal` shape",
@@ -70158,7 +70158,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mimic",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n{{{!}} class=\"valign-top\"\n! style=\"padding-right: 2em\" {{!}} Before Arma 2 OA v1.6x !! Since Arma 2 OA v1.6x\n{{!}}-\n{{!}}\n* \"Default\"\n* \"Normal\"\n* \"Smile\"\n* \"Hurt\"\n* \"Ironic\"\n* \"Sad\"\n* \"Cynic\"\n* \"Surprised\"\n* {{sic|\"Agresive\"}}\n* \"Angry\"\n{{!}}\n* \"neutral\"\n* \"dead\"\n* \"danger\"\n* \"hurt\"\n* \"aware\"\n* \"safe\"\n* \"combat\"\n* \"unconscious\"\n{{!}}}"
                         }
                     ],
                     "outline": "person `setMimic` mimic",
@@ -70831,7 +70831,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`String`, `Number` or `Array`:"
+                            "description": "`String`, `Number` or `Array`:\n* `String` - class name defined in the optic's `**OpticsModes**` config class\n* `Number` - 0-based index of the optic mode with 0 being the default optic mode\n* `Array` - in format [slotIndex, opticsModeIndexOrClassName] where:\n** slotIndex: `Number`, can be one of:\n*** 0 - Current weapon\n*** 1 - Primary weapon\n*** 2 - Secondary weapon\n*** 3 - Handgun\n** opticsModeIndexOrClassName: `String` or `Number` as above"
                         }
                     ],
                     "outline": "unit `setOpticsMode` mode",
@@ -71886,7 +71886,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "index",
-                            "description": "`Number` - from 1 to 10"
+                            "description": "`Number` - from 1 to 10\n\n* 1 - Alpha (key 1)\n* 2 - Bravo (key 2)\n* 3 - Charlie (key 3)\n* 4 - Delta (key 4)\n* 5 - Echo (key 5)\n* 6 - Foxtrot (key 6)\n* 7 - Golf (key 7)\n* 8 - Hotel (key 8)\n* 9 - India (key 9)\n* 10 - Juliet (key 0)"
                         },
                         {
                             "name": "text",
@@ -72046,7 +72046,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rank",
-                            "description": "`String` - one of:"
+                            "description": "`String` - one of:\n{{Columns|4|\n* `**\"PRIVATE\"**`\n* `**\"CORPORAL\"**`\n* `**\"SERGEANT\"**`\n* `**\"LIEUTENANT\"**`\n* `**\"CAPTAIN\"**`\n* `**\"MAJOR\"**`\n* `**\"COLONEL\"**`\n}}"
                         }
                     ],
                     "outline": "unitName `setRank` rank",
@@ -72143,7 +72143,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "enable",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n* 0: off\n* 1: on"
                         }
                     ],
                     "outline": "helicopterRTD `setRotorBrakeRTD` enable",
@@ -72556,7 +72556,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "skillName",
-                            "description": "`String` - available sub-skills are:"
+                            "description": "`String` - available sub-skills are:\n{{Columns|6|\n* `**\"general\"**`\n* `**\"courage\"**`\n* `**\"aimingAccuracy\"**`\n* `**\"aimingShake\"**`\n* `**\"aimingSpeed\"**`\n* `**\"commanding\"**`\n* `**\"endurance\"**`\n* `**\"spotDistance\"**`\n* `**\"spotTime\"**`\n* `**\"reloadSpeed\"**`\n}}"
                         },
                         {
                             "name": "value",
@@ -72826,7 +72826,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "scheme",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"Normal\"\n* \"FastDrain\"\n* \"Exhausted\"\n* \"Default\""
                         }
                     ],
                     "outline": "`setStaminaScheme` scheme",
@@ -72916,7 +72916,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "value",
-                            "description": "`Number` - possible values are:"
+                            "description": "`Number` - possible values are:\n* 0 - metric\n* 1 - mixed\n* 2 - imperial"
                         }
                     ],
                     "outline": "`setSystemOfUnits` value",
@@ -72948,7 +72948,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "age",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n* \"ACTUAL\"\n* \"5 MIN\"\n* \"10 MIN\"\n* \"15 MIN\"\n* \"30 MIN\"\n* \"60 MIN\"\n* \"120 MIN\"\n* \"UNKNOWN\""
                         }
                     ],
                     "outline": "object `setTargetAge` age",
@@ -73041,7 +73041,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "state",
-                            "description": "`String` - state value may be one of:"
+                            "description": "`String` - state value may be one of:\n*\"None\"\n*\"Created\"\n*\"Assigned\"\n*\"Succeeded\"\n*\"Failed\"\n*\"Canceled\""
                         }
                     ],
                     "outline": "task `setTaskState` state",
@@ -73068,7 +73068,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "grid",
-                            "description": "`Number` - for default landscapes the supported resolutions are: "
+                            "description": "`Number` - for default landscapes the supported resolutions are: \n\n* **50** - smoothest, less lag\n* **25** - default in multiplayer\n* **12.5** - default in single player\n* **6.25**\n* **3.125** - bumpiest, higher lag\n**NOTE**: If unsupported resolution is selected, the nearest supported resolution is used instead. Higher number means less vertices are used for terrain rendering, making distant hills less smooth. Value 12.5 corresponds to selecting Terrain Detail Normal in Video options, 50 to Very Low, 3.125 to Very High. In older games like [[:Category:ArmA: Armed Assault|Armed Assault]] terrain resolution is fixed, determined by the world created."
                         }
                     ],
                     "outline": "`setTerrainGrid` grid",
@@ -73103,7 +73103,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "adjustObjects",
-                            "description": "`Boolean` - (Optional, default `true`) if true then objects on modified points are moved up/down to keep the same ATL height"
+                            "description": "`Boolean` - (Optional, default `true`) if true then objects on modified points are moved up/down to keep the same ATL height\n**IMPORTANT**: **All** objects above modified terrain will be adjusted, even flying ones."
                         }
                     ],
                     "outline": "`setTerrainHeight` [positionAndAltitudeArray, adjustObjects]",
@@ -73230,7 +73230,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"NONE\"\n* \"OBJECT\"\n** _text_ defines the shown object , a subclass of `**CfgTitles**` (see `cutObj`)\n** _effect_ defines [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)\n* \"RES\"\n** _text_ defines a resource class, a subclass of RscTitles (see `cutRsc`)\n** _effect_ defines [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)\n* \"TEXT\"\n** _text_ defines text string to show (see `cutText`)\n** _effect_ defines [Title Effect Type](https://community.bistudio.com/wiki/Title%20Effect%20Type)"
                         },
                         {
                             "name": "effect",
@@ -73458,11 +73458,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "by",
-                            "description": "`String` - who activates trigger. Can be `**\"NONE\"**`, or:"
+                            "description": "`String` - who activates trigger. Can be `**\"NONE\"**`, or:\n{{{!}} class=\"wikitable valign-top\"\n! Side\n! Radio\n! Object\n! Status\n{{!}}-\n{{!}}\n{{Columns|2|\n* `**\"EAST\"**`\n* `**\"WEST\"**`\n* `**\"GUER\"**`\n* `**\"CIV\"**`\n* `**\"LOGIC\"**`\n* `**\"ANY\"**`\n* {{GVI|arma3|1.68"
                         },
                         {
                             "name": "type",
-                            "description": "`String` - how trigger is it activated. Can be:"
+                            "description": "`String` - how trigger is it activated. Can be:\n{{{!}} class=\"wikitable valign-top\"\n! Presence\n! Detection\n{{!}}-\n{{!}}\n* `**\"PRESENT\"**`\n* `**\"NOT PRESENT\"**`\n{{!}}\n* `**\"WEST D\"**`\n* `**\"EAST D\"**`\n* `**\"GUER D\"**`\n* `**\"CIV D\"**`\n{{!}}}"
                         },
                         {
                             "name": "repeating",
@@ -73587,15 +73587,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "condition",
-                            "description": "`String` - code containing trigger condition. Special variables available here:"
+                            "description": "`String` - code containing trigger condition. Special variables available here:\n* [this](https://community.bistudio.com/wiki/Magic%20Variables%23this_2) (`Boolean`) - detection event\n* `thisTrigger` (`Object`) - trigger instance\n* `thisList` (`Array`) - array of all detected entities"
                         },
                         {
                             "name": "activation",
-                            "description": "`String` - code that is executed when the trigger is activated. Special variables available here:"
+                            "description": "`String` - code that is executed when the trigger is activated. Special variables available here:\n* `thisTrigger` (`Object`) - trigger instance\n* `thisList` (`Array`) - array of all detected entities"
                         },
                         {
                             "name": "deactivation",
-                            "description": "`String` - code that is executed when the trigger is deactivated. Special variable available here:"
+                            "description": "`String` - code that is executed when the trigger is deactivated. Special variable available here:\n* `thisTrigger` (`Object`) - trigger instance"
                         }
                     ],
                     "outline": "trigger `setTriggerStatements` [condition, activation, deactivation]",
@@ -74104,7 +74104,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n* \"DOWN\" - Unit goes prone and stays prone.\n* \"UP\" - Unit stands and stays standing.\n* \"MIDDLE\" - Kneel Position. **(Armed Assault)** - Unit will not kneel if it is unarmed\n* \"AUTO\" - Unit chooses mode according to circumstances."
                         }
                     ],
                     "outline": "unit `setUnitPos` mode",
@@ -74137,7 +74137,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n* \"DOWN\" - Unit goes prone and stays prone.\n* \"UP\" - Unit stands and stays standing.\n* \"MIDDLE\" - Kneel Position. **(Armed Assault)** - Unit will not kneel if it is unarmed\n* \"AUTO\" - Unit chooses mode according to circumstances."
                         }
                     ],
                     "outline": "unit `setUnitPosWeak` mode",
@@ -74447,7 +74447,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "varspace",
-                            "description": "variable space in which variable can be set. Can be one of:"
+                            "description": "variable space in which variable can be set. Can be one of:\n{{Columns|2|\n* `Namespace`\n* `Object`\n** {{Icon|checked}} {{GVI|arma3|2.10"
                         },
                         {
                             "name": "name",
@@ -74459,7 +74459,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "public",
-                            "description": "(Optional, default `false`) can be one of:"
+                            "description": "(Optional, default `false`) can be one of:\n* `Boolean` - if set to `true`, the variable is broadcast globally and is persistent ([JIP](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) compatible) {{Icon|globalEffect|32}}\n* `Number` - the variable is only set on the client with the given [Machine network ID](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Machine%20network%20ID). If the number is negative, the variable is set on every client except for the one with the given ID.\n* `Array` of `Number`s - array of [Machine network IDs](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Machine%20network%20ID)\n\nThis parameter is only available if the **varspace** parameter is a `Namespace`, `Object` or `Group`. Furthermore, only the following [Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) can be broadcast:\n{{{!}} class=\"wikitable align-center\"\n! Type\n{{!}} `Number`\n{{!}} `Boolean`\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `String`\n{{!}} [Text](https://community.bistudio.com/wiki/Structured%20Text)\n{{!}} `Array`\n{{!}} `Code`\n{{!}} `Nothing` (`nil`)\n{{!}} `HashMap`\n{{!}}-\n! Since\n{{!}} colspan=\"6\" {{!}} **(Armed Assault)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}}"
                         }
                     ],
                     "outline": "varspace `setVariable` [name, value, public]",
@@ -74832,11 +74832,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "position",
-                            "description": "`Array` format [PositionATL](https://community.bistudio.com/wiki/Position%23PositionATL) ([PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) if boat or amphibious), [Position2D](https://community.bistudio.com/wiki/Position%23Introduction), or `Object` - desired placement position."
+                            "description": "`Array` format [PositionATL](https://community.bistudio.com/wiki/Position%23PositionATL) ([PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) if boat or amphibious), [Position2D](https://community.bistudio.com/wiki/Position%23Introduction), or `Object` - desired placement position.\nIf object is given, object position is used for _position_. Normally only _x_ and _y_ are considered, unless \"CAN_COLLIDE\" is used for special placement"
                         },
                         {
                             "name": "markers",
-                            "description": "`Array` of `String`s - if the markers array contains one or more marker names, the position is chosen randomly and could be one of the marker positions or just the supplied main position."
+                            "description": "`Array` of `String`s - if the markers array contains one or more marker names, the position is chosen randomly and could be one of the marker positions or just the supplied main position.\nIf marker had z coordinate set with `setMarkerPos`, the vehicle will be placed on the nearest surface below this z coordinate"
                         },
                         {
                             "name": "placement",
@@ -74844,7 +74844,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "special",
-                            "description": "`String` - (Optional, default \"NONE\") can be one of the following: "
+                            "description": "`String` - (Optional, default \"NONE\") can be one of the following: \n* `**\"NONE\"**` - will look for suitable empty position near given position (subject to other placement params) before placing vehicle there. \n* `**\"CAN_COLLIDE\"**` - places vehicle at given position (subject to other placement params), without checking if others objects can cross its 3D model. \n* `**\"FLY\"**` - if vehicle is capable of flying and has crew, it will be made airborne at default height. \nIf _special_ is \"\" or not specified, default `**\"NONE\"**` is used."
                         }
                     ],
                     "outline": "object `setVehiclePosition` [position, markers, placement, special]",
@@ -74877,7 +74877,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rule",
-                            "description": "`Number` - can be one of the following:"
+                            "description": "`Number` - can be one of the following:\n* 0 - automatic\n* 1 - forced on\n* 2 - forced off"
                         }
                     ],
                     "outline": "vehicle `setVehicleRadar` rule",
@@ -75468,7 +75468,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n* \"NO CHANGE\"\n* \"BLUE\"\n* \"GREEN\"\n* \"WHITE\"\n* \"YELLOW\"\n* \"RED\""
                         }
                     ],
                     "outline": "waypoint `setWaypointCombatMode` mode",
@@ -75557,7 +75557,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "waypoint",
-                            "description": "`Waypoint` - format [group, index]:"
+                            "description": "`Waypoint` - format [group, index]:\n* group: `Group`\n* index: `Number`"
                         },
                         {
                             "name": "state",
@@ -75965,7 +75965,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - waypoint type. Can be:"
+                            "description": "`String` - waypoint type. Can be:\n{{Columns|4|\n* `**\"MOVE\"**`\n* `**\"DESTROY\"**`\n* `**\"GETIN\"**`\n* `**\"SAD\"**` _(Seek And Destroy)_\n* `**\"JOIN\"**`\n* `**\"LEADER\"**`\n* `**\"GETOUT\"**`\n* `**\"CYCLE\"**`\n* `**\"LOAD\"**`\n* `**\"UNLOAD\"**`\n* `**\"TR UNLOAD\"**`\n* `**\"HOLD\"**`\n* `**\"SENTRY\"**`\n* `**\"GUARD\"**` <small>(used with GUARDED BY trigger or `createGuardedPoint`)</small>\n* `**\"TALK\"**`\n* `**\"SCRIPTED\"**`\n* `**\"SUPPORT\"**`\n* `**\"GETIN NEAREST\"**`\n* `**\"DISMISS\"**`\n* `**\"LOITER\"}} <small>({{arma3**`)</small>\n* {{GVI|arma3|1.34"
                         }
                     ],
                     "outline": "waypoint `setWaypointType` type",
@@ -76575,7 +76575,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "kills",
-                            "description": "`Boolean` - (Optional, default `true`) show \"x killed by y\" `systemChat` messages"
+                            "description": "`Boolean` - (Optional, default `true`) show \"x killed by y\" `systemChat` messages\n<!--"
                         },
                         {
                             "name": null,
@@ -77202,7 +77202,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "show",
-                            "description": "`String` - possible values are:"
+                            "description": "`String` - possible values are:\n* \"NEVER\" - Never show\n* \"EASY\" - Show only if `**showCadetWP**` is enabled in global [difficulty](https://community.bistudio.com/wiki/Arma%203%3A%20Difficulty%20Settings).\n* \"ALWAYS\" - Always show"
                         }
                     ],
                     "outline": "waypoint `showWaypoint` show",
@@ -77348,7 +77348,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "identity",
-                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:"
+                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:\n{{Columns|4|\n* \"Base\"\n* \"HQ\"\n* \"PAPA_BEAR\"\n* \"AirBase\"\n* \"BLU\"\n* \"OPF\"\n* \"IND\"\n* \"IND_G\"\n}}"
                         },
                         {
                             "name": "chatText",
@@ -77493,7 +77493,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "identity",
-                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:"
+                            "description": "`String` - class name of one of the identities in CfgHQIdentities. Possible identities in Arma 3 are:\n{{Columns|4|\n* \"Base\"\n* \"HQ\"\n* \"PAPA_BEAR\"\n* \"AirBase\"\n* \"BLU\"\n* \"OPF\"\n* \"IND\"\n* \"IND_G\"\n}}"
                         },
                         {
                             "name": "radioName",
@@ -77838,7 +77838,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "skillName",
-                            "description": "`String` - possible values are:"
+                            "description": "`String` - possible values are:\n{{Columns|5|\n* \"aimingAccuracy\"\n* \"aimingShake\"\n* \"aimingSpeed\"\n* \"endurance\"\n* \"spotDistance\"\n* \"spotTime\"\n* \"courage\"\n* \"reloadSpeed\"\n* \"commanding\"\n* \"general\"\n}}"
                         }
                     ],
                     "outline": "unit `skill` skillName",
@@ -77869,7 +77869,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "skillName",
-                            "description": "`String` - see [[AI Sub-skills|sub-skill]]. Possible values are:"
+                            "description": "`String` - see [[AI Sub-skills|sub-skill]]. Possible values are:\n* \"aimingAccuracy\"\n* \"aimingShake\"\n* \"aimingSpeed\"\n* \"endurance\" (Has no effect in Arma 3)\n* \"spotDistance\"\n* \"spotTime\"\n* \"courage\"\n* \"reloadSpeed\"\n* \"commanding\"\n* \"general\""
                         }
                     ],
                     "outline": "unit `skillFinal` skillName",
@@ -78324,11 +78324,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "array",
-                            "description": "`Array` - array to be sorted, can also be a nested array."
+                            "description": "`Array` - array to be sorted, can also be a nested array.\n\n\nAll array elements should be one of the following types:\n* `String` - Array of strings `**[\"a\",\"b\",\"c\"...]**`\n* `Number` - Array of numbers `**[1,2,3...]**`\n* `Array` - Array of subarrays `**[<nowiki/>[\"a\",1,2],[\"b\",3,4],[\"c\",5,6]...]**`. Subarrays should be of the same structure. Subarray elements other than `String` or `Number` will be ignored during sorting.\nMixed arrays `**[\"a\",1,[true], ...]**` are not supported and results are undefined."
                         },
                         {
                             "name": "order",
-                            "description": "`Boolean` - sorting order. "
+                            "description": "`Boolean` - sorting order. \n* `true`: ascending\n* `false`: descending"
                         }
                     ],
                     "outline": "array `sort` order",
@@ -79055,7 +79055,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "z or useLayerMask",
-                            "description": "`Number` or `Boolean` - When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower."
+                            "description": "`Number` or `Boolean` - When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower.\n[[File:Capture.png|thumb|256px|The patches of \"dirt\" are defined using a layer mask. The \"concrete\" is the primary surface texture.]]"
                         }
                     ],
                     "outline": "`surfaceTexture` [x, y, z or useLayerMask]",
@@ -79096,7 +79096,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "z or useLayerMask",
-                            "description": "`Number` or `Boolean` - When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower."
+                            "description": "`Number` or `Boolean` - When a number is provided (Z in 3D positions), it is ignored. When a boolean is provided, it defines whether the layer mask should be used. Using the layer mask is more accurate but slightly slower.\n[[File:Capture.png|thumb|256px|The patches of \"dirt\" are defined using a layer mask. The \"concrete\" is the primary surface texture.]]"
                         }
                     ],
                     "outline": "`surfaceType` [x, y, z or useLayerMask]",
@@ -79650,7 +79650,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "triggerOrWaypoint",
-                            "description": "`Object` or `Waypoint` - can be:"
+                            "description": "`Object` or `Waypoint` - can be:\n* `Object` - [trigger](https://community.bistudio.com/wiki/Trigger)\n* `Waypoint` - `Array` in format of `Waypoint`"
                         },
                         {
                             "name": "waypoints",
@@ -79925,7 +79925,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "candidates",
-                            "description": "`Array` -  array of targets in format [<nowiki/>[accuracy, target, targetSide, targetType, targetPosition, targetAge], ...] where:"
+                            "description": "`Array` -  array of targets in format [<nowiki/>[accuracy, target, targetSide, targetType, targetPosition, targetAge], ...] where:\n* accuracy: `Number` - a coefficient, which reflects how close the returned result to the query filter. Range: 0..1, 1 being the best match\n* target: `Object` - the actual target object\n* targetSide: `Side` - side of the target\n* targetType: `String` - target `typeOf`\n* targetPosition: `Array` format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) - [x,y] of the target \n* targetAge: `Number` - the actual target age in seconds (can be negative)\n**NOTE**: See `targetsQuery` format."
                         }
                     ],
                     "outline": "[speaker, side, classname, position, timeMax] `targetsAggregate` candidates",
@@ -80172,7 +80172,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "icon",
-                            "description": "`String` - one of:"
+                            "description": "`String` - one of:\n{{Columns|2|\n* \"taskNew\"\n* \"taskCurrent\"\n* \"taskDone\"\n* \"taskFailed\"\n}}"
                         }
                     ],
                     "outline": "`taskHint` [text, colour, icon]",
@@ -80847,7 +80847,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "thenCode",
-                            "description": "`Code` or `Array` of `Code`:"
+                            "description": "`Code` or `Array` of `Code`:\n* `Code` - code block to execute if _ifType_<nowiki/>'s condition is `true`\n* `Array` of `Code` - array of two `Code` elements in format [thenCode, elseCode]; see {{Link|#Example 3}}"
                         }
                     ],
                     "outline": "ifType `then` thenCode",
@@ -81393,7 +81393,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "array",
-                            "description": "`Array` of `Number`s"
+                            "description": "`Array` of `Number`s\n**IMPORTANT**: If _array_ contains non-number values, the following error might appear in .rpt file: `**Bad conversion: scalar. See `parseSimpleArray` for multi-type array.**`"
                         }
                     ],
                     "outline": "`toString` array",
@@ -81911,7 +81911,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "where",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n* 0 - trim at the beginning (left) and the end (right)\n* 1 - trim at the beginning (left)\n* 2 - trim at the end (right)"
                         }
                     ],
                     "outline": "string `trim` [chars, where]",
@@ -86811,7 +86811,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "waypoint",
-                            "description": "`Waypoint` - format [group, index]:"
+                            "description": "`Waypoint` - format [group, index]:\n* group: `Group`\n* index: `Number`"
                         }
                     ],
                     "outline": "`waypointForceBehaviour` waypoint",
