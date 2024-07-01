@@ -611,6 +611,7 @@ class BikiTextInterpreter {
     // link replacement [[Control_Structures#if-Statement|here]] (in "if" doc)
     // {{Link|Variables#Local Variables Scope.}} (in "then" doc)
     // {{Link|#Example 3}} (in "then" doc) these should probably not be turned into links, just text that says Example X
+    // remove <nowiki/> declarations, not sure what these actually mean. shows up in "if" doc
 
     private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
     private readonly BIKI_BASE_URL = "https://community.bistudio.com/wiki";
