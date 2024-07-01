@@ -29,6 +29,10 @@ import {
 import { SQFGrammarType, SQFItemConfig } from "../../../configuration/grammars/sqf.namespace";
 import { getSqfItemConfigs } from "../../../configuration/grammars/config";
 
+const indent = "&ensp;&ensp;&ensp;&ensp;";
+const sectionHeader = "### ";
+const sectionSubHeader = `#### `;
+
 export class NodeSQFServer implements ISQFServer {
     public readonly hoverProvider: IHoverProvider;
     public readonly completionProvider: ICompletionProvider;
@@ -168,26 +172,48 @@ export class NodeSQFServer implements ISQFServer {
             document.push(`*[Open Documentation](${documentationLink})*`);
         }
 
-        let headerLine = [];
+        let localityLine = [];
         if (itemDocumentation.argumentLocality) {
-            headerLine.push(`[${itemDocumentation.argumentLocality}]`);
+            localityLine.push(`[${itemDocumentation.argumentLocality}]`);
         }
         if (itemDocumentation.effectLocality) {
-            headerLine.push(`[${itemDocumentation.effectLocality}]`);
+            localityLine.push(`[${itemDocumentation.effectLocality}]`);
         }
         if (itemDocumentation.serverExecution) {
-            headerLine.push("[Server Executed]");
+            localityLine.push("[Server Executed]");
         }
-        if (headerLine.length) {
-            document.push(headerLine.join(" "));
+        if (localityLine.length) {
+            document.push(localityLine.join(" "));
         }
 
         if (itemDocumentation.description) {
-            document.push(itemDocumentation.description);
+            document.push(`${sectionHeader}Description:\n\n${itemDocumentation.description}`);
+        }
+
+        if (itemDocumentation.syntaxes?.length) {
+            const syntaxes: string[] = [];
+            itemDocumentation.syntaxes.forEach((syntax, index) => {
+                const syntaxSection: string[] = [];
+                syntaxSection.push(`${sectionSubHeader}Syntax ${index + 1}:`);
+                syntaxSection.push(`${indent}${syntax.outline}`);
+                if (syntax.parameters.length) {
+                    syntaxSection.push(`${sectionSubHeader}Parameters:`);
+                    syntax.parameters.forEach((parameter) => {
+                        // formatting for bullet lists lists
+                        const description = parameter.description?.replaceAll("\n* ", "\n\t* ");
+                        syntaxSection.push(`* \`${parameter.name}\` - ${description}`);
+                    });
+                }
+                syntaxSection.push(`${sectionSubHeader}Returns:`);
+                syntaxSection.push(`${indent}${syntax.returns}`);
+                syntaxes.push(syntaxSection.join("\n\n"));
+            });
+
+            document.push(`### Syntaxes:\n\n${syntaxes.join("\n\n")}`);
         }
 
         // TODO: implement doc creation
-        return document.join("\n\n");
+        return document.join("\n\n---\n\n");
     }
 
     private getCompletionItemKindFromGrammarType(
