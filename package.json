@@ -21,9 +21,7 @@
         "update:biki:functions": "ts-node ./Parsers/Parse.ts --parseType=biki:functions --command=update",
         "update:kiska": "ts-node ./Parsers/Parse.ts --parseType=kiska --command=update",
         "parse:kiska": "ts-node ./Parsers/Parse.ts --parseType=kiska",
-        "build": "ts-node ./build-process/build",
-        "install:prod": "cd .out && npm ci --production",
-        "compile:docs": "ts-node ./scripts/compile-docs.ts"
+        "build": "ts-node ./build-process/build"
     },
     "devDependencies": {
         "@types/fs-extra": "^11.0.0",
