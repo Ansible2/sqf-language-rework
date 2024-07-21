@@ -609,8 +609,6 @@ class BikiTextInterpreter {
 
     // TODO:
     // link replacement [[Control_Structures#if-Statement|here]] (in "if" doc)
-    // {{Link|Variables#Local Variables Scope.}} (in "then" doc)
-    // {{Link|#Example 3}} (in "then" doc) these should probably not be turned into links, just text that says Example X
     // remove <nowiki/> declarations, not sure what these actually mean. shows up in "if" doc
 
     private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
@@ -635,6 +633,26 @@ class BikiTextInterpreter {
         [/<br>/gi, "\n"],
         // spoilers
         [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
+        // Links to examples inside the doc
+        // TODO: test {{Link|#Example 3}} (in "then" doc) these should probably not be turned into links, just text that says Example X
+        [
+            /\{\{\s*link\s*\|\s*#Example\s*(\d+)\s*\}\}/gi,
+            getStringReplacer((replacementInfo) => {
+                const exampleNumber = replacementInfo.captureGroups[1];
+                return `_Example ${exampleNumber}_`;
+            }),
+        ],
+        // Internal Hyperlinks
+        // TODO: test {{Link|Variables#Local Variables Scope.}} (in "then" doc)
+        [
+            /\{\{\s*link\s*\|\s*(\w+)\#(.*?)\}\}/gi,
+            getStringReplacer((replacementInfo) => {
+                const originalSubSection = replacementInfo.captureGroups[1];
+                const subUrl = encodeURIComponent(originalSubSection);
+                const section = replacementInfo.captureGroups[1];
+                return `[${section} - ${originalSubSection}](${this.BIKI_BASE_URL}/${section}#${subUrl})`;
+            }),
+        ],
         // Described Internal Hyperlinks
         [
             /\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi,
