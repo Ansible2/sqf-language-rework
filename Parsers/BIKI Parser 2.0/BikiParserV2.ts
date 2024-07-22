@@ -634,7 +634,6 @@ class BikiTextInterpreter {
         // spoilers
         [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
         // Links to examples inside the doc
-        // TODO: test {{Link|#Example 3}} (in "then" doc) these should probably not be turned into links, just text that says Example X
         [
             /\{\{\s*link\s*\|\s*#Example\s*(\d+)\s*\}\}/gi,
             getStringReplacer((replacementInfo) => {
@@ -643,12 +642,11 @@ class BikiTextInterpreter {
             }),
         ],
         // Internal Hyperlinks
-        // TODO: test {{Link|Variables#Local Variables Scope.}} (in "then" doc)
         [
             /\{\{\s*link\s*\|\s*(\w+)\#(.*?)\}\}/gi,
             getStringReplacer((replacementInfo) => {
-                const originalSubSection = replacementInfo.captureGroups[1];
-                const subUrl = encodeURIComponent(originalSubSection);
+                const originalSubSection = replacementInfo.captureGroups[2];
+                const subUrl = originalSubSection.replaceAll(" ", "_");
                 const section = replacementInfo.captureGroups[1];
                 return `[${section} - ${originalSubSection}](${this.BIKI_BASE_URL}/${section}#${subUrl})`;
             }),

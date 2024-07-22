@@ -9087,7 +9087,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - **case-sensitive**, can be one of:"
+                            "description": "`String` - **case-sensitive**, can be one of:\n* \"show\" - Shows controls hints\n* \"hide\" - Hides controls hints\n* \"toggle\" - Toggles controls hints"
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_3DENControlsHint`",
@@ -9211,7 +9211,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - case insensitive. Can be:"
+                            "description": "`String` - case insensitive. Can be:\n{{Columns|3|\n* \"onEntityMenu\"\n* \"reset\"\n* \"moveCamera\"\n* \"playFromHere\"\n* \"playAsEntity\"\n* \"grid\"\n* \"arsenal\"\n* \"arsenalReset\"\n* \"garage\"\n* \"garageReset\"\n* \"findCreate\"\n* \"findConfig\"\n* \"logClasses\"\n* \"logPosition\"\n}}"
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_3DENEntityMenu`",
@@ -9348,7 +9348,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n* -2: restore the current mode\n* -1: toggle mode\n* &nbsp;0: off\n* &nbsp;1: on\n&nbsp;"
                         }
                     ],
                     "outline": "mode call `BIS_fnc_3DENFlashlight`",
@@ -9375,11 +9375,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n*\"increase\"\n*\"decrease\"\n*\"init\"\n*\"OnGridChange\""
                         },
                         {
                             "name": "input",
-                            "description": "`Array` - array in form:"
+                            "description": "`Array` - array in form:\n\n0: Control\n\n1: Config - Path to control"
                         }
                     ],
                     "outline": "[mode, input] call `BIS_fnc_3DENGrid`",
@@ -9454,7 +9454,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n\n* \"init\"\n* \"select\""
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_3DENListLocations`",
@@ -9625,11 +9625,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "buttonOK",
-                            "description": "`String`, `Boolean` or `Array` - (Optional, default \"\") can be one of:"
+                            "description": "`String`, `Boolean` or `Array` - (Optional, default \"\") can be one of:\n* `String` - button's text\n* `Boolean` - show button or not\n* `Array` - in format [<nowiki/>`String` or `Boolean`, `Code`]:\n** `String` or `Boolean` - same as above\n** `Code` - code executed when button is pressed"
                         },
                         {
                             "name": "buttonCancel",
-                            "description": "`String`, `Boolean` or `Array` - (Optional, default \"\") can be one of:"
+                            "description": "`String`, `Boolean` or `Array` - (Optional, default \"\") can be one of:\n* `String` - button's text\n* `Boolean` - show button or not\n* `Array` - in format [<nowiki/>`String` or `Boolean`, `Code`]:\n** `String` or `Boolean` - same as above\n** `Code` - code executed when button is pressed"
                         },
                         {
                             "name": "icon",
@@ -9681,7 +9681,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n\n{{Columns|3|\n*\"init\"\n*\"VerticalToggle\"\n*\"SurfaceSnapToggle\"\n*\"MoveGridToggle\"\n*\"RotateGridToggle\"\n*\"ScaleGridToggle\"\n*\"WidgetToggle\"\n*\"ToggleMap\"\n*\"ToggleVision\"\n*\"ToggleFlashlight\"\n*\"MissionSection\"\n}}"
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_3DENToolbar`",
@@ -9747,7 +9747,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n* -2: restore the current mode\n* -1: toggle mode\n* &nbsp;0: Normal\n* &nbsp;1: Night vision\n* &nbsp;2: Thermal\n&nbsp;"
                         }
                     ],
                     "outline": "mode call `BIS_fnc_3DENVisionMode`",
@@ -10059,11 +10059,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "target",
-                            "description": "Receiver of the respawn loadout"
+                            "description": "Receiver of the respawn loadout\n* `Namespace` - use `missionNamespace` to add the loadout to everyone\n* `Side`\n* `Group`\n* `Object`"
                         },
                         {
                             "name": "inventoryParams",
-                            "description": "`Array` or `String`"
+                            "description": "`Array` or `String`\n* `String` - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class\n* `Array` - format [class, number, limit]\n** class: `String` - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class\n** number: `Number` - Number of players who can use this inventory (-1 = no limit, default)\n** limit: `Number` - Limit for role assigned to given loadout (-1 = no limit, default) \n*** Only role or only loadout can be limited at one moment, if there is limit for both, then only role uses limit.\n*** If the limit definition for role is called multiple times with different numbers, then the highest number is used."
                         }
                     ],
                     "outline": "[target, inventoryParams] call `BIS_fnc_addRespawnInventory`",
@@ -10098,7 +10098,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**position**",
-                            "description": "`Array`, `Object` or `String`"
+                            "description": "`Array`, `Object` or `String`\n* `Array` - format [PositionATL](https://community.bistudio.com/wiki/Position%23PositionATL)\n* `Object` - specific object. When some crew positions are available and unlocked, players will be respawned on them, otherwise they will appear around the object.\n* `String` - marker name"
                         },
                         {
                             "name": "**name**",
@@ -10381,11 +10381,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` - (Optional, default 1) defines what the function will do, can be:"
+                            "description": "`Number` - (Optional, default 1) defines what the function will do, can be:\n* -1 - remove given items\n* &nbsp;0 - return current content\n* &nbsp;1 - add given items"
                         },
                         {
                             "name": "itemType",
-                            "description": "`Number` - (Optional, default 0) define the item type, can be:"
+                            "description": "`Number` - (Optional, default 0) define the item type, can be:\n* 0 - items\n* 1 - weapons\n* 2 - magazines\n* 3 - backpacks"
                         }
                     ],
                     "outline": "[object, itemClasses, addItemsGlobal, arsenal, mode, itemType] call `BIS_fnc_addVirtualItemCargo`",
@@ -10508,7 +10508,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`Number` or `String` - (Optional, default 0)"
+                            "description": "`Number` or `String` - (Optional, default 0)\n* `Number` - Index of magazine name that should be used - found in <syntaxhighlight lang=\"cpp\" inline>magazines = {}</syntaxhighlight> array.\n* `String` - Magazine name to be used."
                         }
                     ],
                     "outline": "[unit, weaponClassName, quantity, type] call `BIS_fnc_addWeapon`",
@@ -10547,7 +10547,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "reversed",
-                            "description": "`Number` - (Optional, default 0) some objects, usually vehicles, are reveresed in p3d; valid values are:"
+                            "description": "`Number` - (Optional, default 0) some objects, usually vehicles, are reveresed in p3d; valid values are:\n* &nbsp;0: no change\n* &nbsp;1: reverse\n* -1: unknown (behaves as 0)"
                         },
                         {
                             "name": "verticalOffset",
@@ -10555,7 +10555,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animationAdjustments",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) animation that need to be animated to given state, in format [animationName, animationState]:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) animation that need to be animated to given state, in format [animationName, animationState]:\n* animationName: `String` - animation name\n* animationState: `Number` - animation state"
                         },
                         {
                             "name": "selectionsToHide",
@@ -10899,7 +10899,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "params",
-                            "description": "`Array`"
+                            "description": "`Array`\n*0: aircraft: `Object`\n*1: needsHook: `Boolean` - (optional, default `false`) if `false`, function will exit and no tailhook functionality is initialized"
                         }
                     ],
                     "outline": "[params, isLanding] call `BIS_fnc_aircraftTailhookAi`",
@@ -10943,7 +10943,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "array",
-                            "description": "`Array` - in format"
+                            "description": "`Array` - in format\n\n```sqf\n[\n\t[\"left column 1\", \"right column 1\"],\n\t[\"left column 2\", \"right column 2\"],\n\t// ...\n]\n```"
                         }
                     ],
                     "outline": "array call `BIS_fnc_alignTabs`",
@@ -11008,7 +11008,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "vehicleClass",
                             "description": "`String` - classname of the vehicle"
-                        },
+                        }
+                    ],
+                    "outline": "vehicleClass call `BIS_fnc_allTurrets`",
+                    "returns": "`Array`  of turret paths"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "vehicleClass",
                             "description": "`String` - classname of the vehicle"
@@ -11049,11 +11055,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animationSet",
-                            "description": "`String` - the animation set to play. Possible values:"
+                            "description": "`String` - the animation set to play. Possible values:\n{{{!}}\n{{!}}+ style=\"caption-side: bottom\" {{!}} _some values are missing due to duplicate results, e.g \"STAND\" does the same as \"STAND1\"_\n{{!}}- style=\"vertical-align: top\"\n{{!}}\n* STAND1\n* STAND2\n* STAND_U1\n* STAND_U2\n* STAND_U3\n* WATCH\n* WATCH2\n* GUARD\n* LISTEN_BRIEFING\n* LEAN_ON_TABLE\n* LEAN\n{{!}}\n* SIT_AT_TABLE\n* SIT1\n* SIT\n* SIT3\n* SIT_U1\n* SIT_U2\n* SIT_U3\n* SIT_HIGH1\n* SIT_HIGH\n* SIT_LOW\n* SIT_LOW_U\n* SIT_SAD1\n* SIT_SAD2\n{{!}}\n* KNEEL\n* REPAIR_VEH_PRONE\n* REPAIR_VEH_KNEEL\n* REPAIR_VEH_STAND\n* PRONE_INJURED_U1\n* PRONE_INJURED_U2\n* PRONE_INJURED\n* KNEEL_TREAT\n* KNEEL_TREAT2\n* BRIEFING\n* BRIEFING_POINT_LEFT\n* BRIEFING_POINT_RIGHT\n* BRIEFING_POINT_TABLE\n{{!}}}"
                         },
                         {
                             "name": "equipmentLevel",
-                            "description": "`String` - the equipment level of the unit. Possible values:"
+                            "description": "`String` - the equipment level of the unit. Possible values:\n* NONE\n* LIGHT\n* MEDIUM\n* FULL\n* ASIS\n* RANDOM"
                         },
                         {
                             "name": "snapTo",
@@ -11096,11 +11102,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animationSet",
-                            "description": "`String` - (Optional, default \"STAND\") the animation set to play. Possible values are:"
+                            "description": "`String` - (Optional, default \"STAND\") the animation set to play. Possible values are:\n* \"STAND\"\n* \"STAND_IA\"\n* \"SIT_LOW\"\n* \"KNEEL\"\n* \"LEAN\"\n* \"WATCH\"\n* \"WATCH1\"\n* \"WATCH2\""
                         },
                         {
                             "name": "equipmentLevel",
-                            "description": "`String` - (Optional, default \"RANDOM\") the equipment level of the unit. Possible values are:"
+                            "description": "`String` - (Optional, default \"RANDOM\") the equipment level of the unit. Possible values are:\n* \"NONE\"\n* \"LIGHT\"\n* \"MEDIUM\"\n* \"FULL\"\n* \"ASIS\"\n* \"RANDOM\""
                         },
                         {
                             "name": "condition",
@@ -11135,7 +11141,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "animType",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n{{Columns|4|\n* \"STAND1\"\n* \"STAND2\"\n* \"STAND_U1\"\n* \"STAND_U2\"\n* \"STAND_U3\"\n* \"WATCH\"\n* \"WATCH2\"\n* \"GUARD\"\n* \"LISTEN_BRIEFING\"\n* \"LEAN_ON_TABLE\"\n* \"LEAN\"\n* \"SIT_AT_TABLE\"\n* \"SIT1\"\n* \"SIT\"\n* \"SIT3\"\n* \"SIT_U1\"\n* \"SIT_U2\"\n* \"SIT_U3\"\n* \"SIT_HIGH1\"\n* \"SIT_HIGH\"\n* \"SIT_LOW\"\n* \"SIT_LOW_U\"\n* \"SIT_SAD1\"\n* \"SIT_SAD2\"\n* \"KNEEL\"\n* \"REPAIR_VEH_PRONE\"\n* \"REPAIR_VEH_KNEEL\"\n* \"REPAIR_VEH_STAND\"\n* \"PRONE_INJURED_U1\"\n* \"PRONE_INJURED_U2\"\n* \"PRONE_INJURED\"\n* \"KNEEL_TREAT\"\n* \"KNEEL_TREAT2\"\n* \"BRIEFING\"\n* \"BRIEFING_POINT_LEFT\"\n* \"BRIEFING_POINT_RIGHT\"\n* \"BRIEFING_POINT_TABLE\"\n}}"
                         }
                     ],
                     "outline": "animType call `BIS_fnc_ambientAnimGetParams`",
@@ -11469,7 +11475,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "timeline",
-                            "description": "`Array` - array in format [time, code]: "
+                            "description": "`Array` - array in format [time, code]: \n* time: `Number` - time the code is executed\n* code: `Code` - code executed when _time_ is reached"
                         },
                         {
                             "name": "indexEvent",
@@ -11576,7 +11582,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "instant (Optional, default `false`)",
-                            "description": "* `Boolean` - when `true`, animation is instant (\"FlagAnimationDone\" EH is not called in this case)"
+                            "description": "\n* `Boolean` - when `true`, animation is instant (\"FlagAnimationDone\" EH is not called in this case)\n* `Number` - animation duration multiplier"
                         }
                     ],
                     "outline": "[flag, phase, instant] call `BIS_fnc_animateFlag`",
@@ -11633,7 +11639,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "scalePivot",
-                            "description": "`String` - (Optional, default \"center\") case-**in**sensitive. Possible values:"
+                            "description": "`String` - (Optional, default \"center\") case-**in**sensitive. Possible values:\n\n{{Columns|3|\n* \"topLeft\"\n* \"topCenter\"\n* \"topRight\"\n* \"centerLeft\"\n* \"center\" - fallback value\n* \"centerRight\"\n* \"bottomLeft\"\n* \"bottomCenter\"\n* \"bottomRight\"\n}}"
                         },
                         {
                             "name": "alpha",
@@ -11722,7 +11728,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "arguments",
-                            "description": "`Array` - (Optional, default <sqf inline>[])"
+                            "description": "`Array` - (Optional, default <sqf inline>[])\n-->"
                         }
                     ],
                     "outline": "[] call `BIS_fnc_animViewer`\n\n<!--\np0= arrayFromHeader: `Array` - forced animation in format [<unit class>, <animation class>]",
@@ -12156,11 +12162,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - mode, can be one of:"
+                            "description": "`String` - mode, can be one of:\n* \"Open\" - opens the `Arsenal`\n* \"Preload\" - preloads item configs, without preloading the configs are parsed the first time it is opened\n* \"AmmoboxInit\" - adds a virtual ammobox. Action to access the `Arsenal` will be added automatically to all clients\n* \"AmmoboxExit\" - remove virtual ammobox"
                         },
                         {
                             "name": "params",
-                            "description": "`Anything` - mode parameters:"
+                            "description": "`Anything` - mode parameters:\n* **\"Open\"**: [full, cargo, center]\n** full: `Boolean` - (Optional, default `false`) `true` to open full `Arsenal` with all items available\n** cargo: Object to use as the cargo carrier (cargo is added with the `BIS_fnc_addVirtualItemCargo` functions)\n** center: Object whose arsenal will be modified\n* **\"Preload\"**: no parameters\n* **\"AmmoboxInit\"**: [ammobox, allItems, condition]\n** ammobox: `Object` - Object which should get a virtual ammobox\n** allItems: `Boolean` - (Optional, default `false`) `true` to make all items available\n** condition: `Code` - (Optional, default <sqf inline>{ true }) condition for the `Arsenal` to be accessible. Available arguments are the same as in `addAction`'s _condition_ parameter:\n*** _target: `Object` - object to which the action is attached or, if the object is a unit inside of vehicle, the vehicle\n*** _this: `Object` - caller person to whom the action is shown (or not depending on _condition_)\n*** _originalTarget: `Object` - original object to which the action is attached, regardless if the object/unit is in a vehicle or not\n* **\"AmmoboxExit\"**: [ammobox]\n** ammobox: `Object` - the object to which the [Arsenal](https://community.bistudio.com/wiki/Arma%203%3A%20Arsenal) was added"
                         }
                     ],
                     "outline": "[mode, params] call `BIS_fnc_arsenal`",
@@ -12191,7 +12197,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "role",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"driver\"\n* \"gunner\"\n* \"commander\"\n* \"cargo\"\n* \"turret\""
                         },
                         {
                             "name": "path",
@@ -13446,7 +13452,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "timeUnit",
-                            "description": "`String` - (Optional, default \"s\") one of:"
+                            "description": "`String` - (Optional, default \"s\") one of:\n* \"s\" - seconds\n* \"m\" - minutes\n* \"h\" - hours\n* \"d\" - days"
                         }
                     ],
                     "outline": "[startDate, endDateOrOffset, timeUnit] call `BIS_fnc_calculateDateTime`",
@@ -13481,7 +13487,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - function code"
-                        },
+                        }
+                    ],
+                    "outline": "[params, code] call `BIS_fnc_call`",
+                    "returns": "`Anything`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "code",
                             "description": "`Code`"
@@ -13556,7 +13568,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - (Optional, default \"Init\") **case-sensitive**, for internal use. Can be one of:"
+                            "description": "`String` - (Optional, default \"Init\") **case-sensitive**, for internal use. Can be one of:\n{{Columns|4|\n* \"Init\"\n* \"Mouse\"\n* \"MouseButtonDown\"\n* \"MouseButtonUp\"\n* \"MouseZChanged\"\n* \"KeyDown\"\n* \"KeyUp\"\n* \"Draw3D\"\n* \"MapDraw\"\n* \"MapClick\"\n* \"SliderFocus\"\n* \"SliderAperture\"\n* \"SliderDaytime\"\n* \"SliderOvercast\"\n* \"SliderAcctime\"\n* \"SliderColor\"\n* \"SliderContrast\"\n* \"SliderSaturation\"\n* \"Paste\"\n* \"InitDummy\"\n* \"ExitDummy\"\n* \"Exit\"\n}}"
                         },
                         {
                             "name": "parameter",
@@ -14160,7 +14172,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` - (Optional, default 0)"
+                            "description": "`Number` - (Optional, default 0)\n*0 - no vision mode\n*1 - Night vision\n*2 - Ti"
                         }
                     ],
                     "outline": "[camera, mode] call `BIS_fnc_camera_setVisionMode`",
@@ -14249,7 +14261,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "refreshTime",
-                            "description": "`Number` - (Optional, default 1) transition time in seconds."
+                            "description": "`Number` - (Optional, default 1) transition time in seconds.\nIf _refreshTime_ is **positive**, a refresh happens only once.\nif _refreshTime_ is **negative**, the refresh will loop (with a transition time of [absolute](https://community.bistudio.com/wiki/abs) _refreshTime_) until camera [is null](https://community.bistudio.com/wiki/isNull)"
                         }
                     ],
                     "outline": "[camera, target, refreshTime] call `BIS_fnc_camFollow`",
@@ -14321,7 +14333,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"init\": add \"Hit\" and \"GetIn\" event handler on the car\n* \"play\": play the alarm effect"
                         },
                         {
                             "name": "car",
@@ -14640,7 +14652,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n*0 - In\n*1 - Out"
                         },
                         {
                             "name": "duration",
@@ -14830,7 +14842,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:BIS_fnc_codePerformance.png|300px|right]]\nMeasures how much time it takes to execute given expression.\nResults may vary based on overall performance; use this function to compare alternative scripting approaches rather than to measure specific values.\nUpon function execution, window with results is opened. The user then has a choice to copy the result into clipboard or not.\n\nThis function is using `diag_codePerformance` command.\n\n**NOTE**: Use `toString` to stringify `Code`, as `str` adds curly braces - See {{Link|#Example 2.}}",
+            "description": "[[File:BIS_fnc_codePerformance.png|300px|right]]\nMeasures how much time it takes to execute given expression.\nResults may vary based on overall performance; use this function to compare alternative scripting approaches rather than to measure specific values.\nUpon function execution, window with results is opened. The user then has a choice to copy the result into clipboard or not.\n\nThis function is using `diag_codePerformance` command.\n\n**NOTE**: Use `toString` to stringify `Code`, as `str` adds curly braces - See _Example 2_.",
             "examples": [
                 {
                     "text": "```sqf\n\n// compare three methods of adding elements into array\ntestArray = [];\n[\"testArray = testArray + [1]\"] call BIS_fnc_codePerformance;\ntestArray = [];\n[\"testArray set [count testArray, 1]\"] call BIS_fnc_codePerformance;\ntestArray = [];\n[\"testArray pushBack 1\"] call BIS_fnc_codePerformance;\n\n```"
@@ -15304,11 +15316,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "format",
-                            "description": "`Array`, `String` or `Config` - (Optional, default <sqf inline>[] or <sqf inline>configNull if _config_ is `Array` - see {{Link|#Example 1}}) desired format of output"
+                            "description": "`Array`, `String` or `Config` - (Optional, default <sqf inline>[] or <sqf inline>configNull if _config_ is `Array` - see _Example 1_) desired format of output"
                         },
                         {
                             "name": "strict",
-                            "description": "`Boolean` - (Optional, default `false`) if false, the function will not attempt to construct a valid config before certain format conversions (see {{Link|#Example 2}})."
+                            "description": "`Boolean` - (Optional, default `false`) if false, the function will not attempt to construct a valid config before certain format conversions (see _Example 2_).\nSet this param to `true` to invoke the strict mode"
                         }
                     ],
                     "outline": "[config, format, strict] call `BIS_fnc_configPath`",
@@ -15690,7 +15702,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "isArrive",
-                            "description": "`Object` - (Optional, default `true`) `true` - arrive"
+                            "description": "`Object` - (Optional, default `true`) `true` - arrive\n`false` -  leave"
                         }
                     ],
                     "outline": "[controlPoint, isArrive] call `BIS_fnc_controlPoint_setIsArrive`",
@@ -15721,7 +15733,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "from",
-                            "description": "`Number` - source unit. Can be one of:"
+                            "description": "`Number` - source unit. Can be one of:\n* 0: m (meters)\n* 1: km (kilometers)\n* 2: ms (meters per second)\n* 3: kmh (kilometers per hour)\n* 4: ft (feet)\n* 5: mi (miles)\n* 6: fts (feet per second)\n* 7: mph (miles per hour)\n* 8: nm (nautical miles)\n* 9: kts (knots)"
                         },
                         {
                             "name": "to",
@@ -15729,7 +15741,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` - (Optional, default 0) can be one of:"
+                            "description": "`Number` - (Optional, default 0) can be one of:\n* 0: destination value (Scalar)\n* 1: destination text long (String) e.g \"5 meters\"\n* 2: destination text short (String) e.g \"5 m\""
                         },
                         {
                             "name": "precision",
@@ -15749,7 +15761,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Triggers a countdown.\n**NOTE**: \nThe **initial** countdown can be accessed _via_ `missionNamespace`'s variable **BIS_fnc_countdown_time**.\n\nThe initial value is either <sqf inline>serverTime + timeInSeconds (if set globally) or <sqf inline>time + timeInSeconds (if set locally).\nTo return the left-over time see {{Link|#Example 4.\n}}",
+            "description": "Triggers a countdown.\n**NOTE**: \nThe **initial** countdown can be accessed _via_ `missionNamespace`'s variable **BIS_fnc_countdown_time**.\n\nThe initial value is either <sqf inline>serverTime + timeInSeconds (if set globally) or <sqf inline>time + timeInSeconds (if set locally).\nTo return the left-over time see _Example 4_.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _initialCountdown = [50,false] call BIS_fnc_countdown; // sets countdown to 50 seconds where function is executed\n```"
@@ -15772,7 +15784,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "timeInSeconds",
-                            "description": "can be:"
+                            "description": "can be:\n* `Number`:\n** Any number to set the length of the countdown in seconds\n** -1 to set the countdown to `nil`\n** 0 to return the left-over time\n* `Boolean`:\n** `true` to find out if countdown is active and if there is left-over time"
                         },
                         {
                             "name": "global",
@@ -15780,7 +15792,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "[timeInSeconds, global] call `BIS_fnc_countdown`",
-                    "returns": "<nowiki/>\n* `Number`:\n** If set locally: `time` + timeInSeconds (see {{Link|#Example 1}})\n** If set globally `serverTime` + timeInSeconds (see {{Link|#Example 2}})\n** Returns -1 if countdown is set to `nil` (see {{Link|#Example 3}})\n** Return left-over time (see {{Link|#Example 4}})\n* `Boolean`: returns `true` when countdown is > 0 else `false` (see {{Link|#Example 5}})"
+                    "returns": "<nowiki/>\n* `Number`:\n** If set locally: `time` + timeInSeconds (see _Example 1_)\n** If set globally `serverTime` + timeInSeconds (see _Example 2_)\n** Returns -1 if countdown is set to `nil` (see _Example 3_)\n** Return left-over time (see _Example 4_)\n* `Boolean`: returns `true` when countdown is > 0 else `false` (see _Example 5_)"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_countdown"
@@ -16165,7 +16177,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "input",
-                            "description": "`String` or `Array`:"
+                            "description": "`String` or `Array`:\n* `String`: classname of the object to be created. This is the preferred way if the asset config definition contains the adjustment data or the data are not needed (most objects do not need adjustments).\n* `Array`: adjustment data in format [class, model, reversed, verticalOffset, animationAdjustments, selectionsToHide]:\n** class: `String` - (Optional, default \"\") asset CfgVehicles config class (**at least either _model_ or _class_ must be provided, ideally both**)\n** model: `String` - (Optional, default \"\") Path to the vehicle p3d model; needs to start without backslash and must end with the proper file extension \".p3d\"\n** reversed: `Number` - (Optional, default 0) some objects, usually vehicles, are reversed in p3d; valid values are:\n*** 1: reverse\n*** 0: no change - any value other than 1 will result in no change\n** verticalOffset: `Number` - (Optional, default 0) fix for non-existant physX; usually needed only for vehicles\n** animationAdjustments: `Array` - (Optional, default <sqf inline>[]) animation that need to be animated to given state, in format [animationName, animationState]:\n*** animationName: `String` - animation name\n*** animationState: `Number` - animation state\n** selectionsToHide: `Array` - (Optional, default <sqf inline>[]) all listed selections will be hidden"
                         },
                         {
                             "name": "position",
@@ -16215,7 +16227,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "input",
-                            "description": "`Array` format [config, parameters]:"
+                            "description": "`Array` format [config, parameters]:\n* config: `Config` - group from CfgORBAT\n* parameters: `Array` - group params returned by `BIS_fnc_ORBATGetGroupParams`"
                         },
                         {
                             "name": "display",
@@ -16857,7 +16869,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "code",
-                            "description": "`Code` - handler code, passed arguments are:"
+                            "description": "`Code` - handler code, passed arguments are:\n\n0: `Object` - Curator\n\n1: `Array` - Classes"
                         }
                     ],
                     "outline": "[curator, code] call `BIS_fnc_curatorObjectRegistered`",
@@ -17252,7 +17264,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "step",
-                            "description": "`Number` - in range 0..3, steps being:"
+                            "description": "`Number` - in range 0..3, steps being:\n* 0: closed terminal\n* 1: case opened\n* 2: antenna up (but closed)\n* 3: antenna opened and transmitting."
                         }
                     ],
                     "outline": "[dataTerminal, step] call `BIS_fnc_dataTerminalAnimate`",
@@ -17283,7 +17295,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "step1color",
-                            "description": "`String` - step 1 color.  Can be one of:"
+                            "description": "`String` - step 1 color.  Can be one of:\n* \"blue\"\n* \"orange\"\n* \"green\"\n* \"red\"\n* \"purple\"\n\nIf not set, the selection color will simply not be changed."
                         },
                         {
                             "name": "step2color",
@@ -17786,7 +17798,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "valueString",
-                            "description": "`String` or `Array`:"
+                            "description": "`String` or `Array`:\n* `String` - converts string to value definition\n* `Array`: converts value definition to string"
                         }
                     ],
                     "outline": "valueString call `BIS_fnc_dbValueId`"
@@ -17966,7 +17978,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "target",
-                            "description": "`Number` - "
+                            "description": "`Number` - \n*0 - local\n*1 - global\n*2 - server"
                         },
                         {
                             "name": "code",
@@ -18198,7 +18210,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "owner",
-                            "description": "`String` - owner of the task.(Optional) Can be:"
+                            "description": "`String` - owner of the task.(Optional) Can be:\n* `Boolean` - true to useall playable units\n* `Object`- specific object\n* `Group` - all objects in the group\n* `Side` - all objects of the given side\n* `Array` - collection of above types"
                         },
                         {
                             "name": "removeFromJIP",
@@ -18293,7 +18305,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "position",
-                            "description": "`Object`, `String` or `Position` - center of the area:"
+                            "description": "`Object`, `String` or `Position` - center of the area:\n* `Object` - position of the object will be used\n* `String` - marker name\n* `Position`"
                         },
                         {
                             "name": "areaSize",
@@ -18559,11 +18571,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"Init\" - Fill display with AAR data\n* \"Init_List\" - _internal function usage_\n* \"Display_keydown\" - _internal function usage_\n* \"Timeline_sliderposchanged\" - _internal function usage_\n* \"ListMissions_lbselchanged\" - _internal function usage_\n* \"ListSessions_lbselchanged\" - _internal function usage_\n* \"draw\" - _internal function usage_"
                         },
                         {
                             "name": "arguments",
-                            "description": "* \"Init\" arguments: [display]: `Display`"
+                            "description": "* \"Init\" arguments: [display]: `Display`\n* \"Init_List\" arguments: [display]: `Display`\n* \"Display_keydown\" arguments: see [onKeyDown](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyDown) event\n* \"Timeline_sliderposchanged\" arguments: see [onSliderPosChanged](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onSliderPosChanged) event\n* \"ListMissions_lbselchanged\" arguments: see [onLBSelChanged](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onLbSelChanged) event\n* \"ListSessions_lbselchanged\" arguments: see [onLBSelChanged](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onLbSelChanged) event\n* \"draw\" arguments: see [onDraw](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onDraw) event"
                         }
                     ],
                     "outline": "[mode, arguments] call `BIS_fnc_diagAAR`",
@@ -18799,7 +18811,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - can be:"
+                            "description": "`Number` - can be:\n\n0 - Log all categories\n\n1 - Log Uncategorized\n\n2 - Log unassigned\n\n3 - Log undefined\n\n4 - Log localized names"
                         }
                     ],
                     "outline": "mode call `BIS_fnc_diagKeyTest`",
@@ -19143,7 +19155,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "container",
-                            "description": "`String` - (Optional, default \"CfgVehicles\") class container. Can be:"
+                            "description": "`String` - (Optional, default \"CfgVehicles\") class container. Can be:\n* \"CfgVehicles\"\n* \"CfgWeapons\""
                         },
                         {
                             "name": "parentClass",
@@ -19182,7 +19194,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "container",
-                            "description": "`String` - (Optional, default \"CfgVehicles\") class container. Can be:"
+                            "description": "`String` - (Optional, default \"CfgVehicles\") class container. Can be:\n* \"CfgVehicles\"\n* \"CfgWeapons\""
                         },
                         {
                             "name": "position",
@@ -19190,7 +19202,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "vector `Array` of `Number`s",
-                            "description": "(Optional, default [0,0]]) vector of previewed object in format:"
+                            "description": "(Optional, default [0,0]]) vector of previewed object in format:\n* 0: Pitch\n* 1: Bank"
                         },
                         {
                             "name": "display",
@@ -19313,7 +19325,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n{{Columns|4|\n* `**\"Anims_aimPrecision\"**`\n* `**\"CfgDiary_Icons\"**`\n* `**\"CfgActions\"**`\n* `**\"CfgActions_CfgVehicles\"**`\n* `**\"CfgLocationTypes\"**`\n* `**\"CfgMarkers\"**`\n* `**\"CfgMarkerBrushes\"**`\n* `**\"CfgMarkerColors\"**`\n* `**\"CfgVehicles_identityTypes\"**`\n* `**\"CfgVehicles_mapSize\"**`\n* `**\"CfgVehicles_speechVariants\"**`\n* `**\"CfgVehicleIcons\"**`\n* `**\"CfgWrapperUI_Cursors\"**`\n* `**\"IslandMap_colors\"**`\n* `**\"IslandMap_icons\"**`\n* `**\"RadioProtocol_Select\"**`\n* `**\"RadioProtocol_Sent\"**`\n* `**\"RadioProtocol_Stats\"**`\n* `**\"RadioProtocol_Variables\"**`\n* `**\"RadioProtocol_Words\"**`\n* `**\"RscMapControl_colors\"**`\n* `**\"RscMapControl_icons\"**`\n* `**\"RscMapControl_fonts\"**`\n}}"
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_diagWiki`",
@@ -19408,7 +19420,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "target",
-                            "description": "`Code`, `String`, `Object` or `Array` format `Position` - to which indicator points to:"
+                            "description": "`Code`, `String`, `Object` or `Array` format `Position` - to which indicator points to:\n* `Code` - code result must be `Object` or `Position`\n* `String` - `missionNamespace` variable name\n* `Object` - any object\n* `Array` format `Position` - any position"
                         },
                         {
                             "name": "color",
@@ -19610,7 +19622,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "variable",
                             "description": "`String` - variable defined in \"CfgUIColors\" >> Variables"
-                        },
+                        }
+                    ],
+                    "outline": "[tag, variable] call `BIS_fnc_displayColorGet`",
+                    "returns": "`Array` - in format [[Color|Color (RGBA)]]"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "init",
                             "description": "`Boolean` - when used, function will initialize all color presets"
@@ -20103,7 +20121,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Draws a static arrow (outline or color filled) on map. See {{Link|#Example 4}} for arrow removal.\n**NOTE**: Note that the order in which arrows are added to map is reversed, the last added arrow will appear under the first added arrow",
+            "description": "Draws a static arrow (outline or color filled) on map. See _Example 4_ for arrow removal.\n**NOTE**: Note that the order in which arrows are added to map is reversed, the last added arrow will appear under the first added arrow",
             "examples": [
                 {
                     "text": "Draw a semi-transparent, blue arrow with default geometry:\n\n```sqf\nmyArrow1 = [_pos1, _pos2, [0,0,1,0.5]] call BIS_fnc_drawArrow;\n```"
@@ -20115,7 +20133,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "Draw a thin, red arrow with custom head geometry:\n\n```sqf\nmyArrow3 = [_pos1, _pos2, [1,0,0,1], [1,1/5,5]] call BIS_fnc_drawArrow;\n```"
                 },
                 {
-                    "text": "Remove the arrow created in {{Link|#Example 3}}:\n\n```sqf\nmyArrow3 call BIS_fnc_drawArrow;\n```"
+                    "text": "Remove the arrow created in _Example 3_:\n\n```sqf\nmyArrow3 call BIS_fnc_drawArrow;\n```"
                 },
                 {
                     "text": "```sqf\n\nmyArrow1 = [[100,400,0], [200,500,0], [1,0,0,1], [20], true] call BIS_fnc_drawArrow;\nmyArrow2 = [[400,700,0], [300,600,0], [0,1,0,1], [20, 1/3, 2, 2], true] call BIS_fnc_drawArrow;\nmyArrow3 = [[600,700,0], [400,900,0], [0,0,1,1], [20, 1/3, 2, 0.5], true] call BIS_fnc_drawArrow;\nmyArrow4 = [[100,100,0], [200,200,0], [0,0,0,1], [20], false] call BIS_fnc_drawArrow;\nmyArrow5 = [[400,400,0], [300,300,0], [1,1,1,1], [20, 1/3, 2, 2], false] call BIS_fnc_drawArrow;\nmyArrow6 = [[600,400,0], [400,600,0], [0,1,1,1], [20, 1/3, 2, 0.5], false] call BIS_fnc_drawArrow;\n\n```"
@@ -20138,7 +20156,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "pars",
-                            "description": "`Array` - (Optional) arrow geometry details in format [arrowThickness, arrowHeadLengthCoef, arrowHeadWidthCoef], where:"
+                            "description": "`Array` - (Optional) arrow geometry details in format [arrowThickness, arrowHeadLengthCoef, arrowHeadWidthCoef], where:\n* arrowThickness: `Number` - (Optional, default 10) arrow thickness in meters\n* arrowHeadLengthCoef:  `Number` - (Optional, default 1/3) arrow head length compared to the total length of the arrow\n* arrowHeadWidthCoef:  `Number` - (Optional, default 2) arrow head width compared to the arrow thickness\n* {{GVI|arma3|1.98"
                         },
                         {
                             "name": "fill",
@@ -20332,7 +20350,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - mode, can be:"
+                            "description": "`String` - mode, can be:\n* \"Initialize\" - Initializes dynamic groups on the server\n* \"Terminate\" - Terminates dynamic groups on the server\n* \"InitializePlayer\" - Does client side initialization\n* \"TerminatePlayer\" - Does client side termination\n* \"IsInitialized\" - Checks whether dynamic groups was initialized\n* \"RegisterGroup\" - Registers a group\n* \"UnregisterGroup\" - Unregisters a group\n* \"IsGroupRegistered\" - Whether a group was already registered or not\n* \"SetName\" - Sets the name of the group, in future, will also update GroupId of the group\n* \"SetPrivateState\" - Set the private state of a group\n* \"SwitchLeader\" - Switches the leader of given group to the given player\n* \"AddGroupMember\" - Add a group member to group\n* \"RemoveGroupMember\" - Switches a player from one group to another\n* \"KickPlayer\" - Kicks a player from group, player wont be able to join the group unless invited or is unkicked using UnKickPlayer\n* \"UnKickPlayer\" - Unkicks a player from a group\n* \"WasPlayerKickedFrom\" - Whether given player was kicked from given group\n* \"GetAllGroups\" - Returns all registered and valid groups"
                         },
                         {
                             "name": "params",
@@ -20367,11 +20385,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "x",
-                            "description": "`Number` or `Array` - (Optional, default -1)"
+                            "description": "`Number` or `Array` - (Optional, default -1)\n* `Number` - Position in x\n* `Array`\n** 0: Position in x\n** 1: Width of the control"
                         },
                         {
                             "name": "y",
-                            "description": "`Number` or `Array` - (Optional, default -1)"
+                            "description": "`Number` or `Array` - (Optional, default -1)\n* `Number` - Position in y\n* `Array`\n** 0: Position in y\n** 1: Height of the control"
                         },
                         {
                             "name": "duration",
@@ -20383,7 +20401,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "deltaY",
-                            "description": "`Number` - (Optional, default 0) Y position delta:"
+                            "description": "`Number` - (Optional, default 0) Y position delta:\n* = 0: Text will not move\n* > 0: Text will move down\n* < 0: Text will move up\n_duration_ and the absolute _deltaY_ value will influence the movement speed."
                         },
                         {
                             "name": "rscLayer",
@@ -20986,7 +21004,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - function mode, can be:"
+                            "description": "`String` - function mode, can be:\n* \"Initialize\"\n* \"Terminate\"\n**See the [[Arma 3: Functions Viewer|in-game Functions Viewer]] to see all the possible values. The following parameters are for \"Initialize\".**"
                         },
                         {
                             "name": "spectator",
@@ -21372,7 +21390,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "endType",
-                            "description": "`String` - class name of ending defined in [[Description.ext#CfgDebriefing|CfgDebriefing]]."
+                            "description": "`String` - class name of ending defined in [[Description.ext#CfgDebriefing|CfgDebriefing]].\n\nCan be **custom** or one of dynamically calculated ones:\n* \"EveryoneWon\" - Show \"MISSION COMPLETED\" to everyone\n* \"EveryoneLost\" - Show \"MISSION FAILED\" to everyone\n* \"SideTickets\" - Show \"YOUR SIDE WON\" to side/s with most tickets and \"YOUR SIDE LOST\" to everyone else\n* \"SideScore\" - Show \"YOUR SIDE WON\" to side with largest score\n* \"GroupScore\" - Show \"YOUR GROUP WON\" to group with largest score\n* \"PlayerScore\" - Show \"YOU WON\" to player with largest score"
                         }
                     ],
                     "outline": "endType call `BIS_fnc_endMissionServer`",
@@ -21576,7 +21594,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**method**",
-                            "description": "`String` - (Optional, default \"\") validation method, can be one of:"
+                            "description": "`String` - (Optional, default \"\") validation method, can be one of:\n* \"isEqualType\"\n* \"isEqualTypeArray\"\n* \"isEqualTypeAll\"\n* \"isEqualTypeAny\"\n* \"isEqualTypeParams\""
                         },
                         {
                             "name": "**expected** (Optional, default",
@@ -21673,15 +21691,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rotation",
-                            "description": "`Number` - (Optional, default random) direction of camera movement"
+                            "description": "`Number` - (Optional, default random) direction of camera movement\n* 0: anti-clockwise\n* 1: clockwise"
                         },
                         {
                             "name": "iconOptions",
-                            "description": "`Array` of `Array`s - (Optional, default <sqf inline>[]) each array in format [icon, color, target, sizeX, sizeY, angle, text, shadow]:"
+                            "description": "`Array` of `Array`s - (Optional, default <sqf inline>[]) each array in format [icon, color, target, sizeX, sizeY, angle, text, shadow]:\n* icon: `String` - path to icon texture\n* color: `Array` format [[Color|Color (RGBA)]]\n* target: `Object`, `Position` or `Group` - where the texture should be drawn\n* sizeX: `Number` - (Optional, default 1) icon width\n* sizeY: `Number` - (Optional, default 1) icon height\n* angle: `Number` - (Optional, default `random` 360) icon angle\n* text: `String` - (Optional, default \"\") text displayed underneath the icon\n* shadow: `Number` - (Optional, default 0)\n** 0 to draw a flat icon\n** 1 to draw a shadowed icon"
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` - (Optional, default 0)"
+                            "description": "`Number` - (Optional, default 0)\n* 0: normal (disables saving and sets `**BIS_missionStarted**` to `nil`)\n* 1: world scenes"
                         },
                         {
                             "name": "fadeIn",
@@ -21757,7 +21775,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "codeInterrupt",
-                            "description": "`Code` - (Optional, default "
+                            "description": "`Code` - (Optional, default \n<sqf inline>params [\"_pointer\", \"_baseTime\", \"_evenTime\"];\n[\"Timeline interrupted while playing event nr.: %1 (%2)\", _pointer, _baseTime + _eventTime] call BIS_fnc_logFormat;)\nCode to be executed if the timeline is interrupted with \n<sqf inline>missionNamespace setVariable [\"BIS_fnc_eventTimeline_playing\", false]"
                         },
                         {
                             "name": "codeEnd",
@@ -21793,7 +21811,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "filename",
                             "description": "`String` - `FSM` filename"
-                        },
+                        }
+                    ],
+                    "outline": "filename call `BIS_fnc_execFSM`",
+                    "returns": "`Number` - `FSM` handle"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "params",
                             "description": "`Array` - parameters are passed to script as variable [_this](https://community.bistudio.com/wiki/Magic%20Variables%23this)"
@@ -21886,7 +21910,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "filename",
                             "description": "`String`"
-                        },
+                        }
+                    ],
+                    "outline": "filename call `BIS_fnc_execVM`",
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle) - can be used to determine (via `scriptDone`) when the script has finished."
+                },
+                {
+                    "parameters": [
                         {
                             "name": "arguments",
                             "description": "`Anything` - arguments are passed to script as magic variable [_this](https://community.bistudio.com/wiki/Magic%20Variables%23this)."
@@ -22096,7 +22126,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Simple handling of the Support Team's scripted IFF.</br>\n\n[[File: BIS_fnc_EXP_camp_IFF.png|350px]]\n\n**NOTE**: See {{Link|#Example 2 for icon and name options.}}",
+            "description": "Simple handling of the Support Team's scripted IFF.</br>\n\n[[File: BIS_fnc_EXP_camp_IFF.png|350px]]\n\n**NOTE**: See _Example 2_ for icon and name options.",
             "examples": [
                 {
                     "text": "```sqf\n[units group player] call BIS_fnc_EXP_camp_IFF;\n```"
@@ -22987,7 +23017,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "subtitleDetailN",
-                            "description": "`Array` - format [speaker, text, timing]:"
+                            "description": "`Array` - format [speaker, text, timing]:\n* speaker: `String` - speaker's name\n* text: `String` - subtitle\n* timing: `Number` - time at which the subtitle is played"
                         }
                     ],
                     "outline": "[subtitleDetail1, subtitleDetail2, ...] spawn `BIS_fnc_EXP_camp_playSubtitles`",
@@ -23143,7 +23173,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "line#",
-                            "description": "`Array` - lines to be displayed, format [text, fadeInTime, waitTime, fadeOutTime]:"
+                            "description": "`Array` - lines to be displayed, format [text, fadeInTime, waitTime, fadeOutTime]:\n* 0: text: `String` - text to be displayed\n* 1: fadeInTime: `Number` - (Optional, default 2) fade-in duration in seconds\n* 2: waitTime: `Number` - (Optional, default 1) how many seconds to wait before showing the next line\n* 3: fadeOutTime: `String` - (Optional, default 2) fade-out duration in seconds. It is only used by the last line. Fades all other lines as well"
                         }
                     ],
                     "outline": "[line1, line2, lineX] spawn `BIS_fnc_EXP_camp_SITREP`",
@@ -23290,7 +23320,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - mode, can be one of:"
+                            "description": "`String` - mode, can be one of:\n* \"config\" - copy the objects table to clipboard\n* \"screenshots\" - create objects one by one and take their screenshot. Works only on \"[Render](https://community.bistudio.com/wiki/Render_Worlds)\" terrain.\n* \"screenshotsTest\" - create objects one by one without taking screen (to verify everything is ok)"
                         },
                         {
                             "name": "sides",
@@ -23329,11 +23359,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "side",
-                            "description": "`Array` or `Number`s - (Optional, default <sqf inline>[4,5,6,7,8,9]) `side` selection, can be:"
+                            "description": "`Array` or `Number`s - (Optional, default <sqf inline>[4,5,6,7,8,9]) `side` selection, can be:\n{{Columns|2|\n* 0: OPFOR / CSAT\n* 1: BLUFOR / NATO\n* 2: Independent / Guerrilla\n* 3: Civilian\n* 4: Unknown\n* 5: Enemy\n* 6: Friendly\n* 7: Logic\n* 8: Empty\n* 9: AmbientLife\n}}"
                         },
                         {
                             "name": "category",
-                            "description": "`Number` - (Optional, default 0 if _side_ is a number, always reverts to 1 if _side_ an array) only used when _side_ is set to **3**."
+                            "description": "`Number` - (Optional, default 0 if _side_ is a number, always reverts to 1 if _side_ an array) only used when _side_ is set to **3**.\n\nCan be one of the following:\n{{Columns|2|\n* 0: civilian units\n* 1: structures\n* 2: ruins and wrecks\n* 3: equipment\n* 4: objects\n* 5: VR\n* 6: animals\n}}"
                         }
                     ],
                     "outline": "[side, category] call `BIS_fnc_exportCfgVehiclesAssetDB`",
@@ -23360,7 +23390,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"Equipment\"\n* \"Item\"\n* \"VehicleWeapon\"\n* \"Weapon\" - specific item type, based on `BIS_fnc_itemType`\n* internal use only: \"screenshots\" - create items one by one and take their screenshot. Works only on \"Render\" terrain.\n* internal use only: \"screenshotsTest\" - create items one by one without taking screen (to verify everything is ok)"
                         },
                         {
                             "name": "patches",
@@ -23468,7 +23498,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - (Optional, default \"all\") can be one of:"
+                            "description": "`String` - (Optional, default \"all\") can be one of:\n* \"vehicles\" - only characters and vehicles will be used\n* \"props\" - only props will be used\n* \"all\" - all objects will be used"
                         },
                         {
                             "name": "sides",
@@ -23517,7 +23547,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filter",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) functions filter in format [tags, categories, functions]:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) functions filter in format [tags, categories, functions]:\n* tags: `String` or `Array` of `String`s - CfgFunctions tags (e.g., \"A3_Oldman\"). Use empty string for all of them\n* categories: `String` or `Array` of `String`s - categories (e.g., \"Debug\"). Use empty string for all of them\n* functions: `String` or `Array` of `String`s - specific function names (e.g., \"BIS_fnc_log\"). Use empty string for all of them"
                         },
                         {
                             "name": "timestamp",
@@ -23569,7 +23599,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - mode, **case-sensitive**; can be one of:"
+                            "description": "`String` - mode, **case-sensitive**; can be one of:\n* `**\"Default\"}} - classic base classes like {{hl|RscText}} or {{hl|RscPicture**`\n* `**\"3DEN\"}} - [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) base classes like {{hl|ctrlStatic}} or {{hl|ctrlStaticPicture**`\n* `**\"all\"**` - all GUI base classes, including more exotic ones\n**IMPORTANT**: \nAll modes are case sensitive. If the capitalisation is disregarded the function will default to the \"all\" mode.\nIn fact there is no explicit \"all\" mode, rather it is the fallback if the mode is not one of \"Default\" or \"3DEN\"."
                         }
                     ],
                     "outline": "mode call `BIS_fnc_exportGUIBaseClasses`",
@@ -23600,7 +23630,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - (Optional, default \"script\") export type, can be:"
+                            "description": "`String` - (Optional, default \"script\") export type, can be:\n* \"script\"- scripting commands, target is referred to as `**_unit**`\n* \"init\" - scripting commands, target is referred to as `**this**`\n* \"config\" - config attributes"
                         },
                         {
                             "name": "includeIdentity",
@@ -24082,7 +24112,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "center",
-                            "description": "(Optional, default <sqf inline>[]) center position. Can be one of: "
+                            "description": "(Optional, default <sqf inline>[]) center position. Can be one of: \n* `Array` - position in format [Position2D](https://community.bistudio.com/wiki/Position%23Introduction) or [Position3D](https://community.bistudio.com/wiki/Position%23Introduction)\n* `Object` - object which position will be used\n* `Nothing` - when passing empty array [] or nothing, the world's \"safePositionAnchor\" entry will be used"
                         },
                         {
                             "name": "minDist",
@@ -24098,7 +24128,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "waterMode",
-                            "description": "`Number` - (Optional, default 0) water mode. Can be one of:"
+                            "description": "`Number` - (Optional, default 0) water mode. Can be one of:\n* 0 - cannot be in water\n* 1 - can either be in water or not\n* 2 - must be in water"
                         },
                         {
                             "name": "maxGrad",
@@ -24106,15 +24136,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "shoreMode",
-                            "description": "`Number` - (Optional, default 0) shore mode. Can be one of:"
+                            "description": "`Number` - (Optional, default 0) shore mode. Can be one of:\n* 0 - does not have to be at a shore\n* 1 - must be at a shore"
                         },
                         {
                             "name": "blacklistPos",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) list of blacklisted areas in format [area1, area2, area3... areaN]. Can be one of:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) list of blacklisted areas in format [area1, area2, area3... areaN]. Can be one of:\n* `Array` - in format [topLeftCorner, bottomRightCorner] - top and bottom coordinates of blacklisted area\n* `Object` - trigger area\n* `String` - marker area\n* `Location` - location\n* `Array` - array in format [center, distance] or [center, a, b, angle, rect] or [center, a, b, angle, rect, height]"
                         },
                         {
                             "name": "defaultPos",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) default position when no position is found. Array format is [landPosition, seaPosition], where: "
+                            "description": "`Array` - (Optional, default <sqf inline>[]) default position when no position is found. Array format is [landPosition, seaPosition], where: \n* landPosition: `Array` - in format [x,y] or [x,y,z] - default position on land\n* seaPosition: `Array` - in format [x,y] or [x,y,z] - default position on water"
                         }
                     ],
                     "outline": "[center, minDist, maxDist, objDist, waterMode, maxGrad, shoreMode, blacklistPos, defaultPos] call `BIS_fnc_findSafePos`",
@@ -24145,11 +24175,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "input `Array`",
-                            "description": "array in format:"
+                            "description": "array in format:\n*0: `String` - Challenge class name\n*1: `Object` - Curator"
                         },
                         {
                             "name": "taskState `String`",
-                            "description": "task state, can be:"
+                            "description": "task state, can be:\n*\"SUCCEEDED\"\n*\"FAILED\"\n*\"CANCELED\"\n*\"ASSIGNED\""
                         }
                     ],
                     "outline": "[curator,input,taskState]] call `BIS_fnc_finishCuratorChallenge`",
@@ -24269,7 +24299,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "delay",
-                            "description": "`Array` or `Number` - delay between rounds:"
+                            "description": "`Array` or `Number` - delay between rounds:\n* `Array`\n** 1: Min delay\n** 2: Max delay\n* `Number` - Precise delay"
                         },
                         {
                             "name": "conditionEnd",
@@ -24322,7 +24352,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rounds",
-                            "description": "`Array` - (Optional, default [1,20]) number of rounds to be fired, can be:"
+                            "description": "`Array` - (Optional, default [1,20]) number of rounds to be fired, can be:\n* 0: Number of shells\n* 1: Number of submunition"
                         },
                         {
                             "name": "delay",
@@ -24395,7 +24425,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "delay",
-                            "description": "`Array` or `Number` - (Optional, default 10) delay between rounds"
+                            "description": "`Array` or `Number` - (Optional, default 10) delay between rounds\n* `Array` [min, max]:\n** min: `Number` - min delay\n** max: `Number` - max delay\n* `Number` - Precise delay"
                         },
                         {
                             "name": "conditionEnd",
@@ -24669,11 +24699,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "functionCalled",
-                            "description": "`String` - one of the following:"
+                            "description": "`String` - one of the following:\n* \"Init\" - initialises the FTL manager\nReturn: `Number` - FTL State\n* \"Destroy\" - destroys the current FTL manager instance\nReturn: \n* \"GetFTLState\" - returns current FTL state\nReturn: `String` - FTL state: \"LOW\", \"NEUTRAL\" or \"HIGH\"\n* \"SetFTLState\" - computes and sets the new FTLValue and FTLState afterwards\nReturn: \n* \"GetNearestTownRespect\" - Returns nearest (in 500m radius) town respect for player\nReturn: `Number` - respect"
                         },
                         {
                             "name": "type",
-                            "description": "`String` - can be one of the following:"
+                            "description": "`String` - can be one of the following:\n* \"sysUpdate\" (internal use)\n* \"NONE\" (no change)\n* \"CivKilled\" (-0.5)\n* \"VIPCivKilled\" (-0.7)\n* \"RebelKilled\" (-0.3)\n* \"TaskSmallRefused\" (-0.05)\n* \"TaskSmallDone\" (+0.4)\n* \"TaskSmallFailed\" (-0.4)\n* \"TaskGreatRefused\" (-0.1)\n* \"TaskGreatDone\" (+0.6)\n* \"TaskGreatFailed\" (-0.6)\n* \"CivHouseDestroyed\" (-0.5)\n* \"GreatHouseDestroyed\" (-0.8)"
                         }
                     ],
                     "outline": "[functionCalled, type] call `BIS_fnc_FTLmanager`",
@@ -24757,7 +24787,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - debug mode, can be:"
+                            "description": "`Number` - debug mode, can be:\n* 0  - no debugging\n* 1 - script map will be saved\n* 2 - script map will be saved and logged"
                         }
                     ],
                     "outline": "mode call `BIS_fnc_functionsDebug`",
@@ -24794,7 +24824,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "params",
-                            "description": "`Anything` - (Optional, default <sqf inline>[]) depending on _mode_, can be:"
+                            "description": "`Anything` - (Optional, default <sqf inline>[]) depending on _mode_, can be:\n* \"Open\": [fullGarage, garageCentre]\n** fullGarage: `Boolean` - (Optional, default `false`)\n** garageCentre: `Object` - (Optional, default `objNull`) the garage centre as vehicle; will be deleted on opening"
                         }
                     ],
                     "outline": "[mode, params] call `BIS_fnc_garage`",
@@ -25016,7 +25046,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "param",
-                            "description": "* `Object` - trigger"
+                            "description": "* `Object` - trigger\n* `String` - marker\n* `Location` - location\n* `Array` - array in format [center, distance] or [center, [a, b, angle, rect]] or [center, [a, b, angle, rect, height]]"
                         }
                     ],
                     "outline": "param call `BIS_fnc_getArea`",
@@ -25108,7 +25138,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "config",
                             "description": "`Config` - `Config` path"
-                        },
+                        }
+                    ],
+                    "outline": "config call `BIS_fnc_getCfgData`",
+                    "returns": "`Array`, `String`, `Number` or `nil`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "`Array` of `String`s",
                             "description": "`missionConfigFile` classes and an attribute"
@@ -25142,7 +25178,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "config",
                             "description": "`Config` - `Config` path"
-                        },
+                        }
+                    ],
+                    "outline": "config call `BIS_fnc_getCfgDataArray`",
+                    "returns": "`Array` or `nil`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "`Array` of `String`s",
                             "description": "`missionConfigFile` classes and an attribute"
@@ -25176,7 +25218,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "config",
                             "description": "`Config` - `Config` path"
-                        },
+                        }
+                    ],
+                    "outline": "config call `BIS_fnc_getCfgDataBool`",
+                    "returns": "`Boolean`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "`Array` of `String`s",
                             "description": "`missionConfigFile` classes and an attribute"
@@ -25252,7 +25300,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "configEntry",
                             "description": "`Config`"
-                        },
+                        }
+                    ],
+                    "outline": "configEntry call `BIS_fnc_getCfgIsClass`",
+                    "returns": "`Boolean` - `true` if it is a class"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "classNames",
                             "description": "`Array` of `String` - `missionConfigFile` classes and an attribute"
@@ -25345,7 +25399,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "parameter",
-                            "description": "* `Nothing` or empty `Array` - returns all factions"
+                            "description": "* `Nothing` or empty `Array` - returns all factions\n* `Object` - returns index of the object side\n* `Array` - `side` of the first element is returned, others are ignored"
                         }
                     ],
                     "outline": "[parameter] call `BIS_fnc_getFactions`",
@@ -25492,7 +25546,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "LOD1",
-                            "description": "`String` - (Optional, default \"VIEW\") primary `LOD` to look for intersection. Can be one of:"
+                            "description": "`String` - (Optional, default \"VIEW\") primary `LOD` to look for intersection. Can be one of:\n* \"FIRE\"\n* \"VIEW\"\n* \"GEOM\"\n* \"IFIRE\" - (\"I\" stands for Indirect, _almost_ identical to \"FIRE\")\n* \"NONE\"\n* {{GVI|arma3|2.02"
                         },
                         {
                             "name": "LOD2",
@@ -25699,7 +25753,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "paramClass",
                             "description": "`String` - class name of one of [Mission Parameters](https://community.bistudio.com/wiki/Mission%20Parameters)"
-                        },
+                        }
+                    ],
+                    "outline": "paramClass call `BIS_fnc_getParamValue`",
+                    "returns": "`Number` - param value. Default: 0"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "paramClass",
                             "description": "`String` - class name of one of [Mission Parameters](https://community.bistudio.com/wiki/Mission%20Parameters)"
@@ -26203,7 +26263,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "argument",
-                            "description": "`Array` - **case-sensitive**, can be:"
+                            "description": "`Array` - **case-sensitive**, can be:\n* [] - displays Group Indicator\n* [\"Exit\"] - closes Group Indicator\n&nbsp;"
                         }
                     ],
                     "outline": "argument call `BIS_fnc_groupIndicator`",
@@ -26262,7 +26322,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "position",
-                            "description": "`Array` - in format:"
+                            "description": "`Array` - in format:\n\n0: - Position in X\n\n1: - Position in Y\n\n2: - Width\n\n3: - Height"
                         }
                     ],
                     "outline": "[position] call `BIS_fnc_GUIbackground`",
@@ -26735,7 +26795,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "gesture",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"greet\"\n* \"look\"\n* \"point\"\n* \"thumbDown\"\n* \"thumbUp\""
                         }
                     ],
                     "outline": "[unit, gesture] call `BIS_fnc_helicopterSeatMove`",
@@ -27008,31 +27068,31 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "conditionShow",
-                            "description": "`String` - (Optional, default \"true\") condition for the action to be shown."
+                            "description": "`String` - (Optional, default \"true\") condition for the action to be shown.\n\nSpecial arguments passed to the code: `**_target}} (action-attached object), {{hl|_this**` (caller/executing unit)"
                         },
                         {
                             "name": "conditionProgress",
-                            "description": "`String` - (Optional, default \"true\") condition for the action to progress; if false is returned action progress is paused."
+                            "description": "`String` - (Optional, default \"true\") condition for the action to progress; if false is returned action progress is paused.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`"
                         },
                         {
                             "name": "codeStart",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed when action starts."
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed when action starts.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n```\n\n* target: `Object` - the object which the action is assigned to\n* caller: `Object` - the unit that activated the action\n* actionId: `Number` - ID of the activated action (same as ID returned by addAction)\n* arguments: `Array` - arguments given to the function"
                         },
                         {
                             "name": "codeProgress",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on every progress tick."
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on every progress tick.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments}}, {{hl|_frame**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\", \"_frame\", \"_maxFrame\"];\n```\n\n* target: `Object` - the object which the action is assigned to\n* caller: `Object` - the unit that activated the action\n* actionId: `Number` - ID of the activated action (same as ID returned by addAction)\n* arguments: `Array` - arguments given to the function\n* frame: `Number` - current progress, goes from 1 to 24\n* maxFrame: `Number` - maximum progress (24)"
                         },
                         {
                             "name": "codeCompleted",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on completion."
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on completion.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // same as codeStart\n```"
                         },
                         {
                             "name": "codeInterrupted",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on interrupted."
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on interrupted.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // same as codeCompleted\n```"
                         },
                         {
                             "name": "arguments",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) arguments passed to **codeStart**, **codeProgress**, **codeCompleted** and **codeInterrupted** (max 10) in format:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) arguments passed to **codeStart**, **codeProgress**, **codeCompleted** and **codeInterrupted** (max 10) in format:\n\n```sqf\n\nparams [\n\t\"_a0\", \"_a1\", \"_a2\", \"_a3\", \"_a4\", \"_a5\", \"_a6\", \"_a7\", \"_a8\", \"_a9\", // custom arguments\n\t\"_target\", \"_title\", \"_iconIdle\", \"_iconProgress\",\n\t\"_condShow\", \"_condProgress\", \"_codeStart\", \"_codeProgress\", \"_codeCompleted\", \"_codeInterrupted\",\n\t\"_duration\", \"_removeCompleted\"\n];\n\n```"
                         },
                         {
                             "name": "duration",
@@ -27158,15 +27218,15 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "speedLimit",
-                            "description": "`Array` in format [priority, min, max]:"
+                            "description": "`Array` in format [priority, min, max]:\n* priority: `Number`\n* min: `Number`\n* max: `Number`"
                         },
                         {
                             "name": "altLimit",
-                            "description": "`Array` in format [priority, min, max]:"
+                            "description": "`Array` in format [priority, min, max]:\n* priority: `Number`\n* min: `Number`\n* max: `Number`"
                         },
                         {
                             "name": "dirLimit",
-                            "description": "`Array` in format [priority, min, max, target]:"
+                            "description": "`Array` in format [priority, min, max, target]:\n* priority: `Number`\n* min: `Number` - you can set a \"negative\" value by adding 360 (e.g using 270 instead of -90)\n* max: `Number`\n* target: `Position` or `Object` - (Optional, default [0,0,0]) the direction relative target"
                         }
                     ],
                     "outline": "[speedLimit, altLimit, dirLimit] call `BIS_fnc_HUDLimits`",
@@ -27369,7 +27429,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "parameters",
-                            "description": "`Array`"
+                            "description": "`Array`\n* [] - Init displays during preStart\n* [mode, params, displayClass, scriptPath, register]\n** mode: `String` -  Mode, can be \"onLoad\" or \"onUnload\"\n** params: `Array` - Parameters passed from [onLoad](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onLoad) or [onUnload](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onUnload) UI event handler\n** displayClass: `String` - `Display` class, usually to format \"RscDisplayXXX\"\n** scriptPath: `String` - Script path from CfgScriptPaths\n** register: `Number` or `Boolean` - Save variables associated with the display to the uiNamespace. Usually this is `**false**` when the function is called from a control.\n&nbsp;"
                         }
                     ],
                     "outline": "parameters call `BIS_fnc_initDisplay`",
@@ -27425,7 +27485,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "textureInfos",
-                            "description": "can be one of the following:"
+                            "description": "can be one of the following:\n* `String` - texture path\n* `Array` - [texture, index, aspectRatio]:\n** texture: `String` - texture path\n** index: `Number` - (Optional, default 0) index on which the texture will be mapped on the object using setObjectTexture. Use -1 to ignore.\n** aspectRatio: `Number` - (Optional, default -1) texture aspect ratio. 0.5 means width will be 0.5 of the height. -1 means texture default.\n* `Boolean` - `true` to instantly show the _inspectable_ full-screen preview (**following params are then ignored**)"
                         },
                         {
                             "name": "fullScreenText",
@@ -27449,13 +27509,13 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function sets up an object as intel retrievable by the players by adding a \"Take Intel\" `addAction` to it.\n\nWhen a player uses the action, they will play an animation to pick the object up and the object will be deleted from the mission.\n\nThe player and any defined recipients will then receive a diary entry which can contain a _title_, _description_ and _picture_.\n\nThe diary entry will also contain a marker shortcut showing where the intel was found.\n\n\nThis function is similar to placing an intel object as Zeus, but the Zeus interface provides some extra options like:\n\n* Which sides can interact with the action\n* The picture, title and description used in the diary entry\n\n\nWhen using this function from script there are several variables that need to be set up to acquire the same results (see the examples below).\n\nWithout this extra setup the functionality provided is minimal and only includes:\n* The \"Take Intel\" action on the object\n* The object can be picked up by a player from any side\n* When picked up it will have no title or description and the picture will be a default exclamation mark\n* The diary entry will only be given to the person who picked it up\n\n\nThere are some optional features of intel objects that can be used:\n* The diary entry's _description_ can be further enhanced by using the supported tags found on the `createDiaryRecord` page.\n* There is also a [scripted eventhandler](https://community.bistudio.com/wiki/BIS_fnc_addScriptedEventHandler) called _\"IntelObjectFound\"_ that can be registered  on the intel object. The event provides the parameters [object, caller] where _object_ is the intel object and _caller_ the person who picked it up.\n* A Zeus who has the intel object registered as a curator editable object can also receive feedback that the intel has been picked up if the [scripted eventhandler](https://community.bistudio.com/wiki/BIS_fnc_addScriptedEventHandler) called _\"intelObjectFound\"_ was registered on the curator module. The event provides the parameters [zeus, caller, object] where _zeus_ is the curator module, _caller_ the person who picked it up and _object_ is the intel object.\nThe usage of these scripted event handlers is shown in {{Link|#Example 3}}.",
+            "description": "This function sets up an object as intel retrievable by the players by adding a \"Take Intel\" `addAction` to it.\n\nWhen a player uses the action, they will play an animation to pick the object up and the object will be deleted from the mission.\n\nThe player and any defined recipients will then receive a diary entry which can contain a _title_, _description_ and _picture_.\n\nThe diary entry will also contain a marker shortcut showing where the intel was found.\n\n\nThis function is similar to placing an intel object as Zeus, but the Zeus interface provides some extra options like:\n\n* Which sides can interact with the action\n* The picture, title and description used in the diary entry\n\n\nWhen using this function from script there are several variables that need to be set up to acquire the same results (see the examples below).\n\nWithout this extra setup the functionality provided is minimal and only includes:\n* The \"Take Intel\" action on the object\n* The object can be picked up by a player from any side\n* When picked up it will have no title or description and the picture will be a default exclamation mark\n* The diary entry will only be given to the person who picked it up\n\n\nThere are some optional features of intel objects that can be used:\n* The diary entry's _description_ can be further enhanced by using the supported tags found on the `createDiaryRecord` page.\n* There is also a [scripted eventhandler](https://community.bistudio.com/wiki/BIS_fnc_addScriptedEventHandler) called _\"IntelObjectFound\"_ that can be registered  on the intel object. The event provides the parameters [object, caller] where _object_ is the intel object and _caller_ the person who picked it up.\n* A Zeus who has the intel object registered as a curator editable object can also receive feedback that the intel has been picked up if the [scripted eventhandler](https://community.bistudio.com/wiki/BIS_fnc_addScriptedEventHandler) called _\"intelObjectFound\"_ was registered on the curator module. The event provides the parameters [zeus, caller, object] where _zeus_ is the curator module, _caller_ the person who picked it up and _object_ is the intel object.\nThe usage of these scripted event handlers is shown in _Example 3_.",
             "examples": [
                 {
                     "text": "Setup an object as intel from its init attribute in the editor.\n\nBasic version including _picture_, _title_, _description_, _recipients_ and _sides that can interact with it_:\n\n```sqf\n\n[this] call BIS_fnc_initIntelObject;\n\nif (isServer) then\n{\n\t// Diary picture:\n\tthis setVariable [\n\t\t\"RscAttributeDiaryRecord_texture\",\n\t\t\"a3\\structures_f_epc\\Items\\Documents\\Data\\document_secret_01_co.paa\", // Path to picture\n\t\ttrue\n\t];\n\n\t// Diary Title and Description:\n\t[\n\t\tthis,\n\t\t\"RscAttributeDiaryRecord\",\n\t\t[\"New Intel\", \"The enemies have a cave troll!\"] // Array in format [Title, Description]\n\t] call BIS_fnc_setServerVariable;\n\n\t// Diary entry shared with (follows BIS_fnc_MP target rules):\n\tthis setVariable [\"recipients\", west, true];\n\n\t// Sides that can interact with the intel object:\n\tthis setVariable [\"RscAttributeOwners\", [west], true];\n};\n\n```"
                 },
                 {
-                    "text": "To set up an object as intel from its init attribute in the editor with a custom `addAction` title, replace the first line of {{Link|#Example 1}} with the following:\n\n```sqf\n\nif (hasInterface) then\n{\n\tthis addAction [\n\t\t\"Pick up laptop\", // custom addAction title\n\t\t{ [_this, \"action\"] spawn BIS_fnc_initIntelObject },\n\t\t[],\n\t\t10,\n\t\ttrue,\n\t\ttrue,\n\t\t\"\",\n\t\t\"isPlayer _this && { _this distance _target < 2 } &&\n\t\t{ (side group _this) in (_target getVariable ['RscAttributeOwners', [west, east, resistance, civilian]]) }\"\n\t];\n};\n\n```"
+                    "text": "To set up an object as intel from its init attribute in the editor with a custom `addAction` title, replace the first line of _Example 1_ with the following:\n\n```sqf\n\nif (hasInterface) then\n{\n\tthis addAction [\n\t\t\"Pick up laptop\", // custom addAction title\n\t\t{ [_this, \"action\"] spawn BIS_fnc_initIntelObject },\n\t\t[],\n\t\t10,\n\t\ttrue,\n\t\ttrue,\n\t\t\"\",\n\t\t\"isPlayer _this && { _this distance _target < 2 } &&\n\t\t{ (side group _this) in (_target getVariable ['RscAttributeOwners', [west, east, resistance, civilian]]) }\"\n\t];\n};\n\n```"
                 },
                 {
                     "text": "Set up an object as intel from its init attribute in the editor.\n\nBasic version plus curator and scripted event handlers:\n\n```sqf\n\n[this] call BIS_fnc_initIntelObject;\n\nif (isServer) then\n{\n\t// Diary picture:\n\tthis setVariable [\n\t\t\"RscAttributeDiaryRecord_texture\",\n\t\t\"a3\\structures_f_epc\\Items\\Documents\\Data\\document_secret_01_co.paa\", // Path to picture\n\t\ttrue\n\t];\n\n\t// Diary Title and Description:\n\t[\n\t\tthis,\n\t\t\"RscAttributeDiaryRecord\",\n\t\t[\"New Intel\", \"The enemies have a cave troll!\"] // Array in format [Title, Description]\n\t] call BIS_fnc_setServerVariable;\n\n\t// Diary entry shared with (follows BIS_fnc_MP target rules):\n\tthis setVariable [\"recipients\", west, true];\n\n\t// Sides that can interact with the intel object:\n\tthis setVariable [\"RscAttributeOwners\", [west], true];\n\n\t// Register intel object with Zeus as curator editable (_zeus is the curator module):\n\t_zeus addCuratorEditableObjects [[this], false];\n\n\t// Add Zeus scripted event:\n\t[_zeus, \"IntelObjectFound\", {hint \"Intel found\"}] call BIS_fnc_addScriptedEventHandler;\n\n\t// Add a scripted event that notifies all clients via systemChat when the intel is found:\n\t[\n\t\tthis,\n\t\t\"IntelObjectFound\",\n\t\t{\n\t\t\tparams [\"\", \"_foundBy\"];\n\t\t\tprivate _msg = format [\"Intel found by %1\", name _foundBy];\n\t\t\t_msg remoteExec [\"systemChat\", 0];\n\t\t}\n\t] call BIS_fnc_addScriptedEventHandler;\n};\n\n```\n\nAlthough both scripted event handlers supply a reference to the intel object, it is deleted from the mission almost immediately, so it could already be [null](https://community.bistudio.com/wiki/objNull) when queried."
@@ -27503,7 +27563,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "parameters",
-                            "description": "`Array` in format:"
+                            "description": "`Array` in format:\n* [leaflet, texture, text]:\n** leaflet: `Object` - the leaflet object itself\n** texture: `String` - texture path\n** text: `String` - localized text, shown when previewing the leaflet in full screen\n* [leaflet, cfgLeafletsClass]:\n** leaflet: `Object` - the leaflet object itself\n** cfgLeafletsClass: `String` - class name"
                         }
                     ],
                     "outline": "[mode, parameters] call `BIS_fnc_initLeaflet`",
@@ -27519,7 +27579,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:A3_BIS_fnc_initListNBoxSorting_example.jpg|thumb|right|A GUI using `BIS_fnc_initListNBoxSorting`]]\nAutomatically creates buttons and sets them up so they can be used to sort a `CT_LISTNBOX`. The buttons will automatically be resized to fit the column width of **ctrlFilter**.\n\nBy default, the **ctrlContent** columns are sorted by `lnbText` (using `lnbSort`). If a specific column should be sorted by `lnbValue` (using `lnbSortByValue`) instead, then something needs to be set in the data of the corresponding **ctrlFilter** column (literally _something_, the condition in the source code is <sqf inline>(_ctrlFilter lnbData [0, _i]) != \"\").\n\nRegarding **ctrlFilter**:\n* The position and size of this control define where the buttons for sorting are created, thus it should be placed above **ctrlContent** and its columns should have the same size as the columns of **ctrlContent**.\n* The text set in the columns is displayed as text for the buttons (the buttons are actually transparent).\n* The control can also be part of a `CT_CONTROLS_GROUP`. If that is the case, the buttons will be created as children of that group.\n* To keep a uniform style between vanilla and custom controls it is recommended to create a background with `CT_STATIC` behind **ctrlFilter** with <syntaxhighlight lang=\"cpp\" inline>colorBackground[] = { 0, 0, 0, 1 };</syntaxhighlight>.\nSee {{Link|CT_LISTNBOX#BIS_fnc_initListNBoxSorting Example}} for a full example including a config.",
+            "description": "[[File:A3_BIS_fnc_initListNBoxSorting_example.jpg|thumb|right|A GUI using `BIS_fnc_initListNBoxSorting`]]\nAutomatically creates buttons and sets them up so they can be used to sort a `CT_LISTNBOX`. The buttons will automatically be resized to fit the column width of **ctrlFilter**.\n\nBy default, the **ctrlContent** columns are sorted by `lnbText` (using `lnbSort`). If a specific column should be sorted by `lnbValue` (using `lnbSortByValue`) instead, then something needs to be set in the data of the corresponding **ctrlFilter** column (literally _something_, the condition in the source code is <sqf inline>(_ctrlFilter lnbData [0, _i]) != \"\").\n\nRegarding **ctrlFilter**:\n* The position and size of this control define where the buttons for sorting are created, thus it should be placed above **ctrlContent** and its columns should have the same size as the columns of **ctrlContent**.\n* The text set in the columns is displayed as text for the buttons (the buttons are actually transparent).\n* The control can also be part of a `CT_CONTROLS_GROUP`. If that is the case, the buttons will be created as children of that group.\n* To keep a uniform style between vanilla and custom controls it is recommended to create a background with `CT_STATIC` behind **ctrlFilter** with <syntaxhighlight lang=\"cpp\" inline>colorBackground[] = { 0, 0, 0, 1 };</syntaxhighlight>.\nSee [CT_LISTNBOX - BIS_fnc_initListNBoxSorting Example](https://community.bistudio.com/wiki/CT_LISTNBOX#BIS_fnc_initListNBoxSorting_Example) for a full example including a config.",
             "examples": [
                 {
                     "text": "```sqf\n[_lnbFilter, _lnbContent, [0,1,2,3]] call BIS_fnc_initListNBoxSorting;\n```"
@@ -27735,7 +27795,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function changes the textures, animation sources and/or mass of a given vehicle.\n\nUnless explicitly mentioned , the function will restore the initial state of every animation sources of the given object (see {{Link|#Example 3}}).",
+            "description": "This function changes the textures, animation sources and/or mass of a given vehicle.\n\nUnless explicitly mentioned , the function will restore the initial state of every animation sources of the given object (see _Example 3_).",
             "examples": [
                 {
                     "text": "```sqf\nresult = [this, \"\", []] call BIS_fnc_initVehicle;\n```"
@@ -27762,15 +27822,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "variant",
-                            "description": "(Optional, default `false`)"
+                            "description": "(Optional, default `false`)\n* `Boolean` - `true` to restore default texture source, `false` to skip texture source change\n* `Array` - texture sources with their probability in format <sqf inline>[\"textureSource1\", 0.5, \"textureSource2\", 0.5]\n* `String` - variant class name - from <sqf inline>configFile >> \"CfgVehicles\" or <sqf inline>missionConfigFile >> \"CfgVehicleTemplates\" (see [[Description.ext#CfgVehicleTemplates|CfgVehicleTemplates]])\n* `Number` - index of the texture source (same as the old system)"
                         },
                         {
                             "name": "animations",
-                            "description": "(Optional, default `false`)"
+                            "description": "(Optional, default `false`)\n* `Boolean` - `true` to restore init phase of every animation sources\n* `Array` - animation sources with their probability in format <sqf inline>[\"animationSource1\", 0.5, \"animationSource2\", 0.5]**IMPORTANT**: \nIf the first element is wrong, it will skip the rest of the animation sources!\n* `String` - variant class name - from <sqf inline>configFile >> \"CfgVehicles\" or <sqf inline>missionConfigFile >> \"CfgVehicleTemplates\" (see [[Description.ext#CfgVehicleTemplates|CfgVehicleTemplates]])"
                         },
                         {
                             "name": "mass",
-                            "description": "(Optional, default `false`)"
+                            "description": "(Optional, default `false`)\n* `Boolean` - `true` to set the default mass, `false` to disable the mass change\n* `Number` - mass to remove/add to the vehicle"
                         }
                     ],
                     "outline": "[vehicle, variant, animations, mass] call `BIS_fnc_initVehicle`",
@@ -27803,7 +27863,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "params",
-                            "description": "`Array` - in format:"
+                            "description": "`Array` - in format:\n*0: crewType: `Object` or `String` - unit or unit type (will be created)\n*1: role: `String` - Can be:\n**\"driver\"\n**\"turret\"\n**\"cargo\"\n*2: index: `Number` or `Array` - Cargo index or turret path"
                         },
                         {
                             "name": "deleteCrew",
@@ -28169,7 +28229,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "area",
-                            "description": "`Object`, `String`, `Location` or `Array`"
+                            "description": "`Object`, `String`, `Location` or `Array`\n* `Object` - trigger\n* `String` - marker\n* `Location` - location\n* `Array` - in format [center, distance] or [center, [a, b, angle, rect]] or [center, [a, b, angle, rect, height]]"
                         },
                         {
                             "name": "position",
@@ -28934,7 +28994,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "blacklistArea",
-                            "description": "* `Array` of `Position`s - array to format [topLeft, bottomRight]"
+                            "description": "* `Array` of `Position`s - array to format [topLeft, bottomRight]\n* `Object` - a trigger. Check the trigger area (see `inArea` or `BIS_fnc_inTrigger`)"
                         }
                     ],
                     "outline": "[position, blacklistArea] call `BIS_fnc_isPosBlacklisted`",
@@ -29042,11 +29102,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "function",
-                            "description": "`String` - (Optional, default \"initialize\") can be one of:"
+                            "description": "`String` - (Optional, default \"initialize\") can be one of:\n{{Columns|4|\n* \"initialize\"\n* \"terminate\"\n* \"readContainerFromConfig\"\n* \"isInitialized\"\n* \"forceBehaviour\"\n* \"status\"\n* \"randomMusic\"\n* \"selectMusic\"\n* \"playMusic\"\n* \"nearEnemies\"\n* \"hasContact\"\n* \"isContact\"\n* \"isStealth\"\n* \"isCombat\"\n* \"isSafe\"\n* \"onEachFrame\"\n}}"
                         },
                         {
                             "name": "parameters",
-                            "description": "`Array` - (Optional)"
+                            "description": "`Array` - (Optional)\n\n* **\"initialize\"**: [stealthMusics, combatMusics, safeMusics, volume, transition, radius, executionRate, noRepeat]\n** stealthMusics: `Array` of `String`s\n** combatMusics: `Array` of `String`s\n** safeMusics: `Array` of `String`s\n** volume: `Number`\n* **\"terminate\"**: none\n* **\"readContainerFromConfig\"**: [wantedTheme]\n* **\"isInitialized\"**: none\n* **\"forceBehaviour\"**: [behaviour]\n** behaviour: `String` - can be \"stealth\", \"combat\" or \"safe\". Any other value will reset the forced behaviour.\n* **\"status\"**: none\n* **\"randomMusic\"**: [container]\n** container: `Array` of `String`s - music list to choose from\n* **\"selectMusic\"**: none\n* **\"playMusic\"**: [musicName]\n** musicName: `String`\n* **\"nearEnemies\"**: none\n* **\"hasContact\"**: none\n* **\"isContact\"**: none\n* **\"isStealth\"**: none\n* **\"isCombat\"**: none\n* **\"isSafe\"**: none\n* **\"onEachFrame\"**: none"
                         }
                     ],
                     "outline": "[function, parameters] call `BIS_fnc_jukebox`",
@@ -29266,19 +29326,19 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "section",
-                            "description": "`Array` or `String` - (Optional, default \"\") section to be played. Elements can be:"
+                            "description": "`Array` or `String` - (Optional, default \"\") section to be played. Elements can be:\n* `String` - \"variant\" - play specific variant\n* `Array`\n** [startingSentence(, endingSentence)] - play all sentences between specific start and end\n*** startingSentence and endingSentence can be in format:\n**** `String` - full sentence name (example: \"04_intro_team_PLA_0\")\n**** `Array` - [<actorID>(, <sentenceID>)] (example: [\"PLA\", 0] or just [\"PLA_0\"])\n**** `Boolean` - true to play random sentence, false to play first sentence\n**** default - first sentence for startingSentence, last sentence for endingSentence\n* default: play everything"
                         },
                         {
                             "name": "radioMode",
-                            "description": "`Boolean`, `String`, `Object` or `Code` - (Optional, default: `false`) can be:"
+                            "description": "`Boolean`, `String`, `Object` or `Code` - (Optional, default: `false`) can be:\n* `Boolean` - true to force radio\n* `String` - name of radio channel, original or [custom](https://community.bistudio.com/wiki/radioChannelCreate)\n* `Object` - listener's channel\n* `Code` - returned value of code"
                         },
                         {
                             "name": "code",
-                            "description": "`Code` or `Array` - (Optional, default <sqf inline>{ true }) can be:"
+                            "description": "`Code` or `Array` - (Optional, default <sqf inline>{ true }) can be:\n* `Code` - executed at the start of every sentence (arguments are same as in kbAddTopic event handler)\n* `Array` - code with arguments in format [code, arguments]"
                         },
                         {
                             "name": "speakers",
-                            "description": "`Array` or `Boolean` - (Optional, default <sqf inline>[]) can be:"
+                            "description": "`Array` or `Boolean` - (Optional, default <sqf inline>[]) can be:\n* `Array` - replacement units for those defined in .bikb file (in chronological order)\n* `Boolean` - when true, dummy logics will be created for all actor units which doesn't exist (default: false or value of 'BIS_fnc_kbTell_createDummy' variable)"
                         },
                         {
                             "name": "soundVolume",
@@ -29325,7 +29385,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "parameters",
-                            "description": "`Array` - depends on the mode:"
+                            "description": "`Array` - depends on the mode:\n\n* \"sentence\": same parameters as `kbTell` (receiver, topicName etc.)\n\n* \"conversationStart\": [volumeCoef, disableRadio]\n** volumeCoef: `Number` - a volume multiplier to reduce other sounds but the chat (0.1 = environment volume set to 10%)\n** disableRadio: `Boolean` - should the radio chat be disabled\n\n* \"conversationEnd\": [volumeCoefUsedInStart, disableRadioUsedInStart]\n** volumeCoefUsedInStart: `Number` - a volume multiplier, shouldn't be used - if < 0 or >= 1, the volume won't be restored\n** disableRadioUsedInStart: `Boolean` - has the radio chat been disabled and should be restored"
                         }
                     ],
                     "outline": "[mode, parameters] call `BIS_fnc_kbTellLocal`",
@@ -30073,7 +30133,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "input",
-                            "description": "* `Number`: Key code"
+                            "description": "* `Number`: Key code\n* `String`: Key name\n* `Boolean`: Return key definitions"
                         }
                     ],
                     "outline": "input call `BIS_fnc_keyCode`",
@@ -30233,7 +30293,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filePath",
-                            "description": "`String` - (Optional, default <sqf inline>\"hsim\\Doc_H\\GoogleEarth\\Missions\\\" + missionName + \".kml\") KML file path"
+                            "description": "`String` - (Optional, default <sqf inline>\"hsim\\Doc_H\\GoogleEarth\\Missions\\\" + missionName + \".kml\") KML file path\n**Arma**: 3|Default value only works in {{tkoh. Do not rely on it in Arma 3.}}"
                         }
                     ],
                     "outline": "filePath call `BIS_fnc_KMLimport`",
@@ -30394,15 +30454,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "uniformMags",
-                            "description": "`Array` - (Optional, default [0.4,0.8]) amount of magazines in uniform. Array in form:"
+                            "description": "`Array` - (Optional, default [0.4,0.8]) amount of magazines in uniform. Array in form:\n*0:minMags - Minimum amount of magazines in percent (%)\n*1:maxMags - Maximum amount of magazines in percent (%)"
                         },
                         {
                             "name": "vestMags",
-                            "description": "`Array` - (Optional, default [0.4,0.8]) amount of magazines in vest. Array in form:"
+                            "description": "`Array` - (Optional, default [0.4,0.8]) amount of magazines in vest. Array in form:\n*0:minMags - Minimum amount of magazines in percent (%)\n*1:maxMags - Maximum amount of magazines in percent (%)"
                         },
                         {
                             "name": "backpackMags",
-                            "description": "`Array` - (Optional, default [0.4,0.8]) amount of magazines in backpack. Array in form:"
+                            "description": "`Array` - (Optional, default [0.4,0.8]) amount of magazines in backpack. Array in form:\n*0:minMags - Minimum amount of magazines in percent (%)\n*1:maxMags - Maximum amount of magazines in percent (%)"
                         }
                     ],
                     "outline": "[unit,uniformMags,vestMags,BackpackMags] call `BIS_fnc_limitAmmunition`",
@@ -30436,7 +30496,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "chanceNVG",
-                            "description": "`Number` - (Optional, default 50) chance to keep NVGs in % (range 0..100)"
+                            "description": "`Number` - (Optional, default 50) chance to keep NVGs in % (range 0..100)\n* 0 = NVGs are always removed\n* 100 = NVGs are always kept"
                         },
                         {
                             "name": "chanceBino",
@@ -30491,7 +30551,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "supportType",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"Artillery\"\n* \"Transport\"\n* \"CAS_Heli\"\n* \"CAS_Bombing\"\n* \"Drop\""
                         },
                         {
                             "name": "quantity",
@@ -30532,11 +30592,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` - (Optional, default 0) can be:"
+                            "description": "`Number` - (Optional, default 0) can be:\n* 1 = primary weapon\n* 2 = secondary weapon\n* 3 = handgun"
                         },
                         {
                             "name": "chanceOptics",
-                            "description": "`Number` or `Array` in format [\"itemClass\", chance] - (Optional, default 50) chance to keep optics from 0 to 100%"
+                            "description": "`Number` or `Array` in format [\"itemClass\", chance] - (Optional, default 50) chance to keep optics from 0 to 100%\n\n* if [\"itemClassname\", number] is used, the function will add that attachment if it passes the check. If not, the current attachment will be removed."
                         },
                         {
                             "name": "chanceAttach",
@@ -30677,7 +30737,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "effect",
-                            "description": "`Number` - (Optional, default 0)  live feed effect. Can be one of:"
+                            "description": "`Number` - (Optional, default 0)  live feed effect. Can be one of:\n* -1: reset\n* &nbsp;0: normal\n* &nbsp;1: night vision\n* &nbsp;2: thermal imaging"
                         }
                     ],
                     "outline": "[source, target, receiver, effect] call `BIS_fnc_liveFeed`",
@@ -30704,7 +30764,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "effect",
-                            "description": "`Number` - (Optional, default 0) live feed effect. Can be one of:"
+                            "description": "`Number` - (Optional, default 0) live feed effect. Can be one of:\n* -1: reset\n* &nbsp;0: normal\n* &nbsp;1: night vision\n* &nbsp;2: thermal imaging"
                         }
                     ],
                     "outline": "effect call `BIS_fnc_liveFeedEffects`",
@@ -30815,7 +30875,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "source",
-                            "description": "* `Object`"
+                            "description": "* `Object`\n* `Position`\n* `Array`: in the format [object, [x, y, z]]"
                         }
                     ],
                     "outline": "source call `BIS_fnc_liveFeedSetSource`",
@@ -30964,7 +31024,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "nameVars",
-                            "description": "`Array` of `String`s **or** `Array` of `Array` - list of variables to be declared."
+                            "description": "`Array` of `String`s **or** `Array` of `Array` - list of variables to be declared.\n* `Array` of `String`s to format [variable, variable, …] - final variable is `**prefix + variable}}, loaded from {{hl|path + variable + \".sqf\"**`\n* `Array` of `Array` to format [<nowiki/>[variable, fileName], [variable, fileName], …] - final variable is `**prefix + variable}}, loaded from {{hl|path + fileName + \".sqf\"**`"
                         },
                         {
                             "name": "global",
@@ -31002,7 +31062,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "`Config` or `Array`",
-                            "description": "can be one of:"
+                            "description": "can be one of:\n* `Config`: config entry of loadout found in either `**CfgVehicles}} or {{hl|CfgRespawnInventory**`\n* `Array` in format [<nowiki/>`Namespace`, `Group` or `Object`, `String`] or `BIS_fnc_saveInventory`'s output"
                         },
                         {
                             "name": "`Array`",
@@ -31037,7 +31097,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "target",
-                            "description": "`Array` - in format:"
+                            "description": "`Array` - in format:\n*0: `Namespace`, `Group` or `Object` - location of the previously saved appearance\n*1: `String` - name of the saved appearance"
                         }
                     ],
                     "outline": "[object,target] call `BIS_fnc_loadVehicle`",
@@ -31133,7 +31193,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "debug",
                             "description": "`Boolean` (Optional)"
-                        },
+                        }
+                    ],
+                    "outline": "[types, area, debug] call `BIS_fnc_locations`",
+                    "returns": "`Array` - list of registered locations"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "objects",
                             "description": "Array of `Object`s or `Location`s - list of specific locations to be registered"
@@ -31328,7 +31394,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "lookAtData",
-                            "description": "`Array` - an array with arrays of look-up-data in form of:"
+                            "description": "`Array` - an array with arrays of look-up-data in form of:\n*0: `Object` - Object to be looked at\n*1: `Number` - How long player has to look at it\n*2: `Boolean` - `true` to remove it from array when player looked at it\n*3: `Code` - Code spawned when player looked long enough at the object"
                         }
                     ],
                     "outline": "[initialize, lookAtData] call `BIS_fnc_lookAtArray`",
@@ -31391,11 +31457,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "action",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"initialize\" - Initializes game loop (not required as internal AUTO_INITIALIZE variable is set to true)\n* \"terminate\" - Terminates game loop (required as internal AUTO_TERMINATE variable is _not_ set to true)\n* \"itemAdd\" - Adds an item to loop\n* \"itemRemove\" - Remove item from loop with id \"uniqueId\"\n* _\"onEachFrame\" - internally used by \"initialize\"_\n* _\"itemExecute\" - internally used by \"onEachFrame\"_"
                         },
                         {
                             "name": "parameters",
-                            "description": "`Array` - used with \"itemAdd\" and \"itemRemove\" _action_ (\"itemRemove\" only takes id):"
+                            "description": "`Array` - used with \"itemAdd\" and \"itemRemove\" _action_ (\"itemRemove\" only takes id):\n* id: `String` - loop unique id\n* code: `Code` or `String` - code to be executed\n* timer: `Number` - (Optional, default 0) delay between executions\n* timerType: `String` - (Optional, default \"seconds\") can be \"seconds\" or \"frames\"\n* conditionStart: `Code` - (Optional, default <sqf inline>{ true }) will _wait_ until the condition is met to start the code\n* conditionEnd:  `Code` - (Optional, default <sqf inline>{ false }) stops the loop as soon as the ending condition is met (after the end of _code_)\n* executeOnce: `Boolean` - (Optional, default `false`)"
                         }
                     ],
                     "outline": "[action, parameters] call `BIS_fnc_loop`",
@@ -31581,11 +31647,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rewards `Array` of [arrays](https://community.bistudio.com/wiki/Array)",
-                            "description": "(Optional, default <sqf inline>[]) rewards and their descriptions in format:"
+                            "description": "(Optional, default <sqf inline>[]) rewards and their descriptions in format:\n*0: `Code` - Code executed\n*1: `String` - Description"
                         },
                         {
                             "name": "defaultRewards `Array` of [arrays](https://community.bistudio.com/wiki/Array)",
-                            "description": "(Optional, default <sqf inline>[]) default reward, used when previous rewards are exausted  in format:"
+                            "description": "(Optional, default <sqf inline>[]) default reward, used when previous rewards are exausted  in format:\n*0: `Code` - Code executed\n*1: `String` - Description"
                         }
                     ],
                     "outline": "[curator,challenges,numChallenges,rewards,defaultRewards]] call `BIS_fnc_manageCuratorChallenges`",
@@ -31823,7 +31889,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "start",
-                            "description": "`Position`, `Waypoint`, `Object`, `Location` or `String`:"
+                            "description": "`Position`, `Waypoint`, `Object`, `Location` or `String`:\n* `Position` - position [x,y] or [x,y,z]\n* `Waypoint` - format [group, index]\n* `Object` - object's position\n* `Location` - location's position\n* `String` - marker name"
                         },
                         {
                             "name": "end",
@@ -31988,7 +32054,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "modes",
-                            "description": "`Array` of `String`s - copy modes, can be:"
+                            "description": "`Array` of `String`s - copy modes, can be:\n* \"addons\"\n* \"objects\"\n* \"coefs\"\nAll three modes can be combined."
                         },
                         {
                             "name": "shareType",
@@ -32020,7 +32086,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "anim",
-                            "description": "`String` - **case-sensitive**, can be one of:"
+                            "description": "`String` - **case-sensitive**, can be one of:\n* **\"BagFenceSittingOn1\"** - sitting on the bagfance - front\n* **\"fixingHumwee1\"** - fixing Hummwee - engine\n* **\"fixingTowingTractor\"** - fixing the right front wheel of towing tractor\n* **\"heliChecking1\"** - checking, assembling helicopter - thermal rocket silo - VENOM\n* **\"heliChecking2\"** - checking, assembling helicopter - ROTATEGUN\n* **\"heliCleaning1\"** - cleaning,checking, helicopter MH60 - cockpit outside\n* **\"heliNavi1\"** - navigating helicopter\n* **\"lyingAlongVehicle1\"** - lying near the vehicle - LEFT\n* **\"lyingAlongVehicle1b\"** - lying near the vehicle - RIGHT\n* **\"sittingOnTheChair1\"** - sitting on the foldChair (with geton from the RIGHT side)\n* **\"sittingOnTheChair1L\"** - sitting on the foldChair (with geton from the LEFT side)\n* **\"sittingOnTheChair2\"** - sitting-banded on the foldChair (with geton from the RIGHT side)\n* **\"sittingOnTheChair3a\"** - Sykes-like sitting\n* **\"sittingOnTheChair3b\"** - Rodriguez-like sitting\n* **\"tableSittingOn1\"** - sitting on the table - front\n* **\"tableSupportTalking1\"** - talking leaning on table - from front\n* **\"tableSupportTalking2\"** - talking leaning on table - from side\n* **\"twoTalking1\"** - pair talking in front of the vehicle 0 degrees\n* **\"twoTalking1a\"** - pair talking in front of the vehicle 0 degrees but pair is ROTATED\n* **\"twoTalking2\"** - pair talking in side of the vehicle 90 degrees\n* **\"twoTalking3\"** - pair talking in side of the vehicle 270 degrees"
                         },
                         {
                             "name": "person1",
@@ -32044,7 +32110,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "doMove",
-                            "description": "`Anything` - (Optional, default `false`) nil to `setPos` unit, any value to make it move _via_ "
+                            "description": "`Anything` - (Optional, default `false`) nil to `setPos` unit, any value to make it move _via_ \n`doMove` (`true` for readability)"
                         }
                     ],
                     "outline": "[anim, person1, vehicle_, person2, isOnBoard, altitude, doMove_] call `BIS_fnc_miscAnim`",
@@ -32234,7 +32300,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "missionsArray",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) list of selectable missions and their parameters, to format [pos, text, tooltip, picture, code]:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) list of selectable missions and their parameters, to format [pos, text, tooltip, picture, code]:\n* pos: `Array` - where the clickable marker will be placed\n* text: `String` - text that should be displayed next to the icon\n* tooltip: `String` - text to be displayed in the tooltip (on mouse over)\n* picture: `String` - location of the picture to be displayed in the tooltip\n* code: `Code` - code spawned when the icon is clicked"
                         }
                     ],
                     "outline": "[area, mapCenter, missionsArray] call `BIS_fnc_missionSelector`",
@@ -32474,7 +32540,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "logic",
-                            "description": "`Object` the logic. Possible `setVariable` parameters:"
+                            "description": "`Object` the logic. Possible `setVariable` parameters:\n* \"Text\": `String` - the text to be sent\n* \"Channel\": `String` - (Optional, default \"0\") a number **as a string**:\n** \"0\": `groupChat`\n** \"1\": `vehicleChat`\n** \"2\": `sideChat`\n** \"3\": `commandChat`\n** \"4\": `globalChat`"
                         },
                         {
                             "name": "units",
@@ -33032,7 +33098,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "logic",
-                            "description": "`Object` - the logic. Possible `setVariable` parameter:"
+                            "description": "`Object` - the logic. Possible `setVariable` parameter:\n* \"value\": `Number` - (Optional, default 0) wanted damage, in range 0..1\n* \"bodypart\": `String` - (Optional, default \"0\") `setHitPointDamage` hitpoint name"
                         },
                         {
                             "name": "vehicles",
@@ -33587,7 +33653,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "logic",
-                            "description": "`Object` - the logic. Possible `setVariable` parameter:"
+                            "description": "`Object` - the logic. Possible `setVariable` parameter:\n* \"value\": `Number` - (Optional, default 0) wanted fuel level, in range 0..1"
                         },
                         {
                             "name": "units",
@@ -35769,7 +35835,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "role",
-                            "description": "`Array` - wanted seat, in format [_\"role\"_] or [_\"role\"_, turretPath]. Can be one of:"
+                            "description": "`Array` - wanted seat, in format [_\"role\"_] or [_\"role\"_, turretPath]. Can be one of:\n* \"driver\"\n* \"gunner\"\n* \"commander\"\n* \"cargo\"\n* \"turret\"\n* \"\": will load _unit_ in the first available seat (using `moveInAny`)"
                         }
                     ],
                     "outline": "[vehicle, unit, role] call `BIS_fnc_moveIn`",
@@ -35812,7 +35878,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "interpolationType",
-                            "description": "`Number` - (Optional, default 4) can be one of:"
+                            "description": "`Number` - (Optional, default 4) can be one of:\n{{Columns|3|\n* 0: LINEAR\n* 1: CUBIC\n* 2: EASEIN\n* 3: EASEOUT\n* 4: EASEINOUT\n* 5: HERMITE\n* 6: BERP\n* 7: BOUNCEIN\n* 8: BOUNCEOUT\n* 9: BOUNCEINOUT\n* 10: QUINTICIN\n* 11: QUINTICOUT\n* 12: QUINTICINOUT\n<!-- * 13: CONSTANT -->\n}}"
                         }
                     ],
                     "outline": "[marker, newPosition, duration, interpolationType] call `BIS_fnc_moveMarker`",
@@ -35845,11 +35911,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "position",
-                            "description": "`Object`, `Group`, `String` or `Array`"
+                            "description": "`Object`, `Group`, `String` or `Array`\n* `Object` or `Group` - Object or Group to move unit to. Move to the object position or inside an object if the object is a vehicle, or if group or unit is in vehicle and there is an empty seat\n* `String` - Marker to move unit to. Marker size will be used for random placement area and marker direction for unit direction\n* `Array` - Precise [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) to move unit to. [x,y] array will be converted to [x,y,0]"
                         },
                         {
                             "name": "canBeDead",
-                            "description": "`Boolean` - (Optional, default `true`) whether or not dead are allowed:"
+                            "description": "`Boolean` - (Optional, default `true`) whether or not dead are allowed:\n* `true` - moved unit and/or object to which unit is moved can be dead\n* `false` - both moved unit and vehicle or unit at position (if any) must be alive"
                         }
                     ],
                     "outline": "[unit, position, canBeDead] call `BIS_fnc_moveToRespawnPosition`",
@@ -35919,7 +35985,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Randomly play provided tracks defined in [[Description.ext#CfgMusic|CfgMusic]] and does a 3 seconds [fade out](https://community.bistudio.com/wiki/fadeMusic). This function takes `accTime` into account. See also `BIS_fnc_jukebox`.\n**NOTE**: The function stores the script handle in the `**BIS_fnc_music_spawn variable that can be used to stop the function; see {{Link|#Example 3}} for its usage example.**`",
+            "description": "Randomly play provided tracks defined in [[Description.ext#CfgMusic|CfgMusic]] and does a 3 seconds [fade out](https://community.bistudio.com/wiki/fadeMusic). This function takes `accTime` into account. See also `BIS_fnc_jukebox`.\n**NOTE**: The function stores the script handle in the `**BIS_fnc_music_spawn variable that can be used to stop the function; see _Example 3_ for its usage example.**`",
             "examples": [
                 {
                     "text": "```sqf\n[[\"myMusic1\", \"myMusic2\"], 1] call BIS_fnc_music; // play the two musics in a random order\n```"
@@ -36388,7 +36454,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animationArray",
-                            "description": "`Array` - an Array in form of:"
+                            "description": "`Array` - an Array in form of:\n\n0: String - Animation Name\n\n1: Number - Animation phase"
                         }
                     ],
                     "outline": "[object, animationArray] call `BIS_fnc_objectInventoryAnimatedClose`",
@@ -36417,7 +36483,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animationArray",
-                            "description": "`Array` - an Array in form of:"
+                            "description": "`Array` - an Array in form of:\n\n0: `String` - Animation Name\n\n1: `Number` - Animation phase"
                         }
                     ],
                     "outline": "[object, animationArray] call `BIS_fnc_objectInventoryAnimatedOpen`",
@@ -36492,7 +36558,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "boolean",
                             "description": "`Boolean` (optional) - false (default) to return actual object side, true to return the default config value"
-                        },
+                        }
+                    ],
+                    "outline": "[target, boolean] call `BIS_fnc_objectSide`",
+                    "returns": "`Side`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "target",
                             "description": "`Object` - the object to be tested. This syntax is equal to calling the method with `false` as a second parameter."
@@ -37781,7 +37853,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "argument",
-                            "description": "`Code`, `Array` or `Number`:"
+                            "description": "`Code`, `Array` or `Number`:\n* `Code` - code to be executed\n* `Array` - code with arguments in format [code, arguments]\n* `Number` - remove code at given index"
                         }
                     ],
                     "outline": "argument call `BIS_fnc_onEnd`",
@@ -37811,7 +37883,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "parameter",
-                            "description": "`Code` or `Number`:"
+                            "description": "`Code` or `Number`:\n* `Code` - code to be executed on mission load\n* `Number` - index of code to remove\n&nbsp;"
                         }
                     ],
                     "outline": "parameter call `BIS_fnc_onLoad`",
@@ -37838,7 +37910,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "code",
-                            "description": "`Code` or `String` - function name or [code](https://community.bistudio.com/wiki/Code) to be executed. Following parameters are passed to the function or code:"
+                            "description": "`Code` or `String` - function name or [code](https://community.bistudio.com/wiki/Code) to be executed. Following parameters are passed to the function or code:\n*0: [Player](https://community.bistudio.com/wiki/player)\n*1: Params"
                         },
                         {
                             "name": "params",
@@ -37963,7 +38035,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "target",
-                            "description": "`Config` or `Array` - path to group in CfgORBAT or offset position from structure center in format **[X, Y]**."
+                            "description": "`Config` or `Array` - path to group in CfgORBAT or offset position from structure center in format **[X, Y]**.\n* When empty, view is reset to original level where whole structure is visible"
                         },
                         {
                             "name": "zoom",
@@ -38068,7 +38140,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "parameters",
-                            "description": "`Array` of `Array`s - (Optional, default <sqf inline>[]) sub-arrays in format [config, code] where:"
+                            "description": "`Array` of `Array`s - (Optional, default <sqf inline>[]) sub-arrays in format [config, code] where:\nconfig: `Config` - group class\ncode: `Code` - action performed upon clicking on group icon"
                         }
                     ],
                     "outline": "[path, display, tags, numTiers, parameters] call `BIS_fnc_ORBATOpen`",
@@ -38217,7 +38289,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "assets",
-                            "description": "`Array` of `Array`s in format [vehicleClass, count]:"
+                            "description": "`Array` of `Array`s in format [vehicleClass, count]:\n* vehicleClass: `String` - vehicle class name\n* count: `Number` - quantity of vehicles"
                         }
                     ],
                     "outline": "[target, idType, size, type, side, name, shortName, texture, textSizeCoef, insignia, textColour, commName, commRank, description, assets] call `BIS_fnc_ORBATSetGroupParams`",
@@ -38492,7 +38564,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "defaultValue",
-                            "description": "`Anything` - (Optional, default `Nothing`) default param (used when param is missing or of wrong type)."
+                            "description": "`Anything` - (Optional, default `Nothing`) default param (used when param is missing or of wrong type).\nYou can overload default value by declaring variable _BIS_fnc_<functionName>_<index>_ in `Namespace` where BIS_fnc_param is called from.\n`BIS_fnc_paramIn` is a variant of the function with overloading disabled."
                         },
                         {
                             "name": "dataTypes",
@@ -38561,7 +38633,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "datetime",
-                            "description": "`Number` or `Array` - (Optional, default `dayTime`):"
+                            "description": "`Number` or `Array` - (Optional, default `dayTime`):\n* `Number` - day hour. This will set the hour **in the same day** (unless 23 < _hour_ < 0).\nFloat numbers are [floored](https://community.bistudio.com/wiki/floor)\n* `Array` - `dayTime` format: [year, month, day, hour, minute]\n&nbsp;"
                         }
                     ],
                     "outline": "datetime call `BIS_fnc_paramDaytime`",
@@ -38589,7 +38661,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "number",
-                            "description": "`Number` - side relation, can be:"
+                            "description": "`Number` - side relation, can be:\n\n-1 - Nobody\n\n0 - OPFOR\n\n1 - BLUFOR\n\n2 - Everybody"
                         },
                         {
                             "name": null,
@@ -39028,7 +39100,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "cameraParams",
-                            "description": "`Object` or `Array`"
+                            "description": "`Object` or `Array`\n* `Object` - existing camera\n* `Array` - camera params in format [position, target]:\n** position: `Array` in format [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) or `attachTo` [object, position]\n** target: `Object` or `Array` in format [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) (same as `camPrepareTarget`)"
                         },
                         {
                             "name": "vehicle",
@@ -39260,7 +39332,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Plays in-game video with a range of options. The function can be `call`ed or `spawn`ed. If `spawn`ed, `scriptDone` command can be used to see if video is stopped or finished. If `call`ed in scheduled environment, the next line of code will not process until the video is stopped or finished.\n\nThe function also calls `**\"BIS_fnc_playVideo_started\"}} and {{hl|\"BIS_fnc_playVideo_stopped\"**` Scripted Event Handlers in `missionNamespace` - see `BIS_fnc_addScriptedEventHandler` and [Arma 3: Scripted Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Scripted%20Event%20Handlers).\n\n**NOTE**: \n* to play the video on an object, e.g an in-game screen, see {{Link|#Example 3\n* the video can be stopped in a variety of ways - see {{Link|#Example 4}}\n* see [OGV File Format](https://community.bistudio.com/wiki/OGV%20File%20Format) for format and conversion information.\n}}",
+            "description": "Plays in-game video with a range of options. The function can be `call`ed or `spawn`ed. If `spawn`ed, `scriptDone` command can be used to see if video is stopped or finished. If `call`ed in scheduled environment, the next line of code will not process until the video is stopped or finished.\n\nThe function also calls `**\"BIS_fnc_playVideo_started\"}} and {{hl|\"BIS_fnc_playVideo_stopped\"**` Scripted Event Handlers in `missionNamespace` - see `BIS_fnc_addScriptedEventHandler` and [Arma 3: Scripted Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Scripted%20Event%20Handlers).\n\n**NOTE**: \n* to play the video on an object, e.g an in-game screen, see _Example 3_\n* the video can be stopped in a variety of ways - see _Example 4_\n* see [OGV File Format](https://community.bistudio.com/wiki/OGV%20File%20Format) for format and conversion information.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _video = [\"A3\\Missions_F_EPA\\video\\A_in_intro.ogv\"] spawn BIS_fnc_playVideo;\n```"
@@ -39284,7 +39356,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "size",
-                            "description": "`Array` of `Number`s - (Optional, default [<nowiki/>`safeZoneX`, `safeZoneY`, `safeZoneW`, `safeZoneH`]) screen size in format [x, y, w, h]"
+                            "description": "`Array` of `Number`s - (Optional, default [<nowiki/>`safeZoneX`, `safeZoneY`, `safeZoneW`, `safeZoneH`]) screen size in format [x, y, w, h]\n**NOTE**: If the aspect ratio of the size parameter is not the same as the aspect ratio of the video file, black bars will be visibile. The video will not be stretched"
                         },
                         {
                             "name": "color",
@@ -39398,7 +39470,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "argument",
-                            "description": "could be one of:"
+                            "description": "could be one of:\n* `Array` - Position in format `**[x, y]}} or {{hl|[x, y ,z]**`\n* `Object` - Object\n* `Group` - Group, group leader position is used\n* `Location` - Location\n* `String` - Marker or variable name containing object\n**NOTE**: To get the position of an [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) use <sqf inline>_entity get3DENAttribute \"Position\" select 0;."
                         }
                     ],
                     "outline": "argument call `BIS_fnc_position`",
@@ -39914,7 +39986,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "videoPath",
-                            "description": "`String` - path to video. "
+                            "description": "`String` - path to video. \n<spoiler text = \"All .ogv files\">\n{{Columns|2|\n* `**a3\\data_f_argo\\video\\preview_argo.ogv**`\n* `**a3\\data_f_curator\\video\\preview_curator.ogv**`\n* `**a3\\data_f_exp\\video\\preview_expansion.ogv**`\n* `**a3\\data_f_heli\\video\\preview_heli.ogv**`\n* `**a3\\data_f_jets\\video\\preview_jets.ogv**`\n* `**a3\\data_f_kart\\video\\preview_kart.ogv**`\n* `**a3\\data_f_mark\\video\\preview_mark.ogv**`\n* `**a3\\data_f_orange\\video\\preview_orange.ogv**`\n* `**a3\\data_f_tank\\video\\preview_tank.ogv**`\n* `**a3\\map_altis_scenes_f\\video\\previewvideo.ogv**`\n* `**a3\\map_malden_scenes_f\\video\\previewvideo.ogv**`\n* `**a3\\map_stratis_scenes_f\\video\\previewvideo.ogv**`\n* `**a3\\map_tanoa_scenes_f\\video\\previewvideo.ogv**`\n* `**a3\\map_vr_scenes_f\\video\\previewvideo.ogv**`\n* `**a3\\missions_f\\video\\helicopters.ogv**`\n* `**a3\\missions_f\\video\\infantry.ogv**`\n* `**a3\\missions_f\\video\\scuba.ogv**`\n* `**a3\\missions_f\\video\\supports.ogv**`\n* `**a3\\missions_f\\video\\vehicles.ogv**`\n* `**a3\\missions_f_beta\\video\\combined_arms.ogv**`\n* `**a3\\missions_f_beta\\video\\commanding.ogv**`\n* `**a3\\missions_f_beta\\video\\defend.ogv**`\n* `**a3\\missions_f_beta\\video\\night.ogv**`\n* `**a3\\missions_f_beta\\video\\supports.ogv**`\n* `**a3\\missions_f_bootcamp\\video\\boot_m05_sometime_later.ogv**`\n* `**a3\\missions_f_bootcamp\\video\\vr_boot.ogv**`\n* `**a3\\missions_f_bootcamp\\video\\vr_generictransition_1.ogv**`\n* `**a3\\missions_f_bootcamp\\video\\vr_generictransition_2.ogv**`\n* `**a3\\missions_f_bootcamp\\video\\vr_generictransition_3.ogv**`\n* `**a3\\missions_f_curator\\data\\video\\showcase_curator.ogv**`\n* `**a3\\missions_f_epa\\video\\a_hub_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_in2_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_in2_two_hours_later.ogv**`\n* `**a3\\missions_f_epa\\video\\a_in_intro.ogv**`\n* `**a3\\missions_f_epa\\video\\a_in_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_m01_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_m02_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_m03_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_m04_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_m05_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_out_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\a_out_some_time_later.ogv**`\n* `**a3\\missions_f_epa\\video\\a_out_to_be_continued.ogv**`\n* `**a3\\missions_f_epa\\video\\b_hub01_10_days_later.ogv**`\n* `**a3\\missions_f_epa\\video\\b_hub01_few_hours_later.ogv**`\n* `**a3\\missions_f_epa\\video\\b_hub01_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_in2_12_hours_later.ogv**`\n* `**a3\\missions_f_epa\\video\\b_in_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_m01_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_m02_1_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_m03_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_m05_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_m06_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_out2_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\b_out2_sometime_later.ogv**`\n* `**a3\\missions_f_epa\\video\\c_ea_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_eb_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_in1_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_in2_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_m01_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_m02_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_out1_quotation.ogv**`\n* `**a3\\missions_f_epa\\video\\c_out2_sometime_later.ogv**`\n* `**a3\\missions_f_epa\\video\\fixed_wings.ogv**`\n* `**a3\\missions_f_exp\\video\\endgame.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m01_v01.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m01_vbohemia.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m01_vlogo.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m02_vin.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m02_vtimeline.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m02_vtitlecard.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m03_vin.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m03_vtimeline.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m03_vtitlecard.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m04_v01.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m04_v02.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m04_v03.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m04_vin.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m04_vtimeline.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m04_vtitlecard.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m05_vin.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m05_vtimeline.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m05_vtitlecard.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m06_v01.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m06_vin.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m06_vintel.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m06_vtitlecard.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m07_vin.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m07_vout.ogv**`\n* `**a3\\missions_f_exp\\video\\exp_m07_vtitlecard.ogv**`\n* `**a3\\missions_f_exp\\video\\vtol.ogv**`\n* `**a3\\missions_f_gamma\\video\\arma.ogv**`\n* `**a3\\missions_f_gamma\\video\\drones.ogv**`\n* `**a3\\missions_f_gamma\\video\\faction_blufor.ogv**`\n* `**a3\\missions_f_gamma\\video\\faction_independent.ogv**`\n* `**a3\\missions_f_gamma\\video\\faction_opfor.ogv**`\n* `**a3\\missions_f_gamma\\video\\gunships.ogv**`\n* `**a3\\missions_f_gamma\\video\\tanks.ogv**`\n* `**a3\\missions_f_heli\\video\\slingloading.ogv**`\n* `**a3\\missions_f_jets\\video\\showcase_jets_intro_01.ogv**`\n* `**a3\\missions_f_mark\\video\\ffv.ogv**`\n* `**a3\\missions_f_mark\\video\\marksman.ogv**`\n* `**a3\\missions_f_orange\\video\\faction_idap.ogv**`\n* `**a3\\missions_f_orange\\video\\laws_of_war.ogv**`\n* `**a3\\missions_f_orange\\video\\laws_of_war_establishing_shot.ogv**`\n* `**a3\\missions_f_tank\\video\\tanks_destroyers.ogv**`\n* `**a3\\props_f_argo\\items\\electronics\\data\\oldlaptop_video.ogv**`\n* `**a3\\ui_f\\video\\preview_dlcbundle.ogv**`\n* `**a3\\ui_f\\video\\preview_dlcbundle2.ogv**`\n* `**a3\\ui_f\\video\\spotlight3.ogv**`\n* `**a3\\ui_f\\video\\spotlight_1_apex.ogv**`\n* `**a3\\ui_f\\video\\spotlight_1_bootcamp.ogv**`\n* `**a3\\ui_f\\video\\spotlight_1_eastwind.ogv**`\n* `**a3\\ui_f\\video\\spotlight_1_old_man.ogv**`\n* `**a3\\ui_f\\video\\spotlight_2.ogv**`\n* `**a3\\ui_f_oldman\\video\\spotlight_a.ogv**`\n* `**a3\\ui_f_oldman\\video\\spotlight_fd14.ogv**`\n* `**a3\\ui_f_orange\\video\\spotlight_a.ogv**`\n* `**a3\\ui_f_orange\\video\\spotlight_b.ogv**`\n* `**a3\\ui_f_orange\\video\\spotlight_c.ogv**`\n* `**a3\\ui_f_tank\\video\\spotlight_a.ogv**`\n* `**a3\\ui_f_tank\\video\\spotlight_b.ogv**`\n}}"
                         },
                         {
                             "name": "nonEnglishSubtitle",
@@ -40171,11 +40243,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "whitelist",
-                            "description": "`Array` - whitelisted areas. If not given, whole map is used. Areas can be:"
+                            "description": "`Array` - whitelisted areas. If not given, whole map is used. Areas can be:\n* `Object` - trigger\n* `String` - marker\n* `Array` - in format [center, radius] or [center, [a, b, angle, rect]]\n* `Location` - location"
                         },
                         {
                             "name": "blacklist",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) blacklisted areas. If not given, water is blacklisted. Areas can be:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) blacklisted areas. If not given, water is blacklisted. Areas can be:\n* `Object` - trigger\n* `String` - marker name or special tags names: \"water\" - exclude water, \"ground\" - exclude land\n* `Array` - in format [center, radius] or [center, [a, b, angle, rect]]\n* `Location` - location"
                         },
                         {
                             "name": "code",
@@ -40206,7 +40278,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "firstCircle",
-                            "description": "`Object`, `String` or `Array` - first circle. Can be a trigger, a marker or an array in form "
+                            "description": "`Object`, `String` or `Array` - first circle. Can be a trigger, a marker or an array in form \n*0: `Array` - circleCenter\n**0: `Number` - coordinate X\n**1: `Number` - coordinate Y\n*1: `Number` - radius"
                         },
                         {
                             "name": "secondCircle",
@@ -40245,7 +40317,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "param",
-                            "description": "can be one of:"
+                            "description": "can be one of:\n* `Object` - trigger\n* `String` - marker\n* `Location` - location\n* `Array` - array in format [center, distance] or [center, [a, b, angle, rect]] or [center, [a, b, angle, rect, height]]"
                         }
                     ],
                     "outline": "param call `BIS_fnc_randomPosTrigger`",
@@ -40272,11 +40344,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "source",
-                            "description": "`Number`, `String` or `Object` - can be one of:"
+                            "description": "`Number`, `String` or `Object` - can be one of:\n* `Number` - rank ID\n* `String` -  rank system name (e.g. \"PRIVATE\", \"CORPORAL\", …)\n* `Object` - person whose rank is checked"
                         },
                         {
                             "name": "infoType",
-                            "description": "`String` - can be one of:"
+                            "description": "`String` - can be one of:\n* \"displayName\" - full localized name (e.g. \"Major\")\n* \"displayNameShort\" - short localized name (e.g. \"Maj.\")\n* \"classname\" - system name (e.g. \"MAJOR\")\n* \"texture\" - path to rank insignia"
                         }
                     ],
                     "outline": "[source, infoType] call `BIS_fnc_rankParams`",
@@ -40309,7 +40381,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode (Optional, default 0)",
-                            "description": "* `String` - name of the function to be recompiled"
+                            "description": "* `String` - name of the function to be recompiled\n* `Number` - can be:\n** 0 - Autodetect what compile type should be used\n** 1 - Forced recompile of all the things\n** 2 - Create only uiNamespace variables (used in UI)\n** 3 - Create missionNamespace variables and initialize mission\n** 4 - Create only missionNamespace variables\n** 5 - Recompile all functions, and initialize mission (used for editor preview with function recompile)"
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_recompile`",
@@ -40734,7 +40806,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "endIndex",
                             "description": "`Number` - (Optional, default `Nothing`) -  end index, if provided the indexs from startIndex to endIndex will be removed"
-                        },
+                        }
+                    ],
+                    "outline": "[array, startIndex, endIndex] call `BIS_fnc_removeIndex`",
+                    "returns": "`Array` - new array with new values"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "array",
                             "description": "`Array`"
@@ -41137,7 +41215,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "size",
-                            "description": "`Array` - (Optional, default [1,1]) array in form of:"
+                            "description": "`Array` - (Optional, default [1,1]) array in form of:\n\n0: `Number` - Size x\n\n1: `Number` - Size y"
                         },
                         {
                             "name": "duration",
@@ -41254,7 +41332,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "colour",
-                            "description": "`Number` - (Optional, default 0) can be:"
+                            "description": "`Number` - (Optional, default 0) can be:\n\n0 = default\n\n1 = warning\n\n2 = error"
                         }
                     ],
                     "outline": "[text,colour] call `BIS_fnc_respawnCounter`",
@@ -41280,6 +41358,11 @@ export const configs: SQFItemConfig[] = [
                 }
             ],
             "syntaxes": [
+                {
+                    "parameters": [],
+                    "outline": "call `BIS_fnc_respawnEndMission`",
+                    "returns": "`Nothing` - the script doesn't end"
+                },
                 {
                     "parameters": [
                         {
@@ -41607,7 +41690,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "**target**",
-                            "description": "Receiver of the respawn tickets. Can be of type:"
+                            "description": "Receiver of the respawn tickets. Can be of type:\n* `Namespace` - use `missionNamespace` to set/get global tickets available for everyone\n* `Side`\n* `Group`\n* `Object`"
                         },
                         {
                             "name": "**tickets**",
@@ -41618,6 +41701,11 @@ export const configs: SQFItemConfig[] = [
                             "description": "`Boolean` - when `true`, set/get tickets based on the target. **target** must be an `Object`."
                         }
                     ],
+                    "outline": "[target, tickets, dynamicTarget] call `BIS_fnc_respawnTickets`",
+                    "returns": "`Number` - remaining tickets after adjustment"
+                },
+                {
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_respawnTickets`",
                     "returns": "`Number` - remaining tickets in all name spaces"
                 }
@@ -41685,7 +41773,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "depending on _mode_",
-                            "description": "* \"SET\" - set respect default values"
+                            "description": "* \"SET\" - set respect default values\n** param1: `Nothing` or `Object` (see **Return value**)\n* \"ADD\" - add respect values depending on global town respect\n** param1: `Object` - unit to which is given respect from assigned town with random difference defined in third argument\n** param2: `Number` - range of random difference\n* \"MODIFY\" - change given respect value\n** param1: `Object` - unit of which respect value will be changed\n** param2: `String` - `faction` of which respect will be changed\n** param3: `String` - [code](https://community.bistudio.com/wiki/Code) which defines formula for change (current respect value is stored in variable _r) - e.g. \"_r / 2\"\n* \"KILLED\" - modify global town respect after civilian has been killed\n** param1: `Object` - killer\n** param2: `Object` - town logic\n** param3: `Number` - change coefficient"
                         }
                     ],
                     "outline": "[mode, param1, param2, param3] call `BIS_fnc_respect`",
@@ -41983,7 +42071,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`Number` - mode, can be:"
+                            "description": "`Number` - mode, can be:\n*0 - Stop\n*1 - Start"
                         }
                     ],
                     "outline": "[mode] call `BIS_fnc_reviveDebug`",
@@ -43348,7 +43436,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "shortestTurn",
-                            "description": "`Number` - (Optional, default 0) 0 - shortest turn (default, if used with relative dir, counter clockwise is used)"
+                            "description": "`Number` - (Optional, default 0) 0 - shortest turn (default, if used with relative dir, counter clockwise is used)\n1 - force clockwise\n2 - force counter clockwise"
                         },
                         {
                             "name": "duraton",
@@ -43420,7 +43508,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "axis",
-                            "description": "`Number` - rotation axis:"
+                            "description": "`Number` - rotation axis:\n* 0 - **X** axis\n* 1 - **Y** axis\n* 2 - **Z** axis"
                         }
                     ],
                     "outline": "[vector, angle, axis] call `BIS_fnc_rotateVector3D`",
@@ -43679,7 +43767,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "input",
-                            "description": "`Array` in format:"
+                            "description": "`Array` in format:\n*1: `Namespace`, `Group` or `Object` - Target where the loadout is stored \n*2: `String` - Loadout name"
                         },
                         {
                             "name": "params",
@@ -43718,7 +43806,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "target",
-                            "description": "`Array` - in format:"
+                            "description": "`Array` - in format:\n*0: `Namespace`, `Group` or `Object` - Where the save will be saved\n*1: `String` - Name of the save"
                         },
                         {
                             "name": "params",
@@ -43798,7 +43886,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "pivot",
-                            "description": "`String` - (Optional, default \"center\") select the pivot's position (i.e. center of the scaling process); can be one of:"
+                            "description": "`String` - (Optional, default \"center\") select the pivot's position (i.e. center of the scaling process); can be one of:\n{{Columns|3|\n* \"topLeft\"\n* \"topCenter\"\n* \"topRight\"\n* \"centerLeft\"\n* \"center\"\n* \"centerRight\"\n* \"bottomLeft\"\n* \"bottomCenter\"\n* \"bottomRight\"\n}}"
                         },
                         {
                             "name": "translation",
@@ -43876,7 +43964,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "participants",
-                            "description": "`Array` of `Array`s - (Optional, default <sqf inline>[[BIS_Cooper, \"primary\"],[BIS_Ohara, \"primary\"],[BIS_Rodriguez, \"primary\"],[BIS_Sykes, \"primary\"],[BIS_Miles, \"primary\"]]) an array of arrays in format:"
+                            "description": "`Array` of `Array`s - (Optional, default <sqf inline>[[BIS_Cooper, \"primary\"],[BIS_Ohara, \"primary\"],[BIS_Rodriguez, \"primary\"],[BIS_Sykes, \"primary\"],[BIS_Miles, \"primary\"]]) an array of arrays in format:\n\n0: `Object` - Unit to check\n\n1: `String` - Weapon type (primary, pistol)"
                         }
                     ],
                     "outline": "[participants] call `BIS_fnc_sceneCheckWeapons`",
@@ -44062,7 +44150,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "triggerSize",
-                            "description": "`Array` - (Optional, default [60,60]) trigger size as array in format:"
+                            "description": "`Array` - (Optional, default [60,60]) trigger size as array in format:\n\n0: Number - Size A\n\n1: Number - Size B"
                         }
                     ],
                     "outline": "[sceneCenter, triggerSize] call `BIS_fnc_sceneIntruderDetector`",
@@ -44332,7 +44420,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "format",
-                            "description": "`String` - (Optional, default \"HH:MM:SS\") can be one of:"
+                            "description": "`String` - (Optional, default \"HH:MM:SS\") can be one of:\n* \"HH\"\n* \"HH:MM\"\n* \"HH:MM:SS\"\n* \"HH:MM:SS.MS\"\n* \"MM\"\n* \"MM:SS\"\n* \"MM:SS.MS\"\n* \"SS.MS\"\n_HH = Hours, MM = Minutes, SS = Seconds, MS = Milliseconds_"
                         },
                         {
                             "name": "returnArray",
@@ -44453,7 +44541,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "itemsAndWeights",
                             "description": "`Array` - array of items and weights [item, weight, item, weight...]"
-                        },
+                        }
+                    ],
+                    "outline": "itemsAndWeights call `BIS_fnc_selectRandomWeighted`",
+                    "returns": "`Anything`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "items",
                             "description": "`Array` - items array of `Anything`"
@@ -44487,7 +44581,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - **case-sensitive**, can be one of:"
+                            "description": "`String` - **case-sensitive**, can be one of:\n{{Columns|2|\n* \"playerKilledScript\"\n* \"playerRespawnScript\"\n* \"playerRespawnSeagullScript\"\n* \"playerResurrectScript\"\n* \"playerRespawnOtherUnitScript\"\n* \"initRespawn\"\n* \"initRespawnStart\"\n* \"initRespawnEnd\"\n}}"
                         },
                         {
                             "name": "arguments",
@@ -44578,7 +44672,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode `Array` of `Number`s",
-                            "description": "vision modes, can be:"
+                            "description": "vision modes, can be:\n*-2 - NVG\n*-1 - Normal\n*0,1,.... - Thermal vision see `setCamUseTi` for detailed information"
                         }
                     ],
                     "outline": "[curator,mode] call `BIS_fnc_setCuratorVisionModes`",
@@ -44633,7 +44727,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "value",
-                            "description": "`Number` or `Array` in format `Date`"
+                            "description": "`Number` or `Array` in format `Date`\n* `Number` - hours to skip. To show exactly _30 minutes later_ put <sqf inline>30 / 60; <sqf inline>0.5 will show `**29 minutes later**`\n* `Array` in format `Date` - date"
                         },
                         {
                             "name": "global",
@@ -44719,15 +44813,21 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`String` - (Optional, default \"ROADWAY\") can be:"
-                        },
+                            "description": "`String` - (Optional, default \"ROADWAY\") can be:\n* \"ROADWAY\": uses `setPos`\n* \"ASL\": uses `setPosASL`\n* \"ATL\": uses `setPosATL`"
+                        }
+                    ],
+                    "outline": "[target, height, position, mode] call `BIS_fnc_setHeight`",
+                    "returns": "`Boolean` - `true` when done"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "height",
                             "description": "`Number` - (Optional, default 0) height to set"
                         },
                         {
                             "name": "mode",
-                            "description": "`String` - (Optional, default \"ROADWAY\") can be:"
+                            "description": "`String` - (Optional, default \"ROADWAY\") can be:\n* \"ROADWAY\": uses `setPos`\n* \"ASL\": uses `setPosASL`\n* \"ATL\": uses `setPosATL`"
                         }
                     ],
                     "outline": "[height, mode] call `BIS_fnc_setHeight`\n**IMPORTANT**: This syntax uses <sqf inline>this and is therefore meant to be used in init fields. Not to be used in MP.",
@@ -44766,7 +44866,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "useDependency",
-                            "description": "`Boolean` - (Optional, default `true`) "
+                            "description": "`Boolean` - (Optional, default `true`) \n* `true` - distribute damage to dependent HitPoints as well\n* `false` - apply damage to given HitPoint only"
                         }
                     ],
                     "outline": "[object, hitPoint, damage, useDependency] call `BIS_fnc_setHitPointDamage`",
@@ -44958,7 +45058,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rotation",
-                            "description": "`Array` - vector in format:"
+                            "description": "`Array` - vector in format:\n# Yaw\n# Pitch\n# Roll"
                         }
                     ],
                     "outline": "[object, rotation] call `BIS_fnc_setObjectRotation`",
@@ -45110,7 +45210,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "template",
-                            "description": "`String` - (Optional, default \"Default\") the template name. An invalid value will fall back to \"Default\"."
+                            "description": "`String` - (Optional, default \"Default\") the template name. An invalid value will fall back to \"Default\".\n\nAvailable game templates are:\n* \"Default\"\n* \"BlackAndWhite\"\n* \"Mediterranean\"\n* \"EastWind\"\n* \"RealIsBrown\""
                         },
                         {
                             "name": "transition",
@@ -45178,7 +45278,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "rank",
-                            "description": "`String` or `Number` - rank name or rank ID, can be:"
+                            "description": "`String` or `Number` - rank name or rank ID, can be:\n\n0 - \"Private\"\n\n1 - \"Corporal\"\n\n2 - \"Sergeant\"\n\n3 - \"Lieutenant\"\n\n4 - \"Captain\"\n\n5 - \"Major\"\n\n6 - \"Colonel\""
                         }
                     ],
                     "outline": "[target, rank] call `BIS_fnc_setRank`",
@@ -45295,23 +45395,23 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "**taskId**",
-                            "description": "`String` - Task ID"
+                            "description": "\n`String` - Task ID\n\n`Array` -  In the format of [task ID, parent task ID]"
                         },
                         {
                             "name": "**target**",
-                            "description": "Task owner(s)"
+                            "description": "Task owner(s)\n\n`Boolean` - true to set task of all playable units\n\n`Object` - set task of a specific object\n\n`Group` - set tasks of all objects in the group\n\n`Side` - set tasks of all objects of the given side\n\n`Array` - collection of above types"
                         },
                         {
                             "name": "**description**",
-                            "description": "`Array` - Task description in the format [\"description\", \"title\", \"marker\"]"
+                            "description": "\n`Array` - Task description in the format [\"description\", \"title\", \"marker\"]\n\n`String` - [[Description.ext#CfgTaskDescriptions|CfgTaskDescriptions]] class name, if empty string is used then [[Description.ext#CfgTaskDescriptions|CfgTaskDescriptions]] is searched for a class matching the tasks TaskID"
                         },
                         {
                             "name": "**destination** (Optional)",
-                            "description": "Task destination"
+                            "description": "Task destination\n\n`Object`\n\n`Array` - either position in format [x,y,z], or [object,precision] as used by setSimpleTaskTarget command"
                         },
                         {
                             "name": "**state** (Optional)",
-                            "description": "Task state"
+                            "description": "Task state\n\n`String` - can be one of following:\n\n\"CREATED\"\n\n\"ASSIGNED\"\n\n\"AUTOASSIGNED\" (\"ASSIGNED\" when no task is assigned yet, otherwise \"CREATED\")\n\n\"SUCCEEDED\"\n\n\"FAILED\"\n\n\"CANCELED\"\n\n`Boolean` - true to set the task as current"
                         },
                         {
                             "name": "**priority** (Optional)",
@@ -45463,7 +45563,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animationInformation",
-                            "description": "`Boolean` or `Array` - (Optional, default <sqf inline>[])"
+                            "description": "`Boolean` or `Array` - (Optional, default <sqf inline>[])\n* `Boolean` - `true` to take current animations mass in consideration, `false` to set \"raw\" mass\n* `Array` - animation sources and phases to format [\"animationSource1\", 1, \"animationSource2\", 0, ...]"
                         },
                         {
                             "name": "massDifference",
@@ -45507,7 +45607,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "area",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) shake only when camera is in given distance from center. In format:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) shake only when camera is in given distance from center. In format:\n\n0: `Position` - Center\n\n1: `Number` - Radius"
                         }
                     ],
                     "outline": "[strength,duration,area] spawn `BIS_fnc_shakeCuratorCamera`",
@@ -45637,7 +45737,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "arrayOfArrays",
-                            "description": "[array](https://community.bistudio.com/wiki/Array) of [arrays](https://community.bistudio.com/wiki/Array); each subarray defines part of an article, can be:"
+                            "description": "[array](https://community.bistudio.com/wiki/Array) of [arrays](https://community.bistudio.com/wiki/Array); each subarray defines part of an article, can be:\n* Article title: [\"title\", <text:string>]\n* Article author and date: [\"meta\", [<author:string>, <date:array Y,M,D,H,M>, <timezoneName:string>]]\n* Paragraph: [\"text\",<text:string>]\n* Bold paragraph: [\"textbold\",<text:string>]\n* Locked paragraph: [\"textlocked\",[<text:string>,<prompt:string>]] - _Locked paragraph with subscriber prompt. There should be no paragraph after it._\n* Image with description: [\"image\", [<path:string>, <description:string>, <source:string>]] - _The image should have 2:1 ratio._\n* Link to another \"fake\" article displayed on left: [\"box\",[<path:string>, <description:string>]] - _The image should have 2:1 ratio._\n* Author's bio: [\"author\",[<path:string>, <description:string>]] - _The image should have 1:1 ratio._\n* Draft notification: [\"draft\",[<text:string>, <color:arrayRGB>]] - _Text and color are optional, default notification will be shown when they're undefined._"
                         },
                         {
                             "name": "display",
@@ -45925,7 +46025,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**uiControl**",
-                            "description": "`Control` - list in which item should be disabled/enabled"
+                            "description": "`Control` - list in which item should be disabled/enabled\n*BIS_RscRespawnControlsMap_ctrlLocList\n*BIS_RscRespawnControlsMap_ctrlRoleList\n*BIS_RscRespawnControlsMap_ctrlComboLoadout"
                         },
                         {
                             "name": "**listboxItem**",
@@ -46537,7 +46637,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "returnString",
-                            "description": "`Boolean` - (Optional, default `false`) wanted output:"
+                            "description": "`Boolean` - (Optional, default `false`) wanted output:\n* `false`: [R, G ,B, A]\n* `true`: \"ColourName\""
                         }
                     ],
                     "outline": "[side, returnString] call `BIS_fnc_sideColor`",
@@ -46786,7 +46886,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "classname",
-                            "description": "`Object` or `String`:"
+                            "description": "`Object` or `String`:\n* `Object` - existing object or simple object that will be scanned; if it is a simple object '_reversed' attribute cannot be retrieved\n\n* `String` - Can be either:\n** Classname of the object; data are retrieved from the config definition.\n** Path to the p3d; verifies and fixes model path format and returns it in an array (index 1).\nIt has very limited functionality in this mode as no data can actually be retrieved from model path."
                         }
                     ],
                     "outline": "[classname] call `BIS_fnc_simpleObjectData`",
@@ -47042,15 +47142,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "parameters",
-                            "description": "`Array`"
+                            "description": "`Array`\n* used in the eval algorithm\n* input params are referenced in the sorting algorithm by _input0..9\n* a maximum of 10 input params is supported (0-9)"
                         },
                         {
                             "name": "algorithm",
-                            "description": "`Code` - (Optional, default <sqf inline>{ _x })"
+                            "description": "`Code` - (Optional, default <sqf inline>{ _x })\n* needs to return `String`, `Number` or `Array` - see `sort`\n* [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x) refers to array item"
                         },
                         {
                             "name": "direction",
-                            "description": "`String` - (Optional, default \"ASCEND\") case-insensitive"
+                            "description": "`String` - (Optional, default \"ASCEND\") case-insensitive\n* \"ASCEND\" for ascending sorting\n* \"DESCEND\" (or anything else) for descending sorting"
                         },
                         {
                             "name": "filter",
@@ -47119,7 +47219,13 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "code",
                             "description": "`Code` - function code"
-                        },
+                        }
+                    ],
+                    "outline": "[params, code] spawn `BIS_fnc_spawn`",
+                    "returns": "`Nothing`"
+                },
+                {
+                    "parameters": [
                         {
                             "name": "code",
                             "description": "`Code`"
@@ -47204,7 +47310,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "classes",
-                            "description": "`Array` of `String`s - list of enemy classes (units will form a group together)"
+                            "description": "`Array` of `String`s - list of enemy classes (units will form a group together)\n**IMPORTANT**: Classes must be of the defined _side_, otherwise they will attack each other."
                         },
                         {
                             "name": "maxEnemies",
@@ -47257,7 +47363,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "toSpawn",
-                            "description": "can be one of:"
+                            "description": "can be one of:\n* `Array` - list of character types\n* `Number` - amount of characters to spawn\n* `Config` - `CfgGroups` entry"
                         },
                         {
                             "name": "relPositions",
@@ -47277,7 +47383,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "randomControls",
-                            "description": "`Array` of `Number`s - (Optional, default [-1, 1]) to format [minUnits, chance]:"
+                            "description": "`Array` of `Number`s - (Optional, default [-1, 1]) to format [minUnits, chance]:\n* minUnits: `Number` - (Optional, default -1) amount of mandatory units\n* chance: `Number` - (Optional, default -1) spawn chance for remaining units in range 0..1"
                         },
                         {
                             "name": "azimuth",
@@ -47316,7 +47422,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "position",
-                            "description": "`Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL), or `Array` as [referenceObject, placement]"
+                            "description": "`Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL), or `Array` as [referenceObject, placement]\n* referenceObject: `Object`\n* placement: `String` - can be:\n** \"BOTTOM\" = at the bottom of the object\n** \"TOP\" = top of the objects boundingbox\n** \"GROUND\" = sitting just on the ground\n** \"ROADWAY\" = sitting just on the ground"
                         },
                         {
                             "name": "className",
@@ -47548,7 +47654,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "endDestination",
-                            "description": "`String` or `Position` or `Object` or `Number` - (Optional, default 0) destination _stalker_ will go after _endCondition_ is met (or _stalked_ is killed)"
+                            "description": "`String` or `Position` or `Object` or `Number` - (Optional, default 0) destination _stalker_ will go after _endCondition_ is met (or _stalked_ is killed)\n* `String` - destination marker name\n* `Position` - destination\n* `Object` - destination\n* `Number`\n** 0: return to original group waypoints\n** 1: search around their current stalking position, in a 50m radius\n** 2: return to the original position before stalking"
                         }
                     ],
                     "outline": "[stalker, stalked, refresh, radius, endCondition, endDestination] spawn `BIS_fnc_stalk`",
@@ -47690,11 +47796,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "missions",
-                            "description": "`Array` - list of missions, each `Array` in format:"
+                            "description": "`Array` - list of missions, each `Array` in format:\n* 0: `Position` - 2D or 3D position of mission\n* 1: `Code` - Expression executed when user clicks on mission icon\n* 2: `String` - Mission name\n* 3: `String` - Short description\n* 4: `String` - Name of mission's player\n* 5: `String` - Path to overview image\n* 6: `Number` - size multiplier for overview image\n* 7: `Array` - parameters for on-click action. Can be accessed in code with <sqf inline>_this # 9"
                         },
                         {
                             "name": "ORBATs",
-                            "description": "`Array` - list of ORBAT, each `Array` in format:"
+                            "description": "`Array` - list of ORBAT, each `Array` in format:\n* 0: `Array` format `Position` - 2D or 3D position\n* 1: `Config` - preview CfgORBAT group\n* 2: `Config` - topmost displayed CfgORBAT group\n* 3: `Array` of `String`s - list of allowed tags\n* 4: `String` - name of mission's player\n* 5: `Number` - maximum number of displayed tiers"
                         },
                         {
                             "name": "markers",
@@ -47702,7 +47808,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "images",
-                            "description": "`Array` - list of custom images, each `Array` in format:"
+                            "description": "`Array` - list of custom images, each `Array` in format:\n* 0: `String` - texture path\n* 1: `Array` format [[Color|Color (RGBA)]]\n* 2: `Array` format `Position` - image position\n* 3: `Number` - image width in meters\n* 4: `Number` - image height in meters\n* 5: `Number` - image angle in degrees\n* 6: `String` - text displayed next to the image\n* 7: `Boolean` - `true` to show shadow"
                         },
                         {
                             "name": "weather",
@@ -47730,7 +47836,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "missionIcon",
-                            "description": "`String` - (Optional, default \"\\A3\\Ui_f\\data\\Map\\GroupIcons\\badge_rotate_%1_gs.paa\") path to mission icon texture "
+                            "description": "`String` - (Optional, default \"\\A3\\Ui_f\\data\\Map\\GroupIcons\\badge_rotate_%1_gs.paa\") path to mission icon texture \n* %1 - Animation frame from 0-6 (optional)\n* %2 - Index from 1-9 (optional)"
                         }
                     ],
                     "outline": "[display, pos, missions, ORBATs, markers, images, weather, night, scale, simulation, label, missionName, missionIcon] call `BIS_fnc_strategicMapOpen`",
@@ -47909,7 +48015,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "class",
-                            "description": "`String` - object class which is dropped, two default values are available:"
+                            "description": "`String` - object class which is dropped, two default values are available:\n*\"reammobox\": Drops and ammobox appropriate to airUnit's side\n*\"land\": Drops a car appropriate to airUnit's side"
                         }
                     ],
                     "outline": "[airUnit,class] spawn `BIS_fnc_supplydrop`",
@@ -48243,23 +48349,23 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "**owner**",
-                            "description": "Task owner(s)"
+                            "description": "Task owner(s)\n* `Boolean` - true to set task of all playable units\n* `Object` - set task of a specific object\n* `Group` - set tasks of all objects in the group\n* `Side` - set tasks of all objects of the given side\n* `Array` - collection of above types"
                         },
                         {
                             "name": "**taskID**",
-                            "description": "* `String` - Task ID"
+                            "description": "* `String` - Task ID\n* `Array` - In the format of [task ID, parent task ID]"
                         },
                         {
                             "name": "**description**",
-                            "description": "* `Array` - Task description in the format [\"description\", \"title\", \"marker\"] - \"marker\" is depreciated, functionally does nothing"
+                            "description": "* `Array` - Task description in the format [\"description\", \"title\", \"marker\"] - \"marker\" is depreciated, functionally does nothing\n** Description and Title can also be a `format` array [ \"Text\", var1, var2, ... ] where Text will be localized and then formatted per client, see _Example 4_\n* `String` - [[Description.ext#CfgTaskDescriptions|CfgTaskDescriptions]] class name, if empty string is used then [[Description.ext#CfgTaskDescriptions|CfgTaskDescriptions]] is searched for a class matching the tasks TaskID"
                         },
                         {
                             "name": "**destination** (Optional)",
-                            "description": "Task destination"
+                            "description": "Task destination\n* `Object` - Use `objNull` to set no position\n* `Array` - can be one of:\n** format `Position`\n** [target, precision] (as used by `setSimpleTaskTarget`)\n*** target: `Object`\n*** precision: `Boolean` - `false` to use _owner_<nowiki/>'s knowledge of _target_, `true` to force display even if _target_ is unknown to _owner_"
                         },
                         {
                             "name": "**state**",
-                            "description": "(Optional, default \"CREATED\") task state. Can be:"
+                            "description": "(Optional, default \"CREATED\") task state. Can be:\n* `String` - can be one of following:\n** \"CREATED\"\n** \"ASSIGNED\"\n** \"AUTOASSIGNED\" (\"ASSIGNED\" when no task is assigned yet, otherwise \"CREATED\")\n** \"SUCCEEDED\"\n** \"FAILED\"\n** \"CANCELED\"\n* `Boolean` - `true` to set the task as current\n* `Number`\n** 0 or less for `false`\n** > 0 as `true`"
                         },
                         {
                             "name": "**priority**",
@@ -48472,7 +48578,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "taskState",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n*\"CREATED\"\n*\"ASSIGNED\"\n*\"SUCCEEDED\"\n*\"FAILED\"\n*\"CANCELED\""
                         }
                     ],
                     "outline": "[taskName, taskState] call `BIS_fnc_taskHint`",
@@ -48713,7 +48819,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "destination",
-                            "description": "`Object`, `Array`, `Position` or `String` - task destination:"
+                            "description": "`Object`, `Array`, `Position` or `String` - task destination:\n* `Object` - task will be displayed on the object if player knows about it, otherwise it will be on estimated position or even hidden\n* `Array` format [object, forceRealPosition]:\n** object: `Object` - same as above\n** forceRealPosition: `Boolean` - whether or not the task will be on exact object position even if the player does not know about the object\n* `Position` - task will be on given positon\n* `String` - marker name. Task will be at markers current position (Won't update if marker was moved)"
                         }
                     ],
                     "outline": "[taskName, destination] call `BIS_fnc_taskSetDestination`",
@@ -48746,7 +48852,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "taskState",
-                            "description": "`String` - can be:"
+                            "description": "`String` - can be:\n*\"CREATED\"\n*\"ASSIGNED\"\n*\"SUCCEEDED\"\n*\"FAILED\"\n*\"CANCELED\""
                         },
                         {
                             "name": "showHint",
@@ -49026,15 +49132,15 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "content",
-                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text)"
+                            "description": "`String` or [Structured Text](https://community.bistudio.com/wiki/Structured%20Text)\n* `String` - path to texure\n* [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) - formatted text"
                         },
                         {
                             "name": "position",
-                            "description": "`Boolean` or `Array` (optional, default [0, 0, 1, 1])"
+                            "description": "`Boolean` or `Array` (optional, default [0, 0, 1, 1])\n* `Boolean` - `true` to use _mission area_ set in the layout options, `false` for full screen\n* `Array` - screen space coordinates in format [x, y, w, h]"
                         },
                         {
                             "name": "tileSize",
-                            "description": "`Number` or `Array` (optional, default 10 ([10,10])"
+                            "description": "`Number` or `Array` (optional, default 10 ([10,10])\n* `Number` - tile size in screen space coordinates. Tile will be square\n* `Array` - tile size in screen space coordinates in format [w, h]"
                         },
                         {
                             "name": "duration",
@@ -49042,7 +49148,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "fadeInOutTime",
-                            "description": "`Number` or `Array` - (optional, default 0) duration of the fade effect in seconds"
+                            "description": "`Number` or `Array` - (optional, default 0) duration of the fade effect in seconds\n* `Array` - format [fadeIn, fadeOut] \n* `Number` - duration of the fadeIn/Out effect"
                         },
                         {
                             "name": "tileTransparency",
@@ -50177,7 +50283,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "format",
-                            "description": "`String` - (Optional, default \"HH:MM:SS\") one of the following:"
+                            "description": "`String` - (Optional, default \"HH:MM:SS\") one of the following:\n* \"HH\"          - Hour\n* \"HH:MM\"       - Hour:Minute\n* \"HH:MM:SS\"    - Hour:Minute:Seconds\n* \"HH:MM:SS:MM\" - Hour:Minute:Seconds:Milliseconds\n* \"ARRAY\"       - [Hour, Minute, Seconds, Milliseconds]"
                         }
                     ],
                     "outline": "[time, format] call `BIS_fnc_timeToString`",
@@ -50491,7 +50597,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "codeFriendly",
-                            "description": "`Code` - code executed when sides are friendly. Arguments passed to the code are:"
+                            "description": "`Code` - code executed when sides are friendly. Arguments passed to the code are:\n* 0: `Side` - Side with higher score (when the score is even, side from param 0 is used)\n* 1: `Side` - Side with lower score (when the score is even, side from param 1 is used)\n* 2: `Boolean` - `true` when the sides are allied"
                         },
                         {
                             "name": "codeEnemy",
@@ -50905,7 +51011,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "stringLines",
-                            "description": "* `Array` of `String`s - array containing lines of text with same structured text formatting."
+                            "description": "* `Array` of `String`s - array containing lines of text with same structured text formatting.\n* `Array` of `Array`s format [text, format, blinkCount]:\n** text: `String` - (Optional, default \"\")\n** format: `String` - (Optional, default \"<t align = 'center' shadow = '1' size = '0.7'>%1</t>&lt;br/&gt;\")\n** blinkCount: `Number` - (Optional, default 5) number of cursor blinks after text typing"
                         },
                         {
                             "name": "posX",
@@ -50948,7 +51054,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "stringLines",
-                            "description": "* `Array` of `String`s - array containing lines of text with same structured text formatting."
+                            "description": "* `Array` of `String`s - array containing lines of text with same structured text formatting.\n* `Array` of `Array` of `String`s [text, format, color]\n** text: `String` - (Optional, default <sqf inline>\"\")\n** format: `String` - (Optional, default <sqf inline>\"align = 'center' size = '0.7'\") a linebreak is defined as \"&lt;br/&gt;\" **and this only!**\n** color: `String` - (Optional, default <sqf inline>\"#ffffff\")"
                         },
                         {
                             "name": "posX",
@@ -51239,11 +51345,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "headgear",
-                            "description": "`Boolean`, `String` or `Array` - (Optional, default `false`) can be one of:"
+                            "description": "`Boolean`, `String` or `Array` - (Optional, default `false`) can be one of:\n* `Boolean` - if `false`, change nothing to the headgear\n* `String` - valid Headgear class or a valid class from [[Description.ext#CfgUnitTemplates|Description.ext CfgUnitTemplates]]\n* `Array` - headgear list with individual probability"
                         },
                         {
                             "name": "facewear",
-                            "description": "`Boolean`, `String` or `Array` - (Optional, default `false`) can be one of:"
+                            "description": "`Boolean`, `String` or `Array` - (Optional, default `false`) can be one of:\n* `Boolean` - if `false`, change nothing to the facewear\n* `String` - valid facewear class or a valid class from [[Description.ext#CfgUnitTemplates|Description.ext CfgUnitTemplates]]\n* `Array` - facewear list with individual probability"
                         }
                     ],
                     "outline": "[unit, headgear, facewear] call `BIS_fnc_unitHeadgear`",
@@ -51279,7 +51385,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "varDone",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) variable to set on specified Object once playback has finished in format:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) variable to set on specified Object once playback has finished in format:\n* 0: `Object` - Target object\n* 1: `String` - Variable name"
                         },
                         {
                             "name": "stateIgnore",
@@ -51365,7 +51471,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "varDone",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) variable to set on specified Object once playback has finished in format:"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) variable to set on specified Object once playback has finished in format:\n* 0: `Object`, `Group` or `Namespace` - target\n* 1: `String` - variable name"
                         },
                         {
                             "name": "stateIgnore",
@@ -52971,7 +53077,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "location",
-                            "description": "`Boolean` or `Array` format `Position`:"
+                            "description": "`Boolean` or `Array` format `Position`:\n* `Boolean`: use `false` to disable grid visualisation\n* `Position`: center position (should be multiple of 4 in both axis to correspond with the tiles on the ground, like [1000,1000] or [2400,2400])"
                         },
                         {
                             "name": "colour",
@@ -53154,7 +53260,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "type",
-                            "description": "`String` - (Optional, default \"default\") can be:"
+                            "description": "`String` - (Optional, default \"default\") can be:\n\n\"default\" (blue)\n\n\"incomplete\" (orange)\n\n\"complete\" (dark orange)\n\n\"exit\" (red)"
                         }
                     ],
                     "outline": "[center, type] call `BIS_fnc_VRSpawnSelector`",
