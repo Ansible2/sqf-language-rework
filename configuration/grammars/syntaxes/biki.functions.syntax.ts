@@ -29,7 +29,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addDangerZone;\n```\n -->"
@@ -55,7 +55,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addEntitiesToArea;\n```\n -->"
@@ -81,7 +81,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addFaradayCage;\n```\n -->"
@@ -107,7 +107,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds measurement point to IDWMap\n\n\tParameter(s):\n\t\tARRAY (Optional) - position in format [x,y] or [x,y,z] in which case z is ignored. Default: position player\n\n\tReturns:\n\t\tNUMBER \n\t\t\t0 ... 1 - strength at given coordinates \n\t\t\t-1 - point is out of bounds\n\t\t\t-999 - error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_addIDWMapMeasurementPoint\n\t\t[x,y] call BIN_fnc_addIDWMapMeasurementPoint\n\t\t[x,y,z] call BIN_fnc_addIDWMapMeasurementPoint\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds measurement point to IDWMap\n\n\tParameter(s):\n\t\tARRAY (Optional) - position in format [x,y] or [x,y,z] in which case z is ignored. Default: position player\n\n\tReturns:\n\t\tNUMBER \n\t\t\t0 ... 1 - strength at given coordinates \n\t\t\t-1 - point is out of bounds\n\t\t\t-999 - error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_addIDWMapMeasurementPoint\n\t\t[x,y] call BIN_fnc_addIDWMapMeasurementPoint\n\t\t[x,y,z] call BIN_fnc_addIDWMapMeasurementPoint\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addIDWMapMeasurementPoint;\n```\n -->"
@@ -133,7 +133,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds given array of objects to area, ovewriting previous objects data stored for the area in extension\n\n\tParameter(s):\n\t\t0: STRING - area name\n\t\t1: ARRAY - array of objects to add\n\n\tReturns:\n\t\tNUMBER - number of objects added\n\t\t\n\tExample:\n\t\t[\"myArea\", [obj1,ob2,...]]  call BIN_fnc_addObjectsToArea\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds given array of objects to area, ovewriting previous objects data stored for the area in extension\n\n\tParameter(s):\n\t\t0: STRING - area name\n\t\t1: ARRAY - array of objects to add\n\n\tReturns:\n\t\tNUMBER - number of objects added\n\t\t\n\tExample:\n\t\t[\"myArea\", [obj1,ob2,...]]  call BIN_fnc_addObjectsToArea\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addObjectsToArea;\n```\n -->"
@@ -159,7 +159,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addRecordedSignal;\n```\n -->"
@@ -185,7 +185,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addRotation;\n```\n -->"
@@ -211,7 +211,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addSignal;\n```\n -->"
@@ -237,7 +237,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tRegister entities to a site, so they can be despawned with the rest when player leaves the area.\n\n\tParameter(s):\n\t\t0: OBJECT - site logic. The site must be spawned for the function to work.\n\t\t1: ARRAY - entities to be added. Types can be mixed, the system will sort them out itself.\n\n\tReturns:\n\t\tBOOL - true if added\n*/\n\n#define ADD(ID)\\\n\t(_entities select ID) pushback _x;\\\n\t(_entityIDs select ID) pushback -1;\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tRegister entities to a site, so they can be despawned with the rest when player leaves the area.\n\n\tParameter(s):\n\t\t0: OBJECT - site logic. The site must be spawned for the function to work.\n\t\t1: ARRAY - entities to be added. Types can be mixed, the system will sort them out itself.\n\n\tReturns:\n\t\tBOOL - true if added\n*/\n\n#define ADD(ID)\\\n\t(_entities select ID) pushback _x;\\\n\t(_entityIDs select ID) pushback -1;\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addSiteEntities;\n```\n -->"
@@ -263,7 +263,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addTranslation;\n```\n -->"
@@ -289,7 +289,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_addTravelPoint;\n```\n -->"
@@ -315,7 +315,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tRetrieves user measurements data with strengths\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - user measurements in format [x,y,strength] or empty array [] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getAllMeasurementPoints\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tRetrieves user measurements data with strengths\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - user measurements in format [x,y,strength] or empty array [] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getAllMeasurementPoints\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_allIDWMapMeasurementPoints;\n```\n -->"
@@ -341,7 +341,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_allowAntennaReveal;\n```\n -->"
@@ -367,7 +367,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_allowedAntennaReveal;\n```\n -->"
@@ -393,7 +393,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_animateSmooth;\n```\n -->"
@@ -419,7 +419,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_assignAntenna;\n```\n -->"
@@ -445,7 +445,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_assignedAntenna;\n```\n -->"
@@ -471,7 +471,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define VAR_LIGHT\t\"BIN_fnc_attachChemlight_light\"\n#define VAR_KILLED\t\"BIN_fnc_attachChemlight_killed\"\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define VAR_LIGHT\t\"BIN_fnc_attachChemlight_light\"\n#define VAR_KILLED\t\"BIN_fnc_attachChemlight_killed\"\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_attachChemlight;\n```\n -->"
@@ -497,7 +497,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bakeAntenna;\n```\n -->"
@@ -523,7 +523,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define HISTORY_CAPACITY\t5\n#define HIT_DELAY\t\t5\n#define SIZE_COEF\t\t3\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define HISTORY_CAPACITY\t5\n#define HIT_DELAY\t\t5\n#define SIZE_COEF\t\t3\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_behaviorInit;\n```\n -->"
@@ -549,7 +549,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tCalculate bezier curve\n\n\tParameter(s):\n\t\t0: ARRAY - list of control points in format [x,y,z], can be any number of them\n\t\t1: NUMBER - progress in range 0 to 1\n\n\tReturns:\n\tARRAY - position curve in format [x,y,z]\n*/\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tCalculate bezier curve\n\n\tParameter(s):\n\t\t0: ARRAY - list of control points in format [x,y,z], can be any number of them\n\t\t1: NUMBER - progress in range 0 to 1\n\n\tReturns:\n\tARRAY - position curve in format [x,y,z]\n*/\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bezier;\n```\n -->"
@@ -575,7 +575,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define STEPS\t101\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define STEPS\t101\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bezierAverage;\n```\n -->"
@@ -601,7 +601,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bezierBoundingBox;\n```\n -->"
@@ -627,7 +627,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define POINT_W\t\t\t(0.03)\n#define POINT_H\t\t\t(POINT_W / 0.75)\n#define RESOLUTION\t\t50\n#define MAX_POINTS\t\t16\n#define GRIDS\t\t\t10\n#define REFRESH\t\t\t([_ctrlParent] call (_ctrlArea getvariable \"fnc_draw\"))\n#define POINTS\t\t\t(_ctrlArea getvariable \"points\")\n#define LINES\t\t\t(_ctrlArea getvariable \"lines\")\n#define CURVE\t\t\t(_ctrlArea getvariable \"curve\")\n#define BUTTONS\t\t\t(_ctrlArea getvariable \"buttons\")\n#define HOVER\t\t\t(_ctrlArea getvariable \"hover\")\n#define SELECTED\t\t(_ctrlArea getvariable \"selected\")\n#define SET_HOVER(CTRL)\t\t_ctrlArea setvariable [\"hover\",CTRL]; CTRL ctrlsettextcolor COLOR_SELECTED\n#define SET_SELECTED(CTRL)\t_ctrlArea setvariable [\"selected\",CTRL]\n#define COLOR_BACKGROUND\t[0.4,0.4,0.4,1]\n#define COLOR\t\t\t[0,0,0,1]\n#define COLOR_SELECTED\t\t[1,1,1,1]\n#define COLOR_CURVE\t\t[1,0,0,1]\n#define COLOR_LINE\t\t[0,0,0,0.2]\n#define COLOR_TIMELINE\t\t[1,1,1,1]\n#define COLOR_GRID\t\t[1,1,1,0.3]\n#define POINT_POS\t\t[\\\n\t\t\t\t\t(_posX - POINT_W / 2) max 0 min ((ctrlposition _ctrlArea select 2) - POINT_W),\\\n\t\t\t\t\t(_posY - POINT_H / 2) max 0 min ((ctrlposition _ctrlArea select 3) - POINT_H),\\\n\t\t\t\t\tPOINT_W,\\\n\t\t\t\t\tPOINT_H\\\n\t\t\t\t]\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define POINT_W\t\t\t(0.03)\n#define POINT_H\t\t\t(POINT_W / 0.75)\n#define RESOLUTION\t\t50\n#define MAX_POINTS\t\t16\n#define GRIDS\t\t\t10\n#define REFRESH\t\t\t([_ctrlParent] call (_ctrlArea getvariable \"fnc_draw\"))\n#define POINTS\t\t\t(_ctrlArea getvariable \"points\")\n#define LINES\t\t\t(_ctrlArea getvariable \"lines\")\n#define CURVE\t\t\t(_ctrlArea getvariable \"curve\")\n#define BUTTONS\t\t\t(_ctrlArea getvariable \"buttons\")\n#define HOVER\t\t\t(_ctrlArea getvariable \"hover\")\n#define SELECTED\t\t(_ctrlArea getvariable \"selected\")\n#define SET_HOVER(CTRL)\t\t_ctrlArea setvariable [\"hover\",CTRL]; CTRL ctrlsettextcolor COLOR_SELECTED\n#define SET_SELECTED(CTRL)\t_ctrlArea setvariable [\"selected\",CTRL]\n#define COLOR_BACKGROUND\t[0.4,0.4,0.4,1]\n#define COLOR\t\t\t[0,0,0,1]\n#define COLOR_SELECTED\t\t[1,1,1,1]\n#define COLOR_CURVE\t\t[1,0,0,1]\n#define COLOR_LINE\t\t[0,0,0,0.2]\n#define COLOR_TIMELINE\t\t[1,1,1,1]\n#define COLOR_GRID\t\t[1,1,1,0.3]\n#define POINT_POS\t\t[\\\n\t\t\t\t\t(_posX - POINT_W / 2) max 0 min ((ctrlposition _ctrlArea select 2) - POINT_W),\\\n\t\t\t\t\t(_posY - POINT_H / 2) max 0 min ((ctrlposition _ctrlArea select 3) - POINT_H),\\\n\t\t\t\t\tPOINT_W,\\\n\t\t\t\t\tPOINT_H\\\n\t\t\t\t]\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bezierEditor;\n```\n -->"
@@ -653,7 +653,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bezierNormalize;\n```\n -->"
@@ -679,7 +679,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tCalculate bezier curve velocity\n\n\tParameter(s):\n\t\t0: ARRAY - list of control points in format [x,y,z], can be any number of them\n\t\t1: NUMBER - progress in range 0 to 1\n\n\tReturns:\n\tARRAY - velocity vector in format [x,y,z]\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tCalculate bezier curve velocity\n\n\tParameter(s):\n\t\t0: ARRAY - list of control points in format [x,y,z], can be any number of them\n\t\t1: NUMBER - progress in range 0 to 1\n\n\tReturns:\n\tARRAY - velocity vector in format [x,y,z]\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_bezierVelocity;\n```\n -->"
@@ -705,7 +705,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_breatheInit;\n```\n -->"
@@ -731,7 +731,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_calculateLinkBudget;\n```\n -->"
@@ -757,7 +757,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_calculateSpectrumAnalyzerValues;\n```\n -->"
@@ -783,7 +783,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_callButtonEvent;\n```\n -->"
@@ -836,7 +836,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_CargoPlatform_01_destruction\n\n\tApply texture & materials of parent object to ruins. Function is attached to killed event handler.\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_CargoPlatform_01_destruction\n\n\tApply texture & materials of parent object to ruins. Function is attached to killed event handler.\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -858,7 +858,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_cargoPlatform_01_update\n\n\tUpdate cargo platform position\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_cargoPlatform_01_update\n\n\tUpdate cargo platform position\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -880,7 +880,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tEnables CBRN systems on a specific character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to enable CBRN systems on\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tEnables CBRN systems on a specific character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to enable CBRN systems on\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNCharacterAdd;\n```\n -->"
@@ -906,7 +906,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tRegisters a CBRN contaminant.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: \n\t\t\tOBJECT - trigger representing a CBRN contaminated area\n\t\t\tOBJECT - entity representing an active CBRN contaminant\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tRegisters a CBRN contaminant.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: \n\t\t\tOBJECT - trigger representing a CBRN contaminated area\n\t\t\tOBJECT - entity representing an active CBRN contaminant\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNContaminantAdd;\n```\n -->"
@@ -932,7 +932,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tUnregisters a CBRN contaminant.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - trigger representing a CBRN contaminated area\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tUnregisters a CBRN contaminant.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - trigger representing a CBRN contaminated area\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNContaminantRemove;\n```\n -->"
@@ -958,7 +958,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tActivates a specific piece of CBRN gear for a character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to activate CBRN gear for\n\t\t1: STRING - CBRN gear class name to activate\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tActivates a specific piece of CBRN gear for a character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to activate CBRN gear for\n\t\t1: STRING - CBRN gear class name to activate\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNGearActivate;\n```\n -->"
@@ -984,7 +984,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tDeactivates a specific piece of CBRN gear for a character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to deactivate CBRN gear for\n\t\t1: STRING - CBRN gear class name to deactivate\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tDeactivates a specific piece of CBRN gear for a character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to deactivate CBRN gear for\n\t\t1: STRING - CBRN gear class name to deactivate\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNGearDeactivate;\n```\n -->"
@@ -1010,7 +1010,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tProcesses CBRN gear updates on a specific character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to process CBRN gear for\n\t\t1: STRING - CBRN gear class name to process\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tProcesses CBRN gear updates on a specific character entity.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to process CBRN gear for\n\t\t1: STRING - CBRN gear class name to process\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNGearUpdate;\n```\n -->"
@@ -1065,7 +1065,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tReturns whether or not a character entity is within a CBRN contaminated area.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to test for\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tReturns whether or not a character entity is within a CBRN contaminated area.\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\t\t0: OBJECT - character entity to test for\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_CBRNInContaminant;\n```\n -->"
@@ -1091,7 +1091,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_circleSmokeMissile\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_circleSmokeMissile\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_circleSmokeMissile;\n```\n -->"
@@ -1117,7 +1117,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tClears IDWMap on the main map\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true if EH existed and was removed\n\t\t\n\tExample:\n\t\tcall BIN_fnc_clearIDWMap\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tClears IDWMap on the main map\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true if EH existed and was removed\n\t\t\n\tExample:\n\t\tcall BIN_fnc_clearIDWMap\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_clearIDWMap;\n```\n -->"
@@ -1143,7 +1143,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tClears TXScan drawing\n\n\tParameter(s):\n\t\t0: STRING - scan name, \"\" - all scans\n\n\tReturns:\n\t\tBOOL - false if error occured\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_clearTXScan\n\t\t\"\" call BIN_fnc_clearTXScan - all scans\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tClears TXScan drawing\n\n\tParameter(s):\n\t\t0: STRING - scan name, \"\" - all scans\n\n\tReturns:\n\t\tBOOL - false if error occured\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_clearTXScan\n\t\t\"\" call BIN_fnc_clearTXScan - all scans\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_clearTXScan;\n```\n -->"
@@ -1169,7 +1169,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Converts {{Link|https://en.wikipedia.org/wiki/HSL_and_HSV|HSL colour format}} to RGB.\n**Arma**: 3contact",
+            "description": "Converts {{Link|https://en.wikipedia.org/wiki/HSL_and_HSV|HSL colour format}} to RGB.\n{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "```sqf\nprivate _rgb = [0, 100, 50] call BIN_fnc_colorHSLtoRGB;\n```"
@@ -1204,7 +1204,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function contains no code.\n**Arma**: 3contact",
+            "description": "This function contains no code.\n{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "```sqf\n[] call BIN_fnc_crearAllData;\n```"
@@ -1226,7 +1226,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_createScriptedSoundSource;\n```\n -->"
@@ -1252,7 +1252,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_createScriptedSoundSourceVehicle;\n```\n -->"
@@ -1278,7 +1278,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tCreates a scan with the name defined as class in CfgTXScans or from given params. \n\t\tIf name doesn't exists in config and params are not provided, default scan is created which could be tweaked later\n\n\tParameter(s):\n\t\t0: STRING - \"\" create every scan from config\n\t\tor\n\t\t0: STRING - scan name\n\t\t1: ARRAY (Optional) - TX position\n\t\t2: NUMBER (Optional) - scan angle\n\t\t3: NUMBER (Optional) - scan precision\n\t\t4: ARRAY (Optional) - scan polygon\n\n\tReturns:\n\t\tBOOL - false on error\n\t\t\n\tExamples:\n\t\t\"MyScan\" call BIN_fnc_createTXScan\n\t\t\"\" call BIN_fnc_createTXScan - creates every scan from config\n\t\t[\"MyScan\", [1,2,3], 20, 0.1] call BIN_fnc_createTXScan - creates every scan from config\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tCreates a scan with the name defined as class in CfgTXScans or from given params. \n\t\tIf name doesn't exists in config and params are not provided, default scan is created which could be tweaked later\n\n\tParameter(s):\n\t\t0: STRING - \"\" create every scan from config\n\t\tor\n\t\t0: STRING - scan name\n\t\t1: ARRAY (Optional) - TX position\n\t\t2: NUMBER (Optional) - scan angle\n\t\t3: NUMBER (Optional) - scan precision\n\t\t4: ARRAY (Optional) - scan polygon\n\n\tReturns:\n\t\tBOOL - false on error\n\t\t\n\tExamples:\n\t\t\"MyScan\" call BIN_fnc_createTXScan\n\t\t\"\" call BIN_fnc_createTXScan - creates every scan from config\n\t\t[\"MyScan\", [1,2,3], 20, 0.1] call BIN_fnc_createTXScan - creates every scan from config\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_createTXScan;\n```\n -->"
@@ -1304,7 +1304,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tCrops given scan\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: NUMBER - crop rectangle center X\n\t\t2: NUMBER - crop rectangle center Y\n\t\t3: NUMBER - crop rectangle center W\n\t\t4: NUMBER - crop rectangle center H\n\n\tReturns:\n\t\tARRAY - crop rectangle corners\n\t\t\n\tExample:\n\t\t[\"MyScan\", 100, 100, 1000, 500] call BIN_fnc_cropTXScan\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tCrops given scan\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: NUMBER - crop rectangle center X\n\t\t2: NUMBER - crop rectangle center Y\n\t\t3: NUMBER - crop rectangle center W\n\t\t4: NUMBER - crop rectangle center H\n\n\tReturns:\n\t\tARRAY - crop rectangle corners\n\t\t\n\tExample:\n\t\t[\"MyScan\", 100, 100, 1000, 500] call BIN_fnc_cropTXScan\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_cropTXScan;\n```\n -->"
@@ -1330,7 +1330,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_curatorInit;\n```\n -->"
@@ -1356,7 +1356,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_debugDraw;\n```\n -->"
@@ -1382,7 +1382,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_debugDrawMapInit;\n```\n -->"
@@ -1408,7 +1408,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_debugQuests;\n```\n -->"
@@ -1434,7 +1434,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_debugText;\n```\n -->"
@@ -1616,7 +1616,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteAntenna;\n```\n -->"
@@ -1642,7 +1642,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteDangerZone;\n```\n -->"
@@ -1668,7 +1668,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteDiaryRecord;\n```\n -->"
@@ -1694,7 +1694,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteFaradayCage;\n```\n -->"
@@ -1720,7 +1720,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteLoopedRadioSignal;\n```\n -->"
@@ -1746,7 +1746,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteSignal;\n```\n -->"
@@ -1772,7 +1772,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteSpectrumAnalyzer;\n```\n -->"
@@ -1798,7 +1798,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteTravelPoint;\n```\n -->"
@@ -1824,7 +1824,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDeletes scan with given name from extension and the map\n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\n\tReturns:\n\t\tBOOL - false on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_deleteTXScan\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDeletes scan with given name from extension and the map\n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\n\tReturns:\n\t\tBOOL - false on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_deleteTXScan\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_deleteTXScan;\n```\n -->"
@@ -1850,7 +1850,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_addAllSpectrumAnalyzers;\n```\n -->"
@@ -1876,7 +1876,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDraws all area objects bounds\n\n\tParameter(s):\n\t\t0: STRING - area name\n\n\tReturns:\n\t\tNUMBER - event handler id\n\t\t\n\tExample:\n\t\t\"MyArea\" call BIN_fnc_diag_drawAllAreaObjectsBounds\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDraws all area objects bounds\n\n\tParameter(s):\n\t\t0: STRING - area name\n\n\tReturns:\n\t\tNUMBER - event handler id\n\t\t\n\tExample:\n\t\t\"MyArea\" call BIN_fnc_diag_drawAllAreaObjectsBounds\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_drawAllAreaObjectsBounds;\n```\n -->"
@@ -1902,7 +1902,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_getAllAreaEntities;\n```\n -->"
@@ -1928,7 +1928,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns stored area objects for diagnostics\n\n\tParameter(s):\n\t\t0: STRING - area name\n\t\t1: NUMBER - multipart number\n\n\tReturns:\n\t\tARRAY of arays in format [[posX,posY,posMinZ,posMaxZ,radius],...]\n\t\t\n\tExample:\n\t\t\"MyArea\" call BIN_fnc_diag_getAllAreaObjects\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns stored area objects for diagnostics\n\n\tParameter(s):\n\t\t0: STRING - area name\n\t\t1: NUMBER - multipart number\n\n\tReturns:\n\t\tARRAY of arays in format [[posX,posY,posMinZ,posMaxZ,radius],...]\n\t\t\n\tExample:\n\t\t\"MyArea\" call BIN_fnc_diag_getAllAreaObjects\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_getAllAreaObjects;\n```\n -->"
@@ -1954,7 +1954,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds user action menu to the player with different IDWMap diag options\n\n\tParameter(s):\n\t\t0: STRING - command\n\t\t1: BOOL (Optional) - extended option\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample:\n\t\tcall BIN_fnc_diag_IDWMap\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds user action menu to the player with different IDWMap diag options\n\n\tParameter(s):\n\t\t0: STRING - command\n\t\t1: BOOL (Optional) - extended option\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample:\n\t\tcall BIN_fnc_diag_IDWMap\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_IDWMap;\n```\n -->"
@@ -1980,7 +1980,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_logAntenna;\n```\n -->"
@@ -2006,7 +2006,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_revealAllAntennas;\n```\n -->"
@@ -2032,7 +2032,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_showLinkBudgetMap;\n```\n -->"
@@ -2058,7 +2058,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds user action menu to the player with different TXScan diag options\n\n\tParameter(s):\n\t\t0: STRING - command\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample:\n\t\tcall BIN_fnc_diag_TXScan\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tAdds user action menu to the player with different TXScan diag options\n\n\tParameter(s):\n\t\t0: STRING - command\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample:\n\t\tcall BIN_fnc_diag_TXScan\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_diag_TXScan;\n```\n -->"
@@ -2084,7 +2084,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_distanceToAreaBorder;\n```\n -->"
@@ -2110,7 +2110,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_dockModule;\n```\n -->"
@@ -2136,7 +2136,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawAntennas;\n```\n -->"
@@ -2162,7 +2162,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tSet fixed size marker to be drawn in main map\n\n\tParameter(s):\n\t\t0: STRING - unique marker ID\n\t\t1:\n\t\t\tARRAY - marker parameters in format used by drawIcon command\n\t\t\tBOOL - delete the marker\n\n\tReturns:\n\t\tBOOL - true if successful\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tSet fixed size marker to be drawn in main map\n\n\tParameter(s):\n\t\t0: STRING - unique marker ID\n\t\t1:\n\t\t\tARRAY - marker parameters in format used by drawIcon command\n\t\t\tBOOL - delete the marker\n\n\tReturns:\n\t\tBOOL - true if successful\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawIconFixed;\n```\n -->"
@@ -2188,7 +2188,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDraws IDWMap on the main map\n\n\tParameter(s):\n\t\tNONE\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_drawIDWMap\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDraws IDWMap on the main map\n\n\tParameter(s):\n\t\tNONE\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_drawIDWMap\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawIDWMap;\n```\n -->"
@@ -2214,7 +2214,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawMap;\n```\n -->"
@@ -2240,7 +2240,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawProbeMap;\n```\n -->"
@@ -2266,7 +2266,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawSpectrum;\n```\n -->"
@@ -2292,7 +2292,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawTooltip;\n```\n -->"
@@ -2318,7 +2318,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDraws TXScan with given name\n\n\tParameter(s):\n\t\tSTRING - scan name or \"\" to draw all scans\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_drawTXScan\n\t\t\"\" call BIN_fnc_drawTXScan - draw all scans\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tDraws TXScan with given name\n\n\tParameter(s):\n\t\tSTRING - scan name or \"\" to draw all scans\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_drawTXScan\n\t\t\"\" call BIN_fnc_drawTXScan - draw all scans\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_drawTXScan;\n```\n -->"
@@ -2344,7 +2344,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_droneDestructionFX\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_droneDestructionFX\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_droneDestructionFX;\n```\n -->"
@@ -2370,7 +2370,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_droneModuleDestruction\n\tAlien Module destruction\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_droneModuleDestruction\n\tAlien Module destruction\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_droneModuleDestruction;\n```\n -->"
@@ -2396,7 +2396,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_editMoveProperties;\n```\n -->"
@@ -2422,7 +2422,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets EMP parameters to a vehicle. Destroys lights and optionally prevents vehicle from starting\n\n**NOTE**: The player has to be defined as <sqf inline>BIN_player for the voice lines to be spoken.\n**Arma**: 3contact",
+            "description": "Sets EMP parameters to a vehicle. Destroys lights and optionally prevents vehicle from starting\n\n**NOTE**: The player has to be defined as <sqf inline>BIN_player for the voice lines to be spoken.\n{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "```sqf\n[_enemyVehicle, true, true] call BIN_fnc_empVehicle;\n```"
@@ -2456,7 +2456,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets a variable used in [Arma 3 Contact](https://community.bistudio.com/wiki/Arma%203%20Contact) which handles saving. **Arma**: 3contact",
+            "description": "Sets a variable used in [Arma 3 Contact](https://community.bistudio.com/wiki/Arma%203%20Contact) which handles saving. {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "```sqf\n[true, true] call BIN_fnc_enableSaving;\n```"
@@ -2488,7 +2488,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_eulerToVector;\n```\n -->"
@@ -2514,7 +2514,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exit;\n```\n -->"
@@ -2540,7 +2540,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitAntennas;\n```\n -->"
@@ -2566,7 +2566,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitDiary;\n```\n -->"
@@ -2592,7 +2592,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitGroup;\n```\n -->"
@@ -2618,7 +2618,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitPersistentObjects;\n```\n -->"
@@ -2644,7 +2644,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitQuests;\n```\n -->"
@@ -2670,7 +2670,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitSites;\n```\n -->"
@@ -2696,7 +2696,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_exitTasks;\n```\n -->"
@@ -2722,7 +2722,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_findNearestGrid;\n```\n -->"
@@ -2748,7 +2748,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tA* search algorithm.\n\tUses hard-coded Manhattan distance to measure distance.\n\n\tParameter(s):\n\t\t0: ARRAY of ARRAYs in format:\n\t\t\t0: NUMBER - node cost\n\t\t\t1: ARRAY - array of neighbor indexes\n\t\t\t2: ARRAY - XYZ position of the node, used to measure distance from end pos\n\t\t1: NUMBER - index of starting point\n\t\t2: NUMBER - index of ending point\n\n\tReturns:\n\tARRAY of NUMBERs - indexes of nodes which are traversed on the way to the ending point\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tA* search algorithm.\n\tUses hard-coded Manhattan distance to measure distance.\n\n\tParameter(s):\n\t\t0: ARRAY of ARRAYs in format:\n\t\t\t0: NUMBER - node cost\n\t\t\t1: ARRAY - array of neighbor indexes\n\t\t\t2: ARRAY - XYZ position of the node, used to measure distance from end pos\n\t\t1: NUMBER - index of starting point\n\t\t2: NUMBER - index of ending point\n\n\tReturns:\n\tARRAY of NUMBERs - indexes of nodes which are traversed on the way to the ending point\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_findPath;\n```\n -->"
@@ -2774,7 +2774,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_findSafePositions\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_findSafePositions\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_findSafePositions;\n```\n -->"
@@ -2800,7 +2800,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_findTargetWeight\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_findTargetWeight\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_findTargetWeight;\n```\n -->"
@@ -2852,7 +2852,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAISquadID;\n```\n -->"
@@ -2878,7 +2878,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAISquadPosition;\n```\n -->"
@@ -2904,7 +2904,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAllAISquads;\n```\n -->"
@@ -2930,7 +2930,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAllAreas;\n```\n -->"
@@ -2956,7 +2956,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array of names of all TXScans stored in extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - scan names\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getAllTXScans \n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array of names of all TXScans stored in extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - scan names\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getAllTXScans \n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAllTXScans;\n```\n -->"
@@ -2982,7 +2982,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaAngle;\n```\n -->"
@@ -3008,7 +3008,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaCanReveal;\n```\n -->"
@@ -3034,7 +3034,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaFrequency;\n```\n -->"
@@ -3060,7 +3060,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaFrequencyClass;\n```\n -->"
@@ -3086,7 +3086,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaGain;\n```\n -->"
@@ -3112,7 +3112,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaName;\n```\n -->"
@@ -3138,7 +3138,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaObject;\n```\n -->"
@@ -3164,7 +3164,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaPower;\n```\n -->"
@@ -3190,7 +3190,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaRevealValue;\n```\n -->"
@@ -3216,7 +3216,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tGet all antennas, transmitters and receivers alike\n\n\tParameter(s):\n\t\t0: BOOL - true to ignore player's antennas (default: false)\n\n\tReturns:\n\t\tARRAY of STRINGs - antenna IDs\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tGet all antennas, transmitters and receivers alike\n\n\tParameter(s):\n\t\t0: BOOL - true to ignore player's antennas (default: false)\n\n\tReturns:\n\t\tARRAY of STRINGs - antenna IDs\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennas;\n```\n -->"
@@ -3242,7 +3242,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaScanPolygon;\n```\n -->"
@@ -3268,7 +3268,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaScans;\n```\n -->"
@@ -3294,7 +3294,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaScanSignals;\n```\n -->"
@@ -3320,7 +3320,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaSensitivity;\n```\n -->"
@@ -3346,7 +3346,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaSignal;\n```\n -->"
@@ -3372,7 +3372,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaSignalHistory;\n```\n -->"
@@ -3398,7 +3398,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getAntennaType;\n```\n -->"
@@ -3424,7 +3424,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_getBehaviorCoef\n\tGet behavior coefficients\n\n\tExamples:\n\n\t\t[bin_drone,\"gravityCannon\"] call BIN_fnc_getBehaviorCoef - returns coefficients for gravity cannon behavior\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_getBehaviorCoef\n\tGet behavior coefficients\n\n\tExamples:\n\n\t\t[bin_drone,\"gravityCannon\"] call BIN_fnc_getBehaviorCoef - returns coefficients for gravity cannon behavior\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getBehaviorCoef;\n```\n -->"
@@ -3450,7 +3450,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getCharacterSounds;\n```\n -->"
@@ -3476,7 +3476,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getCurrentSignal;\n```\n -->"
@@ -3502,7 +3502,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getEntityBoundingBarrel;\n```\n -->"
@@ -3528,7 +3528,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tGet signals which follow after given one.\n\n\tParameter(s):\n\t\t0: STRING - signal class\n\n\tReturns:\n\t\tARRAY of STRINGs (including input signal when it is not a link)\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tGet signals which follow after given one.\n\n\tParameter(s):\n\t\t0: STRING - signal class\n\n\tReturns:\n\t\tARRAY of STRINGs (including input signal when it is not a link)\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getFollowingSignals;\n```\n -->"
@@ -3554,7 +3554,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tReturn a formatted string of a mapped control (same style as the Field Manual and Hints)\n\n\tParameter(s):\n\t\t0: STRING - name of the control action\n\t\t1 (Optional): SCALAR - 0-based index of the mapped control\n\n\tReturns:\n\tSTRING - formatted control\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tReturn a formatted string of a mapped control (same style as the Field Manual and Hints)\n\n\tParameter(s):\n\t\t0: STRING - name of the control action\n\t\t1 (Optional): SCALAR - 0-based index of the mapped control\n\n\tReturns:\n\tSTRING - formatted control\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getFormattedControl;\n```\n -->"
@@ -3580,7 +3580,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define BUSH_WIDTH\t\t2\n#define BUSH_HEIGHT\t\t2\n#define TREE_TRUNK_WIDTH\t0.5\n#define TREE_TRUNK_HEIGHT\t4\n\n#define GET_POS\\\n\tprivate _pos = _x modelToWorld (boundingcenter _x vectormultiply -1);\n\n#define GET_BBOX\\\n\tprivate _bbox = boundingboxreal _x;\\\n\tprivate _bboxX = abs ((_bbox select 0 select 0) - (_bbox select 1 select 0)) / 2 + _cellSizeXHalf*0;\\\n\tprivate _bboxY = abs ((_bbox select 0 select 1) - (_bbox select 1 select 1)) / 2 + _cellSizeYHalf*0;\\\n\tprivate _bboxZ = abs ((_bbox select 0 select 2) - (_bbox select 1 select 2)) / 2 + _cellSizeZHalf*0;\n\n\t//_bboxZ = (abs (_bbox select 0 select 2) + abs (_bbox select 1 select 2)) + _cellSizeZHalf*0;\n\n#define GET_BBOX_FIXED(SIZE)\\\n\tprivate _bboxX = SIZE + _cellSizeXHalf;\\\n\tprivate _bboxY = SIZE + _cellSizeYHalf;\\\n\tprivate _bboxZ = SIZE + _cellSizeZHalf;\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define BUSH_WIDTH\t\t2\n#define BUSH_HEIGHT\t\t2\n#define TREE_TRUNK_WIDTH\t0.5\n#define TREE_TRUNK_HEIGHT\t4\n\n#define GET_POS\\\n\tprivate _pos = _x modelToWorld (boundingcenter _x vectormultiply -1);\n\n#define GET_BBOX\\\n\tprivate _bbox = boundingboxreal _x;\\\n\tprivate _bboxX = abs ((_bbox select 0 select 0) - (_bbox select 1 select 0)) / 2 + _cellSizeXHalf*0;\\\n\tprivate _bboxY = abs ((_bbox select 0 select 1) - (_bbox select 1 select 1)) / 2 + _cellSizeYHalf*0;\\\n\tprivate _bboxZ = abs ((_bbox select 0 select 2) - (_bbox select 1 select 2)) / 2 + _cellSizeZHalf*0;\n\n\t//_bboxZ = (abs (_bbox select 0 select 2) + abs (_bbox select 1 select 2)) + _cellSizeZHalf*0;\n\n#define GET_BBOX_FIXED(SIZE)\\\n\tprivate _bboxX = SIZE + _cellSizeXHalf;\\\n\tprivate _bboxY = SIZE + _cellSizeYHalf;\\\n\tprivate _bboxZ = SIZE + _cellSizeZHalf;\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getGridCollisions;\n```\n -->"
@@ -3606,7 +3606,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getGridMap;\n```\n -->"
@@ -3632,7 +3632,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getGridPath;\n```\n -->"
@@ -3658,7 +3658,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getGroupSeed;\n```\n -->"
@@ -3684,7 +3684,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets stored draw colors\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - draw colors\n\t\tor\n\t\t[] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapDrawColorSet\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets stored draw colors\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - draw colors\n\t\tor\n\t\t[] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapDrawColorSet\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getIDWMapDrawColorSet;\n```\n -->"
@@ -3710,7 +3710,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets stored draw pattern index\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tNUMBER - draw pattern index (0..3)\n\t\tor\n\t\t-1 on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapDrawPatternIndex\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets stored draw pattern index\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tNUMBER - draw pattern index (0..3)\n\t\tor\n\t\t-1 on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapDrawPatternIndex\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getIDWMapDrawPatternIndex;\n```\n -->"
@@ -3736,7 +3736,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns currently set IDWMap params\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY in format: [[mapMinX, mapMinY, mapMaxX, mapMaxY], idwCellSize, idwSpreadRadius, idwSpreadPower, curvePointsInterval, curvePointSpreadRadius] \n\t\tor \n\t\t[] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapParams\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns currently set IDWMap params\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY in format: [[mapMinX, mapMinY, mapMaxX, mapMaxY], idwCellSize, idwSpreadRadius, idwSpreadPower, curvePointsInterval, curvePointSpreadRadius] \n\t\tor \n\t\t[] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapParams\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getIDWMapParams;\n```\n -->"
@@ -3762,7 +3762,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array with IDWMap data which is used for saving/loading\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - save data\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapSaveData\n*/\n\n#define MAPDRAWPATTERNINDEX_DEFAULT 0\n#define MAPDRAWCOLORSET_DEFAULT [[0,0,0.514,0.7],[0,0,0.875,0.7],[0,0.247,1,0.7],[0,0.659,1,0.7],[0.035,1,0.961,0.7],[0.443,1,0.553,0.7],[0.843,1,0.153,0.7],[1,0.749,0,0.7],[1,0.357,0,0.7],[0.941,0,0,0.7],[0.522,0,0,0.7]]\n#define MAPDRAWIDC_DEFAULT 51\n\n// if the data was not yet set\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array with IDWMap data which is used for saving/loading\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY - save data\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapSaveData\n*/\n\n#define MAPDRAWPATTERNINDEX_DEFAULT 0\n#define MAPDRAWCOLORSET_DEFAULT [[0,0,0.514,0.7],[0,0,0.875,0.7],[0,0.247,1,0.7],[0,0.659,1,0.7],[0.035,1,0.961,0.7],[0.443,1,0.553,0.7],[0.843,1,0.153,0.7],[1,0.749,0,0.7],[1,0.357,0,0.7],[0.941,0,0,0.7],[0.522,0,0,0.7]]\n#define MAPDRAWIDC_DEFAULT 51\n\n// if the data was not yet set\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getIDWMapSaveData;\n```\n -->"
@@ -3788,7 +3788,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets static data from extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY in format:\n\t\t[\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 0\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 1\n\t\t\t...\n\t\t\t[[x,y,strengh],[x,y,strengh],...] // data layer N\n\t\t]\n\t\tor \n\t\t[] - on error\n\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapStaticDataLayers\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets static data from extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY in format:\n\t\t[\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 0\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 1\n\t\t\t...\n\t\t\t[[x,y,strengh],[x,y,strengh],...] // data layer N\n\t\t]\n\t\tor \n\t\t[] - on error\n\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getIDWMapStaticDataLayers\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getIDWMapStaticDataLayers;\n```\n -->"
@@ -3814,7 +3814,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getLinkBudget;\n```\n -->"
@@ -3840,7 +3840,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getLinkDir;\n```\n -->"
@@ -3866,7 +3866,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -3888,7 +3888,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getLinkStrength;\n```\n -->"
@@ -3914,7 +3914,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getObjectAntennas;\n```\n -->"
@@ -3940,7 +3940,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns bounding barrel of the given object\n\n\tParameter(s):\n\t\t0: OBJECT - object to measure\n\n\tReturns:\n\t\tARRAY in format [radius, height, offset]. Offset is negative if object Z position is higher than the lower bound\n\t\t\n\tExample:\n\t\tmyObj call BIN_fnc_getObjectBoundingBarrel\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns bounding barrel of the given object\n\n\tParameter(s):\n\t\t0: OBJECT - object to measure\n\n\tReturns:\n\t\tARRAY in format [radius, height, offset]. Offset is negative if object Z position is higher than the lower bound\n\t\t\n\tExample:\n\t\tmyObj call BIN_fnc_getObjectBoundingBarrel\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getObjectBoundingBarrel;\n```\n -->"
@@ -3966,7 +3966,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getPatrolRoutes;\n```\n -->"
@@ -3992,7 +3992,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getRadioConversation;\n```\n -->"
@@ -4018,7 +4018,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getRecordedSignals;\n```\n -->"
@@ -4044,7 +4044,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tGet soldier's role icon (e.g., sniper, machine-gunner, etc.)\n\n\tParameter(s):\n\t\t0: OBJECT\n\n\tReturns:\n\t\tSTRING - image path\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tGet soldier's role icon (e.g., sniper, machine-gunner, etc.)\n\n\tParameter(s):\n\t\t0: OBJECT\n\n\tReturns:\n\t\tSTRING - image path\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getRoleIcon;\n```\n -->"
@@ -4070,7 +4070,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getRotation;\n```\n -->"
@@ -4096,7 +4096,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getSignalAge;\n```\n -->"
@@ -4122,7 +4122,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getSignalTypeClass;\n```\n -->"
@@ -4148,7 +4148,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getSignalTypes;\n```\n -->"
@@ -4174,7 +4174,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getSiteLayerEntities;\n```\n -->"
@@ -4200,7 +4200,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns terrain objects of the given type for the given area dimensions\n\t\t\n\tParameter(s):\n\t\t0: ARRAY - area details in Area format (see BIS_fnc_getArea)\n\t\t1: ARRAY - types of terrain objects, for example [\"HOUSE\", \"TREE\"]\n\n\tReturns:\n\t\tARRAY of objects\n\t\t\n\tExample:\n\t\t[\"myArea\", [player, 100], [\"HOUSE\", \"TREE\"]] call BIN_fnc_getTerrainObjects\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns terrain objects of the given type for the given area dimensions\n\t\t\n\tParameter(s):\n\t\t0: ARRAY - area details in Area format (see BIS_fnc_getArea)\n\t\t1: ARRAY - types of terrain objects, for example [\"HOUSE\", \"TREE\"]\n\n\tReturns:\n\t\tARRAY of objects\n\t\t\n\tExample:\n\t\t[\"myArea\", [player, 100], [\"HOUSE\", \"TREE\"]] call BIN_fnc_getTerrainObjects\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTerrainObjects;\n```\n -->"
@@ -4226,7 +4226,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns TXScan angle\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t\n\tReturns:\n\t\tNUMBER - set cone angle or -1 on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanAngle\n\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns TXScan angle\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t\n\tReturns:\n\t\tNUMBER - set cone angle or -1 on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanAngle\n\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanAngle;\n```\n -->"
@@ -4252,7 +4252,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns draw data for given TXScan\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\n\tReturns:\n\t\tARRAY in format [iconData, polygonData, triangleData, rectangleData, isDefaultPolygon] where:\n\t\t\ticonData: ARRAY - position in format [x,y,0]\n\t\t\tpolygonData: ARRAY - array of polygon vertices, where each vertex is in format [x,y,0]\n\t\t\ttriangleData: ARRAY - array of triangle vrtices, where each vertex is in format [x,y,0] \n\t\t\trectangleData: ARRAY - bounding rectangle in format [center, a, b, angle]\n\t\t\tisDefaultPolygon: BOOL - if a scan polygon has not yet been calculated, this will be true\n\t\t\n\tExample:\n\t\t\"myScan\" call BIN_fnc_getTXScanDrawData\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns draw data for given TXScan\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\n\tReturns:\n\t\tARRAY in format [iconData, polygonData, triangleData, rectangleData, isDefaultPolygon] where:\n\t\t\ticonData: ARRAY - position in format [x,y,0]\n\t\t\tpolygonData: ARRAY - array of polygon vertices, where each vertex is in format [x,y,0]\n\t\t\ttriangleData: ARRAY - array of triangle vrtices, where each vertex is in format [x,y,0] \n\t\t\trectangleData: ARRAY - bounding rectangle in format [center, a, b, angle]\n\t\t\tisDefaultPolygon: BOOL - if a scan polygon has not yet been calculated, this will be true\n\t\t\n\tExample:\n\t\t\"myScan\" call BIN_fnc_getTXScanDrawData\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanDrawData;\n```\n -->"
@@ -4278,7 +4278,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns current intersection polygon for given scan\n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\n\tReturns:\n\t\tARRAY - polygon points or [] on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanPolygon\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns current intersection polygon for given scan\n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\n\tReturns:\n\t\tARRAY - polygon points or [] on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanPolygon\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanPolygon;\n```\n -->"
@@ -4304,7 +4304,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns estimated area and perimeter of the given scan polygon \n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\n\tReturns:\n\t\tARRAY in format [area, perimeter]\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanPolygonDetails\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns estimated area and perimeter of the given scan polygon \n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\n\tReturns:\n\t\tARRAY in format [area, perimeter]\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanPolygonDetails\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanPolygonDetails;\n```\n -->"
@@ -4330,7 +4330,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets stored TXScan transmitter position\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t\n\tReturns:\n\t\tARRAY - set transmitter position or [] on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_setTXScanPosition\n\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tGets stored TXScan transmitter position\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t\n\tReturns:\n\t\tARRAY - set transmitter position or [] on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_setTXScanPosition\n\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanPosition;\n```\n -->"
@@ -4356,7 +4356,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns stored TXScan precision\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t\n\tReturns:\n\t\tNUMBER - set cone precision or -1 on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanPrecision\n\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns stored TXScan precision\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t\n\tReturns:\n\t\tNUMBER - set cone precision or -1 on error\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanPrecision\n\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanPrecision;\n```\n -->"
@@ -4382,7 +4382,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array with given TXScan data which is used for saving/loading\n\n\tParameter(s):\n\t\t0: STRING - TXScan name or \"\" to return all saved scan names\n\n\tReturns:\n\t\tARRAY - save data for given scan name \n\t\tor if argument was \"\"\n\t\tARRAY in format [allscannames, activeareaboundaries]\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanSaveData\n\t\t\"\" call BIN_fnc_getTXScanSaveData\n*/\n\n#define SAVEVAR_NAME \"BIN_fnc_TXScan_saveData\"\n#define IDD_DEFAULT 12\n#define IDC_DEFAULT 51\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array with given TXScan data which is used for saving/loading\n\n\tParameter(s):\n\t\t0: STRING - TXScan name or \"\" to return all saved scan names\n\n\tReturns:\n\t\tARRAY - save data for given scan name \n\t\tor if argument was \"\"\n\t\tARRAY in format [allscannames, activeareaboundaries]\n\t\t\n\tExample:\n\t\t\"MyScan\" call BIN_fnc_getTXScanSaveData\n\t\t\"\" call BIN_fnc_getTXScanSaveData\n*/\n\n#define SAVEVAR_NAME \"BIN_fnc_TXScan_saveData\"\n#define IDD_DEFAULT 12\n#define IDC_DEFAULT 51\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanSaveData;\n```\n -->"
@@ -4408,7 +4408,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns currently set boundaries of active area\n\t\t\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY in format: [minX, minY, maxX, maxY] \n\t\tor \n\t\t[] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getTXScanWorldBounds\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns currently set boundaries of active area\n\t\t\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tARRAY in format: [minX, minY, maxX, maxY] \n\t\tor \n\t\t[] on error\n\t\t\n\tExample:\n\t\tcall BIN_fnc_getTXScanWorldBounds\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_getTXScanWorldBounds;\n```\n -->"
@@ -4434,7 +4434,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_gravityBurst;\n```\n -->"
@@ -4460,7 +4460,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_gravityCannon_01_AI\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_gravityCannon_01_AI\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -4482,7 +4482,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_grenadeThrowback\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_grenadeThrowback\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_grenadeThrowback;\n```\n -->"
@@ -4508,7 +4508,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_hackAIDrone;\n```\n -->"
@@ -4534,7 +4534,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tShow hand-drawn bezier curve in the map\n\n\tParameter(s):\n\t\t0: STRING - Unique ID of the ellipse. When such ellipse already exists, it will override it.\n\t\t1: ARRAY - control points of bezier curve\n\t\t2: ARRAY - color in [r,g,b,a] format\n\t\t3: STRING - fill texture\n\t\t   BOOL - true for default pen-blue color, false for the same, but faded\n\n\t\tOptional:\n\t\t4: NUMBER or ARRAY: thickness\n\t\t5: ARRAY - random thickness offset in format [min,mid,max]\n\t\t6: NUMBER - number od drawing steps\n\n\tReturns:\n\t\tNOTHING\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tShow hand-drawn bezier curve in the map\n\n\tParameter(s):\n\t\t0: STRING - Unique ID of the ellipse. When such ellipse already exists, it will override it.\n\t\t1: ARRAY - control points of bezier curve\n\t\t2: ARRAY - color in [r,g,b,a] format\n\t\t3: STRING - fill texture\n\t\t   BOOL - true for default pen-blue color, false for the same, but faded\n\n\t\tOptional:\n\t\t4: NUMBER or ARRAY: thickness\n\t\t5: ARRAY - random thickness offset in format [min,mid,max]\n\t\t6: NUMBER - number od drawing steps\n\n\tReturns:\n\t\tNOTHING\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_handDrawBezier;\n```\n -->"
@@ -4560,7 +4560,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tShow hand-drawn ellipse in the map\n\n\tParameter(s):\n\t\t0: STRING - Unique ID of the ellipse. When such ellipse already exists, it will override it.\n\t\t1: ARRAY - center position\n\t\t2: NUMBER - semi-major axis\n\t\t3: NUMBER - semi-minor axis\n\t\t4: NUMBER - angle\n\t\t5: ARRAY - color in [r,g,b,a] format\n\t\t6: STRING - fill texture\n\t\t   BOOL - true for default pen-blue color, false for the same, but faded\n\n\t\tOptional:\n\t\t7: NUMBER - radius coef\n\t\t8: NUMBER - length coef\n\t\t9: NUMBER or ARRAY: thickness\n\t\t10: ARRAY - radius curve\n\t\t11: BOOL - true if clockwise\n\t\t12: NUMBER - starting angle\n\t\t13: ARRAY - random thickness offset in format [min,mid,max]\n\t\t14: NUMBER - number od drawing steps\n\n\tReturns:\n\t\tNOTHING\n\n\tExamples:\n\t\t//--- Show an ellipse on player's position\n\t\t[\"test1\",position player,300,400,15] call BIN_fnc_handDrawEllipse;\n\n\t\t//--- Show the same ellipse, but faded\n\t\t[\"test1\",position player,300,400,15,nil,false] call BIN_fnc_handDrawEllipse;\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tShow hand-drawn ellipse in the map\n\n\tParameter(s):\n\t\t0: STRING - Unique ID of the ellipse. When such ellipse already exists, it will override it.\n\t\t1: ARRAY - center position\n\t\t2: NUMBER - semi-major axis\n\t\t3: NUMBER - semi-minor axis\n\t\t4: NUMBER - angle\n\t\t5: ARRAY - color in [r,g,b,a] format\n\t\t6: STRING - fill texture\n\t\t   BOOL - true for default pen-blue color, false for the same, but faded\n\n\t\tOptional:\n\t\t7: NUMBER - radius coef\n\t\t8: NUMBER - length coef\n\t\t9: NUMBER or ARRAY: thickness\n\t\t10: ARRAY - radius curve\n\t\t11: BOOL - true if clockwise\n\t\t12: NUMBER - starting angle\n\t\t13: ARRAY - random thickness offset in format [min,mid,max]\n\t\t14: NUMBER - number od drawing steps\n\n\tReturns:\n\t\tNOTHING\n\n\tExamples:\n\t\t//--- Show an ellipse on player's position\n\t\t[\"test1\",position player,300,400,15] call BIN_fnc_handDrawEllipse;\n\n\t\t//--- Show the same ellipse, but faded\n\t\t[\"test1\",position player,300,400,15,nil,false] call BIN_fnc_handDrawEllipse;\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_handDrawEllipse;\n```\n -->"
@@ -4586,7 +4586,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_hasAntennaSignal;\n```\n -->"
@@ -4612,7 +4612,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_inDangerZone;\n```\n -->"
@@ -4638,7 +4638,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initAcctime;\n```\n -->"
@@ -4664,7 +4664,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initActors;\n```\n -->"
@@ -4690,7 +4690,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initAI;\n```\n -->"
@@ -4716,7 +4716,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initAIBase;\n```\n -->"
@@ -4742,7 +4742,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initAIDrone;\n```\n -->"
@@ -4768,7 +4768,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initAISquad;\n```\n -->"
@@ -4794,7 +4794,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initAntennas;\n```\n -->"
@@ -4820,7 +4820,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initConstants;\n```\n -->"
@@ -4846,7 +4846,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//--- Register RSC layers in the correct order (they are not serialized)\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>//--- Register RSC layers in the correct order (they are not serialized)\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initCutLayers;\n```\n -->"
@@ -4872,7 +4872,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initDiary;\n```\n -->"
@@ -4898,7 +4898,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_initDroneModule\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_initDroneModule\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initDroneModule;\n```\n -->"
@@ -4924,7 +4924,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define DEBUG\n#define GROUP\t(units player - [player])\n#define DAMAGE_COEF\t0.25\n#define DIS_LIMIT_SOFT\t400\n#define DIS_LIMIT_HARD\t600</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define DEBUG\n#define GROUP\t(units player - [player])\n#define DAMAGE_COEF\t0.25\n#define DIS_LIMIT_SOFT\t400\n#define DIS_LIMIT_HARD\t600</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initGroup;\n```\n -->"
@@ -4950,7 +4950,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initHub;\n```\n -->"
@@ -4976,7 +4976,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initInspectableDiaryRecord;\n```\n -->"
@@ -5002,7 +5002,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//--- Ignored in missions without special description.ext property\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>//--- Ignored in missions without special description.ext property\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initInventory;\n```\n -->"
@@ -5028,7 +5028,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initLocations;\n```\n -->"
@@ -5054,7 +5054,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initMiniUGV;\n```\n -->"
@@ -5080,7 +5080,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tEnable scripted ET Mothership lights on baked memory points\n\t\tCreated lights can be retrieved via getVariable \"BIN_lights\" on the Mothership\n\n\tParameter(s):\n\t\t0: OBJECT - Mothership\n\n\tReturns:\n\t\tNOTHING\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tEnable scripted ET Mothership lights on baked memory points\n\t\tCreated lights can be retrieved via getVariable \"BIN_lights\" on the Mothership\n\n\tParameter(s):\n\t\t0: OBJECT - Mothership\n\n\tReturns:\n\t\tNOTHING\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initMothershipLights;\n```\n -->"
@@ -5106,7 +5106,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initPersistentObjects;\n```\n -->"
@@ -5132,7 +5132,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//--- Debug\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>//--- Debug\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initProbeMap;\n```\n -->"
@@ -5158,7 +5158,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initPuzzle;\n```\n -->"
@@ -5184,7 +5184,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initQuests;\n```\n -->"
@@ -5210,7 +5210,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define BLEED_TIME\t\t160\n#define BLINK_DELAY_MAX\t\t20\n#define BLINK_TIME\t\t0.75\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define BLEED_TIME\t\t160\n#define BLINK_DELAY_MAX\t\t20\n#define BLINK_TIME\t\t0.75\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initRevive;\n```\n -->"
@@ -5236,7 +5236,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define FORMAT \"Map_%1_%2\"\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define FORMAT \"Map_%1_%2\"\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initSideColors;\n```\n -->"
@@ -5262,7 +5262,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define DEBUG\n#define AREA_BUFFER\t+200\n#define DEF_RADIUS\t500\n#define DEF_RADIUS_OUT\t550\n#define AREA_DEF\t[position _logic,DEF_RADIUS_OUT,DEF_RADIUS_OUT,0,false]\n</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>#define DEBUG\n#define AREA_BUFFER\t+200\n#define DEF_RADIUS\t500\n#define DEF_RADIUS_OUT\t550\n#define AREA_DEF\t[position _logic,DEF_RADIUS_OUT,DEF_RADIUS_OUT,0,false]\n</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initSites;\n```\n -->"
@@ -5288,7 +5288,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//--- Obsolete, replace dby BIN_fnc_initQuests\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>//--- Obsolete, replace dby BIN_fnc_initQuests\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initTasks;\n```\n -->"
@@ -5314,7 +5314,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initTurret;\n```\n -->"
@@ -5340,7 +5340,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initUAV;\n```\n -->"
@@ -5366,7 +5366,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initUGV;\n```\n -->"
@@ -5392,7 +5392,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_inList;\n```\n -->"
@@ -5418,7 +5418,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_inRadioConversation;\n```\n -->"
@@ -5444,7 +5444,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_inRadioConversationWith;\n```\n -->"
@@ -5470,7 +5470,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAIBase;\n```\n -->"
@@ -5496,7 +5496,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAntenna;\n```\n -->"
@@ -5522,7 +5522,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAntennaBaked;\n```\n -->"
@@ -5548,7 +5548,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAntennaBroadcasting;\n```\n -->"
@@ -5574,7 +5574,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAntennaJammed;\n```\n -->"
@@ -5600,7 +5600,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAntennaRevealed;\n```\n -->"
@@ -5626,7 +5626,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isAntennaSelected;\n```\n -->"
@@ -5652,7 +5652,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns true and displays description of the error from extension if there was an error. \n\t\tWhen extension returns negative number (usually -1), it is considered an indication of some sort of error, \n\t\tin which case string output should contain the description of the error.\n\n\tParameter(s):\n\t\tExtension (arg version) output in format [<string>, <number>, <number>]\n\n\tReturns:\n\t\tBOOL - true if error\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns true and displays description of the error from extension if there was an error. \n\t\tWhen extension returns negative number (usually -1), it is considered an indication of some sort of error, \n\t\tin which case string output should contain the description of the error.\n\n\tParameter(s):\n\t\tExtension (arg version) output in format [<string>, <number>, <number>]\n\n\tReturns:\n\t\tBOOL - true if error\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isExtensionError;\n```\n -->"
@@ -5678,7 +5678,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isNull;\n```\n -->"
@@ -5704,7 +5704,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isPaused;\n```\n -->"
@@ -5730,7 +5730,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isPausedInit;\n```\n -->"
@@ -5756,7 +5756,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isPuzzleReset;\n```\n -->"
@@ -5782,7 +5782,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isPuzzleTerminated;\n```\n -->"
@@ -5808,7 +5808,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isRadioHandshake;\n```\n -->"
@@ -5834,7 +5834,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_isRadioSilence;\n```\n -->"
@@ -5860,7 +5860,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_joinAISquad;\n```\n -->"
@@ -5886,7 +5886,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_lightBurst;\n```\n -->"
@@ -5912,7 +5912,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_list;\n```\n -->"
@@ -5938,7 +5938,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tLoads IDWMap data from global variable 'BIN_fnc_IDWMap_saveData' into extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_loadIDWMap\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tLoads IDWMap data from global variable 'BIN_fnc_IDWMap_saveData' into extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_loadIDWMap\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_loadIDWMap;\n```\n -->"
@@ -5964,7 +5964,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tLoads TXScan data from global saved variables into extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_loadTXScanState\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tLoads TXScan data from global saved variables into extension\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_loadTXScanState\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_loadTXScanState;\n```\n -->"
@@ -5990,7 +5990,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_markDangerZone;\n```\n -->"
@@ -6016,7 +6016,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array of booleans in place of passed positions, where true is free and false is possible collision\n\n\tParameter(s):\n\t\t0: STRING - area name\n\t\t1: ARRAY - bounding barrel in format [radius, height, offset]\n\t\t2: ARRAY - arrays of positions\n\n\tReturns:\n\t\tARRAY of booleans\n\t\t\n\tExample:\n\t\t[\"myArea\", [10,5,0], [[123,123,123],[456,456,456],...]] call BIN_fnc_markFreeAreaPositions\n*/</pre>\n\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tReturns array of booleans in place of passed positions, where true is free and false is possible collision\n\n\tParameter(s):\n\t\t0: STRING - area name\n\t\t1: ARRAY - bounding barrel in format [radius, height, offset]\n\t\t2: ARRAY - arrays of positions\n\n\tReturns:\n\t\tARRAY of booleans\n\t\t\n\tExample:\n\t\t[\"myArea\", [10,5,0], [[123,123,123],[456,456,456],...]] call BIN_fnc_markFreeAreaPositions\n*/</pre>\n\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_markFreeAreaPositions;\n```\n -->"
@@ -6042,7 +6042,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_matrixMultiply;\n```\n -->"
@@ -6068,7 +6068,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_matrixTranspose;\n```\n -->"
@@ -6094,7 +6094,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_matterBallDestruction\n\tAlien Module destruction\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_matterBallDestruction\n\tAlien Module destruction\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6116,7 +6116,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_matterBallEffects\n\n\tAlien Matter Ball decaying effects\n\n\ta: reyhard\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_matterBallEffects\n\n\tAlien Matter Ball decaying effects\n\n\ta: reyhard\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6138,7 +6138,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_matterCollectionFX\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_matterCollectionFX\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6160,7 +6160,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6182,7 +6182,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_missileSwarm\n*/</pre>\n{{Wiki|placeholder}} **Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_missileSwarm\n*/</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6204,7 +6204,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6221,7 +6221,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\tEnables CBRN systems in a scenario (not MP-compatible!).\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\tEnables CBRN systems in a scenario (not MP-compatible!).\n\tNOTE: Module / function set not robust nor completed - not recommended for usage at this stage!\n\n\tParameter(s):\n\n\tReturns:\n\tBOOL\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6238,7 +6238,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6255,7 +6255,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define AREA_BUFFER\t+50</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>#define AREA_BUFFER\t+50</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6272,7 +6272,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6289,7 +6289,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6306,7 +6306,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6323,7 +6323,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6340,7 +6340,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6357,7 +6357,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6374,7 +6374,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6391,7 +6391,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6408,7 +6408,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6425,7 +6425,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6442,7 +6442,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6459,7 +6459,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6476,7 +6476,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6493,7 +6493,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_moveToOnArc\n\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_moveToOnArc\n\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6510,7 +6510,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6527,7 +6527,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6544,7 +6544,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6561,7 +6561,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6578,7 +6578,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6595,7 +6595,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6612,7 +6612,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6629,7 +6629,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//--- Disabled, campaign is now configured as traditional campaign</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>//--- Disabled, campaign is now configured as traditional campaign</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6646,7 +6646,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6663,7 +6663,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6680,7 +6680,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6697,7 +6697,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6714,7 +6714,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6731,7 +6731,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tShould be called from preInit, contains saving/loading functions as well as default initisalization\n\n\tParameter(s):\n\t\t0: STRING - preInit pass through\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample: \n\t\t// from preinit script\n\t\tcall BIN_fnc_preInitIDWMap\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tShould be called from preInit, contains saving/loading functions as well as default initisalization\n\n\tParameter(s):\n\t\t0: STRING - preInit pass through\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample: \n\t\t// from preinit script\n\t\tcall BIN_fnc_preInitIDWMap\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6748,7 +6748,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tShould be called from preInit, contains saving/loading functions as well as default initisalization\n\n\tParameter(s):\n\t\t0: STRING - \"preInit\"\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample: \n\t\t// from preinit script\n\t\tcall BIN_fnc_preInitTXScan\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tShould be called from preInit, contains saving/loading functions as well as default initisalization\n\n\tParameter(s):\n\t\t0: STRING - \"preInit\"\n\n\tReturns:\n\t\tNOTHING\n\t\t\n\tExample: \n\t\t// from preinit script\n\t\tcall BIN_fnc_preInitTXScan\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6765,7 +6765,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_probeAnim\n\n\tExample usage:\n\t\t[probe,1] call BIN_fnc_probeAnim - expand probe core\n\t\t[probe,0] call BIN_fnc_probeAnim - retract probe core\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_probeAnim\n\n\tExample usage:\n\t\t[probe,1] call BIN_fnc_probeAnim - expand probe core\n\t\t[probe,0] call BIN_fnc_probeAnim - retract probe core\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6782,7 +6782,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6799,7 +6799,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_probeCoreEffects\n\t[probeCore] call BIN_fnc_probeCoreEffects\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_probeCoreEffects\n\t[probeCore] call BIN_fnc_probeCoreEffects\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6816,7 +6816,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6833,7 +6833,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_probeCoreLegsDestroyed\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_probeCoreLegsDestroyed\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6850,7 +6850,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6867,7 +6867,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_probeDelete\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_probeDelete\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6884,7 +6884,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_probeHitpoint\n\n\tSpawns particle effects & sound\n\n\tFunction is connected to probe hitpoint and can be also manually triggered via calling following code:\n\t\t* [cursorObject,1,true] call BIN_fnc_probeHitpoint - destroy hitpoint with index 1\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_probeHitpoint\n\n\tSpawns particle effects & sound\n\n\tFunction is connected to probe hitpoint and can be also manually triggered via calling following code:\n\t\t* [cursorObject,1,true] call BIN_fnc_probeHitpoint - destroy hitpoint with index 1\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6901,7 +6901,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_probeVeinHitpoint\n\n\tAnimate vein & spawn sound\n\n\tInput:\n\t\tDammaged EH\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_probeVeinHitpoint\n\n\tAnimate vein & spawn sound\n\n\tInput:\n\t\tDammaged EH\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -6996,7 +6996,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7013,7 +7013,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7030,7 +7030,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7047,7 +7047,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7064,7 +7064,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7081,7 +7081,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7098,7 +7098,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7115,7 +7115,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7132,7 +7132,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7149,7 +7149,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tAdd signal to the library.\n\n\tParameter(s):\n\t\t0: STRING - antenna ID (its currently transmitted signal will be used) or signal class from CfgContact >> Signals\n\n\tReturns:\n\t\tBOOL - true if added\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tAdd signal to the library.\n\n\tParameter(s):\n\t\t0: STRING - antenna ID (its currently transmitted signal will be used) or signal class from CfgContact >> Signals\n\n\tReturns:\n\t\tBOOL - true if added\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7166,7 +7166,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7183,7 +7183,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7200,7 +7200,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7217,7 +7217,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSaves IDWMap data into global variable 'BIN_fnc_IDWMap_saveData' so that it can be serialised and then loaded from game save when needed\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_saveIDWMap\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSaves IDWMap data into global variable 'BIN_fnc_IDWMap_saveData' so that it can be serialised and then loaded from game save when needed\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_saveIDWMap\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7234,7 +7234,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSaves TXScan data into global variables so that it can be serialised and then loaded from game save when needed\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_saveTXScanState\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSaves TXScan data into global variables so that it can be serialised and then loaded from game save when needed\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_saveTXScanState\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7251,7 +7251,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the value of <sqf inline>missionNamespace getVariable [\"BIN_enableSaving\", true].\n**Arma**: 3contact",
+            "description": "Returns the value of <sqf inline>missionNamespace getVariable [\"BIN_enableSaving\", true].\n{{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "```sqf\ncall BIN_fnc_savingEnabled == (missionNamespace getVariable [\"BIN_enableSaving\", true]); // true\n```"
@@ -7273,7 +7273,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7290,7 +7290,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7307,7 +7307,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tIntersects current scan polygon (or map square if no scan exists) with triangle originated from RX position\n\t\tand returns the triangle\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: ARRAY (Optional) - RX position. Default: position player\n\n\tReturns:\n\t\tARRAY - triangle used for intersection\n\t\t\n\tExample:\n\t\t[\"MyScan\", position player] call BIN_fnc_scanTX\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tIntersects current scan polygon (or map square if no scan exists) with triangle originated from RX position\n\t\tand returns the triangle\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: ARRAY (Optional) - RX position. Default: position player\n\n\tReturns:\n\t\tARRAY - triangle used for intersection\n\t\t\n\tExample:\n\t\t[\"MyScan\", position player] call BIN_fnc_scanTX\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7324,7 +7324,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7341,7 +7341,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7358,7 +7358,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7375,7 +7375,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7392,7 +7392,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7409,7 +7409,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7426,7 +7426,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7443,7 +7443,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7460,7 +7460,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7477,7 +7477,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7494,7 +7494,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7511,7 +7511,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7528,7 +7528,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7545,7 +7545,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7562,7 +7562,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7579,7 +7579,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7596,7 +7596,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7613,7 +7613,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7630,7 +7630,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7647,7 +7647,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7664,7 +7664,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>\n#define DEBUG\n#define HISTORY_CAPACITY\t5\n#define TERMINATE_DEFAULT\t1\n#define TERMINATE_INTERRUPT\t2\n#define BEHAVIOR_PATH \"a3\\Functions_F_Contact\\Behavior\\Drone\\\"\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>\n#define DEBUG\n#define HISTORY_CAPACITY\t5\n#define TERMINATE_DEFAULT\t1\n#define TERMINATE_INTERRUPT\t2\n#define BEHAVIOR_PATH \"a3\\Functions_F_Contact\\Behavior\\Drone\\\"\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7681,7 +7681,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_setBehaviorCoef\n\tSet behavior coefficients\n\n\tExamples:\n\n\t\t[bin_drone,\"gravityCannon\",0] call BIN_fnc_setBehaviorCoef\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_setBehaviorCoef\n\tSet behavior coefficients\n\n\tExamples:\n\n\t\t[bin_drone,\"gravityCannon\",0] call BIN_fnc_setBehaviorCoef\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7698,7 +7698,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7715,7 +7715,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7732,7 +7732,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_setCustomSoundController\n\n\ta: reyhard\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_setCustomSoundController\n\n\ta: reyhard\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7749,7 +7749,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7766,7 +7766,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_setDroneModuleParams\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_setDroneModuleParams\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7783,7 +7783,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_setDroneModuleTarget\n\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_setDroneModuleTarget\n\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7800,7 +7800,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7817,7 +7817,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>\n/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets map draw color set\n\n\tParameter(s):\n\t\tARRAY - array of colors from 1 to 11\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t// set 3 color drawing on the fly\n\t\t[[0,0,0.514,0.7],[0.843,1,0.153,0.7],[0.522,0,0,0.7]] call BIN_fnc_setIDWMapDrawColorSet;\n\t\t// set from config\n\t\t[] call BIN_fnc_setIDWMapDrawColorSet;\n*/\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>\n/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets map draw color set\n\n\tParameter(s):\n\t\tARRAY - array of colors from 1 to 11\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t// set 3 color drawing on the fly\n\t\t[[0,0,0.514,0.7],[0.843,1,0.153,0.7],[0.522,0,0,0.7]] call BIN_fnc_setIDWMapDrawColorSet;\n\t\t// set from config\n\t\t[] call BIN_fnc_setIDWMapDrawColorSet;\n*/\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7834,7 +7834,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets map draw pattern\n\n\tParameter(s):\n\t\tNUMBER - pattern: 0 - triangles, 1 - diamonds, 2 - squares, 3 - diamonds overlapped\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t// set on the fly\n\t\t3 call BIN_fnc_setIDWMapDrawPatternIndex; OR [3] call BIN_fnc_setIDWMapDrawPatternIndex;\n\t\t// set from config\n\t\tcall BIN_fnc_setIDWMapDrawPatternIndex; OR [] call BIN_fnc_setIDWMapDrawPatternIndex;\n*/\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets map draw pattern\n\n\tParameter(s):\n\t\tNUMBER - pattern: 0 - triangles, 1 - diamonds, 2 - squares, 3 - diamonds overlapped\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t// set on the fly\n\t\t3 call BIN_fnc_setIDWMapDrawPatternIndex; OR [3] call BIN_fnc_setIDWMapDrawPatternIndex;\n\t\t// set from config\n\t\tcall BIN_fnc_setIDWMapDrawPatternIndex; OR [] call BIN_fnc_setIDWMapDrawPatternIndex;\n*/\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7851,7 +7851,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tResets extension data, sets IDWMap params from argument, from config or default\n\t\t*** This function must be called before any data is added to the IDWMap ***\n\n\tParameter(s):\n\t\t0: ARRAY - (Optional) areaParams in format:\n\t\t\t0: NUMBER - minMapX\n\t\t\t1: NUMBER - minMapY\n\t\t\t2: NUMBER - maxMapX\n\t\t\t3: NUMBER - maxMapY\n\t\t\tDefault: [0, 0, worldSize, worldSize]\n\t\t1: NUMBER (Optional) - idwCellSize. Default: 20\n\t\t2: NUMBER (Optional) - idwSpreadRadius. Default: 200\n\t\t3: NUMBER (Optional) - idwSpreadPower. Default: 2.0\n\t\t4: NUMBER (Optional) - curvePointsInterval. Default: 20\n\t\t5: NUMBER (Optional) - curvePointSpreadRadius. Default: idwSpreadRadius\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_setIDWMapParams\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tResets extension data, sets IDWMap params from argument, from config or default\n\t\t*** This function must be called before any data is added to the IDWMap ***\n\n\tParameter(s):\n\t\t0: ARRAY - (Optional) areaParams in format:\n\t\t\t0: NUMBER - minMapX\n\t\t\t1: NUMBER - minMapY\n\t\t\t2: NUMBER - maxMapX\n\t\t\t3: NUMBER - maxMapY\n\t\t\tDefault: [0, 0, worldSize, worldSize]\n\t\t1: NUMBER (Optional) - idwCellSize. Default: 20\n\t\t2: NUMBER (Optional) - idwSpreadRadius. Default: 200\n\t\t3: NUMBER (Optional) - idwSpreadPower. Default: 2.0\n\t\t4: NUMBER (Optional) - curvePointsInterval. Default: 20\n\t\t5: NUMBER (Optional) - curvePointSpreadRadius. Default: idwSpreadRadius\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_setIDWMapParams\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7868,7 +7868,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets static data for extension use from argument or config \"CfgIDWMap\"\n\n\tParameter(s):\n\t\tARRAY (optional) - static data in format:\n\t\t[\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 0\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 1\n\t\t\t...\n\t\t\t[[x,y,strengh],[x,y,strengh],...] // data layer N\n\t\t]\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_setIDWMapStaticDataLayers\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets static data for extension use from argument or config \"CfgIDWMap\"\n\n\tParameter(s):\n\t\tARRAY (optional) - static data in format:\n\t\t[\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 0\n\t\t\t[[x,y,strengh],[x,y,strengh],...], // data layer 1\n\t\t\t...\n\t\t\t[[x,y,strengh],[x,y,strengh],...] // data layer N\n\t\t]\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\tcall BIN_fnc_setIDWMapStaticDataLayers\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7885,7 +7885,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7902,7 +7902,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7919,7 +7919,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7936,7 +7936,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7953,7 +7953,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tAdd point of interest shown in the map\n\n\tParameter(s):\n\t\t0: STRING - unique ID of the point\n\t\t1:\n\t\t\tBOOL - true if the point is completed (shown faded in the map)\n\t\t\tNUMBER - status, can be:\n\t\t\t\t-1: dormant, will be activated when player gets close\n\t\t\t\t 0: shown, but not completed\n\t\t\t\t+1: completed\n\t\t2: ARRAY - position\n\t\t3: ARRAY - area in format [width,height,angle,isRectangle]\n\t\t4: STRING - type, can be \"Unknown\" or \"Warning\" (default: \"Unknown\")\n\t\t5: STRING - color, can be \"Black\", \"Blue\" or \"Red\" (default: \"Black\")\n\n\t\tor\n\n\t\t0: OBJECT - \"Point of interest\" module\n\n\tReturns:\n\t\tSTRING - ID of the point\n\n\tExamples:\n\n\t\t//--- Activate existing module\n\t\t_myID = myModule call BIN_fnc_setPointOfInterest;\n\n\t\t//--- Mark POI as completed\n\t\t[_myID,true] call BIN_fnc_setPointOfInterest;\n\n\t\t//--- Set custom POI\n\t\t[\"myID\",false,position myObject,[50,50,0,false],\"Warning\",\"Red\"] call BIN_fnc_setPointOfInterest;\n\n\t\t//--- Set custom POI using default type and color\n\t\t[\"myID\",false,position myObject,[50,50,0,false]] call BIN_fnc_setPointOfInterest;\n*/\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tAdd point of interest shown in the map\n\n\tParameter(s):\n\t\t0: STRING - unique ID of the point\n\t\t1:\n\t\t\tBOOL - true if the point is completed (shown faded in the map)\n\t\t\tNUMBER - status, can be:\n\t\t\t\t-1: dormant, will be activated when player gets close\n\t\t\t\t 0: shown, but not completed\n\t\t\t\t+1: completed\n\t\t2: ARRAY - position\n\t\t3: ARRAY - area in format [width,height,angle,isRectangle]\n\t\t4: STRING - type, can be \"Unknown\" or \"Warning\" (default: \"Unknown\")\n\t\t5: STRING - color, can be \"Black\", \"Blue\" or \"Red\" (default: \"Black\")\n\n\t\tor\n\n\t\t0: OBJECT - \"Point of interest\" module\n\n\tReturns:\n\t\tSTRING - ID of the point\n\n\tExamples:\n\n\t\t//--- Activate existing module\n\t\t_myID = myModule call BIN_fnc_setPointOfInterest;\n\n\t\t//--- Mark POI as completed\n\t\t[_myID,true] call BIN_fnc_setPointOfInterest;\n\n\t\t//--- Set custom POI\n\t\t[\"myID\",false,position myObject,[50,50,0,false],\"Warning\",\"Red\"] call BIN_fnc_setPointOfInterest;\n\n\t\t//--- Set custom POI using default type and color\n\t\t[\"myID\",false,position myObject,[50,50,0,false]] call BIN_fnc_setPointOfInterest;\n*/\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7970,7 +7970,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -7987,7 +7987,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8004,7 +8004,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8021,7 +8021,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tInput:\n\t\t0: _unit [object] - Name of unit (works only with man type units)\n\t\t1: _force [vector] - Amount of force that will be applied to colliding object\n\t\t2: _position [string] (optional) - Name of selection from which it will try to calculate center point (default: spine1)\n\tUsage:\n\t[player,[0,100,0]] call BIN_fnc_setRagdoll -\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tInput:\n\t\t0: _unit [object] - Name of unit (works only with man type units)\n\t\t1: _force [vector] - Amount of force that will be applied to colliding object\n\t\t2: _position [string] (optional) - Name of selection from which it will try to calculate center point (default: spine1)\n\tUsage:\n\t[player,[0,100,0]] call BIN_fnc_setRagdoll -\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8038,7 +8038,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>#define DEBUG\n#define ALPHA_ON\t1.0\n#define ALPHA_OFF\t0.4\n#define DRAW(SHOW)\\\n\t_color = [[1,0,0,1],[0,1,0,1],[0,0,1,1],[1,1,0,1],[1,0,1,1],[0,1,1,1],[1,0.5,0,1]] select ((_logic getvariable [\"#index\",0]) % 7);\\\n\tif !(SHOW) then {_color set [3,0.4];};\\\n\t_drawIcon = [\"\\a3\\Ui_f\\data\\Map\\LocationTypes\\borderCrossing_CA.paa\",_color,position _logic,0.75,0.75,0,_class,2,0.04,\"RobotoCondensed\",\"right\"];\\\n\t[\"bin_diagSites\",_class,\"icon\",[_drawIcon]] call BIN_fnc_debugDraw;\\\n\t_isRectangle = false;\\\n\t_drawArea = if (SHOW) then {\\\n\t\t_areaOut = _logic getvariable [\"areaOut\",[position _logic,0,0,0,false]];\\\n\t\t_isRectangle = _areaOut select 4;\\\n\t\t[_areaOut select 0,_areaOut select 1,_areaOut select 2,_areaOut select 3,_color,\"\"]\\\n\t} else {\\\n\t\t_areaIn = _logic getvariable [\"areaIn\",[position _logic,0,0,0,false]];\\\n\t\t_isRectangle = _areaIn select 4;\\\n\t\t[_areaIn select 0,_areaIn select 1,_areaIn select 2,_areaIn select 3,_color,\"\"]\\\n\t};\\\n\t[\"bin_diagSites\",_class,if (_isRectangle) then {\"rectangle\"} else {\"ellipse\"},[_drawArea]] call BIN_fnc_debugDraw;\n\n#define VAR_IGNORE\t\"$i\"\n#define VAR_KILL\t\"$k\"\n#define VAR_VISITED\t\"$v\"\n#define VAR_SPAWNED\t\"#spawned\"</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>#define DEBUG\n#define ALPHA_ON\t1.0\n#define ALPHA_OFF\t0.4\n#define DRAW(SHOW)\\\n\t_color = [[1,0,0,1],[0,1,0,1],[0,0,1,1],[1,1,0,1],[1,0,1,1],[0,1,1,1],[1,0.5,0,1]] select ((_logic getvariable [\"#index\",0]) % 7);\\\n\tif !(SHOW) then {_color set [3,0.4];};\\\n\t_drawIcon = [\"\\a3\\Ui_f\\data\\Map\\LocationTypes\\borderCrossing_CA.paa\",_color,position _logic,0.75,0.75,0,_class,2,0.04,\"RobotoCondensed\",\"right\"];\\\n\t[\"bin_diagSites\",_class,\"icon\",[_drawIcon]] call BIN_fnc_debugDraw;\\\n\t_isRectangle = false;\\\n\t_drawArea = if (SHOW) then {\\\n\t\t_areaOut = _logic getvariable [\"areaOut\",[position _logic,0,0,0,false]];\\\n\t\t_isRectangle = _areaOut select 4;\\\n\t\t[_areaOut select 0,_areaOut select 1,_areaOut select 2,_areaOut select 3,_color,\"\"]\\\n\t} else {\\\n\t\t_areaIn = _logic getvariable [\"areaIn\",[position _logic,0,0,0,false]];\\\n\t\t_isRectangle = _areaIn select 4;\\\n\t\t[_areaIn select 0,_areaIn select 1,_areaIn select 2,_areaIn select 3,_color,\"\"]\\\n\t};\\\n\t[\"bin_diagSites\",_class,if (_isRectangle) then {\"rectangle\"} else {\"ellipse\"},[_drawArea]] call BIN_fnc_debugDraw;\n\n#define VAR_IGNORE\t\"$i\"\n#define VAR_KILL\t\"$k\"\n#define VAR_VISITED\t\"$v\"\n#define VAR_SPAWNED\t\"#spawned\"</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8055,7 +8055,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8072,7 +8072,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tBIN_fnc_setTargetWeight\n\tSet target priroty which is used later by BIN_fnc_findTargetWeight function to find target.\n\n\tInput:\n\t\t0:\n\t\t\t_input - Unit, vehicle, group or side.\n\t\t1:\n\t\t\t_value - scalar above 0 - weight which is later used by selectRandomWeighted script command. Values equal or less than 0 are excluded from target selection\n\n\tExamples:\n\n\t\t[west,0] call BIN_fnc_setTargetWeight - all units from side \"west\" will be ignored by targeting system\n\t\t[player,10] call BIN_fnc_setTargetWeight - Increase player chance of being targeted by drone weapons\n\t\t[bis_car,0] call BIN_fnc_setTargetWeight - Vehicle & it is crew will be ignored by targeting system\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\tBIN_fnc_setTargetWeight\n\tSet target priroty which is used later by BIN_fnc_findTargetWeight function to find target.\n\n\tInput:\n\t\t0:\n\t\t\t_input - Unit, vehicle, group or side.\n\t\t1:\n\t\t\t_value - scalar above 0 - weight which is later used by selectRandomWeighted script command. Values equal or less than 0 are excluded from target selection\n\n\tExamples:\n\n\t\t[west,0] call BIN_fnc_setTargetWeight - all units from side \"west\" will be ignored by targeting system\n\t\t[player,10] call BIN_fnc_setTargetWeight - Increase player chance of being targeted by drone weapons\n\t\t[bis_car,0] call BIN_fnc_setTargetWeight - Vehicle & it is crew will be ignored by targeting system\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8089,7 +8089,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets TXScan angle\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: NUMBER - cone angle\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[\"MyScan\", 45] call BIN_fnc_setTXScanAngle\n\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets TXScan angle\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: NUMBER - cone angle\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[\"MyScan\", 45] call BIN_fnc_setTXScanAngle\n\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8106,7 +8106,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tPre-sets intersection polygon for given scan. Can only be done with newly created scans since once the first scan is made, the polygon cannot be overwritten\n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\t\t1: ARRAY - polygon points\n\n\tReturns:\n\t\tBOOL - false on error\n\t\t\n\tExample:\n\t\t[\"MyScan\",[p1,p2,p3...]] call BIN_fnc_setTXScanPolygon\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tPre-sets intersection polygon for given scan. Can only be done with newly created scans since once the first scan is made, the polygon cannot be overwritten\n\n\tParameter(s):\n\t\t0: STRING - TXScan name\n\t\t1: ARRAY - polygon points\n\n\tReturns:\n\t\tBOOL - false on error\n\t\t\n\tExample:\n\t\t[\"MyScan\",[p1,p2,p3...]] call BIN_fnc_setTXScanPolygon\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8123,7 +8123,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets TXScan transmitter position\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: ARRAY - transmitter position\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[\"MyScan\", position player] call BIN_fnc_setTXScanPosition\n\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets TXScan transmitter position\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: ARRAY - transmitter position\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[\"MyScan\", position player] call BIN_fnc_setTXScanPosition\n\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8140,7 +8140,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets TXScan precision\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: NUMBER - cone precision\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[\"MyScan\", 0.1] call BIN_fnc_setTXScanPrecision\n\n*/</pre>\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets TXScan precision\n\n\tParameter(s):\n\t\t0: STRING - scan name\n\t\t1: NUMBER - cone precision\n\t\t\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[\"MyScan\", 0.1] call BIN_fnc_setTXScanPrecision\n\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8157,7 +8157,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets map bounds in which scans could be carried out. Default [0,0,worldSize,worldSize]\n\n\tParameter(s):\n\t\t0: NUMBER - minX\n\t\t1: NUMBER - minY\n\t\t2: NUMBER - maxX\n\t\t3: NUMBER - maxY\n\t\t\n\t\tor [] to use config values or default\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[0,0,worldSize,worldSize] call BIN_fnc_setTXScanWorldBounds\n\t\t[] call BIN_fnc_setTXScanWorldBounds\n*/\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tSets map bounds in which scans could be carried out. Default [0,0,worldSize,worldSize]\n\n\tParameter(s):\n\t\t0: NUMBER - minX\n\t\t1: NUMBER - minY\n\t\t2: NUMBER - maxX\n\t\t3: NUMBER - maxY\n\t\t\n\t\tor [] to use config values or default\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t[0,0,worldSize,worldSize] call BIN_fnc_setTXScanWorldBounds\n\t\t[] call BIN_fnc_setTXScanWorldBounds\n*/\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8174,7 +8174,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8191,7 +8191,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8208,7 +8208,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8225,7 +8225,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tShow or hide horizontal compass\n\n\tParameter(s):\n\t\t0: BOOL - true to show, false to hide\n\n\tReturns:\n\t\tNOTHING\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tShow or hide horizontal compass\n\n\tParameter(s):\n\t\t0: BOOL - true to show, false to hide\n\n\tReturns:\n\t\tNOTHING\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8242,7 +8242,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tSelect which maps will be available\n\n\tParameter(s):\n\t\t0: NUMBER - mode, can be:\n\t\t\t0 - all options available (default)\n\t\t\t1 - probe map not available\n\t\t\t2 - no options available (i.e., only main map is shown)\n\n\tReturns:\n\t\tNOTHING\n*/\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tSelect which maps will be available\n\n\tParameter(s):\n\t\t0: NUMBER - mode, can be:\n\t\t\t0 - all options available (default)\n\t\t\t1 - probe map not available\n\t\t\t2 - no options available (i.e., only main map is shown)\n\n\tReturns:\n\t\tNOTHING\n*/\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8259,7 +8259,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8276,7 +8276,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8310,7 +8310,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8327,7 +8327,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8344,7 +8344,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8361,7 +8361,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8378,7 +8378,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//#define TIME_SKIP\t1.4 // Apex\n#define TIME_SKIP\t0.5\n\n</pre>{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>//#define TIME_SKIP\t1.4 // Apex\n#define TIME_SKIP\t0.5\n\n</pre>{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8395,7 +8395,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8412,7 +8412,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8429,7 +8429,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tReturn if task is active, i.e., added to player, but not yet completed.\n\t\tOnly in this state can player assign it.\n\n\tParameter(s):\n\t\t0: STRING - task ID\n\n\tReturns:\n\t\tBOOL\n\n\tExample:\n\t\tif (\"q_schnobble\" call BIN_fnc_taskActive) then {hint \"ACTIVE!\";};\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tReturn if task is active, i.e., added to player, but not yet completed.\n\t\tOnly in this state can player assign it.\n\n\tParameter(s):\n\t\t0: STRING - task ID\n\n\tReturns:\n\t\tBOOL\n\n\tExample:\n\t\tif (\"q_schnobble\" call BIN_fnc_taskActive) then {hint \"ACTIVE!\";};\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8446,7 +8446,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\n\tDescription:\n\t\tReturn if task was added to player.\n\t\tIncludes both finished and unfinished tasks.\n\n\tParameter(s):\n\t\t0: STRING - task ID\n\n\tReturns:\n\t\tBOOL\n\n\tExample:\n\t\tif (\"q_schnobble\" call BIN_fnc_taskAdded) then {hint \"ADDED!\";};\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\n\tDescription:\n\t\tReturn if task was added to player.\n\t\tIncludes both finished and unfinished tasks.\n\n\tParameter(s):\n\t\t0: STRING - task ID\n\n\tReturns:\n\t\tBOOL\n\n\tExample:\n\t\tif (\"q_schnobble\" call BIN_fnc_taskAdded) then {hint \"ADDED!\";};\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8463,7 +8463,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8480,7 +8480,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8497,7 +8497,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8514,7 +8514,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8531,7 +8531,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8548,7 +8548,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8565,7 +8565,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tRetrieves draw data for IDWMap and stores it in 'IDWMapDrawData' variable on map control for use in 'Draw' event handler. Should be called in scheduled environment to spread the load.\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success if called from scheduled\n\t\tNOTHING - if called from unscheduled\n\t\t\n\tExample:\n\t\tcall BIN_fnc_updateIDWMapDrawData\n*/</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tRetrieves draw data for IDWMap and stores it in 'IDWMapDrawData' variable on map control for use in 'Draw' event handler. Should be called in scheduled environment to spread the load.\n\n\tParameter(s):\n\t\tNONE\n\n\tReturns:\n\t\tBOOL - true on success if called from scheduled\n\t\tNOTHING - if called from unscheduled\n\t\t\n\tExample:\n\t\tcall BIN_fnc_updateIDWMapDrawData\n*/</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8582,7 +8582,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8599,7 +8599,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8616,7 +8616,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8633,7 +8633,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8650,7 +8650,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8684,7 +8684,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tRetrieves draw data for TXScan and updates drawing\n\n\tParameter(s):\n\t\t0: STRING - scan name, \"\" - all scans\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t\"myScan\" call BIN_fnc_updateTXScanDrawData\n\t\t\"\" call BIN_fnc_updateTXScanDrawData - all scans\n*/\n</pre>\n\n{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "<pre>/*\n\t\tKillzone_Kid\n\n\tDescription:\n\t\tRetrieves draw data for TXScan and updates drawing\n\n\tParameter(s):\n\t\t0: STRING - scan name, \"\" - all scans\n\n\tReturns:\n\t\tBOOL - true on success\n\t\t\n\tExample:\n\t\t\"myScan\" call BIN_fnc_updateTXScanDrawData\n\t\t\"\" call BIN_fnc_updateTXScanDrawData - all scans\n*/\n</pre>\n\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8701,7 +8701,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Wiki|placeholder}}\n**Arma**: 3contact",
+            "description": "{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8718,7 +8718,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8735,7 +8735,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8752,7 +8752,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -8769,7 +8769,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3contact",
+            "description": "{{Feature|arma3contact}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -11744,7 +11744,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function returns true if all of the passed data elements are of the same type and value. One or more elements can be passed.\n\n**Arma**: 3|In {{arma3, see `isEqualTo`.}}\n\nNote:\n* This function is an improvement over the == operator because it can handle any data type in any combination.\n* For arrays, it returns true if both arrays hold the same elements in the same order.\n* If both values are undefined / nil / null, then this function will return true.",
+            "description": "This function returns true if all of the passed data elements are of the same type and value. One or more elements can be passed.\n\n{{Feature|arma3|In Arma 3, see `isEqualTo`.}}\n\nNote:\n* This function is an improvement over the == operator because it can handle any data type in any combination.\n* For arrays, it returns true if both arrays hold the same elements in the same order.\n* If both values are undefined / nil / null, then this function will return true.",
             "examples": [
                 {
                     "text": "```sqf\n\n[0, \"0\"]\t\tcall BIS_fnc_areEqual; // false\n[0, 1 + 1 - 2]\tcall BIS_fnc_areEqual; // true\n[str 50, \"50\"]\tcall BIS_fnc_areEqual; // true\n\n```"
@@ -11862,7 +11862,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function checks if two arrays are containing the same elements in the same order.\n**IMPORTANT**: This function is deprecated in Arma 2 as it fails with certain data types; see `BIS_fnc_areEqual` for Arma 2.\n**Arma**: 3|Use `isEqualTo` instead.",
+            "description": "This function checks if two arrays are containing the same elements in the same order.\n{{Feature|important|This function is deprecated in Arma 2 as it fails with certain data types; see `BIS_fnc_areEqual` for Arma 2.}}\n**Arma 3**: Use `isEqualTo` instead.",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _array1 = [0,1,2];\nprivate _array2 = [0,1,2];\n[_array1, _array2] call BIS_fnc_arrayCompare; // returns true\n\n```"
@@ -11986,7 +11986,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function adds an element to the end of an array and returns the array.\n\n**The array is passed by reference** so changes inside the function will be reflected outside of it.\n\n**Arma**: 3|Use `append` or `pushBack` instead.",
+            "description": "This function adds an element to the end of an array and returns the array.\n\n**The array is passed by reference** so changes inside the function will be reflected outside of it.\n\n**Arma 3**: Use `append` or `pushBack` instead.",
             "examples": [
                 {
                     "text": "```sqf\n_newArray = [[0,1,2], 3] call BIS_fnc_arrayPush; // _newArray is [0,1,2,3]\n```"
@@ -12020,7 +12020,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function is similar to the array push function; however, it pushes the contents of an array onto the stack array.\n**Arma**: 3|Use `append` or `pushBack` instead",
+            "description": "This function is similar to the array push function; however, it pushes the contents of an array onto the stack array.\n**Arma 3**: Use `append` or `pushBack` instead",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _array = [0,1,2];\n[_array, [3,4,5]] call BIS_fnc_arrayPushStack; // _array is [0,1,2,3,4,5]\n\n```"
@@ -12054,7 +12054,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This function removes the first (leftmost) element of an array and returns it.\n\nThe array is passed by reference so changes inside the function will be reflected outside of it.\n\n**Arma**: 3|In {{arma3, use <sqf inline>array deleteAt 0.}}",
+            "description": "This function removes the first (leftmost) element of an array and returns it.\n\nThe array is passed by reference so changes inside the function will be reflected outside of it.\n\n**Arma 3**: In Arma 3, use <sqf inline>array deleteAt 0.",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _myArray = [\"2\", \"report\", \"status\"];\n_removedElement = [_myArray] call BIS_fnc_arrayShift;\t// array is -within an array-\n_removedElement == \"2\";\t\t\t\t\t\t\t\t\t// true\n_myArray isEqualTo [\"report\", \"status\"];\t\t\t\t// true\n\n```"
@@ -12336,7 +12336,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3|Internally used **.fsm**.",
+            "description": "**Arma 3**: Internally used **.fsm**.",
             "examples": [],
             "syntaxes": [
                 {
@@ -13468,7 +13468,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Execute given code with or without parameter.\n**Arma**: 3|Since **(Arma 3)**",
+            "description": "Execute given code with or without parameter.\n**Arma 3**: Since **(Arma 3)**, use `remoteExec`/`remoteExecCall` instead.",
             "examples": [
                 {
                     "text": "Show a message for the current player.\n\n```sqf\n[[\"Hello\"], {hint (_this select 0);}] call BIS_fnc_call;\n```"
@@ -15207,7 +15207,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This returns a sub-array of elements that satisfy a specific condition **in the order they have been passed**.\n**Arma**: 3|Since {{arma3 v1.55, use <sqf inline>array select condition instead.}}\n\nIn the condition, the currently tested element is assigned to the variable \"[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)\".\nThe original array is **not** modified.",
+            "description": "This returns a sub-array of elements that satisfy a specific condition **in the order they have been passed**.\n{{Feature|arma3|Since Arma 3 v1.55, use <sqf inline>array select condition instead.}}\n\nIn the condition, the currently tested element is assigned to the variable \"[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)\".\nThe original array is **not** modified.",
             "examples": [
                 {
                     "text": "```sqf\n[[10, 0, 8, 2, 6, 4], { _x > 5 }] call BIS_fnc_conditionalSelect; // will return [10,8,6]\n```"
@@ -16375,7 +16375,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return the cross product of two 3D vectors.\n**Arma**: 3|Use `vectorCrossProduct` instead.",
+            "description": "Return the cross product of two 3D vectors.\n**Arma 3**: Use `vectorCrossProduct` instead.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _product = [[1,2,3], [3,2,1]] call BIS_fnc_crossProduct;\n```"
@@ -17143,7 +17143,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Plays in-game video in GPS frame.\n**Arma**: 3|Does not work in {{arma3. See `BIS_fnc_playVideo` instead}}",
+            "description": "Plays in-game video in GPS frame.\n**Arma 3**: Does not work in Arma 3. See `BIS_fnc_playVideo` instead",
             "examples": [
                 {
                     "text": "```sqf\n[\"myVideo.ogv\", 0.75] call BIS_fnc_customGPSVideo;\n```"
@@ -17174,7 +17174,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Function that rounds specified number to specified amount of decimals.\n**Arma**: 3|Use `toFixed` instead.",
+            "description": "Function that rounds specified number to specified amount of decimals.\n**Arma 3**: Use `toFixed` instead.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _cutDecimals = [33.3333, 1] call BIS_fnc_cutDecimals; // returns 33.3\n```"
@@ -19279,7 +19279,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Previews all vehicle icons on map.\n**WARNING**: This function is broken as it uses bad arguments for `BIS_fnc_returnParents` (**line 35**, `**\"\" instead of {{hl|true}})**`",
+            "description": "Previews all vehicle icons on map.\n{{Feature|warning|This function is broken as it uses bad arguments for `BIS_fnc_returnParents` (**line 35**, `**\"\"}} instead of {{hl|true}})**`",
             "examples": [
                 {
                     "text": "```sqf\n[\"all\", getPos player] call BIS_fnc_diagVehicleIcons;\n```"
@@ -19478,7 +19478,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Function which returns vector direction from pos1 to pos2.\n**Arma**: 3|Use <sqf inline>obj1 getDir obj2 instead of `BIS_fnc_dirTo`.",
+            "description": "Function which returns vector direction from pos1 to pos2.\n**Arma 3**: Use <sqf inline>obj1 getDir obj2 instead of `BIS_fnc_dirTo`.",
             "examples": [
                 {
                     "text": "sets unit1 in the direction of unit2\n\n```sqf\nunit1 setDir ([unit1, unit2] call BIS_fnc_dirTo);\n```"
@@ -19814,7 +19814,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the distance between two [objects](https://community.bistudio.com/wiki/Object) or [positions](https://community.bistudio.com/wiki/Position).\n**Arma**: 3|Use `distance2D` instead.",
+            "description": "Returns the distance between two [objects](https://community.bistudio.com/wiki/Object) or [positions](https://community.bistudio.com/wiki/Position).\n**Arma 3**: Use `distance2D` instead.",
             "examples": [
                 {
                     "text": "```sqf\n[player, rescueHelicopter] call BIS_fnc_distance2D;\n```"
@@ -19845,7 +19845,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the SQUARE of the distance between the two objects or positions \"as the crow flies\" (ignoring elevation).\n\n**Arma**: 3|This function became obsolete with the introduction of `distanceSqr`.",
+            "description": "Returns the SQUARE of the distance between the two objects or positions \"as the crow flies\" (ignoring elevation).\n\n**Arma 3**: This function became obsolete with the introduction of `distanceSqr`.",
             "examples": [
                 {
                     "text": "```sqf\n[player, soldier_1] call BIS_fnc_distance2Dsqr;\n```"
@@ -20050,7 +20050,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Dot product of two vectors. **Arma**: 3|In {{arma3 use `vectorDotProduct`.}}",
+            "description": "Dot product of two vectors. **Arma 3**: In Arma 3 use `vectorDotProduct`.",
             "examples": [
                 {
                     "text": "```sqf\n[[1,2,3], [1,2,3]] call BIS_fnc_dotProduct; // returns: 1*1 + 2*2 + 3*3 = 14\n```"
@@ -21281,7 +21281,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Encodes array of unique binary flags (zeroes or ones) into a single scalar.\n**IMPORTANT**:  Note that the input array is in {{Link|https://en.wikipedia.org/wiki/Endianness#Definition|Big Endian, meaning that the smallest value is **to the left**.}}",
+            "description": "Encodes array of unique binary flags (zeroes or ones) into a single scalar.\n**IMPORTANT**:  Note that the input array is in {{Link|https://en.wikipedia.org/wiki/Endianness#Definition|Big Endian}}, meaning that the smallest value is **to the left**.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _result = [1,0,1,1] call BIS_fnc_encodeFlags2;\nhint str _result; // Displays 13\n```"
@@ -21493,7 +21493,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:BIS_fnc_error.png|300px|right]]\nLogs an error message and shows an ingame error message. The message is shown when either of the following is true:\n\n* In [2D Editor](https://community.bistudio.com/wiki/2D%20Editor)\n* In [Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) via `BIS_fnc_3DENNotification`\n* Display `**313**` ([Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) display) is available\n* <sqf inline>profileNamespace getVariable [\"BIS_fnc_init_displayErrors\", false] is set to <sqf inline>true.\n\n**Output format:**\n\n* In multiplayer (`isMultiplayer`) the function will add the `profileName` in front of the message\n* If <sqf inline>_fnc_error_exit is set to <sqf inline>true before the function call, the log message will display `**HALT:}} instead of {{hl|ERROR:**`\n* If function is called from within another function, the name of the parent function will be displayed. This can be overwritten by setting <sqf inline>_fnc_scriptName to a custom value\n\n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]] has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "[[File:BIS_fnc_error.png|300px|right]]\nLogs an error message and shows an ingame error message. The message is shown when either of the following is true:\n\n* In [2D Editor](https://community.bistudio.com/wiki/2D%20Editor)\n* In [Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) via `BIS_fnc_3DENNotification`\n* Display `**313**` ([Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) display) is available\n* <sqf inline>profileNamespace getVariable [\"BIS_fnc_init_displayErrors\", false] is set to <sqf inline>true.\n\n**Output format:**\n\n* In multiplayer (`isMultiplayer`) the function will add the `profileName` in front of the message\n* If <sqf inline>_fnc_error_exit is set to <sqf inline>true before the function call, the log message will display `**HALT:}} instead of {{hl|ERROR:**`\n* If function is called from within another function, the name of the parent function will be displayed. This can be overwritten by setting <sqf inline>_fnc_scriptName to a custom value\n\n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
             "examples": [
                 {
                     "text": "```sqf\n[\"Player is too far away (%1 metres)\", round (player distance [0, 0, 0])] call BIS_fnc_error;\n```"
@@ -21533,7 +21533,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Display error window.\n**Arma**: 3|Broken in {{arma3. Use `BIS_fnc_error` instead}}",
+            "description": "Display error window.\n**Arma 3**: Broken in Arma 3. Use `BIS_fnc_error` instead",
             "examples": [
                 {
                     "text": "```sqf\n[\"This is an error message\"] call BIS_fnc_errorMsg;\n```"
@@ -23003,7 +23003,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Displays the given subtitles at the correctly defined moments. Each array added to the parameters represents one subtitle.\n**NOTE**: Subtitles can be cancelled by setting `**BIS_fnc_EXP_camp_playSubtitles_terminate to `true`.**`",
+            "description": "Displays the given subtitles at the correctly defined moments. Each array added to the parameters represents one subtitle.\n{{Feature|informative|Subtitles can be cancelled by setting `**BIS_fnc_EXP_camp_playSubtitles_terminate}} to `true`.**`",
             "examples": [
                 {
                     "text": "```sqf\n\n[\n\t[\"CROSSROAD\", \"Mission is a go, I repeat, mission is a go! Crossroad, out.\", 0]\n] spawn BIS_fnc_EXP_camp_playSubtitles; // shows a subtitle immediately\n\n```"
@@ -23530,7 +23530,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Export function descriptions to Community Wiki. Exported text will be copied to clipboard in XML format.\n\n**Wiki Admins** can import them using **[Special:Import](https://community.bistudio.com/wiki/Special%3AImport)**.\n\nIf the page already exists, it will be replaced only when _timestamp_ is newer.\n**WARNING**: <div style{{=\"font-weight: bold; padding: 2em; text-align: center\">This function should no longer be used to mass-import functions since the template for function pages has changed drastically!</div>}}",
+            "description": "Export function descriptions to Community Wiki. Exported text will be copied to clipboard in XML format.\n\n**Wiki Admins** can import them using **[Special:Import](https://community.bistudio.com/wiki/Special%3AImport)**.\n\nIf the page already exists, it will be replaced only when _timestamp_ is newer.\n**WARNING**: <div style{{=}}\"font-weight: bold; padding: 2em; text-align: center\">This function should no longer be used to mass-import functions since the template for function pages has changed drastically!</div>",
             "examples": [
                 {
                     "text": "```sqf\n[] spawn BIS_fnc_exportFunctionsToWiki; // export all functions\n```"
@@ -23588,7 +23588,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Export GUI macros and base classes to the clipboard.\n{{Feature|obsolete|the [[import (Config)|import]] keyword was introduced.|arma3|2.01.146644}}\n**WARNING**: \nThe exported the Eden Editor base classes have several inheritance issues.\nIf you need the base classes you can get them {{Link|https://github.com/LarrowZurb/A3_GUI_Defines|**here**.\n}}",
+            "description": "Export GUI macros and base classes to the clipboard.\n{{Feature|obsolete|the [[import (Config)|import]] keyword was introduced.|arma3|2.01.146644}}\n**WARNING**: \nThe exported the Eden Editor base classes have several inheritance issues.\nIf you need the base classes you can get them {{Link|https://github.com/LarrowZurb/A3_GUI_Defines|**here**}}.",
             "examples": [
                 {
                     "text": "```sqf\n\"all\" call BIS_fnc_exportGUIBaseClasses;\n```"
@@ -24021,7 +24021,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Function to find item in nested arrays and return a path to the first match.\n**Arma**: 3|In some cases `findIf` might be the better way of finding a nested element. It is a lot faster!",
+            "description": "Function to find item in nested arrays and return a path to the first match.\n**Arma 3**: In some cases `findIf` might be the better way of finding a nested element. It is a lot faster!",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _array = [[1, 2], [3, 4]];\n_path = [_array, 3] call BIS_fnc_findNestedElement; // expected result: [1, 0]\n// ((_array select 1) select 0) == 3\n\n```"
@@ -26479,7 +26479,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Makes a High Altitude Low Opening (HALO) parachute jump.\n**Arma**: 3|HALO feature is already implemented in {{arma3. Using this function will result in incorrect behaviour and animation.}}",
+            "description": "Makes a High Altitude Low Opening (HALO) parachute jump.\n**Arma 3**: HALO feature is already implemented in Arma 3. Using this function will result in incorrect behaviour and animation.",
             "examples": [
                 {
                     "text": "```sqf\n[player] call BIS_fnc_halo; // instantly parachutes the player object\n```"
@@ -27645,7 +27645,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Multiplayer mission init, executed automatically upon mission start. **Arma**: 3|This is an internal function.",
+            "description": "Multiplayer mission init, executed automatically upon mission start. **Arma 3**: This is an internal function.",
             "examples": [
                 {
                     "text": "```sqf\ncall BIS_fnc_initMultiplayer;\n```"
@@ -27826,7 +27826,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "animations",
-                            "description": "(Optional, default `false`)\n* `Boolean` - `true` to restore init phase of every animation sources\n* `Array` - animation sources with their probability in format <sqf inline>[\"animationSource1\", 0.5, \"animationSource2\", 0.5]**IMPORTANT**: \nIf the first element is wrong, it will skip the rest of the animation sources!\n* `String` - variant class name - from <sqf inline>configFile >> \"CfgVehicles\" or <sqf inline>missionConfigFile >> \"CfgVehicleTemplates\" (see [[Description.ext#CfgVehicleTemplates|CfgVehicleTemplates]])"
+                            "description": "(Optional, default `false`)\n* `Boolean` - `true` to restore init phase of every animation sources\n* `Array` - animation sources with their probability in format <sqf inline>[\"animationSource1\", 0.5, \"animationSource2\", 0.5]{{Feature|important|\nIf the first element is wrong, it will skip the rest of the animation sources!}}\n* `String` - variant class name - from <sqf inline>configFile >> \"CfgVehicles\" or <sqf inline>missionConfigFile >> \"CfgVehicleTemplates\" (see [[Description.ext#CfgVehicleTemplates|CfgVehicleTemplates]])"
                         },
                         {
                             "name": "mass",
@@ -28218,7 +28218,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Detects whether position is within area **or** calculates distance to the nearest edge of trigger area by using optional params.\n**Arma**: 3|Since {{arma3 v1.57 `inArea` is available for an area check.}}",
+            "description": "Detects whether position is within area **or** calculates distance to the nearest edge of trigger area by using optional params.\n**Arma 3**: Since Arma 3 v1.57 `inArea` is available for an area check.",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _trigger = createTrigger [\"EmptyDetector\", getPosATL player];\n_trigger setTriggerArea [10, 10, 0, false];\n_inTrigger = [_trigger, player] call BIS_fnc_inTrigger; // _inTrigger = true\n\n```"
@@ -29064,7 +29064,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**IMPORTANT**: Be very careful with this function as certain mods modify the categories making this function unreliable!\nReturns item category and type.\n{{{!}} class=\"wikitable\"\n! Weapon / VehicleWeapon\n! VehicleWeapon\n! Item\n! Equipment\n! Magazine\n! Mine\n{{!}}- style=\"vertical-align: top\"\n{{!}}\n* AssaultRifle\n* BombLauncher\n* Cannon\n* GrenadeLauncher\n* Handgun\n* Launcher\n* MachineGun\n* Magazine\n* MissileLauncher\n* Mortar\n* RocketLauncher\n* Shotgun\n* Throw\n* Rifle\n* SubmachineGun\n* SniperRifle\n{{!}}\n* Horn\n* CounterMeasuresLauncher\n* LaserDesignator\n{{!}}\n* AccessoryMuzzle\n* AccessoryPointer\n* AccessorySights\n* AccessoryBipod\n* Binocular\n* Compass\n* FirstAidKit\n* GPS\n* LaserDesignator\n* Map\n* Medikit\n* MineDetector\n* NVGoggles\n* Radio\n* Toolkit\n* UAVTerminal\n* VehicleWeapon\n* Unknown\n* UnknownEquipment\n* UnknownWeapon\n* Watch\n{{!}}\n* Glasses\n* Headgear\n* Vest\n* Uniform\n* Backpack\n{{!}}\n* Artillery\n* Bullet\n* CounterMeasures\n* Flare\n* Grenade\n* Laser\n* Missile\n* Rocket\n* Shell\n* ShotgunShell\n* SmokeShell\n* UnknownMagazine\n{{!}}\n* Mine\n* MineBounding\n* MineDirectional\n{{!}}}",
+            "description": "**IMPORTANT**: Be very careful with this function as certain mods modify the categories making this function unreliable!}}\nReturns item category and type.\n{{{!}} class=\"wikitable\"\n! Weapon / VehicleWeapon\n! VehicleWeapon\n! Item\n! Equipment\n! Magazine\n! Mine\n{{!}}- style=\"vertical-align: top\"\n{{!}}\n* AssaultRifle\n* BombLauncher\n* Cannon\n* GrenadeLauncher\n* Handgun\n* Launcher\n* MachineGun\n* Magazine\n* MissileLauncher\n* Mortar\n* RocketLauncher\n* Shotgun\n* Throw\n* Rifle\n* SubmachineGun\n* SniperRifle\n{{!}}\n* Horn\n* CounterMeasuresLauncher\n* LaserDesignator\n{{!}}\n* AccessoryMuzzle\n* AccessoryPointer\n* AccessorySights\n* AccessoryBipod\n* Binocular\n* Compass\n* FirstAidKit\n* GPS\n* LaserDesignator\n* Map\n* Medikit\n* MineDetector\n* NVGoggles\n* Radio\n* Toolkit\n* UAVTerminal\n* VehicleWeapon\n* Unknown\n* UnknownEquipment\n* UnknownWeapon\n* Watch\n{{!}}\n* Glasses\n* Headgear\n* Vest\n* Uniform\n* Backpack\n{{!}}\n* Artillery\n* Bullet\n* CounterMeasures\n* Flare\n* Grenade\n* Laser\n* Missile\n* Rocket\n* Shell\n* ShotgunShell\n* SmokeShell\n* UnknownMagazine\n{{!}}\n* Mine\n* MineBounding\n* MineDirectional\n{{!}",
             "examples": [
                 {
                     "text": "```sqf\n\"arifle_MX_pointer_F\" call BIS_fnc_itemType;\n```"
@@ -29403,7 +29403,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Reads the [configs](https://community.bistudio.com/wiki/Config) to return a matching `**config [[config greater greater name|&gt;&gt;]] [[Description.ext#CfgSentences|CfgSentences]] [[config greater greater name|&gt;&gt;]] missionName [[config greater greater name|&gt;&gt;]] topic**` entry.\n**NOTE**: `Config`s are checked in that order: `configFile`, `campaignConfigFile`, `missionConfigFile`.\n**IMPORTANT**:  This function is intended to be used by `BIS_fnc_kbTell` only.",
+            "description": "Reads the [configs](https://community.bistudio.com/wiki/Config) to return a matching `**config [[config greater greater name|&gt;&gt;]] [[Description.ext#CfgSentences|CfgSentences]] [[config greater greater name|&gt;&gt;]] missionName [[config greater greater name|&gt;&gt;]] topic**` entry.\n{{Feature|informative|`Config`s are checked in that order: `configFile`, `campaignConfigFile`, `missionConfigFile`.}}\n**IMPORTANT**:  This function is intended to be used by `BIS_fnc_kbTell` only.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _configTopic = [\"missionName\", \"topic\"] call BIS_fnc_kbTopicConfig;\n```"
@@ -30293,7 +30293,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "filePath",
-                            "description": "`String` - (Optional, default <sqf inline>\"hsim\\Doc_H\\GoogleEarth\\Missions\\\" + missionName + \".kml\") KML file path\n**Arma**: 3|Default value only works in {{tkoh. Do not rely on it in Arma 3.}}"
+                            "description": "`String` - (Optional, default <sqf inline>\"hsim\\Doc_H\\GoogleEarth\\Missions\\\" + missionName + \".kml\") KML file path\n**Arma 3**: Default value only works in {{tkoh}}. Do not rely on it in Arma 3."
                         }
                     ],
                     "outline": "filePath call `BIS_fnc_KMLimport`",
@@ -30624,7 +30624,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Linear conversion of a value from one set to another\n**Arma**: 3|This function became obsolete with the introduction of `linearConversion`.",
+            "description": "Linear conversion of a value from one set to another\n**Arma 3**: This function became obsolete with the introduction of `linearConversion`.",
             "examples": [
                 {
                     "text": "```sqf\n\n[[-50, 50], -50, [0, 1]] call BIS_fnc_linearConversion; // returns 0\n[[-50, 50],   0, [0, 1]] call BIS_fnc_linearConversion; // returns 0.5\n[[-50, 50], +50, [0, 1]] call BIS_fnc_linearConversion; // returns 1\n\n```"
@@ -31020,7 +31020,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "prefix",
-                            "description": "`String` - variable prefix **NOTE**: `**\"BIS_fnc_\" prefix is reserved and cannot be used.**`"
+                            "description": "`String` - variable prefix {{Feature|informative|`**\"BIS_fnc_\"}} prefix is reserved and cannot be used.**`"
                         },
                         {
                             "name": "nameVars",
@@ -31284,7 +31284,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Log debug message.\n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]] has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "Log debug message.\n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
             "examples": [
                 {
                     "text": "```sqf\ndiag_tickTime call BIS_fnc_log;\n```"
@@ -31317,7 +31317,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Display debug message. \n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]] has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "Display debug message. \n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
             "examples": [
                 {
                     "text": "```sqf\n[\"My logged name: %1, My position: %2\", name player, getPos player] call BIS_fnc_logFormat;\n// RPT output:\n// 12:34:56 \"BIS_fnc_log: [BIS_fnc_debugConsoleExec] My logged name: Miller, My position: [4866.73,21947.9,0.00143433]\"\n```"
@@ -31348,7 +31348,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Logs (using `diag_log`) a debug message (`profileName`, [playerUID](https://community.bistudio.com/wiki/getPlayerUID), [_fnc_scriptName](https://community.bistudio.com/wiki/Magic%20Variables%23fnc_scriptName), provided text) to **server**<nowiki/>'s [[Crash Files|.RPT]]. In singleplayer, `BIS_fnc_logFormat` is used.\n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]] has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "Logs (using `diag_log`) a debug message (`profileName`, [playerUID](https://community.bistudio.com/wiki/getPlayerUID), [_fnc_scriptName](https://community.bistudio.com/wiki/Magic%20Variables%23fnc_scriptName), provided text) to **server**<nowiki/>'s [[Crash Files|.RPT]]. In singleplayer, `BIS_fnc_logFormat` is used.\n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
             "examples": [
                 {
                     "text": "```sqf\nprivate _currentFPS = diag_fps;\nif (_currentFPS < 10) then\n{\n\t[\"Player %1 has performance issues (%2 FPS)\", name player, _currentFPS] call BIS_fnc_logFormatServer;\n};\n\n```"
@@ -31531,7 +31531,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the magnitude of an array of numbers. The vector can have any number of elements. **Arma**: 3|Use `vectorMagnitude` instead",
+            "description": "Returns the magnitude of an array of numbers. The vector can have any number of elements. **Arma 3**: Use `vectorMagnitude` instead",
             "examples": [
                 {
                     "text": "```sqf\n[5,3] call BIS_fnc_magnitude;\n```"
@@ -31558,7 +31558,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the square magnitude of an array of numbers. The vector can have any number of elements. **Arma**: 3|Use `vectorMagnitudeSqr` instead",
+            "description": "Returns the square magnitude of an array of numbers. The vector can have any number of elements. **Arma 3**: Use `vectorMagnitudeSqr` instead",
             "examples": [
                 {
                     "text": "```sqf\n[5,3] call BIS_fnc_magnitudeSqr;\n```"
@@ -33087,7 +33087,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Damage given vehicles.\n**NOTE**: Regarding locality: if a hitpoint is defined,\n{{Icon|localArgument|32 `setHitPointDamage` is used. Else,\n\n{{Icon|globalArgument|32}} `setDamage` is used.}}",
+            "description": "Damage given vehicles.\n**NOTE**: Regarding locality: if a hitpoint is defined,\n{{Icon|localArgument|32}} `setHitPointDamage` is used. Else,\n\n{{Icon|globalArgument|32}} `setDamage` is used.",
             "examples": [
                 {
                     "text": "```sqf\n[myLogic, vehicle player, true] call BIS_fnc_moduleDamage;\n```"
@@ -35932,7 +35932,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Execute received remote execution. This function is used by `BIS_fnc_MP` and should not be called directly.\n**Arma**: 3|Obsolete and entirely effectless (empty file) since **(Arma 3)**",
+            "description": "Execute received remote execution. This function is used by `BIS_fnc_MP` and should not be called directly.\n**Arma 3**: Obsolete and entirely effectless (empty file) since **(Arma 3)** and the introduction of `remoteExec`/`remoteExecCall`.",
             "examples": [
                 {
                     "text": "```sqf\n[\"BIS_fnc_MP_packet\", [\"Hello World\", \"hint\", true, true]] call BIS_fnc_MPexec;\n```"
@@ -35985,7 +35985,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Randomly play provided tracks defined in [[Description.ext#CfgMusic|CfgMusic]] and does a 3 seconds [fade out](https://community.bistudio.com/wiki/fadeMusic). This function takes `accTime` into account. See also `BIS_fnc_jukebox`.\n**NOTE**: The function stores the script handle in the `**BIS_fnc_music_spawn variable that can be used to stop the function; see _Example 3_ for its usage example.**`",
+            "description": "Randomly play provided tracks defined in [[Description.ext#CfgMusic|CfgMusic]] and does a 3 seconds [fade out](https://community.bistudio.com/wiki/fadeMusic). This function takes `accTime` into account. See also `BIS_fnc_jukebox`.\n{{Feature|informative|The function stores the script handle in the `**BIS_fnc_music_spawn}} variable that can be used to stop the function; see _Example 3_ for its usage example.**`",
             "examples": [
                 {
                     "text": "```sqf\n[[\"myMusic1\", \"myMusic2\"], 1] call BIS_fnc_music; // play the two musics in a random order\n```"
@@ -36041,7 +36041,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "types",
-                            "description": "`Array` - (Optional, default [\"Heliport\"]) location types to be searched for. See `nearestLocations` for more information **Arma**: 3|Default value won't work in {{arma3. Only types listed in CfgLocationTypes are supported}}"
+                            "description": "`Array` - (Optional, default [\"Heliport\"]) location types to be searched for. See `nearestLocations` for more information **Arma 3**: Default value won't work in Arma 3. Only types listed in CfgLocationTypes are supported"
                         }
                     ],
                     "outline": "[position, radius, random, types] call `BIS_fnc_nearestHelipad`",
@@ -36683,7 +36683,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36700,7 +36700,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36717,7 +36717,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36734,7 +36734,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36768,7 +36768,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36785,7 +36785,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36802,7 +36802,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36819,7 +36819,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36836,7 +36836,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36853,7 +36853,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36870,7 +36870,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36887,7 +36887,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36904,7 +36904,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36921,7 +36921,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36980,7 +36980,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -36997,7 +36997,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37014,7 +37014,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37031,7 +37031,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37048,7 +37048,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37065,7 +37065,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37082,7 +37082,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37099,7 +37099,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37116,7 +37116,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37133,7 +37133,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37150,7 +37150,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37167,7 +37167,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37184,7 +37184,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37201,7 +37201,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37218,7 +37218,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37235,7 +37235,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37252,7 +37252,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37269,7 +37269,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37286,7 +37286,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37303,7 +37303,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37320,7 +37320,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37337,7 +37337,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37354,7 +37354,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37371,7 +37371,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37388,7 +37388,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37405,7 +37405,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37422,7 +37422,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37439,7 +37439,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37456,7 +37456,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37473,7 +37473,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37490,7 +37490,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37507,7 +37507,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37524,7 +37524,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37541,7 +37541,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37558,7 +37558,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37597,7 +37597,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37614,7 +37614,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37631,7 +37631,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37648,7 +37648,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37665,7 +37665,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37682,7 +37682,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37699,7 +37699,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37716,7 +37716,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37733,7 +37733,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37750,7 +37750,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37767,7 +37767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37784,7 +37784,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37801,7 +37801,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3oldman",
+            "description": "{{Feature|arma3oldman}}",
             "examples": [],
             "syntaxes": [
                 {
@@ -37839,7 +37839,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Register code to be executed after mission end.\n**Arma**: 3|\nReplaced by [[Arma 3: Mission Event Handlers#Ended|\"Ended\" mission event handler]].\n\nThis function now exists only because of backward compatibility.",
+            "description": "Register code to be executed after mission end.\n**Arma 3**: \nReplaced by [[Arma 3: Mission Event Handlers#Ended|\"Ended\" mission event handler]].\n\nThis function now exists only because of backward compatibility.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _onEndIndex = { player addRating 10000; } call BIS_fnc_onEnd;\n```"
@@ -38542,7 +38542,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Load a script parameter. See [[Arma 3: Functions Library#Loading Parameters|Arma 3: Functions Library]] for detailed description.\n\n**Arma**: 3|Use `param` or `params` commands instead.",
+            "description": "Load a script parameter. See [[Arma 3: Functions Library#Loading Parameters|Arma 3: Functions Library]] for detailed description.\n\n**Arma 3**: Use `param` or `params` commands instead.",
             "examples": [
                 {
                     "text": "```sqf\n_target = [_this, 0, objNull, [objNull,[]], [2,3]] call BIS_fnc_param;\n```\n\n* if (_this select 0) is not defined, default objnull is used.\n* if (_this select 0) is defined, but is neither of type `Object` nor `Array`, error message is logged and default `objNull` is used.\n* if (_this select 0) and is `Array`, but it is count is neither 2 nor 3, error message is logged and default `objNull` is used."
@@ -39552,7 +39552,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return value1 raised to the power of value2. Identical to [[a ^ b]]. **IMPORTANT**: Use [[a ^ b]] as it is 5 times faster.\n<!--",
+            "description": "Return value1 raised to the power of value2. Identical to [[a ^ b]]. {{Feature|important|Use [[a ^ b]] as it is 5 times faster.}}\n<!--",
             "examples": [
                 {
                     "text": "```sqf\n[2, 10] call BIS_fnc_pow; // returns 2^10 = 1024\n```"
@@ -40481,7 +40481,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the relative direction from object 1 to object/position 2. Return value is always in between 0 and 360.\n**Arma**: 3|Use `getRelDir` instead.",
+            "description": "Returns the relative direction from object 1 to object/position 2. Return value is always in between 0 and 360.\n**Arma 3**: Use `getRelDir` instead.",
             "examples": [
                 {
                     "text": "```sqf\n[[0,0,0], player] call BIS_fnc_relativeDirTo;\n```"
@@ -40512,7 +40512,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a position that is a specified distance and compass direction from the passed position or object.\n**Arma**: 3|In {{arma3 use `getPos`' [alternative syntax](https://community.bistudio.com/wiki/getPos%23Syntax%203) instead.}}",
+            "description": "Returns a position that is a specified distance and compass direction from the passed position or object.\n**Arma 3**: In Arma 3 use `getPos`' [alternative syntax](https://community.bistudio.com/wiki/getPos%23Syntax%203) instead.",
             "examples": [
                 {
                     "text": "```sqf\n[[0,0,0], 1000, 50] call BIS_fnc_relPos; // [766.044,642.788,0]\n```"
@@ -40780,7 +40780,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Takes an array, and returns a new array with the specified index(es) removed.\nThis takes the array passed in the first parameter, and returns an array that has the index number in the second parameter removed.\nIf a third parameter is passed, then a range of indexes will be removed.\nAlternatively, an array of indices to remove can be passed in the second parameter.\n\n**Arma**: 3|Use `deleteAt` or `deleteRange` instead.",
+            "description": "Takes an array, and returns a new array with the specified index(es) removed.\nThis takes the array passed in the first parameter, and returns an array that has the index number in the second parameter removed.\nIf a third parameter is passed, then a range of indexes will be removed.\nAlternatively, an array of indices to remove can be passed in the second parameter.\n\n**Arma 3**: Use `deleteAt` or `deleteRange` instead.",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _array = [0,1,2,3,4];\n[array, 0] call BIS_fnc_removeIndex; // returns [1,2,3,4]\n\n```"
@@ -41946,7 +41946,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return the path to all turrets and sub-turrets in a vehicle.\n**Arma**: 3|Does not seem to work in {{arma3. Use `allTurrets` and `BIS_fnc_allTurrets` instead.}}",
+            "description": "Return the path to all turrets and sub-turrets in a vehicle.\n**Arma 3**: Does not seem to work in Arma 3. Use `allTurrets` and `BIS_fnc_allTurrets` instead.",
             "examples": [
                 {
                     "text": "```sqf\n[configFile >> \"CfgVehicles\" >> \"B_MBT_01_TUSK_F\"] call BIS_fnc_returnVehicleTurrets;\n```"
@@ -43684,7 +43684,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates particle sandstorm round given object. **Arma**: 3|The _newspapers_ parameter is disabled in {{arma3.}}",
+            "description": "Creates particle sandstorm round given object. **Arma 3**: The _newspapers_ parameter is disabled in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\n[player, 0.04, 0.8, false] call BIS_fnc_sandstorm;\n```"
@@ -44048,7 +44048,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**WARNING**: This function is broken (at least in Arma 3) as it has a typo, displaying an error on each use!  (typo **line 63**, `**[centrum] instead of {{hl|[_centrum]}}).**`\nThis function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard _via_ `copyToClipboard`.\n\nResult is to format:\n\n```sqf\n[\n\t// 11 elements for one object\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t// ...\n]\n```\n\n**IMPORTANT**: Please note that the clipboard result is a one-level array, meaning that all parameters are defined one after the other!",
+            "description": "{{Feature|warning|This function is broken (at least in Arma 3) as it has a typo, displaying an error on each use!  (typo **line 63**, `**[centrum]}} instead of {{hl|[_centrum]}}).**`\nThis function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard _via_ `copyToClipboard`.\n\nResult is to format:\n\n```sqf\n[\n\t// 11 elements for one object\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t// ...\n]\n```\n\n**IMPORTANT**: Please note that the clipboard result is a one-level array, meaning that all parameters are defined one after the other!",
             "examples": [
                 {
                     "text": "```sqf\n[player, 20, \"Car\"] call BIS_fnc_sceneGetObjects;\n```"
@@ -44498,7 +44498,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Selects one of the arguments at random.\n**Arma**: 3|Use `selectRandom` instead.",
+            "description": "Selects one of the arguments at random.\n**Arma 3**: Use `selectRandom` instead.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _bestShooter = [_rento, _ben, _trit] call BIS_fnc_selectRandom; // returns one of the variables\n_bestSeries = [[\"halo1\",\"halo2\"],[\"ofp\",\"arma2\"]] call BIS_fnc_selectRandom; // returns one of the arrays\n\n```"
@@ -44526,7 +44526,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Selects a random item from an array, taking into account item weight.\n**NOTE**: \n* The weights do not have to total to 1\n* The length of weights and items arrays may not match, in which case the shortest array is used for length\n\n\n**Arma**: 3|See `selectRandomWeighted` for an engine solution.",
+            "description": "Selects a random item from an array, taking into account item weight.\n{{Feature|informative|\n* The weights do not have to total to 1\n* The length of weights and items arrays may not match, in which case the shortest array is used for length\n}}\n\n**Arma 3**: See `selectRandomWeighted` for an engine solution.",
             "examples": [
                 {
                     "text": "```sqf\n[\"apples\",.3,\"pears\",.2,\"bananas\",.4,\"diamonds\",.1,\"unicorns\",.00001] call BIS_fnc_selectRandomWeighted;\n```"
@@ -46597,7 +46597,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Shut downs the game.\n**Arma**: 3|this function will only close the game once back to the main menu.",
+            "description": "Shut downs the game.\n**Arma 3**: this function will only close the game once back to the main menu.",
             "examples": [
                 {
                     "text": "```sqf\ncall BIS_fnc_shutdown;\n```"
@@ -47170,7 +47170,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sorts an array of numbers from lowest (left) to highest (right). The passed array is modified by reference.\nThis function uses the quick sort algorithm.\n\n**Arma**: 3|If you do not need the return value, use `sort` instead.",
+            "description": "Sorts an array of numbers from lowest (left) to highest (right). The passed array is modified by reference.\nThis function uses the quick sort algorithm.\n\n**Arma 3**: If you do not need the return value, use `sort` instead.",
             "examples": [
                 {
                     "text": "```sqf\n[5,9,987,6,97,8,6] call BIS_fnc_sortNum; // returns [5,6,6,8,9,97,987]\n```"
@@ -47197,7 +47197,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Execute given code with or without parameter.\n**Arma**: 3|Since **(Arma 3)**",
+            "description": "Execute given code with or without parameter.\n**Arma 3**: Since **(Arma 3)**, use `remoteExec`/`remoteExecCall` instead.",
             "examples": [
                 {
                     "text": "Show a message for the current player:\n\n```sqf\n[[\"Hello\"],  { hint (_this select 0) }] spawn BIS_fnc_spawn;\n```"
@@ -47497,7 +47497,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Function to spawn a certain vehicle type with all crew (including turrets). The vehicle can either become part of an existing `group` or create a new `group`.\n\n**IMPORTANT**: Before **Arma 3** (Arma 2, {{tkoh):\n* a [Functions Module](https://community.bistudio.com/wiki/Functions%20Library) **must** be placed in order to use this function\n* a side's [center](https://community.bistudio.com/wiki/createCenter) has to exist (by already having a unit of said side on the map)/be created _via_ `createCenter` or the vehicle will spawn empty.\n}}",
+            "description": "Function to spawn a certain vehicle type with all crew (including turrets). The vehicle can either become part of an existing `group` or create a new `group`.\n\n**IMPORTANT**: Before **Arma 3** (Arma 2, {{tkoh}}):\n* a [Functions Module](https://community.bistudio.com/wiki/Functions%20Library) **must** be placed in order to use this function\n* a side's [center](https://community.bistudio.com/wiki/createCenter) has to exist (by already having a unit of said side on the map)/be created _via_ `createCenter` or the vehicle will spawn empty.",
             "examples": [
                 {
                     "text": "```sqf\n[getPos player, 180, \"BMP3\", east] call BIS_fnc_spawnVehicle;\n```"
@@ -47539,7 +47539,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Splits given string according to given separator(s).\n**Arma**: 3|See `splitString`.",
+            "description": "Splits given string according to given separator(s).\n**Arma 3**: See `splitString`.",
             "examples": [
                 {
                     "text": "```sqf\n[\"this is a test\", \" \"] call BIS_fnc_splitString; // returns [\"this\", \"is\", \"a\", \"test\"]\n```"
@@ -50332,7 +50332,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Display given string as structured text. **Arma**: 3|In {{arma3 this function displays a bottom-left message, limited to two lines of approximately 53 characters each.}}",
+            "description": "Display given string as structured text. **Arma 3**: In Arma 3 this function displays a bottom-left message, limited to two lines of approximately 53 characters each.",
             "examples": [
                 {
                     "text": "[[File:BIS_fnc_titleText.jpg|right|300px]]\n```sqf\n\"Stratis, 2035-07-14 0130<br />A dark night ahead…\" call BIS_fnc_titleText;\n```"
@@ -50746,7 +50746,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Get a substring out of the string.\n**Arma**: 3|Use [select](https://community.bistudio.com/wiki/select%23Alternative%20Syntax%203) instead.",
+            "description": "Get a substring out of the string.\n**Arma 3**: Use [select](https://community.bistudio.com/wiki/select%23Alternative%20Syntax%203) instead.",
             "examples": [
                 {
                     "text": "```sqf\n[\"dreaded_is_the_man\", 0, 6] call BIS_fnc_trimString;\t// will return \"dreaded\"\n```"
@@ -51318,7 +51318,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "[unit, duration, FPS, firing, startTime] spawn `BIS_fnc_unitCaptureSimple`",
-                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle)\n**NOTE**: \n{{Link|copyToClipboard|Copies to clipboard an `Array` of `Array`s in format [frameTime, unitPosition, unitDirection] for each frame.\n}}"
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script%20Handle)\n**NOTE**: \n{{Link|copyToClipboard|Copies to clipboard}} an `Array` of `Array`s in format [frameTime, unitPosition, unitDirection] for each frame."
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_unitCaptureSimple"
@@ -51711,7 +51711,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the sum of two vectors.\n**Arma**: 3|If the vector is either 2D or 3D use `vectorAdd` instead.",
+            "description": "Returns the sum of two vectors.\n**Arma 3**: If the vector is either 2D or 3D use `vectorAdd` instead.",
             "examples": [
                 {
                     "text": "```sqf\n[[1, 1, 1, 1, 1], [2, 5, 3, 1, 1]] call BIS_fnc_vectorAdd; // returns [3,6,4,2,2]\n```"
@@ -51742,7 +51742,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a vector that is the difference between two vectors.\n**Arma**: 3|Use `vectorDiff` instead.",
+            "description": "Returns a vector that is the difference between two vectors.\n**Arma 3**: Use `vectorDiff` instead.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _vectorDiff = [[1,2,3], [5,6,7]] call BIS_fnc_vectorDiff;\n```"
@@ -51842,7 +51842,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a unit vector that 'points' from _vector1_ to _vector2_.\nThis is a very useful function as it can be used with the `velocity` command to move an object from one position to another (i.e _vector1_ to _vector2_).\n**NOTE**: Ensure both positions are found using `getPosASL`.\n**Arma**: 3|Since **(Arma 3)**",
+            "description": "Returns a unit vector that 'points' from _vector1_ to _vector2_.\nThis is a very useful function as it can be used with the `velocity` command to move an object from one position to another (i.e _vector1_ to _vector2_).\n{{Feature|informative|Ensure both positions are found using `getPosASL`.}}\n**Arma 3**: Since **(Arma 3)** For better performance, use the `vectorFromTo` command instead.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _resultVector = [getPosASL vehicle player, getPosASL airTarget] call BIS_fnc_vectorFromXToY;\n```"
@@ -51873,7 +51873,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Multiplies 3D vector by a scalar. **Arma**: 3|Use `vectorMultiply` instead.",
+            "description": "Multiplies 3D vector by a scalar. **Arma 3**: Use `vectorMultiply` instead.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _newVector = [[1,2,3], 3] call BIS_fnc_vectorMultiply; // returns [3,6,9]\n```"
@@ -51964,7 +51964,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Detects which **Arma 2** expansions and addons are available. Only works in Arma 2/Arma 2: Operation Arrowhead.\n**NOTE**: {{Name|arma2acr is not detected by this function.}}",
+            "description": "Detects which **Arma 2** expansions and addons are available. Only works in Arma 2/Arma 2: Operation Arrowhead.\n**NOTE**: {{Name|arma2acr}} is not detected by this function.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _availableExpansions = call BIS_fnc_version;\n```"
@@ -55310,7 +55310,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3|This function is non functional in {{arma3 because of undefined variables.}}",
+            "description": "**Arma 3**: This function is non functional in Arma 3 because of undefined variables.",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIS_fnc_zzRotate;\n```\n -->"

@@ -3,7 +3,7 @@ import { SQFItemConfig } from "../sqf.namespace";
 export const configs: SQFItemConfig[] = [
     {
         "documentation": {
-            "description": "Subtracts numbers or arrays from each another, negates a number. For arrays also see `deleteAt` and `deleteRange`.\n**Arma**: 3|In Arma 3 it is possible to subtract nested arrays.",
+            "description": "Subtracts numbers or arrays from each another, negates a number. For arrays also see `deleteAt` and `deleteRange`.\n**Arma 3**: In Arma 3 it is possible to subtract nested arrays.",
             "examples": [
                 {
                     "text": "```sqf\n_result = 10 - 7; // result is 3\n```"
@@ -385,7 +385,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/%3ACategory%3AActions) for action names and syntaxes.\n**Arma**: 3|\nSince {{arma3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n}}\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action [\"GetInDriver\", car]; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.",
+            "description": "Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/%3ACategory%3AActions) for action names and syntaxes.\n**Arma 3**: \nSince Arma 3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action [\"GetInDriver\", car]; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.",
             "examples": [
                 {
                     "text": "```sqf\nplayer action [\"SitDown\", player];\n```"
@@ -1009,7 +1009,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add backpack(s) to the cargo space of vehicle. Classname list of available backpacks is [here](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks).\nFor a list of possible backpacks, see:\n* **(Arma 2)** [Arma 2: Operation Arrowhead: Backpacks](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks)\n* **(Arma 3)** [Arma 3: CfgVehicles Equipment](https://community.bistudio.com/wiki/Arma%203%3A%20CfgVehicles%20Equipment) (starting with `**B_**`)\n**Arma**: 3|In {{arma3, arguments for this command are local {{Icon|localArgument|32}}. For the global variant, see `addBackpackCargoGlobal`.}}",
+            "description": "Add backpack(s) to the cargo space of vehicle. Classname list of available backpacks is [here](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks).\nFor a list of possible backpacks, see:\n* **(Arma 2)** [Arma 2: Operation Arrowhead: Backpacks](https://community.bistudio.com/wiki/Arma%202%3A%20Operation%20Arrowhead%3A%20Backpacks)\n* **(Arma 3)** [Arma 3: CfgVehicles Equipment](https://community.bistudio.com/wiki/Arma%203%3A%20CfgVehicles%20Equipment) (starting with `**B_**`)\n**Arma 3**: In Arma 3, arguments for this command are local {{Icon|localArgument|32}}. For the global variant, see `addBackpackCargoGlobal`.",
             "examples": [
                 {
                     "text": "```sqf\nthis addBackpackCargo [\"TK_RPG_Backpack_EP1\", 2];\n```"
@@ -1049,7 +1049,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add backpack(s) to the cargo space of vehicle.\n**NOTE**: \nClassname list of available backpacks:\n* [[Arma 2: Operation Arrowhead: Backpacks|{{Name|arma2oa|short backpacks]]\n* [[Arma 3: CfgVehicles Equipment|Arma 3 backpacks]] - objects starting with \"B_\", starts near {{Link|Arma 3: CfgVehicles Equipment#Bag Base|\"B_AssaultPack_khk\"}}\n}}",
+            "description": "Add backpack(s) to the cargo space of vehicle.\n**NOTE**: \nClassname list of available backpacks:\n* [[Arma 2: Operation Arrowhead: Backpacks|{{Name|arma2oa|short}} backpacks]]\n* [[Arma 3: CfgVehicles Equipment|Arma 3 backpacks]] - objects starting with \"B_\", starts near {{Link|Arma 3: CfgVehicles Equipment#Bag Base|\"B_AssaultPack_khk\"}}",
             "examples": [
                 {
                     "text": "```sqf\nthis addBackpackCargoGlobal [\"TK_RPG_Backpack_EP1\", 2];\n```"
@@ -1484,7 +1484,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Applies impulse force to unit or given PhysX object at given position.\n**NOTE**: For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html|NVIDIA docs.}}",
+            "description": "Applies impulse force to unit or given PhysX object at given position.\n**NOTE**: For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html|NVIDIA docs}}.",
             "examples": [
                 {
                     "text": "Apply force [0,1000,0] defined in world space (not factoring object actual positioning) to object position [1,0,0]:\n\n```sqf\n_object addForce [[0,1000,0], [1,0,0]];\n```"
@@ -2073,7 +2073,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add magazines to the cargo space of vehicles, which can be taken out by infantry units. Once the magazine cargo space is filled up, any further addMagazineCargo commands are ignored.\n**Arma**: 3|In {{arma3, arguments for this command must be local ({{Icon|localArgument|32}}). For the global variant see `addMagazineCargoGlobal`.}}",
+            "description": "Add magazines to the cargo space of vehicles, which can be taken out by infantry units. Once the magazine cargo space is filled up, any further addMagazineCargo commands are ignored.\n**Arma 3**: In Arma 3, arguments for this command must be local ({{Icon|localArgument|32}}). For the global variant see `addMagazineCargoGlobal`.",
             "examples": [
                 {
                     "text": "```sqf\n_truck addMagazineCargo [\"M16\", 5];\n```"
@@ -2419,7 +2419,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "expression",
-                            "description": "`String` or `Code` - expression to execute.\n\nIf EH has some data to return upon event (e.g. the \"MPKilled\" EH will return an array with 2 elements: the killed unit, and the killer), it is passed in `**_this**` variable.\n**Arma**: 3|Since Arma 3 v.1.64 the EH handle is also stored in `**_thisEventHandler variable and is available during EH code execution.**`\n* Event Handler parameters are accessible via <sqf inline>_this\n* The Event Handler type is available as <sqf inline>_thisEvent\n* The Event Handler index is available as <sqf inline>_thisEventHandler"
+                            "description": "`String` or `Code` - expression to execute.\n\nIf EH has some data to return upon event (e.g. the \"MPKilled\" EH will return an array with 2 elements: the killed unit, and the killer), it is passed in `**_this**` variable.\n{{Feature|arma3|Since Arma 3 v.1.64 the EH handle is also stored in `**_thisEventHandler}} variable and is available during EH code execution.**`\n* Event Handler parameters are accessible via <sqf inline>_this\n* The Event Handler type is available as <sqf inline>_thisEvent\n* The Event Handler index is available as <sqf inline>_thisEventHandler"
                         }
                     ],
                     "outline": "object `addMPEventHandler` [type, expression]",
@@ -2472,7 +2472,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of files present in the addon.\n\n**NOTE**: Querying protected `**.ebo addons will return an empty array {{hl|[]}}.**`",
+            "description": "Returns a list of files present in the addon.\n\n{{Feature|informative|Querying protected `**.ebo}} addons will return an empty array {{hl|[]}}.**`",
             "examples": [
                 {
                     "text": "```sqf\n\naddonFiles [\"a3\\3den\\\", \".paa\"];\n/*\n\t[\n\t\t\"a3\\3den\\data\\attributes\\formation\\ech_left_ca.paa\",\n\t\t\"a3\\3den\\data\\attributes\\formation\\stag_column_ca.paa\",\n\t\t\"a3\\3den\\data\\attributes\\stance\\down_ca.paa\",\n\t\t\"a3\\3den\\data\\cfg3den\\layer\\icondisabled_ca.paa\",\n\t\t\"a3\\3den\\data\\controlsgroups\\diagmousecontrol\\mouse_ca.paa\",\n\t\t...\n\t]\n*/\n\n```"
@@ -2599,7 +2599,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**Arma**: 3 | This command is deprecated since the introduction of `remoteExec` and `remoteExecCall`.\n\nThis event handler will detect if a `missionNamespace` variable (it is attached to) has been broadcast over network with `publicVariable`, `publicVariableClient` or `publicVariableServer` commands and will execute EH code upon detection. Arguments passed to the code in __this_ array are:\n* _this select 0: `String` - broadcast variable name (same variable name EH is attached to)\n* _this select 1: `Anything` - broadcast variable value \n* _this select 2: `Object`, `Group` - target the variable got set on with `setVariable`  (see {{Link|#Alternative Syntax}})\n**NOTE**: \n* This EH works **only** in Multiplayer environment\n* There is **no way to remove** this EH\n* This EH will not fire on the machine that executed broadcast with `publicVariable` command, only on the machines that receive the broadcast\n* The value of broadcast variable can be exactly the same, it is the actual broadcast that triggers EH not the change in variable",
+            "description": "**Arma 3**:  This command is deprecated since the introduction of `remoteExec` and `remoteExecCall`.}}\n\nThis event handler will detect if a `missionNamespace` variable (it is attached to) has been broadcast over network with `publicVariable`, `publicVariableClient` or `publicVariableServer` commands and will execute EH code upon detection. Arguments passed to the code in __this_ array are:\n* _this select 0: `String` - broadcast variable name (same variable name EH is attached to)\n* _this select 1: `Anything` - broadcast variable value \n* _this select 2: `Object`, `Group` - target the variable got set on with `setVariable`  (see {{Link|#Alternative Syntax}})\n{{Feature | Informative |\n* This EH works **only** in Multiplayer environment\n* There is **no way to remove** this EH\n* This EH will not fire on the machine that executed broadcast with `publicVariable` command, only on the machines that receive the broadcast\n* The value of broadcast variable can be exactly the same, it is the actual broadcast that triggers EH not the change in variable",
             "examples": [
                 {
                     "text": "```sqf\n\"publicThis\" addPublicVariableEventHandler {\n\thint format [\n\t\t\"%1 has been updated to: %2\",\n\t\t_this select 0,\n\t\t_this select 1\n\t]\n};\n```"
@@ -2653,7 +2653,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add a number to the `rating` of a unit - negative values can be used to reduce the rating.\n\nThis command is usually used to reward for completed mission objectives.The rating is given at the end of the mission and is automatically adjusted when killing enemies or friendlies.\n\nWhen the rating gets below -2000, the unit's side switches to `sideEnemy` and the unit is attacked by everyone.\n**NOTE**: See also {{Link|ArmA: Armed Assault: Rating Values and {{Link|Arma 3: Event Handlers#HandleRating}}.}}",
+            "description": "Add a number to the `rating` of a unit - negative values can be used to reduce the rating.\n\nThis command is usually used to reward for completed mission objectives.The rating is given at the end of the mission and is automatically adjusted when killing enemies or friendlies.\n\nWhen the rating gets below -2000, the unit's side switches to `sideEnemy` and the unit is attacked by everyone.\n**NOTE**: See also {{Link|ArmA: Armed Assault: Rating Values}} and {{Link|Arma 3: Event Handlers#HandleRating}}.",
             "examples": [
                 {
                     "text": "```sqf\nplayer addRating 2000;\n```"
@@ -2911,7 +2911,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:addTorque_correct.jpg|400px|right]]\nApplies torque (rotation momentum) to the [ center of mass](https://community.bistudio.com/wiki/getCenterOfMass%20) of the given object. Torque force is defined as vector [x, y, z] applied in world space. If you need to define torque in model space, convert the torque vector first by `vectorModelToWorld` or `vectorModelToWorldVisual` command. The torque applied as impulse. Diagram below explain which way the object would rotate.  For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html#acb04ffc816d45afff2d04e93d7446e79|NVIDIA docs}} \n\n\n**NOTE**: \nA single application of torque would produce one impulse, which may not be enough. In this case consider applying a series of continuous impulses, for example to make a quad bike to roll forward:\n\n```sqf\nonEachFrame { quad addTorque (quad vectorModelToWorld [100,0,0]) };\n```\n\n\n**IMPORTANT**: This command doesn't follow convention for torque direction, which obeys right-hand rule. To comply, negate all values in the vector.",
+            "description": "[[File:addTorque_correct.jpg|400px|right]]\nApplies torque (rotation momentum) to the [ center of mass](https://community.bistudio.com/wiki/getCenterOfMass%20) of the given object. Torque force is defined as vector [x, y, z] applied in world space. If you need to define torque in model space, convert the torque vector first by `vectorModelToWorld` or `vectorModelToWorldVisual` command. The torque applied as impulse. Diagram below explain which way the object would rotate.  For more information see {{Link|http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html#acb04ffc816d45afff2d04e93d7446e79|NVIDIA docs}} \n\n\n{{Feature|informative|\nA single application of torque would produce one impulse, which may not be enough. In this case consider applying a series of continuous impulses, for example to make a quad bike to roll forward:\n\n```sqf\nonEachFrame { quad addTorque (quad vectorModelToWorld [100,0,0]) };\n```\n\n}}\n**IMPORTANT**: This command doesn't follow convention for torque direction, which obeys right-hand rule. To comply, negate all values in the vector.",
             "examples": [
                 {
                     "text": "Apply torque [1000,0,0] to object not factoring object positioning:\n\n```sqf\n_wheel addTorque [1000,0,0];\n```"
@@ -3168,7 +3168,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add weapons to the cargo space of vehicles, which can be taken out by infantry units. Ignores available cargo space.\n**Arma**: 3|In {{arma3, arguments for this command must be local ({{Icon|localArgument|32}}). For global variant see `addWeaponCargoGlobal`.}}",
+            "description": "Add weapons to the cargo space of vehicles, which can be taken out by infantry units. Ignores available cargo space.\n**Arma 3**: In Arma 3, arguments for this command must be local ({{Icon|localArgument|32}}). For global variant see `addWeaponCargoGlobal`.",
             "examples": [
                 {
                     "text": "```sqf\n_truck addWeaponCargo [\"M16\", 5];\n```"
@@ -4194,7 +4194,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of all opened GUI displays.\n\n**NOTE**:  Other displays could be accessed via `uiNamespace` variable which is updated every time a display is opened or closed.\nFor example, to access IGUI displays:\n\n```sqf\nprivate _iguiDisplays = uiNamespace getVariable [\"IGUI_displays\", []];\n```\n\n\nOther display variables:\n{{Columns|4|\n* `**\"3DENDisplaysTemp_displays\"**`\n* `**\"3DENDisplays_displays\"**`\n* `**\"BootcampDisplays_displays\"**`\n* `**\"BootcampTitles_displays\"**`\n* `**\"CuratorDisplays_displays\"**`\n* `**\"CuratorTitles_displays\"**`\n* `**\"GUI_displays\"**`\n* `**\"IGUI_displays\"**`\n* `**\"KartDisplays_displays\"**`\n* `**\"Loading_displays\"**`\n\n}}",
+            "description": "Returns a list of all opened GUI displays.\n\n**NOTE**:  Other displays could be accessed via `uiNamespace` variable which is updated every time a display is opened or closed.\nFor example, to access IGUI displays:\n\n```sqf\nprivate _iguiDisplays = uiNamespace getVariable [\"IGUI_displays\", []];\n```\n\n\nOther display variables:\n{{Columns|4|\n* `**\"3DENDisplaysTemp_displays\"**`\n* `**\"3DENDisplays_displays\"**`\n* `**\"BootcampDisplays_displays\"**`\n* `**\"BootcampTitles_displays\"**`\n* `**\"CuratorDisplays_displays\"**`\n* `**\"CuratorTitles_displays\"**`\n* `**\"GUI_displays\"**`\n* `**\"IGUI_displays\"**`\n* `**\"KartDisplays_displays\"**`\n* `**\"Loading_displays\"**`\n}}",
             "examples": [
                 {
                     "text": "```sqf\nprivate _allDisps = allDisplays;\n```"
@@ -4547,7 +4547,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enables / disables an entity's ability to receive damage. This command does not prevent the entity from taking scripted damage from commands such as `setDamage`, `setHit`, `setHitIndex` or `setHitPointDamage`.\n**NOTE**: This command only supports entities (`**Entity is a [child class](https://community.bistudio.com/wiki/Class%20Inheritance) of {{hl|Object}}, i.e. all entities are objects, but not all objects are entities). Consequently, there are objects that are not affected by this command, for example terrain vegetation such as trees.**`",
+            "description": "Enables / disables an entity's ability to receive damage. This command does not prevent the entity from taking scripted damage from commands such as `setDamage`, `setHit`, `setHitIndex` or `setHitPointDamage`.\n{{Feature|informative|This command only supports entities (`**Entity}} is a [child class](https://community.bistudio.com/wiki/Class%20Inheritance) of {{hl|Object}}, i.e. all entities are objects, but not all objects are entities). Consequently, there are objects that are not affected by this command, for example terrain vegetation such as trees.**`",
             "examples": [
                 {
                     "text": "```sqf\nplayer allowDamage false;\n```"
@@ -4931,7 +4931,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of all units, **except agents, dead units or units waiting for respawn**, outside and inside vehicles that were created on the following sides `east`, `west`, `independent` and `civilian`.\n**Arma**: 3|To get all units of given side, use `**`units` `Side`.**`",
+            "description": "Returns a list of all units, **except agents, dead units or units waiting for respawn**, outside and inside vehicles that were created on the following sides `east`, `west`, `independent` and `civilian`.\n{{Feature|arma3|To get all units of given side, use `**`units` `Side`}}.**`",
             "examples": [
                 {
                     "text": "```sqf\n{ _x setDamage 0.5; _x groupChat \"Braaains\"; } forEach allUnits;\n```"
@@ -5232,7 +5232,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Activates given object animation. Animation is defined in CfgModels [animations](https://community.bistudio.com/wiki/Model%20Config%23Animations) class. Class names listed in CfgVehicles [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) bound to \"Proxy\" controller can also be animated with `animate` command (see [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)).\n**Arma**: 3|\n* It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimised for multiplayer\n* Since {{arma3 v1.58 animation names can be obtained with `animationNames`}}\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
+            "description": "Activates given object animation. Animation is defined in CfgModels [animations](https://community.bistudio.com/wiki/Model%20Config%23Animations) class. Class names listed in CfgVehicles [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) bound to \"Proxy\" controller can also be animated with `animate` command (see [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)).\n**Arma 3**: \n* It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimised for multiplayer\n* Since Arma 3 v1.58 animation names can be obtained with `animationNames`\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
             "examples": [
                 {
                     "text": "```sqf\n_building animate [\"maindoor\", 1];\n```"
@@ -5326,7 +5326,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Animates a door on a vehicle. Animation is defined in config file in `CfgVehicles` -> [ AnimationSources](https://community.bistudio.com/wiki/Model_Config%23AnimationSources). Wanted animation phase is set with phase param. This command works only on animation sources with \"door\" controller. Door_L in the example below can be animated with `animateDoor` but not CargoRamp_Open: `**heli `animateDoor` [\"Door_L\", 1];}}**IMPORTANT**:  `animateDoor` {{hl|phase param will be rounded: anything >0.5 will be rounded to 1 and <{{=}}0.5 will be rounded to 0. Therefore it is not possible to open a door half way with this command**`  \n\n```cpp\nclass AnimationSources\n{\n\tclass CargoRamp_Open\n\t{\n\t\tsource = \"user\";\n\t\tanimPeriod = 5;\n\t\tinitPhase = 0;\n\t};\n\tclass Door_L\n\t{\n\t\tsource = \"door\";\n\t\tanimPeriod = 1.6;\n\t};\n};\n```\nTo animate doors or other sources that have \"user\" controller, use `animate` command, or even better, `animateSource` (recommended). Sources with \"hit\" controller can be animated with `setHitPointDamage` command applied to the name contained in hitpoint property. For availability of animation sources and their controller types see: [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)",
+            "description": "Animates a door on a vehicle. Animation is defined in config file in `CfgVehicles` -> [ AnimationSources](https://community.bistudio.com/wiki/Model_Config%23AnimationSources). Wanted animation phase is set with phase param. This command works only on animation sources with \"door\" controller. Door_L in the example below can be animated with `animateDoor` but not CargoRamp_Open: `**heli `animateDoor` [\"Door_L\", 1];}}{{Feature | important | `animateDoor` {{hl|phase}} param will be rounded: anything >0.5 will be rounded to 1 and <{{=}}0.5 will be rounded to 0. Therefore it is not possible to open a door half way with this command**`  \n\n```cpp\nclass AnimationSources\n{\n\tclass CargoRamp_Open\n\t{\n\t\tsource = \"user\";\n\t\tanimPeriod = 5;\n\t\tinitPhase = 0;\n\t};\n\tclass Door_L\n\t{\n\t\tsource = \"door\";\n\t\tanimPeriod = 1.6;\n\t};\n};\n```\nTo animate doors or other sources that have \"user\" controller, use `animate` command, or even better, `animateSource` (recommended). Sources with \"hit\" controller can be animated with `setHitPointDamage` command applied to the name contained in hitpoint property. For availability of animation sources and their controller types see: [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)",
             "examples": [
                 {
                     "text": "```sqf\nTaru animateDoor [\"Door_1_source\", 1];\n```"
@@ -5415,7 +5415,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Process an animation of the object. If `animate` uses class name from `CfgModels` _Animations_, `animateSource` uses name defined by the _source_ property. AnimationSources can animate multiple `animate` Animations. AnimationSource is defined in [CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles)' [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) (see [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)).\n\n**Arma**: 3| It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimized for MP\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
+            "description": "Process an animation of the object. If `animate` uses class name from `CfgModels` _Animations_, `animateSource` uses name defined by the _source_ property. AnimationSources can animate multiple `animate` Animations. AnimationSource is defined in [CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles)' [AnimationSources](https://community.bistudio.com/wiki/Model%20Config%23AnimationSources) (see [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles)).\n\n**Arma 3**:  It is recommended that `animateSource` command is used instead of `animate` whenever is possible, as it is more efficient and optimized for MP\n**WARNING**: Mixing `animateSource` command with `animate` command to animate the same part may produce some undefined behaviour.",
             "examples": [
                 {
                     "text": "```sqf\nhouse animateSource [\"Door_1_source\", 1, true];\n```"
@@ -6471,7 +6471,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{{!}} class=\"wikitable float-right align-center\"\n! Team\n! Value\n{{!}}-\n{{!}} White\n{{!}} \"MAIN\"\n{{!}}-\n{{!}} Red\n{{!}} \"RED\"\n{{!}}-\n{{!}} Green\n{{!}} \"GREEN\"\n{{!}}-\n{{!}} Blue\n{{!}} \"BLUE\"\n{{!}}-\n{{!}} Yellow\n{{!}} \"YELLOW\"\n{{!}}}\nAssigns the unit (in case of a vehicle, its commander) to the given team. Team is an option in group control (unit management) menu that allows to split player group in teams and then give bulk order to separate teams.\nIn order to operate properly, the command requires specific conditions:\n* the command requires `player` to be fully initialised\n* the unit getting assigned must be either player himself or a unit in player's group\nThe colour of the assigned team for a unit is seen on the group management UI as well as squad radar.\n\n\n**IMPORTANT**: In older versions of the game (Arma 2?) the effect of this command is **local** {{Icon|localEffect|32.}}",
+            "description": "{{{!}} class=\"wikitable float-right align-center\"\n! Team\n! Value\n{{!}}-\n{{!}} White\n{{!}} \"MAIN\"\n{{!}}-\n{{!}} Red\n{{!}} \"RED\"\n{{!}}-\n{{!}} Green\n{{!}} \"GREEN\"\n{{!}}-\n{{!}} Blue\n{{!}} \"BLUE\"\n{{!}}-\n{{!}} Yellow\n{{!}} \"YELLOW\"\n{{!}}}\nAssigns the unit (in case of a vehicle, its commander) to the given team. Team is an option in group control (unit management) menu that allows to split player group in teams and then give bulk order to separate teams.\nIn order to operate properly, the command requires specific conditions:\n* the command requires `player` to be fully initialised\n* the unit getting assigned must be either player himself or a unit in player's group\nThe colour of the assigned team for a unit is seen on the group management UI as well as squad radar.\n\n\n**IMPORTANT**: In older versions of the game (Arma 2?) the effect of this command is **local** {{Icon|localEffect|32}}.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier2 assignTeam \"RED\";\n```"
@@ -6582,7 +6582,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:atan.jpg|right|300px]] ArcTangent of _y/x_. Used to determine the angle of a vector _[y,x]_. Result in [Degrees](https://community.bistudio.com/wiki/Number%23Degrees) between -180 and 180.\n**NOTE**: This command can handle _x_ being 0, unlike when using `atan`, and will return 90\n**IMPORTANT**: \nThis command has [higher precedence](https://community.bistudio.com/wiki/SQF%20Syntax%23Rules%20of%20Precedence) than the `select` command, therefore beware of the case below:\n<sqf notrim>\n _pos select 0  atan2 (_pos select 1) // error\n(_pos select 0) atan2 (_pos select 1) // OK\n\n\nAlternatively, consider using the [[a hash b|#]] operator: <sqf inline>_pos # 0 atan2 _pos # 1",
+            "description": "[[File:atan.jpg|right|300px]] ArcTangent of _y/x_. Used to determine the angle of a vector _[y,x]_. Result in [Degrees](https://community.bistudio.com/wiki/Number%23Degrees) between -180 and 180.\n{{Feature|informative|This command can handle _x_ being 0, unlike when using `atan`, and will return 90}}\n**IMPORTANT**: \nThis command has [higher precedence](https://community.bistudio.com/wiki/SQF%20Syntax%23Rules%20of%20Precedence) than the `select` command, therefore beware of the case below:\n<sqf notrim>\n _pos select 0  atan2 (_pos select 1) // error\n(_pos select 0) atan2 (_pos select 1) // OK\n\n\nAlternatively, consider using the [[a hash b|#]] operator: <sqf inline>_pos # 0 atan2 _pos # 1",
             "examples": [
                 {
                     "text": "```sqf\n\n_yx = [5,3];\n_degrees = (_yx select 0) atan2 (_yx select 1); // 59.0362\n\n```"
@@ -7660,11 +7660,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "index",
-                            "description": "`Number` - index of a specific position **Arma**: 3|Since v1.56 index `**-1 will return all available building positions.**`"
+                            "description": "`Number` - index of a specific position {{Feature|arma3|Since v1.56 index `**-1}} will return all available building positions.**`"
                         }
                     ],
                     "outline": "building `buildingPos`  index",
-                    "returns": "`Array` in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) - a single building position. If building position with given index does not exist, `**[0, 0, 0]**` is returned\n**Arma**: 3|Since v1.56 it can also return an [array](https://community.bistudio.com/wiki/Array) of all building positions in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) if index that was given is `**-1.**`"
+                    "returns": "`Array` in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) - a single building position. If building position with given index does not exist, `**[0, 0, 0]**` is returned\n{{Feature|arma3|Since v1.56 it can also return an [array](https://community.bistudio.com/wiki/Array) of all building positions in format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) if index that was given is `**-1}}.**`"
                 }
             ],
             "argumentLocality": "Global Argument",
@@ -8040,7 +8040,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Calls custom .dll also known as [Extension](https://community.bistudio.com/wiki/Extensions). The name of the extension is the name of the extension .dll without \".dll\" part (or without \"_x64.dll\" part on 64-bit Arma). For example if the file is 'myExtension.dll' the name of the extension will be \"myExtension\". For 64-bit extensions, the name of the extension doesn't need to change and is still \"myExtension\". The game will automatically look for 'myExtension_x64.dll' when you use 64-bit Arma exe.\n\n\n\nThis command is blocking, meaning that the game will wait for the extension to return before continuing. This may cause FPS drop if extension is not optimised. If extension takes too long, consider making asynchronous extension, where the result of the work of the extension is collected in a separate call.\n\n\n\nCurrently there is no limit how much data you can send to the extension. However there is a limit on how much data you can return from extension in one call. The limit is known to the extension and is passed in `** int outputSize**`. The limit may or may not change in the future and is currently 10240 bytes. It is up to extension designer to handle multipart results if returned data exceeds output limit.\n\n\n\nSince Arma 3 v1.68 it is possible to pass array of arguments to extensions. The array of arguments could be anything and all elements will be converted to strings, however you might want to only send simple types like `Boolean`s, `String`s, `Number`s and `Array`s of all of the above. There is currently a limit on how many arguments can be sent and it is 2048 (since Arma 3 v1.92; previous limit: 1024). However an argument could be an `Array` itself, in this case extension maker will have to provide additional methods for parsing such arguments.\n\n\n\nPossible error codes:\n* 101: SYNTAX_ERROR_WRONG_PARAMS_SIZE\n* 102: SYNTAX_ERROR_WRONG_PARAMS_TYPE\n* 201: PARAMS_ERROR_TOO_MANY_ARGS\n* 301: EXECUTION_WARNING_TAKES_TOO_LONG\nEach error will have entry in .rpt file with more details.\n\n\n\nThe extension execution timeout, after which `**301: EXECUTION_WARNING_TAKES_TOO_LONG}} warning is issued, is hardcoded on clients and is 1000.0 milliseconds (1 second). On the server the default limit is also 1 second, however it is possible to set custom limit with {{hl|callExtReportLimit**` param (see [ Server Options](https://community.bistudio.com/wiki/Arma%203%3A%20Server%20Config%20File%23Server_Options%20)).\n\n\n\nIf an extension with the given name cannot be found (or it is found but doesn't implement the required interface properly / at all) the following error will be written into the RPT (In this example the given dll-name was \"MyExtension\"):\n<code style=\"display: block\">14:27:07 CallExtension 'MyExtension' could not be found</code>\n\n\nIf an extension is not whitelisted with BattlEye (see `Extensions` for more info) it will be blocked on clients running with enabled BattlEye protection. RPT message outputted however is a little obscure:\n<code style=\"display: block\">21:35:04 Call extension 'MyExtension' could not be loaded: Insufficient system resources exist to complete the requested service</code>\n\n\nSince Arma 3 v1.70, `**RVExtensionVersion**` interface (see source code example below) has been added, which is called by the engine on extension load and expects extension version. This interface is designed to work with both, Linux and Windows. The max buffer size is 32 bytes. The version information will then appear in .`rpt` file like so:\n<code style=\"display: block\">19:06:36 CallExtension loaded: test_extension (.\\test_extension.dll) [1.0.0.1]</code>\n\n\nFor more information see `Extensions`.\n\n\n\n<u>Linux specific</u>\n\nWhile on Windows the extension name is case-insensitive, on Linux the extension name is case-sensitive and should match the name of the .so file exactly (minus \".so\" part).\n\n\n\n**IMPORTANT**: \nIf a user has **anti-virus software real time protection running**, this could cause brand new extension to stutter the game and return with `**EXECUTION_WARNING_TAKES_TOO_LONG**` when executed for the first time, because of the AV software scanning.\nAfter the extension is whitelisted by AV this should go away until a new version of the extension is installed.\nPerhaps a dummy call to the extension on init should be considered as a feature of implementation to account for that.\n\n\n\n\n**<u>Extension Context</u>**\n\nSince Arma 3 v2.12 the engine will call the `**RVExtensionContext}} method (if it exists, see {{Link|#Example 4**`) and pass the following data:\n* `**steamID**` of the client calling extension `getPlayerUID` or \"0\"\n* `**fileSource**` from which the extension was executed or \"\" if done on the fly\n* `**missionName**` `missionNameSource`\n* `**serverName**` `serverName`",
+            "description": "Calls custom .dll also known as [Extension](https://community.bistudio.com/wiki/Extensions). The name of the extension is the name of the extension .dll without \".dll\" part (or without \"_x64.dll\" part on 64-bit Arma). For example if the file is 'myExtension.dll' the name of the extension will be \"myExtension\". For 64-bit extensions, the name of the extension doesn't need to change and is still \"myExtension\". The game will automatically look for 'myExtension_x64.dll' when you use 64-bit Arma exe.\n\n\n\nThis command is blocking, meaning that the game will wait for the extension to return before continuing. This may cause FPS drop if extension is not optimised. If extension takes too long, consider making asynchronous extension, where the result of the work of the extension is collected in a separate call.\n\n\n\nCurrently there is no limit how much data you can send to the extension. However there is a limit on how much data you can return from extension in one call. The limit is known to the extension and is passed in `** int outputSize**`. The limit may or may not change in the future and is currently 10240 bytes. It is up to extension designer to handle multipart results if returned data exceeds output limit.\n\n\n\nSince Arma 3 v1.68 it is possible to pass array of arguments to extensions. The array of arguments could be anything and all elements will be converted to strings, however you might want to only send simple types like `Boolean`s, `String`s, `Number`s and `Array`s of all of the above. There is currently a limit on how many arguments can be sent and it is 2048 (since Arma 3 v1.92; previous limit: 1024). However an argument could be an `Array` itself, in this case extension maker will have to provide additional methods for parsing such arguments.\n\n\n\nPossible error codes:\n* 101: SYNTAX_ERROR_WRONG_PARAMS_SIZE\n* 102: SYNTAX_ERROR_WRONG_PARAMS_TYPE\n* 201: PARAMS_ERROR_TOO_MANY_ARGS\n* 301: EXECUTION_WARNING_TAKES_TOO_LONG\nEach error will have entry in .rpt file with more details.\n\n\n\nThe extension execution timeout, after which `**301: EXECUTION_WARNING_TAKES_TOO_LONG}} warning is issued, is hardcoded on clients and is 1000.0 milliseconds (1 second). On the server the default limit is also 1 second, however it is possible to set custom limit with {{hl|callExtReportLimit**` param (see [ Server Options](https://community.bistudio.com/wiki/Arma%203%3A%20Server%20Config%20File%23Server_Options%20)).\n\n\n\nIf an extension with the given name cannot be found (or it is found but doesn't implement the required interface properly / at all) the following error will be written into the RPT (In this example the given dll-name was \"MyExtension\"):\n<code style=\"display: block\">14:27:07 CallExtension 'MyExtension' could not be found</code>\n\n\nIf an extension is not whitelisted with BattlEye (see `Extensions` for more info) it will be blocked on clients running with enabled BattlEye protection. RPT message outputted however is a little obscure:\n<code style=\"display: block\">21:35:04 Call extension 'MyExtension' could not be loaded: Insufficient system resources exist to complete the requested service</code>\n\n\nSince Arma 3 v1.70, `**RVExtensionVersion**` interface (see source code example below) has been added, which is called by the engine on extension load and expects extension version. This interface is designed to work with both, Linux and Windows. The max buffer size is 32 bytes. The version information will then appear in .`rpt` file like so:\n<code style=\"display: block\">19:06:36 CallExtension loaded: test_extension (.\\test_extension.dll) [1.0.0.1]</code>\n\n\nFor more information see `Extensions`.\n\n\n\n<u>Linux specific</u>\n\nWhile on Windows the extension name is case-insensitive, on Linux the extension name is case-sensitive and should match the name of the .so file exactly (minus \".so\" part).\n\n\n\n{{Feature|important|\nIf a user has **anti-virus software real time protection running**, this could cause brand new extension to stutter the game and return with `**EXECUTION_WARNING_TAKES_TOO_LONG**` when executed for the first time, because of the AV software scanning.\nAfter the extension is whitelisted by AV this should go away until a new version of the extension is installed.\nPerhaps a dummy call to the extension on init should be considered as a feature of implementation to account for that.\n}}\n\n\n\n**<u>Extension Context</u>**\n\nSince Arma 3 v2.12 the engine will call the `**RVExtensionContext}} method (if it exists, see {{Link|#Example 4**`) and pass the following data:\n* `**steamID**` of the client calling extension `getPlayerUID` or \"0\"\n* `**fileSource**` from which the extension was executed or \"\" if done on the fly\n* `**missionName**` `missionNameSource`\n* `**serverName**` `serverName`",
             "examples": [
                 {
                     "text": "```sqf\n_return = \"myExtension\" callExtension \"stringToBeParsed\";\n```"
@@ -8233,7 +8233,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets construction camera parameters. To work with \"camconstruct\" object.\n**IMPORTANT**: Beware: {{sic|camCon**stu**ctionSetParams|camConstRuctionSetParams.}}",
+            "description": "Sets construction camera parameters. To work with \"camconstruct\" object.\n**IMPORTANT**: Beware: {{sic|camCon**stu**ctionSetParams|camConstRuctionSetParams}}.",
             "examples": [
                 {
                     "text": "```sqf\n_camera camConstuctionSetParams [getPos player, 50, 20];\n```"
@@ -9674,7 +9674,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns if the given soldier is able to stand up. It only checks for the unit's legs and not its alive/dead status - it can return `true` for a dead unit.\n**Arma**: 3|Since {{arma3 v1.60 and the introduction of limping, this command always returns `true` for humans.}}",
+            "description": "Returns if the given soldier is able to stand up. It only checks for the unit's legs and not its alive/dead status - it can return `true` for a dead unit.\n**Arma 3**: Since Arma 3 v1.60 and the introduction of limping, this command always returns `true` for humans.",
             "examples": [
                 {
                     "text": "[SQS](https://community.bistudio.com/wiki/SQS%20Syntax):\n<sqs>? (not canStand player) : player groupChat \"My legs! They hit my legs!\"</sqs>"
@@ -9880,7 +9880,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This command is used as a keyword inside a `switch` structure to define a value case.\n**IMPORTANT**: \nThis command **must** be written and used inside a `switch` construct, never stored in a variable, otherwise its behaviour is not guaranteed - see {{Link|https://foxhound.international/arma-3-sqf-grammar.html for further explanation.\n}}",
+            "description": "This command is used as a keyword inside a `switch` structure to define a value case.\n**IMPORTANT**: \nThis command **must** be written and used inside a `switch` construct, never stored in a variable, otherwise its behaviour is not guaranteed - see {{Link|https://foxhound.international/arma-3-sqf-grammar.html}} for further explanation.",
             "examples": [
                 {
                     "text": "```sqf\n\nswitch (_condition) do\n{\n\tcase 1: { hint \"1\" };\n\tcase 2: { hint \"2\" };\n\tdefault { hint \"default\" };\n};\n\n```"
@@ -10134,7 +10134,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{{!}} class=\"wikitable float-right\"\n! style=\"width: 50%\" {{!}} Affected by\n! Not affected by\n{{!}}-\n{{!}}\n* [terrain grid](https://community.bistudio.com/wiki/getTerrainGrid)\n* obstacles\n* particles\n<span style=\"font-size: .9em\">(with <syntaxhighlight lang=\"cpp\" inline>blockAIVisibility = 1</syntaxhighlight>)</span>\n{{!}}\n* [daylight](https://community.bistudio.com/wiki/time)\n* `distance`\n* `overcast`\n* `fog`\n{{!}}}\nChecks if one position is visible from another position and how much.\n\n**NOTE**: Particles that have `**blockAIVisibility set to 1 will influence the result, but will never make `checkVisibility` return 0; an extremely small number will be returned instead.**`",
+            "description": "{{{!}} class=\"wikitable float-right\"\n! style=\"width: 50%\" {{!}} Affected by\n! Not affected by\n{{!}}-\n{{!}}\n* [terrain grid](https://community.bistudio.com/wiki/getTerrainGrid)\n* obstacles\n* particles\n<span style=\"font-size: .9em\">(with <syntaxhighlight lang=\"cpp\" inline>blockAIVisibility = 1</syntaxhighlight>)</span>\n{{!}}\n* [daylight](https://community.bistudio.com/wiki/time)\n* `distance`\n* `overcast`\n* `fog`\n{{!}}}\nChecks if one position is visible from another position and how much.\n\n{{Feature|informative|Particles that have `**blockAIVisibility}} set to 1 will influence the result, but will never make `checkVisibility` return 0; an extremely small number will be returned instead.**`",
             "examples": [
                 {
                     "text": "```sqf\nprivate _canSee = [objNull, \"VIEW\"] checkVisibility [eyePos player, eyePos unit1];\n```"
@@ -10854,7 +10854,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Execute a block of code in which all Eden Editor operations will be recorded as one history step. For example creating an entity, setting its attributes and then connections would normally be recorded as three different steps. Calling them all within single **collect3DENHistory** block will group them together and the user will need to undo only once to revert the changes.\n\n**NOTE**: In order to only change the 2nd or 3rd parameter of the alternative syntax use `nil` as the preceding parameters.\nSome useful icons are:\n<spoiler text=\"Show texture paths\">\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\addtolayer_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\changeattributes_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\changeseat_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\connectitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\create_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\createcomment_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\deleteitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\disconnectitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\makenewlayer_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\missionnew_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\moveitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\multipleoperations_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\pasteitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\removefromlayer_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\rotateitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\scaleitems_ca.paa\"**`",
+            "description": "Execute a block of code in which all Eden Editor operations will be recorded as one history step. For example creating an entity, setting its attributes and then connections would normally be recorded as three different steps. Calling them all within single **collect3DENHistory** block will group them together and the user will need to undo only once to revert the changes.\n\n{{Feature|informative|In order to only change the 2nd or 3rd parameter of the alternative syntax use `nil` as the preceding parameters.}}\nSome useful icons are:\n<spoiler text=\"Show texture paths\">\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\addtolayer_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\changeattributes_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\changeseat_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\connectitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\create_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\createcomment_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\deleteitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\disconnectitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\makenewlayer_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\missionnew_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\moveitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\multipleoperations_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\pasteitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\removefromlayer_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\rotateitems_ca.paa\"**`\n* `**\"\\a3\\3den\\data\\cfg3den\\history\\scaleitems_ca.paa\"**`",
             "examples": [
                 {
                     "text": "```sqf\ncollect3DENHistory \n{\n\t_logic = create3DENEntity [\"Logic\", \"Logic\", position player];\n\tadd3DENConnection [\"Sync\", [_logic], player];\n}; // Creates a logic and connects it to player in one history step.\n```"
@@ -11565,7 +11565,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines a comment. See {{Link|SQF Syntax#Comments}} to learn more about comments.\n**WARNING**: \nThis command is evaluated during execution, and as such is infinitely slower than other SQF comment methods (<sqf inline>// comment or <sqf inline>/* comment */) which get preprocessed and do not exist at runtime).\nSee [SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax) for additional documentation on comments.\n\n**NOTE**: \nThis command is only used to place comments in unpreprocessed codes, such as trigger On Activation field, object init field, etc.\nAlternatively, one can use a plain string followed by a semicolon as a way to comment; e.g <sqf inline>\"Some comment\";.",
+            "description": "Defines a comment. See {{Link|SQF Syntax#Comments}} to learn more about comments.\n{{Feature|warning|\nThis command is evaluated during execution, and as such is infinitely slower than other SQF comment methods (<sqf inline>// comment or <sqf inline>/* comment */) which get preprocessed and do not exist at runtime).\nSee [SQF Syntax](https://community.bistudio.com/wiki/SQF%20Syntax) for additional documentation on comments.\n}}\n**NOTE**: \nThis command is only used to place comments in unpreprocessed codes, such as trigger On Activation field, object init field, etc.\nAlternatively, one can use a plain string followed by a semicolon as a way to comment; e.g <sqf inline>\"Some comment\";.",
             "examples": [
                 {
                     "text": "In a preprocessed SQF script (e.g. when doing <sqf inline>execVM \"myScript.sqf\")\n\n```sqf\n\ncomment \"This is a commented line\";\t\t// bad\n\"This is a commented line\";\t\t\t\t// slightly better\n// This is a commented line\t\t\t\t// perfect\n\n```"
@@ -11868,7 +11868,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns an array of config entries which meet criteria in condition code. Command iterates through all available config sub classes of the given config class. Current looked at config is stored in _x variable (similar to alternative `count` command implementation). Condition has to return `true` in order for the looked at config to be added to the resulting array. Slightly faster than `configProperties`, but doesn't account for config properties or inherited entries.\n**IMPORTANT**:  \n* The condition code passed to `configClasses` should only be used for **simple filter expressions** and nothing more\n* Do not use `**\"`isClass` [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)\"**` in the condition. The engine does this check already\n\n\n* Arma 3 v2.02 brought specific engine optimisations for the following conditions:\n** `**\"`true`\"**` \n** `**\"`getNumber` ([_x](https://community.bistudio.com/wiki/Magic%20Variables%23x) >> 'scope') > 0\"**`",
+            "description": "Returns an array of config entries which meet criteria in condition code. Command iterates through all available config sub classes of the given config class. Current looked at config is stored in _x variable (similar to alternative `count` command implementation). Condition has to return `true` in order for the looked at config to be added to the resulting array. Slightly faster than `configProperties`, but doesn't account for config properties or inherited entries.\n{{Feature|important| \n* The condition code passed to `configClasses` should only be used for **simple filter expressions** and nothing more\n* Do not use `**\"`isClass` [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)\"**` in the condition. The engine does this check already\n\n\n* Arma 3 v2.02 brought specific engine optimisations for the following conditions:\n** `**\"`true`\"**` \n** `**\"`getNumber` ([_x](https://community.bistudio.com/wiki/Magic%20Variables%23x) >> 'scope') > 0\"}}**`",
             "examples": [
                 {
                     "text": "collect all CfgVehicles configs:\n\n```sqf\n_configs = \"true\" configClasses (configFile >> \"CfgVehicles\");\n```"
@@ -12541,7 +12541,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "condition",
-                            "description": "`Code` - condition that must return `true` for the tested element to be counted. The variable `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**` will contain the currently tested element\n**Arma**: 3|If array contains different data types, use `isEqualTo` instead of [[==]]!"
+                            "description": "`Code` - condition that must return `true` for the tested element to be counted. The variable `**[_x](https://community.bistudio.com/wiki/Magic%20Variables%23x)**` will contain the currently tested element\n**Arma 3**: If array contains different data types, use `isEqualTo` instead of [[==]]!"
                         },
                         {
                             "name": "array",
@@ -12878,7 +12878,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Instanciate a `Side` center. A `Side` center is required to be able to [create groups](https://community.bistudio.com/wiki/createGroup) of this side.\n\nCenters can only be created for `east`, `west`, `resistance`, `civilian` and `sideLogic` [sides](https://community.bistudio.com/wiki/Side).\n\nCreated sides must have their \"side-friendship\" defined with `setFriend`.\n\n**NOTE**: In Armed Assault and Arma 2, only [[Mission.sqm]]'s units side centers are created; e.g if no `resistance` unit has been placed in the editor you must use `createCenter` before being able to create a `resistance` group.\n\n**Arma**: 3 | In Arma 3, centers for all sides are all created by the engine.",
+            "description": "Instanciate a `Side` center. A `Side` center is required to be able to [create groups](https://community.bistudio.com/wiki/createGroup) of this side.\n\nCenters can only be created for `east`, `west`, `resistance`, `civilian` and `sideLogic` [sides](https://community.bistudio.com/wiki/Side).\n\nCreated sides must have their \"side-friendship\" defined with `setFriend`.\n\n{{Feature|informative|In Armed Assault and Arma 2, only [[Mission.sqm]]'s units side centers are created; e.g if no `resistance` unit has been placed in the editor you must use `createCenter` before being able to create a `resistance` group.}}\n\n**Arma 3**:  In Arma 3, centers for all sides are all created by the engine.",
             "examples": [
                 {
                     "text": "```sqf\ncreateCenter east;\n```"
@@ -13097,7 +13097,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates child display of given display and loads from \"resourceName\". The notable difference between `createDisplay` and `createDialog` is that with `createDisplay` the player would be able to move around while the display is shown.\n\nDisplays created with `createDisplay` or `createDialog` will take control of the mouse pointer and will close when user presses {{Controls|Esc}}.\n**Arma**: 3|Since {{arma3 v1.50 `createDisplay` returns `Display` and will first look in [[Description.ext|description.ext]] for resourceName config, if not found, it will then look in main config.}}\n**NOTE**: If an _overlay_ is needed instead, use `cutRsc`.",
+            "description": "Creates child display of given display and loads from \"resourceName\". The notable difference between `createDisplay` and `createDialog` is that with `createDisplay` the player would be able to move around while the display is shown.\n\nDisplays created with `createDisplay` or `createDialog` will take control of the mouse pointer and will close when user presses {{Controls|Esc}}.\n**Arma 3**: Since Arma 3 v1.50 `createDisplay` returns `Display` and will first look in [[Description.ext|description.ext]] for resourceName config, if not found, it will then look in main config.\n**NOTE**: If an _overlay_ is needed instead, use `cutRsc`.",
             "examples": [
                 {
                     "text": "```sqf\nfindDisplay 46 createDisplay \"RscCredits\";\n```"
@@ -13162,7 +13162,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a new `Group` for the given `Side`. Using this command if the group limit is reached will return `grpNull`. The new `Group` exists globally, but it's locality is where this command was executed.\n{{{!}} class=\"wikitable\" style=\"text-align: center\"\n! Game\n{{!}} **(Operation Flashpoint)**\n{{!}} **(Operation Flashpoint: Elite)**\n{{!}} **(Armed Assault)**\n{{!}} **(Arma 2)**\n{{!}} **(Arma 2: Operation Arrowhead)**\n{{!}} {{GVI|tkoh|1.00}}\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}-\n! Group auto-deletion\n{{!}} colspan=\"6\" {{!}} {{Icon|unchecked}}\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}}-\n! Group limit per side\n{{!}} 63\n{{!}} colspan=\"6\" {{!}} 144\n{{!}} 288\n{{!}}}\n\n**IMPORTANT**: \n* Groups can only be created for the `west`/`blufor`, `opfor`/`east`, `independent`/`resistance`, `civilian` and `sideLogic` sides - any other side will return `grpNull`\n* Before Arma 3, a `Side` [center](https://community.bistudio.com/wiki/createCenter) must exist before group creation (either by having editor-placed units or `createCenter` usage)\n\n\n**Arma**: 3|\n* `createCenter` usage is not needed anymore as all centers are automatically created.\n* When the last unit leaves its group, the group usually gets immediately auto-deleted, regardless of its auto-deletion setting.",
+            "description": "Creates a new `Group` for the given `Side`. Using this command if the group limit is reached will return `grpNull`. The new `Group` exists globally, but it's locality is where this command was executed.\n{{{!}} class=\"wikitable\" style=\"text-align: center\"\n! Game\n{{!}} **(Operation Flashpoint)**\n{{!}} **(Operation Flashpoint: Elite)**\n{{!}} **(Armed Assault)**\n{{!}} **(Arma 2)**\n{{!}} **(Arma 2: Operation Arrowhead)**\n{{!}} {{GVI|tkoh|1.00}}\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}-\n! Group auto-deletion\n{{!}} colspan=\"6\" {{!}} {{Icon|unchecked}}\n{{!}} colspan=\"2\" {{!}} {{Icon|checked}}\n{{!}}-\n! Group limit per side\n{{!}} 63\n{{!}} colspan=\"6\" {{!}} 144\n{{!}} 288\n{{!}}}\n\n{{Feature | important |\n* Groups can only be created for the `west`/`blufor`, `opfor`/`east`, `independent`/`resistance`, `civilian` and `sideLogic` sides - any other side will return `grpNull`\n* Before Arma 3, a `Side` [center](https://community.bistudio.com/wiki/createCenter) must exist before group creation (either by having editor-placed units or `createCenter` usage)\n}}\n\n**Arma 3**: \n* `createCenter` usage is not needed anymore as all centers are automatically created.\n* When the last unit leaves its group, the group usually gets immediately auto-deleted, regardless of its auto-deletion setting.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _group = createGroup east;\n```"
@@ -13415,7 +13415,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a new map marker at the given position. The marker will be created for every connected player as well as all JIP players. The marker name has to be unique; the command will be ignored if a marker with the given name already exists.\n\n**IMPORTANT**: \nThe marker will be visible only once at least `markerType` has been defined:\n\n```sqf\n\n_marker = createMarker [\"markername\", player]; // Not visible yet.\n_marker setMarkerType \"hd_dot\"; // Visible.\n```\n\n\n\n**NOTE**: If the marker position is given in 3D format, the `**z-coordinate is stored with the marker and will be used when the marker is passed to commands such as `createVehicle`, `createUnit`, `createAgent`, `createMine` or `setVehiclePosition`.\nWhen a marker is manually placed in the editor, {{hl|z}} is always 0, which means the marker is placed on the ground. But when the player places a marker on the map in game, it is placed at sea level, so the {{hl|z}}-coordinate of that marker is <sqf inline>-getTerrainHeightASL markerPos \"userMarker\";.**`",
+            "description": "Creates a new map marker at the given position. The marker will be created for every connected player as well as all JIP players. The marker name has to be unique; the command will be ignored if a marker with the given name already exists.\n\n**IMPORTANT**: \nThe marker will be visible only once at least `markerType` has been defined:\n\n```sqf\n\n_marker = createMarker [\"markername\", player]; // Not visible yet.\n_marker setMarkerType \"hd_dot\"; // Visible.\n```\n\n\n\n{{Feature|informative|If the marker position is given in 3D format, the `**z}}-coordinate is stored with the marker and will be used when the marker is passed to commands such as `createVehicle`, `createUnit`, `createAgent`, `createMine` or `setVehiclePosition`.\nWhen a marker is manually placed in the editor, {{hl|z}} is always 0, which means the marker is placed on the ground. But when the player places a marker on the map in game, it is placed at sea level, so the {{hl|z}}-coordinate of that marker is <sqf inline>-getTerrainHeightASL markerPos \"userMarker\";.**`",
             "examples": [
                 {
                     "text": "```sqf\n_marker1 = createMarker [\"Marker1\", position player];\n```"
@@ -13659,7 +13659,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Create object with given shape defined as path to .p3d model. Supported `LOD`s include [Geometry](https://community.bistudio.com/wiki/LOD%23Geometry), [Fire Geometry](https://community.bistudio.com/wiki/LOD%23Fire_Geometry), [Roadway](https://community.bistudio.com/wiki/LOD%23Roadway), [View Geometry](https://community.bistudio.com/wiki/LOD%23ViewGeometry) and [ShadowVolume](https://community.bistudio.com/wiki/LOD%23ShadowVolume). Supported features include collision, texturing, animation, penetration, AI spotting occlusion, and surface specific sounds (like footsteps). Unsupported features include PhysX, damage, AI pathfinding (causes walking through walls), and built-in lights.\n\n\n\nGiven the simulation limitations, global decorative objects can be created with very little network traffic. Objects that could be exclusively created with this command are: trees, bushes, rocks, bridges, roads, vehicle wrecks, custom models in mission, and other objects without a class in config. The height of the placement position might need to be adjusted experimentally.\n\n**NOTE**: \n* See [Arma 3: Simple Objects](https://community.bistudio.com/wiki/Arma%203%3A%20Simple%20Objects) to learn more about simple objects.\n* See [Arma 3: createSimpleObject/objects](https://community.bistudio.com/wiki/Arma%203%3A%20createSimpleObject%2Fobjects) for a p3d models' list.\n* See [Arma 3: Livonia Props](https://community.bistudio.com/wiki/Arma%203%3A%20Livonia%20Props) for `Livonia` furniture.\n\n\nPlease note that:\n* `addAction` does not work with simple objects.\n* objects created with {{Link|#Syntax 1 cannot be textured. Some objects may also have inverted default direction. \n* objects created with {{Link|#Syntax 2}} can be textured. The default direction should match the direction of the object if it was created with `createVehicle`.\n* only as of **(Arma 3)** do simple objects support `getVariable` and `setVariable`.\n}}",
+            "description": "Create object with given shape defined as path to .p3d model. Supported `LOD`s include [Geometry](https://community.bistudio.com/wiki/LOD%23Geometry), [Fire Geometry](https://community.bistudio.com/wiki/LOD%23Fire_Geometry), [Roadway](https://community.bistudio.com/wiki/LOD%23Roadway), [View Geometry](https://community.bistudio.com/wiki/LOD%23ViewGeometry) and [ShadowVolume](https://community.bistudio.com/wiki/LOD%23ShadowVolume). Supported features include collision, texturing, animation, penetration, AI spotting occlusion, and surface specific sounds (like footsteps). Unsupported features include PhysX, damage, AI pathfinding (causes walking through walls), and built-in lights.\n\n\n\nGiven the simulation limitations, global decorative objects can be created with very little network traffic. Objects that could be exclusively created with this command are: trees, bushes, rocks, bridges, roads, vehicle wrecks, custom models in mission, and other objects without a class in config. The height of the placement position might need to be adjusted experimentally.\n\n**NOTE**: \n* See [Arma 3: Simple Objects](https://community.bistudio.com/wiki/Arma%203%3A%20Simple%20Objects) to learn more about simple objects.\n* See [Arma 3: createSimpleObject/objects](https://community.bistudio.com/wiki/Arma%203%3A%20createSimpleObject%2Fobjects) for a p3d models' list.\n* See [Arma 3: Livonia Props](https://community.bistudio.com/wiki/Arma%203%3A%20Livonia%20Props) for `Livonia` furniture.\n\n\nPlease note that:\n* `addAction` does not work with simple objects.\n* objects created with {{Link|#Syntax 1}} cannot be textured. Some objects may also have inverted default direction. \n* objects created with {{Link|#Syntax 2}} can be textured. The default direction should match the direction of the object if it was created with `createVehicle`.\n* only as of **(Arma 3)** do simple objects support `getVariable` and `setVariable`.",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _pos = player getRelPos [10, 0];\nprivate _tank = createSimpleObject [\"a3\\armor_f_beta\\apc_tracked_01\\apc_tracked_01_rcws_f.p3d\", _pos];\n_tank setPos (_pos vectorAdd (getPosWorld _tank vectorDiff (_tank modelToWorld [0,0,0])));\n\n_tank hideSelection [\"zasleh\", true];\n_tank hideSelection [\"zasleh2\", true];\n_tank hideSelection [\"clan\", true];\n \n_tank animate [\"Wheel_podkoloL3\", 0.5, true];\n_tank animate [\"Wheel_podkoloL6\", 0.5, true];\n\n```"
@@ -13719,7 +13719,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a new `Task` and adds it to the Diary.\n**Arma**: 3|Using the **[Arma 3: Task Framework](https://community.bistudio.com/wiki/Arma%203%3A%20Task%20Framework)** instead is recommended\n**NOTE**: When task is added as a child, it appears as subcategory to the parent task in the Tasks menu and can be parent to another child task. However this is cosmetic appearance as each task has own id and can be referenced directly via diary link.",
+            "description": "Creates a new `Task` and adds it to the Diary.\n**Arma 3**: Using the **[Arma 3: Task Framework](https://community.bistudio.com/wiki/Arma%203%3A%20Task%20Framework)** instead is recommended\n**NOTE**: When task is added as a child, it appears as subcategory to the parent task in the Tasks menu and can be parent to another child task. However this is cosmetic appearance as each task has own id and can be referenced directly via diary link.",
             "examples": [
                 {
                     "text": "```sqf\n_currentTask = player createSimpleTask [\"NewTask\"];\n```"
@@ -13983,7 +13983,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates a [trigger](https://community.bistudio.com/wiki/Trigger) of the given type and at the given position. The type must be a class name in _CfgNonAIVehicles_ or _CfgVehicles_ with <syntaxhighlight lang=\"cpp\" inline>simulation = detector</syntaxhighlight>. An array containing all units that have activated the trigger is available via <sqf inline>list triggerobj. Since triggers are **`Object`s**, commands such as `getPosASL`, `setPosASL`, `deleteVehicle` etc. work on them.\n\n**NOTE**: Since Arma 3 v1.54 triggers can be disabled/enabled using `enableSimulation` command.\n\nTriggers are created with default parameters:\n{{Columns|4|\n* `**a**`: 50\n* `**b**`: 50\n* `**c**`: -1\n* `**angle**`: 0\n* `**rectangular**`: false\n* `**activationBy**`: None\n* `**activationType**`: Present\n* `**repeating**`: false\n* `**timeoutMin**`: 0\n* `**timeoutMid**`: 0\n* `**timeoutMax**`: 0\n* `**interruptable**`: true\n* `**type**`: None\n* `**text**`: \"\"\n* `**name**`: \"\"\n* `**expCond**`: \"this\"\n* `**expActiv**`: \"\"\n* `**expDesactiv**`: \"\"\n* {{GVI|arma3|1.98",
+            "description": "Creates a [trigger](https://community.bistudio.com/wiki/Trigger) of the given type and at the given position. The type must be a class name in _CfgNonAIVehicles_ or _CfgVehicles_ with <syntaxhighlight lang=\"cpp\" inline>simulation = detector</syntaxhighlight>. An array containing all units that have activated the trigger is available via <sqf inline>list triggerobj. Since triggers are **`Object`s**, commands such as `getPosASL`, `setPosASL`, `deleteVehicle` etc. work on them.\n\n{{Feature|informative|Since Arma 3 v1.54 triggers can be disabled/enabled using `enableSimulation` command.}}\n\nTriggers are created with default parameters:\n{{Columns|4|\n* `**a**`: 50\n* `**b**`: 50\n* `**c**`: -1\n* `**angle**`: 0\n* `**rectangular**`: false\n* `**activationBy**`: None\n* `**activationType**`: Present\n* `**repeating**`: false\n* `**timeoutMin**`: 0\n* `**timeoutMid**`: 0\n* `**timeoutMax**`: 0\n* `**interruptable**`: true\n* `**type**`: None\n* `**text**`: \"\"\n* `**name**`: \"\"\n* `**expCond**`: \"this\"\n* `**expActiv**`: \"\"\n* `**expDesactiv**`: \"\"\n* {{GVI|arma3|1.98",
             "examples": [
                 {
                     "text": "```sqf\n\n_trg = createTrigger [\"EmptyDetector\", getPos player];\n_trg setTriggerArea [5, 5, 0, false];\n_trg setTriggerActivation [\"CIV\", \"PRESENT\", true];\n_trg setTriggerStatements [\"this\", \"hint 'Civilian near player'\", \"hint 'no civilian near'\"];\n\n```"
@@ -14021,7 +14021,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Create a unit of the provided [CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles) class.\n\n**WARNING**: \nThe unit will not be created if the passed group does not exist (a.k.a `grpNull`);\nthis can happen if `createGroup` fails because the **group limit has been reached** (see `createGroup` for respective game limits).\n\n\n{{{!}} class=\"wikitable\" style=\"width: 100%\"\n!\n! style=\"width: 50%\" {{!}} {{Link|#Syntax 1}}\n! style=\"width: 50%\" {{!}} {{Link|#Syntax 2}}\n{{!}}-\n! Group's&nbsp;locality\n{{!}} the provided group _can_ be non-[local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality), but a warning will be logged\n{{!}} the provided group **must** be [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality)\n{{!}}-\n! Unit's `side`\n{{!}} using a classname from a different side than the provided group will result in the unit itself being of a (config-defined) side inside a group of another side - see _Example 6_ for more information\n{{!}} using a classname from a different side than the provided group will result in the unit being of the same side as the provided group\n{{!}}-\n! Other\n{{!}} the unit's init code will execute after a slight delay if the provided group is not local\n{{!}} this syntax does **not** return a reference to the created unit (see _Example 7_)\n{{!}}}\n\n**Arma**: 1|\n**(Operation Flashpoint)** {{GVI|arma1|1.00 This command could be bugged in Operation Flashpoint or Armed Assault; an additional `join` may solve the problem.\n\nHowever, some commands such as `setUnitPos` only work if run before the `join`.\n}}",
+            "description": "Create a unit of the provided [CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles) class.\n\n**WARNING**: \nThe unit will not be created if the passed group does not exist (a.k.a `grpNull`);\nthis can happen if `createGroup` fails because the **group limit has been reached** (see `createGroup` for respective game limits).\n\n\n{{{!}} class=\"wikitable\" style=\"width: 100%\"\n!\n! style=\"width: 50%\" {{!}} {{Link|#Syntax 1}}\n! style=\"width: 50%\" {{!}} {{Link|#Syntax 2}}\n{{!}}-\n! Group's&nbsp;locality\n{{!}} the provided group _can_ be non-[local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality), but a warning will be logged\n{{!}} the provided group **must** be [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality)\n{{!}}-\n! Unit's `side`\n{{!}} using a classname from a different side than the provided group will result in the unit itself being of a (config-defined) side inside a group of another side - see _Example 6_ for more information\n{{!}} using a classname from a different side than the provided group will result in the unit being of the same side as the provided group\n{{!}}-\n! Other\n{{!}} the unit's init code will execute after a slight delay if the provided group is not local\n{{!}} this syntax does **not** return a reference to the created unit (see _Example 7_)\n{{!}}}\n\n**Armed Assault**: \n**(Operation Flashpoint)** **(Armed Assault)** This command could be bugged in Operation Flashpoint or Armed Assault; an additional `join` may solve the problem.\n\nHowever, some commands such as `setUnitPos` only work if run before the `join`.",
             "examples": [
                 {
                     "text": "```sqf\n_unit = group player createUnit [\"B_RangeMaster_F\", position player, [], 0, \"NONE\"];\n```"
@@ -14118,7 +14118,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates an empty object of given classname type.\nSee [Arma 3: Assets](https://community.bistudio.com/wiki/Arma%203%3A%20Assets) / [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles), or [:Category:CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles) for earlier games.\n\n**NOTE**: \n* To create objects of type `**\"Logic\"**`, use `createUnit`.\n* To create an editable [ Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3A%20Eden%20Editor) entity, see `create3DENEntity`.\n\n\n**Arma**: 3|\nTo avoid vehicle randomisation in {{arma3, set the `**BIS_enableRandomization**` variable immediately after creating the vehicle:\n\n```sqf\n\nprivate _vehicle = \"C_Offroad_01_F\" createVehicle position player;\n_vehicle setVariable [\"BIS_enableRandomization\", false];\n\n```\n\nSee the [Arma 3: Vehicle Customisation](https://community.bistudio.com/wiki/Arma%203%3A%20Vehicle%20Customisation) page for more information and settings.\n}}",
+            "description": "Creates an empty object of given classname type.\nSee [Arma 3: Assets](https://community.bistudio.com/wiki/Arma%203%3A%20Assets) / [Arma 3: createVehicle/vehicles](https://community.bistudio.com/wiki/Arma%203%3A%20createVehicle%2Fvehicles), or [:Category:CfgVehicles](https://community.bistudio.com/wiki/%3ACategory%3ACfgVehicles) for earlier games.\n\n{{Feature|informative|\n* To create objects of type `**\"Logic\"**`, use `createUnit`.\n* To create an editable [ Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3A%20Eden%20Editor) entity, see `create3DENEntity`.\n}}\n\n**Arma 3**: \nTo avoid vehicle randomisation in Arma 3, set the `**BIS_enableRandomization**` variable immediately after creating the vehicle:\n\n```sqf\n\nprivate _vehicle = \"C_Offroad_01_F\" createVehicle position player;\n_vehicle setVariable [\"BIS_enableRandomization\", false];\n\n```\n\nSee the [Arma 3: Vehicle Customisation](https://community.bistudio.com/wiki/Arma%203%3A%20Vehicle%20Customisation) page for more information and settings.",
             "examples": [
                 {
                     "text": "```sqf\n_jeep = \"Jeep\" createVehicle position player;\n```"
@@ -15021,7 +15021,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the current state of given `CT_CHECKBOXES` control. Since Arma 3 v1.72 it is possible to query multiple checkboxes by providing checkbox index. For more information see `CT_CHECKBOXES`.**NOTE**: The `**\"CheckBoxesSelChanged\" control EH returns the control, index of changed checkbox and its current checked state. The checked state however is not a `Boolean` but `Number` 0 or 1. To convert `ctrlChecked` command output into number as well, use `parseNumber` command**`",
+            "description": "Returns the current state of given `CT_CHECKBOXES` control. Since Arma 3 v1.72 it is possible to query multiple checkboxes by providing checkbox index. For more information see `CT_CHECKBOXES`.{{Feature|informative|The `**\"CheckBoxesSelChanged\"}} control EH returns the control, index of changed checkbox and its current checked state. The checked state however is not a `Boolean` but `Number` 0 or 1. To convert `ctrlChecked` command output into number as well, use `parseNumber` command**`",
             "examples": [
                 {
                     "text": "```sqf\nctrlChecked _control;\n```"
@@ -15184,7 +15184,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "idc",
-                            "description": "`Number` - IDC of the new control. Use -1 if not needed\n**WARNING**: Be careful when setting the IDC to `**-1 if the GUI also contains a `CT_LISTNBOX` since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang=\"cpp\" inline>idc = -1;</syntaxhighlight>.**`"
+                            "description": "`Number` - IDC of the new control. Use -1 if not needed\n{{Feature|warning|Be careful when setting the IDC to `**-1}} if the GUI also contains a `CT_LISTNBOX` since {{hl|idcLeft}} and {{hl|idcRight}} by default have <syntaxhighlight lang=\"cpp\" inline>idc = -1;</syntaxhighlight>.**`"
                         },
                         {
                             "name": "controlsGroup",
@@ -15621,7 +15621,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the default cursor that appears when interacting with a map control to a custom one. Use an empty string to restore the default cursor.\n**IMPORTANT**: Before Arma 3, if the specified cursor does not exist the default is used and no error is produced.\n\nIn Arma 3, this would result in the following error: `**\"No entry 'bin\\config.bin/CfgWrapperUI/Cursors'\"**`.\n\nThe cursor is the name of a config entry from _CfgWrapperUI / Cursors_. This command has the following specifics:\n* When used on the Main Map (<sqf inline>findDisplay 12 displayCtrl 51), it is possible to override multiple default cursors. For example, while leaving default \"Arrow\" intact, it is possible to just override \"Scroll\" with e.g \"Wait\" (See _Example 3_)\n* When used on a custom map, for example user made Mini Map, there is only one single cursor \"\" for everything, therefore only this cursor can be overridden (see _Example 4_ on how to override it)\nSome possible class names (See [ctrlMapCursor/cursors](https://community.bistudio.com/wiki/ctrlMapCursor%2Fcursors) for the whole list):\n{{Columns|4|\n* Arrow\n* Track\n* Move\n* Scroll\n* Rotate\n* Track3D\n* Move3D\n* Rotate3D\n* Raise3D\n* Wait\n* HC_move\n* HC_overFriendly\n* HC_overEnemy\n* HC_overMission\n* HC_unsel\n}}",
+            "description": "Changes the default cursor that appears when interacting with a map control to a custom one. Use an empty string to restore the default cursor.\n**IMPORTANT**: Before Arma 3, if the specified cursor does not exist the default is used and no error is produced.\n\nIn Arma 3, this would result in the following error: `**\"No entry 'bin\\config.bin/CfgWrapperUI/Cursors'\"**`.\n}}\nThe cursor is the name of a config entry from _CfgWrapperUI / Cursors_. This command has the following specifics:\n* When used on the Main Map (<sqf inline>findDisplay 12 displayCtrl 51), it is possible to override multiple default cursors. For example, while leaving default \"Arrow\" intact, it is possible to just override \"Scroll\" with e.g \"Wait\" (See _Example 3_)\n* When used on a custom map, for example user made Mini Map, there is only one single cursor \"\" for everything, therefore only this cursor can be overridden (see _Example 4_ on how to override it)\nSome possible class names (See [ctrlMapCursor/cursors](https://community.bistudio.com/wiki/ctrlMapCursor%2Fcursors) for the whole list):\n{{Columns|4|\n* Arrow\n* Track\n* Move\n* Scroll\n* Rotate\n* Track3D\n* Move3D\n* Rotate3D\n* Raise3D\n* Wait\n* HC_move\n* HC_overFriendly\n* HC_overEnemy\n* HC_overMission\n* HC_unsel",
             "examples": [
                 {
                     "text": "```sqf\n_map ctrlMapCursor [\"Track\", \"Arrow\"];\n```"
@@ -16515,7 +16515,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Feature|obsolete|Use `ctrlAddEventHandler` instead as it can stack event handlers.|arma2|1.00}}\nSets given event handler of given control: any previously added event handler is removed.\n\n**NOTE**: \n* See [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) for the full list of handler names\n* See also [DIK KeyCodes](https://community.bistudio.com/wiki/DIK%20KeyCodes) for a list of key code constants relevant to key-related events like [KeyDown](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyDown) and [KeyUp](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyUp)\n\n\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**).",
+            "description": "{{Feature|obsolete|Use `ctrlAddEventHandler` instead as it can stack event handlers.|arma2|1.00}}\nSets given event handler of given control: any previously added event handler is removed.\n\n{{Feature|informative|\n* See [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) for the full list of handler names\n* See also [DIK KeyCodes](https://community.bistudio.com/wiki/DIK%20KeyCodes) for a list of key code constants relevant to key-related events like [KeyDown](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyDown) and [KeyUp](https://community.bistudio.com/wiki/User_Interface_Event_Handlers%23onKeyUp)\n}}\n\n**IMPORTANT**: When using the event names listed [here](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers) with the `ctrlAddEventHandler`, `ctrlSetEventHandler`, `displayAddEventHandler` or `displaySetEventHandler` commands, the prefix \"on\" in the event name must be removed (e.g. **ButtonDown** instead of **onButtonDown**).",
             "examples": [
                 {
                     "text": "```sqf\n_control ctrlSetEventHandler [\"KeyDown\", \"\"];\n```"
@@ -18087,7 +18087,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets tooltip text of given control.\n**NOTE**: If control supports URL property, like `**RscActiveText for example, and the URL is set, tooltip text displayed on mouse over will be appended with URL text.**`",
+            "description": "Sets tooltip text of given control.\n{{Feature|informative|If control supports URL property, like `**RscActiveText}} for example, and the URL is set, tooltip text displayed on mouse over will be appended with URL text.**`",
             "examples": [
                 {
                     "text": "```sqf\n_control ctrlSetTooltip \"tooltip\";\n```"
@@ -18563,7 +18563,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns edit control text selection in format [start, length, selectedText]. \n**NOTE**: _length_ can be negative if text selection is made from right to left. Use `abs` with _length_ or `count` with `**selectedText if string length is required. _start_ always indicates at what position in text the selection is started. The cursor position will always be at the end of the selection. So if selection is made from right to left the cursor position will be at the left end of the selection. In order to find cursor position add _start_ and _length_ together (see _Example 3_).**`",
+            "description": "Returns edit control text selection in format [start, length, selectedText]. \n{{Feature|informative|_length_ can be negative if text selection is made from right to left. Use `abs` with _length_ or `count` with `**selectedText}} if string length is required. _start_ always indicates at what position in text the selection is started. The cursor position will always be at the end of the selection. So if selection is made from right to left the cursor position will be at the left end of the selection. In order to find cursor position add _start_ and _length_ together (see _Example 3_).**`",
             "examples": [
                 {
                     "text": "Selection is made from left to right:\n\n```sqf\nctrlTextSelection _control; //[0, 11, \"Hello World\"];\n```"
@@ -20138,7 +20138,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Terminates the effect in the given layer by fading it out according to the given duration. If named layer is used and it doesn't exist, it will be allocated. For title layer see `titleFadeOut`.\n**Arma**: 3|For greater efficiency and ease of moddability, it is recommended to use named layers.",
+            "description": "Terminates the effect in the given layer by fading it out according to the given duration. If named layer is used and it doesn't exist, it will be allocated. For title layer see `titleFadeOut`.\n**Arma 3**: For greater efficiency and ease of moddability, it is recommended to use named layers.",
             "examples": [
                 {
                     "text": "```sqf\n0 cutFadeOut 2;\n```"
@@ -20186,7 +20186,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Displays an object defined in the global config in `**CfgTitles**`.\n**Arma**: 3|For greater efficiency and ease of modability, it is recommended to use named layers with {{Link|#Syntax 3.}}",
+            "description": "Displays an object defined in the global config in `**CfgTitles**`.\n**Arma 3**: For greater efficiency and ease of modability, it is recommended to use named layers with {{Link|#Syntax 3}}.",
             "examples": [
                 {
                     "text": "```sqf\n\ncutObj [\"TVSet\", \"PLAIN\"];\ncutObj [\"TVSet\", \"PLAIN\", 2];\n\n```"
@@ -20296,7 +20296,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Display a resource defined in RscTitles of the mission's [[Description.ext]], the campaign's description.ext or the global config.\n**Arma**: 3|For greater efficiency and ease of modability, it is recommended to use named layers available with `String` and {{Link|#Syntax 2.}}\n**IMPORTANT**: To avoid conflicts with existing layers it is recommended to register a layer with `BIS_fnc_rscLayer` and to start the name with a TAG:\n\n```sqf\n\n(\"TAG_myLayer\" call BIS_fnc_rscLayer) cutRsc [\"myRsc\", \"PLAIN\"];\n\"TAG_myLayer\" cutRsc [\"myRsc\", \"PLAIN\"];\n```",
+            "description": "Display a resource defined in RscTitles of the mission's [[Description.ext]], the campaign's description.ext or the global config.\n**Arma 3**: For greater efficiency and ease of modability, it is recommended to use named layers available with `String` and {{Link|#Syntax 2}}.\n**IMPORTANT**: To avoid conflicts with existing layers it is recommended to register a layer with `BIS_fnc_rscLayer` and to start the name with a TAG:\n\n```sqf\n\n(\"TAG_myLayer\" call BIS_fnc_rscLayer) cutRsc [\"myRsc\", \"PLAIN\"];\n\"TAG_myLayer\" cutRsc [\"myRsc\", \"PLAIN\"];\n```",
             "examples": [
                 {
                     "text": "```sqf\n\ncutRsc [\"binocular\", \"PLAIN\"];\ncutRsc [\"binocular\", \"PLAIN\", 2];\ncutRsc [\"binocular\", \"PLAIN\", 2, false];\n\n```"
@@ -20379,7 +20379,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Displays a text message in the center of the screen. The text can be displayed on multiple lines by using \"\\n\" new line characters: <sqf inline>cutText [\"line1\\nline2\\nline3\", \"PLAIN\"];\n\n**Arma**: 3|For greater efficiency and ease of modability it is recommended to use named layers through the alternative syntax.",
+            "description": "Displays a text message in the center of the screen. The text can be displayed on multiple lines by using \"\\n\" new line characters: <sqf inline>cutText [\"line1\\nline2\\nline3\", \"PLAIN\"];\n\n**Arma 3**: For greater efficiency and ease of modability it is recommended to use named layers through the alternative syntax.",
             "examples": [
                 {
                     "text": "```sqf\n\ncutText [\"\", \"BLACK OUT\"];\ncutText [\"Hello World!\", \"PLAIN\", 2];\n\n```"
@@ -20973,7 +20973,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Destroys the given group - the group must be empty and [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality) to the machine executing this command.\n\n**NOTE**: In Arma 3 you can find out locality of the group with `local` command, unlike with previous games. However `owner` and `setOwner` don't work with groups anywhere. The group will always be local to the client that created it, until the client disconnects, then the group becomes local to the server. So if you need to delete a group, delete all members first then execute `deleteGroup` where is it `local`.\n\n**Arma**: 3|In {{arma3 when the last unit leaves a group, the group gets automatically deleted. Manually deleting all units from a group, however, does **not** automatically delete the empty group. To force the group to get auto-deleted when empty, use `deleteGroupWhenEmpty`.}}",
+            "description": "Destroys the given group - the group must be empty and [local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality) to the machine executing this command.\n\n{{Feature|informative|In Arma 3 you can find out locality of the group with `local` command, unlike with previous games. However `owner` and `setOwner` don't work with groups anywhere. The group will always be local to the client that created it, until the client disconnects, then the group becomes local to the server. So if you need to delete a group, delete all members first then execute `deleteGroup` where is it `local`.}}\n\n**Arma 3**: In Arma 3 when the last unit leaves a group, the group gets automatically deleted. Manually deleting all units from a group, however, does **not** automatically delete the empty group. To force the group to get auto-deleted when empty, use `deleteGroupWhenEmpty`.",
             "examples": [
                 {
                     "text": "```sqf\ndeleteGroup _group;\n```"
@@ -22450,7 +22450,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Reload models on-the-fly without the need of restarting the game.\nChanges applied by **diag_resetShapes** are applied to all new entities so restart of mission is not necessarily  required - spawning vehicle again or changing back forth weapon should usually do the trick.\nIt works only with `**[[Arma 3: Startup Parameters#Developer Options|-filePatching]]**` in combination with local data. Command will reload **only** models present in local data.\n**NOTE**: Limitation: `**CfgSkeletons (inside {{hl|model.cfg}}) cannot be reloaded.**`",
+            "description": "Reload models on-the-fly without the need of restarting the game.\nChanges applied by **diag_resetShapes** are applied to all new entities so restart of mission is not necessarily  required - spawning vehicle again or changing back forth weapon should usually do the trick.\nIt works only with `**[[Arma 3: Startup Parameters#Developer Options|-filePatching]]**` in combination with local data. Command will reload **only** models present in local data.\n{{Feature|informative|Limitation: `**CfgSkeletons}} (inside {{hl|model.cfg}}) cannot be reloaded.**`",
             "examples": [
                 {
                     "text": "```sqf\ndiag_resetShapes;\n```"
@@ -22521,7 +22521,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the terrain height of the cell in which given position lies. This command is only available with [Arma 3: Diagnostics Exe](https://community.bistudio.com/wiki/Arma%203%3A%20Diagnostics%20Exe).\n[[File:A3 diag setTerrainHeight.png|thumb|350px|See _Example 1_ for the code]]\n**WARNING**: This causes an instant CTD when _position_ is out of the map! (`**&lt; 0 and/or {{hl|&gt; `worldSize`}})**`\n{{Feature|obsolete|This command is subject to be removed and replaced with: `setTerrainHeight`|arma3|2.10}}",
+            "description": "Changes the terrain height of the cell in which given position lies. This command is only available with [Arma 3: Diagnostics Exe](https://community.bistudio.com/wiki/Arma%203%3A%20Diagnostics%20Exe).\n[[File:A3 diag setTerrainHeight.png|thumb|350px|See _Example 1_ for the code]]\n**WARNING**: This causes an instant CTD when _position_ is out of the map! (`**&lt; 0}} and/or {{hl|&gt; `worldSize`}})**`\n{{Feature|obsolete|This command is subject to be removed and replaced with: `setTerrainHeight`|arma3|2.10",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _fnc_flattenTerrain =\n{\n\tparams [\"_start\", \"_a\", \"_b\", \"_h\"];\n\n\tfor \"_xStep\" from 0 to _a do\n\t{\n\t\tfor \"_yStep\" from 0 to _b do\n\t\t{\n\t\t\t_start vectorAdd [_xStep, _yStep, 0] diag_setTerrainHeight _h;\n\t\t};\n\t};\n};\n\nprivate _desiredTerrainHeight = 150;\n[getPosWorld player, 50, 50, _desiredTerrainHeight] spawn _fnc_flattenTerrain;\n\n```"
@@ -23263,7 +23263,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Disable saving of script containing this command. After this, the script can work with data types which do not support serialization (UI types).\n**NOTE**: See [Namespace serialization](https://community.bistudio.com/wiki/Namespace%23Namespace%20serialization) for more information.\n\n**IMPORTANT**: \n**In Arma 2** and up to a certain version of Arma 3, <!--\n-->giving a `Display` or `Control` to `spawn`ed code would raise an error due to the usage of the then non-serializable `**[_this](https://community.bistudio.com/wiki/Magic%20Variables%23this)**` variable. <!--\n-->Using `disableSerialization` or `uiNamespace` wouldn't help; the trick here is to pass the argument inside an array:\n\n```sqf\n\n_display = findDisplay 46;\n _display  spawn { hint str _this; };\t\t\t\t// would raise a serialization error\n[_display] spawn { hint str (_this select 0); };\t// OK\n```",
+            "description": "Disable saving of script containing this command. After this, the script can work with data types which do not support serialization (UI types).\n{{Feature|informative|See [Namespace serialization](https://community.bistudio.com/wiki/Namespace%23Namespace%20serialization) for more information.}}\n\n**IMPORTANT**: \n**In Arma 2** and up to a certain version of Arma 3, <!--\n-->giving a `Display` or `Control` to `spawn`ed code would raise an error due to the usage of the then non-serializable `**[_this](https://community.bistudio.com/wiki/Magic%20Variables%23this)**` variable. <!--\n-->Using `disableSerialization` or `uiNamespace` wouldn't help; the trick here is to pass the argument inside an array:\n\n```sqf\n\n_display = findDisplay 46;\n _display  spawn { hint str _this; };\t\t\t\t// would raise a serialization error\n[_display] spawn { hint str (_this select 0); };\t// OK\n```",
             "examples": [
                 {
                     "text": "```sqf\n\ndisableSerialization;\nprivate _display = findDisplay 46;\n\n```"
@@ -23943,7 +23943,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Performs given [Eden Editor action](https://community.bistudio.com/wiki/Eden%20Editor%3A%20Actions).\n**WARNING**: Prior to `**Arma 3 2.12.150678 it was possible to use this command outside of [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor). For example \n```sqf\ndo3DENAction \"MissionSave\";\n```\n would wipe the [[mission.sqm]] without a way to restore it when executed accidentally during preview.**`",
+            "description": "Performs given [Eden Editor action](https://community.bistudio.com/wiki/Eden%20Editor%3A%20Actions).\n{{Feature|warning|Prior to `**Arma 3 2.12.150678}} it was possible to use this command outside of [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor). For example \n```sqf\ndo3DENAction \"MissionSave\";\n```\n would wipe the [[mission.sqm]] without a way to restore it when executed accidentally during preview.**`",
             "examples": [
                 {
                     "text": "```sqf\ndo3DENAction \"MissionSave\";\n```"
@@ -24551,7 +24551,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n<sqf inline>showHUD false will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position%23Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for `**activeWidth and {{hl|activeHeight**` set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2) and half the screen tall (<sqf inline>safeZoneH / 2), divide these by the according config values: \n```sqf\n\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> \"CfgInGameUI\" >> \"Cursor\" >> \"activeWidth\");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> \"CfgInGameUI\" >> \"Cursor\" >> \"activeHeight\");\n\n```\n\n}}",
+            "description": "Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n<sqf inline>showHUD false will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position%23Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for `**activeWidth}} and {{hl|activeHeight**` set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2) and half the screen tall (<sqf inline>safeZoneH / 2), divide these by the according config values: \n```sqf\n\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> \"CfgInGameUI\" >> \"Cursor\" >> \"activeWidth\");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> \"CfgInGameUI\" >> \"Cursor\" >> \"activeHeight\");\n\n```",
             "examples": [
                 {
                     "text": "Icon and text:\n\n```sqf\n\naddMissionEventHandler [\"Draw3D\", {\n\tdrawIcon3D [\"targetIcon.paa\", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, \"Target\", 1, 0.05, \"TahomaB\"];\n}];\n\n```"
@@ -24925,7 +24925,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:drawTriangle.jpg|right|250px]]\nDraws one to multiple triangles on the map.\n**NOTE**:  When `**fill param is absent or is an empty string \"\", the triangle is drawn with lines of the color set in {{hl|color**` param.\nIn order to draw color-filled triangle of the same color as `**color}} param, set {{hl|fill}} param to opaque white procedural texture{{hl|\"#(rgb,1,1,1)color(1,1,1,1)\"}}.**`",
+            "description": "[[File:drawTriangle.jpg|right|250px]]\nDraws one to multiple triangles on the map.\n{{Feature | informative | When `**fill}} param is absent or is an empty string \"\", the triangle is drawn with lines of the color set in {{hl|color**` param.\nIn order to draw color-filled triangle of the same color as `**color}} param, set {{hl|fill}} param to opaque white procedural texture{{hl|\"#(rgb,1,1,1)color(1,1,1,1)\"}}.**`",
             "examples": [
                 {
                     "text": "```sqf\n\nfindDisplay 12 displayCtrl 51 ctrlAddEventHandler [\"Draw\", \n{\n\t_this select 0 drawTriangle \n\t[\n\t\t[\n\t\t\t// triangle 1 start\n\t\t\tplayer getRelPos [100, 0],\n\t\t\tplayer getRelPos [100, -135],\n\t\t\tplayer getRelPos [100, 135]\n\t\t\t// triangle 1 end\n\t\t],\n\t\t[1,0,0,0.5],\n\t\t\"#(rgb,1,1,1)color(1,1,1,1)\"\t\t\n\t];\n}];\n\n```"
@@ -25410,7 +25410,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enables parts of the AI behavior that was disabled by `disableAI`. \n**IMPORTANT**: When player switches and leaves behind AI unit, you need to enable \"TeamSwitch\" AI on it <sqf inline>_unit enableAI \"TeamSwitch\"; so that the unit continues with `waypoints`.\n**Arma**: 3|Since Arma 3 v1.96 it is possible to return the state of the given AI flag via `checkAIFeature` or set it using alias command `enableAIFeature`.",
+            "description": "Enables parts of the AI behavior that was disabled by `disableAI`. \n{{Feature|important|When player switches and leaves behind AI unit, you need to enable \"TeamSwitch\" AI on it <sqf inline>_unit enableAI \"TeamSwitch\"; so that the unit continues with `waypoints`.}}\n**Arma 3**: Since Arma 3 v1.96 it is possible to return the state of the given AI flag via `checkAIFeature` or set it using alias command `enableAIFeature`.",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne enableAI \"Move\";\n```"
@@ -26070,7 +26070,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enable/disable environmental effects: ambient life and/or ambient sound.\n\n**NOTE**: This command has to be executed after mission start: be sure to use e.g <sqf inline>sleep 0.1; for it to take effect.\nInfluenced sounds among others are:\n{{Columns|2|\n* bird sounds\n* insect sounds\n* waves\n* wind\n* rain\n* sounds produced by air conditioners and similar\n}}\n* {{GVI|arma3|2.06",
+            "description": "Enable/disable environmental effects: ambient life and/or ambient sound.\n\n{{Feature|informative|This command has to be executed after mission start: be sure to use e.g <sqf inline>sleep 0.1; for it to take effect.}}\nInfluenced sounds among others are:\n{{Columns|2|\n* bird sounds\n* insect sounds\n* waves\n* wind\n* rain\n* sounds produced by air conditioners and similar\n}}\n* {{GVI|arma3|2.06",
             "examples": [
                 {
                     "text": "```sqf\nenableEnvironment false; // identical to enableEnvironment [false, false]\n```"
@@ -26666,7 +26666,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enable ambient traffic. **Arma**: 3|This command does nothing in {{arma3.}}",
+            "description": "Enable ambient traffic. **Arma 3**: This command does nothing in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\nenableTraffic true;\n```"
@@ -26902,7 +26902,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Finishes loading screen started by `startLoadingScreen`.\n\n**Arma**: 3|Use `BIS_fnc_endLoadingScreen` to prevent potential usage conflicts.",
+            "description": "Finishes loading screen started by `startLoadingScreen`.\n\n**Arma 3**: Use `BIS_fnc_endLoadingScreen` to prevent potential usage conflicts.",
             "examples": [
                 {
                     "text": "```sqf\n\nstartLoadingScreen [\"Loading My Mission\"];\n// code\nprogressLoadingScreen 0.5;\n// code\nendLoadingScreen;\n\n```"
@@ -26928,7 +26928,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Finish the mission.\n**Mission saves are deleted**. Use `failMission` if they should not be.\n**Arma**: 3|To maintain {{arma3 visual style, it is recommended to use `BIS_fnc_endMission` instead.}}",
+            "description": "Finish the mission.\n**Mission saves are deleted**. Use `failMission` if they should not be.\n**Arma 3**: To maintain Arma 3 visual style, it is recommended to use `BIS_fnc_endMission` instead.",
             "examples": [
                 {
                     "text": "```sqf\nendMission \"END1\";\n```"
@@ -27438,7 +27438,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Execute scripted `FSM` and return the FSM handle or 0 when failed. The FSM file is first searched in the mission folder, then in the campaign scripts folder and finally in the global scripts folder. Argument (if any) are available in `**_this**` variable inside FSM. Variables set inside FSMs can be read/modified externally, using `setFSMVariable` and `getFSMVariable` commands.\n\n\n\nThe return value is the FSM handle; it can be used to determine (via `completedFSM`) when the FSM has finished.\n**Arma**: 3|In Arma 3, the FSM handle is also available within the FSM through the `**_thisFSM variable.**`\n\n\nScripted FSMs are added into the scheduler just like `exec` scripts, `execVM` scripts and `spawn` scripts.\n\nTo see what FSMs are currently in the scheduler, use `diag_activeMissionFSMs` command.\n**IMPORTANT**: While the code placed into any of the sections of FSM cannot be suspended (`canSuspend` is false), the FSM itself is suspended every simulation between the state's `**init and {{hl|precondition**` (exception is the **init state**). This is the only place where scripted FSM is suspended/resumed.\nThe usual difference between the state's `**init}} and {{hl|precondition}} is 1 frame but if the scheduler is busy it can take longer. See `FSM` for more information about FSM's structure.**`",
+            "description": "Execute scripted `FSM` and return the FSM handle or 0 when failed. The FSM file is first searched in the mission folder, then in the campaign scripts folder and finally in the global scripts folder. Argument (if any) are available in `**_this**` variable inside FSM. Variables set inside FSMs can be read/modified externally, using `setFSMVariable` and `getFSMVariable` commands.\n\n\n\nThe return value is the FSM handle; it can be used to determine (via `completedFSM`) when the FSM has finished.\n{{Feature|arma3|In Arma 3, the FSM handle is also available within the FSM through the `**_thisFSM}} variable.**`\n\n\nScripted FSMs are added into the scheduler just like `exec` scripts, `execVM` scripts and `spawn` scripts.\n\nTo see what FSMs are currently in the scheduler, use `diag_activeMissionFSMs` command.\n{{Feature|important|While the code placed into any of the sections of FSM cannot be suspended (`canSuspend` is false), the FSM itself is suspended every simulation between the state's `**init}} and {{hl|precondition**` (exception is the **init state**). This is the only place where scripted FSM is suspended/resumed.\nThe usual difference between the state's `**init}} and {{hl|precondition}} is 1 frame but if the scheduler is busy it can take longer. See `FSM` for more information about FSM's structure.**`",
             "examples": [
                 {
                     "text": "```sqf\n_id = player execFSM \"test.fsm\";\n```"
@@ -27517,7 +27517,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Compiles and adds an [SQF](https://community.bistudio.com/wiki/SQF%20Syntax) [script](https://community.bistudio.com/wiki/Script%20Handle) to the [scheduler](https://community.bistudio.com/wiki/Scheduler) queue and returns script handle (see also _Example 4_).\nThe script does not execute immediately upon running `execVM` command but with some delay depending on the VM's scripts queue and engine load.\n\n**NOTE**: \n* If the same script is to be executed more than one time, declaring it as a [Function](https://community.bistudio.com/wiki/Arma%203%3A%20Functions%20Library) is recommended to avoid recompiling and wasting performance with every execution.\n* The script is searched for in the following directories in that order:\n** mission directory\n** campaign scripts directory\n** global scripts directory.\n* To see what VM scripts are currently in the scheduler, use `diag_activeSQFScripts` command.\n\n\n**IMPORTANT**: \n* The `**.sqf**` file extension is not mandatory but is strongly recommended as using non-standard extensions may cause problems during binarisation\n* If the script file is not prepared using UTF-8 encoding and contains some characters [with codes](https://community.bistudio.com/wiki/toArray) > 127, they might convert incorrectly.",
+            "description": "Compiles and adds an [SQF](https://community.bistudio.com/wiki/SQF%20Syntax) [script](https://community.bistudio.com/wiki/Script%20Handle) to the [scheduler](https://community.bistudio.com/wiki/Scheduler) queue and returns script handle (see also _Example 4_).\nThe script does not execute immediately upon running `execVM` command but with some delay depending on the VM's scripts queue and engine load.\n\n{{Feature|informative|\n* If the same script is to be executed more than one time, declaring it as a [Function](https://community.bistudio.com/wiki/Arma%203%3A%20Functions%20Library) is recommended to avoid recompiling and wasting performance with every execution.\n* The script is searched for in the following directories in that order:\n** mission directory\n** campaign scripts directory\n** global scripts directory.\n* To see what VM scripts are currently in the scheduler, use `diag_activeSQFScripts` command.\n}}\n\n**IMPORTANT**: \n* The `**.sqf**` file extension is not mandatory but is strongly recommended as using non-standard extensions may cause problems during binarisation\n* If the script file is not prepared using UTF-8 encoding and contains some characters [with codes](https://community.bistudio.com/wiki/toArray) > 127, they might convert incorrectly.",
             "examples": [
                 {
                     "text": "```sqf\nexecVM \"test.sqf\";\n```"
@@ -27892,7 +27892,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the current music volume to the given value smoothly within the given time. **NOTE**: The player's in-game setting is not changed by this command: `**Final Volume {{= Client Setting * Scripted Volume}}.**`",
+            "description": "Changes the current music volume to the given value smoothly within the given time. {{Feature|informative|The player's in-game setting is not changed by this command: `**Final Volume {{=}} Client Setting * Scripted Volume}}.**`",
             "examples": [
                 {
                     "text": "```sqf\n5 fadeMusic 0; // fade current music volume to 0 in 5 sec\n```"
@@ -27924,7 +27924,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the radio volume smoothly within the given time. **NOTE**: The player's in-game setting is not changed by this command: `**Final Volume {{= Client Setting * Scripted Volume}}.**`",
+            "description": "Changes the radio volume smoothly within the given time. {{Feature|informative|The player's in-game setting is not changed by this command: `**Final Volume {{=}} Client Setting * Scripted Volume}}.**`",
             "examples": [
                 {
                     "text": "```sqf\n5 fadeRadio 0.1;\n```"
@@ -27956,7 +27956,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Changes the sound volume smoothly within the given time. **NOTE**: The player's in-game setting is not changed by this command: `**Final Volume {{= Client Setting * Scripted Volume}}.**`",
+            "description": "Changes the sound volume smoothly within the given time. {{Feature|informative|The player's in-game setting is not changed by this command: `**Final Volume {{=}} Client Setting * Scripted Volume}}.**`",
             "examples": [
                 {
                     "text": "```sqf\n5 fadeSound 0;\n```"
@@ -28020,7 +28020,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Finish the mission. If the server is set to run persistent mission, `failMission` will not end the mission when last player gets kicked to the lobby. Use `endMission` to end the mission.\n\nThe end type can be:\n* \"CONTINUE\" - this is default type, basically an alias to do nothing\n* \"KILLED\"\n* \"LOSER\"\n* \"END1\"\n* \"END2\"\n* \"END3\"\n* \"END4\"\n* \"END5\"\n* \"END6\"\n\n**Mission saves won't be deleted**.\n\n\n\n**Arma**: 3|To maintain Arma 3 visual style, it is recommended to use `BIS_fnc_endMission` instead.",
+            "description": "Finish the mission. If the server is set to run persistent mission, `failMission` will not end the mission when last player gets kicked to the lobby. Use `endMission` to end the mission.\n\nThe end type can be:\n* \"CONTINUE\" - this is default type, basically an alias to do nothing\n* \"KILLED\"\n* \"LOSER\"\n* \"END1\"\n* \"END2\"\n* \"END3\"\n* \"END4\"\n* \"END5\"\n* \"END6\"\n\n**Mission saves won't be deleted**.\n\n\n\n**Arma 3**: To maintain Arma 3 visual style, it is recommended to use `BIS_fnc_endMission` instead.",
             "examples": [
                 {
                     "text": "```sqf\nfailMission \"LOSER\";\n```"
@@ -28107,7 +28107,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Searches for an array element within an array or an ANSI string within an ANSI string.\n**Arma**: 3|If Unicode support is desired, see `forceUnicode`.\n**IMPORTANT**: Search is cASe-seNsItiVE!",
+            "description": "Searches for an array element within an array or an ANSI string within an ANSI string.\n**Arma 3**: If Unicode support is desired, see `forceUnicode`.\n**IMPORTANT**: Search is cASe-seNsItiVE!",
             "examples": [
                 {
                     "text": "```sqf\n[\"Apples\", \"Oranges\", \"Pears\"] find \"Oranges\"; // returns 1\n```"
@@ -29659,7 +29659,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Executes the given command(s) on every item of an `Array` or a `HashMap`.\n**Arma**: 2|Since {{arma2, the variable [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x) is always `private` to the `forEach` block so it is safe to nest them (see _Example 8_).}}",
+            "description": "Executes the given command(s) on every item of an `Array` or a `HashMap`.\n**Arma 2**: Since Arma 2, the variable [_x](https://community.bistudio.com/wiki/Magic%20Variables%23x) is always `private` to the `forEach` block so it is safe to nest them (see _Example 8_).",
             "examples": [
                 {
                     "text": "```sqf\n\n// SQF\n{ _x setDamage 1 } forEach units player;\n\n```\n\n<sqs>\n; SQS\n\"_x setDammage 1\" forEach units player\n</sqs>"
@@ -32173,7 +32173,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the object heading in the range 0..360.\n**Arma**: 3|The alternative syntax gets heading from one object or position to another object or position, and should be used instead of `BIS_fnc_dirTo`.",
+            "description": "Returns the object heading in the range 0..360.\n**Arma 3**: The alternative syntax gets heading from one object or position to another object or position, and should be used instead of `BIS_fnc_dirTo`.",
             "examples": [
                 {
                     "text": "```sqf\n_azimuth = getDir player;\n```"
@@ -32218,7 +32218,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns object's heading in the range from 0 to 360 in render time scope.\n**Arma**: 3|The alternative syntax gets heading from one object or position to another object or position in render time scope, and should be used instead of `BIS_fnc_dirTo`.",
+            "description": "Returns object's heading in the range from 0 to 360 in render time scope.\n**Arma 3**: The alternative syntax gets heading from one object or position to another object or position in render time scope, and should be used instead of `BIS_fnc_dirTo`.",
             "examples": [
                 {
                     "text": "```sqf\n_dir = getDirVisual player;\n```"
@@ -34619,7 +34619,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return a UniqueID of the given unit (player).\n\n**Arma**: 3|The returned string is the player's steamID64: <sqf inline>private _steamProfileUrl = \"http://steamcommunity.com/profiles/\" + (getPlayerUID player);\n\n**IMPORTANT**: Prior to [[Arma 2: Operation Arrowhead]] v1.60, the result always consisted of a [stringified](https://community.bistudio.com/wiki/str) number (see `getPlayerUIDOld`), but always had to be considered and processed as a `String`.<!--\n--> Converting it to a `Number` could cause precision problems, as `Number` cannot accurately represent integers above 16777216 (2<sup>24</sup>).<!--\n--> Moreover, games since [[Arma 2: Operation Arrowhead]] v1.61 provide a value that is not all-numeric.\n\n**NOTE**: Prior to [Arma 3](https://community.bistudio.com/wiki/Arma%203) v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused `isPlayer` and `getPlayerUID` to incorrectly return `**`false` and {{hl|\"\"}} respectively, where the affected units were `not` `local`. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this bug report (GitHub)}} for more info. This was supposedly fixed, but you should remain vigilant toward false negatives nonetheless. **`",
+            "description": "Return a UniqueID of the given unit (player).\n\n**Arma 3**: The returned string is the player's steamID64: <sqf inline>private _steamProfileUrl = \"http://steamcommunity.com/profiles/\" + (getPlayerUID player);\n\n**IMPORTANT**: Prior to [[Arma 2: Operation Arrowhead]] v1.60, the result always consisted of a [stringified](https://community.bistudio.com/wiki/str) number (see `getPlayerUIDOld`), but always had to be considered and processed as a `String`.<!--\n--> Converting it to a `Number` could cause precision problems, as `Number` cannot accurately represent integers above 16777216 (2<sup>24</sup>).<!--\n--> Moreover, games since [[Arma 2: Operation Arrowhead]] v1.61 provide a value that is not all-numeric.\n\n{{Feature|informative|Prior to [Arma 3](https://community.bistudio.com/wiki/Arma%203) v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused `isPlayer` and `getPlayerUID` to incorrectly return `**`false`}} and {{hl|\"\"}} respectively, where the affected units were `not` `local`. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this bug report (GitHub)}} for more info. This was supposedly fixed, but you should remain vigilant toward false negatives nonetheless. **`",
             "examples": [
                 {
                     "text": "```sqf\nprivate _uid = getPlayerUID player;\n```"
@@ -35144,7 +35144,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns an array containing all information about current client screen resolution.\n\n**Arma**: 3|\n**Render resolution** is not returned by this command.\n\nA sampling setting of **50%** means half of native width _and_ half of native height, resulting in a render resolution of **25%** the original resolution.\n**IMPORTANT**:  The engine default value for `**fovTop is **0.75** in case it is needed to calculate difference with custom FOV.**`\n**NOTE**: The `**aspectRatio is calculated as {{hl|fovLeft&nbsp;/&nbsp;fovTop}} and should be the same as {{hl|screenW&nbsp;/&nbsp;screenH**` for undistorted image if the FOV is custom. Some of the common values:\n{{{!}} class{{=}}\"wikitable\"\n! 16/9 !! 16/10 !! 5/4 !! 4/3 !! 16/9 triple screen\n{{!}}-\n{{!}} 1.777777(…) {{!}}{{!}} 1.6 {{!}}{{!}} 1.25 {{!}}{{!}} 1.333333(…) {{!}}{{!}} 5.333333(…)\n{{!}}}\n}}",
+            "description": "Returns an array containing all information about current client screen resolution.\n\n**Arma 3**: \n**Render resolution** is not returned by this command.\n\nA sampling setting of **50%** means half of native width _and_ half of native height, resulting in a render resolution of **25%** the original resolution.\n**IMPORTANT**:  The engine default value for `**fovTop}} is **0.75** in case it is needed to calculate difference with custom FOV.**`\n{{Feature|informative|The `**aspectRatio}} is calculated as {{hl|fovLeft&nbsp;/&nbsp;fovTop}} and should be the same as {{hl|screenW&nbsp;/&nbsp;screenH**` for undistorted image if the FOV is custom. Some of the common values:\n{{{!}} class{{=}}\"wikitable\"\n! 16/9 !! 16/10 !! 5/4 !! 4/3 !! 16/9 triple screen\n{{!}}-\n{{!}} 1.777777(…) {{!}}{{!}} 1.6 {{!}}{{!}} 1.25 {{!}}{{!}} 1.333333(…) {{!}}{{!}} 5.333333(…)\n{{!}}}",
             "examples": [
                 {
                     "text": "```sqf\nprivate _res = getResolution;\n```\n\n\nExample result with a single 16:9 monitor:\n\n```sqf\n\n[\n\t1920,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t1.77778,\t// aspect ratio\n\t0.55,\t\t// UI scale\n\t0.75,\t\t// fovTop\n\t1.33333,\t// fovLeft\n\tfalse\t\t// tripleHead\n]\n\n```\n\nExample result with a triple 16:9 monitor setup:\n\n```sqf\n\n[\n\t5760,\t\t// width\n\t1080,\t\t// height\n\t792,\t\t// 2D viewport width\n\t594,\t\t// 2D viewport height\n\t5.33333,\t// aspect ratio\n\t0.55\t\t// UI scale\n]\n\n```\n\nExample result on a dedicated server:\n\n```sqf\n\n[\n\t160,\t\t// width\n\t120,\t\t// height\n\t136,\t\t// 2D viewport width\n\t102,\t\t// 2D viewport height\n\t1.33333,\t// aspect ratio\n\t0.85\t\t// UI scale\n]\n\n```"
@@ -35827,7 +35827,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`getTerrainInfo`",
-                    "returns": "`Array` in format `**[landGridWidth, landGridSize, terrainGridWidth, terrainGridSize, seaLevel]**`:\n* landGridWidth: `Number` - width of each land grid, in meters\n* landGridSize: `Number` - number of land grid pixels\n* terrainGridWidth: `Number` width of each terrain grid, in meters (also known as \"cell size\")\n* terrainGridSize: `Number` - number of terrain grid pixels (also known as \"heightmap resolution\")\n* seaLevel: `Number` - sea level without waves. The value is `**0**` if tides are disabled.\n\n**NOTE**: \n* The result of `**landGridWidth * landGridSize and {{hl|terrainGridWidth * terrainGridSize**` is always equal to the `worldSize`.\n* \"land grid\" is used by the game for object placement (e.g. finding the `nearestObject`), dynamic simulation, etc.\n* \"terrain grid\" is the actual terrain, used to display the terrain, calculate [terrain height](https://community.bistudio.com/wiki/getTerrainHeightASL), [surface normal](https://community.bistudio.com/wiki/surfaceNormal), etc.\n}}"
+                    "returns": "`Array` in format `**[landGridWidth, landGridSize, terrainGridWidth, terrainGridSize, seaLevel]**`:\n* landGridWidth: `Number` - width of each land grid, in meters\n* landGridSize: `Number` - number of land grid pixels\n* terrainGridWidth: `Number` width of each terrain grid, in meters (also known as \"cell size\")\n* terrainGridSize: `Number` - number of terrain grid pixels (also known as \"heightmap resolution\")\n* seaLevel: `Number` - sea level without waves. The value is `**0**` if tides are disabled.\n\n**NOTE**: \n* The result of `**landGridWidth * landGridSize}} and {{hl|terrainGridWidth * terrainGridSize**` is always equal to the `worldSize`.\n* \"land grid\" is used by the game for object placement (e.g. finding the `nearestObject`), dynamic simulation, etc.\n* \"terrain grid\" is the actual terrain, used to display the terrain, calculate [terrain height](https://community.bistudio.com/wiki/getTerrainHeightASL), [surface normal](https://community.bistudio.com/wiki/surfaceNormal), etc."
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/getTerrainInfo"
@@ -35961,7 +35961,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns all Thermal Imaging parameters.\n{{{!}} class=\"wikitable align-center-col-2\"\n! Parameter\n! Default Value\n! Description\n{{!}}-\n{{!}} `**OutputRangeStart**`\n{{!}} 0.1\n{{!}} Thermal output minimal value\n{{!}}-\n{{!}} `**OutputRangeWidth**`\n{{!}} 0.8\n{{!}} Thermal output width\n{{!}}}\n**NOTE**: The output formula is as follows: `**OutputRangeStart + _thermalValue_ &times; OutputRangeWidth, making the default range 0.1..0.9.**`",
+            "description": "Returns all Thermal Imaging parameters.\n{{{!}} class=\"wikitable align-center-col-2\"\n! Parameter\n! Default Value\n! Description\n{{!}}-\n{{!}} `**OutputRangeStart**`\n{{!}} 0.1\n{{!}} Thermal output minimal value\n{{!}}-\n{{!}} `**OutputRangeWidth**`\n{{!}} 0.8\n{{!}} Thermal output width\n{{!}}}\n{{Feature|informative|The output formula is as follows: `**OutputRangeStart + _thermalValue_ &times; OutputRangeWidth}}, making the default range 0.1..0.9.**`",
             "examples": [
                 {
                     "text": "```sqf\nif (getTIParameters get \"OutputRangeStart\" == 0.1) then { hint \"default Start\" };\n```"
@@ -36283,7 +36283,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Gets the current value of a trait of the given unit.\n**NOTE**: For the default values see {{Link|setUnitTrait.}}",
+            "description": "Gets the current value of a trait of the given unit.\n**NOTE**: For the default values see {{Link|setUnitTrait}}.",
             "examples": [
                 {
                     "text": "```sqf\nplayer getUnitTrait \"Medic\";\n```"
@@ -36444,7 +36444,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n{{{!}} class=\"wikitable\"\n!colspan=\"2\"{{!}}Primary syntax (`String`) !! colspan=\"2\"{{!}}Alternative syntax (`Array`)\n{{!}}-\n{{!}}**Code**\n{{!}}**Since**\n{{!}}**Code**\n{{!}}**Since**\n{{!}}-\n{{!}} `Namespace` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Namespace` getVariable `Array` {{!}}{{!}} Arma 2: Operation Arrowhead v1.60\n{{!}}-\n{{!}} `Object` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Object` getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Group` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Group` getVariable `Array` {{!}}{{!}} -\n{{!}}-\n{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member) getVariable `String` {{!}}{{!}} - {{!}}{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member) getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Task` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Task` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Location` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Location` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Control` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Control` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}-\n{{!}} `Display` getVariable `String` {{!}}{{!}} Arma 3 v1.56 {{!}}{{!}} `Display` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}}\n\n**IMPORTANT**: When variable is [set](https://community.bistudio.com/wiki/setVariable) on a `Task`, it is not actually set on the task itself, but on the FSM attached to the task.\n\nIf there is no FSM, `getVariable` will not work.\n**Arma**: 3 | In the case of Alt Syntax usage in {{arma3, _defaultValue_ will be returned if:\n* Requested variable is either undefined or `nil`\n* Variable namespace is null (`objNull`, `grpNull`, etc.)}}",
+            "description": "Returns the value of variable in the variable space assigned to various data types.\nAll available data types combinations:\n{{{!}} class=\"wikitable\"\n!colspan=\"2\"{{!}}Primary syntax (`String`) !! colspan=\"2\"{{!}}Alternative syntax (`Array`)\n{{!}}-\n{{!}}**Code**\n{{!}}**Since**\n{{!}}**Code**\n{{!}}**Since**\n{{!}}-\n{{!}} `Namespace` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Namespace` getVariable `Array` {{!}}{{!}} Arma 2: Operation Arrowhead v1.60\n{{!}}-\n{{!}} `Object` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Object` getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Group` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Group` getVariable `Array` {{!}}{{!}} -\n{{!}}-\n{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member) getVariable `String` {{!}}{{!}} - {{!}}{{!}} [Team Member](https://community.bistudio.com/wiki/Team%20Member) getVariable `Array` {{!}}{{!}} - \n{{!}}-\n{{!}} `Task` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Task` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Location` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Location` getVariable `Array` {{!}}{{!}} Arma 3 v1.68\n{{!}}-\n{{!}} `Control` getVariable `String` {{!}}{{!}} - {{!}}{{!}} `Control` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}-\n{{!}} `Display` getVariable `String` {{!}}{{!}} Arma 3 v1.56 {{!}}{{!}} `Display` getVariable `Array` {{!}}{{!}} Arma 3 v1.56\n{{!}}}\n\n{{Feature|important|When variable is [set](https://community.bistudio.com/wiki/setVariable) on a `Task`, it is not actually set on the task itself, but on the FSM attached to the task.\n\nIf there is no FSM, `getVariable` will not work.}}\n**Arma 3**:  In the case of Alt Syntax usage in Arma 3, _defaultValue_ will be returned if:\n* Requested variable is either undefined or `nil`\n* Variable namespace is null (`objNull`, `grpNull`, etc.)",
             "examples": [
                 {
                     "text": "```sqf\nprivate _variable = myTruck getVariable \"myVariable\"; // returns nil if \"myVariable\" is not set\n```"
@@ -36575,7 +36575,7 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [],
                     "outline": "`getVideoOptions`",
-                    "returns": "`HashMap` - all video settings, the key is always a `String`, the value can be a `String`, `Number`, `Boolean` or `Array` (see _Example 1_).\n**IMPORTANT**: `**vramInfo and {{hl|monitorResolution}} keys presence is not guaranteed.**`"
+                    "returns": "`HashMap` - all video settings, the key is always a `String`, the value can be a `String`, `Number`, `Boolean` or `Array` (see _Example 1_).\n{{Feature|important|`**vramInfo}} and {{hl|monitorResolution}} keys presence is not guaranteed.**`"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/getVideoOptions"
@@ -36924,7 +36924,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Break script flow and go to given label (defined by **#** - **NOT** to be confused with [SQF](https://community.bistudio.com/wiki/SQF%20Syntax)'s [hash sign](https://community.bistudio.com/wiki/a_hash_b)!)\n**WARNING**: This command only works in [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax).\n**NOTE**: Note that labels are not case sensitive and are searched for from the top of the script, so multiple occurrences of a label will only result in the topmost one ever being found.",
+            "description": "Break script flow and go to given label (defined by **#** - **NOT** to be confused with [SQF](https://community.bistudio.com/wiki/SQF%20Syntax)'s [hash sign](https://community.bistudio.com/wiki/a_hash_b)!)\n{{Feature|warning|This command only works in [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax).}}\n**NOTE**: Note that labels are not case sensitive and are searched for from the top of the script, so multiple occurrences of a label will only result in the topmost one ever being found.",
             "examples": [
                 {
                     "text": "<sqs>\ngoto \"myLabel\"\nplayer setDamage 1\n\n#myLabel\nhint \"you successfully avoided death!\"\n</sqs>"
@@ -37860,7 +37860,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Shows or hides [high command](https://community.bistudio.com/wiki/High%20Command) bar. There must be some groups under HC command to show HC bar.**Arma**: 3| Since Arma 3 v1.94 this command returns `Nothing` as it should",
+            "description": "Shows or hides [high command](https://community.bistudio.com/wiki/High%20Command) bar. There must be some groups under HC command to show HC bar.**Arma 3**:  Since Arma 3 v1.94 this command returns `Nothing` as it should",
             "examples": [
                 {
                     "text": "```sqf\nhcShowBar true;\n```"
@@ -38102,7 +38102,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "The number of objects in hierarchy. **Arma**: 3|This command is not present in Arma 3",
+            "description": "The number of objects in hierarchy. **Arma 3**: This command is not present in Arma 3",
             "examples": [
                 {
                     "text": "```sqf\n_number = hierarchyObjectsCount;\n```"
@@ -38124,7 +38124,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Outputs a hint message to the right of the screen (left of the screen in Operation Flashpoint) with a sound (except in Armed Assault).\nTo split message in multiple lines either use [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) or `**\\n**` (in lower case).\n\n**Arma**: 1|{{arma1 hints are silent. For later titles, see `hintSilent`.}}",
+            "description": "Outputs a hint message to the right of the screen (left of the screen in Operation Flashpoint) with a sound (except in Armed Assault).\nTo split message in multiple lines either use [Structured Text](https://community.bistudio.com/wiki/Structured%20Text) or `**\\n**` (in lower case).\n\n**Armed Assault**: Armed Assault hints are silent. For later titles, see `hintSilent`.",
             "examples": [
                 {
                     "text": "```sqf\n\n// outputs the following:\n// Press W to move forward.\n// Press S to move backwards.\nhint \"Press W to move forward.\\nPress S to move backwards.\"\n\n```"
@@ -39206,7 +39206,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets given event handler of in-game UI. If EH function returns `true`, performed action is overridden. Event handlers available are:\n* \"PrevAction\" - mouse scroll up\n* \"Action\" - action key press\n* \"NextAction\" - mouse scroll down\nIn order to remove a previously added event handler, set it again with an empty _code_ string `**\"\"**`.\n\n**IMPORTANT**: This is a \"set\" command, which means event handlers are not stackable and will replace previously set event handlers of the same type.\n\n**Arma**: 3|Since {{arma3 v1.50 the event handler receives an array of the selected/activated action's arguments in `**_this**` variable:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_index\", \"_engineName\", \"_text\", \"_priority\", \"_showWindow\", \"_hideOnUse\", \"_shortcut\", \"_visibleMenu\", \"_eventName\"];\n```\n\n* _target: `Object` - target object to which action is attached\n* _caller: `Object` - caller object, basically `player`\n* _index: `Number` - index of the action in action menu (0 - top most)\n* _engineName: `String` - engine based action name (\"User\" for user added actions)\n* _text: `String` - `localize`d action plain text as seen by the caller\n* _priority: `Number` - action _priority_ value\n* _showWindow: `Boolean` - action _showWindow_ value\n* _hideOnUse: `Boolean` - action _hideOnUse_ value\n* _shortcut: `String` - action _shortcut_ name or \"\"\n* _visibleMenu: `Boolean` - [action menu visibility](https://community.bistudio.com/wiki/isActionMenuVisible) - on first scroll or action press the menu is still invisible, the menu is shown but no action is performed\n* _eventName: `String` - event name\n}}",
+            "description": "Sets given event handler of in-game UI. If EH function returns `true`, performed action is overridden. Event handlers available are:\n* \"PrevAction\" - mouse scroll up\n* \"Action\" - action key press\n* \"NextAction\" - mouse scroll down\nIn order to remove a previously added event handler, set it again with an empty _code_ string `**\"\"**`.\n\n{{Feature|important|This is a \"set\" command, which means event handlers are not stackable and will replace previously set event handlers of the same type.}}\n\n**Arma 3**: Since Arma 3 v1.50 the event handler receives an array of the selected/activated action's arguments in `**_this**` variable:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_index\", \"_engineName\", \"_text\", \"_priority\", \"_showWindow\", \"_hideOnUse\", \"_shortcut\", \"_visibleMenu\", \"_eventName\"];\n```\n\n* _target: `Object` - target object to which action is attached\n* _caller: `Object` - caller object, basically `player`\n* _index: `Number` - index of the action in action menu (0 - top most)\n* _engineName: `String` - engine based action name (\"User\" for user added actions)\n* _text: `String` - `localize`d action plain text as seen by the caller\n* _priority: `Number` - action _priority_ value\n* _showWindow: `Boolean` - action _showWindow_ value\n* _hideOnUse: `Boolean` - action _hideOnUse_ value\n* _shortcut: `String` - action _shortcut_ name or \"\"\n* _visibleMenu: `Boolean` - [action menu visibility](https://community.bistudio.com/wiki/isActionMenuVisible) - on first scroll or action press the menu is still invisible, the menu is shown but no action is performed\n* _eventName: `String` - event name",
             "examples": [
                 {
                     "text": "```sqf\ninGameUISetEventHandler [\"Action\", \"hint 'Lights, Camera, Action!'; true\"];\nsleep 10;\ninGameUISetEventHandler [\"Action\", \"\"]; // removes the \"Action\" EH\n```"
@@ -39594,7 +39594,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns how much a man is inside a building. The value is the same as normally returned by weapons/ammo sound controller \"interior\".\nIt is possible to modify an individual object to use sound interior with `enableAudioFeature`.\n\n**NOTE**: \nThe sound is considered internal when the corresponding surface sound name starts with \"int_\".\nAn object placed inside a building that does not have model `**CfgSurfaces' {{sic|[soundEviron](https://community.bistudio.com/wiki/Config%20Properties%20Megalist%23soundEviron)**` parameter named this way would generate external sound inside the building, and `insideBuilding` on top of this object would return 0.\n}}",
+            "description": "Returns how much a man is inside a building. The value is the same as normally returned by weapons/ammo sound controller \"interior\".\nIt is possible to modify an individual object to use sound interior with `enableAudioFeature`.\n\n**NOTE**: \nThe sound is considered internal when the corresponding surface sound name starts with \"int_\".\nAn object placed inside a building that does not have model `**CfgSurfaces}}' {{sic|[soundEviron](https://community.bistudio.com/wiki/Config%20Properties%20Megalist%23soundEviron)**` parameter named this way would generate external sound inside the building, and `insideBuilding` on top of this object would return 0.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _isFullyInside = insideBuilding player == 1;\n```"
@@ -40418,7 +40418,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Compares types of all elements of an array to the type of a single value. Since Arma 3 v2.09.149634 no additional check is needed to make sure the first argument is an `Array`.\n**IMPORTANT**: An empty array will return `**`false` (see _Example 2_).**`",
+            "description": "Compares types of all elements of an array to the type of a single value. Since Arma 3 v2.09.149634 no additional check is needed to make sure the first argument is an `Array`.\n{{Feature|important|An empty array will return `**`false`}} (see _Example 2_).**`",
             "examples": [
                 {
                     "text": "```sqf\n_arr = [1,2,3,4,5,6,7,8,9,0];\n_arr isEqualTypeAll \"\"; // false\n_arr isEqualTypeAll 0;\t// true\n```"
@@ -40780,7 +40780,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the state of game simulation. Simulation can get paused by pressing {{Controls|Alt|Tab}} or a system dialog opening (e.g. {{Controls|Esc}} menu).\nSimulation will not get paused if `**-noPause**` [startup parameter](https://community.bistudio.com/wiki/Arma%203%3A%20Startup%20Parameters) is used.\n**NOTE**: `onEachFrame` event and `**\"EachFrame\" event handler continue to execute when the simulation is paused, which could result in undesired backlog. Use `isGamePaused` to skip loop if needed.**`",
+            "description": "Returns the state of game simulation. Simulation can get paused by pressing {{Controls|Alt|Tab}} or a system dialog opening (e.g. {{Controls|Esc}} menu).\nSimulation will not get paused if `**-noPause**` [startup parameter](https://community.bistudio.com/wiki/Arma%203%3A%20Startup%20Parameters) is used.\n{{Feature|informative|`onEachFrame` event and `**\"EachFrame\"}} event handler continue to execute when the simulation is paused, which could result in undesired backlog. Use `isGamePaused` to skip loop if needed.**`",
             "examples": [
                 {
                     "text": "```sqf\n\nonEachFrame \n{\n\tif (isGamePaused) exitWith {};\n\t// ...do stuff\n};\n\n```"
@@ -40802,7 +40802,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Checks if the given group marked for auto-deletion when empty. See `deleteGroupWhenEmpty`.\n**NOTE**: It might take up to a minute for the groups marked for auto-deletion when empty to get deleted when they become empty.\n**IMPORTANT**: This command is only a getter for the deleteWhenEmpty flag in `createGroup` command or `deleteGroupWhenEmpty` command. All it does is it shows what the flag was set to during group creation. [True](https://community.bistudio.com/wiki/true) does not mean the group will be deleted but that it was suggested to the engine that it should be deleted. It is up to the engine how it manages groups. [False](https://community.bistudio.com/wiki/false) does not mean that the group will not be deleted **at all**. It has no influence on the engine functionality whatsoever.",
+            "description": "Checks if the given group marked for auto-deletion when empty. See `deleteGroupWhenEmpty`.\n{{Feature|informative|It might take up to a minute for the groups marked for auto-deletion when empty to get deleted when they become empty.}}\n**IMPORTANT**: This command is only a getter for the deleteWhenEmpty flag in `createGroup` command or `deleteGroupWhenEmpty` command. All it does is it shows what the flag was set to during group creation. [True](https://community.bistudio.com/wiki/true) does not mean the group will be deleted but that it was suggested to the engine that it should be deleted. It is up to the engine how it manages groups. [False](https://community.bistudio.com/wiki/false) does not mean that the group will not be deleted **at all**. It has no influence on the engine functionality whatsoever.",
             "examples": [
                 {
                     "text": "```sqf\n_isMarked = isGroupDeletedWhenEmpty _group;\n```"
@@ -41281,7 +41281,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Tests whether a variable is `nil` or undefined from its [identifier](https://community.bistudio.com/wiki/Identifier), or whether the given expression evaluates to `nil` or `Nothing`.\n**Arma**: 0|This command does not exist in Operation Flashpoint/{{arma0 but can be emulated (see _Example 5_).}}",
+            "description": "Tests whether a variable is `nil` or undefined from its [identifier](https://community.bistudio.com/wiki/Identifier), or whether the given expression evaluates to `nil` or `Nothing`.\n**Arma: Cold War Assault**: This command does not exist in Operation Flashpoint/Arma: Cold War Assault but can be emulated (see _Example 5_).",
             "examples": [
                 {
                     "text": "```sqf\n\nif (isNil \"TAG_globalVariable\") then { TAG_globalVariable = 0 };\nif (isNil \"_localVariable\") then { hint \"_localVariable is nil\" };\n\n```"
@@ -41573,7 +41573,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Checks if given person is a `player`. Returns `true` for headless clients as well.\n\n**NOTE**: Prior to Arma 3 v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused `isPlayer` and `getPlayerUID` to incorrectly return `**`false` and {{hl|\"\"}} respectively, where the affected units were `not` `local`. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this GitHub bug report}} for more info. Remain vigilant toward potential false negatives.**`\n\n**IMPORTANT**: When used on vehicles, this command will return `true` if `effectiveCommander` of the vehicle is player. Just because it returns `true` does not automatically mean we have a `player` unit. Unlike main syntax, alternative syntax always returns `false` when used on vehicles, even if they're controlled by a player.",
+            "description": "Checks if given person is a `player`. Returns `true` for headless clients as well.\n\n{{Feature|informative|Prior to Arma 3 v2.02, in some cases the identity of certain player units could fail to propagate to other clients and the server, which caused `isPlayer` and `getPlayerUID` to incorrectly return `**`false`}} and {{hl|\"\"}} respectively, where the affected units were `not` `local`. See {{Link|https://github.com/michail-nikolaev/task-force-arma-3-radio/issues/1096|this GitHub bug report}} for more info. Remain vigilant toward potential false negatives.**`\n\n**IMPORTANT**: When used on vehicles, this command will return `true` if `effectiveCommander` of the vehicle is player. Just because it returns `true` does not automatically mean we have a `player` unit. Unlike main syntax, alternative syntax always returns `false` when used on vehicles, even if they're controlled by a player.",
             "examples": [
                 {
                     "text": "```sqf\n\nif (isPlayer _Soldier1) then\n{\n\t_soldier1 setDamage 1;\n};\n\n```"
@@ -43223,7 +43223,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Order an AI airplane to land at a given airport. **ID** is the number to identify which map airport you want the airplane to land at. See [Arma: Airport IDs](https://community.bistudio.com/wiki/Arma%3A%20Airport%20IDs) for more information.\n**Arma**: 3 | Since Arma 3 v1.68 it is possible to also make the airplane land at a [dynamic airport](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Airport%20Configuration) `object` (e.g. aircraft carrier, makeshift runway...) – see **Example 2**.\n**Arma**: 3 | Since Arma3 v2.18 it is also possible to make a helicopter land at a specific helipad. \n**NOTE**: To make a **helicopter** land there is also the `land` command.",
+            "description": "Order an AI airplane to land at a given airport. **ID** is the number to identify which map airport you want the airplane to land at. See [Arma: Airport IDs](https://community.bistudio.com/wiki/Arma%3A%20Airport%20IDs) for more information.\n**Arma 3**:  Since Arma 3 v1.68 it is possible to also make the airplane land at a [dynamic airport](https://community.bistudio.com/wiki/Arma%203%3A%20Dynamic%20Airport%20Configuration) `object` (e.g. aircraft carrier, makeshift runway...) – see **Example 2**.\n**Arma 3**:  Since Arma3 v2.18 it is also possible to make a helicopter land at a specific helipad. \n**NOTE**: To make a **helicopter** land there is also the `land` command.",
             "examples": [
                 {
                     "text": "```sqf\n_plane1 landAt 1;\n```"
@@ -43388,7 +43388,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds an item with the given text to the `CT_LISTBOX` or `CT_COMBO` or `CT_TOOLBOX`.\n\n**NOTE**:  If using `**RscToolBox as template with `ctrlCreate`, clear it first with `lbClear`**`",
+            "description": "Adds an item with the given text to the `CT_LISTBOX` or `CT_COMBO` or `CT_TOOLBOX`.\n\n{{Feature|informative| If using `**RscToolBox}} as template with `ctrlCreate`, clear it first with `lbClear`**`",
             "examples": [
                 {
                     "text": "```sqf\n_index = lbAdd [101, \"First item\"];\n```"
@@ -43990,7 +43990,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Selects the item with the given index in the listbox, listnbox, combobox, xcombobox, xlistbox\n\n**IMPORTANT**: **The following only applies to the {{Link|#Syntax 2|Alternative Syntax when used with `CT_LISTBOX` and `CT_LISTNBOX`.**\n\nTo deselect all entries, use -1: <sqf inline>_ctrl lbSetCurSel -1; For listbox of style LB_MULTI use `lbSetSelected` instead.\n\n`CT_COMBO` does not allow deselecting entries, it will instead select the first one as it is not a combobox usual behaviour.\nIf you really need to deselect a combobox, see {{Link|#Notes|DreadedEntity's note}}.\n}}",
+            "description": "Selects the item with the given index in the listbox, listnbox, combobox, xcombobox, xlistbox\n\n**IMPORTANT**: **The following only applies to the {{Link|#Syntax 2|Alternative Syntax}} when used with `CT_LISTBOX` and `CT_LISTNBOX`.**\n\nTo deselect all entries, use -1: <sqf inline>_ctrl lbSetCurSel -1; For listbox of style LB_MULTI use `lbSetSelected` instead.\n\n`CT_COMBO` does not allow deselecting entries, it will instead select the first one as it is not a combobox usual behaviour.\nIf you really need to deselect a combobox, see {{Link|#Notes|DreadedEntity's note}}.",
             "examples": [
                 {
                     "text": "```sqf\nlbSetCurSel [101, 0];\n```"
@@ -44094,7 +44094,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets the left picture in the row with given index of `CT_LISTBOX` or `CT_COMBO`. The picture is searched for in the mission directory, the dtaExt subdirectory of the campaign directory and the dtaExt directory and the data bank (or directory).\n\n**Arma**: 3|In {{arma3 it might be necessary to set the color of the picture as well with `lbSetPictureColor` as default color <sqf inline>[0,0,0,0] makes the picture invisible.}}",
+            "description": "Sets the left picture in the row with given index of `CT_LISTBOX` or `CT_COMBO`. The picture is searched for in the mission directory, the dtaExt subdirectory of the campaign directory and the dtaExt directory and the data bank (or directory).\n\n**Arma 3**: In Arma 3 it might be necessary to set the color of the picture as well with `lbSetPictureColor` as default color <sqf inline>[0,0,0,0] makes the picture invisible.",
             "examples": [
                 {
                     "text": "```sqf\nlbSetPicture [101, 0, \"iskoda.paa\"];\n```"
@@ -44103,7 +44103,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n_control lbSetPicture [0, \"iskoda.paa\"];\n```"
                 },
                 {
-                    "text": "**NOTE**: \nAdding pictures to lists is very slow. In order to prevent a list filling's possible slowdown, add the pictures in the **scheduled** environment using `spawn`.\n\nOne drawback of that method is that sorting the entries is not easily possible.\n\n\n```sqf\n\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n\n```"
+                    "text": "{{Feature|informative|\nAdding pictures to lists is very slow. In order to prevent a list filling's possible slowdown, add the pictures in the **scheduled** environment using `spawn`.\n\nOne drawback of that method is that sorting the entries is not easily possible.\n}}\n\n```sqf\n\nprivate _path = _ctrlTV tvAdd [[], \"Some Entry\"];\n[_ctrlTV, _path] spawn {\n\t(_this select 0) tvSetPictureRight [[_this select 1], \"someImage.paa\"];\n};\n\n```"
                 }
             ],
             "syntaxes": [
@@ -45671,7 +45671,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the life state of the given unit.\n{{{!}} class=\"wikitable\"\n! Arma 2\n! Arma 3\n{{!}}-\n{{!}}\n* \"ALIVE\"\n* \"DEAD\"\n* \"DEAD-RESPAWN\"\n* \"DEAD-SWITCHING\"\n* \"ASLEEP\"\n* \"UNCONSCIOUS\"\n{{!}}\n* \"HEALTHY\"\n* \"DEAD\"\n* \"DEAD-RESPAWN\"\n* \"DEAD-SWITCHING\"\n* \"INCAPACITATED\"\n* \"INJURED\"\n{{!}}}\n\n**Arma**: 3 | In {{arma3, `lifeState` seems to change to \"INJURED\" when <sqf inline>damage aliveUnit >= 0.1 (0.1 seeming to be the value defined in config under {{sic|\"InjuredTreshold\"|Threshold}}). When the state is \"INCAPACITATED\", a sub-state is available via `incapacitatedState` command.}}",
+            "description": "Returns the life state of the given unit.\n{{{!}} class=\"wikitable\"\n! Arma 2\n! Arma 3\n{{!}}-\n{{!}}\n* \"ALIVE\"\n* \"DEAD\"\n* \"DEAD-RESPAWN\"\n* \"DEAD-SWITCHING\"\n* \"ASLEEP\"\n* \"UNCONSCIOUS\"\n{{!}}\n* \"HEALTHY\"\n* \"DEAD\"\n* \"DEAD-RESPAWN\"\n* \"DEAD-SWITCHING\"\n* \"INCAPACITATED\"\n* \"INJURED\"\n{{!}}}\n\n**Arma 3**:  In Arma 3, `lifeState` seems to change to \"INJURED\" when <sqf inline>damage aliveUnit >= 0.1 (0.1 seeming to be the value defined in config under {{sic|\"InjuredTreshold\"|Threshold}}). When the state is \"INCAPACITATED\", a sub-state is available via `incapacitatedState` command.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _lifeState = lifeState player;\n```"
@@ -45763,7 +45763,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Check if lampost is on (shining).\n**NOTE**: A lamp state is **local** to each client (see `switchLight`).\n**Arma**: 3 | This command was originally designed to only work with CfgNonAIVehicles class \"StreetLamp\" only;\nsince {{arma3 v1.92 this command was extended to work with street lights.}}",
+            "description": "Check if lampost is on (shining).\n{{Feature|informative|A lamp state is **local** to each client (see `switchLight`).}}\n**Arma 3**:  This command was originally designed to only work with CfgNonAIVehicles class \"StreetLamp\" only;\nsince Arma 3 v1.92 this command was extended to work with street lights.",
             "examples": [
                 {
                     "text": "```sqf\nif (lightIsOn nearestObject [player, \"StreetLamp\"] == \"ON\") then { hint \"nightime\"; };\n```"
@@ -45855,7 +45855,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Converts given value from given \"from\" range to wanted \"to\" range. If clipping is set to `true`, the resulting value is guaranteed to be within \"to\" range no matter what. **Arma**: 3|Faster alternative to `BIS_fnc_linearConversion`.",
+            "description": "Converts given value from given \"from\" range to wanted \"to\" range. If clipping is set to `true`, the resulting value is guaranteed to be within \"to\" range no matter what. **Arma 3**: Faster alternative to `BIS_fnc_linearConversion`.",
             "examples": [
                 {
                     "text": "```sqf\n\n// Say given range is 0 to 1 and wanted range is 0 to 100 (percent calculation). Given value 0.55 then will be 55\nlinearConversion [0, 1, 0.55, 0, 100];\n\n// but if given value is 1.1 it will return 110\nlinearConversion [0, 1, 1.1, 0, 100, false];\n\n// or if clipping is true it will return 100\nlinearConversion [0, 1, 1.1, 0, 100, true];\n\n```"
@@ -48273,7 +48273,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Loads the given file as a `Config`, allowing easy processing of the config file contents using commands such as `configClasses`, `configProperties`, [[config greater greater name|>>]], etc. It can load [[Rvmat File Format|.rvmat]], .bisurf, [[CPP File Format|.cpp]], [[BIN File Formats|.bin]], [[Mission.sqm|.sqm]], and [[Description.ext|description.ext]] files (both binarized and unbinarized configs are supported).\n**IMPORTANT**: \n* Config loading can be very slow; the config should only be loaded once and cached, e.g in a `HashMap` of `**File Path &rarr; Config pairs (see {{Link|#Example 3**`).\n* It is advised to store the generated config in a variable, otherwise it will get destroyed if it is not being referenced directly (see _Example 2_).\n}}",
+            "description": "Loads the given file as a `Config`, allowing easy processing of the config file contents using commands such as `configClasses`, `configProperties`, [[config greater greater name|>>]], etc. It can load [[Rvmat File Format|.rvmat]], .bisurf, [[CPP File Format|.cpp]], [[BIN File Formats|.bin]], [[Mission.sqm|.sqm]], and [[Description.ext|description.ext]] files (both binarized and unbinarized configs are supported).\n**IMPORTANT**: \n* Config loading can be very slow; the config should only be loaded once and cached, e.g in a `HashMap` of `**File Path &rarr; Config}} pairs (see {{Link|#Example 3**`).\n* It is advised to store the generated config in a variable, otherwise it will get destroyed if it is not being referenced directly (see _Example 2_).",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _cfg = loadConfig \"a3\\data_f\\default_super.rvmat\"; // note: very slow! ~0.1200 ms on tested system\ngetText (_cfg >> \"Stage2\" >> \"uvSource\");\n\n```"
@@ -48785,7 +48785,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Lock/Unlock stabilized camera to target. Works only on turrets which have optic mode selected with [direction stabilization enabled](https://community.bistudio.com/wiki/directionStabilizationEnabled).\n\n**NOTE**: Since **(Arma 3)** the command also works with non-stabilized turrets (such as main turret of a tank). See {{Link|#Alternative_Syntax|syntax 2.}}\n\n**NOTE**: The command is local to the **turret** gunner, not the vehicle.",
+            "description": "Lock/Unlock stabilized camera to target. Works only on turrets which have optic mode selected with [direction stabilization enabled](https://community.bistudio.com/wiki/directionStabilizationEnabled).\n\n**NOTE**: Since **(Arma 3)** the command also works with non-stabilized turrets (such as main turret of a tank). See {{Link|#Alternative_Syntax|syntax 2}}.\n\n**NOTE**: The command is local to the **turret** gunner, not the vehicle.",
             "examples": [
                 {
                     "text": "```sqf\nuav lockCameraTo [vehicle, [0,0]];\n```"
@@ -48836,7 +48836,7 @@ export const configs: SQFItemConfig[] = [
                         }
                     ],
                     "outline": "vehicle `lockCameraTo` [target, turretPath, temporary]",
-                    "returns": "`Nothing`\n\n**NOTE**: This syntax also works with non-stabilised turrets, unlike {{Link|#Syntax 1.}}"
+                    "returns": "`Nothing`\n\n**NOTE**: This syntax also works with non-stabilised turrets, unlike {{Link|#Syntax 1}}."
                 }
             ],
             "argumentLocality": "Local Argument",
@@ -52551,7 +52551,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "options",
-                            "description": "`Array` of `String`s - can be:{{{!}} class=\"wikitable\"\n! Option\n! [Data Type](https://community.bistudio.com/wiki/%3ACategory%3AData%20Types)\n! Description\n{{!}}-\n{{!}} `**\"name\"**`\n{{!}} `String`\n{{!}} Name to be shown (Arma 3 instead of A3, etc.)\n{{!}}-\n{{!}} `**\"picture\"**`\n{{!}} `String`\n{{!}} Picture shown in Mod Launcher\n{{!}}-\n{{!}} `**\"logo\"**`\n{{!}} `String`\n{{!}} Logo to be shown in Main Menu\n{{!}}-\n{{!}} `**\"logoOver\"**`\n{{!}} `String`\n{{!}} Logo to be shown in Main Menu when mouse is over\n{{!}}-\n{{!}} `**\"logoSmall\"**`\n{{!}} `String`\n{{!}} Small version of logo, prepared for drawing small icons\n{{!}}-\n{{!}} `**\"tooltip\"**`\n{{!}} `String`\n{{!}} Tooltip to be shown on mouse over \n{{!}}-\n{{!}} `**\"tooltipOwned\"**`\n{{!}} `String`\n{{!}} Tooltip to be shown on mouse over the icon when DLC is owned by player\n{{!}}-\n{{!}} `**\"action\"**`\n{{!}} `String`\n{{!}} URL to be triggered when mod button is clicked\n{{!}}-\n{{!}} `**\"actionName\"**`\n{{!}} `String`\n{{!}} What to put on Action Button\n{{!}}-\n{{!}} `**\"overview\"**`\n{{!}} `String`\n{{!}} Overview text visible in expansion menu\n{{!}}-\n{{!}} `**\"hidePicture\"**`\n{{!}} `Boolean`\n{{!}} Do not show mod picture icon in the main menu mod list\n{{!}}-\n{{!}} `**\"hideName\"**`\n{{!}} `Boolean`\n{{!}} Do not show mod name in the main menu mod list\n{{!}}-\n{{!}} `**\"defaultMod\"**`\n{{!}} `Boolean`\n{{!}} Default mods cannot be moved or disabled by Mod Launcher\n{{!}}-\n{{!}} `**\"serverOnly\"**`\n{{!}} `Boolean`\n{{!}} Mod does not have to be installed on client in order to play on server with this mod running\n{{!}}-\n{{!}} `**\"active\"**`\n{{!}} `Boolean`\n{{!}} Active mod (activated through command line or stored in profile by mod launcher)\n**IMPORTANT**: Note that `**\"active\" does not actually tell if a mod is actually running.**`\n{{!}}}"
+                            "description": "`Array` of `String`s - can be:{{{!}} class=\"wikitable\"\n! Option\n! [Data Type](https://community.bistudio.com/wiki/%3ACategory%3AData%20Types)\n! Description\n{{!}}-\n{{!}} `**\"name\"**`\n{{!}} `String`\n{{!}} Name to be shown (Arma 3 instead of A3, etc.)\n{{!}}-\n{{!}} `**\"picture\"**`\n{{!}} `String`\n{{!}} Picture shown in Mod Launcher\n{{!}}-\n{{!}} `**\"logo\"**`\n{{!}} `String`\n{{!}} Logo to be shown in Main Menu\n{{!}}-\n{{!}} `**\"logoOver\"**`\n{{!}} `String`\n{{!}} Logo to be shown in Main Menu when mouse is over\n{{!}}-\n{{!}} `**\"logoSmall\"**`\n{{!}} `String`\n{{!}} Small version of logo, prepared for drawing small icons\n{{!}}-\n{{!}} `**\"tooltip\"**`\n{{!}} `String`\n{{!}} Tooltip to be shown on mouse over \n{{!}}-\n{{!}} `**\"tooltipOwned\"**`\n{{!}} `String`\n{{!}} Tooltip to be shown on mouse over the icon when DLC is owned by player\n{{!}}-\n{{!}} `**\"action\"**`\n{{!}} `String`\n{{!}} URL to be triggered when mod button is clicked\n{{!}}-\n{{!}} `**\"actionName\"**`\n{{!}} `String`\n{{!}} What to put on Action Button\n{{!}}-\n{{!}} `**\"overview\"**`\n{{!}} `String`\n{{!}} Overview text visible in expansion menu\n{{!}}-\n{{!}} `**\"hidePicture\"**`\n{{!}} `Boolean`\n{{!}} Do not show mod picture icon in the main menu mod list\n{{!}}-\n{{!}} `**\"hideName\"**`\n{{!}} `Boolean`\n{{!}} Do not show mod name in the main menu mod list\n{{!}}-\n{{!}} `**\"defaultMod\"**`\n{{!}} `Boolean`\n{{!}} Default mods cannot be moved or disabled by Mod Launcher\n{{!}}-\n{{!}} `**\"serverOnly\"**`\n{{!}} `Boolean`\n{{!}} Mod does not have to be installed on client in order to play on server with this mod running\n{{!}}-\n{{!}} `**\"active\"**`\n{{!}} `Boolean`\n{{!}} Active mod (activated through command line or stored in profile by mod launcher)\n**IMPORTANT**: Note that `**\"active\"}} does not actually tell if a mod is actually running.**`\n{{!}"
                         }
                     ],
                     "outline": "`modParams` [modClass, options]",
@@ -52743,7 +52743,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Moves a unit into a vehicle cargo position (immediately and without animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
+            "description": "Moves a unit into a vehicle cargo position (immediately and without animation).\n{{Feature|informative|See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.}}\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne moveInCargo _jeepOne;\n```"
@@ -52834,7 +52834,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Moves soldier into vehicle driver position (immediate, no animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen unless `moveOut` (since Arma 2) is used first to move the unit out of their vehicle (see _Example 2_).",
+            "description": "Moves soldier into vehicle driver position (immediate, no animation).\n{{Feature|informative|See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.}}\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen unless `moveOut` (since Arma 2) is used first to move the unit out of their vehicle (see _Example 2_).",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne moveInDriver _tankOne;\n```"
@@ -52870,7 +52870,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Move soldier into vehicle gunner position (Immediate, no animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
+            "description": "Move soldier into vehicle gunner position (Immediate, no animation).\n{{Feature|informative|See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.}}\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne moveInGunner tankOne;\n```"
@@ -52903,7 +52903,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Moves the soldier into the vehicle's turret. (Immediately, without animation).\n**NOTE**: See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
+            "description": "Moves the soldier into the vehicle's turret. (Immediately, without animation).\n{{Feature|informative|See [AI Group Vehicle Management](https://community.bistudio.com/wiki/AI%20Group%20Vehicle%20Management) for more information.}}\n**IMPORTANT**: If the unit is already in a vehicle, nothing will happen. You should use `moveOut` to move the unit out of his vehicle before trying to move him into a new (or same) vehicle.",
             "examples": [
                 {
                     "text": "```sqf\n_soldierOne moveInTurret [_tank, [0, 0]];\n```"
@@ -53492,7 +53492,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Find the nearest location having a non-empty speech.\n**Arma**: 3|No locations are dubbed in {{arma3.}}",
+            "description": "Find the nearest location having a non-empty speech.\n**Arma 3**: No locations are dubbed in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\n_location = nearestLocationWithDubbing player;\n```"
@@ -53574,7 +53574,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the nearest object of given type (or inherited classes) to given position within a sphere. Hardcoded radius is 50 meters.\nUnlike with `nearestObjects`, where distance is measured in 2D space, `nearestObject` will be closest object in 3D space.\n\n**NOTE**: \n* in Operation Flashpoint, only objects of the exact provided class are found.\n* if an object ID is used ({{Link|#Syntax 4, see _Example 2_) the search range is unlimited\n}}",
+            "description": "Returns the nearest object of given type (or inherited classes) to given position within a sphere. Hardcoded radius is 50 meters.\nUnlike with `nearestObjects`, where distance is measured in 2D space, `nearestObject` will be closest object in 3D space.\n\n**NOTE**: \n* in Operation Flashpoint, only objects of the exact provided class are found.\n* if an object ID is used ({{Link|#Syntax 4}}, see _Example 2_) the search range is unlimited",
             "examples": [
                 {
                     "text": "```sqf\n\n_nObject = nearestObject [2345, 6789];\n_nObject = nearestObject [player, \"StreetLamp\"];\n\n```"
@@ -53703,7 +53703,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of nearest terrain objects of the given types to the given position or object, within the specified distance. If more than one object is found they will be ordered according to 3D distance to the object (i.e. the closest one will be first in the array). \nIn contrast to `nearestObjects` this command returns terrain placed objects like trees, rocks and buildings which don't necessarily need an associated config class.\n\n\nPossible type names:\n{{Columns|7|\n* `**\"BUILDING\"**`\n* `**\"BUNKER\"**`\n* `**\"BUSH\"**`\n* `**\"BUSSTOP\"**`\n* `**\"CHAPEL\"**`\n* `**\"CHURCH\"**`\n* `**\"CROSS\"**`\n* `**\"FENCE\"**`\n* `**\"FOREST BORDER\"**`\n* `**\"FOREST SQUARE\"**`\n* `**\"FOREST TRIANGLE\"**`\n* `**\"FOREST\"**`\n* `**\"FORTRESS\"**`\n* `**\"FOUNTAIN\"**`\n* `**\"FUELSTATION\"**`\n* `**\"HIDE\"**`\n* `**\"HOSPITAL\"**`\n* `**\"HOUSE\"**`\n* `**\"LIGHTHOUSE\"**`\n* `**\"MAIN ROAD\"**`\n* `**\"POWER LINES\"**`\n* `**\"POWERSOLAR\"**`\n* `**\"POWERWAVE\"**`\n* `**\"POWERWIND\"**`\n* `**\"QUAY\"**`\n* `**\"RAILWAY\"**`\n* `**\"ROAD\"**`\n* `**\"ROCK\"**`\n* `**\"ROCKS\"**`\n* `**\"RUIN\"**`\n* `**\"SHIPWRECK\"**`\n* `**\"SMALL TREE\"**`\n* `**\"STACK\"**`\n* `**\"TOURISM\"**`\n* `**\"TRACK\"**`\n* `**\"TRAIL\"**`\n* `**\"TRANSMITTER\"**`\n* `**\"TREE\"**`\n* `**\"VIEW-TOWER\"**`\n* `**\"WALL\"**`\n* `**\"WATERTOWER\"**`\n}}\n\n**IMPORTANT**: The names are / The filter is based on the named property [map](https://community.bistudio.com/wiki/Arma%203%3A%20Named_Properties%23map) - not on the named property _class_ or any config definition!\n\n<spoiler text=\"Terrain object counts\">\n**NOTE**: Types which are missing are not present in the given world. [Virtual Reality](https://community.bistudio.com/wiki/Virtual%20Reality) has no terrain objects. Last updated **(Arma 3)**\n<big>`Stratis`</big>\n{{Columns|5|\n* BUSH: 47974\n* CHAPEL: 2\n* CROSS: 1\n* FENCE: 1728\n* FUELSTATION: 3\n* HIDE: 70975\n* HOUSE: 684\n* LIGHTHOUSE: 3\n* ROAD: 143\n* ROCK: 820\n* SHIPWRECK: 11\n* TRACK: 2063\n* TRANSMITTER: 11\n* TREE: 40110\n* WALL: 1355\n* WATERTOWER: 1\n}}\n\n<big>`Altis`</big>\n{{Columns|5|\n* BUSH: 747193\n* CHAPEL: 165\n* CHURCH: 54\n* CROSS: 48\n* FENCE: 47940\n* FUELSTATION: 32\n* HIDE: 655958\n* HOSPITAL: 1\n* HOUSE: 17472\n* LIGHTHOUSE: 7\n* MAIN ROAD: 2061\n* POWER LINES: 2224\n* POWERSOLAR: 10\n* POWERWAVE: 51\n* POWERWIND: 128\n* ROAD: 4849\n* ROCK: 5483\n* RUIN: 3\n* SHIPWRECK: 43\n* TOURISM: 1\n* TRACK: 26823\n* TRANSMITTER: 23\n* TREE: 263630\n* WALL: 38943\n* WATERTOWER: 10\n}}\n\n<big>[Malden 2035](https://community.bistudio.com/wiki/Malden%202035)</big>\n{{Columns|5|\n* BUSH: 288461\n* BUSSTOP: 45\n* CHAPEL: 14\n* CHURCH: 14\n* CROSS: 16\n* FENCE: 11189\n* FUELSTATION: 24\n* HIDE: 192553\n* HOUSE: 4062\n* LIGHTHOUSE: 15\n* MAIN ROAD: 1050\n* POWER LINES: 3427\n* POWERSOLAR: 1\n* ROAD: 1442\n* ROCK: 3513\n* SHIPWRECK: 23\n* TRACK: 3489\n* TRANSMITTER: 7\n* TREE: 101960\n* WALL: 14189\n* WATERTOWER: 63\n}}\n\n<big>`Tanoa`</big>\n{{Columns|5|\n* BUSH: 754347\n* CHURCH: 21\n* FENCE: 2912\n* FUELSTATION: 85\n* HIDE: 356904\n* HOUSE: 13389\n* MAIN ROAD: 2921\n* POWER LINES: 3985\n* POWERSOLAR: 2\n* POWERWIND: 19\n* RAILWAY: 2138\n* ROAD: 1485\n* ROCK: 8909\n* SHIPWRECK: 58\n* TOURISM: 35\n* TRACK: 9419\n* TRAIL: 6936\n* TRANSMITTER: 16\n* TREE: 506993\n* WALL: 20526\n* WATERTOWER: 73\n}}\n\n<big>`Livonia`</big>\n{{Columns|5|\n* BUILDING: 1262\n* BUNKER: 40\n* BUSH: 473543\n* BUSSTOP: 73\n* CHAPEL: 8\n* CHURCH: 17\n* FENCE: 48426\n* FOUNTAIN: 36\n* FUELSTATION: 7\n* HIDE: 474123\n* HOUSE: 6762\n* MAIN ROAD: 2118\n* POWER LINES: 2671\n* POWERSOLAR: 2\n* POWERWIND: 1\n* RAILWAY: 843\n* ROAD: 5378\n* ROCK: 744\n* SHIPWRECK: 4\n* STACK: 11\n* TRACK: 12834\n* TRANSMITTER: 15\n* TREE: 1881630\n* VIEW-TOWER: 239\n* WALL: 4418\n* WATERTOWER: 7\n}}\n\n<big>`Weferlingen`</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 731315\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 231818\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[Weferlingen (Winter)]]</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 519827\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 229792\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[Cam Lao Nam](https://community.bistudio.com/wiki/Cam%20Lao%20Nam)</big>\n{{Columns|5|\n* BUILDING: 390\n* BUNKER: 2622\n* BUSH: 1852844\n* CHURCH: 6\n* FENCE: 12346\n* FORTRESS: 2\n* FOUNTAIN: 3\n* FUELSTATION: 32\n* HIDE: 309385\n* HOUSE: 13319\n* LIGHTHOUSE: 3\n* MAIN ROAD: 4162\n* POWER LINES: 1591\n* POWERSOLAR: 5\n* POWERWIND: 5\n* RAILWAY: 1345\n* ROAD: 17621\n* ROCK: 60452\n* SHIPWRECK: 161\n* TOURISM: 18\n* TRACK: 6846\n* TRAIL: 7726\n* TRANSMITTER: 33\n* TREE: 1442842\n* VIEW-TOWER: 529\n* WALL: 19664\n* WATERTOWER: 32\n}}\n\n<big>[Khe Sanh](https://community.bistudio.com/wiki/Khe%20Sanh)</big>\n{{Columns|5|\n* BUILDING: 91\n* BUNKER: 4861\n* BUSH: 1299130\n* FENCE: 2196\n* FOUNTAIN: 2\n* FUELSTATION: 3\n* HIDE: 228731\n* HOUSE: 5754\n* POWER LINES: 801\n* ROAD: 7755\n* ROCK: 33853\n* TRACK: 8156\n* TRANSMITTER: 3\n* TREE: 1145377\n* VIEW-TOWER: 227\n* WALL: 9078\n* WATERTOWER: 13\n}}\n\n<big>[The Bra](https://community.bistudio.com/wiki/The%20Bra)</big>\n{{Columns|5|\n* BUILDING: 8\n* BUNKER: 265\n* BUSH: 179428\n* FENCE: 251\n* HIDE: 56960\n* HOUSE: 522\n* POWER LINES: 25\n* ROAD: 7\n* ROCK: 671\n* SHIPWRECK: 2\n* TRACK: 584\n* TRAIL: 2767\n* TRANSMITTER: 1\n* TREE: 203443\n* VIEW-TOWER: 48\n* WALL: 2076\n}}\n\n<big>`Gabreta`</big>\n{{Columns|5|\n* BUILDING: 222\n* BUSH: 383449\n* BUSSTOP: 18\n* CHAPEL: 10\n* CHURCH: 11\n* CROSS: 17\n* FENCE: 25616\n* FORTRESS: 149\n* FOUNTAIN: 2\n* FUELSTATION: 11\n* HIDE: 582635\n* HOSPITAL: 1\n* HOUSE: 6352\n* MAIN ROAD: 4427\n* POWER LINES: 502\n* POWERSOLAR: 2\n* RAILWAY: 1923\n* ROAD: 8693\n* ROCK: 918\n* RUIN: 5\n* SHIPWRECK: 1\n* STACK: 6\n* TRACK: 10066\n* TRAIL: 1170\n* TRANSMITTER: 2\n* TREE: 3473175\n* VIEW-TOWER: 39\n* WALL: 6218\n* WATERTOWER: 8\n}}\n\n<big>[[Sefrou-Ramal]]</big>\n{{Columns|5|\n* BUILDING: 2\n* BUSH: 13669\n* FENCE: 5199\n* FUELSTATION: 2\n* HIDE: 23243\n* HOUSE: 1963\n* MAIN ROAD: 403\n* POWER LINES: 565\n* POWERWIND: 19\n* RAILWAY: 135\n* ROAD: 199\n* ROCK: 1183\n* TRACK: 3286\n* TRANSMITTER: 9\n* TREE: 7592\n* WALL: 3560\n* WATERTOWER: 2\n}}\n\n<big>[Spearhead 1944 Normandy](https://community.bistudio.com/wiki/Spearhead%201944%20Normandy)</big>\n{{Columns|5|\n* BUILDING: 2918\n* BUNKER: 1703\n* BUSH: 608441\n* CHURCH: 45\n* CROSS: 16\n* FENCE: 288630\n* FORTRESS: 196\n* FOUNTAIN: 1286\n* HIDE: 330656\n* HOUSE: 12837\n* MAIN ROAD: 1981\n* RAILWAY: 776\n* ROAD: 20237\n* ROCK: 837\n* RUIN: 1\n* SMALL TREE: 20\n* TRACK: 29761\n* TRAIL: 6365\n* TREE: 581549\n* VIEW-TOWER: 95\n* WALL: 60793\n* WATERTOWER: 34\n}}\n\n{{Wiki|extractionScript}}",
+            "description": "Returns a list of nearest terrain objects of the given types to the given position or object, within the specified distance. If more than one object is found they will be ordered according to 3D distance to the object (i.e. the closest one will be first in the array). \nIn contrast to `nearestObjects` this command returns terrain placed objects like trees, rocks and buildings which don't necessarily need an associated config class.\n\n\nPossible type names:\n{{Columns|7|\n* `**\"BUILDING\"**`\n* `**\"BUNKER\"**`\n* `**\"BUSH\"**`\n* `**\"BUSSTOP\"**`\n* `**\"CHAPEL\"**`\n* `**\"CHURCH\"**`\n* `**\"CROSS\"**`\n* `**\"FENCE\"**`\n* `**\"FOREST BORDER\"**`\n* `**\"FOREST SQUARE\"**`\n* `**\"FOREST TRIANGLE\"**`\n* `**\"FOREST\"**`\n* `**\"FORTRESS\"**`\n* `**\"FOUNTAIN\"**`\n* `**\"FUELSTATION\"**`\n* `**\"HIDE\"**`\n* `**\"HOSPITAL\"**`\n* `**\"HOUSE\"**`\n* `**\"LIGHTHOUSE\"**`\n* `**\"MAIN ROAD\"**`\n* `**\"POWER LINES\"**`\n* `**\"POWERSOLAR\"**`\n* `**\"POWERWAVE\"**`\n* `**\"POWERWIND\"**`\n* `**\"QUAY\"**`\n* `**\"RAILWAY\"**`\n* `**\"ROAD\"**`\n* `**\"ROCK\"**`\n* `**\"ROCKS\"**`\n* `**\"RUIN\"**`\n* `**\"SHIPWRECK\"**`\n* `**\"SMALL TREE\"**`\n* `**\"STACK\"**`\n* `**\"TOURISM\"**`\n* `**\"TRACK\"**`\n* `**\"TRAIL\"**`\n* `**\"TRANSMITTER\"**`\n* `**\"TREE\"**`\n* `**\"VIEW-TOWER\"**`\n* `**\"WALL\"**`\n* `**\"WATERTOWER\"**`\n}}\n\n**IMPORTANT**: The names are / The filter is based on the named property [map](https://community.bistudio.com/wiki/Arma%203%3A%20Named_Properties%23map) - not on the named property _class_ or any config definition!}}\n\n<spoiler text=\"Terrain object counts\">\n**NOTE**: Types which are missing are not present in the given world. [Virtual Reality](https://community.bistudio.com/wiki/Virtual%20Reality) has no terrain objects. Last updated **(Arma 3)**}}\n<big>`Stratis`</big>\n{{Columns|5|\n* BUSH: 47974\n* CHAPEL: 2\n* CROSS: 1\n* FENCE: 1728\n* FUELSTATION: 3\n* HIDE: 70975\n* HOUSE: 684\n* LIGHTHOUSE: 3\n* ROAD: 143\n* ROCK: 820\n* SHIPWRECK: 11\n* TRACK: 2063\n* TRANSMITTER: 11\n* TREE: 40110\n* WALL: 1355\n* WATERTOWER: 1\n}}\n\n<big>`Altis`</big>\n{{Columns|5|\n* BUSH: 747193\n* CHAPEL: 165\n* CHURCH: 54\n* CROSS: 48\n* FENCE: 47940\n* FUELSTATION: 32\n* HIDE: 655958\n* HOSPITAL: 1\n* HOUSE: 17472\n* LIGHTHOUSE: 7\n* MAIN ROAD: 2061\n* POWER LINES: 2224\n* POWERSOLAR: 10\n* POWERWAVE: 51\n* POWERWIND: 128\n* ROAD: 4849\n* ROCK: 5483\n* RUIN: 3\n* SHIPWRECK: 43\n* TOURISM: 1\n* TRACK: 26823\n* TRANSMITTER: 23\n* TREE: 263630\n* WALL: 38943\n* WATERTOWER: 10\n}}\n\n<big>[Malden 2035](https://community.bistudio.com/wiki/Malden%202035)</big>\n{{Columns|5|\n* BUSH: 288461\n* BUSSTOP: 45\n* CHAPEL: 14\n* CHURCH: 14\n* CROSS: 16\n* FENCE: 11189\n* FUELSTATION: 24\n* HIDE: 192553\n* HOUSE: 4062\n* LIGHTHOUSE: 15\n* MAIN ROAD: 1050\n* POWER LINES: 3427\n* POWERSOLAR: 1\n* ROAD: 1442\n* ROCK: 3513\n* SHIPWRECK: 23\n* TRACK: 3489\n* TRANSMITTER: 7\n* TREE: 101960\n* WALL: 14189\n* WATERTOWER: 63\n}}\n\n<big>`Tanoa`</big>\n{{Columns|5|\n* BUSH: 754347\n* CHURCH: 21\n* FENCE: 2912\n* FUELSTATION: 85\n* HIDE: 356904\n* HOUSE: 13389\n* MAIN ROAD: 2921\n* POWER LINES: 3985\n* POWERSOLAR: 2\n* POWERWIND: 19\n* RAILWAY: 2138\n* ROAD: 1485\n* ROCK: 8909\n* SHIPWRECK: 58\n* TOURISM: 35\n* TRACK: 9419\n* TRAIL: 6936\n* TRANSMITTER: 16\n* TREE: 506993\n* WALL: 20526\n* WATERTOWER: 73\n}}\n\n<big>`Livonia`</big>\n{{Columns|5|\n* BUILDING: 1262\n* BUNKER: 40\n* BUSH: 473543\n* BUSSTOP: 73\n* CHAPEL: 8\n* CHURCH: 17\n* FENCE: 48426\n* FOUNTAIN: 36\n* FUELSTATION: 7\n* HIDE: 474123\n* HOUSE: 6762\n* MAIN ROAD: 2118\n* POWER LINES: 2671\n* POWERSOLAR: 2\n* POWERWIND: 1\n* RAILWAY: 843\n* ROAD: 5378\n* ROCK: 744\n* SHIPWRECK: 4\n* STACK: 11\n* TRACK: 12834\n* TRANSMITTER: 15\n* TREE: 1881630\n* VIEW-TOWER: 239\n* WALL: 4418\n* WATERTOWER: 7\n}}\n\n<big>`Weferlingen`</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 731315\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 231818\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[[Weferlingen (Winter)]]</big>\n{{Columns|5|\n* BUILDING: 5072\n* BUSH: 519827\n* BUSSTOP: 106\n* CHAPEL: 13\n* CHURCH: 21\n* FENCE: 83908\n* FUELSTATION: 9\n* HIDE: 229792\n* HOUSE: 4562\n* MAIN ROAD: 1535\n* POWER LINES: 1958\n* RAILWAY: 2324\n* ROAD: 8740\n* STACK: 18\n* TRACK: 24372\n* TRANSMITTER: 1\n* TREE: 829449\n* VIEW-TOWER: 34\n}}\n\n<big>[Cam Lao Nam](https://community.bistudio.com/wiki/Cam%20Lao%20Nam)</big>\n{{Columns|5|\n* BUILDING: 390\n* BUNKER: 2622\n* BUSH: 1852844\n* CHURCH: 6\n* FENCE: 12346\n* FORTRESS: 2\n* FOUNTAIN: 3\n* FUELSTATION: 32\n* HIDE: 309385\n* HOUSE: 13319\n* LIGHTHOUSE: 3\n* MAIN ROAD: 4162\n* POWER LINES: 1591\n* POWERSOLAR: 5\n* POWERWIND: 5\n* RAILWAY: 1345\n* ROAD: 17621\n* ROCK: 60452\n* SHIPWRECK: 161\n* TOURISM: 18\n* TRACK: 6846\n* TRAIL: 7726\n* TRANSMITTER: 33\n* TREE: 1442842\n* VIEW-TOWER: 529\n* WALL: 19664\n* WATERTOWER: 32\n}}\n\n<big>[Khe Sanh](https://community.bistudio.com/wiki/Khe%20Sanh)</big>\n{{Columns|5|\n* BUILDING: 91\n* BUNKER: 4861\n* BUSH: 1299130\n* FENCE: 2196\n* FOUNTAIN: 2\n* FUELSTATION: 3\n* HIDE: 228731\n* HOUSE: 5754\n* POWER LINES: 801\n* ROAD: 7755\n* ROCK: 33853\n* TRACK: 8156\n* TRANSMITTER: 3\n* TREE: 1145377\n* VIEW-TOWER: 227\n* WALL: 9078\n* WATERTOWER: 13\n}}\n\n<big>[The Bra](https://community.bistudio.com/wiki/The%20Bra)</big>\n{{Columns|5|\n* BUILDING: 8\n* BUNKER: 265\n* BUSH: 179428\n* FENCE: 251\n* HIDE: 56960\n* HOUSE: 522\n* POWER LINES: 25\n* ROAD: 7\n* ROCK: 671\n* SHIPWRECK: 2\n* TRACK: 584\n* TRAIL: 2767\n* TRANSMITTER: 1\n* TREE: 203443\n* VIEW-TOWER: 48\n* WALL: 2076\n}}\n\n<big>`Gabreta`</big>\n{{Columns|5|\n* BUILDING: 222\n* BUSH: 383449\n* BUSSTOP: 18\n* CHAPEL: 10\n* CHURCH: 11\n* CROSS: 17\n* FENCE: 25616\n* FORTRESS: 149\n* FOUNTAIN: 2\n* FUELSTATION: 11\n* HIDE: 582635\n* HOSPITAL: 1\n* HOUSE: 6352\n* MAIN ROAD: 4427\n* POWER LINES: 502\n* POWERSOLAR: 2\n* RAILWAY: 1923\n* ROAD: 8693\n* ROCK: 918\n* RUIN: 5\n* SHIPWRECK: 1\n* STACK: 6\n* TRACK: 10066\n* TRAIL: 1170\n* TRANSMITTER: 2\n* TREE: 3473175\n* VIEW-TOWER: 39\n* WALL: 6218\n* WATERTOWER: 8\n}}\n\n<big>[[Sefrou-Ramal]]</big>\n{{Columns|5|\n* BUILDING: 2\n* BUSH: 13669\n* FENCE: 5199\n* FUELSTATION: 2\n* HIDE: 23243\n* HOUSE: 1963\n* MAIN ROAD: 403\n* POWER LINES: 565\n* POWERWIND: 19\n* RAILWAY: 135\n* ROAD: 199\n* ROCK: 1183\n* TRACK: 3286\n* TRANSMITTER: 9\n* TREE: 7592\n* WALL: 3560\n* WATERTOWER: 2\n}}\n\n<big>[Spearhead 1944 Normandy](https://community.bistudio.com/wiki/Spearhead%201944%20Normandy)</big>\n{{Columns|5|\n* BUILDING: 2918\n* BUNKER: 1703\n* BUSH: 608441\n* CHURCH: 45\n* CROSS: 16\n* FENCE: 288630\n* FORTRESS: 196\n* FOUNTAIN: 1286\n* HIDE: 330656\n* HOUSE: 12837\n* MAIN ROAD: 1981\n* RAILWAY: 776\n* ROAD: 20237\n* ROCK: 837\n* RUIN: 1\n* SMALL TREE: 20\n* TRACK: 29761\n* TRAIL: 6365\n* TREE: 581549\n* VIEW-TOWER: 95\n* WALL: 60793\n* WATERTOWER: 34\n\n\n{{Wiki|extractionScript",
             "examples": [
                 {
                     "text": "```sqf\nnearestTerrainObjects [player, [\"Tree\", \"Bush\"], 200];\n```"
@@ -54620,7 +54620,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Runs given statement every frame in an [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment).\n**Arma**: 3|\nIn order to keep compatibility between official and community content:\n* Since {{arma3 v1.57 a stackable version of this EH is available: [EachFrame Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23EachFrame)\n* Before that, the scripted version of the event handler should be used instead (using `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler`).\n}}",
+            "description": "Runs given statement every frame in an [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment).\n**Arma 3**: \nIn order to keep compatibility between official and community content:\n* Since Arma 3 v1.57 a stackable version of this EH is available: [EachFrame Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23EachFrame)\n* Before that, the scripted version of the event handler should be used instead (using `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler`).",
             "examples": [
                 {
                     "text": "```sqf\nonEachFrame { hintSilent str getPosWorld player }; // hints position every frame\n```"
@@ -54659,7 +54659,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines an action performed when player clicked on group marker (3D or in a map). The code executed once.\nThis EH, unlike `onGroupIconOverEnter` and `onGroupIconOverLeave`, has one more param which returns 1 if RMB was pressed, 0 otherwise.\n**Arma**: 3|Since {{arma3 v1.58 a [Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23GroupIconClick) exists and should be used.}}",
+            "description": "Defines an action performed when player clicked on group marker (3D or in a map). The code executed once.\nThis EH, unlike `onGroupIconOverEnter` and `onGroupIconOverLeave`, has one more param which returns 1 if RMB was pressed, 0 otherwise.\n**Arma 3**: Since Arma 3 v1.58 a [Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23GroupIconClick) exists and should be used.",
             "examples": [
                 {
                     "text": "```sqf\n\nonGroupIconClick\n{\n\t// passed values for _this are:\n\tparams [\"_is3D\", \"_group\", \"_wpID\", \"_posX\", \"_posY\", \"_shift\", \"_ctrl\", \"_alt\"];\n\n\t// before Arma 3\n\t_is3D = _this select 0;\n\t_group = _this select 1;\n\t_wpID = _this select 2;\n\t_RMB = _this select 3;\n\t_posx = _this select 4;\n\t_posy = _this select 5;\n\t_shift = _this select 6;\n\t_ctrl = _this select 7;\n\t_alt = _this select 8;\n\n\t_message = format [\"____ Info ____\"];\n\t{_message = _message + format [\"\\n %1\", _x]} forEach _this;\n\thint _message;\n};\n\n```"
@@ -54686,7 +54686,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines an action performed when player moves pointer over group marker (3D or in a map). The code will execute continuously while pointer is over icon.\n**Arma**: 3|Since {{arma3 v1.58 a [Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23GroupIconOverEnter) exists and should be used.}}",
+            "description": "Defines an action performed when player moves pointer over group marker (3D or in a map). The code will execute continuously while pointer is over icon.\n**Arma 3**: Since Arma 3 v1.58 a [Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23GroupIconOverEnter) exists and should be used.",
             "examples": [
                 {
                     "text": "```sqf\nonGroupIconOverEnter\n{\n\t// passed values for _this are:\n\tparams [\"_is3D\", \"_group\", \"_wpID\", \"_posX\", \"_posY\", \"_shift\", \"_ctrl\", \"_alt\"];\n\n\t// before Arma 3\n\t_is3D = _this select 0;\n\t_group = _this select 1;\n\t_wpID = _this select 2;\n\t_posx = _this select 3;\n\t_posy = _this select 4;\n\t_shift = _this select 5;\n\t_ctrl = _this select 6;\n\t_alt = _this select 7;\n\n\t_message = format [\"____ Info ____\"];\n\t{_message = _message + format [\"\\n %1\",_x]} forEach _this;\n\thint _message;\n};\n```"
@@ -54713,7 +54713,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines an action performed when pointer, previously positioned over icon, is moved away from it (3D or in a map). The code is executed once.\n**Arma**: 3|Since {{arma3 v1.58 a [Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23GroupIconOverLeave) exists and should be used.}}",
+            "description": "Defines an action performed when pointer, previously positioned over icon, is moved away from it (3D or in a map). The code is executed once.\n**Arma 3**: Since Arma 3 v1.58 a [Mission Event Handler](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23GroupIconOverLeave) exists and should be used.",
             "examples": [
                 {
                     "text": "```sqf\nonGroupIconOverLeave\n{\n\t// passed values for _this are:\n\tparams [\"_is3D\", \"_group\", \"_wpID\", \"_posX\", \"_posY\", \"_shift\", \"_ctrl\", \"_alt\"];\n\n\t// before Arma 3\n\t_is3D = _this select 0;\n\t_group = _this select 1;\n\t_wpID = _this select 2;\n\t_posx = _this select 3;\n\t_posy = _this select 4;\n\t_shift = _this select 5;\n\t_ctrl = _this select 6;\n\t_alt = _this select 7;\n\n\t_message = format [\"____ Info ____\"];\n\t{ _message = _message + format [\"\\n %1\",_x] } forEach _this;\n\thint _message;\n};\n```"
@@ -54773,7 +54773,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines the action performed when user clicks in map by executing command string. The code is executed on every click, until the **command** is \n* removed via <sqf inline>onMapSingleClick \"\", or\n* replaced by <sqf inline>onMapSingleClick \"SomeOtherCommand(s)\"\n\nIn Arma 3 the code should return `true` only if you wish to override default engine handling of the mouse click on map (see _Example 4_).\n\nFor older games, when click is processed, code should ultimately return `true` back to the engine. If `false` is returned, default processing by the game engine is done.\nReturn value of any other type (including `Nothing`) is an error. In such case default processing by the game engine is done, and error message may be displayed.\n\n**Arma**: 3|Since **(Arma 3)**",
+            "description": "Defines the action performed when user clicks in map by executing command string. The code is executed on every click, until the **command** is \n* removed via <sqf inline>onMapSingleClick \"\", or\n* replaced by <sqf inline>onMapSingleClick \"SomeOtherCommand(s)\"\n\nIn Arma 3 the code should return `true` only if you wish to override default engine handling of the mouse click on map (see _Example 4_).\n\nFor older games, when click is processed, code should ultimately return `true` back to the engine. If `false` is returned, default processing by the game engine is done.\nReturn value of any other type (including `Nothing`) is an error. In such case default processing by the game engine is done, and error message may be displayed.\n\n**Arma 3**: Since **(Arma 3)** the stackable [MapSingleClick](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23MapSingleClick) Mission Event Handler is available and should be used instead.",
             "examples": [
                 {
                     "text": "**Armed Assault:** Creates a soldier unit at the position clicked:\n\n```sqf\nonMapSingleClick \"'SoldierWB' createUnit [_pos, group player]; true\";\n```"
@@ -54829,7 +54829,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "This command will execute the provided code on the server whenever a player connects to a multiplayer session.\n**Arma**: 3 | Since {{arma3 v1.57 a stackable MissionEventHandler is available and should be used: [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected).\nBefore that, the functions `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler` should be used instead in order to keep compatibility between official and community content.}}",
+            "description": "This command will execute the provided code on the server whenever a player connects to a multiplayer session.\n**Arma 3**:  Since Arma 3 v1.57 a stackable MissionEventHandler is available and should be used: [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected).\nBefore that, the functions `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler` should be used instead in order to keep compatibility between official and community content.",
             "examples": [
                 {
                     "text": "```sqf\nonPlayerConnected \"[_id, _name] execVM 'PlayerConnected.sqf';\";\n```"
@@ -54894,7 +54894,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines an action performed after the preload screen finished. Preload event occurs after briefing screen on mission start.\n**IMPORTANT**:  This event handler also fires on client after user closes the main map. \n**Arma**: 3|\n* Since {{arma3 v1.57 a stackable version of this EH is available: [PreloadFinished](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadFinished)\n* Before that, the `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler` functions should be used instead.}}",
+            "description": "Defines an action performed after the preload screen finished. Preload event occurs after briefing screen on mission start.\n{{Feature | important | This event handler also fires on client after user closes the main map. }}\n**Arma 3**: \n* Since Arma 3 v1.57 a stackable version of this EH is available: [PreloadFinished](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadFinished)\n* Before that, the `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler` functions should be used instead.",
             "examples": [
                 {
                     "text": "```sqf\nonPreloadFinished {TAG_ReceivingScreenDone = true};\n```"
@@ -54924,7 +54924,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Defines an action performed just before the preload screen started. Preload event occurs after briefing screen on mission start.**IMPORTANT**:  This event handler also fires on client after user closes the main map. \n\n**NOTE**: Since **Arma 3** _v1.57_ a stackable version of this EH is available: [PreloadStarted](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadStarted)\n\n**Arma**: 3|In order to keep compatibility between official and community content the functions `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler` should be used instead.",
+            "description": "Defines an action performed just before the preload screen started. Preload event occurs after briefing screen on mission start.**IMPORTANT**:  This event handler also fires on client after user closes the main map. \n\n{{Feature|informative|Since **Arma 3** _v1.57_ a stackable version of this EH is available: [PreloadStarted](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadStarted)}}\n\n**Arma 3**: In order to keep compatibility between official and community content the functions `BIS_fnc_addStackedEventHandler` and `BIS_fnc_removeStackedEventHandler` should be used instead.",
             "examples": [
                 {
                     "text": "```sqf\nonPreloadStarted {diag_log \"preload started\"};\n```"
@@ -55539,7 +55539,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Converts given, formatted as simple array, `String` into a valid `Array`. Simple array is array consisting of `Number`s, `String`s, `Boolean`s and `Array`s of all of the above.\nThis command is almost **4&times; faster** than similar uncached `call` `compile` method. And because `call` `compile` is not required, it is also **more secure** and primarily intended for use with `callExtension` to parse the `String` output into `Array`.\n\n**NOTE**: \nSince Arma 3 v1.96 the command tolerates extra spaces and supports single quotes. The only recognised keywords (case **in**sensitive) are:\n{{Columns|2|\n* `**true**` - translates into `true`\n* `**false**` - translates into `false`\n* `**nil**` - translates into `nil`\n* `**null**` - translates into `nil`\n* `**&lt;null&gt;**` - translates into `nil` (_not_ `objNull`)\n* `**any**` - translates into `nil`\n\n}}",
+            "description": "Converts given, formatted as simple array, `String` into a valid `Array`. Simple array is array consisting of `Number`s, `String`s, `Boolean`s and `Array`s of all of the above.\nThis command is almost **4&times; faster** than similar uncached `call` `compile` method. And because `call` `compile` is not required, it is also **more secure** and primarily intended for use with `callExtension` to parse the `String` output into `Array`.\n\n**NOTE**: \nSince Arma 3 v1.96 the command tolerates extra spaces and supports single quotes. The only recognised keywords (case **in**sensitive) are:\n{{Columns|2|\n* `**true**` - translates into `true`\n* `**false**` - translates into `false`\n* `**nil**` - translates into `nil`\n* `**null**` - translates into `nil`\n* `**&lt;null&gt;**` - translates into `nil` (_not_ `objNull`)\n* `**any**` - translates into `nil`\n}}",
             "examples": [
                 {
                     "text": "```sqf\nprivate _arr = parseSimpleArray \"[1,2,3]\";\n```"
@@ -55894,7 +55894,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a list of playable units in a multiplayer game (occupied by both AI or players), created on the following sides `east`/`opfor`, `west`/`blufor`, `resistance`/`independent` and `civilian` only.\nDoes not contain units of `sideLogic`.\n**NOTE**: This command returns an empty array in Singleplayer; use `switchableUnits` instead.\n**IMPORTANT**: This command does not include dead players awaiting for respawn.",
+            "description": "Returns a list of playable units in a multiplayer game (occupied by both AI or players), created on the following sides `east`/`opfor`, `west`/`blufor`, `resistance`/`independent` and `civilian` only.\nDoes not contain units of `sideLogic`.\n{{Feature|informative|This command returns an empty array in Singleplayer; use `switchableUnits` instead.}}\n**IMPORTANT**: This command does not include dead players awaiting for respawn.",
             "examples": [
                 {
                     "text": "```sqf\n{ _x groupChat \"I'm a playable unit.\"; } forEach playableUnits;\n```"
@@ -55955,7 +55955,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person, a smooth transition to the given action will be initiated, but all previous playAction are discarded.\n**Arma**: 3|For {{arma3 actions, see [playAction/actions](https://community.bistudio.com/wiki/playAction%2Factions).}}",
+            "description": "When used on a person, a smooth transition to the given action will be initiated, but all previous playAction are discarded.\n**Arma 3**: For Arma 3 actions, see [playAction/actions](https://community.bistudio.com/wiki/playAction%2Factions).",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne playActionNow \"SitDown\";\n```"
@@ -56187,7 +56187,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person, smooth transition to given move will be done.\n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see _Example 2_).\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
+            "description": "When used on a person, smooth transition to given move will be done.\n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see _Example 2_).\n{{Feature|informative|see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.}}\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
             "examples": [
                 {
                     "text": "```sqf\nsoldierOne playMove \"Stand\";\n```"
@@ -56226,7 +56226,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded. \n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see _Example 2_).\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
+            "description": "When used on a person,a smooth transition to the given move will be initiated, but all previous playMove are discarded. \n\nThe difference between `playMove` and `playMoveNow` is that `playMove` adds another move to the move queue, while `playMoveNow` replaces the whole move queue with new move (see _Example 2_).\n{{Feature|informative|see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.}}\n**IMPORTANT**: A transition is only possible if the current and provided animations have the correct relationship configuration.",
             "examples": [
                 {
                     "text": "```sqf\nplayer playMoveNow \"AmovPercMevaSlowWrflDf\";\n```"
@@ -56436,7 +56436,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "soundPosition",
-                            "description": "`Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) - (Optional, default [0,0,0]) position for sound emitter, overrides _soundSource_\n**NOTE**: If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource for _soundPosition_ instead of <sqf inline>_soundSource for _soundSource_.\n**IMPORTANT**: This parameter also takes `Object` but their [AGL](https://community.bistudio.com/wiki/Position%23PositionAGL) position is used instead of [ASL](https://community.bistudio.com/wiki/Position%23PositionASL) resulting in sound source being underground if they're above ground, always use [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) instead."
+                            "description": "`Array` format [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) - (Optional, default [0,0,0]) position for sound emitter, overrides _soundSource_\n{{Feature|informative|If a following parameter has to be used, simply use <sqf inline>getPosASL _soundSource for _soundPosition_ instead of <sqf inline>_soundSource for _soundSource_.}}\n**IMPORTANT**: This parameter also takes `Object` but their [AGL](https://community.bistudio.com/wiki/Position%23PositionAGL) position is used instead of [ASL](https://community.bistudio.com/wiki/Position%23PositionASL) resulting in sound source being underground if they're above ground, always use [PositionASL](https://community.bistudio.com/wiki/Position%23PositionASL) instead."
                         },
                         {
                             "name": "volume",
@@ -56612,7 +56612,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "cameraPos",
-                            "description": "[PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative) - relative camera position, format **[x, z, y]** (X = left-right, Z = below-above, Y = back-front)\n**IMPORTANT**: This command has Y and Z axes swapped around, which is different from the usual model space coordinates format ({{Link|Position|[x, y, z]).}}"
+                            "description": "[PositionRelative](https://community.bistudio.com/wiki/Position%23PositionRelative) - relative camera position, format **[x, z, y]** (X = left-right, Z = below-above, Y = back-front)\n**IMPORTANT**: This command has Y and Z axes swapped around, which is different from the usual model space coordinates format ({{Link|Position|[x, y, z]}})."
                         }
                     ],
                     "outline": "`positionCameraToWorld` cameraPos",
@@ -57068,7 +57068,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Return the movement precision of the given entity, how is the entity able to be precise when moving to given target.\n**NOTE**: See {{Link|CfgVehicles Config Reference#precision.}}",
+            "description": "Return the movement precision of the given entity, how is the entity able to be precise when moving to given target.\n**NOTE**: See {{Link|CfgVehicles Config Reference#precision}}.",
             "examples": [
                 {
                     "text": "```sqf\n// used in formationCDanger.fsm\nif (getPosATL _this distance _dangerPos <= precision _this) then { /* ... */ };\n```"
@@ -57546,7 +57546,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the product's friendly name, identifier, version and build number.\n**Arma**: 3|The command has been upgraded to also returns branch identifier, whether or not the game was launched using mods, the platform and the architecture.",
+            "description": "Returns the product's friendly name, identifier, version and build number.\n**Arma 3**: The command has been upgraded to also returns branch identifier, whether or not the game was launched using mods, the platform and the architecture.",
             "examples": [
                 {
                     "text": "```sqf\nhint str productVersion; // would return [\"Arma 2 OA\", \"arma2oa\", 162, 95208] on Arma 2 OA 1.62.95208\n```"
@@ -57729,7 +57729,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Reliably broadcasts `missionNamespace` variable and its **current** value to all computers (server/client).\n\nVariables broadcast with `publicVariable` during a mission will be available to [JIP](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) clients with the value they held at the time.\n\nSuch variables are persistent and sent to the JIP client before the first batch of client-side [Event Scripts](https://community.bistudio.com/wiki/Event%20Scripts) (such as [[init.sqf]]) is run.\n**IMPORTANT**: Using `publicVariable` too frequently and/or with a lot of data can cause other aspects of the game to experience bandwidth problems.\n\n\nThe following [ Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) are supported:\n{{{!}} class=\"wikitable align-center\"\n! Type\n{{!}} `Number`\n{{!}} `Boolean`\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `String`\n{{!}} [Text](https://community.bistudio.com/wiki/Structured%20Text)\n{{!}} `Array`\n{{!}} `Code`\n{{!}} `Nothing` (`nil`)\n{{!}} `HashMap`\n{{!}}-\n! Since\n{{!}} colspan=\"4\" {{!}} **(Operation Flashpoint)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}}}\n\n**IMPORTANT**: \nIt is not possible (and illogical) to transfer a local entity reference, such as [scripts](https://community.bistudio.com/wiki/Script%20Handle), [displays](https://community.bistudio.com/wiki/Display) or [local objects](https://community.bistudio.com/wiki/createVehicleLocal).\n\nAlso, note that [Team Member](https://community.bistudio.com/wiki/Team%20Member) is not supported.",
+            "description": "Reliably broadcasts `missionNamespace` variable and its **current** value to all computers (server/client).\n\nVariables broadcast with `publicVariable` during a mission will be available to [JIP](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Join%20In%20Progress) clients with the value they held at the time.\n\nSuch variables are persistent and sent to the JIP client before the first batch of client-side [Event Scripts](https://community.bistudio.com/wiki/Event%20Scripts) (such as [[init.sqf]]) is run.\n**IMPORTANT**: Using `publicVariable` too frequently and/or with a lot of data can cause other aspects of the game to experience bandwidth problems.}}\n\n\nThe following [ Data Types](https://community.bistudio.com/wiki/%3ACategory%3A%20Data%20Types) are supported:\n{{{!}} class=\"wikitable align-center\"\n! Type\n{{!}} `Number`\n{{!}} `Boolean`\n{{!}} `Object`\n{{!}} `Group`\n{{!}} `String`\n{{!}} [Text](https://community.bistudio.com/wiki/Structured%20Text)\n{{!}} `Array`\n{{!}} `Code`\n{{!}} `Nothing` (`nil`)\n{{!}} `HashMap`\n{{!}}-\n! Since\n{{!}} colspan=\"4\" {{!}} **(Operation Flashpoint)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} colspan=\"2\" {{!}} **(Armed Assault)**\n{{!}} **(Arma 3)**\n{{!}} **(Arma 3)**\n{{!}\n\n**IMPORTANT**: \nIt is not possible (and illogical) to transfer a local entity reference, such as [scripts](https://community.bistudio.com/wiki/Script%20Handle), [displays](https://community.bistudio.com/wiki/Display) or [local objects](https://community.bistudio.com/wiki/createVehicleLocal).\n\nAlso, note that [Team Member](https://community.bistudio.com/wiki/Team%20Member) is not supported.",
             "examples": [
                 {
                     "text": "```sqf\n\nTAG_MyPublicVariable = 0;\nTAG_MyPublicVariable = 1;\npublicVariable \"TAG_MyPublicVariable\";\t// other clients will receive the \"TAG_MyPublicVariable\" variable with a 1 value\n\nTAG_MyPublicVariable = 2;\t\t\t\t// needs to be broadcast again - synchronisation is not automatic\n\n```"
@@ -57764,7 +57764,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Send the variable value to the client computer - same limitations regarding variable type as [publicVariable](https://community.bistudio.com/wiki/publicVariable%23Description).\n\nThe Client ID is the temporary ID given to a connected client for that session. You can find out this ID with the `owner` command (using it on a player's character, for example, will give you that players client ID).\n\n\n\n**Arma**: 3|In Arma 3 it is possible to broadcast `nil` value",
+            "description": "Send the variable value to the client computer - same limitations regarding variable type as [publicVariable](https://community.bistudio.com/wiki/publicVariable%23Description).\n\nThe Client ID is the temporary ID given to a connected client for that session. You can find out this ID with the `owner` command (using it on a player's character, for example, will give you that players client ID).\n\n\n\n**Arma 3**: In Arma 3 it is possible to broadcast `nil` value",
             "examples": [
                 {
                     "text": "```sqf\n3 publicVariableClient \"CTFscoreOne\";\n```"
@@ -57795,7 +57795,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Send the variable value to the server - same limitations regarding variable type as [publicVariable](https://community.bistudio.com/wiki/publicVariable%23Description).\n**Arma**: 3|In {{arma3 it is possible to broadcast the `nil` value.}}",
+            "description": "Send the variable value to the server - same limitations regarding variable type as [publicVariable](https://community.bistudio.com/wiki/publicVariable%23Description).\n**Arma 3**: In Arma 3 it is possible to broadcast the `nil` value.",
             "examples": [
                 {
                     "text": "```sqf\npublicVariableServer \"CTFscoreOne\";\n```"
@@ -58891,7 +58891,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Asks the server to execute the given function or script command on the given target machine(s).\n* Functions are executed in the [scheduled environment](https://community.bistudio.com/wiki/Scheduler%23Scheduled%20Environment); suspension is allowed.\n* Script commands are executed in the [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment); suspension is not allowed (see _Example 7_).\n\nRead [Arma 3: Remote Execution](https://community.bistudio.com/wiki/Arma%203%3A%20Remote%20Execution) for more information about remote execution, security features and JIP techniques.\n\n**NOTE**: `remoteExec`/`remoteExecCall` can be used in single player as well, as it is considered as player-hosted multiplayer.\n\n**IMPORTANT**: The direct execution of `call` or `spawn` via `remoteExec` (or `remoteExecCall`) should be avoided to prevent issues in cases where the remote execution of `call` or `spawn` is blocked by [CfgRemoteExec](https://community.bistudio.com/wiki/Arma%203%3A%20CfgRemoteExec). It is instead recommended to create a function to be itself remote-executed.",
+            "description": "Asks the server to execute the given function or script command on the given target machine(s).\n* Functions are executed in the [scheduled environment](https://community.bistudio.com/wiki/Scheduler%23Scheduled%20Environment); suspension is allowed.\n* Script commands are executed in the [unscheduled environment](https://community.bistudio.com/wiki/Scheduler%23Unscheduled%20Environment); suspension is not allowed (see _Example 7_).\n\nRead [Arma 3: Remote Execution](https://community.bistudio.com/wiki/Arma%203%3A%20Remote%20Execution) for more information about remote execution, security features and JIP techniques.\n\n{{Feature|informative|`remoteExec`/`remoteExecCall` can be used in single player as well, as it is considered as player-hosted multiplayer.}}\n\n**IMPORTANT**: The direct execution of `call` or `spawn` via `remoteExec` (or `remoteExecCall`) should be avoided to prevent issues in cases where the remote execution of `call` or `spawn` is blocked by [CfgRemoteExec](https://community.bistudio.com/wiki/Arma%203%3A%20CfgRemoteExec). It is instead recommended to create a function to be itself remote-executed.",
             "examples": [
                 {
                     "text": "How to write `remoteExec`/`remoteExecCall`:\n<code style=\"display: block\">{{Color|darkorange|hint}} {{Color|teal|\"Hello\"}};\n{{cc|becomes}}\n[{{Color|teal|\"Hello\"}}] remoteExec [\"{{Color|darkorange|hint}}\"];\n{{Color|teal|\"Hello\"}} remoteExec [\"{{Color|darkorange|hint}}\"]; {{cc|alternatively}}</code>\n\n<code style=\"display: block\">{{Color|green|unit1}} {{Color|darkorange|setFace}} {{Color|teal|\"Miller\"}};\n{{cc|becomes}}\n[{{Color|green|unit1}}, {{Color|teal|\"Miller\"}}] remoteExec [\"{{Color|darkorange|setFace}}\"];</code>\n\n<code style=\"display: block\">{{Color|darkorange|cutRsc}} {{Color|darkred|[\"\", \"BLACK OUT\"]}};\n{{cc|becomes}}\n[{{Color|darkred|[\"\", \"BLACK OUT\"]}}] remoteExec [\"{{Color|darkorange|cutRsc}}\"]; {{cc|double brackets are needed as the unary command takes an array}}</code>\n\n<code style=\"display: block\">\n{{cc|functions, however, do not need double squared brackets}}\n{{Color|teal|[\"line 1\", \"line 2\"]}} spawn {{Color|darkorange|BIS_fnc_infoText}};\n{{cc|becomes}}\n{{Color|teal|[\"line 1\", \"line 2\"]}} remoteExec [\"{{Color|darkorange|BIS_fnc_infoText}}\"];\n</code>"
@@ -59183,7 +59183,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Removes all unit's user added actions.\n**NOTE**: This command's syntax was <sqf inline>unit removeAllActions number from Arma 3 v0.50 to v1.06.\n**IMPORTANT**: Usage of this command is usually a bad practice unless justified by the situation; removing all actions in order to remove all actions that _one_ added is not a good method as a mod or another script could have added its own actions as well and see them removed. Instead, store the action id returned by `addAction` either in a script variable or using `setVariable`.",
+            "description": "Removes all unit's user added actions.\n{{Feature|informative|This command's syntax was <sqf inline>unit removeAllActions number from Arma 3 v0.50 to v1.06.}}\n**IMPORTANT**: Usage of this command is usually a bad practice unless justified by the situation; removing all actions in order to remove all actions that _one_ added is not a good method as a mod or another script could have added its own actions as well and see them removed. Instead, store the action id returned by `addAction` either in a script variable or using `setVariable`.",
             "examples": [
                 {
                     "text": "```sqf\nremoveAllActions player;\n```"
@@ -62574,7 +62574,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Autosaves the game (used for Retry). The saving is not started immediately, the request for autosave is made instead. To check the status of the request, use `isSaving`. The game can then be loaded from the last autosave with `loadGame`. Will not save if the player is [ null](https://community.bistudio.com/wiki/objNull%20) or dead.\n**Arma**: 3|Since **(Arma 3)** [ scripted event handler](https://community.bistudio.com/wiki/BIS_fnc_addScriptedEventHandler%20) is available.**`",
+            "description": "Autosaves the game (used for Retry). The saving is not started immediately, the request for autosave is made instead. To check the status of the request, use `isSaving`. The game can then be loaded from the last autosave with `loadGame`. Will not save if the player is [ null](https://community.bistudio.com/wiki/objNull%20) or dead.\n{{Feature|arma3|Since **(Arma 3)** a `**[[Arma 3: Scripted Event Handlers#Events | \"OnSaveGame\"]]}} [ scripted event handler](https://community.bistudio.com/wiki/BIS_fnc_addScriptedEventHandler%20) is available.**`",
             "examples": [
                 {
                     "text": "```sqf\nsaveGame;\n```"
@@ -62699,7 +62699,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Saves all variables stored in `profileNamespace` to the active `Profile`.\n**NOTE**: This command should be used when it is likely that the game will not be closed the usual way (e.g. via {{Controls|Alt|F4) or when the data is important and must not be lost due to a game crash.}}\n**WARNING**: \n* This command triggers a file operation. As file operations are slow (even on SSDs), it is not recommended to use this command too frequently (i.e. several times per second).\n* Do not save large amounts of data to the profile; the larger the profile file gets, the slower it loads!\n* The `profileNamespace` is saved automatically when the game is closed.\n\n{{Feature|tkoh|Heliport status, used in the Career mode for example, is stored in the file that is modified by this command, so be mindful of this to avoid losing data and progress.}}",
+            "description": "Saves all variables stored in `profileNamespace` to the active `Profile`.\n**NOTE**: This command should be used when it is likely that the game will not be closed the usual way (e.g. via {{Controls|Alt|F4}}) or when the data is important and must not be lost due to a game crash.\n**WARNING**: \n* This command triggers a file operation. As file operations are slow (even on SSDs), it is not recommended to use this command too frequently (i.e. several times per second).\n* Do not save large amounts of data to the profile; the larger the profile file gets, the slower it loads!\n* The `profileNamespace` is saved automatically when the game is closed.\n\n{{Feature|tkoh|Heliport status, used in the Career mode for example, is stored in the file that is modified by this command, so be mindful of this to avoid losing data and progress.}}",
             "examples": [
                 {
                     "text": "```sqf\nprofileNamespace setVariable [\"TAG_lastPlayerLocation\", getPosASL player];\nsaveProfileNamespace; // Optional since namespace is saved when game is closed\n```"
@@ -62779,7 +62779,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Check if saving the game is enabled.\n**Arma**: 3|If saving is disabled by [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) mission attribute, this command will still return `true`.",
+            "description": "Check if saving the game is enabled.\n**Arma 3**: If saving is disabled by [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) mission attribute, this command will still return `true`.",
             "examples": [
                 {
                     "text": "```sqf\n\nif (savingEnabled) then\n{\n\thint \"Saving is enabled!\";\n};\n\n```"
@@ -63029,7 +63029,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the position on landscape ([PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL)) corresponding to the given point on screen (in UI coordinates). \n**NOTE**:  This command performs an intersection with the ground/water surface, from the camera position along the `screenToWorldDirection` vector up to `**viewDistance for terrain intersection and {{hl|2 * viewDistance**` for water intersection. In other words, it's similar to doing: \n\n```sqf\n\nprivate _p1 = AGLtoASL positionCameraToWorld [0,0,0];                  // camera position ASL\nprivate _vector = screenToWorldDirection_screenPos;                      // \"aim\" vector\nprivate _p2 = _p1 vectorAdd (_vector vectorMultiply viewDistance * 2); // the ray doesn't go beyond 2 * view distance\nASLtoAGL terrainIntersectAtASL [_p1, _p2]\n\n```\n\n}}",
+            "description": "Returns the position on landscape ([PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL)) corresponding to the given point on screen (in UI coordinates). \n**NOTE**:  This command performs an intersection with the ground/water surface, from the camera position along the `screenToWorldDirection` vector up to `**viewDistance}} for terrain intersection and {{hl|2 * viewDistance**` for water intersection. In other words, it's similar to doing: \n\n```sqf\n\nprivate _p1 = AGLtoASL positionCameraToWorld [0,0,0];                  // camera position ASL\nprivate _vector = screenToWorldDirection_screenPos;                      // \"aim\" vector\nprivate _p2 = _p1 vectorAdd (_vector vectorMultiply viewDistance * 2); // the ray doesn't go beyond 2 * view distance\nASLtoAGL terrainIntersectAtASL [_p1, _p2]\n\n```",
             "examples": [
                 {
                     "text": "```sqf\n_wPos = screenToWorld [0.5, 0.5];\n```"
@@ -64148,7 +64148,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sends a simple command to the vehicle's driver / gunner (air vehicles ignore it). See also `vehicleMoveInfo`.**IMPORTANT**:  Doesn't seem to work if AI driver is alone, needs another unit in the vehicle (could be another AI or player) that is set as `setEffectiveCommander`. If driver is `effectiveCommander` it will refuse any drive commands.\n**Arma**: 3|Due to some sort of a bug when vehicle is ordered turning (\"LEFT\" or \"RIGHT\"), it locks the vehicle ability to respond to any other commands properly. Always use \"STOPTURNING\" to cancel turning before issuing other move commands\n{{{!}} class=\"valign-top\"\n! style=\"width: 33%\" {{!}} Gunner commands\n! style=\"width: 33%\" {{!}} Driver Move commands\n! Driver Turn commands\n{{!}}-\n{{!}}\n* `**\"FIRE\"**`\n* `**\"CEASE FIRE\"**`\n* `**\"MANUAL FIRE\"**`\n* `**\"CANCEL MANUAL FIRE\"**`\n* `**\"KEY FIRE\"**`\n{{!}}\n* `**\"FORWARD\"**` - move forward\n* `**\"FAST\"**` - move forward, fast\n* `**\"SLOW\"**` - move forward, slow\n* `**\"STOP\"**` - stop moving forward or backward\n* `**\"BACK\"**` - move backward\n* `**\"KEY UP\"**`\n* `**\"KEY DOWN\"**`\n* `**\"KEY FAST\"**`\n* `**\"KEY SLOW\"**`\n{{!}}\n* `**\"LEFT\"**` - turn left, while moving or not\n* `**\"RIGHT\"**` - turn right, while moving or not\n* {{GVI|arma3|1.78",
+            "description": "Sends a simple command to the vehicle's driver / gunner (air vehicles ignore it). See also `vehicleMoveInfo`.{{Feature | important | Doesn't seem to work if AI driver is alone, needs another unit in the vehicle (could be another AI or player) that is set as `setEffectiveCommander`. If driver is `effectiveCommander` it will refuse any drive commands.}}\n**Arma 3**: Due to some sort of a bug when vehicle is ordered turning (\"LEFT\" or \"RIGHT\"), it locks the vehicle ability to respond to any other commands properly. Always use \"STOPTURNING\" to cancel turning before issuing other move commands\n{{{!}} class=\"valign-top\"\n! style=\"width: 33%\" {{!}} Gunner commands\n! style=\"width: 33%\" {{!}} Driver Move commands\n! Driver Turn commands\n{{!}}-\n{{!}}\n* `**\"FIRE\"**`\n* `**\"CEASE FIRE\"**`\n* `**\"MANUAL FIRE\"**`\n* `**\"CANCEL MANUAL FIRE\"**`\n* `**\"KEY FIRE\"**`\n{{!}}\n* `**\"FORWARD\"**` - move forward\n* `**\"FAST\"**` - move forward, fast\n* `**\"SLOW\"**` - move forward, slow\n* `**\"STOP\"**` - stop moving forward or backward\n* `**\"BACK\"**` - move backward\n* `**\"KEY UP\"**`\n* `**\"KEY DOWN\"**`\n* `**\"KEY FAST\"**`\n* `**\"KEY SLOW\"**`\n{{!}}\n* `**\"LEFT\"**` - turn left, while moving or not\n* `**\"RIGHT\"**` - turn right, while moving or not\n* {{GVI|arma3|1.78",
             "examples": [
                 {
                     "text": "```sqf\nvehicle player sendSimpleCommand \"STOP\";\n```"
@@ -64290,7 +64290,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Executes the given [server command](https://community.bistudio.com/wiki/Multiplayer_Server_Commands).\n**NOTE**: \n* Available commands for execution can be found with `serverCommandAvailable`\n* Commands that can be executed can be found with `serverCommandExecutable`\n\n\n**IMPORTANT**: If `serverCommand` is executed on a client, it must be executed from [UI context](https://community.bistudio.com/wiki/isUIContext), such as [[User Interface Event Handlers#onButtonDown|\"onButtonDown\"]] or similar events (see [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers)).",
+            "description": "Executes the given [server command](https://community.bistudio.com/wiki/Multiplayer_Server_Commands).\n{{Feature|informative|\n* Available commands for execution can be found with `serverCommandAvailable`\n* Commands that can be executed can be found with `serverCommandExecutable`\n}}\n\n**IMPORTANT**: If `serverCommand` is executed on a client, it must be executed from [UI context](https://community.bistudio.com/wiki/isUIContext), such as [[User Interface Event Handlers#onButtonDown|\"onButtonDown\"]] or similar events (see [User Interface Event Handlers](https://community.bistudio.com/wiki/User%20Interface%20Event%20Handlers)).",
             "examples": [
                 {
                     "text": "```sqf\nserverCommand \"#logout\";\n```"
@@ -65278,7 +65278,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets custom eye accommodation camera aperture.\n\n**NOTE**: \nIf HDR is enabled, when `setAperture` `**value is used it also forces `setApertureNew` to the following values: [{{hl|value}}, {{hl|value}}, {{hl|value**`, 1].\nExecute `setApertureNew` after `setAperture` to override this default mechanic.\n}}  \n**IMPORTANT**: \nThe aperture is set to default by the engine at the mission start. If you set it before the mission started it will reset like it never happened.\nMake sure you set it at the right time (see _Example 2_).",
+            "description": "Sets custom eye accommodation camera aperture.\n\n{{Feature|informative|\nIf HDR is enabled, when `setAperture` `**value}} is used it also forces `setApertureNew` to the following values: [{{hl|value}}, {{hl|value}}, {{hl|value**`, 1].\nExecute `setApertureNew` after `setAperture` to override this default mechanic.\n}}  \n**IMPORTANT**: \nThe aperture is set to default by the engine at the mission start. If you set it before the mission started it will reset like it never happened.\nMake sure you set it at the right time (see _Example 2_).",
             "examples": [
                 {
                     "text": "```sqf\nsetAperture 0.3;\n```"
@@ -65309,7 +65309,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets custom camera aperture when HDR is enabled. Provided values should be set such as _minimum_ &lte; _standard_ &lte; _maximum_.\n**NOTE**: \n* This command has to be executed after mission start: be sure to use e.g <sqf inline>sleep 0.1; for it to take effect.\n* If HDR is enabled (it is by default), when `setAperture` `**value is used it also forces `setApertureNew` to the following values: [{{hl|value}}, {{hl|value}}, {{hl|value**`, 1]. Execute `setApertureNew` _after_ `setAperture` to override this default mechanic.\n}}",
+            "description": "Sets custom camera aperture when HDR is enabled. Provided values should be set such as _minimum_ &lte; _standard_ &lte; _maximum_.\n**NOTE**: \n* This command has to be executed after mission start: be sure to use e.g <sqf inline>sleep 0.1; for it to take effect.\n* If HDR is enabled (it is by default), when `setAperture` `**value}} is used it also forces `setApertureNew` to the following values: [{{hl|value}}, {{hl|value}}, {{hl|value**`, 1]. Execute `setApertureNew` _after_ `setAperture` to override this default mechanic.",
             "examples": [
                 {
                     "text": "```sqf\n\nsetApertureNew [0.1, 0.2, 0.3, 1];\nsetApertureNew [-1];\t\t\t\t// reset to default\n\n```"
@@ -65453,7 +65453,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets individual unit behaviour **on every unit in a group**.\n**IMPORTANT**: This command doesn't set AI `Group` behaviour, see `setCombatBehaviour` or `setBehaviourStrong` for this.\n**NOTE**: See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units.\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
+            "description": "Sets individual unit behaviour **on every unit in a group**.\n**IMPORTANT**: This command doesn't set AI `Group` behaviour, see `setCombatBehaviour` or `setBehaviourStrong` for this.\n{{Feature|informative|See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units.}}\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
             "examples": [
                 {
                     "text": "```sqf\n_group1 setBehaviour \"SAFE\";\n```"
@@ -65486,7 +65486,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets individual unit behaviour on every unit in a group and additionally tries to force this behaviour to the unit's group. Alternatively see `setCombatBehaviour`.\n**NOTE**: See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units.\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
+            "description": "Sets individual unit behaviour on every unit in a group and additionally tries to force this behaviour to the unit's group. Alternatively see `setCombatBehaviour`.\n{{Feature|informative|See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units.}}\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
             "examples": [
                 {
                     "text": "```sqf\n_group1 setBehaviourStrong \"SAFE\";\n```"
@@ -65553,7 +65553,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enable landing gear wheel brakes for a helicopter.\n* value 0: brakes off\n* value 1: brakes on\n\n* index 1: left wheels\n* index 2: right wheels\n* index 3: both sides\n**Arma 3: Advanced Helicopter Flight Model**: }}\n{{Feature|informative|This command is implemented, but not fully supported.",
+            "description": "Enable landing gear wheel brakes for a helicopter.\n* value 0: brakes off\n* value 1: brakes on\n\n* index 1: left wheels\n* index 2: right wheels\n* index 3: both sides\n{{Feature|afm}}\n**NOTE**: This command is implemented, but not fully supported.",
             "examples": [
                 {
                     "text": "```sqf\nmyHelicopterRTD setBrakesRTD [1, 3];\n```"
@@ -65889,7 +65889,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax). The group in this case is a `Group` entity and not a simple collection of units. To retrieve unit or group behaviour see `combatBehaviour`. The behaviour is one of: \n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\"\n**NOTE**: See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units. Group behaviour usually is \"CARELESS\" or \"SAFE\"\n\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
+            "description": "Sets an individual unit entity behaviour (main syntax) or a group entity behaviour (alternative syntax). The group in this case is a `Group` entity and not a simple collection of units. To retrieve unit or group behaviour see `combatBehaviour`. The behaviour is one of: \n* \"CARELESS\"\n* \"SAFE\"\n* \"AWARE\"\n* \"COMBAT\"\n* \"STEALTH\"\n{{Feature|informative|See [AI Behaviour](https://community.bistudio.com/wiki/AI%20Behaviour) for details of the effect of this command on AI units. Group behaviour usually is \"CARELESS\" or \"SAFE\"}}\n\n<spoiler text=\"Comparison of Behaviour commands\">\n{",
             "examples": [
                 {
                     "text": "```sqf\nunit1 setCombatBehaviour \"SAFE\";\n```"
@@ -66463,7 +66463,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets value of the specified custom sound controller to be used in [simple expression](https://community.bistudio.com/wiki/simple%20expression)s in config. Returns `true` if value was set to the controller, `false` if command fails, for example if vehicle is not a transport or controller name is not recognised.\n**IMPORTANT**:  Custom sound controller name is <u>case sensitive</u> and of the following format:\n\n```sqf\nformat [\"CustomSoundController%1\", _number];\n```\n\nWhere `**_number is a number from 1 to `getCustomSoundControllerCount` (currently 32)**`",
+            "description": "Sets value of the specified custom sound controller to be used in [simple expression](https://community.bistudio.com/wiki/simple%20expression)s in config. Returns `true` if value was set to the controller, `false` if command fails, for example if vehicle is not a transport or controller name is not recognised.\n{{Feature | important | Custom sound controller name is <u>case sensitive</u> and of the following format:\n\n```sqf\nformat [\"CustomSoundController%1\", _number];\n```\n\nWhere `**_number}} is a number from 1 to `getCustomSoundControllerCount` (currently 32)**`",
             "examples": [
                 {
                     "text": "Change value of CustomSoundController1 to 12\n\n```sqf\nsetCustomSoundController [vehicle player, \"CustomSoundController1\", 12];\n```"
@@ -66529,7 +66529,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{{!}} class=\"wikitable float-right align-center-col-2\"\n{{!}}+ \n! {{Link|:Category: Event Handlers|Event Handler}}\n! Triggered\n{{!}}-\n{{!}} `**Hit**`\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} `**HandleDamage**`\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} `**Killed**`\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**MPKilled**`\n{{!}} {{Icon|checked}}\n{{!}}}\n\nSets the damage (or lack thereof) of an object/unit. The alternative syntax allows to skip destruction effects for vehicles and buildings.\n**Arma**: 3|\nSince {{arma3 v2.12 it is possible to influence trees, poles and walls fall direction by supplying the _killer_ entity param - the fall direction will then be away from _killer_<nowiki/>'s position.\nIn multiplayer, the _killer_ argument is ignored if the command is not executed on the server unless it targets trees, walls or poles - see {{Link|#Syntax 2}} and _Example 3_.\n}}",
+            "description": "{{{!}} class=\"wikitable float-right align-center-col-2\"\n{{!}}+ \n! {{Link|:Category: Event Handlers|Event Handler}}\n! Triggered\n{{!}}-\n{{!}} `**Hit**`\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} `**HandleDamage**`\n{{!}} {{Icon|unchecked}}\n{{!}}-\n{{!}} `**Killed**`\n{{!}} {{Icon|checked}}\n{{!}}-\n{{!}} `**MPKilled**`\n{{!}} {{Icon|checked}}\n{{!}}}\n\nSets the damage (or lack thereof) of an object/unit. The alternative syntax allows to skip destruction effects for vehicles and buildings.\n**Arma 3**: \nSince Arma 3 v2.12 it is possible to influence trees, poles and walls fall direction by supplying the _killer_ entity param - the fall direction will then be away from _killer_<nowiki/>'s position.\nIn multiplayer, the _killer_ argument is ignored if the command is not executed on the server unless it targets trees, walls or poles - see {{Link|#Syntax 2}} and _Example 3_.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 setDamage 1;\n```"
@@ -66652,7 +66652,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets debriefing title, text, subtitle, picture and background for a mission ending.\nThe end type could be the engine-defined (\"CONTINUE\", \"KILLED\", \"LOSER\", \"END1\", \"END2\", \"END3\", \"END4\", \"END5\", \"END6\"), config-defined (see [CfgDebriefing](https://community.bistudio.com/wiki/Debriefing%23Configuration)) or, with an alternative syntax of this command, any `String`.\nGiven texts will be used to replace the corresponding texts on the debriefing screen.\n\n**IMPORTANT**: In order to benefit from alternative syntax functionality, there will have to be at least **three** arguments passed to the command; **two** arguments will trigger the old behaviour.\n[[File:endMission.jpg|400px]] [[File:failMission.jpg|400px]]",
+            "description": "Sets debriefing title, text, subtitle, picture and background for a mission ending.\nThe end type could be the engine-defined (\"CONTINUE\", \"KILLED\", \"LOSER\", \"END1\", \"END2\", \"END3\", \"END4\", \"END5\", \"END6\"), config-defined (see [CfgDebriefing](https://community.bistudio.com/wiki/Debriefing%23Configuration)) or, with an alternative syntax of this command, any `String`.\nGiven texts will be used to replace the corresponding texts on the debriefing screen.\n\n{{Feature|important|In order to benefit from alternative syntax functionality, there will have to be at least **three** arguments passed to the command; **two** arguments will trigger the old behaviour.}}\n[[File:endMission.jpg|400px]] [[File:failMission.jpg|400px]]",
             "examples": [
                 {
                     "text": "```sqf\n\n_currentObjective = (taskDescription currentTask player) select 2;\n\"endDeath\" setDebriefingText [\"You Lose\", \"All of your men were killed while assaulting the \" + _currentObjective];\n\n```"
@@ -66914,7 +66914,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets object heading. Angles are measured in degrees clockwise from north; the regular range goes from 0 to 360 (0° = N, 90° = E, 180° = S, 270° = W). Negative angles represent counter-clockwise angles.\n**IMPORTANT**: This command resets the object's `velocity` and `vectorUp`!\n**NOTE**: In _some_ earlier titles (Operation Flashpoint?), this command was {{Icon|localEffect|32.}}",
+            "description": "Sets object heading. Angles are measured in degrees clockwise from north; the regular range goes from 0 to 360 (0° = N, 90° = E, 180° = S, 270° = W). Negative angles represent counter-clockwise angles.\n**IMPORTANT**: This command resets the object's `velocity` and `vectorUp`!\n**NOTE**: In _some_ earlier titles (Operation Flashpoint?), this command was {{Icon|localEffect|32}}.",
             "examples": [
                 {
                     "text": "```sqf\nmyUnit setDir 45; // will set myUnit to face North-East\n```"
@@ -67384,7 +67384,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets facial animation phase (eye blinking).\n**Arma**: 3|This command is not functional in {{arma3.}}",
+            "description": "Sets facial animation phase (eye blinking).\n**Arma 3**: This command is not functional in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 setFaceAnimation 0.5;\n```"
@@ -67634,7 +67634,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Smoothly change the fog over given time (in seconds). See also `fogParams`.\n**Arma**: 3|This command is MP synchronised, if executed on server, the changes will propagate globally. If executed on client effect is temporary as it will soon change to the server setting.",
+            "description": "Smoothly change the fog over given time (in seconds). See also `fogParams`.\n**Arma 3**: This command is MP synchronised, if executed on server, the changes will propagate globally. If executed on client effect is temporary as it will soon change to the server setting.",
             "examples": [
                 {
                     "text": "```sqf\n15 setFog 0.5;\n```"
@@ -67759,7 +67759,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set the current task of the formation member. **Arma**: 2|This command is not available in {{arma2.}}",
+            "description": "Set the current task of the formation member. **Arma 2**: This command is not available in Arma 2.",
             "examples": [
                 {
                     "text": "```sqf\n_unit setFormationTask \"MOVE\";\n```"
@@ -67829,7 +67829,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets how friendly a side is with another. The friendliness is set for one side, not for the other.  See also [Side Relations](https://community.bistudio.com/wiki/Side%20Relations).\n\n**Arma**: 3|Since {{arma3 this command can be used mid-mission. Before that it was intended to be used on mission start only, as changing value during mission could cause unexpected errors in AI behaviour (especially for groups already knowing about \"switched to enemy\" groups).\n}}",
+            "description": "Sets how friendly a side is with another. The friendliness is set for one side, not for the other.  See also [Side Relations](https://community.bistudio.com/wiki/Side%20Relations).\n\n**Arma 3**: Since Arma 3 this command can be used mid-mission. Before that it was intended to be used on mission start only, as changing value during mission could cause unexpected errors in AI behaviour (especially for groups already knowing about \"switched to enemy\" groups).",
             "examples": [
                 {
                     "text": "```sqf\nwest setFriend [resistance, 0]; // west will not like resistance from now on\n```"
@@ -68728,7 +68728,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**IMPORTANT**: To set a `Group` leader, see `selectLeader`.\nSet the leader of the given `Team`. Effect is local, unless both leader unit and team are local to PC on which command is executed, then effect is global.",
+            "description": "{{Feature|important|To set a `Group` leader, see `selectLeader`.}}\nSet the leader of the given `Team`. Effect is local, unless both leader unit and team are local to PC on which command is executed, then effect is global.",
             "examples": [],
             "syntaxes": [
                 {
@@ -68843,7 +68843,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set brightness of light.\n**Arma**: 3|This command is outdated. Use `setLightIntensity` instead.",
+            "description": "Set brightness of light.\n**Arma 3**: This command is outdated. Use `setLightIntensity` instead.",
             "examples": [
                 {
                     "text": "```sqf\nmyLight setLightBrightness 2;\n```"
@@ -69261,7 +69261,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets ammo count to given amount for given turret magazine.\n**NOTE**: \nSince Arma 3 v2.18 the magazine is first checked if it is loaded into the turret weapon, if not, the command falls back to old behaviour of selecting the first magazine from the list of available magazines.\nIn most cases this will be the loaded magazine anyway.\n\n**IMPORTANT**: The turret itself **must** be local (see `turretLocal`, `turretOwner`).",
+            "description": "Sets ammo count to given amount for given turret magazine.\n{{Feature|informative|\nSince Arma 3 v2.18 the magazine is first checked if it is loaded into the turret weapon, if not, the command falls back to old behaviour of selecting the first magazine from the list of available magazines.\nIn most cases this will be the loaded magazine anyway.\n}}\n**IMPORTANT**: The turret itself **must** be local (see `turretLocal`, `turretOwner`).",
             "examples": [
                 {
                     "text": "```sqf\nmyMRAP setMagazineTurretAmmo [\"200Rnd_127x99_mag_Tracer_Red\", 30, [0]];\n```"
@@ -70143,7 +70143,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets person's facial expression. To set it back to default, use \"\".\n**Arma**: 3|Prior to {{arma3 v2.01.146630 Mimics must be written in all lower case letters.}}",
+            "description": "Sets person's facial expression. To set it back to default, use \"\".\n**Arma 3**: Prior to Arma 3 v2.01.146630 Mimics must be written in all lower case letters.",
             "examples": [
                 {
                     "text": "```sqf\n_soldier1 setMimic \"hurt\";\n```"
@@ -70452,7 +70452,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets the `nameSound` of a person. By default, when giving orders, the units are addressed by their number.\nWhen nameSound is set, it will be used instead to address the unit. For example instead of \"Two, hold fire!\", one can have \"Miller, hold fire!\".\n\n**NOTE**: \nSee {{Link|Arma 3: CfgIdentities#NameSounds for common values.\n\nNote that any word from <sqf inline>configFile >> \"RadioProtocolENG\" >> \"Words\" is accepted (e.g `**\"veh_infantry_Sniper_s\"**`).\n}}",
+            "description": "Sets the `nameSound` of a person. By default, when giving orders, the units are addressed by their number.\nWhen nameSound is set, it will be used instead to address the unit. For example instead of \"Two, hold fire!\", one can have \"Miller, hold fire!\".\n\n**NOTE**: \nSee {{Link|Arma 3: CfgIdentities#NameSounds}} for common values.\n\nNote that any word from <sqf inline>configFile >> \"RadioProtocolENG\" >> \"Words\" is accepted (e.g `**\"veh_infantry_Sniper_s\"**`).",
             "examples": [
                 {
                     "text": "```sqf\nunit1 setNameSound \"dixon\";\n```"
@@ -70983,7 +70983,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets particle source parameters using existing particle config from `**CfgCloudlets**` class. Use `setParticleParams` subsequently if you need to overwrite some values.\n**IMPORTANT**:  If `**CfgCloudlets class contains [ simple expressions](https://community.bistudio.com/wiki/Simple_Expression%20), they will not be evaluated by this command, which might make the whole class unusable in script.**`",
+            "description": "Sets particle source parameters using existing particle config from `**CfgCloudlets**` class. Use `setParticleParams` subsequently if you need to overwrite some values.\n{{Feature | important | If `**CfgCloudlets}} class contains [ simple expressions](https://community.bistudio.com/wiki/Simple_Expression%20), they will not be evaluated by this command, which might make the whole class unusable in script.**`",
             "examples": [
                 {
                     "text": "```sqf\n_source01 = \"#particlesource\" createVehicleLocal _pos01;\n_source01 setParticleClass \"ObjectDestructionFire1Smallx\";\n_source01 attachTo [_object,[0,0,0]];\n```"
@@ -71907,7 +71907,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.\nA rain density of zero is no rain, one is maximum rain. Rain is not possible when `overcast` is less than 0.7.\n\n**Arma**: 3|\nSince {{arma3 this command is multiplayer-synchronised:\n* if executed on the server, the changes will propagate globally.\n* if executed on a client, the effect is local, temporary and will soon change to the server setting.\nMinimum `overcast` needed for rain in Arma 3 is **0.5**.\n}}\n\n**IMPORTANT**: \nAlternative syntaxes ({{Link|#Syntax 2 and {{Link|#Syntax 3}}):\n* set rain particle params. Rain particles params are client-side params and are ignored on dedicated server. Use helper function `BIS_fnc_setRain` if sync is needed in Multiplayer\n* have a **[local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality)** {{Icon|localeffect|32}} effect\n}}",
+            "description": "Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.\nA rain density of zero is no rain, one is maximum rain. Rain is not possible when `overcast` is less than 0.7.\n\n**Arma 3**: \nSince Arma 3 this command is multiplayer-synchronised:\n* if executed on the server, the changes will propagate globally.\n* if executed on a client, the effect is local, temporary and will soon change to the server setting.\nMinimum `overcast` needed for rain in Arma 3 is **0.5**.\n\n\n**IMPORTANT**: \nAlternative syntaxes ({{Link|#Syntax 2}} and {{Link|#Syntax 3}}):\n* set rain particle params. Rain particles params are client-side params and are ignored on dedicated server. Use helper function `BIS_fnc_setRain` if sync is needed in Multiplayer\n* have a **[local](https://community.bistudio.com/wiki/Multiplayer%20Scripting%23Locality)** {{Icon|localeffect|32}} effect",
             "examples": [
                 {
                     "text": "```sqf\n60 setRain 1;\n```"
@@ -72031,7 +72031,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets rank of given unit.\n\n**Arma**: 3|Before {{arma3 v1.68 and in previous titles, this command was {{Icon|globalArgument|32}} {{Icon|localEffect|32}}.}}",
+            "description": "Sets rank of given unit.\n\n**Arma 3**: Before Arma 3 v1.68 and in previous titles, this command was {{Icon|globalArgument|32 {{Icon|localEffect|32}}.}}",
             "examples": [
                 {
                     "text": "```sqf\nplayer setRank \"COLONEL\";\n```"
@@ -72228,7 +72228,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets a location's [side](https://community.bistudio.com/wiki/Side). The default side is Unknown.\n**IMPORTANT**: To change a _unit_<nowiki/>'s side, see {{Link|#Notes.}}",
+            "description": "Sets a location's [side](https://community.bistudio.com/wiki/Side). The default side is Unknown.\n**IMPORTANT**: To change a _unit_<nowiki/>'s side, see {{Link|#Notes}}.",
             "examples": [
                 {
                     "text": "```sqf\n_myLocation setSide resistance;\n```"
@@ -73287,7 +73287,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set the density of ambient cars in a rectangle (in cars per kilometer). **Arma**: 3|This command does nothing in {{arma3.}}",
+            "description": "Set the density of ambient cars in a rectangle (in cars per kilometer). **Arma 3**: This command does nothing in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\nsetTrafficDensity [40, 31000, 32000, 30000, 32000];\n```"
@@ -73330,7 +73330,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set maximum ambient traffic draw distance (in 2D). **Arma**: 3|This command does nothing in {{arma3.}}",
+            "description": "Set maximum ambient traffic draw distance (in 2D). **Arma 3**: This command does nothing in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\nsetTrafficDistance 1000;\n```"
@@ -73357,7 +73357,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set the average gap between ambient cars in a rectangle (in meters). **Arma**: 3|This command does nothing in {{arma3.}}",
+            "description": "Set the average gap between ambient cars in a rectangle (in meters). **Arma 3**: This command does nothing in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\nsetTrafficGap [50, 31000, 32500, 28000, 32000];\n```"
@@ -73400,7 +73400,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set ambient traffic speed in a rectangle (in kilometers per hour). **Arma**: 3|This command does nothing in {{arma3.}}",
+            "description": "Set ambient traffic speed in a rectangle (in kilometers per hour). **Arma 3**: This command does nothing in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\nsetTrafficSpeed [50, _xMin, _xMax, _zMin, _zMax];\n```"
@@ -73484,7 +73484,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:setTriggerArea.jpg|thumb|300px|Trigger axis a, b and c (_half_ of their x, y and z dimensions)]] Defines the area monitored by the given trigger. The area could be either rectangular or elliptical.\n**NOTE**: \nJust like with a and b dimensions, c dimension will alter area in opposite directions from the trigger position along z axis. Therefore if the trigger position is on the surface, half of the trigger area will be above the surface and half below. To place the whole area above the surface, adjust trigger position (move it up c meters). If c is not specified or &lt;{{= 0, the trigger's height is considered infinite like 2D triggers.}}",
+            "description": "[[File:setTriggerArea.jpg|thumb|300px|Trigger axis a, b and c (_half_ of their x, y and z dimensions)]] Defines the area monitored by the given trigger. The area could be either rectangular or elliptical.\n**NOTE**: \nJust like with a and b dimensions, c dimension will alter area in opposite directions from the trigger position along z axis. Therefore if the trigger position is on the surface, half of the trigger area will be above the surface and half below. To place the whole area above the surface, adjust trigger position (move it up c meters). If c is not specified or &lt;{{=}} 0, the trigger's height is considered infinite like 2D triggers.",
             "examples": [
                 {
                     "text": "```sqf\n_trigger setTriggerArea [100, 50, 45, false];\n```"
@@ -73864,7 +73864,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "In Arma 2 and since Arma 3 v1.64, this command sets unit into incapacitated state.\n\n`lifeState` results:\n* Arma 2: \"UNCONSCIOUS\"\n* Arma 3: \"INCAPACITATED\"\n\n**Arma**: 3|The unit goes in ragdoll mode and animation played while incapacitated depends on the injuries received.",
+            "description": "In Arma 2 and since Arma 3 v1.64, this command sets unit into incapacitated state.\n\n`lifeState` results:\n* Arma 2: \"UNCONSCIOUS\"\n* Arma 3: \"INCAPACITATED\"\n\n**Arma 3**: The unit goes in ragdoll mode and animation played while incapacitated depends on the injuries received.",
             "examples": [
                 {
                     "text": "```sqf\n_unit setUnconscious true;\n```"
@@ -74155,7 +74155,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets rank of given unit.\n\nPossible rank values, and the associated `rating` that is **set** (not added, the value replaces previous rating) with it:\n\n{{{!}} class=\"wikitable\" style=\"text-align: center\"\n! colspan=\"2\" {{!}} Ranks\n! PRIVATE\n! CORPORAL\n! SERGEANT\n! LIEUTENANT\n! CAPTAIN\n! MAJOR\n! COLONEL\n{{!}}-\n! rowspan=\"3\" {{!}} Ratings\n!\n{{Name|arma1|short}}\n\n{{Name|arma2|short}}\n\n{{Name|arma2oa|short}}\n\n{{Name|tkoh|short}}\n{{!}} 0\n{{!}} 500\n{{!}} 1500\n{{!}} 2500\n{{!}} 3500\n{{!}} 5000\n{{!}} 7500\n{{!}}-\n! {{Name|arma3|short}} (ca 2015)\n{{!}} 0\n{{!}} 50\n{{!}} 150\n{{!}} 250\n{{!}} 350\n{{!}} 500\n{{!}} 750\n{{!}}-\n! {{Name|arma3|short}}\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}}}\n\n**Arma**: 3|Before {{arma3 v1.68 and in previous titles, this command was {{Icon|globalArgument|32}} {{Icon|localEffect|32}}.}}",
+            "description": "Sets rank of given unit.\n\nPossible rank values, and the associated `rating` that is **set** (not added, the value replaces previous rating) with it:\n\n{{{!}} class=\"wikitable\" style=\"text-align: center\"\n! colspan=\"2\" {{!}} Ranks\n! PRIVATE\n! CORPORAL\n! SERGEANT\n! LIEUTENANT\n! CAPTAIN\n! MAJOR\n! COLONEL\n{{!}}-\n! rowspan=\"3\" {{!}} Ratings\n!\n{{Name|arma1|short}}\n\n{{Name|arma2|short}}\n\n{{Name|arma2oa|short}}\n\n{{Name|tkoh|short}}\n{{!}} 0\n{{!}} 500\n{{!}} 1500\n{{!}} 2500\n{{!}} 3500\n{{!}} 5000\n{{!}} 7500\n{{!}}-\n! {{Name|arma3|short}} (ca 2015)\n{{!}} 0\n{{!}} 50\n{{!}} 150\n{{!}} 250\n{{!}} 350\n{{!}} 500\n{{!}} 750\n{{!}}-\n! {{Name|arma3|short}}\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}} 0\n{{!}}}\n\n**Arma 3**: Before Arma 3 v1.68 and in previous titles, this command was {{Icon|globalArgument|32 {{Icon|localEffect|32}}.}}",
             "examples": [
                 {
                     "text": "```sqf\nplayer setUnitRank \"COLONEL\";\n```"
@@ -75030,7 +75030,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Sets string representation of an object to a custom string.\n\nWhen a vehicle is created and named in the editor, the name becomes both the variable containing the vehicle object and the string representation of the vehicle object.\nIn scripts an extra step is needed to achieve the same effect - see _Example 1_.\n\n**Arma**: 3|This does not work with [Simple Objects](https://community.bistudio.com/wiki/Arma%203%3A%20Simple%20Objects).",
+            "description": "Sets string representation of an object to a custom string.\n\nWhen a vehicle is created and named in the editor, the name becomes both the variable containing the vehicle object and the string representation of the vehicle object.\nIn scripts an extra step is needed to achieve the same effect - see _Example 1_.\n\n**Arma 3**: This does not work with [Simple Objects](https://community.bistudio.com/wiki/Arma%203%3A%20Simple%20Objects).",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _playersCar = vehicle player;\nsystemChat str _playersCar; // displays e.g \"ce06b00# 164274: offroad_01_unarmed_f.p3d\"\n\n_playersCar setVehicleVarName \"MyOffroad\";\nsystemChat str _playersCar;\t// displays \"MyOffroad\"\n\nisNil \"MyOffroad\";\t\t\t// true - the MyOffroad variable is not set\nMyOffroad = _playersCar;\t// now it is\npublicVariable \"MyOffroad\";\t// broadcasts it over the network\n\n```"
@@ -75210,7 +75210,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Set rendering distance. Setting view distance to <= 0 resets the value to the client's options (set in `**Options → Video → General → Visibility → Overall**`).\n**NOTE**: In previous versions, client's max view distance was limited by the server's view distance.\n**IMPORTANT**: \nView distance also defines the maximum distance between a unit and any other unit they can [know about](https://community.bistudio.com/wiki/knowsAbout).\nHigher view distance will involve more AI simulation cycles for every unit, which causes low performance. See [Arma 3: Performance Optimisation](https://community.bistudio.com/wiki/Arma%203%3A%20Performance%20Optimisation).\n\n\n{{{!}} class=\"wikitable\"\n! Game\n! min. scripted\n! min. UI\n! default\n! max. UI\n! max. scripted\n{{!}}-\n{{!}} Arma 3\n{{!}} 200\n{{!}} 500\n{{!}} **1600**\n{{!}} 12000\n{{!}} 40000\n{{!}}-\n{{!}} Arma 2: Operation Arrowhead\n{{!}} 200\n{{!}} 500\n{{!}} **2500**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Arma 2\n{{!}} 200\n{{!}} 500\n{{!}} **3000**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Armed Assault\n{{!}} 200\n{{!}} 500\n{{!}} **1200**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Operation Flashpoint\n{{!}} 500\n{{!}} 500\n{{!}} **900**\n{{!}} 5000\n{{!}} 5000\n{{!}}}",
+            "description": "Set rendering distance. Setting view distance to <= 0 resets the value to the client's options (set in `**Options → Video → General → Visibility → Overall**`).\n**NOTE**: In previous versions, client's max view distance was limited by the server's view distance.}}\n**IMPORTANT**: \nView distance also defines the maximum distance between a unit and any other unit they can [know about](https://community.bistudio.com/wiki/knowsAbout).\nHigher view distance will involve more AI simulation cycles for every unit, which causes low performance. See [Arma 3: Performance Optimisation](https://community.bistudio.com/wiki/Arma%203%3A%20Performance%20Optimisation).\n\n\n{{{!}} class=\"wikitable\"\n! Game\n! min. scripted\n! min. UI\n! default\n! max. UI\n! max. scripted\n{{!}}-\n{{!}} Arma 3\n{{!}} 200\n{{!}} 500\n{{!}} **1600**\n{{!}} 12000\n{{!}} 40000\n{{!}}-\n{{!}} Arma 2: Operation Arrowhead\n{{!}} 200\n{{!}} 500\n{{!}} **2500**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Arma 2\n{{!}} 200\n{{!}} 500\n{{!}} **3000**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Armed Assault\n{{!}} 200\n{{!}} 500\n{{!}} **1200**\n{{!}} 10000\n{{!}} 15000\n{{!}}-\n{{!}} Operation Flashpoint\n{{!}} 500\n{{!}} 500\n{{!}} **900**\n{{!}} 5000\n{{!}} 5000\n{{!}",
             "examples": [
                 {
                     "text": "```sqf\nsetViewDistance 2250;\n```"
@@ -75806,7 +75806,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Attaches a script to a scripted waypoint. In early versions of Arma, command consisted of a script name and additional script arguments and the script had to use [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax). The script receives the following arguments in [_this](https://community.bistudio.com/wiki/Magic%20Variables%23this) variable: [group, position, target] + [the optional passed arguments]. The optional arguments are `append`ed to the end of the arguments array.\n**Arma**: 3|In Arma 3, _command_ argument can be a reference to .sqf script (it will have to explicitly end with **`**.sqf**) or a reference to {{hl|.sqs}} script.**`",
+            "description": "Attaches a script to a scripted waypoint. In early versions of Arma, command consisted of a script name and additional script arguments and the script had to use [SQS Syntax](https://community.bistudio.com/wiki/SQS%20Syntax). The script receives the following arguments in [_this](https://community.bistudio.com/wiki/Magic%20Variables%23this) variable: [group, position, target] + [the optional passed arguments]. The optional arguments are `append`ed to the end of the arguments array.\n{{Feature|arma3|In Arma 3, _command_ argument can be a reference to .sqf script (it will have to explicitly end with **`**.sqf}}**) or a reference to {{hl|.sqs}} script.**`",
             "examples": [
                 {
                     "text": "```sqf\n[_grp, 2] setWaypointScript \"find.sqs player\";\n```"
@@ -76485,7 +76485,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Shows or hides the GPS receiver on the map screen, if enabled for the mission and you possess the item. (default `false`). **Arma**: 3|This command does nothing in Arma 3. Use the command `openGPS` that is available since v2.04.",
+            "description": "Shows or hides the GPS receiver on the map screen, if enabled for the mission and you possess the item. (default `false`). **Arma 3**: This command does nothing in Arma 3. Use the command `openGPS` that is available since v2.04.",
             "examples": [
                 {
                     "text": "```sqf\nshowGPS true;\n```"
@@ -76512,7 +76512,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Enable / disable showing of HUD. Defines visibility of weapon crosshair and any informational tags that appear when pointing the weapon at an object as well as availability of the default action menu. Unfortunately, it also hides icons drawn with `drawIcon3D`.\n**Arma**: 3|\n**Since {{arma3 v1.50** there is a Description.ext's [[Description.ext#showHUD|showHUD[]<nowiki/>]] array param that is identical in format to the extended `showHUD` command.\nWhen present, it will disable `showHUD` command entirely, allowing mission makers to permanently alter visibility of some HUD elements.\n\n**Since Arma 3 v2.04** it is possible to force drawing of `drawIcon3D` icons when HUD is hidden.\nThe icons will also show when custom camera is [created](https://community.bistudio.com/wiki/camCreate) and the view is switched to it via `switchCamera` or `cameraEffect` provided `cameraEffectEnableHUD` is enabled.\nFor more information see `drawIcon3D`.\n}}",
+            "description": "Enable / disable showing of HUD. Defines visibility of weapon crosshair and any informational tags that appear when pointing the weapon at an object as well as availability of the default action menu. Unfortunately, it also hides icons drawn with `drawIcon3D`.\n**Arma 3**: \n**Since Arma 3 v1.50** there is a Description.ext's [[Description.ext#showHUD|showHUD[]<nowiki/>]] array param that is identical in format to the extended `showHUD` command.\nWhen present, it will disable `showHUD` command entirely, allowing mission makers to permanently alter visibility of some HUD elements.\n\n**Since Arma 3 v2.04** it is possible to force drawing of `drawIcon3D` icons when HUD is hidden.\nThe icons will also show when custom camera is [created](https://community.bistudio.com/wiki/camCreate) and the view is switched to it via `switchCamera` or `cameraEffect` provided `cameraEffectEnableHUD` is enabled.\nFor more information see `drawIcon3D`.",
             "examples": [
                 {
                     "text": "```sqf\nshowHUD false;\n```"
@@ -77024,7 +77024,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Shows or hides the radio on the map screen, if enabled for the mission and you possess the item. (default `true`).\n**Arma**: 3|This command does nothing in {{arma3.}}",
+            "description": "Shows or hides the radio on the map screen, if enabled for the mission and you possess the item. (default `true`).\n**Arma 3**: This command does nothing in Arma 3.",
             "examples": [
                 {
                     "text": "```sqf\nshowRadio false;\n```"
@@ -79071,7 +79071,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns what surface type is at the given position. For surface texture see `surfaceTexture` command.\n\n\n\n**NOTE**: The command returns surface type of the ground, even underneath objects such as buildings and roads\n<spoiler text=\"Show surface types (Armed Assault)\">\n* #GRASSSOUTH\n* #GRASSGENERAL\n* #SANDGENERAL<spoiler text=\"Show surface types (Arma 2)\">\n* #UTGRASS - for natural surfaces\n* #UTCONCRETE - for urban surfaces<spoiler text=\"Show surface types (Arma 3)\">\n{{Columns|4|\n* BuildingRubble\n* BuildingRubble_exp\n* cardboard\n* cardboard_exp\n* carpet\n* carpet_exp\n* carpet_inside\n* carpet_in_exp\n* concrete\n* concrete_exp\n* concrete_hall\n* concrete_hall_exp\n* concrete_inside\n* concrete_in_exp\n* concrete_out\n* Default\n* dirtrunway\n* floor\n* floor_exp\n* floor_inside\n* floor_in_exp\n* GdtAsphalt\n* GdtBeach\n* GdtCliff\n* GdtConcrete\n* GdtDead\n* GdtDesert\n* GdtDirt\n* GdtField\n* GdtForest\n* GdtForestMalden\n* GdtForestPine\n* GdtGrassDry\n* GdtGrassGreen\n* GdtGrassLong\n* GdtGrassShort\n* GdtGrassTall\n* GdtGrassWild\n* GdtKLCobblestone\n* GdtKLDirt\n* GdtKlField\n* GdtKLForestCon\n* GdtKLForestDec\n* GdtKLGrass1\n* GdtKLGrass2\n* GdtKlSoil\n* GdtKlStubble\n* GdtKlTarmac\n* GdtKlWeatheredTarmac\n* GdtMarsh\n* GdtMud\n* GdtRedDirt\n* GdtRock\n* GdtRubble\n* GdtSeabed\n* GdtSeabedExp\n* GdtSoil\n* GdtStony\n* GdtStonyThistle\n* GdtStratisBeach\n* GdtStratisConcrete\n* GdtStratisDirt\n* GdtStratisDryGrass\n* GdtStratisForestPine\n* GdtStratisGreenGrass\n* GdtStratisRocky\n* GdtStratisSeabed\n* GdtStratisSeabedCluttered\n* GdtStratisThistles\n* GdtThorn\n* GdtVolcano\n* GdtVolcanoBeach\n* GdtVRsurface01\n* GdtWeed\n* GdtWildField\n* grid\n* grid_exp\n* lino\n* lino_exp\n* lino_in_exp\n* mat_in_exp\n* metalPlate\n* metalPlatePressed_exp\n* metalPlate_exp\n* metalPlate_in_exp\n* mud\n* mud_exp\n* parquet\n* planks\n* planks_exp\n* planks_inside\n* planks_in_exp\n* road\n* road_exp\n* roof_tiles_exp\n* rubble\n* rubble_exp\n* sand\n* sand_exp\n* softwood_in_exp\n* steel\n* steel_exp\n* stones\n* stones_exp\n* straw_exp\n* SurfIntConcrete\n* SurfIntMetal\n* SurfIntTiles\n* SurfIntWood\n* surfint_concrete\n* surfint_metal\n* surfint_tiles\n* surfint_wood\n* SurfMetal\n* SurfRoadConcrete\n* SurfRoadConcrete_exp\n* SurfRoadDirt\n* SurfRoadDirt_Enoch\n* SurfRoadDirt_exp\n* SurfRoadTarmac\n* SurfRoadTarmac1_Enoch\n* SurfRoadTarmac2_Enoch\n* SurfRoadTarmac3_Enoch\n* SurfRoadTarmac_exp\n* SurfRoofTiles\n* SurfRoofTin\n* SurfTrailDirt_Enoch\n* SurfTrailDirt_exp\n* SurfWater\n* SurfWood\n* surf_metal\n* surf_roadconcrete\n* surf_roaddirt\n* surf_roadtarmac\n* surf_rooftiles\n* surf_rooftin\n* surf_wood\n* TEST_SurfNormal\n* tiling\n* trash\n* trash_exp\n* Water\n* wavyMetal\n* wavyMetal_exp\n* woodenFloor\n}}",
+            "description": "Returns what surface type is at the given position. For surface texture see `surfaceTexture` command.\n\n\n\n**NOTE**: The command returns surface type of the ground, even underneath objects such as buildings and roads}}\n<spoiler text=\"Show surface types (Armed Assault)\">\n* #GRASSSOUTH\n* #GRASSGENERAL\n* #SANDGENERAL<spoiler text=\"Show surface types (Arma 2)\">\n* #UTGRASS - for natural surfaces\n* #UTCONCRETE - for urban surfaces<spoiler text=\"Show surface types (Arma 3)\">\n{{Columns|4|\n* BuildingRubble\n* BuildingRubble_exp\n* cardboard\n* cardboard_exp\n* carpet\n* carpet_exp\n* carpet_inside\n* carpet_in_exp\n* concrete\n* concrete_exp\n* concrete_hall\n* concrete_hall_exp\n* concrete_inside\n* concrete_in_exp\n* concrete_out\n* Default\n* dirtrunway\n* floor\n* floor_exp\n* floor_inside\n* floor_in_exp\n* GdtAsphalt\n* GdtBeach\n* GdtCliff\n* GdtConcrete\n* GdtDead\n* GdtDesert\n* GdtDirt\n* GdtField\n* GdtForest\n* GdtForestMalden\n* GdtForestPine\n* GdtGrassDry\n* GdtGrassGreen\n* GdtGrassLong\n* GdtGrassShort\n* GdtGrassTall\n* GdtGrassWild\n* GdtKLCobblestone\n* GdtKLDirt\n* GdtKlField\n* GdtKLForestCon\n* GdtKLForestDec\n* GdtKLGrass1\n* GdtKLGrass2\n* GdtKlSoil\n* GdtKlStubble\n* GdtKlTarmac\n* GdtKlWeatheredTarmac\n* GdtMarsh\n* GdtMud\n* GdtRedDirt\n* GdtRock\n* GdtRubble\n* GdtSeabed\n* GdtSeabedExp\n* GdtSoil\n* GdtStony\n* GdtStonyThistle\n* GdtStratisBeach\n* GdtStratisConcrete\n* GdtStratisDirt\n* GdtStratisDryGrass\n* GdtStratisForestPine\n* GdtStratisGreenGrass\n* GdtStratisRocky\n* GdtStratisSeabed\n* GdtStratisSeabedCluttered\n* GdtStratisThistles\n* GdtThorn\n* GdtVolcano\n* GdtVolcanoBeach\n* GdtVRsurface01\n* GdtWeed\n* GdtWildField\n* grid\n* grid_exp\n* lino\n* lino_exp\n* lino_in_exp\n* mat_in_exp\n* metalPlate\n* metalPlatePressed_exp\n* metalPlate_exp\n* metalPlate_in_exp\n* mud\n* mud_exp\n* parquet\n* planks\n* planks_exp\n* planks_inside\n* planks_in_exp\n* road\n* road_exp\n* roof_tiles_exp\n* rubble\n* rubble_exp\n* sand\n* sand_exp\n* softwood_in_exp\n* steel\n* steel_exp\n* stones\n* stones_exp\n* straw_exp\n* SurfIntConcrete\n* SurfIntMetal\n* SurfIntTiles\n* SurfIntWood\n* surfint_concrete\n* surfint_metal\n* surfint_tiles\n* surfint_wood\n* SurfMetal\n* SurfRoadConcrete\n* SurfRoadConcrete_exp\n* SurfRoadDirt\n* SurfRoadDirt_Enoch\n* SurfRoadDirt_exp\n* SurfRoadTarmac\n* SurfRoadTarmac1_Enoch\n* SurfRoadTarmac2_Enoch\n* SurfRoadTarmac3_Enoch\n* SurfRoadTarmac_exp\n* SurfRoofTiles\n* SurfRoofTin\n* SurfTrailDirt_Enoch\n* SurfTrailDirt_exp\n* SurfWater\n* SurfWood\n* surf_metal\n* surf_roadconcrete\n* surf_roaddirt\n* surf_roadtarmac\n* surf_rooftiles\n* surf_rooftin\n* surf_wood\n* TEST_SurfNormal\n* tiling\n* trash\n* trash_exp\n* Water\n* wavyMetal\n* wavyMetal_exp\n* woodenFloor",
             "examples": [
                 {
                     "text": "```sqf\nprivate _surface = surfaceType [4500, 4500];\n```"
@@ -79345,7 +79345,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Controls whether a lamp is lit or not.\n**Arma**: 3|\nThis command was originally designed to only work with `**CfgNonAIVehicles class {{hl|\"StreetLamp\"**` only.\nSince Arma 3 v1.92 this command was extended to work with street lights and some prop lights, like portable construction light.\n}}",
+            "description": "Controls whether a lamp is lit or not.\n**Arma 3**: \nThis command was originally designed to only work with `**CfgNonAIVehicles}} class {{hl|\"StreetLamp\"**` only.\nSince Arma 3 v1.92 this command was extended to work with street lights and some prop lights, like portable construction light.",
             "examples": [
                 {
                     "text": "```sqf\n(object 12345) switchLight \"OFF\";\n```"
@@ -79383,7 +79383,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Immediately applies given animation to the unit. For a smooth transition from the current animation, use `playMove`.\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.\n\nThis command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).\nIf an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see _Example 3_).\n\n**NOTE**: It is a good practice to always use `playMoveNow` after `switchMove` to make sure the animation plays correctly when using the first syntax:\n\n```sqf\n\n_unit switchMove \"myMove\";\n_unit playMoveNow \"myMove\";\n\n```\n\nThe alternative syntax does this automatically.",
+            "description": "Immediately applies given animation to the unit. For a smooth transition from the current animation, use `playMove`.\n**NOTE**: see [:Category:Moves](https://community.bistudio.com/wiki/%3ACategory%3AMoves) for respective games animations.}}\n\nThis command first resets the unit's animation states (including aiming state, gesture state, etc.) then puts the unit in the first frame of the animation (therefore showing no transition).\nIf an invalid animation is provided, the unit's animations will be reset but no new animation will be played (see _Example 3_).\n\n{{Feature|informative|It is a good practice to always use `playMoveNow` after `switchMove` to make sure the animation plays correctly when using the first syntax:\n\n```sqf\n\n_unit switchMove \"myMove\";\n_unit playMoveNow \"myMove\";\n\n```\n\nThe alternative syntax does this automatically.",
             "examples": [
                 {
                     "text": "Prone:\n\n```sqf\nplayer switchMove \"AmovPpneMstpSrasWrflDnon\";\n```"
@@ -80153,7 +80153,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Shows info about new, changed or failed task. The text can contain several lines. `**\\n**` is used to set a line return.\n**Arma**: 3|It is recommended to use `BIS_fnc_showNotification` in order to maintain {{arma3's visual style.}}",
+            "description": "Shows info about new, changed or failed task. The text can contain several lines. `**\\n**` is used to set a line return.\n**Arma 3**: It is recommended to use `BIS_fnc_showNotification` in order to maintain Arma 3's visual style.",
             "examples": [
                 {
                     "text": "```sqf\ntaskHint [\"Task failed.\\nBad job!\", [1, 0, 0, 1], \"taskFailed\"];\n```"
@@ -81085,7 +81085,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Displays a resource defined in RscTitles. Also see `cutRsc`, with these two commands you can show two different resources at once.\n**Arma**: 3|**(Arma 3)**",
+            "description": "Displays a resource defined in RscTitles. Also see `cutRsc`, with these two commands you can show two different resources at once.\n**Arma 3**: **(Arma 3)** Multiple layers and map overlays are possible with `cutRsc` which provides more options and handles layers better.",
             "examples": [
                 {
                     "text": "```sqf\ntitleRsc [\"BIS\", \"PLAIN\"];\n```"
@@ -81209,7 +81209,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Converts the supplied `String` into an `Array` of `Number`s. The numbers in the created array are the decimal {{Link|https://en.wikipedia.org/wiki/Unicode|Unicode}} representations of characters.\n**Arma**: 3|Since v2.04 this command can also handle `HashMap`s. See alternative syntax.",
+            "description": "Converts the supplied `String` into an `Array` of `Number`s. The numbers in the created array are the decimal {{Link|https://en.wikipedia.org/wiki/Unicode|Unicode}} representations of characters.\n**Arma 3**: Since v2.04 this command can also handle `HashMap`s. See alternative syntax.",
             "examples": [
                 {
                     "text": "```sqf\nhint format [\"%1\", toArray \"AaŒ\"];// Returns \"[65,97,338]\"\n```"
@@ -81266,7 +81266,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Converts a number into a string, keeping the specified number of decimals. If the desired number of decimals is higher than the actual number, nulls are added to create the desired decimal length. This command is almost identical in behaviour to JavaScript {{Link|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed|toFixed()}}\n\n\nThe alternative syntax acts as keyword and switches engine's `Number` to `String` global conversion into desired format, from the moment it is applied until the end of script.\nTo reset output back to default at any time, use `**toFixed -1}} - see {{Link|#Example 5**`.\n\n**NOTE**: Converted number is never presented in scientific notation unlike with other number to string commands. Also Arma's default string conversion limits numbers to 6 {{Link|https://en.wikipedia.org/wiki/Significant_figures|significant figures, whereas with this command it is possible to preserve some extra precision - see _Example 6_.}}",
+            "description": "Converts a number into a string, keeping the specified number of decimals. If the desired number of decimals is higher than the actual number, nulls are added to create the desired decimal length. This command is almost identical in behaviour to JavaScript {{Link|https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed|toFixed()}}\n\n\nThe alternative syntax acts as keyword and switches engine's `Number` to `String` global conversion into desired format, from the moment it is applied until the end of script.\nTo reset output back to default at any time, use `**toFixed -1}} - see {{Link|#Example 5**`.\n\n**NOTE**: Converted number is never presented in scientific notation unlike with other number to string commands. Also Arma's default string conversion limits numbers to 6 {{Link|https://en.wikipedia.org/wiki/Significant_figures|significant figures}}, whereas with this command it is possible to preserve some extra precision - see _Example 6_.",
             "examples": [
                 {
                     "text": "```sqf\n123 toFixed 2; // \"123.00\"\n```"
@@ -81393,7 +81393,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "array",
-                            "description": "`Array` of `Number`s\n**IMPORTANT**: If _array_ contains non-number values, the following error might appear in .rpt file: `**Bad conversion: scalar. See `parseSimpleArray` for multi-type array.**`"
+                            "description": "`Array` of `Number`s\n{{Feature|important|If _array_ contains non-number values, the following error might appear in .rpt file: `**Bad conversion: scalar}}. See `parseSimpleArray` for multi-type array.**`"
                         }
                     ],
                     "outline": "`toString` array",
@@ -84748,7 +84748,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Unlocks the given achievement. The achievements are listed in CfgAchievements, however none of the currently listed achievements is used in Arma 3, hence the command always returns `false`.\n\n\n\n**IMPORTANT**: \nThis command is obsolete and was used in the experimental (unreleased) Arma 2 Xbox 360 version as stated\n{{Link|https://forums.bohemia.net/forums/topic/187873-unlockachievment-command/?tab{{=comments#comment-2978436|here}}.\n}}\n**Arma**: 3|To unlock a [Steam Achievement](https://community.bistudio.com/wiki/Arma%203%3A%20Stat%20Names) for {{arma3, see `setStatValue`.}}",
+            "description": "Unlocks the given achievement. The achievements are listed in CfgAchievements, however none of the currently listed achievements is used in Arma 3, hence the command always returns `false`.\n\n\n\n{{Feature|important|\nThis command is obsolete and was used in the experimental (unreleased) Arma 2 Xbox 360 version as stated\n{{Link|https://forums.bohemia.net/forums/topic/187873-unlockachievment-command/?tab{{=}}comments#comment-2978436|here}}.\n}}\n**Arma 3**: To unlock a [Steam Achievement](https://community.bistudio.com/wiki/Arma%203%3A%20Stat%20Names) for Arma 3, see `setStatValue`.",
             "examples": [
                 {
                     "text": "```sqf\n_isUnlocked = unlockAchievement \"Hunter\";\n```"
@@ -85197,7 +85197,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:arma3_object-vectors.jpg|thumb|right|An object with its `vectorDir`, `vectorUp` and `vectorSide` (vectors not to scale)]]\nReturns an object's direction vector in world space.\n\n**IMPORTANT**: The vector is **not necessarily [normalized](https://community.bistudio.com/wiki/vectorNormalized)**. The [magnitude](https://community.bistudio.com/wiki/vectorMagnitude) of the vector depends on the [[getObjectScale|object's scale]].\n\nFor an object facing one of the cardinal directions on perfectly flat ground (parallel to the XY-plane of the world space), `vectorDir` returns simple values:\n* `**[0, 1, 0]**` if the object is facing directly north\n* `**[1, 0, 0]**` if the object is facing directly east\n* `**[0, -1, 0]**` if the object is facing directly south\n* `**[-1, 0, 0]**` if the object is facing directly west",
+            "description": "[[File:arma3_object-vectors.jpg|thumb|right|An object with its `vectorDir`, `vectorUp` and `vectorSide` (vectors not to scale)]]\nReturns an object's direction vector in world space.\n\n{{Feature|important|The vector is **not necessarily [normalized](https://community.bistudio.com/wiki/vectorNormalized)**. The [magnitude](https://community.bistudio.com/wiki/vectorMagnitude) of the vector depends on the [[getObjectScale|object's scale]].}}\n\nFor an object facing one of the cardinal directions on perfectly flat ground (parallel to the XY-plane of the world space), `vectorDir` returns simple values:\n* `**[0, 1, 0]**` if the object is facing directly north\n* `**[1, 0, 0]**` if the object is facing directly east\n* `**[0, -1, 0]**` if the object is facing directly south\n* `**[-1, 0, 0]**` if the object is facing directly west",
             "examples": [
                 {
                     "text": "```sqf\n_vecDir = vectorDir MyObject;\n```"
@@ -85225,7 +85225,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:arma3_object-vectors.jpg|thumb|right|An object with its `vectorDirVisual`, `vectorUpVisual` and `vectorSideVisual` (vectors not to scale)]]\nReturns an object's direction vector in world space and [render time scope](https://community.bistudio.com/wiki/Simulation%20vs%20Render%20Time%20Scope).\n\n**IMPORTANT**: The vector is **not necessarily [normalized](https://community.bistudio.com/wiki/vectorNormalized)**. The [magnitude](https://community.bistudio.com/wiki/vectorMagnitude) of the vector depends on the [[getObjectScale|object's scale]].\n\nFor an object facing one of the cardinal directions on perfectly flat ground (parallel to the XY-plane of the world space), `vectorDirVisual` returns simple values:\n* `**[0, 1, 0]**` if the object is facing directly north\n* `**[1, 0, 0]**` if the object is facing directly east\n* `**[0, -1, 0]**` if the object is facing directly south\n* `**[-1, 0, 0]**` if the object is facing directly west",
+            "description": "[[File:arma3_object-vectors.jpg|thumb|right|An object with its `vectorDirVisual`, `vectorUpVisual` and `vectorSideVisual` (vectors not to scale)]]\nReturns an object's direction vector in world space and [render time scope](https://community.bistudio.com/wiki/Simulation%20vs%20Render%20Time%20Scope).\n\n{{Feature|important|The vector is **not necessarily [normalized](https://community.bistudio.com/wiki/vectorNormalized)**. The [magnitude](https://community.bistudio.com/wiki/vectorMagnitude) of the vector depends on the [[getObjectScale|object's scale]].}}\n\nFor an object facing one of the cardinal directions on perfectly flat ground (parallel to the XY-plane of the world space), `vectorDirVisual` returns simple values:\n* `**[0, 1, 0]**` if the object is facing directly north\n* `**[1, 0, 0]**` if the object is facing directly east\n* `**[0, -1, 0]**` if the object is facing directly south\n* `**[-1, 0, 0]**` if the object is facing directly west",
             "examples": [
                 {
                     "text": "```sqf\n_vecDirVis = vectorDirVisual MyObject;\n```"
@@ -86461,7 +86461,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Suspends execution of [scheduled](https://community.bistudio.com/wiki/Scheduler) script until the given condition satisfied. \n* This command will loop and call the code inside <sqf inline>{} **mostly every frame**, depends on complexity of the condition and the overall engine load, until the [code](https://community.bistudio.com/wiki/Code) returns `true`\n* If the very first execution of the code returns `true` the command will exit immediately, therefore it will not produce any \"Suspending not allowed in this context\" error when used inside [[Scheduler#Unscheduled_Environment|non-scheduled]] script. For all other uses it must be executed in environment that allows [suspension](https://community.bistudio.com/wiki/Scheduler%23Suspension) (`canSuspend`), such as `spawn`ed or `execVM`ed code\n* Avoid doing <sqf inline>waitUntil { time > 20 }; and use <sqf inline>sleep 20; instead!\n* If you can, add a `sleep` to the condition to save some cpu cycles <sqf inline>waitUntil { sleep 1; !alive player };\n\n**Arma**: 3|Since {{arma3 v1.94, a _condition_ returning anything other than `true` or `false` **will** result in an appropriate type error.}}",
+            "description": "Suspends execution of [scheduled](https://community.bistudio.com/wiki/Scheduler) script until the given condition satisfied. \n* This command will loop and call the code inside <sqf inline>{} **mostly every frame**, depends on complexity of the condition and the overall engine load, until the [code](https://community.bistudio.com/wiki/Code) returns `true`\n* If the very first execution of the code returns `true` the command will exit immediately, therefore it will not produce any \"Suspending not allowed in this context\" error when used inside [[Scheduler#Unscheduled_Environment|non-scheduled]] script. For all other uses it must be executed in environment that allows [suspension](https://community.bistudio.com/wiki/Scheduler%23Suspension) (`canSuspend`), such as `spawn`ed or `execVM`ed code\n* Avoid doing <sqf inline>waitUntil { time > 20 }; and use <sqf inline>sleep 20; instead!\n* If you can, add a `sleep` to the condition to save some cpu cycles <sqf inline>waitUntil { sleep 1; !alive player };\n\n**Arma 3**: Since Arma 3 v1.94, a _condition_ returning anything other than `true` or `false` **will** result in an appropriate type error.",
             "examples": [
                 {
                     "text": "```sqf\nwaitUntil { not alive player };\n```"
@@ -87480,7 +87480,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns `true` if given soldier's weapon is lowered. **IMPORTANT**:  This command will **always** return `false` if player is sprinting, even without a weapon. Alternatively, the weapon raised state could be obtained via `animationState` command `**...slow... vs {{hl|...sras...}}**`",
+            "description": "Returns `true` if given soldier's weapon is lowered. {{Feature | important | This command will **always** return `false` if player is sprinting, even without a weapon. Alternatively, the weapon raised state could be obtained via `animationState` command `**...slow...}} vs {{hl|...sras...}}**`",
             "examples": [
                 {
                     "text": "```sqf\nisWeaponLowered = weaponLowered player;\n```"
@@ -87600,7 +87600,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:Weaponsitems.jpg|150px|right|border]]Returns an array with subarrays contains class names and also names of connected items of all the vehicle's weapons.\n**NOTE**: This command can return weapon magazine(s) if any are present. Or an empty array if weapon is stored without a magazine in it.\n* {{GVI|arma3|1.22",
+            "description": "[[File:Weaponsitems.jpg|150px|right|border]]Returns an array with subarrays contains class names and also names of connected items of all the vehicle's weapons.\n{{Feature|informative|This command can return weapon magazine(s) if any are present. Or an empty array if weapon is stored without a magazine in it.}}\n* {{GVI|arma3|1.22",
             "examples": [
                 {
                     "text": "```sqf\n\nhint str weaponsItems player;\n// returns e.g\n/*\n[\n\t[\"arifle_MX_ACO_pointer_F\", \"muzzle_snds_H\", \"acc_pointer_IR\", \"optic_Aco\", [\"30Rnd_65x39_caseless_mag\", 30], [], \"bipod_01_F_blk\"],\n\t[\"launch_NLAW_F\", \"\", \"\", \"\", [\"NLAW_F\", 1], [], \"\"],\n\t[\"hgun_P07_F\", \"muzzle_snds_L\", \"\", \"\", [\"16Rnd_9x21_Mag\", 11], [], \"\"]\n]\n// a loaded underbarrel grenade launcher can look like this:\n[\n\t[\"arifle_MX_GL_F\", \"muzzle_snds_H\", \"acc_pointer_IR\", \"optic_Aco\", [\"30Rnd_65x39_caseless_mag\", 30], [\"1Rnd_HE_Grenade_shell\", 1], \"\"]\n]\n*/\n\n\n```"
@@ -87688,7 +87688,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns the given or currently selected weapon state for unit or vehicle.\nWith {{Link|#Syntax 2}}, if no optional arguments are present, currently selected weapon is queried.\n**Arma**: 3|\nSince {{arma3 v1.70 this command has been improved and extended:\n* A vehicle's weapon query doesn't need a weapon operator provided the weapon or muzzle is specified in optional param.\n(keep in mind that by default a vehicle has no weapons selected)\n* Driver turret can now be accessed as well with turret path [-1].\n* Muzzle name is supported as well as weapon name. The command searches for weapon first, then if not found, muzzle is searched for.\n}}",
+            "description": "Returns the given or currently selected weapon state for unit or vehicle.\nWith {{Link|#Syntax 2}}, if no optional arguments are present, currently selected weapon is queried.\n**Arma 3**: \nSince Arma 3 v1.70 this command has been improved and extended:\n* A vehicle's weapon query doesn't need a weapon operator provided the weapon or muzzle is specified in optional param.\n(keep in mind that by default a vehicle has no weapons selected)\n* Driver turret can now be accessed as well with turret path [-1].\n* Muzzle name is supported as well as weapon name. The command searches for weapon first, then if not found, muzzle is searched for.",
             "examples": [
                 {
                     "text": "```sqf\n_wsPlayer = weaponState player;\t\t\t\t\t// [\"arifle_MXC_ACO_F\",\"arifle_MXC_ACO_F\",\"Single\",\"30Rnd_65x39_caseless_mag\",30,0,0]\n```"

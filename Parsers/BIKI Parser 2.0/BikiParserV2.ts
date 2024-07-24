@@ -736,7 +736,7 @@ class BikiTextInterpreter {
 
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
-                        `\\{\\{Feature\\s*\\|\\s*${templateKey}\\s*\\|{0,1}([\\W\\w]+?)\\}\\}`,
+                        `\\{\\{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)\\}\\}(?=(?:\\s+(?:\\|\\w+=|\\{\\{))|$)`,
                         "gi"
                     );
                     const featureMatches = convertedText.matchAll(featureRegex);
