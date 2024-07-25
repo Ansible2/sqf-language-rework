@@ -9898,7 +9898,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**textArguments**",
-                            "description": "`Anything` - (Optional) additional info to display in the `**text}} attribute. {{hl|%1}} will be replaced by the first array element, {{hl|%2**` with the second and so on."
+                            "description": "`Anything` - (Optional) additional info to display in the `**text**` attribute. `**%1**` will be replaced by the first array element, `**%2**` with the second and so on."
                         },
                         {
                             "name": "**expressionArguments**",
@@ -10189,7 +10189,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Feature|obsolete|[Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers) should be used instead.|arma3|1.58}}\nStacks an event handler.  All event handlers accept user arguments, which are passed to the EH code in `**_this}} variable. If the EH has own params returned in {{hl|_this}} variable as well, user arguments are appended to the end of {{hl|_this**` array. Note that if you try to add an empty EH, i.e. with empty code, it will simply be ignored.\n\n{{{!}} class=\"wikitable\"\n{{!}}+ Supported Event Handlers\n! Scripted Event Handler\n! Mission EH Equivalent\n! Description\n{{!}}-\n{{!}} \"`onEachFrame`\"\n{{!}} [EachFrame](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23EachFrame)\n{{!}} {{n/a}}\n{{!}}-\n{{!}} \"`onPlayerConnected`\"\n{{!}} [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected)\n{{!}} rowspan=\"2\" {{!}}Special variables `**_id}}, {{hl|_uid}}, {{hl|_name}}, {{hl|_jip}}, {{hl|_owner}} are provided and are available in {{hl|_this**` array as well.\n\n```sqf\nparams [\"_id\", \"_uid\", \"_name\", \"_jip\", \"_owner\"];\n```\n\n{{!}}-\n{{!}} \"`onPlayerDisconnected`\"\n{{!}} [PlayerDisconnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerDisconnected)\n{{!}}-\n{{!}} \"`onMapSingleClick`\"\n{{!}} [MapSingleClick](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23MapSingleClick)\n{{!}} Special variables `**_units}}, {{hl|_pos}}, {{hl|_alt}}, {{hl|_shift}} are provided and are available in {{hl|_this**` array as well.\n\n```sqf\nparams [\"_units\", \"_pos\", \"_alt\", \"_shift\"];\n```\n\n{{!}}-\n{{!}} \"`onPreloadStarted`\"\n{{!}} [PreloadStarted](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadStarted)\n{{!}} {{n/a}}\n{{!}}-\n{{!}} \"`onPreloadFinished`\"\n{{!}} [PreloadFinished](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadFinished)\n{{!}} {{n/a}}\n{{!}}}",
+            "description": "{{Feature|obsolete|[Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers) should be used instead.|arma3|1.58}}\nStacks an event handler.  All event handlers accept user arguments, which are passed to the EH code in `**_this**` variable. If the EH has own params returned in `**_this**` variable as well, user arguments are appended to the end of `**_this**` array. Note that if you try to add an empty EH, i.e. with empty code, it will simply be ignored.\n\n{{{!}} class=\"wikitable\"\n{{!}}+ Supported Event Handlers\n! Scripted Event Handler\n! Mission EH Equivalent\n! Description\n{{!}}-\n{{!}} \"`onEachFrame`\"\n{{!}} [EachFrame](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23EachFrame)\n{{!}} {{n/a}}\n{{!}}-\n{{!}} \"`onPlayerConnected`\"\n{{!}} [PlayerConnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerConnected)\n{{!}} rowspan=\"2\" {{!}}Special variables `**_id**`, `**_uid**`, `**_name**`, `**_jip**`, `**_owner**` are provided and are available in `**_this**` array as well.\n\n```sqf\nparams [\"_id\", \"_uid\", \"_name\", \"_jip\", \"_owner\"];\n```\n\n{{!}}-\n{{!}} \"`onPlayerDisconnected`\"\n{{!}} [PlayerDisconnected](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PlayerDisconnected)\n{{!}}-\n{{!}} \"`onMapSingleClick`\"\n{{!}} [MapSingleClick](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23MapSingleClick)\n{{!}} Special variables `**_units**`, `**_pos**`, `**_alt**`, `**_shift**` are provided and are available in `**_this**` array as well.\n\n```sqf\nparams [\"_units\", \"_pos\", \"_alt\", \"_shift\"];\n```\n\n{{!}}-\n{{!}} \"`onPreloadStarted`\"\n{{!}} [PreloadStarted](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadStarted)\n{{!}} {{n/a}}\n{{!}}-\n{{!}} \"`onPreloadFinished`\"\n{{!}} [PreloadFinished](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23PreloadFinished)\n{{!}} {{n/a}}\n{{!}}}",
             "examples": [
                 {
                     "text": "```sqf\n[\"someId\", \"onEachFrame\", { hintSilent str time }] call BIS_fnc_addStackedEventHandler;\n```"
@@ -14978,7 +14978,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Converts RGB color format to procedural texture, e.g `**[0,0,0,1]}} becomes {{hl|\"#(argb,8,8,3)color(0,0,0,1)\"**`.\n\nValues are in range 0..1.",
+            "description": "Converts RGB color format to procedural texture, e.g `**[0,0,0,1]**` becomes `**\"#(argb,8,8,3)color(0,0,0,1)\"**`.\n\nValues are in range 0..1.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _texture = [0,0,0,1] call BIS_fnc_colorRGBAtoTexture;\n```"
@@ -15149,7 +15149,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Feature|obsolete|\nUse `compatibleMagazines` instead.|arma3|2.10}}\nGets all compatible magazines for selected weapons. Function looks both for magazines listed in `**magazines}} array and compatible {{hl|magazineWells**`.",
+            "description": "{{Feature|obsolete|\nUse `compatibleMagazines` instead.|arma3|2.10}}\nGets all compatible magazines for selected weapons. Function looks both for magazines listed in `**magazines**` array and compatible `**magazineWells**`.",
             "examples": [
                 {
                     "text": "```sqf\n[\"arifle_mx_f\"] call BIS_fnc_compatibleMagazines;\n```"
@@ -19279,7 +19279,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Previews all vehicle icons on map.\n{{Feature|warning|This function is broken as it uses bad arguments for `BIS_fnc_returnParents` (**line 35**, `**\"\"}} instead of {{hl|true}})**`",
+            "description": "Previews all vehicle icons on map.\n**WARNING**: This function is broken as it uses bad arguments for `BIS_fnc_returnParents` (**line 35**, `**\"\"**` instead of `**true**`)",
             "examples": [
                 {
                     "text": "```sqf\n[\"all\", getPos player] call BIS_fnc_diagVehicleIcons;\n```"
@@ -21493,7 +21493,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "[[File:BIS_fnc_error.png|300px|right]]\nLogs an error message and shows an ingame error message. The message is shown when either of the following is true:\n\n* In [2D Editor](https://community.bistudio.com/wiki/2D%20Editor)\n* In [Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) via `BIS_fnc_3DENNotification`\n* Display `**313**` ([Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) display) is available\n* <sqf inline>profileNamespace getVariable [\"BIS_fnc_init_displayErrors\", false] is set to <sqf inline>true.\n\n**Output format:**\n\n* In multiplayer (`isMultiplayer`) the function will add the `profileName` in front of the message\n* If <sqf inline>_fnc_error_exit is set to <sqf inline>true before the function call, the log message will display `**HALT:}} instead of {{hl|ERROR:**`\n* If function is called from within another function, the name of the parent function will be displayed. This can be overwritten by setting <sqf inline>_fnc_scriptName to a custom value\n\n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "[[File:BIS_fnc_error.png|300px|right]]\nLogs an error message and shows an ingame error message. The message is shown when either of the following is true:\n\n* In [2D Editor](https://community.bistudio.com/wiki/2D%20Editor)\n* In [Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) via `BIS_fnc_3DENNotification`\n* Display `**313**` ([Eden Editor](https://community.bistudio.com/wiki/Eden%20Editor) display) is available\n* <sqf inline>profileNamespace getVariable [\"BIS_fnc_init_displayErrors\", false] is set to <sqf inline>true.\n\n**Output format:**\n\n* In multiplayer (`isMultiplayer`) the function will add the `profileName` in front of the message\n* If <sqf inline>_fnc_error_exit is set to <sqf inline>true before the function call, the log message will display `**HALT:**` instead of `**ERROR:**`\n* If function is called from within another function, the name of the parent function will be displayed. This can be overwritten by setting <sqf inline>_fnc_scriptName to a custom value\n\n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]**` has to be set to **1** in [[Description.ext]] for this function to have any effect.",
             "examples": [
                 {
                     "text": "```sqf\n[\"Player is too far away (%1 metres)\", round (player distance [0, 0, 0])] call BIS_fnc_error;\n```"
@@ -23003,7 +23003,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Displays the given subtitles at the correctly defined moments. Each array added to the parameters represents one subtitle.\n{{Feature|informative|Subtitles can be cancelled by setting `**BIS_fnc_EXP_camp_playSubtitles_terminate}} to `true`.**`",
+            "description": "Displays the given subtitles at the correctly defined moments. Each array added to the parameters represents one subtitle.\n**NOTE**: Subtitles can be cancelled by setting `**BIS_fnc_EXP_camp_playSubtitles_terminate**` to `true`.",
             "examples": [
                 {
                     "text": "```sqf\n\n[\n\t[\"CROSSROAD\", \"Mission is a go, I repeat, mission is a go! Crossroad, out.\", 0]\n] spawn BIS_fnc_EXP_camp_playSubtitles; // shows a subtitle immediately\n\n```"
@@ -23599,7 +23599,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - mode, **case-sensitive**; can be one of:\n* `**\"Default\"}} - classic base classes like {{hl|RscText}} or {{hl|RscPicture**`\n* `**\"3DEN\"}} - [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) base classes like {{hl|ctrlStatic}} or {{hl|ctrlStaticPicture**`\n* `**\"all\"**` - all GUI base classes, including more exotic ones\n**IMPORTANT**: \nAll modes are case sensitive. If the capitalisation is disregarded the function will default to the \"all\" mode.\nIn fact there is no explicit \"all\" mode, rather it is the fallback if the mode is not one of \"Default\" or \"3DEN\"."
+                            "description": "`String` - mode, **case-sensitive**; can be one of:\n* `**\"Default\"**` - classic base classes like `**RscText**` or `**RscPicture**`\n* `**\"3DEN\"**` - [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) base classes like `**ctrlStatic**` or `**ctrlStaticPicture**`\n* `**\"all\"**` - all GUI base classes, including more exotic ones\n**IMPORTANT**: \nAll modes are case sensitive. If the capitalisation is disregarded the function will default to the \"all\" mode.\nIn fact there is no explicit \"all\" mode, rather it is the fallback if the mode is not one of \"Default\" or \"3DEN\"."
                         }
                     ],
                     "outline": "mode call `BIS_fnc_exportGUIBaseClasses`",
@@ -24840,7 +24840,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "The code is identical to the one of `BIS_fnc_garage`, except that `**FNC_IS3DEN}} is set to 1. For more information about the garage, visit `BIS_fnc_garage` {{Feature|important|This function is used internally by the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).**`",
+            "description": "The code is identical to the one of `BIS_fnc_garage`, except that `**FNC_IS3DEN**` is set to 1. For more information about the garage, visit `BIS_fnc_garage` **IMPORTANT**: This function is used internally by the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
             "examples": [
                 {
                     "text": "-"
@@ -27068,27 +27068,27 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "conditionShow",
-                            "description": "`String` - (Optional, default \"true\") condition for the action to be shown.\n\nSpecial arguments passed to the code: `**_target}} (action-attached object), {{hl|_this**` (caller/executing unit)"
+                            "description": "`String` - (Optional, default \"true\") condition for the action to be shown.\n\nSpecial arguments passed to the code: `**_target**` (action-attached object), `**_this**` (caller/executing unit)"
                         },
                         {
                             "name": "conditionProgress",
-                            "description": "`String` - (Optional, default \"true\") condition for the action to progress; if false is returned action progress is paused.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`"
+                            "description": "`String` - (Optional, default \"true\") condition for the action to progress; if false is returned action progress is paused.\n\nSpecial arguments passed to the code: `**_target**`, `**_caller**`, `**_actionId**`, `**_arguments**`"
                         },
                         {
                             "name": "codeStart",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed when action starts.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n```\n\n* target: `Object` - the object which the action is assigned to\n* caller: `Object` - the unit that activated the action\n* actionId: `Number` - ID of the activated action (same as ID returned by addAction)\n* arguments: `Array` - arguments given to the function"
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed when action starts.\n\nSpecial arguments passed to the code: `**_target**`, `**_caller**`, `**_actionId**`, `**_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"];\n```\n\n* target: `Object` - the object which the action is assigned to\n* caller: `Object` - the unit that activated the action\n* actionId: `Number` - ID of the activated action (same as ID returned by addAction)\n* arguments: `Array` - arguments given to the function"
                         },
                         {
                             "name": "codeProgress",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on every progress tick.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments}}, {{hl|_frame**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\", \"_frame\", \"_maxFrame\"];\n```\n\n* target: `Object` - the object which the action is assigned to\n* caller: `Object` - the unit that activated the action\n* actionId: `Number` - ID of the activated action (same as ID returned by addAction)\n* arguments: `Array` - arguments given to the function\n* frame: `Number` - current progress, goes from 1 to 24\n* maxFrame: `Number` - maximum progress (24)"
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on every progress tick.\n\nSpecial arguments passed to the code: `**_target**`, `**_caller**`, `**_actionId**`, `**_arguments**`, `**_frame**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\", \"_frame\", \"_maxFrame\"];\n```\n\n* target: `Object` - the object which the action is assigned to\n* caller: `Object` - the unit that activated the action\n* actionId: `Number` - ID of the activated action (same as ID returned by addAction)\n* arguments: `Array` - arguments given to the function\n* frame: `Number` - current progress, goes from 1 to 24\n* maxFrame: `Number` - maximum progress (24)"
                         },
                         {
                             "name": "codeCompleted",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on completion.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // same as codeStart\n```"
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on completion.\n\nSpecial arguments passed to the code: `**_target**`, `**_caller**`, `**_actionId**`, `**_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // same as codeStart\n```"
                         },
                         {
                             "name": "codeInterrupted",
-                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on interrupted.\n\nSpecial arguments passed to the code: `**_target}}, {{hl|_caller}}, {{hl|_actionId}}, {{hl|_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // same as codeCompleted\n```"
+                            "description": "`Code` - (Optional, default <sqf inline>{}) code executed on interrupted.\n\nSpecial arguments passed to the code: `**_target**`, `**_caller**`, `**_actionId**`, `**_arguments**`\n\nPassed arguments are:\n\n```sqf\nparams [\"_target\", \"_caller\", \"_actionId\", \"_arguments\"]; // same as codeCompleted\n```"
                         },
                         {
                             "name": "arguments",
@@ -31020,11 +31020,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "prefix",
-                            "description": "`String` - variable prefix {{Feature|informative|`**\"BIS_fnc_\"}} prefix is reserved and cannot be used.**`"
+                            "description": "`String` - variable prefix **NOTE**: `**\"BIS_fnc_\"**` prefix is reserved and cannot be used."
                         },
                         {
                             "name": "nameVars",
-                            "description": "`Array` of `String`s **or** `Array` of `Array` - list of variables to be declared.\n* `Array` of `String`s to format [variable, variable, …] - final variable is `**prefix + variable}}, loaded from {{hl|path + variable + \".sqf\"**`\n* `Array` of `Array` to format [<nowiki/>[variable, fileName], [variable, fileName], …] - final variable is `**prefix + variable}}, loaded from {{hl|path + fileName + \".sqf\"**`"
+                            "description": "`Array` of `String`s **or** `Array` of `Array` - list of variables to be declared.\n* `Array` of `String`s to format [variable, variable, …] - final variable is `**prefix + variable**`, loaded from `**path + variable + \".sqf\"**`\n* `Array` of `Array` to format [<nowiki/>[variable, fileName], [variable, fileName], …] - final variable is `**prefix + variable**`, loaded from `**path + fileName + \".sqf\"**`"
                         },
                         {
                             "name": "global",
@@ -31044,7 +31044,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Adds a predefined loadout (either via `**CfgVehicles}}, {{hl|CfgRespawnInventory**`, or a custom inventory saved via `BIS_fnc_saveInventory`) to a specified unit.",
+            "description": "Adds a predefined loadout (either via `**CfgVehicles**`, `**CfgRespawnInventory**`, or a custom inventory saved via `BIS_fnc_saveInventory`) to a specified unit.",
             "examples": [
                 {
                     "text": "```sqf\n_loadout = [player, configFile >> \"CfgVehicles\" >> \"B_Soldier_SL_F\"] call BIS_fnc_loadInventory; // gives BLUFOR Squad Leader's loadout to player unit\n```"
@@ -31062,7 +31062,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "`Config` or `Array`",
-                            "description": "can be one of:\n* `Config`: config entry of loadout found in either `**CfgVehicles}} or {{hl|CfgRespawnInventory**`\n* `Array` in format [<nowiki/>`Namespace`, `Group` or `Object`, `String`] or `BIS_fnc_saveInventory`'s output"
+                            "description": "can be one of:\n* `Config`: config entry of loadout found in either `**CfgVehicles**` or `**CfgRespawnInventory**`\n* `Array` in format [<nowiki/>`Namespace`, `Group` or `Object`, `String`] or `BIS_fnc_saveInventory`'s output"
                         },
                         {
                             "name": "`Array`",
@@ -31167,7 +31167,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Creates or registers location logics (used in various modules, like [Ambient Civilians](https://community.bistudio.com/wiki/Ambient%20Civilians), [Ambient Civilian Vehicles](https://community.bistudio.com/wiki/Ambient%20Civilian%20Vehicles) or Warfare 2).\n\nUpon registering, function will set following variables into location logic's variable space:\n* \"class\" - unique class of location (either `**BIS_loc_<configname>}} or {{hl|BIS_loc_custom_<ID>**`)\n* \"name\" - name of location from config or `setName` command. If none is defined, class is used\n* \"type\" - config type\n* \"neighbors\" - config defined neighbor locations\n\nIf you are registering currently existing object and some of variables above is already stored in it, it will **not** be replaced.",
+            "description": "Creates or registers location logics (used in various modules, like [Ambient Civilians](https://community.bistudio.com/wiki/Ambient%20Civilians), [Ambient Civilian Vehicles](https://community.bistudio.com/wiki/Ambient%20Civilian%20Vehicles) or Warfare 2).\n\nUpon registering, function will set following variables into location logic's variable space:\n* \"class\" - unique class of location (either `**BIS_loc_<configname>**` or `**BIS_loc_custom_<ID>**`)\n* \"name\" - name of location from config or `setName` command. If none is defined, class is used\n* \"type\" - config type\n* \"neighbors\" - config defined neighbor locations\n\nIf you are registering currently existing object and some of variables above is already stored in it, it will **not** be replaced.",
             "examples": [
                 {
                     "text": "```sqf\n[\"CityCenter\", [getPosATL player, 1000]] call BIS_fnc_locations;\n```"
@@ -31284,7 +31284,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Log debug message.\n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "Log debug message.\n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]**` has to be set to **1** in [[Description.ext]] for this function to have any effect.",
             "examples": [
                 {
                     "text": "```sqf\ndiag_tickTime call BIS_fnc_log;\n```"
@@ -31317,7 +31317,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Display debug message. \n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "Display debug message. \n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]**` has to be set to **1** in [[Description.ext]] for this function to have any effect.",
             "examples": [
                 {
                     "text": "```sqf\n[\"My logged name: %1, My position: %2\", name player, getPos player] call BIS_fnc_logFormat;\n// RPT output:\n// 12:34:56 \"BIS_fnc_log: [BIS_fnc_debugConsoleExec] My logged name: Miller, My position: [4866.73,21947.9,0.00143433]\"\n```"
@@ -31348,7 +31348,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Logs (using `diag_log`) a debug message (`profileName`, [playerUID](https://community.bistudio.com/wiki/getPlayerUID), [_fnc_scriptName](https://community.bistudio.com/wiki/Magic%20Variables%23fnc_scriptName), provided text) to **server**<nowiki/>'s [[Crash Files|.RPT]]. In singleplayer, `BIS_fnc_logFormat` is used.\n{{Feature|informative|`**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]}} has to be set to **1** in [[Description.ext]] for this function to have any effect.**`",
+            "description": "Logs (using `diag_log`) a debug message (`profileName`, [playerUID](https://community.bistudio.com/wiki/getPlayerUID), [_fnc_scriptName](https://community.bistudio.com/wiki/Magic%20Variables%23fnc_scriptName), provided text) to **server**<nowiki/>'s [[Crash Files|.RPT]]. In singleplayer, `BIS_fnc_logFormat` is used.\n**NOTE**: `**[[Description.ext#allowFunctionsLog|allowFunctionsLog]]**` has to be set to **1** in [[Description.ext]] for this function to have any effect.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _currentFPS = diag_fps;\nif (_currentFPS < 10) then\n{\n\t[\"Player %1 has performance issues (%2 FPS)\", name player, _currentFPS] call BIS_fnc_logFormatServer;\n};\n\n```"
@@ -31936,7 +31936,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "delimiter",
-                            "description": "`String` - (Optional, default `**{{!}}**`) a single data delimiter character"
+                            "description": "`String` - (Optional, default `**{{!**`}}) a single data delimiter character"
                         }
                     ],
                     "outline": "[markerName, delimiter] call `BIS_fnc_markerToString`",
@@ -35985,7 +35985,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Randomly play provided tracks defined in [[Description.ext#CfgMusic|CfgMusic]] and does a 3 seconds [fade out](https://community.bistudio.com/wiki/fadeMusic). This function takes `accTime` into account. See also `BIS_fnc_jukebox`.\n{{Feature|informative|The function stores the script handle in the `**BIS_fnc_music_spawn}} variable that can be used to stop the function; see _Example 3_ for its usage example.**`",
+            "description": "Randomly play provided tracks defined in [[Description.ext#CfgMusic|CfgMusic]] and does a 3 seconds [fade out](https://community.bistudio.com/wiki/fadeMusic). This function takes `accTime` into account. See also `BIS_fnc_jukebox`.\n**NOTE**: The function stores the script handle in the `**BIS_fnc_music_spawn**` variable that can be used to stop the function; see _Example 3_ for its usage example.",
             "examples": [
                 {
                     "text": "```sqf\n[[\"myMusic1\", \"myMusic2\"], 1] call BIS_fnc_music; // play the two musics in a random order\n```"
@@ -39332,7 +39332,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Plays in-game video with a range of options. The function can be `call`ed or `spawn`ed. If `spawn`ed, `scriptDone` command can be used to see if video is stopped or finished. If `call`ed in scheduled environment, the next line of code will not process until the video is stopped or finished.\n\nThe function also calls `**\"BIS_fnc_playVideo_started\"}} and {{hl|\"BIS_fnc_playVideo_stopped\"**` Scripted Event Handlers in `missionNamespace` - see `BIS_fnc_addScriptedEventHandler` and [Arma 3: Scripted Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Scripted%20Event%20Handlers).\n\n**NOTE**: \n* to play the video on an object, e.g an in-game screen, see _Example 3_\n* the video can be stopped in a variety of ways - see _Example 4_\n* see [OGV File Format](https://community.bistudio.com/wiki/OGV%20File%20Format) for format and conversion information.",
+            "description": "Plays in-game video with a range of options. The function can be `call`ed or `spawn`ed. If `spawn`ed, `scriptDone` command can be used to see if video is stopped or finished. If `call`ed in scheduled environment, the next line of code will not process until the video is stopped or finished.\n\nThe function also calls `**\"BIS_fnc_playVideo_started\"**` and `**\"BIS_fnc_playVideo_stopped\"**` Scripted Event Handlers in `missionNamespace` - see `BIS_fnc_addScriptedEventHandler` and [Arma 3: Scripted Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Scripted%20Event%20Handlers).\n\n**NOTE**: \n* to play the video on an object, e.g an in-game screen, see _Example 3_\n* the video can be stopped in a variety of ways - see _Example 4_\n* see [OGV File Format](https://community.bistudio.com/wiki/OGV%20File%20Format) for format and conversion information.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _video = [\"A3\\Missions_F_EPA\\video\\A_in_intro.ogv\"] spawn BIS_fnc_playVideo;\n```"
@@ -39470,11 +39470,11 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "argument",
-                            "description": "could be one of:\n* `Array` - Position in format `**[x, y]}} or {{hl|[x, y ,z]**`\n* `Object` - Object\n* `Group` - Group, group leader position is used\n* `Location` - Location\n* `String` - Marker or variable name containing object\n**NOTE**: To get the position of an [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) use <sqf inline>_entity get3DENAttribute \"Position\" select 0;."
+                            "description": "could be one of:\n* `Array` - Position in format `**[x, y]**` or `**[x, y ,z]**`\n* `Object` - Object\n* `Group` - Group, group leader position is used\n* `Location` - Location\n* `String` - Marker or variable name containing object\n**NOTE**: To get the position of an [Eden Entity](https://community.bistudio.com/wiki/Eden%20Entity) use <sqf inline>_entity get3DENAttribute \"Position\" select 0;."
                         }
                     ],
                     "outline": "argument call `BIS_fnc_position`",
-                    "returns": "`Array` - position in format `**[x, y]}} or {{hl|[x, y ,z]**`"
+                    "returns": "`Array` - position in format `**[x, y]**` or `**[x, y ,z]**`"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_position"
@@ -40158,7 +40158,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a random integer between the two passed numbers (inclusive). The order of parameters doesn't matter: it can be `**[min, max]}} or {{hl|[max, min]**`.",
+            "description": "Returns a random integer between the two passed numbers (inclusive). The order of parameters doesn't matter: it can be `**[min, max]**` or `**[max, min]**`.",
             "examples": [
                 {
                     "text": "```sqf\n[1, 3] call BIS_fnc_randomInt; // will return 1, 2 or 3\n```"
@@ -40189,7 +40189,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Returns a random (float) number between the two passed numbers. The order of parameters doesn't matter: it can be `**[min, max]}} or {{hl|[max, min]**`.",
+            "description": "Returns a random (float) number between the two passed numbers. The order of parameters doesn't matter: it can be `**[min, max]**` or `**[max, min]**`.",
             "examples": [
                 {
                     "text": "```sqf\n[1, 3] call BIS_fnc_randomNum; // return a number between 1 and 3, including 1\n```"
@@ -44048,7 +44048,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "{{Feature|warning|This function is broken (at least in Arma 3) as it has a typo, displaying an error on each use!  (typo **line 63**, `**[centrum]}} instead of {{hl|[_centrum]}}).**`\nThis function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard _via_ `copyToClipboard`.\n\nResult is to format:\n\n```sqf\n[\n\t// 11 elements for one object\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t// ...\n]\n```\n\n**IMPORTANT**: Please note that the clipboard result is a one-level array, meaning that all parameters are defined one after the other!",
+            "description": "{{Feature|warning|This function is broken (at least in Arma 3) as it has a typo, displaying an error on each use!  (typo **line 63**, `**[centrum]**` instead of `**[_centrum]**`).}}\nThis function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard _via_ `copyToClipboard`.\n\nResult is to format:\n\n```sqf\n[\n\t// 11 elements for one object\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t// ...\n]\n```\n\n**IMPORTANT**: Please note that the clipboard result is a one-level array, meaning that all parameters are defined one after the other!",
             "examples": [
                 {
                     "text": "```sqf\n[player, 20, \"Car\"] call BIS_fnc_sceneGetObjects;\n```"
@@ -45967,7 +45967,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**arguments**",
-                            "description": "`Array` - (Optional, default <sqf inline>[]) additional `format` arguments to fill notification's fields (`**title}}, {{hl|description}}, {{hl|iconPicture}}, {{hl|iconText}}, {{hl|soundRadio**`)"
+                            "description": "`Array` - (Optional, default <sqf inline>[]) additional `format` arguments to fill notification's fields (`**title**`, `**description**`, `**iconPicture**`, `**iconText**`, `**soundRadio**`)"
                         }
                     ],
                     "outline": "[template, arguments] call `BIS_fnc_showNotification`",
