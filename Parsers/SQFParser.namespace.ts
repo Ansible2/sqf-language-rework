@@ -59,3 +59,23 @@ export function getStringReplacer(
         return easyReplacer(replacementInfo);
     };
 }
+
+type BlobEntry = {
+    path: string;
+    mode: string;
+    type: "blob";
+    sha: string;
+    url: string;
+    size: number;
+};
+
+type TreeEntry = { path: string; mode: string; type: "tree"; sha: string; url: string };
+
+export type IGithubTreeEntry = BlobEntry | TreeEntry;
+
+export interface IGithubTreeResponse {
+    sha: string;
+    url: string;
+    tree: IGithubTreeEntry[];
+    truncated: boolean;
+}
