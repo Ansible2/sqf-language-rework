@@ -79,3 +79,12 @@ export interface IGithubTreeResponse {
     tree: IGithubTreeEntry[];
     truncated: boolean;
 }
+
+export interface IGithubBlobResponse {
+    sha: string;
+    node_id: string;
+    size: number;
+    url: string;
+    content: string;
+    encoding: string;
+}
