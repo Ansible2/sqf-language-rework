@@ -5,3 +5,4 @@ client/server
 /.vscode
 .output
 docs-json.js
+secrets.json
