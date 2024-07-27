@@ -1,4 +1,6 @@
 import { SQFItemConfig } from "../configuration/grammars/sqf.namespace";
+import fs from "fs-extra";
+import path from "path";
 
 export interface Parser {
     getPages: (any: any) => any[];
@@ -87,4 +89,12 @@ export interface IGithubBlobResponse {
     url: string;
     content: string;
     encoding: string;
+}
+
+export interface ISecrets {
+    KiskaToken: string;
+}
+
+export async function getParserSecrets(): Promise<ISecrets> {
+    return fs.readJson(path.resolve(__dirname, "./secrets.json"));
 }
