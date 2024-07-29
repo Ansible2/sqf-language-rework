@@ -1,4 +1,8 @@
-import { SQFGrammarType, SQFItemConfig } from "../../configuration/grammars/sqf.namespace";
+import {
+    SQFGrammarType,
+    SQFItemConfig,
+    SQFParameterConfig,
+} from "../../configuration/grammars/sqf.namespace";
 import {
     DocParser,
     getParserSecrets,
@@ -147,6 +151,8 @@ export class KiskaParserV2 implements DocParser {
         if (descriptionMatch) {
             // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
             // should seperate the ( {2,}) into one afterthe first replace(?)
+            
+            // TODO: convert exmaples in the description and remove spaces better
             const description = descriptionMatch[0].replace(/[\n\r\t]+/gi, " ");
             itemConfig.documentation.description = description.replace(/ {2,}/gi, " ");
         }
@@ -161,6 +167,26 @@ export class KiskaParserV2 implements DocParser {
             const individualParametersMatch = fullParameterSection.match(
                 /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim
             );
+            individualParametersMatch?.forEach((parameterString) => {
+                let description =
+                    parameterString.match(/(?<=\d+:\s*_\w*\b)[\s\S]+/i)?.at(0) || null;
+                if (description) {
+                    // TODO: test with greate indents
+                    const parameterTypesRegex = /\<(.*?)\>/i;
+                    const indentsRegex = /(?:\t| {4})/ig;
+                    const newLinesInSentences = /(?<!\n)\n[\t ]*(?=\w)/ig
+                    description = description
+                        .trim()
+                        .replace(parameterTypesRegex, "*($1)*")
+                        .replace(indentsRegex,"")
+                        .replace(newLinesInSentences,"");
+                }
+
+                const parameter: SQFParameterConfig = {
+                    name: parameterString.match(/(?<=\d+:\s*)_\w*\b/i)?.at(0) || null,
+                    description,
+                };
+            });
             // TODO: parse parameters
         }
 
