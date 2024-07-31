@@ -151,7 +151,7 @@ export class KiskaParserV2 implements DocParser {
         if (descriptionMatch) {
             // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
             // should seperate the ( {2,}) into one afterthe first replace(?)
-            
+
             // TODO: convert exmaples in the description and remove spaces better
             const description = descriptionMatch[0].replace(/[\n\r\t]+/gi, " ");
             itemConfig.documentation.description = description.replace(/ {2,}/gi, " ");
@@ -171,15 +171,19 @@ export class KiskaParserV2 implements DocParser {
                 let description =
                     parameterString.match(/(?<=\d+:\s*_\w*\b)[\s\S]+/i)?.at(0) || null;
                 if (description) {
-                    // TODO: test with greate indents
                     const parameterTypesRegex = /\<(.*?)\>/i;
-                    const indentsRegex = /(?:\t| {4})/ig;
-                    const newLinesInSentences = /(?<!\n)\n[\t ]*(?=\w)/ig
+                    const whitespaceLineRegex = /^\s+$/gim;
+                    // TODO: Test against KISKA_fnc_ambientAnim params
+                    // this should not remove indents for sub bullets
+                    const indentsRegex = /(?:\t| {4,})/gi;
+                   
+                    const newLinesInSentences = /(?<!\n)\n[\t ]*(?=\w)/gi;
                     description = description
                         .trim()
+                        .replace(newLinesInSentences, "")
+                        .replace(whitespaceLineRegex, "")
                         .replace(parameterTypesRegex, "*($1)*")
-                        .replace(indentsRegex,"")
-                        .replace(newLinesInSentences,"");
+                        .replace(indentsRegex, "");
                 }
 
                 const parameter: SQFParameterConfig = {
