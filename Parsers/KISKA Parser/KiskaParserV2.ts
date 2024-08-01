@@ -1,7 +1,10 @@
 import {
+    ExampleConfig,
+    ExampleLanguage,
     SQFGrammarType,
     SQFItemConfig,
     SQFParameterConfig,
+    SQFSyntaxConfig,
 } from "../../configuration/grammars/sqf.namespace";
 import {
     DocParser,
@@ -20,6 +23,31 @@ interface UnparsedKiskaPage extends UnparsedItem {
     documentationLink: string;
 }
 
+const TYPES_REGEX = /\<(.*?)\>/gi;
+const WHITESPACE_LINE_REGEX = /^\s+$/gim;
+// for sub bulleted lists like in KISKA_fnc_ambientAnim
+// this regex will maintain proper indentation
+const INDENTS_REGEX = /(?:\t| {4})(?!(?:\t\t| {8}))/gi;
+const NEW_LINES_IN_SENTENCES_REGEX = /(?<!\n)\n[\t ]*(?=\w)/gi;
+const HEADER_REGEX = /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i;
+const FUNCTION_NAME_REGEX = /(?<=function:\s*)\b.*/i;
+const DESCRIPTION_SECTION_REGEX = /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i;
+const RETURNS_SECTION_REGEX = /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i;
+const PARAMETERS_SECTION_REGEX = /(?<=parameters:\r*\n*)([\s\S]*?)(?=(Examples:|returns:))/i;
+const INDIVIDUAL_PARAMETERS_REGEX =
+    /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim;
+const INDIVIDUAL_PARAMETER_DESCRIPTION_REGEX = /(?<=\d+:\s*_\w*\b)[\s\S]+/i;
+const INDIVIDUAL_PARAMETER_NAME_REGEX = /(?<=\d+:\s*)_\w*\b/i;
+const EXAMPLES_SECTION_REGEX = /(?<=Example\w*:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|returns:))/i;
+const INDIVIDUAL_SQF_EXAMPLES_REGEX = /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
+const INDIVIDUAL_CONFIG_EXAMPLES_REGEX =
+    /(?<=\(begin config example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
+
+const SCHEDULED_FUNCTION_TEXT = "if (!canSuspend) exitWith".toLowerCase();
+
+const REPO_TREE_URL =
+    "https://api.github.com/repos/Ansible2/Kiska-Function-Library/git/trees/master?recursive=1";
+
 export class KiskaParserV2 implements DocParser {
     public readonly SEED_FILE_NAME: string = "KiskaFunctionLibrary.json";
     private readonly MAX_NUMBER_OF_CONCURRENT_REQUESTS = 20;
@@ -37,8 +65,6 @@ export class KiskaParserV2 implements DocParser {
         });
 
         console.log("Fetching git tree...");
-        const REPO_TREE_URL =
-            "https://api.github.com/repos/Ansible2/Kiska-Function-Library/git/trees/master?recursive=1";
         const gitTree = await fetch(REPO_TREE_URL, REQUEST_OPTIONS).then(
             (response) => response.json() as unknown as IGithubTreeResponse
         );
@@ -119,16 +145,12 @@ export class KiskaParserV2 implements DocParser {
 
     private parseKiskaPage(unparsedPage: UnparsedKiskaPage): SQFItemConfig {
         const page = unparsedPage.text;
-        const headerRegexMatch = page.match(
-            /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i
-        );
-
-        if (!headerRegexMatch) {
+        const headerComment = this.matchFirst(page, HEADER_REGEX);
+        if (!headerComment) {
             throw new Error("Could not find header comment");
         }
 
-        const headerComment = headerRegexMatch[0];
-        const functionName = headerComment.match(/(?<=function:\s*)\b.*/i)?.at(0);
+        const functionName = this.matchFirst(headerComment, FUNCTION_NAME_REGEX);
         if (!functionName) {
             throw new Error("Could not find function name");
         }
@@ -145,56 +167,116 @@ export class KiskaParserV2 implements DocParser {
             },
         };
 
-        const descriptionMatch = headerComment.match(
-            /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i
-        );
-        if (descriptionMatch) {
-            // ([\n\r\t]+| {2,}) decent replace regex but still leaves double spaces
-            // should seperate the ( {2,}) into one afterthe first replace(?)
-
-            // TODO: convert exmaples in the description and remove spaces better
-            const description = descriptionMatch[0].replace(/[\n\r\t]+/gi, " ");
-            itemConfig.documentation.description = description.replace(/ {2,}/gi, " ");
+        const functionDescription = this.matchFirst(headerComment, DESCRIPTION_SECTION_REGEX);
+        if (functionDescription) {
+            itemConfig.documentation.description = this.convertText(functionDescription);
         }
 
-        const parametersMatch = headerComment.match(
-            /(?<=parameters:\r*\n*)([\s\S]*?)(?=(Examples:|returns:))/i
-        );
-        if (parametersMatch) {
-            let fullParameterSection = parametersMatch[0];
+        const isScheduled = page.toLowerCase().includes(SCHEDULED_FUNCTION_TEXT);
+        const executorText = isScheduled ? "spawn" : "call";
+        const syntax: SQFSyntaxConfig = {
+            outline: `${executorText} ${functionName}`,
+            parameters: [],
+        };
+
+        let fullParameterSection = this.matchFirst(headerComment, PARAMETERS_SECTION_REGEX);
+        if (fullParameterSection) {
             fullParameterSection += "<END>";
 
             const individualParametersMatch = fullParameterSection.match(
-                /(?<=^(\t| {0,4}))(\d:)([\s\S]*?)(?=(^(\t| {0,4}))(\d:)|<END>)/gim
+                INDIVIDUAL_PARAMETERS_REGEX
             );
+            const parameterNames: string[] = [];
             individualParametersMatch?.forEach((parameterString) => {
-                let description =
-                    parameterString.match(/(?<=\d+:\s*_\w*\b)[\s\S]+/i)?.at(0) || null;
-                if (description) {
-                    const parameterTypesRegex = /\<(.*?)\>/i;
-                    const whitespaceLineRegex = /^\s+$/gim;
-                    // TODO: Test against KISKA_fnc_ambientAnim params
-                    // this should not remove indents for sub bullets
-                    const indentsRegex = /(?:\t| {4,})/gi;
-                   
-                    const newLinesInSentences = /(?<!\n)\n[\t ]*(?=\w)/gi;
-                    description = description
-                        .trim()
-                        .replace(newLinesInSentences, "")
-                        .replace(whitespaceLineRegex, "")
-                        .replace(parameterTypesRegex, "*($1)*")
-                        .replace(indentsRegex, "");
+                let parameterDescription = this.matchFirst(
+                    parameterString,
+                    INDIVIDUAL_PARAMETER_DESCRIPTION_REGEX
+                );
+                if (parameterDescription) {
+                    parameterDescription = this.convertText(parameterDescription);
                 }
 
-                const parameter: SQFParameterConfig = {
-                    name: parameterString.match(/(?<=\d+:\s*)_\w*\b/i)?.at(0) || null,
-                    description,
+                const parameterName = this.matchFirst(
+                    parameterString,
+                    INDIVIDUAL_PARAMETER_NAME_REGEX
+                );
+                if (!parameterName) {
+                    throw new Error(`null parameter name! ${parameterString}`);
+                }
+
+                parameterNames.push(parameterName);
+                const parameterConfig: SQFParameterConfig = {
+                    name: parameterName,
+                    description: parameterDescription,
                 };
+                syntax.parameters.push(parameterConfig);
             });
-            // TODO: parse parameters
+
+            if (parameterNames.length) {
+                syntax.outline = `[${parameterNames.join(", ")}] ${syntax.outline}`;
+            }
+        } else if (isScheduled) {
+            // scheduled functions always need an array of args
+            syntax.outline = `[] ${syntax.outline}`;
+        }
+
+        const returnsSection = this.matchFirst(headerComment, RETURNS_SECTION_REGEX);
+        if (returnsSection) {
+            syntax.returns = this.convertText(returnsSection);
+        }
+
+        const examplesSection = this.matchFirst(headerComment, EXAMPLES_SECTION_REGEX);
+        if (examplesSection) {
+            const parsedExamples: ExampleConfig[] = [];
+            const individualExamplesMatch = examplesSection.match(INDIVIDUAL_SQF_EXAMPLES_REGEX);
+            individualExamplesMatch?.forEach((example) => {
+                const exampleConfig: ExampleConfig = {
+                    text: this.convertText(example),
+                    language: ExampleLanguage.SQF,
+                };
+                parsedExamples.push(exampleConfig);
+            });
+            itemConfig.documentation.examples = parsedExamples;
         }
 
         return itemConfig;
+    }
+
+    private convertText(text: string): string {
+        // TODO:
+        // 1. select all sqf examples and replace them with a token
+        // 2. select all config examples and replace them with a token
+        // 3. perform standard replacements
+        // 4. loop through sqf examples
+        // - grab just the actual code portion
+        // - remove unnecessary indentation
+        // - replace the first available token with the current loop example formatted
+
+        let convertedText = text;
+
+        // code blocks are seperated to ensure that any code formatting is not overwritten
+        // during formatting
+        const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
+        const convertedCodeExamples: string[] = [];
+        for (const match of sqfCodeBlockMatches) {
+            const matchString = match[0];
+            if (!matchString) continue;
+            convertedCodeExamples.push(matchString);
+            convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
+        }
+
+        return text
+            .trim()
+            .replace(NEW_LINES_IN_SENTENCES_REGEX, "")
+            .replace(WHITESPACE_LINE_REGEX, "")
+            .replace(TYPES_REGEX, "*($1)*")
+            .replace(INDENTS_REGEX, "")
+            .replace(INDIVIDUAL_SQF_EXAMPLES_REGEX, "```sqf\n$1\n```")
+            .replace(INDIVIDUAL_CONFIG_EXAMPLES_REGEX, "```cpp\n$1\n```");
+    }
+
+    private matchFirst(text: string, regex: RegExp): string | null {
+        return text.match(regex)?.at(0) || null;
     }
 
     getOutputFileName(): string {
