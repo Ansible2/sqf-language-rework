@@ -39,9 +39,14 @@ const INDIVIDUAL_PARAMETERS_REGEX =
 const INDIVIDUAL_PARAMETER_DESCRIPTION_REGEX = /(?<=\d+:\s*_\w*\b)[\s\S]+/i;
 const INDIVIDUAL_PARAMETER_NAME_REGEX = /(?<=\d+:\s*)_\w*\b/i;
 const EXAMPLES_SECTION_REGEX = /(?<=Example\w*:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|returns:))/i;
-const INDIVIDUAL_SQF_EXAMPLES_REGEX = /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
-const INDIVIDUAL_CONFIG_EXAMPLES_REGEX =
-    /(?<=\(begin config example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
+const INDIVIDUAL_SQF_EXAMPLE_REGEX = /([\t ]*\(begin example\)\r*\n+)([\s\S]*?)(\(end\))/gi;
+const INDIVIDUAL_CONFIG_EXAMPLE_REGEX =
+    /([\t ]*\(begin config example\)\r*\n+)([\s\S]*?)(\(end\))/gi;
+const CONFIG_CODE_REPLACEMENT_TOKEN = "(ConfigCodeToReplace)";
+const SQF_CODE_REPLACEMENT_TOKEN = "(SQFCodeToReplace)";
+// const INDIVIDUAL_SQF_EXAMPLES_REGEX = /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
+// const INDIVIDUAL_CONFIG_EXAMPLES_REGEX =
+//     /(?<=\(begin config example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
 
 const SCHEDULED_FUNCTION_TEXT = "if (!canSuspend) exitWith".toLowerCase();
 
@@ -51,6 +56,7 @@ const REPO_TREE_URL =
 export class KiskaParserV2 implements DocParser {
     public readonly SEED_FILE_NAME: string = "KiskaFunctionLibrary.json";
     private readonly MAX_NUMBER_OF_CONCURRENT_REQUESTS = 20;
+    private debug = false;
 
     constructor() {}
 
@@ -155,6 +161,8 @@ export class KiskaParserV2 implements DocParser {
             throw new Error("Could not find function name");
         }
 
+        this.debug = functionName.toLowerCase() === "kiska_fnc_timeline_start";
+
         const itemConfig: SQFItemConfig = {
             documentation: {
                 documentationLink: unparsedPage.documentationLink,
@@ -228,11 +236,10 @@ export class KiskaParserV2 implements DocParser {
         const examplesSection = this.matchFirst(headerComment, EXAMPLES_SECTION_REGEX);
         if (examplesSection) {
             const parsedExamples: ExampleConfig[] = [];
-            const individualExamplesMatch = examplesSection.match(INDIVIDUAL_SQF_EXAMPLES_REGEX);
+            const individualExamplesMatch = examplesSection.match(INDIVIDUAL_SQF_EXAMPLE_REGEX);
             individualExamplesMatch?.forEach((example) => {
                 const exampleConfig: ExampleConfig = {
                     text: this.convertText(example),
-                    language: ExampleLanguage.SQF,
                 };
                 parsedExamples.push(exampleConfig);
             });
@@ -243,36 +250,56 @@ export class KiskaParserV2 implements DocParser {
     }
 
     private convertText(text: string): string {
-        // TODO:
-        // 1. select all sqf examples and replace them with a token
-        // 2. select all config examples and replace them with a token
-        // 3. perform standard replacements
-        // 4. loop through sqf examples
-        // - grab just the actual code portion
-        // - remove unnecessary indentation
-        // - replace the first available token with the current loop example formatted
-
         let convertedText = text;
-
         // code blocks are seperated to ensure that any code formatting is not overwritten
         // during formatting
-        const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
-        const convertedCodeExamples: string[] = [];
-        for (const match of sqfCodeBlockMatches) {
-            const matchString = match[0];
-            if (!matchString) continue;
-            convertedCodeExamples.push(matchString);
-            convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
+        const sqfCodeBlockMatches = convertedText.matchAll(INDIVIDUAL_SQF_EXAMPLE_REGEX);
+        const sqfCodeExamples: string[] = [];
+        if (sqfCodeBlockMatches) {
+            for (const match of sqfCodeBlockMatches) {
+                if (!match) continue;
+                const exampleText = match[2];
+                sqfCodeExamples.push(exampleText);
+                const completeString = match[0];
+                convertedText = convertedText.replace(completeString, SQF_CODE_REPLACEMENT_TOKEN);
+            }
+        }
+        const configCodeBlockMatches = convertedText.matchAll(INDIVIDUAL_CONFIG_EXAMPLE_REGEX);
+        const configCodeExamples: string[] = [];
+        if (configCodeBlockMatches) {
+            for (const match of configCodeBlockMatches) {
+                if (!match) continue;
+                const exampleText = match[2];
+                configCodeExamples.push(exampleText);
+                const completeString = match[0];
+                convertedText = convertedText.replace(
+                    completeString,
+                    CONFIG_CODE_REPLACEMENT_TOKEN
+                );
+            }
         }
 
-        return text
-            .trim()
+        convertedText = convertedText
             .replace(NEW_LINES_IN_SENTENCES_REGEX, "")
             .replace(WHITESPACE_LINE_REGEX, "")
             .replace(TYPES_REGEX, "*($1)*")
-            .replace(INDENTS_REGEX, "")
-            .replace(INDIVIDUAL_SQF_EXAMPLES_REGEX, "```sqf\n$1\n```")
-            .replace(INDIVIDUAL_CONFIG_EXAMPLES_REGEX, "```cpp\n$1\n```");
+            .replace(INDENTS_REGEX, "");
+
+        for (const exampleCodeText of sqfCodeExamples) {
+            convertedText = convertedText.replace(
+                SQF_CODE_REPLACEMENT_TOKEN,
+                ["\n```sqf", exampleCodeText, "```\n"].join("\n")
+            );
+        }
+
+        for (const exampleCodeText of configCodeExamples) {
+            convertedText = convertedText.replace(
+                CONFIG_CODE_REPLACEMENT_TOKEN,
+                ["\n```cpp", exampleCodeText, "```\n"].join("\n")
+            );
+        }
+
+        return convertedText.trim();
     }
 
     private matchFirst(text: string, regex: RegExp): string | null {
