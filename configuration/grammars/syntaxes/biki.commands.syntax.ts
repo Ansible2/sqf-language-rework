@@ -1414,11 +1414,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Add an object to the editor and assign arguments. Create script is,called with _new equal to true. Returns the ID of the new EditorObject.,Subtype class is optional. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -2296,11 +2292,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Adds a new menu button. Priority is optional.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -2331,11 +2323,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Creates a new menu item. Menu can be \"file\" or \"view\",index is index,as returned from addMenu command. priority is optional and determines,where in the menu the item will reside (higher priority items first). \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -4434,11 +4422,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Allow/dissallow 3D mode., \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -4642,11 +4626,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Allow/dissallow file ops (load/save etc).\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -10801,11 +10781,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Closes the current overlay without committing. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -13499,11 +13475,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Creates a previously added menu.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -13760,11 +13732,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Create a new site. \n**WARNING**: This command is considered deprecated and is no longer supported",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -20638,11 +20606,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Dump (something about FSM) to debugging output. This command is (assumed to be) non-functional in the retail version.\n**WARNING**: Non functional in retail",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -20938,11 +20902,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Delete the editor object. Requires all editor object links to be removed prior. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -21216,11 +21176,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Removes the site.\n**WARNING**: This command is considered deprecated and is no longer supported",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -24767,11 +24723,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "The editor will draw a line between the two specified editor objects. Line type can be LINE or ARROW. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -24798,11 +24750,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used to draw locations in [2D Editor](https://community.bistudio.com/wiki/2D%20Editor).",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -25202,11 +25150,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Show the edit object dialog for the given object. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -28315,11 +28259,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Return object that matches the provided reference. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -32392,11 +32332,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Fetches a reference to the mission editor camera.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -32419,11 +32355,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Returns the current mode of the editor.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -32446,11 +32378,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Returns the editor object scope of the specified editor object.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -33882,11 +33810,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Return a list of all the children of the specified object.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -38583,11 +38507,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Imports all groups into the RTE. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -39559,11 +39479,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Insert an object to the editor and assign arguments. Create script is,not called. Returns the ID of the new EditorObject. Subtype class is,optional.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -41787,11 +41703,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Returns true if the editor is set to draw 3D icons.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -46198,11 +46110,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Return the list of all objects of given type.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -48454,11 +48362,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Creates the load overlay dialog for the specified type of overlay.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -52936,11 +52840,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Shifts an editor object to the end of the objects array. This means,that the object will be drawn last (after all other objects). \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -54047,11 +53947,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "A non-existing network object. **NOTE**: **NetObject** data type was never implemented in Arma 3 - this command always returns `false`.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -54069,11 +53965,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Creates the new overlay dialog for the specified type of overlay. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -54100,11 +53992,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Returns the next available menu item index.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -54174,11 +54062,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Returns the total number of user-added menu items belonging to the given menu. **NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -54585,11 +54469,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Defines an action performed when the user double clicks on the map. Command receives:,_pos array position,_units array selected units,_shift,_alt bool key state\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -54947,11 +54827,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Defines an action performed when the user right clicks on the map and,selects New Object. Set to empty for default behavior. Command receives:,_pos array position, \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -60044,11 +59920,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Removes an icon for an editor object. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -60079,11 +59951,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Remove all drawn links for the given editor object for the given editor,object type. Pass an empty string as param type to remove all draw,links for an object.  \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -60641,11 +60509,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Removes a previously added menu item. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -61539,11 +61403,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Restarts the mission editor camera (if it was deleted by a script,for example).\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -63534,11 +63394,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Select an editor object. Does not un-select previously selected objects. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -66585,11 +66441,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Entirely identical to `setDamage` that was introduced to fix a typographical error in the command's name.\n**NOTE**: See `setDamage` for this command's documentation.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -66981,11 +66833,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Set the icon to be shown in 2D editor for the specified editor object. If maintain size is false,icon will not scale depending on the scale,of the map. If maintain size is a number,the icon will maintain size,if map scale is below that number. is3D,show line and priority are,optional.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -67141,11 +66989,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Sets map mode to MAP,3D or PREVIEW. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -68306,11 +68150,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Sets the data for hiding. objectWhereHide can be taken using `findCover`. hidePosition can be taken using `getHideFrom`. Command is not functional in Arma 2.\n**WARNING**:  This command is not implemented!",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -70482,11 +70322,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Set object arguments in mission editor.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -76300,11 +76136,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Toggle the drawing of 3D icons.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -76587,11 +76419,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Show/hide map legend. \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -76733,11 +76561,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Show the add editor object dialog,type is editor object type,class is,class definition to automatically select,side filters by a certain,side,pos is position to create the object.  \n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -80744,11 +80568,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Debugging output.\n**WARNING**: This command is non-functional in the retail version",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -84793,11 +84613,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Updates the icon to be shown in 2D editor for the specified editor,object. If maintain size is false,icon will not scale depending on the,scale of the map. If maintain size is a number,the icon will maintain,size if map scale is below that number.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -84824,11 +84640,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Sets the text and command for the menu item. Index is index returned by `addMenuItem` command. Command is optional.\n**NOTE**: Some Old Editor Command",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -87315,11 +87127,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Returns array with all items assigned to the given weapon in given cargo container.\n**WARNING**: This is unofficial documentation. All Information here is as it exists in the Engine. It might not reflect the reality.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [

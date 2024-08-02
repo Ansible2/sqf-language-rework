@@ -7650,11 +7650,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used internally by the [Key Frame Animation](https://community.bistudio.com/wiki/Arma%203%3A%20Key%20Frame%20Animation) system. Adds needed event handlers.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -7757,11 +7753,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used internally by the [Key Frame Animation](https://community.bistudio.com/wiki/Arma%203%3A%20Key%20Frame%20Animation) system. Executed when a new mission is loaded.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -7778,11 +7770,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used internally by the [Key Frame Animation](https://community.bistudio.com/wiki/Arma%203%3A%20Key%20Frame%20Animation) system. Executed when a new mission is created.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -7799,11 +7787,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used internally by the [Key Frame Animation](https://community.bistudio.com/wiki/Arma%203%3A%20Key%20Frame%20Animation) system. Executed when preview ended.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -7820,11 +7804,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used internally by the [Key Frame Animation](https://community.bistudio.com/wiki/Arma%203%3A%20Key%20Frame%20Animation) system.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -7841,11 +7821,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Internal function used for the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) Edit Terrain Object module.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -7990,11 +7966,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Internal function used by [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) to draw locations.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -8175,11 +8147,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Handles action when grid button is pressed in the toolbar in [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -8206,11 +8174,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Is used to set the weather settings in [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor). Internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -8281,11 +8245,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: This function is used internally by the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor)",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -8303,11 +8263,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "This functions does nothing.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -8325,11 +8281,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Used to display module description in the attribute window.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -9694,11 +9646,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Handles landing on the aircraft carrier for AI and player autopilot.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -19192,11 +19140,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "This function does nothing.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -19430,11 +19374,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Part of the [EG Spectator Mode](https://community.bistudio.com/wiki/EG%20Spectator%20Mode). **IMPORTANT**: For internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -19452,11 +19392,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Part of the [EG Spectator Mode](https://community.bistudio.com/wiki/EG%20Spectator%20Mode). **IMPORTANT**: For internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -19541,11 +19477,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Part of the [EG Spectator Mode](https://community.bistudio.com/wiki/EG%20Spectator%20Mode). **IMPORTANT**: For internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -23101,11 +23033,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "The code is identical to the one of `BIS_fnc_garage`, except that `**FNC_IS3DEN**` is set to 1. For more information about the garage, visit `BIS_fnc_garage` **IMPORTANT**: This function is used internally by the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor).",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -25611,11 +25539,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: This function is used internally by the [Eden Editor](https://community.bistudio.com/wiki/%3ACategory%3AEden%20Editor) to set the inventory of vehicles.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -29466,11 +29390,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Event handler function for the `BIS_fnc_lookAtArray` function.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -32434,11 +32354,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**NOTE**: This function is used by the [[Post Process Effects|Post-Process]] module.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -33252,11 +33168,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for Time Trials, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -33347,11 +33259,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for Time Trials, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -33369,11 +33277,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for Time Trials, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -33391,11 +33295,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for Time Trials, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -39089,11 +38989,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Handles respawn camps functionality. Whoever \"assembles\" a camp from backpack it will receive a new respawn position. When backpack object has 'respawnNearbyPlayers' attribute set to 1, nearby players will receive the respawn position as well.\n**IMPORTANT**: Only for use with respawn camp event handlers!",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [
@@ -39120,11 +39016,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**NOTE**: This function contains no code.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -39266,11 +39158,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**NOTE**: This file contains no code.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -43077,11 +42965,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Local task management executed by `BIS_fnc_setTask`. Not to be called independently!",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -43327,11 +43211,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Meant to be run by the [Arma 3: Task Framework](https://community.bistudio.com/wiki/Arma%203%3A%20Task%20Framework) in MP scenarions in postInit. Do not run it on its own!",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -43992,11 +43872,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Internal function used by the [Arma 3: Respawn](https://community.bistudio.com/wiki/Arma%203%3A%20Respawn) system.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -44035,11 +43911,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Internal function used by the [Arma 3: Respawn](https://community.bistudio.com/wiki/Arma%203%3A%20Respawn) system.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -44057,11 +43929,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Internal function used by the [Arma 3: Respawn](https://community.bistudio.com/wiki/Arma%203%3A%20Respawn) system.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -45368,11 +45236,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "Internal function used by `BIS_fnc_strategicMapOpen`.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49543,11 +49407,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49565,11 +49425,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49587,11 +49443,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49609,11 +49461,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49631,11 +49479,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49653,11 +49497,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49675,11 +49515,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49697,11 +49533,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49719,11 +49551,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49741,11 +49569,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49763,11 +49587,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49785,11 +49605,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49807,11 +49623,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49829,11 +49641,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49851,11 +49659,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49873,11 +49677,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49895,11 +49695,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49917,11 +49713,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49939,11 +49731,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49961,11 +49749,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -49983,11 +49767,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50005,11 +49785,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50027,11 +49803,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50049,11 +49821,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50071,11 +49839,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50093,11 +49857,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50115,11 +49875,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50137,11 +49893,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50159,11 +49911,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50181,11 +49929,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50203,11 +49947,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50225,11 +49965,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50247,11 +49983,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50269,11 +50001,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50291,11 +50019,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50313,11 +50037,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50335,11 +50055,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50357,11 +50073,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50379,11 +50091,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50401,11 +50109,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50423,11 +50127,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50445,11 +50145,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50467,11 +50163,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50489,11 +50181,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50511,11 +50199,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -50533,11 +50217,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: Used for VR Courses, internal use only.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -52297,11 +51977,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: This function does not work.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -52319,11 +51995,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: This function does not work.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],
@@ -52341,11 +52013,7 @@ export const configs: SQFItemConfig[] = [
     {
         "documentation": {
             "description": "**IMPORTANT**: This function does not work.",
-            "examples": [
-                {
-                    "text": "-"
-                }
-            ],
+            "examples": [],
             "syntaxes": [
                 {
                     "parameters": [],

@@ -195,6 +195,11 @@ export class BikiParserV2 implements DocParser {
                 const exampleInMarkdown = this.textInterpreter.convertTextToMarkdown(
                     detail.content
                 );
+
+                // some examples (BIS_fnc_3den_init) only have a dash (-) for example
+                const exampleDoesNotHaveActualContent = !/\w+/i.test(exampleInMarkdown);
+                if (exampleDoesNotHaveActualContent) return;
+
                 examples.push({ text: exampleInMarkdown });
             });
         }
