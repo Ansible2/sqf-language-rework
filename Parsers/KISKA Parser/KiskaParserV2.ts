@@ -1,6 +1,5 @@
 import {
     ExampleConfig,
-    ExampleLanguage,
     SQFGrammarType,
     SQFItemConfig,
     SQFParameterConfig,
@@ -12,7 +11,6 @@ import {
     IGithubBlobResponse,
     IGithubTreeEntry,
     IGithubTreeResponse,
-    ISecrets,
     UnparsedItem,
 } from "../SQFParser.namespace";
 import path from "path";
@@ -26,9 +24,9 @@ interface UnparsedKiskaPage extends UnparsedItem {
 const TYPES_REGEX = /\<(.*?)\>/gi;
 const WHITESPACE_LINE_REGEX = /^\s+$/gim;
 // for sub bulleted lists like in KISKA_fnc_ambientAnim
-// this regex will maintain proper indentation
-const INDENTS_REGEX = /(?:\t| {4})(?!(?:\t\t| {8}))/gi;
-const NEW_LINES_IN_SENTENCES_REGEX = /(?<!\n)\n[\t ]*(?=\w)/gi;
+// remove one layer of indentation
+const INDENTS_REGEX = /^(?:\t| {4})/gim;
+const NEW_LINES_IN_SENTENCES_REGEX = /(?<!\n\s+)\n[\t ]*(?=\w)/gi;
 const HEADER_REGEX = /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i;
 const FUNCTION_NAME_REGEX = /(?<=function:\s*)\b.*/i;
 const DESCRIPTION_SECTION_REGEX = /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i;
@@ -44,9 +42,6 @@ const INDIVIDUAL_CONFIG_EXAMPLE_REGEX =
     /([\t ]*\(begin config example\)\r*\n+)([\s\S]*?)(\(end\))/gi;
 const CONFIG_CODE_REPLACEMENT_TOKEN = "(ConfigCodeToReplace)";
 const SQF_CODE_REPLACEMENT_TOKEN = "(SQFCodeToReplace)";
-// const INDIVIDUAL_SQF_EXAMPLES_REGEX = /(?<=\(begin example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
-// const INDIVIDUAL_CONFIG_EXAMPLES_REGEX =
-//     /(?<=\(begin config example\)\r*\n+)([\s\S]*?)(?=\(end\))/gi;
 
 const SCHEDULED_FUNCTION_TEXT = "if (!canSuspend) exitWith".toLowerCase();
 
@@ -56,7 +51,7 @@ const REPO_TREE_URL =
 export class KiskaParserV2 implements DocParser {
     public readonly SEED_FILE_NAME: string = "KiskaFunctionLibrary.json";
     private readonly MAX_NUMBER_OF_CONCURRENT_REQUESTS = 20;
-    private debug = false;
+    // private debug = false;
 
     constructor() {}
 
@@ -138,6 +133,9 @@ export class KiskaParserV2 implements DocParser {
         const parsedPages: SQFItemConfig[] = [];
         pages.forEach((unparsedPage) => {
             try {
+                // example to start debug
+                // this.debug = unparsedPage.fileName.toLowerCase().includes("_timeline_start");
+
                 const parsedPage = this.parseKiskaPage(unparsedPage);
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
@@ -161,8 +159,6 @@ export class KiskaParserV2 implements DocParser {
             throw new Error("Could not find function name");
         }
 
-        this.debug = functionName.toLowerCase() === "kiska_fnc_timeline_start";
-
         const itemConfig: SQFItemConfig = {
             documentation: {
                 documentationLink: unparsedPage.documentationLink,
@@ -183,9 +179,10 @@ export class KiskaParserV2 implements DocParser {
         const isScheduled = page.toLowerCase().includes(SCHEDULED_FUNCTION_TEXT);
         const executorText = isScheduled ? "spawn" : "call";
         const syntax: SQFSyntaxConfig = {
-            outline: `${executorText} ${functionName}`,
+            outline: `${executorText} \`${functionName}\``,
             parameters: [],
         };
+        itemConfig.documentation.syntaxes?.push(syntax);
 
         let fullParameterSection = this.matchFirst(headerComment, PARAMETERS_SECTION_REGEX);
         if (fullParameterSection) {
@@ -282,8 +279,7 @@ export class KiskaParserV2 implements DocParser {
         convertedText = convertedText
             .replace(NEW_LINES_IN_SENTENCES_REGEX, "")
             .replace(WHITESPACE_LINE_REGEX, "")
-            .replace(TYPES_REGEX, "*($1)*")
-            .replace(INDENTS_REGEX, "");
+            .replace(TYPES_REGEX, "*($1)*");
 
         for (const exampleCodeText of sqfCodeExamples) {
             convertedText = convertedText.replace(
@@ -299,7 +295,8 @@ export class KiskaParserV2 implements DocParser {
             );
         }
 
-        return convertedText.trim();
+        // TODO: examples aren't having indents removed
+        return convertedText.trim().replace(INDENTS_REGEX, "");
     }
 
     private matchFirst(text: string, regex: RegExp): string | null {
