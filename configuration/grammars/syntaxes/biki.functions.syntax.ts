@@ -11,12 +11,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addButtonEvents` -->"
                 }
             ],
@@ -37,12 +32,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addDangerZone` -->"
                 }
             ],
@@ -63,12 +53,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addEntitiesToArea` -->"
                 }
             ],
@@ -89,12 +74,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addFaradayCage` -->"
                 }
             ],
@@ -115,12 +95,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addIDWMapMeasurementPoint` -->"
                 }
             ],
@@ -141,12 +116,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addObjectsToArea` -->"
                 }
             ],
@@ -167,12 +137,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addRecordedSignal` -->"
                 }
             ],
@@ -193,12 +158,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addRotation` -->"
                 }
             ],
@@ -219,12 +179,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addSignal` -->"
                 }
             ],
@@ -245,12 +200,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addSiteEntities` -->"
                 }
             ],
@@ -271,12 +221,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addTranslation` -->"
                 }
             ],
@@ -297,12 +242,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_addTravelPoint` -->"
                 }
             ],
@@ -323,12 +263,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_allIDWMapMeasurementPoints` -->"
                 }
             ],
@@ -349,12 +284,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_allowAntennaReveal` -->"
                 }
             ],
@@ -375,12 +305,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_allowedAntennaReveal` -->"
                 }
             ],
@@ -401,12 +326,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_animateSmooth` -->"
                 }
             ],
@@ -427,12 +347,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_assignAntenna` -->"
                 }
             ],
@@ -453,12 +368,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_assignedAntenna` -->"
                 }
             ],
@@ -479,12 +389,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_attachChemlight` -->"
                 }
             ],
@@ -505,12 +410,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bakeAntenna` -->"
                 }
             ],
@@ -531,12 +431,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_behaviorInit` -->"
                 }
             ],
@@ -557,12 +452,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bezier` -->"
                 }
             ],
@@ -583,12 +473,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bezierAverage` -->"
                 }
             ],
@@ -609,12 +494,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bezierBoundingBox` -->"
                 }
             ],
@@ -635,12 +515,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bezierEditor` -->"
                 }
             ],
@@ -661,12 +536,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bezierNormalize` -->"
                 }
             ],
@@ -687,12 +557,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_bezierVelocity` -->"
                 }
             ],
@@ -713,12 +578,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_breatheInit` -->"
                 }
             ],
@@ -739,12 +599,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_calculateLinkBudget` -->"
                 }
             ],
@@ -765,12 +620,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_calculateSpectrumAnalyzerValues` -->"
                 }
             ],
@@ -791,12 +641,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_callButtonEvent` -->"
                 }
             ],
@@ -840,12 +685,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_cargoPlatform_01_destruction`; -->"
                 }
             ],
@@ -862,12 +702,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_cargoPlatform_01_update`; -->"
                 }
             ],
@@ -888,12 +723,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNCharacterAdd` -->"
                 }
             ],
@@ -914,12 +744,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNContaminantAdd` -->"
                 }
             ],
@@ -940,12 +765,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNContaminantRemove` -->"
                 }
             ],
@@ -966,12 +786,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNGearActivate` -->"
                 }
             ],
@@ -992,12 +807,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNGearDeactivate` -->"
                 }
             ],
@@ -1018,12 +828,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNGearUpdate` -->"
                 }
             ],
@@ -1073,12 +878,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_CBRNInContaminant` -->"
                 }
             ],
@@ -1099,12 +899,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_circleSmokeMissile` -->"
                 }
             ],
@@ -1125,12 +920,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_clearIDWMap` -->"
                 }
             ],
@@ -1151,12 +941,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_clearTXScan` -->"
                 }
             ],
@@ -1234,12 +1019,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_createScriptedSoundSource` -->"
                 }
             ],
@@ -1260,12 +1040,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_createScriptedSoundSourceVehicle` -->"
                 }
             ],
@@ -1286,12 +1061,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_createTXScan` -->"
                 }
             ],
@@ -1312,12 +1082,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_cropTXScan` -->"
                 }
             ],
@@ -1338,12 +1103,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_curatorInit` -->"
                 }
             ],
@@ -1364,12 +1124,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_debugDraw` -->"
                 }
             ],
@@ -1390,12 +1145,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_debugDrawMapInit` -->"
                 }
             ],
@@ -1416,12 +1166,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_debugQuests` -->"
                 }
             ],
@@ -1442,12 +1187,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_debugText` -->"
                 }
             ],
@@ -1468,12 +1208,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deconShowerAnim` -->"
                 }
             ],
@@ -1494,12 +1229,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deconShowerAnimLarge` -->"
                 }
             ],
@@ -1520,12 +1250,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deconShowerAnimStop` -->"
                 }
             ],
@@ -1546,12 +1271,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deconShowerCollision` -->"
                 }
             ],
@@ -1572,12 +1292,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deconShowerDelete` -->"
                 }
             ],
@@ -1598,12 +1313,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deconShowerMove` -->"
                 }
             ],
@@ -1624,12 +1334,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteAntenna` -->"
                 }
             ],
@@ -1650,12 +1355,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteDangerZone` -->"
                 }
             ],
@@ -1676,12 +1376,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteDiaryRecord` -->"
                 }
             ],
@@ -1702,12 +1397,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteFaradayCage` -->"
                 }
             ],
@@ -1728,12 +1418,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteLoopedRadioSignal` -->"
                 }
             ],
@@ -1754,12 +1439,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteSignal` -->"
                 }
             ],
@@ -1780,12 +1460,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteSpectrumAnalyzer` -->"
                 }
             ],
@@ -1806,12 +1481,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteTravelPoint` -->"
                 }
             ],
@@ -1832,12 +1502,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_deleteTXScan` -->"
                 }
             ],
@@ -1858,12 +1523,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_addAllSpectrumAnalyzers` -->"
                 }
             ],
@@ -1884,12 +1544,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_drawAllAreaObjectsBounds` -->"
                 }
             ],
@@ -1910,12 +1565,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_getAllAreaEntities` -->"
                 }
             ],
@@ -1936,12 +1586,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_getAllAreaObjects` -->"
                 }
             ],
@@ -1962,12 +1607,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_IDWMap` -->"
                 }
             ],
@@ -1988,12 +1628,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_logAntenna` -->"
                 }
             ],
@@ -2014,12 +1649,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_revealAllAntennas` -->"
                 }
             ],
@@ -2040,12 +1670,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_showLinkBudgetMap` -->"
                 }
             ],
@@ -2066,12 +1691,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_diag_TXScan` -->"
                 }
             ],
@@ -2092,12 +1712,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_distanceToAreaBorder` -->"
                 }
             ],
@@ -2118,12 +1733,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_dockModule` -->"
                 }
             ],
@@ -2144,12 +1754,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawAntennas` -->"
                 }
             ],
@@ -2170,12 +1775,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawIconFixed` -->"
                 }
             ],
@@ -2196,12 +1796,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawIDWMap` -->"
                 }
             ],
@@ -2222,12 +1817,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawMap` -->"
                 }
             ],
@@ -2248,12 +1838,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawProbeMap` -->"
                 }
             ],
@@ -2274,12 +1859,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawSpectrum` -->"
                 }
             ],
@@ -2300,12 +1880,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawTooltip` -->"
                 }
             ],
@@ -2326,12 +1901,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_drawTXScan` -->"
                 }
             ],
@@ -2352,12 +1922,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_droneDestructionFX` -->"
                 }
             ],
@@ -2378,12 +1943,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_droneModuleDestruction` -->"
                 }
             ],
@@ -2404,12 +1964,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_editMoveProperties` -->"
                 }
             ],
@@ -2496,12 +2051,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_eulerToVector` -->"
                 }
             ],
@@ -2522,12 +2072,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exit` -->"
                 }
             ],
@@ -2548,12 +2093,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitAntennas` -->"
                 }
             ],
@@ -2574,12 +2114,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitDiary` -->"
                 }
             ],
@@ -2600,12 +2135,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitGroup` -->"
                 }
             ],
@@ -2626,12 +2156,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitPersistentObjects` -->"
                 }
             ],
@@ -2652,12 +2177,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitQuests` -->"
                 }
             ],
@@ -2678,12 +2198,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitSites` -->"
                 }
             ],
@@ -2704,12 +2219,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_exitTasks` -->"
                 }
             ],
@@ -2730,12 +2240,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_findNearestGrid` -->"
                 }
             ],
@@ -2756,12 +2261,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_findPath` -->"
                 }
             ],
@@ -2782,12 +2282,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_findSafePositions` -->"
                 }
             ],
@@ -2808,12 +2303,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_findTargetWeight` -->"
                 }
             ],
@@ -2834,12 +2324,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_frequencyToString` -->"
                 }
             ],
@@ -2860,12 +2345,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAISquadID` -->"
                 }
             ],
@@ -2886,12 +2366,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAISquadPosition` -->"
                 }
             ],
@@ -2912,12 +2387,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAllAISquads` -->"
                 }
             ],
@@ -2938,12 +2408,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAllAreas` -->"
                 }
             ],
@@ -2964,12 +2429,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAllTXScans` -->"
                 }
             ],
@@ -2990,12 +2450,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaAngle` -->"
                 }
             ],
@@ -3016,12 +2471,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaCanReveal` -->"
                 }
             ],
@@ -3042,12 +2492,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaFrequency` -->"
                 }
             ],
@@ -3068,12 +2513,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaFrequencyClass` -->"
                 }
             ],
@@ -3094,12 +2534,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaGain` -->"
                 }
             ],
@@ -3120,12 +2555,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaName` -->"
                 }
             ],
@@ -3146,12 +2576,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaObject` -->"
                 }
             ],
@@ -3172,12 +2597,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaPower` -->"
                 }
             ],
@@ -3198,12 +2618,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaRevealValue` -->"
                 }
             ],
@@ -3224,12 +2639,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennas` -->"
                 }
             ],
@@ -3250,12 +2660,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaScanPolygon` -->"
                 }
             ],
@@ -3276,12 +2681,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaScans` -->"
                 }
             ],
@@ -3302,12 +2702,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaScanSignals` -->"
                 }
             ],
@@ -3328,12 +2723,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaSensitivity` -->"
                 }
             ],
@@ -3354,12 +2744,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaSignal` -->"
                 }
             ],
@@ -3380,12 +2765,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaSignalHistory` -->"
                 }
             ],
@@ -3406,12 +2786,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getAntennaType` -->"
                 }
             ],
@@ -3432,12 +2807,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getBehaviorCoef` -->"
                 }
             ],
@@ -3458,12 +2828,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getCharacterSounds` -->"
                 }
             ],
@@ -3484,12 +2849,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getCurrentSignal` -->"
                 }
             ],
@@ -3510,12 +2870,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getEntityBoundingBarrel` -->"
                 }
             ],
@@ -3536,12 +2891,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getFollowingSignals` -->"
                 }
             ],
@@ -3562,12 +2912,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getFormattedControl` -->"
                 }
             ],
@@ -3588,12 +2933,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getGridCollisions` -->"
                 }
             ],
@@ -3614,12 +2954,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getGridMap` -->"
                 }
             ],
@@ -3640,12 +2975,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getGridPath` -->"
                 }
             ],
@@ -3666,12 +2996,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getGroupSeed` -->"
                 }
             ],
@@ -3692,12 +3017,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getIDWMapDrawColorSet` -->"
                 }
             ],
@@ -3718,12 +3038,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getIDWMapDrawPatternIndex` -->"
                 }
             ],
@@ -3744,12 +3059,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getIDWMapParams` -->"
                 }
             ],
@@ -3770,12 +3080,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getIDWMapSaveData` -->"
                 }
             ],
@@ -3796,12 +3101,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getIDWMapStaticDataLayers` -->"
                 }
             ],
@@ -3822,12 +3122,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getLinkBudget` -->"
                 }
             ],
@@ -3848,12 +3143,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getLinkDir` -->"
                 }
             ],
@@ -3870,12 +3160,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getLinkedAntennas`; -->"
                 }
             ],
@@ -3896,12 +3181,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getLinkStrength` -->"
                 }
             ],
@@ -3922,12 +3202,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getObjectAntennas` -->"
                 }
             ],
@@ -3948,12 +3223,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getObjectBoundingBarrel` -->"
                 }
             ],
@@ -3974,12 +3244,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getPatrolRoutes` -->"
                 }
             ],
@@ -4000,12 +3265,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getRadioConversation` -->"
                 }
             ],
@@ -4026,12 +3286,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getRecordedSignals` -->"
                 }
             ],
@@ -4052,12 +3307,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getRoleIcon` -->"
                 }
             ],
@@ -4078,12 +3328,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getRotation` -->"
                 }
             ],
@@ -4104,12 +3349,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getSignalAge` -->"
                 }
             ],
@@ -4130,12 +3370,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getSignalTypeClass` -->"
                 }
             ],
@@ -4156,12 +3391,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getSignalTypes` -->"
                 }
             ],
@@ -4182,12 +3412,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getSiteLayerEntities` -->"
                 }
             ],
@@ -4208,12 +3433,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTerrainObjects` -->"
                 }
             ],
@@ -4234,12 +3454,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanAngle` -->"
                 }
             ],
@@ -4260,12 +3475,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanDrawData` -->"
                 }
             ],
@@ -4286,12 +3496,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanPolygon` -->"
                 }
             ],
@@ -4312,12 +3517,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanPolygonDetails` -->"
                 }
             ],
@@ -4338,12 +3538,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanPosition` -->"
                 }
             ],
@@ -4364,12 +3559,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanPrecision` -->"
                 }
             ],
@@ -4390,12 +3580,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanSaveData` -->"
                 }
             ],
@@ -4416,12 +3601,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_getTXScanWorldBounds` -->"
                 }
             ],
@@ -4442,12 +3622,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_gravityBurst` -->"
                 }
             ],
@@ -4464,12 +3639,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_gravityCannon_01_ai`; -->"
                 }
             ],
@@ -4490,12 +3660,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_grenadeThrowback` -->"
                 }
             ],
@@ -4516,12 +3681,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_hackAIDrone` -->"
                 }
             ],
@@ -4542,12 +3702,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_handDrawBezier` -->"
                 }
             ],
@@ -4568,12 +3723,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_handDrawEllipse` -->"
                 }
             ],
@@ -4594,12 +3744,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_hasAntennaSignal` -->"
                 }
             ],
@@ -4620,12 +3765,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_inDangerZone` -->"
                 }
             ],
@@ -4646,12 +3786,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initAcctime` -->"
                 }
             ],
@@ -4672,12 +3807,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initActors` -->"
                 }
             ],
@@ -4698,12 +3828,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initAI` -->"
                 }
             ],
@@ -4724,12 +3849,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initAIBase` -->"
                 }
             ],
@@ -4750,12 +3870,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initAIDrone` -->"
                 }
             ],
@@ -4776,12 +3891,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initAISquad` -->"
                 }
             ],
@@ -4802,12 +3912,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initAntennas` -->"
                 }
             ],
@@ -4828,12 +3933,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initConstants` -->"
                 }
             ],
@@ -4854,12 +3954,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initCutLayers` -->"
                 }
             ],
@@ -4880,12 +3975,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initDiary` -->"
                 }
             ],
@@ -4906,12 +3996,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initDroneModule` -->"
                 }
             ],
@@ -4932,12 +4017,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initGroup` -->"
                 }
             ],
@@ -4958,12 +4038,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initHub` -->"
                 }
             ],
@@ -4984,12 +4059,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initInspectableDiaryRecord` -->"
                 }
             ],
@@ -5010,12 +4080,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initInventory` -->"
                 }
             ],
@@ -5036,12 +4101,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initLocations` -->"
                 }
             ],
@@ -5062,12 +4122,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initMiniUGV` -->"
                 }
             ],
@@ -5088,12 +4143,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initMothershipLights` -->"
                 }
             ],
@@ -5114,12 +4164,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initPersistentObjects` -->"
                 }
             ],
@@ -5140,12 +4185,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initProbeMap` -->"
                 }
             ],
@@ -5166,12 +4206,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initPuzzle` -->"
                 }
             ],
@@ -5192,12 +4227,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initQuests` -->"
                 }
             ],
@@ -5218,12 +4248,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initRevive` -->"
                 }
             ],
@@ -5244,12 +4269,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initSideColors` -->"
                 }
             ],
@@ -5270,12 +4290,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initSites` -->"
                 }
             ],
@@ -5296,12 +4311,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initTasks` -->"
                 }
             ],
@@ -5322,12 +4332,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initTurret` -->"
                 }
             ],
@@ -5348,12 +4353,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initUAV` -->"
                 }
             ],
@@ -5374,12 +4374,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_initUGV` -->"
                 }
             ],
@@ -5400,12 +4395,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_inList` -->"
                 }
             ],
@@ -5426,12 +4416,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_inRadioConversation` -->"
                 }
             ],
@@ -5452,12 +4437,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_inRadioConversationWith` -->"
                 }
             ],
@@ -5478,12 +4458,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAIBase` -->"
                 }
             ],
@@ -5504,12 +4479,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAntenna` -->"
                 }
             ],
@@ -5530,12 +4500,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAntennaBaked` -->"
                 }
             ],
@@ -5556,12 +4521,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAntennaBroadcasting` -->"
                 }
             ],
@@ -5582,12 +4542,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAntennaJammed` -->"
                 }
             ],
@@ -5608,12 +4563,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAntennaRevealed` -->"
                 }
             ],
@@ -5634,12 +4584,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isAntennaSelected` -->"
                 }
             ],
@@ -5660,12 +4605,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isExtensionError` -->"
                 }
             ],
@@ -5686,12 +4626,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isNull` -->"
                 }
             ],
@@ -5712,12 +4647,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isPaused` -->"
                 }
             ],
@@ -5738,12 +4668,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isPausedInit` -->"
                 }
             ],
@@ -5764,12 +4689,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isPuzzleReset` -->"
                 }
             ],
@@ -5790,12 +4710,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isPuzzleTerminated` -->"
                 }
             ],
@@ -5816,12 +4731,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isRadioHandshake` -->"
                 }
             ],
@@ -5842,12 +4752,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_isRadioSilence` -->"
                 }
             ],
@@ -5868,12 +4773,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_joinAISquad` -->"
                 }
             ],
@@ -5894,12 +4794,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_lightBurst` -->"
                 }
             ],
@@ -5920,12 +4815,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_list` -->"
                 }
             ],
@@ -5946,12 +4836,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_loadIDWMap` -->"
                 }
             ],
@@ -5972,12 +4857,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_loadTXScanState` -->"
                 }
             ],
@@ -5998,12 +4878,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_markDangerZone` -->"
                 }
             ],
@@ -6024,12 +4899,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_markFreeAreaPositions` -->"
                 }
             ],
@@ -6050,12 +4920,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_matrixMultiply` -->"
                 }
             ],
@@ -6076,12 +4941,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_matrixTranspose` -->"
                 }
             ],
@@ -6098,12 +4958,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_matterballDestruction`; -->"
                 }
             ],
@@ -6120,12 +4975,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_matterballEffects`; -->"
                 }
             ],
@@ -6142,12 +4992,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_matterCollectionFX`; -->"
                 }
             ],
@@ -6164,12 +5009,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_missileDeflection`; -->"
                 }
             ],
@@ -6186,12 +5026,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_missileSwarm`; -->"
                 }
             ],
@@ -6926,12 +5761,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_ProbingArm_fired` -->"
                 }
             ],
@@ -6952,12 +5782,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_ProbingBeam_fired` -->"
                 }
             ],
@@ -6978,12 +5803,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIN_fnc_ProbingBeam_sendData` -->"
                 }
             ],
@@ -9028,12 +7848,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_3DENAttributeDoorStates`"
                 }
             ],
@@ -9182,12 +7997,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_3DENDrawLocations`"
                 }
             ],
@@ -9500,12 +8310,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "call `BIS_fnc_3DENMissionStats`",
                     "returns": "-"
                 }
@@ -11407,12 +10212,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "animal call `BIS_fnc_animalRandomization`",
                     "returns": "`Nothing`"
                 }
@@ -11520,12 +10320,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_animatedOpening`"
                 }
             ],
@@ -11542,12 +10337,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_animatedScreen`"
                 }
             ],
@@ -12426,12 +11216,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bezierInterpolate`"
                 }
             ],
@@ -12448,12 +11233,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bezierInterpolateVector`"
                 }
             ],
@@ -12470,12 +11250,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bezierLength`"
                 }
             ],
@@ -12940,12 +11715,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01ActionAdd`"
                 }
             ],
@@ -12979,12 +11749,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01ActionRemove`"
                 }
             ],
@@ -13001,12 +11766,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01AdjustZOffset`"
                 }
             ],
@@ -13023,12 +11783,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01CanExetuteAction`"
                 }
             ],
@@ -13045,12 +11800,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01CanProgressAction`"
                 }
             ],
@@ -13067,12 +11817,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01Init`"
                 }
             ],
@@ -13089,12 +11834,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_boatRack01InitAdjustZOffsets`"
                 }
             ],
@@ -13111,12 +11851,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bounceIn`"
                 }
             ],
@@ -13133,12 +11868,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bounceInOut`"
                 }
             ],
@@ -13155,12 +11885,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bounceInOutVector`"
                 }
             ],
@@ -13177,12 +11902,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bounceInVector`"
                 }
             ],
@@ -13199,12 +11919,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bounceOut`"
                 }
             ],
@@ -13221,12 +11936,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_bounceOutVector`"
                 }
             ],
@@ -13619,12 +12329,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenAttributesChanged`"
                 }
             ],
@@ -13641,12 +12346,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenConnectionChanged`"
                 }
             ],
@@ -13663,12 +12363,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenDeleted`"
                 }
             ],
@@ -13685,12 +12380,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenInit`"
                 }
             ],
@@ -13707,12 +12397,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenIsSelected`"
                 }
             ],
@@ -13729,12 +12414,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenRegisteredToWorld`"
                 }
             ],
@@ -13751,12 +12431,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenReset`"
                 }
             ],
@@ -13773,12 +12448,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenSelectionChanged`"
                 }
             ],
@@ -13795,12 +12465,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_camera_edenUnregisteredFromWorld`"
                 }
             ],
@@ -15505,12 +14170,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_controlPoint_edenAttributesChanged`"
                 }
             ],
@@ -15527,12 +14187,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_controlPoint_edenConnectionChanged`"
                 }
             ],
@@ -15549,12 +14204,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_controlPoint_edenDragged`"
                 }
             ],
@@ -15571,12 +14221,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_controlPoint_edenIsSelected`"
                 }
             ],
@@ -15593,12 +14238,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_controlPoint_edenRegisteredToWorld`"
                 }
             ],
@@ -15615,12 +14255,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_controlPoint_edenUnregisteredFromWorld`"
                 }
             ],
@@ -15845,12 +14480,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPDummy`"
                 }
             ],
@@ -15867,12 +14497,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPFindEmptyPosition`"
                 }
             ],
@@ -15889,12 +14514,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPInit`"
                 }
             ],
@@ -15911,12 +14531,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPLog`"
                 }
             ],
@@ -15933,12 +14548,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPPickSafeDir`"
                 }
             ],
@@ -15955,12 +14565,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPSafeAzimuths`"
                 }
             ],
@@ -15977,12 +14582,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPSendReinforcements`"
                 }
             ],
@@ -15999,12 +14599,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_CPSpawnGarrisonGrp`"
                 }
             ],
@@ -18085,12 +16680,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_decodeFlags4`"
                 }
             ],
@@ -18107,12 +16697,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_decodeFlags8`"
                 }
             ],
@@ -18339,12 +16924,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01AnimateHangarDoors`"
                 }
             ],
@@ -18361,12 +16941,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01EdenDelete`"
                 }
             ],
@@ -18383,12 +16958,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01EdenInit`"
                 }
             ],
@@ -18405,12 +16975,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01GetShipPart`"
                 }
             ],
@@ -18427,12 +16992,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01HandleDamage`"
                 }
             ],
@@ -18449,12 +17009,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01Init`"
                 }
             ],
@@ -18471,12 +17026,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01InitHullNumbers`"
                 }
             ],
@@ -18520,12 +17070,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01PlayHangarDoorSound`"
                 }
             ],
@@ -18542,12 +17087,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_destroyer01PosUpdate`"
                 }
             ],
@@ -18739,12 +17279,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_diagJIRAlink`"
                 }
             ],
@@ -18956,12 +17491,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_diagMacrosEditorPreview`"
                 }
             ],
@@ -19021,12 +17551,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_diagMacrosSimpleObject`"
                 }
             ],
@@ -19126,12 +17651,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_diagObjectPerformance`"
                 }
             ],
@@ -19965,12 +18485,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_doorNoHandleClose`"
                 }
             ],
@@ -19987,12 +18502,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_doorNoHandleOpen`"
                 }
             ],
@@ -20499,12 +19009,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_easeInOut`"
                 }
             ],
@@ -20521,12 +19026,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_easeInOutVector`"
                 }
             ],
@@ -20543,12 +19043,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_easeInVector`"
                 }
             ],
@@ -20565,12 +19060,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_easeOut`"
                 }
             ],
@@ -20587,12 +19077,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_easeOutVector`"
                 }
             ],
@@ -20651,12 +19136,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_effectFiredCruiseMissile`"
                 }
             ],
@@ -21068,12 +19548,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "-",
                     "returns": "-"
                 }
@@ -21312,12 +19787,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_encodeFlags4`"
                 }
             ],
@@ -21334,12 +19804,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_encodeFlags8`"
                 }
             ],
@@ -21848,12 +20313,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ]
+                    "parameters": []
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_execRemote"
@@ -21944,12 +20404,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_addTickets`"
                 }
             ],
@@ -21966,12 +20421,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_balanceGroup`"
                 }
             ],
@@ -21988,12 +20438,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_checkpoint`"
                 }
             ],
@@ -22085,12 +20530,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_guidedProjectile`"
                 }
             ],
@@ -22108,12 +20548,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_hasMissionStarted`"
                 }
             ],
@@ -22244,12 +20679,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby`"
                 }
             ],
@@ -22266,12 +20696,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_clearVars`"
                 }
             ],
@@ -22288,12 +20713,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_ctrlSetColor`"
                 }
             ],
@@ -22310,12 +20730,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_findHost`"
                 }
             ],
@@ -22332,12 +20747,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_getHostSettings`"
                 }
             ],
@@ -22354,12 +20764,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_getPlayerSquadName`"
                 }
             ],
@@ -22376,12 +20781,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_go`"
                 }
             ],
@@ -22398,12 +20798,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_intro`"
                 }
             ],
@@ -22420,12 +20815,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_launch`"
                 }
             ],
@@ -22442,12 +20832,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_loop`"
                 }
             ],
@@ -22464,12 +20849,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_missionCountdown`"
                 }
             ],
@@ -22486,12 +20866,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_onLoad`"
                 }
             ],
@@ -22508,12 +20883,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_onUnLoad`"
                 }
             ],
@@ -22530,12 +20900,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_playMissionVideo`"
                 }
             ],
@@ -22552,12 +20917,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_serverPing`"
                 }
             ],
@@ -22574,12 +20934,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_serverUpdate`"
                 }
             ],
@@ -22596,12 +20951,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_structuredText`"
                 }
             ],
@@ -22618,12 +20968,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_UIMilitaryManager`"
                 }
             ],
@@ -22640,12 +20985,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_UIMissionCountdown`"
                 }
             ],
@@ -22662,12 +21002,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_UIMissionManager`"
                 }
             ],
@@ -22684,12 +21019,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_UIOverlayManager`"
                 }
             ],
@@ -22706,12 +21036,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_UIProgressManager`"
                 }
             ],
@@ -22728,12 +21053,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_UISettingsManager`"
                 }
             ],
@@ -22750,12 +21070,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_updateHostSettings`"
                 }
             ],
@@ -22772,12 +21087,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_updateIntel`"
                 }
             ],
@@ -22794,12 +21104,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_updateMilitaryEfficiency`"
                 }
             ],
@@ -22816,12 +21121,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_updatePlayers`"
                 }
             ],
@@ -22838,12 +21138,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_lobby_updatePlayerStatus`"
                 }
             ],
@@ -22860,12 +21155,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_manager`"
                 }
             ],
@@ -22882,12 +21172,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_manager_getState`"
                 }
             ],
@@ -22904,12 +21189,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_manager_onPlayerRegistered`"
                 }
             ],
@@ -22927,12 +21207,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_manager_setState`"
                 }
             ],
@@ -22950,12 +21225,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_EXP_camp_manager_triggerEvent`"
                 }
             ],
@@ -23826,12 +22096,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_feedbackMain`",
                     "returns": "`Number`? (`execFSM`)"
                 }
@@ -24003,12 +22268,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_findLookAt`"
                 }
             ],
@@ -26586,12 +24846,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_hatchClose`"
                 }
             ],
@@ -26608,12 +24863,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_hatchOpen`"
                 }
             ],
@@ -26870,12 +25120,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_hermite`"
                 }
             ],
@@ -26892,12 +25137,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_hermiteVector`"
                 }
             ],
@@ -27355,12 +25595,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[string_1, string_2, string_n] spawn `BIS_fnc_infoText`",
                     "returns": "`Nothing`"
                 }
@@ -27961,12 +26196,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_initWorldScene`"
                 }
             ],
@@ -29438,12 +27668,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_compute`"
                 }
             ],
@@ -29460,12 +27685,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_computeOwnerCurve`"
                 }
             ],
@@ -29482,12 +27702,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_computeTime`"
                 }
             ],
@@ -29504,12 +27719,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenAreControlPointsLocked`"
                 }
             ],
@@ -29526,12 +27736,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenAttributesChanged`"
                 }
             ],
@@ -29548,12 +27753,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenConnectionChanged`"
                 }
             ],
@@ -29570,12 +27770,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenDragged`"
                 }
             ],
@@ -29592,12 +27787,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenIsSelected`"
                 }
             ],
@@ -29614,12 +27804,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenRegisteredToWorld`"
                 }
             ],
@@ -29636,12 +27821,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_edenUnregisteredFromWorld`"
                 }
             ],
@@ -29658,12 +27838,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getArriveControlPoint`"
                 }
             ],
@@ -29680,12 +27855,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getArriveTangent`"
                 }
             ],
@@ -29702,12 +27872,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getArriveTangentWeight`"
                 }
             ],
@@ -29724,12 +27889,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getConfigTime`"
                 }
             ],
@@ -29746,12 +27906,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getFOV`"
                 }
             ],
@@ -29768,12 +27923,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getInterpMode`"
                 }
             ],
@@ -29790,12 +27940,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getLeaveControlPoint`"
                 }
             ],
@@ -29812,12 +27957,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getLeaveTangent`"
                 }
             ],
@@ -29834,12 +27974,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getLeaveTangentWeight`"
                 }
             ],
@@ -29856,12 +27991,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getOwnerCurve`"
                 }
             ],
@@ -29878,12 +28008,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getTime`"
                 }
             ],
@@ -29900,12 +28025,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_getValue`"
                 }
             ],
@@ -29922,12 +28042,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_isFloat`"
                 }
             ],
@@ -29944,12 +28059,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_isVector`"
                 }
             ],
@@ -29966,12 +28076,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setArriveTangent`"
                 }
             ],
@@ -29988,12 +28093,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setArriveTangentWeight`"
                 }
             ],
@@ -30010,12 +28110,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setInterpMode`"
                 }
             ],
@@ -30032,12 +28127,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setLeaveTangent`"
                 }
             ],
@@ -30054,12 +28144,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setLeaveTangentWeight`"
                 }
             ],
@@ -30076,12 +28161,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setTime`"
                 }
             ],
@@ -30098,12 +28178,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_key_setValue`"
                 }
             ],
@@ -30153,12 +28228,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_keyframeAnimation_deltaTime`"
                 }
             ],
@@ -30175,12 +28245,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_keyframeAnimation_init`"
                 }
             ],
@@ -31222,12 +29287,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_lockedDoorNoHandleOpen`"
                 }
             ],
@@ -31244,12 +29304,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_lockedDoorOpen`"
                 }
             ],
@@ -31724,12 +29779,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_mapAnimClear`"
                 }
             ],
@@ -31746,12 +29796,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_mapAnimDone`"
                 }
             ],
@@ -32569,12 +30614,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleCivilianPresence`"
                 }
             ],
@@ -32591,12 +30631,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleCivilianPresenceSafeSpot`"
                 }
             ],
@@ -32613,12 +30648,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleCivilianPresenceUnit`"
                 }
             ],
@@ -33203,12 +31233,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleEditTerrainObject`"
                 }
             ],
@@ -33704,12 +31729,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleGrenade`"
                 }
             ],
@@ -33789,12 +31809,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleHideTerrainObjects`"
                 }
             ],
@@ -33853,12 +31868,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleHvtInit`"
                 }
             ],
@@ -33875,12 +31885,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleHvtObjective`"
                 }
             ],
@@ -33897,12 +31902,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleHvtObjectives`"
                 }
             ],
@@ -33919,12 +31919,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleHvtObjectivesInstance`"
                 }
             ],
@@ -34821,12 +32816,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSimulationManager_grab`"
                 }
             ],
@@ -34843,12 +32833,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSiteInit`"
                 }
             ],
@@ -34907,12 +32892,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSlingload`"
                 }
             ],
@@ -34950,12 +32930,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSpawnAI`"
                 }
             ],
@@ -34972,12 +32947,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSpawnAIOptions`"
                 }
             ],
@@ -34994,12 +32964,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSpawnAIPoint`"
                 }
             ],
@@ -35016,12 +32981,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSpawnAISectorTactic`"
                 }
             ],
@@ -35143,12 +33103,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSupportsInitProvider`"
                 }
             ],
@@ -35165,12 +33120,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSupportsInitProviderVirtual`"
                 }
             ],
@@ -35187,12 +33137,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleSupportsInitRequester`"
                 }
             ],
@@ -35293,12 +33238,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleTimeMultiplier`"
                 }
             ],
@@ -35602,12 +33542,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleVanguardFob`"
                 }
             ],
@@ -35624,12 +33559,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleVanguardObjective`"
                 }
             ],
@@ -35646,12 +33576,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_moduleVanguardScorePersistence`"
                 }
             ],
@@ -35967,12 +33892,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_multiplySquareMatrixByVector`"
                 }
             ],
@@ -38662,10 +36582,6 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "number",
                             "description": "`Number` - side relation, can be:\n\n-1 - Nobody\n\n0 - OPFOR\n\n1 - BLUFOR\n\n2 - Everybody"
-                        },
-                        {
-                            "name": null,
-                            "description": null
                         }
                     ],
                     "outline": "number call `BIS_fnc_paramGuerFriendly`",
@@ -39639,12 +37555,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_GetHighestPriority`"
                 }
             ],
@@ -39661,12 +37572,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_GetLowestPriority`"
                 }
             ],
@@ -39683,12 +37589,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_Init`"
                 }
             ],
@@ -39705,12 +37606,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_IsEmpty`"
                 }
             ],
@@ -39727,12 +37623,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_IsFull`"
                 }
             ],
@@ -39749,12 +37640,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_PopItem`"
                 }
             ],
@@ -39771,12 +37657,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_priorityQueue_PushItem`"
                 }
             ],
@@ -39847,12 +37728,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_quinticIn`"
                 }
             ],
@@ -39869,12 +37745,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_quinticInOut`"
                 }
             ],
@@ -39891,12 +37762,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_quinticInOutVector`"
                 }
             ],
@@ -39913,12 +37779,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_quinticInVector`"
                 }
             ],
@@ -39935,12 +37796,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_quinticOut`"
                 }
             ],
@@ -39957,12 +37813,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_quinticOutVector`"
                 }
             ],
@@ -42092,12 +39943,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_reviveEhDammaged`"
                 }
             ],
@@ -42428,12 +40274,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_reviveOnForcingRespawn`"
                 }
             ],
@@ -42454,12 +40295,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_reviveOnState`"
                 }
             ],
@@ -42476,12 +40312,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_reviveOnStateJIP`"
                 }
             ],
@@ -42529,12 +40360,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_compute`"
                 }
             ],
@@ -42551,12 +40377,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_computeCurveArcLength`"
                 }
             ],
@@ -42573,12 +40394,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_computeKeys`"
                 }
             ],
@@ -42595,12 +40411,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_computeOwnerTimeline`"
                 }
             ],
@@ -42617,12 +40428,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_computeSimulatedObjects`"
                 }
             ],
@@ -42639,12 +40445,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenAttributesChanged`"
                 }
             ],
@@ -42661,12 +40462,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenBakeCurve3D`"
                 }
             ],
@@ -42683,12 +40479,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenComputeNearestSegment`"
                 }
             ],
@@ -42705,12 +40496,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenConnectionChanged`"
                 }
             ],
@@ -42727,12 +40513,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenDragged`"
                 }
             ],
@@ -42749,12 +40530,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenDrawControlPoints3D`"
                 }
             ],
@@ -42771,12 +40547,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenDrawCurve3D`"
                 }
             ],
@@ -42793,12 +40564,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenIsSelected`"
                 }
             ],
@@ -42815,12 +40581,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenMarkStateDirty`"
                 }
             ],
@@ -42837,12 +40598,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_edenTick`"
                 }
             ],
@@ -42859,12 +40615,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getCurveLength`"
                 }
             ],
@@ -42881,12 +40632,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getCurvePoints`"
                 }
             ],
@@ -42903,12 +40649,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getCurveValueFloat`"
                 }
             ],
@@ -42925,12 +40666,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getCurveValueVector`"
                 }
             ],
@@ -42947,12 +40683,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getFirstKey`"
                 }
             ],
@@ -42969,12 +40700,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getKeyFromIndex`"
                 }
             ],
@@ -42991,12 +40717,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getKeyIndex`"
                 }
             ],
@@ -43013,12 +40734,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getKeys`"
                 }
             ],
@@ -43035,12 +40751,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getKeysAtTime`"
                 }
             ],
@@ -43057,12 +40768,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getKeyTime`"
                 }
             ],
@@ -43079,12 +40785,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getLastKey`"
                 }
             ],
@@ -43101,12 +40802,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getLookAtPosition`"
                 }
             ],
@@ -43123,12 +40819,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getNextKey`"
                 }
             ],
@@ -43145,12 +40836,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getOrientationMode`"
                 }
             ],
@@ -43167,12 +40853,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getOwnerTimeline`"
                 }
             ],
@@ -43189,12 +40870,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getPreviousKey`"
                 }
             ],
@@ -43211,12 +40887,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getSimulatedObjects`"
                 }
             ],
@@ -43233,12 +40904,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_getTimeRange`"
                 }
             ],
@@ -43255,12 +40921,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_isTimeInSeconds`"
                 }
             ],
@@ -43277,12 +40938,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_numKeys`"
                 }
             ],
@@ -43299,12 +40955,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_reset`"
                 }
             ],
@@ -43321,12 +40972,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_resetKeysEventState`"
                 }
             ],
@@ -43343,12 +40989,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_setKeys`"
                 }
             ],
@@ -43365,12 +41006,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_richCurve_setOrientationMode`"
                 }
             ],
@@ -44667,10 +42303,6 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [
                         {
-                            "name": null,
-                            "description": null
-                        },
-                        {
                             "name": "mode `Array` of `Number`s",
                             "description": "vision modes, can be:\n*-2 - NVG\n*-1 - Normal\n*0,1,.... - Thermal vision see `setCamUseTi` for detailed information"
                         }
@@ -44692,12 +42324,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "call `BIS_fnc_setCustomSoundController`"
                 }
             ],
@@ -45686,12 +43313,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_shakeMapEH`"
                 }
             ],
@@ -46972,12 +44594,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_singleWingSlideDoorClose`"
                 }
             ],
@@ -46994,12 +44611,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_singleWingSlideDoorOpen`"
                 }
             ],
@@ -48157,12 +45769,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_synchronizedObjectsQueue`"
                 }
             ],
@@ -49308,12 +46915,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_timeline_edenAttributesChanged`"
                 }
             ],
@@ -49330,12 +46932,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_timeline_edenConnectionChanged`"
                 }
             ],
@@ -49352,12 +46949,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_timeline_edenDeleted`"
                 }
             ],
@@ -49374,12 +46966,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_timeline_edenDragged`"
                 }
             ],
@@ -49396,12 +46983,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_timeline_edenInit`"
                 }
             ],
@@ -49418,12 +47000,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_timeline_edenIsSelected`"
                 }
             ],
@@ -50542,12 +48119,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[caller, vehicle, position, mainScope, secopScope] call `BIS_fnc_transportService`",
                     "returns": "`Nothing`"
                 }
@@ -50825,12 +48397,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingDoorNoHandleClose`"
                 }
             ],
@@ -50847,12 +48414,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingDoorNoHandleOpen`"
                 }
             ],
@@ -50869,12 +48431,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingDoorOneHandleClose`"
                 }
             ],
@@ -50891,12 +48448,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingDoorOneHandleOpen`"
                 }
             ],
@@ -50913,12 +48465,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingDoorTwoHandleClose`"
                 }
             ],
@@ -50935,12 +48482,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingDoorTwoHandleOpen`"
                 }
             ],
@@ -50957,12 +48499,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingSlideDoorClose`"
                 }
             ],
@@ -50979,12 +48516,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_twoWingSlideDoorOpen`"
                 }
             ],
@@ -51161,12 +48693,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIS_fnc_uniqueClasses`; -->"
                 }
             ],
@@ -51507,12 +49034,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "<!-- [] call `BIS_fnc_unitVector`; -->"
                 }
             ],
@@ -53439,12 +50961,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLAICore`"
                 }
             ],
@@ -53461,12 +50978,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLAIPathSegmentation`"
                 }
             ],
@@ -53483,12 +50995,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLAIPurchases`"
                 }
             ],
@@ -53505,12 +51012,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLAircraftArrival`"
                 }
             ],
@@ -53527,12 +51029,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLAirdrop`"
                 }
             ],
@@ -53549,12 +51046,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLAISectorScan`"
                 }
             ],
@@ -53571,12 +51063,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLArsenalFilter`"
                 }
             ],
@@ -53593,12 +51080,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLCalculateIncome`"
                 }
             ],
@@ -53615,12 +51097,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLCalculateSectorConnections`"
                 }
             ],
@@ -53637,12 +51114,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLClientInit`"
                 }
             ],
@@ -53659,12 +51131,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLDebug`"
                 }
             ],
@@ -53681,12 +51148,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLDefenceSetup`"
                 }
             ],
@@ -53703,12 +51165,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLDropPurchase`"
                 }
             ],
@@ -53725,12 +51182,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLFundsInfo`"
                 }
             ],
@@ -53747,12 +51199,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLGarrisonRetreat`"
                 }
             ],
@@ -53769,12 +51216,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLInit`"
                 }
             ],
@@ -53791,12 +51233,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLInSectorArea`"
                 }
             ],
@@ -53813,12 +51250,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLLoadoutApply`"
                 }
             ],
@@ -53835,12 +51267,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLLoadoutGrab`"
                 }
             ],
@@ -53857,12 +51284,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLMostVotedSector`"
                 }
             ],
@@ -53879,12 +51301,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLNavalArrival`"
                 }
             ],
@@ -53901,12 +51318,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLOpenArsenal`"
                 }
             ],
@@ -53923,12 +51335,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLOSD`"
                 }
             ],
@@ -53945,12 +51352,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLOutlineIcons`"
                 }
             ],
@@ -53967,12 +51369,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLParseAssetList`"
                 }
             ],
@@ -53989,12 +51386,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLPlayersTracking`"
                 }
             ],
@@ -54011,12 +51403,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLPlayersTrackingServer`"
                 }
             ],
@@ -54033,12 +51420,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLPurchaseMenu`"
                 }
             ],
@@ -54055,12 +51437,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRandomPosRect`"
                 }
             ],
@@ -54077,12 +51454,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRecalculateServices`"
                 }
             ],
@@ -54099,12 +51471,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRemovalHandle`"
                 }
             ],
@@ -54121,12 +51488,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLReputation`"
                 }
             ],
@@ -54143,12 +51505,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRequestFastTravel`"
                 }
             ],
@@ -54165,12 +51522,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRequestFundsTransfer`"
                 }
             ],
@@ -54187,12 +51539,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRequestPurchase`"
                 }
             ],
@@ -54209,12 +51556,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRequestSectorScan`"
                 }
             ],
@@ -54231,12 +51573,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLRequestVotingReset`"
                 }
             ],
@@ -54253,12 +51590,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorFundsPayoff`"
                 }
             ],
@@ -54275,12 +51607,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorHandle`"
                 }
             ],
@@ -54297,12 +51624,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorHandleServer`"
                 }
             ],
@@ -54319,12 +51641,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorIconUpdate`"
                 }
             ],
@@ -54341,12 +51658,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorInit`"
                 }
             ],
@@ -54363,12 +51675,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorListing`"
                 }
             ],
@@ -54385,12 +51692,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorPopulate`"
                 }
             ],
@@ -54407,12 +51709,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorScanHandle`"
                 }
             ],
@@ -54429,12 +51726,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorsCommonInit`"
                 }
             ],
@@ -54451,12 +51743,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorSelectionEnd`"
                 }
             ],
@@ -54473,12 +51760,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorSelectionHandle`"
                 }
             ],
@@ -54495,12 +51777,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorSelectionHandleServer`"
                 }
             ],
@@ -54517,12 +51794,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorSelectionStart`"
                 }
             ],
@@ -54539,12 +51811,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorsSetup`"
                 }
             ],
@@ -54561,12 +51828,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorTaskHandle`"
                 }
             ],
@@ -54583,12 +51845,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSectorUpdate`"
                 }
             ],
@@ -54605,12 +51862,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSeizingBarHandle`"
                 }
             ],
@@ -54627,12 +51879,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSendResponseTeam`"
                 }
             ],
@@ -54649,12 +51896,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLShowInfo`"
                 }
             ],
@@ -54671,12 +51913,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSideToFaction`"
                 }
             ],
@@ -54737,12 +51974,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSoundMsg`"
                 }
             ],
@@ -54759,12 +51991,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSubroutine_purchaseMenuAssetAvailability`"
                 }
             ],
@@ -54781,12 +52008,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSubroutine_purchaseMenuGetUIScale`"
                 }
             ],
@@ -54803,12 +52025,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSubroutine_purchaseMenuHandleDLC`"
                 }
             ],
@@ -54825,12 +52042,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSubroutine_purchaseMenuRefresh`"
                 }
             ],
@@ -54847,12 +52059,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSubroutine_purchaseMenuSetAssetDetails`"
                 }
             ],
@@ -54869,12 +52076,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSubroutine_purchaseMenuSetItemsList`"
                 }
             ],
@@ -54891,12 +52093,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSyncedTime`"
                 }
             ],
@@ -54913,12 +52110,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLSyncTime`"
                 }
             ],
@@ -54935,12 +52127,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLUpdateAO`"
                 }
             ],
@@ -54957,12 +52144,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLVarsInit`"
                 }
             ],
@@ -54979,12 +52161,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLVehicleHandle`"
                 }
             ],
@@ -55001,12 +52178,7 @@ export const configs: SQFItemConfig[] = [
             "examples": [],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "[] call `BIS_fnc_WLVotingBarHandle`"
                 }
             ],

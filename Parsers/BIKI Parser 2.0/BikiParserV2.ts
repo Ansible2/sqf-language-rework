@@ -251,11 +251,14 @@ export class BikiParserV2 implements DocParser {
             syntax.outline = syntaxExample;
         }
 
-        syntax.parameters = bikiSyntax.parameterDetails.map((parameterDetail) => {
+        bikiSyntax.parameterDetails.forEach((parameterDetail) => {
             const markdownContent = this.textInterpreter.convertTextToMarkdown(
                 parameterDetail.content
             );
-            return this.textInterpreter.parseParameter(markdownContent);
+            const parameterConfig = this.textInterpreter.parseParameter(markdownContent);
+            if (parameterConfig.description !== null || parameterConfig.name !== null) {
+                syntax.parameters.push(parameterConfig);
+            }
         });
 
         const returnText = this.textInterpreter.convertTextToMarkdown(

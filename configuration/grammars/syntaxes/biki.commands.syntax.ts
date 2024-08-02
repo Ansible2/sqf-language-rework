@@ -13845,12 +13845,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "see `createSoundSource`",
                     "returns": "see `createSoundSource`"
                 }
@@ -58986,12 +58981,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [
-                        {
-                            "name": null,
-                            "description": null
-                        }
-                    ],
+                    "parameters": [],
                     "outline": "see `remoteExec`",
                     "returns": "see `remoteExec`"
                 }
@@ -76576,10 +76566,6 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "kills",
                             "description": "`Boolean` - (Optional, default `true`) show \"x killed by y\" `systemChat` messages\n<!--"
-                        },
-                        {
-                            "name": null,
-                            "description": null
                         },
                         {
                             "name": "showIcon3D",
