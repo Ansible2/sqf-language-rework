@@ -11,6 +11,7 @@ import {
     SQFSyntaxConfig,
 } from "../../configuration/grammars/sqf.namespace";
 import fs from "fs";
+import { BIKI_ADDITIONAL_COMMAND_PAGES, BIKI_EXCEPTIONS } from "./BikiPageConstants";
 
 interface BikiPage {
     title?: string;
@@ -19,7 +20,7 @@ interface BikiPage {
     };
 }
 
-interface UnparsedBikiPage extends UnparsedItem {
+export interface UnparsedBikiPage extends UnparsedItem {
     title: string;
 }
 
@@ -145,6 +146,10 @@ export class BikiParserV2 implements DocParser {
     ---------------------------------------------------------------------------- */
     async convertToItemConfigs(pages: UnparsedBikiPage[]): Promise<SQFItemConfig[]> {
         const parsedPages: SQFItemConfig[] = [];
+        if (this.parseType === "commands") {
+            pages.push(...BIKI_ADDITIONAL_COMMAND_PAGES);
+        }
+
         pages.forEach((unparsedPage) => {
             try {
                 const parsedPage = this.parseBikiPage(unparsedPage);
@@ -1020,6 +1025,3 @@ class BikiTextInterpreter {
         return pageHandler(page);
     }
 }
-
-type PageTitle = string;
-const BIKI_EXCEPTIONS = new Map<PageTitle, (page: UnparsedBikiPage) => UnparsedBikiPage>();

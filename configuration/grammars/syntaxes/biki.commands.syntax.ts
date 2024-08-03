@@ -27986,6 +27986,28 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "description": "Always false.",
+            "examples": [
+                {
+                    "text": "```sqf\n\n_var = false;\nsystemChat str _var; // false\n\n```"
+                }
+            ],
+            "syntaxes": [
+                {
+                    "parameters": [],
+                    "outline": "`false`",
+                    "returns": "`Boolean`"
+                }
+            ],
+            "documentationLink": "https://community.bistudio.com/wiki/false"
+        },
+        "configuration": {
+            "label": "false",
+            "grammarType": "boolean-literal"
+        }
+    },
+    {
+        "documentation": {
             "description": "Checks if file on given path exists. Uses same path resolve code as `loadFile`.\n**NOTE**: Absolute paths are not supported, such as those generated using `getMissionPath`. Attempting to check an absolute path will result in this error in `RPT` logs:\n`**Invalid path (only relative paths supported): 'C:\\...'**`",
             "examples": [
                 {
