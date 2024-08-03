@@ -1,3 +1,11 @@
 {
     "prettier.tabWidth": 4,
+    "[typescript][javascript][json][jsonc][markdown][html][scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "editor.tabSize": 4,
+    "files.insertFinalNewline": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
