@@ -2,7 +2,7 @@
     "name": "sqf-language-rework",
     "displayName": "SQF Language Rework",
     "description": "",
-    "version": "0.0.2",
+    "version": "0.0.15",
     "engines": {
         "vscode": "^1.70.0"
     },
