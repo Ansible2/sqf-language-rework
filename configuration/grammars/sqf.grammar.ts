@@ -281,8 +281,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.expression.sqf",
         patterns: [
             { include: "#commands" },
-            // TODO: need to actually have functions parsed or else they mess up the regex
-            // { include: "#functions" },
+            { include: "#functions" },
             { include: "#var-local" },
             { include: "#var-global" },
         ],
