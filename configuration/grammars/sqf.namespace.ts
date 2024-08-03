@@ -1,21 +1,14 @@
-export enum SQFGrammarType {
-    Function = "function",
-    AccessModifier = "access-modifier",
-    ManipulativeOperator = "manipulative-operator",
-    ControlStatement = "control-statement",
-    ConditionOperator = "condition-operator",
-    ComparisonOperator = "comparison-operator",
-    ReservedLiteral = "reserved-literal",
-    BooleanLiteral = "boolean-literal",
-    NullLiteral = "null-literal",
-    PropertyAccessor = "property-accessor",
-    Command = "command",
-    StringCompiler = "string-compiler",
-    FileCompiler = "file-compiler",
-    FileExecutor = "file-executor",
-    CodeExecutor = "code-executor",
-    PreprocessorCommand = "preprocessor-command",
-    NamespaceLiteral = "namespace",
+export enum SQFEffectLocality {
+    LOCAL = "Local Effect",
+    GLOBAL = "Global Effect",
+}
+export enum SQFArgumentLocality {
+    LOCAL = "Local Argument",
+    GLOBAL = "Global Argument",
+}
+
+export interface IJSON<T> {
+    [key: string]: T;
 }
 
 export enum SQFDataType {
@@ -82,213 +75,75 @@ export enum SQFDataType {
     UnitLoadout = "(Unit-Loadout) ARRAY",
 }
 
-export interface SQFArray {
-    types: SQFSyntaxTypes;
-    operation: SQFArrayComparator;
+export enum SQFGrammarType {
+    Function = "function",
+    AccessModifier = "access-modifier",
+    ManipulativeOperator = "manipulative-operator",
+    ControlStatement = "control-statement",
+    ConditionOperator = "condition-operator",
+    ComparisonOperator = "comparison-operator",
+    ReservedLiteral = "reserved-literal",
+    BooleanLiteral = "boolean-literal",
+    NullLiteral = "null-literal",
+    PropertyAccessor = "property-accessor",
+    Command = "command",
+    StringCompiler = "string-compiler",
+    FileCompiler = "file-compiler",
+    FileExecutor = "file-executor",
+    CodeExecutor = "code-executor",
+    PreprocessorCommand = "preprocessor-command",
+    NamespaceLiteral = "namespace",
 }
 
-export namespace SQFArray {
-    export function of(
-        types: SQFSyntaxTypes,
-        operation?: SQFArrayComparator
-    ): SQFArray {
-        if (!operation) {
-            if (!Array.isArray(types)) {
-                return SQFArray.ofOneOfThese(types);
-            }
-
-            return SQFArray.ofAnyOfThese(types);
-        }
-
-        return {
-            operation: operation,
-            types: types,
-        };
-    }
-    export function ofOneOfThese(types: SQFSyntaxTypes): SQFArray {
-        return {
-            operation: SQFArrayComparator.OneOf,
-            types: types,
-        };
-    }
-    export function ofAnyOfThese(types: SQFSyntaxTypes): SQFArray {
-        return {
-            operation: SQFArrayComparator.AnyOf,
-            types: types,
-        };
-    }
-    export function ofExactly(types: SQFSyntaxTypes[]): SQFArray {
-        return {
-            operation: SQFArrayComparator.Exact,
-            types: types,
-        };
-    }
+export interface SQFParameterConfig {
+    name: string | null;
+    description: string | null;
 }
 
-export interface SQFCode {
-    codeReturnTypes: SQFSyntaxTypes;
-    params?: SQFSyntaxTypes;
-}
-export class SQFCode {
-    private constructor(returnTypes: SQFSyntaxTypes) {
-        this.codeReturnTypes = returnTypes;
-    }
-
-    public static returns(returnTypes: SQFSyntaxTypes): SQFCode {
-        return new SQFCode(returnTypes);
-    }
-
-    public takes(params: SQFSyntaxTypes): SQFCode {
-        this.params = params;
-        return this;
-    }
-}
-export enum SQFSyntaxType {
-    UnscheduledFunction = 0,
-    NularOperator = 1,
-    UnaryOperator = 2,
-    BinaryOperator = 3,
-    ScheduledFunction = 4,
+export enum ExampleLanguage {
+    CPP = "cpp",
+    SQF = "sqf",
 }
 
-export function isSQFArray(object: unknown): object is SQFArray {
-    return (
-        Object.prototype.hasOwnProperty.call(object, "types") &&
-        Object.prototype.hasOwnProperty.call(object, "operation")
-    );
-}
-export function isSQFCode(object: unknown): object is SQFCode {
-    return Object.prototype.hasOwnProperty.call(object, "codeReturnTypes");
+export interface ExampleConfig {
+    /** A markdown formatted set of code example code */
+    text: string;
+    /** A optional inclusion of language if simple markdown formatting of a code block ```<lang>...``` is desired to be automatically added by the server */
+    language?: ExampleLanguage | string;
 }
 
-const sqfDataTypeValues: SQFDataType[] = Object.values(SQFDataType);
-export function isSqfDataType(object: unknown): object is string {
-    return sqfDataTypeValues.includes(object as SQFDataType);
+export interface SQFSyntaxConfig {
+    /** A markdown formatted example of the basic syntax (e.g. "`isNull` entity") */
+    outline?: string;
+    /** A list of parameters and their explanations for this syntax */
+    parameters: SQFParameterConfig[];
+    /** A description of what the given syntax will return in markdown format */
+    returns?: string;
 }
 
-export enum SQFArrayComparator {
-    Exact = "EXACT",
-    OneOf = "ONE OF",
-    AnyOf = "ANY",
-}
-
-export type SQFSyntaxTypes =
-    | SQFDataType
-    | SQFArray
-    | SQFCode
-    | Array<SQFSyntaxTypes>;
-
-type BinarySyntax = {
-    type: SQFSyntaxType.BinaryOperator;
-    returnTypes?: SQFSyntaxTypes;
-    leftOperandTypes: SQFSyntaxTypes;
-    rightOperandTypes: SQFSyntaxTypes;
-};
-
-type FunctionSyntax = {
-    type: SQFSyntaxType.ScheduledFunction | SQFSyntaxType.UnscheduledFunction;
-    returnTypes?: SQFSyntaxTypes;
-    leftOperandTypes?: SQFSyntaxTypes;
-};
-
-type UnarySyntax = {
-    type: SQFSyntaxType.UnaryOperator;
-    returnTypes?: SQFSyntaxTypes;
-    rightOperandTypes: SQFSyntaxTypes;
-};
-
-type NularSyntax = {
-    type: SQFSyntaxType.NularOperator;
-    returnTypes?: SQFSyntaxTypes;
-};
-
-export type SQFSyntax =
-    | FunctionSyntax
-    | NularSyntax
-    | UnarySyntax
-    | BinarySyntax;
-
-export enum SQFEffect {
-    LOCAL = "Local Effect",
-    GLOBAL = "Global Effect",
-}
-export enum SQFArgument {
-    LOCAL = "Local Argument",
-    GLOBAL = "Global Argument",
-}
-
-export enum SQFCompletionItemKind {
-    Text = 1,
-    Method = 2,
-    Function = 3,
-    Constructor = 4,
-    Field = 5,
-    Variable = 6,
-    Class = 7,
-    Interface = 8,
-    Module = 9,
-    Property = 10,
-    Unit = 11,
-    Value = 12,
-    Enum = 13,
-    Keyword = 14,
-    Snippet = 15,
-    Color = 16,
-    File = 17,
-    Reference = 18,
-    Folder = 19,
-    EnumMember = 20,
-    Constant = 21,
-    Struct = 22,
-    Event = 23,
-    Operator = 24,
-    TypeParameter = 25,
-}
-
-
-export interface SQFMarkupContent {
-    kind: string;
-    value: string;
-}
-
-
-export enum SQFCompletionItemTag {
-    Deprecated = 1,
-}
-
-interface SQFItem {
-    labelDetails?: {
-        detail: string;
-        description: string;
+export interface SQFItemConfig {
+    documentation: {
+        /** An overview description of the item; should be formatted as markdown */
+        description?: string;
+        /** Examples that should be markdown formatted */
+        examples?: ExampleConfig[];
+        /** A guide to the particular syntaxes of item */
+        syntaxes?: SQFSyntaxConfig[];
+        /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
+        argumentLocality?: SQFArgumentLocality | string;
+        /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
+        serverExecution?: boolean;
+        /** https://community.bistudio.com/wiki/Multiplayer_Scripting#Definitions */
+        effectLocality?: SQFEffectLocality | string;
+        /** When the pop-up documentation for the item is opened, if present, this link will be provided to open a webpage to the original docs */
+        documentationLink?: string;
     };
-    grammarType: SQFGrammarType;
-    data?: any;
-    tags?: SQFCompletionItemTag[];
-    syntaxes: SQFSyntax[] | SQFSyntax;
-    kind?: SQFCompletionItemKind;
-    effect?: SQFEffect;
-    argument?: SQFArgument;
-    server?: boolean;
-    getDocLink?: (itemName: string) => string;
-}
-
-export interface CompiledSQFItem extends SQFItem {
-    // in order to search without case sensetivity
-    // but still display properly cased names in menus
-    // a label is created when compiled so that the key can
-    // be made lowercase
-    label: string;
-    documentation: SQFMarkupContent;
-    detail?: string; // detail should probably be avoided
-    kind: SQFCompletionItemKind;
-}
-
-export interface PreCompiledSQFItem extends SQFItem {
-    label?: string;
-    documentation?: string | string[] | SQFMarkupContent;
-    detail?: string; // detail should probably be avoided
-}
-
-export interface IJSON<T> {
-    [key: string]: T;
+    configuration: {
+        /** The text that will be used for auto complete */
+        label: string;
+        /** Whether the item should be marked as deprecated in the completion menu and documentation */
+        deprecated?: boolean;
+        /** The type of item (function, control statement, preprocessor command, etc.) */
+        grammarType: SQFGrammarType | string;
+    };
 }

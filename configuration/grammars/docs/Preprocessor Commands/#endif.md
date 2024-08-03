@@ -1,1 +1,0 @@
-This ends a conditional block as shown in the descriptions of `#ifdef` and `#ifndef` above.

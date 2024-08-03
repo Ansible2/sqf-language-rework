@@ -1,4 +1,4 @@
-import { CompiledSQFItem, SQFMarkupContent } from "../../../../configuration/grammars/sqf.namespace";
+import { CompletionItem } from "vscode-languageserver";
 import { IDocumentPosition } from "./textDocument.types";
 
 export enum DocumentationType {
@@ -6,9 +6,41 @@ export enum DocumentationType {
     HoverItem = 2,
 }
 
-export enum SqfMarkupKind {
-    PlainText = "plaintext",
-    Markdown = "markdown",
+export enum SQFCompletionItemKind {
+    Text,
+    Method,
+    Function,
+    Constructor,
+    Field,
+    Variable,
+    Class,
+    Interface,
+    Module,
+    Property,
+    Unit,
+    Value,
+    Enum,
+    Keyword,
+    Snippet,
+    Color,
+    File,
+    Reference,
+    Folder,
+    EnumMember,
+    Constant,
+    Struct,
+    Event,
+    Operator,
+    TypeParameter,
+}
+
+export enum SQFCompletionItemTag {
+    Deprecated = 1,
+}
+
+export interface SQFMarkupContent {
+    kind: "markdown" | "plaintext";
+    value: string;
 }
 
 export interface ISqfHover {
@@ -25,14 +57,6 @@ export interface ISqfHoverParams {
 export interface IHoverProvider {
     onHover(params: ISqfHoverParams): ISqfHover;
 }
-
-export interface IDocProvider {
-    createMarkupDoc(
-        sqfItem: CompiledSQFItem,
-        docType: DocumentationType
-    ): SQFMarkupContent;
-}
-
 export interface ICompletionParams {
     context?: {
         triggerCharacter: string;
@@ -43,14 +67,21 @@ export interface ICompletionParams {
     position: IDocumentPosition;
 }
 
-export interface ISqfCompletionItem extends CompiledSQFItem {
+type Modify<T, R> = Omit<T, keyof R> & R;
+export interface SQFItem
+    extends Modify<
+        CompletionItem,
+        { kind: SQFCompletionItemKind; documentation: SQFMarkupContent | null }
+    > {
+    label: string;
+    documentation: SQFMarkupContent | null;
+    kind: SQFCompletionItemKind;
     filterText?: string;
     insertText?: string;
+    tags?: SQFCompletionItemTag[];
 }
 
 export interface ICompletionProvider {
-    onCompletion(params: ICompletionParams): ISqfCompletionItem[];
-    onCompletionResolve?(
-        completionItem: ISqfCompletionItem
-    ): ISqfCompletionItem;
+    onCompletion(params: ICompletionParams): SQFItem[];
+    onCompletionResolve?(completionItem: SQFItem): SQFItem;
 }
