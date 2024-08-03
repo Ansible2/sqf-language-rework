@@ -3,6 +3,7 @@ import { SQFItemConfig } from "../sqf.namespace";
 export const configs: SQFItemConfig[] = [
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_AAAZone.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _radius, _checkTime] spawn `KISKA_fnc_AAAZone`",
@@ -25,7 +26,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myVehicle] spawn KISKA_fnc_AAAZone;\n\n```"
+                    "text": "```sqf\n[myVehicle] spawn KISKA_fnc_AAAZone;\n```"
                 }
             ],
             "description": "Sets up a zone that when entered by an enemy aircraft, the provided vehicle will engage.\nOtherwise, vehicle will stay the same."
@@ -37,6 +38,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/fn_ACE_addSupportMenuAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_player] spawn `KISKA_fnc_ACE_addSupportMenuAction`",
@@ -51,7 +53,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT Function\n\n```"
+                    "text": "```sqf\nPRE-INIT Function\n```"
                 }
             ],
             "description": "Adds the ACE action to a player object that allows them to self interactand pull up the support menu."
@@ -63,6 +65,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast Rope/fn_ACE_deployFastRope.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _unitsToDeploy, _ropeOrigins] call `KISKA_fnc_ACE_deployFastRope`",
@@ -85,7 +88,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        (fullCrew [_vehicle,\"cargo\"]) apply {\n            _x select 0\n        }\n    ] call KISKA_fnc_ACE_deployFastRope;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    (fullCrew [_vehicle,\"cargo\"]) apply {\n        _x select 0\n    }\n] call KISKA_fnc_ACE_deployFastRope;\n```"
                 }
             ],
             "description": "An edit of the ACE function to allow for custom drop of units."
@@ -97,6 +100,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast Rope/fn_ACE_deployRopes.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _ropeOrigins] call `KISKA_fnc_ACE_deployRopes`",
@@ -115,7 +119,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [heli] call KISKA_fnc_ACE_deployRopes;\n\n```"
+                    "text": "```sqf\n[heli] call KISKA_fnc_ACE_deployRopes;\n```"
                 }
             ],
             "description": "An edit of ace_fastroping_fnc_deployRopes to allow for custom drop of units."
@@ -127,6 +131,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast Rope/fn_ACE_fastRope.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _dropPosition, _unitsToDeploy, _afterDropCode, _hoverHeight, _ropeOrigins] call `KISKA_fnc_ACE_fastRope`",
@@ -145,7 +150,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_afterDropCode",
-                            "description": "*(CODE, STRING or ARRAY)* - Code to execute after the drop is complete, see KISKA_fnc_callBack\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle"
+                            "description": "*(CODE, STRING or ARRAY)* - Code to execute after the drop is complete, see KISKA_fnc_callBack\n \n    Parameters:\n    - 0: _vehicle - The drop vehicle"
                         },
                         {
                             "name": "_hoverHeight",
@@ -161,10 +166,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    //  basic example\n    [\n        _vehicle,\n        _position,\n        (fullCrew [_vehicle,\"cargo\"]) apply {\n            _x select 0\n        },\n        {hint \"fastrope done\"},\n        28,\n        [[0,0,0]]\n    ] call KISKA_fnc_ACE_fastRope;\n\n```"
+                    "text": "```sqf\n//  basic example\n[\n    _vehicle,\n    _position,\n    (fullCrew [_vehicle,\"cargo\"]) apply {\n        _x select 0\n    },\n    {hint \"fastrope done\"},\n    28,\n    [[0,0,0]]\n] call KISKA_fnc_ACE_fastRope;\n```"
                 },
                 {
-                    "text": "```sqf\n    // using code instead to defer the list of units to drop\n    // until the helicopter is over the drop point\n    [\n        _vehicle,\n        _position,\n        {\n            params [\"_vehicle\"];\n\n            (fullCrew [_vehicle,\"cargo\"]) apply {\n                _x select 0\n            }\n        },\n        {hint \"fastrope done\"},\n        28,\n        [[0,0,0]]\n    ] call KISKA_fnc_ACE_fastRope;\n\n```"
+                    "text": "```sqf\n// using code instead to defer the list of units to drop\n// until the helicopter is over the drop point\n[\n    _vehicle,\n    _position,\n    {\n        params [\"_vehicle\"];\n\n        (fullCrew [_vehicle,\"cargo\"]) apply {\n            _x select 0\n        }\n    },\n    {hint \"fastrope done\"},\n    28,\n    [[0,0,0]]\n] call KISKA_fnc_ACE_fastRope;\n```"
                 }
             ],
             "description": "Sends a vehicle to a given point and fastropes the given units from the helicopter.\nPilots should ideally be placed in \"CARELESS\" behaviour when around enemies."
@@ -176,6 +181,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast Rope/fn_ACE_setOnPrepareFastrope.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _onPrepare] call `KISKA_fnc_ACE_setOnPrepareFastrope`",
@@ -186,7 +192,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onPrepare",
-                            "description": "*(CODE, ARRAY, or STRING)* - A function that returns a numberbeing the time it takes for the ropes to deploy from the given vehicle\n    (SEE KISKA_fnc_callBack for array syntax).\n\n    Args:\n        - 0. *(OBJECT)* - The helicopter conducting a fastrope"
+                            "description": "*(CODE, ARRAY, or STRING)* - A function that returns a numberbeing the time it takes for the ropes to deploy from the given vehicle\n    (SEE KISKA_fnc_callBack for array syntax).\n \n    Args:\n        - 0. *(OBJECT)* - The helicopter conducting a fastrope"
                         }
                     ],
                     "returns": "NOTHING"
@@ -194,10 +200,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        {4} // takes 4 seconds to lower ropes\n    ] call KISKA_fnc_ACE_setOnPrepareFastrope;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    {4} // takes 4 seconds to lower ropes\n] call KISKA_fnc_ACE_setOnPrepareFastrope;\n```"
                 }
             ],
-            "description": "Sets the onprepare function of a specific vehicle when it conducts fastropingwith KISKA_fnc_fastRope (not any other implementation of ACE fastroping).\n\nBy default, ACE uses a config value (on the vehicle's class) of a string that is the name of the function to call. This function will overwrite that config function or add support for vehicles that do not have an onPrepare function defined.\nThe onPrepare function is what happens just prior to the helicopter droppingits ropes. You may want to do something like openning the vehicles doors beforethe units fastrope, for example.\n\nYour new onPrepare function can return a number that will then be used as thetime it takes for the ropes to be lowered down from the helicopter \n (the default is 4 seconds)."
+            "description": "Sets the onprepare function of a specific vehicle when it conducts fastropingwith KISKA_fnc_fastRope (not any other implementation of ACE fastroping).\n \nBy default, ACE uses a config value (on the vehicle's class) of a string that is the name of the function to call. This function will overwrite that config function or add support for vehicles that do not have an onPrepare function defined.\nThe onPrepare function is what happens just prior to the helicopter droppingits ropes. You may want to do something like openning the vehicles doors beforethe units fastrope, for example.\n \nYour new onPrepare function can return a number that will then be used as thetime it takes for the ropes to be lowered down from the helicopter \n (the default is 4 seconds)."
         },
         "configuration": {
             "label": "KISKA_fnc_ACE_setOnPrepareFastrope",
@@ -206,6 +212,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/fn_ACE_unconsciousIsCaptive.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_ACE_unconsciousIsCaptive`",
@@ -215,7 +222,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    POST-INIT Function\n\n```"
+                    "text": "```sqf\nPOST-INIT Function\n```"
                 }
             ],
             "description": "Adds a CBA event that hooks into when a player becomes unconcious, making themturn captive in order to keep the AI from shooting downed players."
@@ -227,6 +234,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACEX/fn_ACEX_setHCTransfer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _setting] call `KISKA_fnc_ACEX_setHCTransfer`",
@@ -245,10 +253,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // disable transfer\n    [someGroup,true] call KISKA_fnc_ACEX_setHCTransfer;\n\n```"
+                    "text": "```sqf\n// disable transfer\n[someGroup,true] call KISKA_fnc_ACEX_setHCTransfer;\n```"
                 },
                 {
-                    "text": "```sqf\n    // enable transfer\n    [someGroup,false] call KISKA_fnc_ACEX_setHCTransfer;\n\n```"
+                    "text": "```sqf\n// enable transfer\n[someGroup,false] call KISKA_fnc_ACEX_setHCTransfer;\n```"
                 }
             ],
             "description": "Simply sets the blacklist variable of a given unit from being transferred by theACEX headless client module. Variable is set on the server."
@@ -260,6 +268,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addArsenal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arsenals] call `KISKA_fnc_addArsenal`",
@@ -274,7 +283,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[arsenal1, arsenal2]] call KISKA_fnc_addArsenal;\n\n```"
+                    "text": "```sqf\n[[arsenal1, arsenal2]] call KISKA_fnc_addArsenal;\n```"
                 }
             ],
             "description": "Adds both BIS and ACE arsenals to several or a single object.This has a global effect."
@@ -286,6 +295,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_addCommMenuItem.sqf",
             "syntaxes": [
                 {
                     "outline": "[_owner, _itemClass, _textArguements, _expressionArguments, _notification, _addToHash] call `KISKA_fnc_addCommMenuItem`",
@@ -320,7 +330,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _id = [player,\"myClass\"] call KISKA_fnc_addCommMenuItem;\n\n```"
+                    "text": "```sqf\n_id = [player,\"myClass\"] call KISKA_fnc_addCommMenuItem;\n```"
                 }
             ],
             "description": "This is an alias of sorts of Bohemia's BIS_fnc_addCommMenuItem.It is mostly made with the purpose of using default values and specificallypassing a -1 by default to _expressionArguments.\nAlso initializes/adds entries to the KISKA_playersSupportMap which is used forkeeping track of the number of uses left on a support if they are passed betweenthe Support Manager."
@@ -332,6 +342,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addEntityKilledEventHandler.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity, _event] call `KISKA_fnc_addEntityKilledEventHandler`",
@@ -350,7 +361,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _id = [aUnit,{hint _this}] call KISKA_fnc_addEntityKilledEventHandler;\n\n```"
+                    "text": "```sqf\nprivate _id = [aUnit,{hint _this}] call KISKA_fnc_addEntityKilledEventHandler;\n```"
                 }
             ],
             "description": "Adds a killed event handler to a given entity that will persist even if theunit becomes remote. The order of execution is not guaranteed to be in theorder added."
@@ -362,6 +373,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addKiskaDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "[_textEntry, _task, _taskState, _showTitle] call `KISKA_fnc_addKiskaDiaryEntry`",
@@ -388,7 +400,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[\"test title\",\"test text\"]] call KISKA_fnc_addKiskaDiaryEntry;\n\n```"
+                    "text": "```sqf\n[[\"test title\",\"test text\"]] call KISKA_fnc_addKiskaDiaryEntry;\n```"
                 }
             ],
             "description": "Used as a unified point of adding diary entries for KISKA."
@@ -400,6 +412,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addMagRepack.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_addMagRepack`",
@@ -409,7 +422,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_addMagRepack;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_addMagRepack;\n```"
                 }
             ],
             "description": "Adds a mag repack to the player via Ctrl+R.To remove see KISKA_fnc_removeMagRepack."
@@ -421,6 +434,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeMagRepack.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_addMagRepack`",
@@ -430,7 +444,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_addMagRepack;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_addMagRepack;\n```"
                 }
             ],
             "description": "Adds a mag repack to the player via Ctrl+R.To remove see KISKA_fnc_removeMagRepack."
@@ -442,6 +456,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addProximityPlayerAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_center, _radius, _action, _refreshInterval] call `KISKA_fnc_addProximityPlayerAction`",
@@ -468,7 +483,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        cursorObject,\n        15,\n        [\"test\",{hint \"action\"},[]]\n    ] call KISKA_fnc_addProximityPlayerAction\n\n```"
+                    "text": "```sqf\n[\n    cursorObject,\n    15,\n    [\"test\",{hint \"action\"},[]]\n] call KISKA_fnc_addProximityPlayerAction\n```"
                 }
             ],
             "description": "Adds an action to the player that will be activated and deactivated when withina certain radius of a given position."
@@ -480,6 +495,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_addRallyPointDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_addRallyPointDiaryEntry`",
@@ -489,7 +505,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT Function\n\n```"
+                    "text": "```sqf\nPRE-INIT Function\n```"
                 }
             ],
             "description": "Adds a rally point diary entry to the local player. Pressing it enables theplayer to drop a rally point if their group is registered as allowed to andthey are the leader of the group."
@@ -501,6 +517,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addTeleportAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objectToAddTo, _teleportPosition, _text, _conditionShow] call `KISKA_fnc_addTeleportAction`",
@@ -527,7 +544,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player,[0,0,0],\"go to the Zero\"] call KISKA_fnc_addTeleportAction;\n\n```"
+                    "text": "```sqf\n[player,[0,0,0],\"go to the Zero\"] call KISKA_fnc_addTeleportAction;\n```"
                 }
             ],
             "description": "Adds a hold action to an object to teleport to a desired location."
@@ -539,6 +556,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_alivePlayers.sqf",
             "syntaxes": [
                 {
                     "outline": "[_noHeadless] call `KISKA_fnc_alivePlayers`",
@@ -553,7 +571,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [true] call KISKA_fnc_alivePlayers;\n\n```"
+                    "text": "```sqf\n[true] call KISKA_fnc_alivePlayers;\n```"
                 }
             ],
             "description": "FInds all alive players with or without headless clients"
@@ -565,6 +583,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_allowGroupRally.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToAdd] call `KISKA_fnc_allowGroupRally`",
@@ -579,7 +598,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // allows player's group to drop a rally point (if they're the server)\n    [player] call KISKA_fnc_allowGroupRally;\n\n```"
+                    "text": "```sqf\n// allows player's group to drop a rally point (if they're the server)\n[player] call KISKA_fnc_allowGroupRally;\n```"
                 }
             ],
             "description": "Adds group's ability to place rally points by setting \"KISKA_canRally\" inthe group space to true."
@@ -591,6 +610,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim.sqf",
             "syntaxes": [
                 {
                     "outline": "[_units, _animationParams, _exitOnCombat, _equipmentLevel, _animationMap] call `KISKA_fnc_ambientAnim`",
@@ -601,7 +621,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_animationParams",
-                            "description": "*(HASHMAP, STRING[], (STRING,NUMBER)[], or STRING)* - This can be three things:\n\n    - If a string, a single animation set that is located in the `_animationMap`\n    - If an array, you can have weighted or unweighted array of strings that are random animation sets to select from\n    - lastly, you can have a HASHMAP setup for snap to animations:\n\n        - `_animSet` *(STRING[], (STRING,NUMBER)[], or STRING)* - A single snapto animation set or weighted/unweighted array to randomly select from.\n        - `_snapToRange` *(NUMBER)* - This is how far will be searched around the unit to find an object to \"snap\" onto. Cannot be more then 10m.\n        - `_backupAnims` *(STRING[], (STRING,NUMBER)[], or STRING)* - Same as `_snapToAnimationSet` but for animations to use in the even that ALL of the `_snapToAnimationSet` animations fail to be used due to valid objects not being within range.\n        - `_fallbackFunction` *(CODE, ARRAY, or STRING)* - (See `KISKA_fnc_callBack`) In the event thata unit is not able to find an object to snap to AND1 no _backupAnims are present, this function will be called with thefollowing params. If you still want the unit to be animated in this case, pass `{}`, `\"\"`, or `[]`\n\n            - 0: _unit *(OBJECT)* - The unit\n            - 1: _animationParams *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 2: _exitOnCombat *(BOOL)*\n            - 3: _equipmentLevel *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 4: _animationMap *(HASHMAP or CONFIG)*"
+                            "description": "*(HASHMAP, STRING[], (STRING,NUMBER)[], or STRING)* - This can be three things:\n \n    - If a string, a single animation set that is located in the `_animationMap`\n    - If an array, you can have weighted or unweighted array of strings that are random animation sets to select from\n    - lastly, you can have a HASHMAP setup for snap to animations:\n \n        - `_animSet` *(STRING[], (STRING,NUMBER)[], or STRING)* - A single snapto animation set or weighted/unweighted array to randomly select from.\n        - `_snapToRange` *(NUMBER)* - This is how far will be searched around the unit to find an object to \"snap\" onto. Cannot be more then 10m.\n        - `_backupAnims` *(STRING[], (STRING,NUMBER)[], or STRING)* - Same as `_snapToAnimationSet` but for animations to use in the even that ALL of the `_snapToAnimationSet` animations fail to be used due to valid objects not being within range.\n        - `_fallbackFunction` *(CODE, ARRAY, or STRING)* - (See `KISKA_fnc_callBack`) In the event thata unit is not able to find an object to snap to AND1 no _backupAnims are present, this function will be called with thefollowing params. If you still want the unit to be animated in this case, pass `{}`, `\"\"`, or `[]`\n \n            - 0: _unit *(OBJECT)* - The unit\n            - 1: _animationParams *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 2: _exitOnCombat *(BOOL)*\n            - 3: _equipmentLevel *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 4: _animationMap *(HASHMAP or CONFIG)*"
                         },
                         {
                             "name": "_exitOnCombat",
@@ -609,7 +629,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_equipmentLevel",
-                            "description": "*(ARRAY or STRING)* - A quick means of temporarily adjusting a unit's equipment to match a scene. Options:\n\n    - \"\": no changes\n    - \"NONE\": no goggles, headgear, vest, weapon, nvgs, backpack\n    - \"LIGHT\": no goggles, headgear, vest, backpack\n    - \"MEDIUM\": no goggles, headgear\n    - \"FULL\": no goggles"
+                            "description": "*(ARRAY or STRING)* - A quick means of temporarily adjusting a unit's equipment to match a scene. Options:\n \n    - \"\": no changes\n    - \"NONE\": no goggles, headgear, vest, weapon, nvgs, backpack\n    - \"LIGHT\": no goggles, headgear, vest, backpack\n    - \"MEDIUM\": no goggles, headgear\n    - \"FULL\": no goggles"
                         },
                         {
                             "name": "_animationMap",
@@ -621,13 +641,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // exits on combat\n    [\n        someUnit,\n        \"SIT_GROUND_ARMED\",\n        true\n    ] call KISKA_fnc_ambientAnim;\n\n```"
+                    "text": "```sqf\n// exits on combat\n[\n    someUnit,\n    \"SIT_GROUND_ARMED\",\n    true\n] call KISKA_fnc_ambientAnim;\n```"
                 },
                 {
-                    "text": "```sqf\n    // use animation set SIT_CHAIR_ARMED_2 and snap\n    // to objects within 10 meters of unit's position\n    // if no objects that are snappable for SIT_CHAIR_ARMED_2\n    // are found, unit will use SIT_GROUND_ARMED animation set\n    [\n        someUnit,\n        createHashMapFromArray [\n            [\"_animSet\", \"SIT_CHAIR_ARMED_2\"],\n            [\"_snapToRange\", 10],\n            [\"_backupAnims\",\"SIT_GROUND_ARMED\"]\n        ]\n    ] call KISKA_fnc_ambientAnim;\n\n```"
+                    "text": "```sqf\n// use animation set SIT_CHAIR_ARMED_2 and snap\n// to objects within 10 meters of unit's position\n// if no objects that are snappable for SIT_CHAIR_ARMED_2\n// are found, unit will use SIT_GROUND_ARMED animation set\n[\n    someUnit,\n    createHashMapFromArray [\n        [\"_animSet\", \"SIT_CHAIR_ARMED_2\"],\n        [\"_snapToRange\", 10],\n        [\"_backupAnims\",\"SIT_GROUND_ARMED\"]\n    ]\n] call KISKA_fnc_ambientAnim;\n```"
                 },
                 {
-                    "text": "```sqf\n    // STAND_UNARMED_3 is 10x more likely to be used than STAND_ARMED_1\n    [\n        someUnit,\n        [\n            \"STAND_ARMED_1\",1,\n            \"STAND_UNARMED_3\",10\n        ]\n    ] call KISKA_fnc_ambientAnim;\n\n```"
+                    "text": "```sqf\n// STAND_UNARMED_3 is 10x more likely to be used than STAND_ARMED_1\n[\n    someUnit,\n    [\n        \"STAND_ARMED_1\",1,\n        \"STAND_UNARMED_3\",10\n    ]\n] call KISKA_fnc_ambientAnim;\n```"
                 }
             ],
             "description": "Provides an updated version of BIS_fnc_ambientAnim in a tighter package thatallows for more customization."
@@ -639,6 +659,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_isAnimated.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit] call `KISKA_fnc_ambientAnim`",
@@ -653,7 +674,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isAnimated = [someUnit] call KISKA_fnc_ambientAnim_isAnimated;\n\n```"
+                    "text": "```sqf\nprivate _isAnimated = [someUnit] call KISKA_fnc_ambientAnim_isAnimated;\n```"
                 }
             ],
             "description": "Returns whether or not a unit is currently using Kiska's ambient animationsystem."
@@ -665,6 +686,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_addAttachLogicGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_logicGroup] call `KISKA_fnc_ambientAnim_addAttachLogicGroup`",
@@ -679,7 +701,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [createGroup sideLogic] call KISKA_fnc_ambientAnim_getAttachToLogicGroup;\n\n```"
+                    "text": "```sqf\n[createGroup sideLogic] call KISKA_fnc_ambientAnim_getAttachToLogicGroup;\n```"
                 }
             ],
             "description": "Adds a group to the global attachTo logics map used to store them for reference."
@@ -691,6 +713,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_getNearestAttachLogicGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_position] call `KISKA_fnc_ambientAnim_addAttachLogicGroup`",
@@ -705,7 +728,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _group = [player] call KISKA_fnc_ambientAnim_getNearestAttachLogicGroup;\n\n```"
+                    "text": "```sqf\nprivate _group = [player] call KISKA_fnc_ambientAnim_getNearestAttachLogicGroup;\n```"
                 }
             ],
             "description": "Finds the nearest attach logic group used for ambient animations."
@@ -717,6 +740,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_createMapFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config] call `KISKA_fnc_ambientAnim_createMapFromConfig`",
@@ -731,10 +755,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _map = [\n        configFile >> \"KISKA_AmbientAnimations\"\n    ] call KISKA_fnc_ambientAnim_createMapFromConfig;\n\n```"
+                    "text": "```sqf\nprivate _map = [\n    configFile >> \"KISKA_AmbientAnimations\"\n] call KISKA_fnc_ambientAnim_createMapFromConfig;\n```"
                 }
             ],
-            "description": "Parses a given config into a hashmap that can be used by KISKA_fnc_ambientAnim.This config will then be the hashmap KISKA_ambientAnim_configAnimationSetMapwith the config as the key.\nSee configFile >> \"KISKA_AmbientAnimations\" for an example of a configed map.\n\n\n```cpp\n    class ambientAnimsConfig\n    {\n        class someAnimSet\n        {\n            animations[] = {\"myAnimation\"}; // the only required property of an anim set\n        };\n    };\n\n```"
+            "description": "Parses a given config into a hashmap that can be used by KISKA_fnc_ambientAnim.This config will then be the hashmap KISKA_ambientAnim_configAnimationSetMapwith the config as the key.\nSee configFile >> \"KISKA_AmbientAnimations\" for an example of a configed map.\n \n\n```cpp\nclass ambientAnimsConfig\n{\n    class someAnimSet\n    {\n        animations[] = {\"myAnimation\"}; // the only required property of an anim set\n    };\n};\n```"
         },
         "configuration": {
             "label": "KISKA_fnc_ambientAnim_createMapFromConfig",
@@ -743,6 +767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_getAttachLogicGroupsMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_ambientAnim_getAttachLogicGroupsMap`",
@@ -752,7 +777,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _map = call KISKA_fnc_ambientAnim_getAttachLogicGroupsMap;\n\n```"
+                    "text": "```sqf\nprivate _map = call KISKA_fnc_ambientAnim_getAttachLogicGroupsMap;\n```"
                 }
             ],
             "description": "Returns the hashmap that contains all logic groups used for ambient animations.\nUsers can then reference all the groups with the `values` command.\nA hashmap was used in order to provide a quicker means of removing entries whena group is deleted as opposed to having to used the `find` command with an array."
@@ -764,6 +789,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_play.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _previousAnim] call `KISKA_fnc_ambientAnim_play`",
@@ -782,7 +808,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    (SHOULD NOT BE DIRECTLY CALLED)\n\n```"
+                    "text": "```sqf\n(SHOULD NOT BE DIRECTLY CALLED)\n```"
                 }
             ],
             "description": "Starts animations for KISKA_fnc_ambientAnim.\nThis should not be directly called and is instead handled in events definedin KISKA_fnc_ambientAnim."
@@ -794,6 +820,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_setStoredLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _loadout] call `KISKA_fnc_ambientAnim_setStoredLoadout`",
@@ -812,7 +839,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        someUnit,\n        getUnitLoadout someUnit\n    ] call KISKA_fnc_ambientAnim_setStoredLoadout;\n\n```"
+                    "text": "```sqf\n[\n    someUnit,\n    getUnitLoadout someUnit\n] call KISKA_fnc_ambientAnim_setStoredLoadout;\n```"
                 }
             ],
             "description": "When a unit has it's loadout adjusted for an ambient animation, the loadoutthey previously had is stored and restored after their ambient animation stops."
@@ -824,6 +851,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_stop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _triggeredByDeletion] call `KISKA_fnc_ambientAnim_stop`",
@@ -842,7 +870,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [someUnit] call KISKA_fnc_ambientAnim_stop;\n\n```"
+                    "text": "```sqf\n[someUnit] call KISKA_fnc_ambientAnim_stop;\n```"
                 }
             ],
             "description": "Stops a unit's use of KISKA_fnc_ambientAnim and returns them to the state theywere in before it ran."
@@ -854,6 +882,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_ambientNewsRadio.sqf",
             "syntaxes": [
                 {
                     "outline": "[_origin, _duration, _distance, _volume, _isInside] call `KISKA_fnc_ambientNewsRadio`",
@@ -884,7 +913,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myRadio] call KISKA_fnc_ambientNewsRadio;\n\n```"
+                    "text": "```sqf\n[myRadio] call KISKA_fnc_ambientNewsRadio;\n```"
                 }
             ],
             "description": "Plays a selection of news sounds from the vanilla game at a given position."
@@ -896,6 +925,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_arsenalSupplyDrop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_dropPosition, _dropAlt, _flyDirection, _flyInRadius, _lifeTime, _side] call `KISKA_fnc_arsenalSupplyDrop`",
@@ -930,7 +960,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [position player] call KISKA_fnc_arsenalSupplyDrop;\n\n```"
+                    "text": "```sqf\n[position player] call KISKA_fnc_arsenalSupplyDrop;\n```"
                 }
             ],
             "description": "Spawns in an aircraft that flies over a DZ to drop off an arsenal."
@@ -942,6 +972,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_arty.sqf",
             "syntaxes": [
                 {
                     "outline": "[_gun, _target, _rounds, _randomDistance, _randomDirection, _fireTime] spawn `KISKA_fnc_arty`",
@@ -976,7 +1007,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [vehicle, target, 2, 100, 360, [9,10,11]] spawn KISKA_fnc_arty;\n\n```"
+                    "text": "```sqf\n[vehicle, target, 2, 100, 360, [9,10,11]] spawn KISKA_fnc_arty;\n```"
                 }
             ],
             "description": "Fires a number of rounds from artillery piece at target with random disperstion values"
@@ -988,6 +1019,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_assignUnitLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config, _units] call `KISKA_fnc_assignUnitLoadout`",
@@ -1006,7 +1038,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        missionConfigFile >> \"KISKA_loadouts\" >> \"ONL\",\n        unit1\n    ] call KISKA_fnc_assignUnitLoadout\n\n```"
+                    "text": "```sqf\n[\n    missionConfigFile >> \"KISKA_loadouts\" >> \"ONL\",\n    unit1\n] call KISKA_fnc_assignUnitLoadout\n```"
                 }
             ],
             "description": "Searches a config class for an array that matches the units classname.This array is filled with potential loadout arrays for the unit."
@@ -1018,6 +1050,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_attack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _position, _radius, _behaviour, _combatMode, _override] call `KISKA_fnc_attack`",
@@ -1052,7 +1085,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group1,attackPosition,100,\"COMBAT\",\"RED\"] call KISKA_fnc_attack;\n\n```"
+                    "text": "```sqf\n[group1,attackPosition,100,\"COMBAT\",\"RED\"] call KISKA_fnc_attack;\n```"
                 }
             ],
             "description": "Modified version of CBA_fnc_taskAttack.Now allows setting of different behaviour and combatMode."
@@ -1064,6 +1097,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_balanceHeadless.sqf",
             "syntaxes": [
                 {
                     "outline": "[_checkInterval] spawn `KISKA_fnc_balanceHeadless`",
@@ -1078,7 +1112,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] spawn KISKA_fnc_balanceHeadless;\n\n```"
+                    "text": "```sqf\n[] spawn KISKA_fnc_balanceHeadless;\n```"
                 }
             ],
             "description": "Balances AI among all logged Headless Clients in a very simple fashion.Designed to be run once and also should only be done when all HC are logged onto the server.\nExcluded groups and units can be added to the array KISKA_hcExcluded."
@@ -1090,6 +1124,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig`",
@@ -1104,7 +1139,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _baseMap = [\"SomeBaseConfig\"] call KISKA_fnc_bases_createFromConfig;\n\n```"
+                    "text": "```sqf\nprivate _baseMap = [\"SomeBaseConfig\"] call KISKA_fnc_bases_createFromConfig;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA base."
@@ -1116,6 +1151,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_agents.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_agents`",
@@ -1130,7 +1166,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_createFromConfig_agents;\n\n```"
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_agents;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA bases' agents."
@@ -1142,6 +1178,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_infantry.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_infantry`",
@@ -1156,7 +1193,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_createFromConfig_infantry;\n\n```"
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_infantry;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA bases' infantry."
@@ -1168,6 +1205,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_landVehicles.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_landVehicles`",
@@ -1182,7 +1220,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_createFromConfig_landVehicles;\n\n```"
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_landVehicles;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA bases' land vehicles."
@@ -1194,6 +1232,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_patrols.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_patrols`",
@@ -1208,7 +1247,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_createFromConfig_patrols;\n\n```"
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_patrols;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA bases' patrols."
@@ -1220,6 +1259,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_simples.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_simples`",
@@ -1234,7 +1274,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_createFromConfig_simples;\n\n```"
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_simples;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA bases' simple objects."
@@ -1246,6 +1286,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_turrets.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_turrets`",
@@ -1260,7 +1301,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_createFromConfig_turrets;\n\n```"
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_turrets;\n```"
                 }
             ],
             "description": "Spawns a configed KISKA bases' turrets."
@@ -1272,6 +1313,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_getHashmap.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_getHashmap`",
@@ -1286,7 +1328,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _mapOfDataForSpecificBase = [\n        \"SomeBaseConfig\"\n    ] call KISKA_fnc_bases_getHashmap;\n\n```"
+                    "text": "```sqf\nprivate _mapOfDataForSpecificBase = [\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_getHashmap;\n```"
                 }
             ],
             "description": "Returns a KISKA bases' hashmap spawn data or initializes if it did not exist."
@@ -1298,6 +1340,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_getInfantryClasses.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configClasses] call `KISKA_fnc_bases_getInfantryClasses`",
@@ -1312,7 +1355,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        [\n            missionConfigFile >> \"KISKA_Bases\" >> \"myBase\",\n            missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\",\n            missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\" >> \"myInfantryClass\"\n        ]\n    ] call KISKA_fnc_bases_getInfantryClasses;\n\n```"
+                    "text": "```sqf\n[\n    [\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\",\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\",\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\" >> \"myInfantryClass\"\n    ]\n] call KISKA_fnc_bases_getInfantryClasses;\n```"
                 }
             ],
             "description": "Selects the most specific config's infantryClasses property and returns itsvalue."
@@ -1324,6 +1367,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_getSide.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configClasses] call `KISKA_fnc_bases_getSide`",
@@ -1338,7 +1382,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        [\n            missionConfigFile >> \"KISKA_Bases\" >> \"myBase\"\n            missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\",\n            missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\" >> \"myInfantryClass\"\n        ]\n    ] call KISKA_fnc_bases_getSide;\n\n```"
+                    "text": "```sqf\n[\n    [\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\"\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\",\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\" >> \"myInfantryClass\"\n    ]\n] call KISKA_fnc_bases_getSide;\n```"
                 }
             ],
             "description": "Selects the most specific config's infantryClasses property and returns itsvalue."
@@ -1350,6 +1394,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_initAmbientAnimFromClass.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configToInit, _units] call `KISKA_fnc_bases_initAmbientAnimFromClass`",
@@ -1368,7 +1413,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        missionConfigFile >> \"SomeBaseConfig\" >> \"infantry >> \"someInfantryConfigClass\",\n        someUnit\n    ] call KISKA_fnc_bases_initAmbientAnimFromClass;\n\n```"
+                    "text": "```sqf\n[\n    missionConfigFile >> \"SomeBaseConfig\" >> \"infantry >> \"someInfantryConfigClass\",\n    someUnit\n] call KISKA_fnc_bases_initAmbientAnimFromClass;\n```"
                 }
             ],
             "description": "Parses and initializes a KISKA base entry's ambient animation class.\nThis is meant to be called from KISKA bases createFromConfig functions."
@@ -1380,6 +1425,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_initReinforceFromClass.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _config] call `KISKA_fnc_bases_initReinforceFromClass`",
@@ -1398,7 +1444,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _group,\n        SomeBaseConfig >> \"infantry\" >> \"someUnitClass\"\n    ] call KISKA_fnc_bases_initReinforceFromClass;\n\n```"
+                    "text": "```sqf\n[\n    _group,\n    SomeBaseConfig >> \"infantry\" >> \"someUnitClass\"\n] call KISKA_fnc_bases_initReinforceFromClass;\n```"
                 }
             ],
             "description": "Parses a reinforce class that is used in a unit's KIKSA bases class, andinitializes the group(s) reactivity to it."
@@ -1410,6 +1456,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_setupReactivity.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _reinforceId, _canCallIds, _priority, _onEnemyDetected] call `KISKA_fnc_bases_setupReactivity`",
@@ -1432,7 +1479,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onEnemyDetected",
-                            "description": "*(CODE or STRING)* - Code that will be executed when the group enters combat.Must return a boolean that denotes whether to execute default functionality that happenswith the event (see KISKA_fnc_bases_triggerReaction).\n\n    Parameters:\n    - 0: *(GROUP)* - The group the event is triggering for\n    - 1: *(OBJECT)* - The enemy unit that was detected\n    - 2: *(ARRAY)* - An array of GROUPs that can respond to the call (based on _canCallIds)\n    - 3: *(NUMBER)* - The same _priority"
+                            "description": "*(CODE or STRING)* - Code that will be executed when the group enters combat.Must return a boolean that denotes whether to execute default functionality that happenswith the event (see KISKA_fnc_bases_triggerReaction).\n \n    Parameters:\n    - 0: *(GROUP)* - The group the event is triggering for\n    - 1: *(OBJECT)* - The enemy unit that was detected\n    - 2: *(ARRAY)* - An array of GROUPs that can respond to the call (based on _canCallIds)\n    - 3: *(NUMBER)* - The same _priority"
                         }
                     ],
                     "returns": "*(NUMBER)* - The event id of the EnemyDetected group eventhandler"
@@ -1440,7 +1487,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        aGroup,\n        123,\n        [\"anotherGroupsId\"],\n        1,\n        {\n            hint str _this;\n            false // continue with default reaction behaviour\n        }\n    ] call KISKA_fnc_bases_setupReactivity;\n\n```"
+                    "text": "```sqf\n[\n    aGroup,\n    123,\n    [\"anotherGroupsId\"],\n    1,\n    {\n        hint str _this;\n        false // continue with default reaction behaviour\n    }\n] call KISKA_fnc_bases_setupReactivity;\n```"
                 }
             ],
             "description": "Adds values and eventhandlers to the given group's namespace to be able to interact with KISKA bases reaction system"
@@ -1452,6 +1499,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_triggerReaction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _detectedTarget] call `KISKA_fnc_bases_triggerReaction`",
@@ -1470,7 +1518,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        someGroup,\n        anEnemyUnit\n    ] call KISKA_fnc_bases_triggerReaction\n\n```"
+                    "text": "```sqf\n[\n    someGroup,\n    anEnemyUnit\n] call KISKA_fnc_bases_triggerReaction\n```"
                 }
             ],
             "description": "Acts as the default event for the reactive bases when a group calls for reinforcements."
@@ -1482,6 +1530,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_battleSound.sqf",
             "syntaxes": [
                 {
                     "outline": "[_source, _distance, _duration, _intensity] call `KISKA_fnc_battleSound`",
@@ -1508,10 +1557,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player,20,10] call KISKA_fnc_battleSound;\n\n```"
+                    "text": "```sqf\n[player,20,10] call KISKA_fnc_battleSound;\n```"
                 },
                 {
-                    "text": "```sqf\n    // distance will be between 10-30m, leaning towards 20m\n    [player,[10,20,30],10] call KISKA_fnc_battleSound;\n\n```"
+                    "text": "```sqf\n// distance will be between 10-30m, leaning towards 20m\n[player,[10,20,30],10] call KISKA_fnc_battleSound;\n```"
                 }
             ],
             "description": "Create ambient battlefield sounds for a specified duration"
@@ -1523,6 +1572,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_buildCommandMenu.sqf",
             "syntaxes": [
                 {
                     "outline": "[_menuName, _menuTitle, _menuParams] call `KISKA_fnc_buildCommandMenu`",
@@ -1537,7 +1587,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_menuParams",
-                            "description": ": *(ARRAY)* - An array of arrays formatted as:\n\n    - 0. *(STRING)* - The name of the menu option\n    - 1. *(NUMBER)* - The key code for quick menu select (key 1 is code 2, 2 is 3, etc. use 0 for no key)\n    - 2. *(ANY)* - The value to assign to this menu option"
+                            "description": ": *(ARRAY)* - An array of arrays formatted as:\n \n    - 0. *(STRING)* - The name of the menu option\n    - 1. *(NUMBER)* - The key code for quick menu select (key 1 is code 2, 2 is 3, etc. use 0 for no key)\n    - 2. *(ANY)* - The value to assign to this menu option"
                         }
                     ],
                     "returns": "*(ARRAY)* - The created menu array"
@@ -1545,7 +1595,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _createdMenu = [] call KISKA_fnc_buildCommandMenu\n\n```"
+                    "text": "```sqf\n_createdMenu = [] call KISKA_fnc_buildCommandMenu\n```"
                 }
             ],
             "description": "Creates a showCommandingMenu compatible menu global array to be used withKISKA_fnc_commandMenuTree.\nThis will be saved as a missionNamespace global var."
@@ -1557,6 +1607,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_callBack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_defaultArgs, _callBackFunction, _runInScheduled] call `KISKA_fnc_callBack`",
@@ -1579,7 +1630,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        [],\n        [\n            // hint player\n            [player],\n            {hint (_thisArgs select 0)}\n        ]\n    ] call KISKA_fnc_callBack\n\n```"
+                    "text": "```sqf\n[\n    [],\n    [\n        // hint player\n        [player],\n        {hint (_thisArgs select 0)}\n    ]\n] call KISKA_fnc_callBack\n```"
                 }
             ],
             "description": "Standerdizes a means of passing a callback function to another functionalong with custom arguments."
@@ -1591,6 +1642,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_callingForArsenalSupplyDrop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForArsenalSupplyDrop`",
@@ -1601,7 +1653,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
+                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n \n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
                         },
                         {
                             "name": "_count",
@@ -1613,7 +1665,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] call KISKA_fnc_callingForArsenalSupplyDrop;\n\n```"
+                    "text": "```sqf\n[] call KISKA_fnc_callingForArsenalSupplyDrop;\n```"
                 }
             ],
             "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\nThis is essentially just another level of abrstraction to be able to more easily reusecode between similar supports and make things easier to read instead of fitting it allin the config."
@@ -1625,6 +1677,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_callingForArty.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _roundCount] call `KISKA_fnc_callingForArty`",
@@ -1647,7 +1700,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] call KISKA_fnc_callingForArty;\n\n```"
+                    "text": "```sqf\n[] call KISKA_fnc_callingForArty;\n```"
                 }
             ],
             "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\nThis is essentially just another level of abrstraction to be able to more easily reusecode between similar supports and make things easier to read instead of fitting it allin the config."
@@ -1659,6 +1712,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_callingForCAS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _useCount] call `KISKA_fnc_callingForCAS`",
@@ -1669,7 +1723,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
+                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n \n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
                         },
                         {
                             "name": "_useCount",
@@ -1681,7 +1735,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] call KISKA_fnc_callingForCAS;\n\n```"
+                    "text": "```sqf\n[] call KISKA_fnc_callingForCAS;\n```"
                 }
             ],
             "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\nThis is essentially just another level of abrstraction to be able to more easily reusecode between similar supports and make things easier to read instead of fitting it allin the config."
@@ -1693,6 +1747,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_callingForHelicopterCAS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForHelicopterCAS`",
@@ -1703,7 +1758,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
+                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n \n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
                         },
                         {
                             "name": "_count",
@@ -1715,7 +1770,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] call KISKA_fnc_callingForHelicopterCAS;\n\n```"
+                    "text": "```sqf\n[] call KISKA_fnc_callingForHelicopterCAS;\n```"
                 }
             ],
             "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\nThis is essentially just another level of abrstraction to be able to more easily reusecode between similar supports and make things easier to read instead of fitting it allin the config."
@@ -1727,6 +1782,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_callingForSupplyDrop_aircraft.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForSupplyDrop_aircraft`",
@@ -1737,7 +1793,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
+                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n \n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
                         },
                         {
                             "name": "_count",
@@ -1749,7 +1805,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] call KISKA_fnc_callingForSupplyDrop_aircraft;\n\n```"
+                    "text": "```sqf\n[] call KISKA_fnc_callingForSupplyDrop_aircraft;\n```"
                 }
             ],
             "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\nThis is essentially just another level of abrstraction to be able to more easily reusecode between similar supports and make things easier to read instead of fitting it allin the config."
@@ -1761,6 +1817,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_callingForSupportMaster.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForSupportMaster`",
@@ -1771,7 +1828,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem"
+                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n \n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem"
                         },
                         {
                             "name": "_count",
@@ -1783,7 +1840,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"myClass\",_this] call KISKA_fnc_callingForSupportMaster;\n\n```"
+                    "text": "```sqf\n[\"myClass\",_this] call KISKA_fnc_callingForSupportMaster;\n```"
                 }
             ],
             "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\nThis is essentially just another level of abrstraction to be able to more easily reusecode between similar supports and make things easier to read instead of fitting it allin the config."
@@ -1795,6 +1852,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_CAS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_attackPosition, _attackTypeID, _attackDirection, _planeClass, _side, _spawnHeight, _spawnDistance, _breakOffDistance, _attackPositionOffset, _attackDistance] call `KISKA_fnc_CAS`",
@@ -1845,7 +1903,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myTarget] call KISKA_fnc_CAS;\n\n```"
+                    "text": "```sqf\n[myTarget] call KISKA_fnc_CAS;\n```"
                 }
             ],
             "description": "Completes either a gun run, bomb run, rockets, or rocket and gun strike."
@@ -1857,6 +1915,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_CASAttack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_plane, _dummyTarget, _weaponsToUse, _attackTypeID, _attackPosition, _breakOffDistance] call `KISKA_fnc_CASAttack`",
@@ -1891,7 +1950,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    Should not be called on its own but in KISKA_fnc_CAS\n\n```"
+                    "text": "```sqf\nShould not be called on its own but in KISKA_fnc_CAS\n```"
                 }
             ],
             "description": "Fires off the various weapons of a CAS strike."
@@ -1903,6 +1962,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/CIWS/fn_ciwsAlarm.sqf",
             "syntaxes": [
                 {
                     "outline": "[_turret] spawn `KISKA_fnc_ciwsAlarm`",
@@ -1917,7 +1977,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [turret1] spawn KISKA_fnc_ciwsAlarm;\n\n```"
+                    "text": "```sqf\n[turret1] spawn KISKA_fnc_ciwsAlarm;\n```"
                 }
             ],
             "description": "Sounds an alarm for the CIWS"
@@ -1929,6 +1989,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/CIWS/fn_ciwsInit.sqf",
             "syntaxes": [
                 {
                     "outline": "[_turret, _searchDistance, _engageAboveAltitude, _searchInterval, _doNotFireBelowAngle, _pitchTolerance, _rotationTolerance, _soundAlarm, _engageTypes] spawn `KISKA_fnc_ciwsInit`",
@@ -1975,7 +2036,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [turret,3000,100] spawn KISKA_fnc_ciwsInit;\n\n```"
+                    "text": "```sqf\n[turret,3000,100] spawn KISKA_fnc_ciwsInit;\n```"
                 }
             ],
             "description": "Fires a number of rounds from AAA piece at target with random disperstion values.\nTo stop, set the variable \"KISKA_runCIWS\" to false."
@@ -1987,6 +2048,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/CIWS/fn_ciwsSiren.sqf",
             "syntaxes": [
                 {
                     "outline": "[_turret] call `KISKA_fnc_ciwsSiren`",
@@ -2001,7 +2063,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [turret1] spawn KISKA_fnc_ciwsSiren;\n\n```"
+                    "text": "```sqf\n[turret1] spawn KISKA_fnc_ciwsSiren;\n```"
                 }
             ],
             "description": "Sounds a siren for the CIWS"
@@ -2013,6 +2075,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_classTurretsWithGuns.sqf",
             "syntaxes": [
                 {
                     "outline": "[_classToCheck] call `KISKA_fnc_classTurretsWithGuns`",
@@ -2027,7 +2090,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _turretPaths = [\"B_Heli_Transport_01_F\"] call KISKA_fnc_classTurretsWithGuns;\n\n```"
+                    "text": "```sqf\n_turretPaths = [\"B_Heli_Transport_01_F\"] call KISKA_fnc_classTurretsWithGuns;\n```"
                 }
             ],
             "description": "Checks a given vehicle class to see if it has turrets that have gunsand returns those turret paths"
@@ -2039,6 +2102,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_clearCargoGlobal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_object] call `KISKA_fnc_clearCargoGlobal`",
@@ -2053,7 +2117,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myVehicle] call KISKA_fnc_clearCargoGlobal;\n\n```"
+                    "text": "```sqf\n[myVehicle] call KISKA_fnc_clearCargoGlobal;\n```"
                 }
             ],
             "description": "Deletes all cargo from the specified object on all machines."
@@ -2065,6 +2129,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_clearWaypoints.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _numberToRemove, _stopUnits] call `KISKA_fnc_clearWaypoints`",
@@ -2082,12 +2147,12 @@ export const configs: SQFItemConfig[] = [
                             "description": "*(BOOL)* - Should the units stop in place after clear?"
                         }
                     ],
-                    "returns": "NOTHING\nExample:\n\n```sqf\n    [group player,-1,false] call KISKA_fnc_clearWaypoints\n\n```"
+                    "returns": "NOTHING\nExample:\n\n```sqf\n[group player,-1,false] call KISKA_fnc_clearWaypoints\n```"
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group player,-1,false] call KISKA_fnc_clearWaypoints\n\n```"
+                    "text": "```sqf\n[group player,-1,false] call KISKA_fnc_clearWaypoints\n```"
                 }
             ],
             "description": "Clears a group's waypoints and conditionally halts their previous movement."
@@ -2099,6 +2164,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_commandMenuTree.sqf",
             "syntaxes": [
                 {
                     "outline": "[_menuPath, _endExpression, _exitExpression] spawn `KISKA_fnc_commandMenuTree`",
@@ -2121,7 +2187,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        [\"#USER:myMenu_1\",\"#USER:myMenu_2\"],\n        \"hint str _this\"\n    ] spawn KISKA_fnc_commandMenuTree\n\n```"
+                    "text": "```sqf\n[\n    [\"#USER:myMenu_1\",\"#USER:myMenu_2\"],\n    \"hint str _this\"\n] spawn KISKA_fnc_commandMenuTree\n```"
                 }
             ],
             "description": "Creates a command menu tree dynamically instead of needing to define sub menus"
@@ -2133,6 +2199,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_addIcon.sqf",
             "syntaxes": [
                 {
                     "outline": "[_iconId, _iconText, _iconPos, _color, _isActive] call `KISKA_fnc_compass_addIcon`",
@@ -2163,7 +2230,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"myMarkerID\"\n        \"images\\info_icon.paa\"\n    ] call KISKA_fnc_compass_addIcon;\n\n```"
+                    "text": "```sqf\n[\n    \"myMarkerID\"\n    \"images\\info_icon.paa\"\n] call KISKA_fnc_compass_addIcon;\n```"
                 }
             ],
             "description": "Adds and icon to the compass"
@@ -2175,6 +2242,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_configure.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] call `KISKA_fnc_compass_configure`",
@@ -2189,7 +2257,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_compass_configure;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_compass_configure;\n```"
                 }
             ],
             "description": "Initializes several display namespace variables for the compass and setsup their images for the compass."
@@ -2201,6 +2269,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_mainLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] call `KISKA_fnc_compass_mainLoop`",
@@ -2215,7 +2284,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [findDisplay 46] spawn KISKA_fnc_compass_mainLoop;\n\n```"
+                    "text": "```sqf\n[findDisplay 46] spawn KISKA_fnc_compass_mainLoop;\n```"
                 }
             ],
             "description": "Creates and then continues to execute a loop controlling the compass."
@@ -2227,6 +2296,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_parseConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config, _varName] call `KISKA_fnc_compass_parseConfig`",
@@ -2245,7 +2315,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _array = [\n        configFile >> \"KISKA_compass\" >> \"compass\",\n        \"KISKA_compass_configs\"\n    ] call KISKA_fnc_compass_parseConfig;\n\n```"
+                    "text": "```sqf\nprivate _array = [\n    configFile >> \"KISKA_compass\" >> \"compass\",\n    \"KISKA_compass_configs\"\n] call KISKA_fnc_compass_parseConfig;\n```"
                 }
             ],
             "description": "Returns an array formatted for CBA settings menu lists."
@@ -2257,6 +2327,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_refresh.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_compass_refresh`",
@@ -2266,7 +2337,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_compass_refresh;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_compass_refresh;\n```"
                 }
             ],
             "description": "Resets the config global of the compass and then restarts the cutRSC for it."
@@ -2278,6 +2349,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_updateColors.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_compass_updateColors`",
@@ -2287,7 +2359,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_compass_updateColors;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_compass_updateColors;\n```"
                 }
             ],
             "description": "Updates the color of the ctrls for the KISKA compass."
@@ -2299,6 +2371,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Compass/Functions/fn_compass_updateConstants.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_compass_updateConstants`",
@@ -2308,7 +2381,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_compass_updateConstants;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_compass_updateConstants;\n```"
                 }
             ],
             "description": "Updates a number of constant global variables used for the KISKA compass."
@@ -2320,6 +2393,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_addVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _vehicle, _insertIndex, _convoySeperation] call `KISKA_fnc_convoy_addVehicle`",
@@ -2346,7 +2420,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyMap = [] call KISKA_fnc_convoy_create;\n    private _spotInConvoy = [\n        _convoyMap,\n        vic\n    ] call KISKA_fnc_convoy_addVehicle;\n\n```"
+                    "text": "```sqf\nprivate _convoyMap = [] call KISKA_fnc_convoy_create;\nprivate _spotInConvoy = [\n    _convoyMap,\n    vic\n] call KISKA_fnc_convoy_addVehicle;\n```"
                 }
             ],
             "description": "Adds a given vehicle to a convoy. The index returned will be a key to the_convoyHashMap that can be used to get the vehicle for that index in the convoy."
@@ -2358,6 +2432,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_addVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_addVehicleKilledEvent`",
@@ -2372,7 +2447,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [vic] call KISKA_fnc_convoy_addVehicleKilledEvent;\n\n```"
+                    "text": "```sqf\n[vic] call KISKA_fnc_convoy_addVehicleKilledEvent;\n```"
                 }
             ],
             "description": "Adds a killed event handler to a given vehicle in a convoy."
@@ -2384,6 +2459,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_clearVehicleDebugFollowedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _deleteExisting] call `KISKA_fnc_convoy_clearVehicleDebugFollowedPath`",
@@ -2402,7 +2478,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n\t[_vehicle] call KISKA_fnc_convoy_clearVehicleDebugFollowedPath;\n\n```"
+                    "text": "```sqf\n[_vehicle] call KISKA_fnc_convoy_clearVehicleDebugFollowedPath;\n```"
                 }
             ],
             "description": "Clears a vehicle's current debug followed path objects array. \nWhen a vehicle is in debug mode, a path of objects will be drawn for the durationthat shows the positions the vehicle had followed while on its drive path. One followed object is created each time a drive path point is considered \"complete\"\n (vehicle within a radius of that point)."
@@ -2414,6 +2490,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_clearVehicleDebugFollowPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _deleteExisting] call `KISKA_fnc_convoy_clearVehicleDebugFollowPath`",
@@ -2432,7 +2509,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n\t[_vehicle] call KISKA_fnc_convoy_clearVehicleDebugFollowPath;\n\n```"
+                    "text": "```sqf\n[_vehicle] call KISKA_fnc_convoy_clearVehicleDebugFollowPath;\n```"
                 }
             ],
             "description": "Clears a vehicle's current debug follow path objects array. \nWhen a vehicle is in debug mode, a path of objects will be drawn for the durationthat shows the positions currently in the vehicle's drive path. This is the followpath."
@@ -2444,6 +2521,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_create.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vics, _convoySeperation] call `KISKA_fnc_convoy_create`",
@@ -2462,10 +2540,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyHashMap = [\n        [leadVehicle],\n        10\n    ] call KISKA_fnc_convoy_create;\n\n```"
+                    "text": "```sqf\nprivate _convoyHashMap = [\n    [leadVehicle],\n    10\n] call KISKA_fnc_convoy_create;\n```"
                 }
             ],
-            "description": "Creates an advanced KISKA convoy. Vehicles should be already physically placed in the orderthat they intend to travel in. If creating in an urban setting, ensure vehicles are in a straight line so that they do not initially crash into a building.\n\nThis will create a CBA statemachine that processes one vehicle a frame. It manages the speedof the vehicle relative to the vehicle in front to keep a desired spacing between them. The space between each vehicle can be customized for that specific vehicle or any individual one.\n\nThe first vehicle added to the convoy WILL NOT have its movement managed in any capacity.All other vehicles will essentially follow the path of the lead vehicle. You should limit the speed and control the path of the lead vehicle for your specific use case.\nA convoy requires at least one vehicle (the lead vehicle) to be valid at any given moment.It will be automatically deleted otherwise."
+            "description": "Creates an advanced KISKA convoy. Vehicles should be already physically placed in the orderthat they intend to travel in. If creating in an urban setting, ensure vehicles are in a straight line so that they do not initially crash into a building.\n \nThis will create a CBA statemachine that processes one vehicle a frame. It manages the speedof the vehicle relative to the vehicle in front to keep a desired spacing between them. The space between each vehicle can be customized for that specific vehicle or any individual one.\n \nThe first vehicle added to the convoy WILL NOT have its movement managed in any capacity.All other vehicles will essentially follow the path of the lead vehicle. You should limit the speed and control the path of the lead vehicle for your specific use case.\nA convoy requires at least one vehicle (the lead vehicle) to be valid at any given moment.It will be automatically deleted otherwise."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_create",
@@ -2474,6 +2552,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_delete.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_delete`",
@@ -2488,7 +2567,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyHashMap = [\n        [leadVehicle],\n        10\n    ] call KISKA_fnc_convoy_create;\n    // some time later...\n    [_convoyHashMap] call KISKA_fnc_convoy_delete;\n\n```"
+                    "text": "```sqf\nprivate _convoyHashMap = [\n    [leadVehicle],\n    10\n] call KISKA_fnc_convoy_create;\n// some time later...\n[_convoyHashMap] call KISKA_fnc_convoy_delete;\n```"
                 }
             ],
             "description": "Deletes an instance of a KISKA convoy. All vehicles (that aren't the lead)will halt. This can be executed at any time on a convoy."
@@ -2500,6 +2579,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getBumperPosition.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _isRearBumper] call `KISKA_fnc_convoy_getBumperPosition`",
@@ -2518,7 +2598,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _rearBumperPositionWorld = [vic,true] call KISKA_fnc_convoy_getBumperPosition;\n\n```"
+                    "text": "```sqf\nprivate _rearBumperPositionWorld = [vic,true] call KISKA_fnc_convoy_getBumperPosition;\n```"
                 }
             ],
             "description": "Gets the positionWorld of a vehicles front or rear bumper.This function caches values in a hashmap for use in the frame by frame callsin KISKA's advanced convoy."
@@ -2530,6 +2610,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyHashMapFromVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getConvoyHashMapFromVehicle`",
@@ -2544,7 +2625,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyHashMap = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getConvoyHashMapFromVehicle;\n\n```"
+                    "text": "```sqf\nprivate _convoyHashMap = [\n    _vehicle\n] call KISKA_fnc_convoy_getConvoyHashMapFromVehicle;\n```"
                 }
             ],
             "description": "Gets the corresponding hashmap of a convoy for a particular vehicle."
@@ -2556,6 +2637,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyLeader.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_getConvoyLeader`",
@@ -2570,7 +2652,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyLeader = [\n        _convoyHashMap\n\t] call KISKA_fnc_convoy_getConvoyLeader;\n\n```"
+                    "text": "```sqf\nprivate _convoyLeader = [\n    _convoyHashMap\n] call KISKA_fnc_convoy_getConvoyLeader;\n```"
                 }
             ],
             "description": "Gets the lead vehicle in a convoy. The convoy lead does not have his movementregulated in any way by the advanced convoy system and will be the vehicle thatother units in the convoy follow."
@@ -2582,6 +2664,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyStatemachine.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_getConvoyStatemachine`",
@@ -2596,7 +2679,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyStatemachine = [\n        SomeConvoyHashMap\n    ] call KISKA_fnc_convoy_getConvoyStatemachine;\n\n```"
+                    "text": "```sqf\nprivate _convoyStatemachine = [\n    SomeConvoyHashMap\n] call KISKA_fnc_convoy_getConvoyStatemachine;\n```"
                 }
             ],
             "description": "Returns the CBA statemachine used to control convoy movement and speed."
@@ -2608,6 +2691,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyVehicles.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _fromIndex] call `KISKA_fnc_convoy_getConvoyVehicles`",
@@ -2626,13 +2710,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyVehicles = [\n        SomeConvoyHashMap\n    ] call KISKA_fnc_convoy_getConvoyVehicles;\n\n```"
+                    "text": "```sqf\nprivate _convoyVehicles = [\n    SomeConvoyHashMap\n] call KISKA_fnc_convoy_getConvoyVehicles;\n```"
                 },
                 {
-                    "text": "```sqf\n    private _convoyVehiclesCopy = +([\n        SomeConvoyHashMap\n    ] call KISKA_fnc_convoy_getConvoyVehicles);\n\n```"
+                    "text": "```sqf\nprivate _convoyVehiclesCopy = +([\n    SomeConvoyHashMap\n] call KISKA_fnc_convoy_getConvoyVehicles);\n```"
                 },
                 {
-                    "text": "```sqf\n    private _startingIndex = 1;\n    private _allVehiclesButLeader = [\n        SomeConvoyHashMap,\n        _startingIndex\n    ] call KISKA_fnc_convoy_getConvoyVehicles;\n\n```"
+                    "text": "```sqf\nprivate _startingIndex = 1;\nprivate _allVehiclesButLeader = [\n    SomeConvoyHashMap,\n    _startingIndex\n] call KISKA_fnc_convoy_getConvoyVehicles;\n```"
                 }
             ],
             "description": "Returns the list of vehicles in a convoy. This is not a copy of the array usedfor certain internal operations of the convoy. Make a copy if you intend to modifythe contents of the array (see example 2)."
@@ -2644,6 +2728,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getPointBuffer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_getPointBuffer`",
@@ -2658,7 +2743,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _minBufferBetweenPoints = [\n        _convoyHashMap\n\t] call KISKA_fnc_convoy_getPointBuffer;\n\n```"
+                    "text": "```sqf\nprivate _minBufferBetweenPoints = [\n    _convoyHashMap\n] call KISKA_fnc_convoy_getPointBuffer;\n```"
                 }
             ],
             "description": "Gets the minimum distance that must be between each position added to a vehiclesdrive path. Essentially how often the lead vehicle's position is recorded."
@@ -2670,6 +2755,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleAtIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _index] call `KISKA_fnc_convoy_getVehicleAtIndex`",
@@ -2688,10 +2774,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _convoyLeader = [\n        _convoyHashMap,\n        0\n\t] call KISKA_fnc_convoy_getVehicleAtIndex;\n\n```"
+                    "text": "```sqf\nprivate _convoyLeader = [\n    _convoyHashMap,\n    0\n] call KISKA_fnc_convoy_getVehicleAtIndex;\n```"
                 }
             ],
-            "description": "Gets the a vehicle at the specified index of a convoy. \n\nFor example, the convoy leader is the vehicle at index 0 and the vehicle directly behind the leader is index 1."
+            "description": "Gets the a vehicle at the specified index of a convoy. \n \nFor example, the convoy leader is the vehicle at index 0 and the vehicle directly behind the leader is index 1."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_getVehicleAtIndex",
@@ -2700,6 +2786,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugFollowedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugFollowedPath`",
@@ -2714,10 +2801,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _debugFollowedPathObjects = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleDebugFollowedPath;\n\n```"
+                    "text": "```sqf\nprivate _debugFollowedPathObjects = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleDebugFollowedPath;\n```"
                 }
             ],
-            "description": "Gets a vehicle's current debug followed path objects array. \n\nWhen a vehicle is in debug mode, a path of objects will be drawn for the durationthat shows the positions the vehicle had followed while on its drive path. One followed object is created each time a drive path point is considered \"complete\"\n (vehicle within a radius of that point)."
+            "description": "Gets a vehicle's current debug followed path objects array. \n \nWhen a vehicle is in debug mode, a path of objects will be drawn for the durationthat shows the positions the vehicle had followed while on its drive path. One followed object is created each time a drive path point is considered \"complete\"\n (vehicle within a radius of that point)."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_getVehicleDebugFollowedPath",
@@ -2726,6 +2813,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugFollowPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugFollowPath`",
@@ -2740,10 +2828,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _debugFollowPathObjects = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleDebugFollowPath;\n\n```"
+                    "text": "```sqf\nprivate _debugFollowPathObjects = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleDebugFollowPath;\n```"
                 }
             ],
-            "description": "Gets a given convoy vehicle's current debug follow path.\n\nWhen a vehicle is in debug mode, a path of objects will be drawn for the durationthat shows the positions currently in the vehicle's drive path. This is the followpath."
+            "description": "Gets a given convoy vehicle's current debug follow path.\n \nWhen a vehicle is in debug mode, a path of objects will be drawn for the durationthat shows the positions currently in the vehicle's drive path. This is the followpath."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_getVehicleDebugFollowPath",
@@ -2752,6 +2840,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugMarkerType_followedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugMarkerType_followedPath`",
@@ -2766,7 +2855,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _followedPathMarkerType = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleDebugMarkerType_followedPath;\n\n```"
+                    "text": "```sqf\nprivate _followedPathMarkerType = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleDebugMarkerType_followedPath;\n```"
                 }
             ],
             "description": "Sets the 3d debug marker class name that will be used to mark waypoints for a given vehicles path that have been completed."
@@ -2778,6 +2867,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugMarkerType_followPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugMarkerType_followPath`",
@@ -2792,7 +2882,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _followPathMarkerType = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleDebugMarkerType_followPath;\n\n```"
+                    "text": "```sqf\nprivate _followPathMarkerType = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleDebugMarkerType_followPath;\n```"
                 }
             ],
             "description": "Gets the 3d debug marker class name that will be used to mark waypoints for a given vehicles path that have been completed."
@@ -2804,6 +2894,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDrivePath`",
@@ -2818,10 +2909,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _currentDrivePath = [_vehicle] call KISKA_fnc_convoy_getVehicleDrivePath;\n\n```"
+                    "text": "```sqf\nprivate _currentDrivePath = [_vehicle] call KISKA_fnc_convoy_getVehicleDrivePath;\n```"
                 }
             ],
-            "description": "Gets a given convoy vehicle's current drive path. This will return the referenceto the actual array used with `setDriveOnPath` for the vehicle's following.\n\nYou should not set a vehicle's drive path directly. If you want to overwrite a vehicle'scurrent path, use KISKA_fnc_convoy_modifyVehicleDrivePath."
+            "description": "Gets a given convoy vehicle's current drive path. This will return the referenceto the actual array used with `setDriveOnPath` for the vehicle's following.\n \nYou should not set a vehicle's drive path directly. If you want to overwrite a vehicle'scurrent path, use KISKA_fnc_convoy_modifyVehicleDrivePath."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_getVehicleDrivePath",
@@ -2830,6 +2921,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleIndex`",
@@ -2844,7 +2936,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _indexOfVehicleInConvoy = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleIndex;\n\n```"
+                    "text": "```sqf\nprivate _indexOfVehicleInConvoy = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleIndex;\n```"
                 }
             ],
             "description": "Gets the index in of the provided vehicle in its convoy.\n\n`0` being the convoy leader and `1` being the vehicle directly behind the convoyleader, for example. `-1` indicates the vehicle is not in a convoy."
@@ -2856,6 +2948,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleLastAddedPoint.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleLastAddedPoint`",
@@ -2870,7 +2963,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _lastAddedPositionFromLead = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleLastAddedPoint;\n\n```"
+                    "text": "```sqf\nprivate _lastAddedPositionFromLead = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleLastAddedPoint;\n```"
                 }
             ],
             "description": "Gets the last position added to the vehicle's drive path from the LEAD VEHICLE.\nThis does not include modified positions from KISKA_fnc_convoy_modifyVehicleDrivePath."
@@ -2882,6 +2975,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleSeperation`",
@@ -2896,7 +2990,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _vehicleConvoySeperation = [\n        _vehicle\n    ] call KISKA_fnc_convoy_getVehicleSeperation;\n\n```"
+                    "text": "```sqf\nprivate _vehicleConvoySeperation = [\n    _vehicle\n] call KISKA_fnc_convoy_getVehicleSeperation;\n```"
                 }
             ],
             "description": "Gets the distance that a given vehicle will keep from the vehicle in frontof it when in a convoy."
@@ -2908,6 +3002,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleDeadDriver_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _convoyHashMap, _convoyLead, _deadDriver] call `KISKA_fnc_convoy_handleDeadDriver_default`",
@@ -2934,10 +3029,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // SHOULD NOT BE CALLED DIRECTLY\n\n```"
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
                 }
             ],
-            "description": "The default function that runs when a driver is detected as dead in a vehicle convoy.This is not fired based off an event handler but rather a check in the onEachFrame forthe convoy vehicles.The function will wait 4 seconds before affecting its behavior on the vehicle.\n\nIf the previous driver was a player, and a player is in the vehicle, nothing will happen.If the previous driver was a player, and a player is NOT in the vehicle, an AI will take overdriving the vehicle.If the previous driver was NOT a player, and a player is in the highest priority seat tobe the new driver, nothing will happen.If the previous driver was NOT a player, and an AI is in the highest priority seat tobe the new driver, they will be automatically moved into the driver seat.\n\nThe priority of vehicle role in the order of who the next driver is:1. commander2. cargo3. turrets4. gunner\nThis means commanders if present will be desired to move into the driver seat overall other vehicle roles."
+            "description": "The default function that runs when a driver is detected as dead in a vehicle convoy.This is not fired based off an event handler but rather a check in the onEachFrame forthe convoy vehicles.The function will wait 4 seconds before affecting its behavior on the vehicle.\n \nIf the previous driver was a player, and a player is in the vehicle, nothing will happen.If the previous driver was a player, and a player is NOT in the vehicle, an AI will take overdriving the vehicle.If the previous driver was NOT a player, and a player is in the highest priority seat tobe the new driver, nothing will happen.If the previous driver was NOT a player, and an AI is in the highest priority seat tobe the new driver, they will be automatically moved into the driver seat.\n \nThe priority of vehicle role in the order of who the next driver is:1. commander2. cargo3. turrets4. gunner\nThis means commanders if present will be desired to move into the driver seat overall other vehicle roles."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_handleDeadDriver_default",
@@ -2946,6 +3041,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleUnconsciousDriver_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _convoyHashMap, _convoyLead, _unconsciousDriver] call `KISKA_fnc_convoy_handleUnconsciousDriver_default`",
@@ -2972,10 +3068,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // SHOULD NOT BE CALLED DIRECTLY\n\n```"
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
                 }
             ],
-            "description": "The default function that runs when a driver is detected as incapacitated in a vehicle convoy.\nThe function will wait 4 seconds before affecting its behavior on the vehicle.\n\nIf the previous driver was a player, and a player is in the vehicle, nothing will happen.If the previous driver was a player, and a player is NOT in the vehicle, an AI will take overdriving the vehicle.If the previous driver was NOT a player, and a player is in the highest priority seat tobe the new driver, nothing will happen.If the previous driver was NOT a player, and an AI is in the highest priority seat tobe the new driver, they will be automatically moved into the driver seat.\n\nThe priority of vehicle role in the order of who the next driver is:1. commander2. cargo3. turrets4. gunner\nThis means commanders if present will be desired to move into the driver seat overall other vehicle roles."
+            "description": "The default function that runs when a driver is detected as incapacitated in a vehicle convoy.\nThe function will wait 4 seconds before affecting its behavior on the vehicle.\n \nIf the previous driver was a player, and a player is in the vehicle, nothing will happen.If the previous driver was a player, and a player is NOT in the vehicle, an AI will take overdriving the vehicle.If the previous driver was NOT a player, and a player is in the highest priority seat tobe the new driver, nothing will happen.If the previous driver was NOT a player, and an AI is in the highest priority seat tobe the new driver, they will be automatically moved into the driver seat.\n \nThe priority of vehicle role in the order of who the next driver is:1. commander2. cargo3. turrets4. gunner\nThis means commanders if present will be desired to move into the driver seat overall other vehicle roles."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_handleUnconsciousDriver_default",
@@ -2984,6 +3080,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleVehicleCantMove_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_disabledVehicle, _convoyHashMap, _convoyLead] call `KISKA_fnc_convoy_handleVehicleCantMove_default`",
@@ -3006,7 +3103,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // SHOULD NOT BE CALLED DIRECTLY\n\n```"
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
                 }
             ],
             "description": "The default behaviour that happens when a vehicle in the convoy is disabled."
@@ -3018,6 +3115,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleVehicleKilled_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_killedVehicle, _convoyHashMap, _convoyLead] call `KISKA_fnc_convoy_handleVehicleKilled_default`",
@@ -3040,7 +3138,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // SHOULD NOT BE CALLED DIRECTLY\n\n```"
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
                 }
             ],
             "description": "The default behaviour that happens when a vehicle in the convoy dies."
@@ -3052,6 +3150,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_isVehicleInDebug.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_isVehicleInDebug`",
@@ -3066,7 +3165,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isInDebug = [\n        _vehicle\n    ] call KISKA_fnc_convoy_isVehicleInDebug;\n\n```"
+                    "text": "```sqf\nprivate _isInDebug = [\n    _vehicle\n] call KISKA_fnc_convoy_isVehicleInDebug;\n```"
                 }
             ],
             "description": "Gets whether or a given vehicle is in debug mode for a convoy."
@@ -3078,6 +3177,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_modifyVehicleDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _lastIndexToModify, _pointsToAdd] call `KISKA_fnc_convoy_modifyVehicleDrivePath`",
@@ -3100,7 +3200,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n\t// overwrite array entirely\n\t[\n        _vehicle,\n        -1, // without deleting any points in current drive path, add positions to the front of path\n        [\n            [12,34,56],\n            [12,34,58]\n        ]\n    ] call KISKA_fnc_convoy_modifyVehicleDrivePath;\n\n```"
+                    "text": "```sqf\n// overwrite array entirely\n[\n    _vehicle,\n    -1, // without deleting any points in current drive path, add positions to the front of path\n    [\n        [12,34,56],\n        [12,34,58]\n    ]\n] call KISKA_fnc_convoy_modifyVehicleDrivePath;\n```"
                 }
             ],
             "description": "Changes the drive path of a given convoy vehicle.\nThe drive path will be overwritten from the _lastIndexToModify (inclusive) backwards until all of the _pointsToAdd have been placed in the array. This means that this function is not capable of appending to the end of an array, but only adding to the front."
@@ -3112,6 +3212,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_onEachFrame.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_convoy_onEachFrame`",
@@ -3121,7 +3222,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // SHOULD NOT BE CALLED DIRECTLY\n\n```"
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
                 }
             ],
             "description": "Mananges an individual vehicle's position relative to the vehicle in front ofit in a convoy. This function is what the statemachine runs each frame/vehicle.\nThis function intentionally forgoes the use of several getter/setter functions to reduce overhead because it runs every frame."
@@ -3133,6 +3234,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_removeVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_removeVehicle`",
@@ -3147,7 +3249,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [vic] call KISKA_fnc_convoy_removeVehicle;\n\n```"
+                    "text": "```sqf\n[vic] call KISKA_fnc_convoy_removeVehicle;\n```"
                 }
             ],
             "description": "Removes a given vehicle from its convoy.\nThis will shift the index's of all vehicles in the convoy that are lowerthan the given vehicle to remove. If the vehicle is moving (speed > 0)then the vehicle will be told to \"stop\" via a `move` order."
@@ -3159,6 +3261,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_removeVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_removeVehicleKilledEvent`",
@@ -3173,7 +3276,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [vic] call KISKA_fnc_convoy_removeVehicleKilledEvent;\n\n```"
+                    "text": "```sqf\n[vic] call KISKA_fnc_convoy_removeVehicleKilledEvent;\n```"
                 }
             ],
             "description": "Removes the \"MPKILLED\" event handler of a given vehicle in a convoy."
@@ -3185,6 +3288,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getDefaultSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_setDefaultSeperation`",
@@ -3199,10 +3303,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _defaultSeperation = [\n        _convoyHashMap\n\t] call KISKA_fnc_convoy_getDefaultSeperation;\n\n```"
+                    "text": "```sqf\nprivate _defaultSeperation = [\n    _convoyHashMap\n] call KISKA_fnc_convoy_getDefaultSeperation;\n```"
                 }
             ],
-            "description": "Gets the default seperation between NEWLY added vehicles to a convoy.\n\nThis is the seperation that vehicles will get by default when they areadded to the convoy."
+            "description": "Gets the default seperation between NEWLY added vehicles to a convoy.\n \nThis is the seperation that vehicles will get by default when they areadded to the convoy."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_setDefaultSeperation",
@@ -3211,6 +3315,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setDefaultSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _seperation] call `KISKA_fnc_convoy_setDefaultSeperation`",
@@ -3229,10 +3334,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_convoyHashMap,20] call KISKA_fnc_convoy_setDefaultSeperation;\n\n```"
+                    "text": "```sqf\n[_convoyHashMap,20] call KISKA_fnc_convoy_setDefaultSeperation;\n```"
                 }
             ],
-            "description": "Sets the default seperation between NEWLY added vehicles to a convoy.\n\nThis will NOT update the spacing between any vehicles currently in the convoy."
+            "description": "Sets the default seperation between NEWLY added vehicles to a convoy.\n \nThis will NOT update the spacing between any vehicles currently in the convoy."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_setDefaultSeperation",
@@ -3241,6 +3346,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setPointBuffer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _minBufferBetweenPoints] call `KISKA_fnc_convoy_setPointBuffer`",
@@ -3259,7 +3365,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_convoyHashMap,1] call KISKA_fnc_convoy_setPointBuffer;\n\n```"
+                    "text": "```sqf\n[_convoyHashMap,1] call KISKA_fnc_convoy_setPointBuffer;\n```"
                 }
             ],
             "description": "Sets the minimum distance that must be between each position added to a vehiclesdrive path. Essentially how often the lead vehicle's position is recorded."
@@ -3271,6 +3377,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDebug.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _debugMode] call `KISKA_fnc_convoy_setVehicleDebug`",
@@ -3289,7 +3396,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // debug enabled \n    [\n        _vehicle,\n        true\n    ] call KISKA_fnc_convoy_setVehicleDebug;\n\n```"
+                    "text": "```sqf\n// debug enabled \n[\n    _vehicle,\n    true\n] call KISKA_fnc_convoy_setVehicleDebug;\n```"
                 }
             ],
             "description": "Sets whether or not a given vehicle is in debug mode for convoys."
@@ -3301,6 +3408,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDebugMarkerType_followedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _type] call `KISKA_fnc_convoy_setVehicleDebugMarkerType_followedPath`",
@@ -3319,7 +3427,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        \"Sign_Arrow_Large_blue_F\"\n    ] call KISKA_fnc_convoy_setVehicleDebugMarkerType_followedPath;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    \"Sign_Arrow_Large_blue_F\"\n] call KISKA_fnc_convoy_setVehicleDebugMarkerType_followedPath;\n```"
                 }
             ],
             "description": "Sets the 3d debug marker class name that will be used to mark waypoints for a given vehicles path that have been completed."
@@ -3331,6 +3439,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDebugMarkerType_followPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _type] call `KISKA_fnc_convoy_setVehicleDebugMarkerType_followPath`",
@@ -3349,7 +3458,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        \"Sign_Arrow_Large_Cyan_F\"\n    ] call KISKA_fnc_convoy_setVehicleDebugMarkerType_followPath;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    \"Sign_Arrow_Large_Cyan_F\"\n] call KISKA_fnc_convoy_setVehicleDebugMarkerType_followPath;\n```"
                 }
             ],
             "description": "Sets the 3d debug marker class name that will be used to mark waypoints for a given vehicles path that have not been completed."
@@ -3361,6 +3470,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDriveOnPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _mode] call `KISKA_fnc_convoy_setVehicleDriveOnPath`",
@@ -3379,10 +3489,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // do-drive-on-path enabled \n    [\n        _vehicle,\n        true\n    ] call KISKA_fnc_convoy_setVehicleDriveOnPath;\n\n```"
+                    "text": "```sqf\n// do-drive-on-path enabled \n[\n    _vehicle,\n    true\n] call KISKA_fnc_convoy_setVehicleDriveOnPath;\n```"
                 }
             ],
-            "description": "Sets whether or not the vehicle will initiate new `setDriveOnPath`'s whenevernew positions are added to its internal drive path.\n\nWhile false, a vehicle will continue to add points from the lead vehicle to itsdrive path and will continue to drive on the path prior to the setting of this to false unless otherwise stopped."
+            "description": "Sets whether or not the vehicle will initiate new `setDriveOnPath`'s whenevernew positions are added to its internal drive path.\n \nWhile false, a vehicle will continue to add points from the lead vehicle to itsdrive path and will continue to drive on the path prior to the setting of this to false unless otherwise stopped."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_setVehicleDriveOnPath",
@@ -3391,6 +3501,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_setVehicleKilledEvent`",
@@ -3405,10 +3516,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _eventCode = [\n        vic\n    ] call KISKA_fnc_convoy_getVehicleKilledEvent;\n\n```"
+                    "text": "```sqf\nprivate _eventCode = [\n    vic\n] call KISKA_fnc_convoy_getVehicleKilledEvent;\n```"
                 }
             ],
-            "description": "Gets the code that should execute when a vehicle dies in a convoy.\n\nThis will by default return KISKA_convoy_handleVehicleKilled_default ifnot explicitly set on the vehicle."
+            "description": "Gets the code that should execute when a vehicle dies in a convoy.\n \nThis will by default return KISKA_convoy_handleVehicleKilled_default ifnot explicitly set on the vehicle."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_setVehicleKilledEvent",
@@ -3417,6 +3528,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _eventCode] call `KISKA_fnc_convoy_setVehicleKilledEvent`",
@@ -3427,7 +3539,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_eventCode",
-                            "description": "*(CODE)* - The code to execute when the vehicle dies in a convoy\n\n    Parameters:\n    - 0: _vehicle *(OBJECT)* - The vehicle that died\n    - 1: _convoyHashMap *(OBJECT)* - The hashmap used for the convoy\n    - 2: _convoyLead *(OBJECT)* - The lead vehicle of the convoy"
+                            "description": "*(CODE)* - The code to execute when the vehicle dies in a convoy\n \n    Parameters:\n    - 0: _vehicle *(OBJECT)* - The vehicle that died\n    - 1: _convoyHashMap *(OBJECT)* - The hashmap used for the convoy\n    - 2: _convoyLead *(OBJECT)* - The lead vehicle of the convoy"
                         }
                     ],
                     "returns": "NOTHING"
@@ -3435,7 +3547,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        vic,\n        {hint str _this}\n    ] call KISKA_fnc_convoy_setVehicleKilledEvent;\n\n```"
+                    "text": "```sqf\n[\n    vic,\n    {hint str _this}\n] call KISKA_fnc_convoy_setVehicleKilledEvent;\n```"
                 }
             ],
             "description": "Sets the code that should execute when a vehicle dies in a convoy."
@@ -3447,6 +3559,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _seperation] call `KISKA_fnc_convoy_setVehicleSeperation`",
@@ -3465,7 +3578,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        10\n    ] call KISKA_fnc_convoy_setVehicleSeperation;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    10\n] call KISKA_fnc_convoy_setVehicleSeperation;\n```"
                 }
             ],
             "description": "Sets the distance that a given vehicle will keep from the vehicle in frontof it when in a convoy."
@@ -3477,6 +3590,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_shouldVehicleDriveOnPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_shouldVehicleDriveOnPath`",
@@ -3491,10 +3605,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _doDriveOnPath = [_vehicle] call KISKA_fnc_convoy_shouldVehicleDriveOnPath;\n\n```"
+                    "text": "```sqf\nprivate _doDriveOnPath = [_vehicle] call KISKA_fnc_convoy_shouldVehicleDriveOnPath;\n```"
                 }
             ],
-            "description": "Gets whether or not the vehicle will initiate new `setDriveOnPath`'s whenevera new point is added to the vehicle's drive path.\n\nWhile false, a vehicle will continue to receive new points in the vehicles drive path."
+            "description": "Gets whether or not the vehicle will initiate new `setDriveOnPath`'s whenevera new point is added to the vehicle's drive path.\n \nWhile false, a vehicle will continue to receive new points in the vehicles drive path."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_shouldVehicleDriveOnPath",
@@ -3503,6 +3617,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_stopVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_stopVehicle`",
@@ -3517,7 +3632,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [vic] call KISKA_fnc_convoy_stopVehicle;\n\n```"
+                    "text": "```sqf\n[vic] call KISKA_fnc_convoy_stopVehicle;\n```"
                 }
             ],
             "description": "Used in the process of KISKA's advanced convoy to stop a given vehicle."
@@ -3529,6 +3644,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_syncLatestDrivePoint.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_syncLatestDrivePoint`",
@@ -3543,7 +3659,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [ConvoyHashMap] call KISKA_fnc_convoy_syncLatestDrivePoint;\n\n```"
+                    "text": "```sqf\n[ConvoyHashMap] call KISKA_fnc_convoy_syncLatestDrivePoint;\n```"
                 }
             ],
             "description": "Ensures all vehicles in the convoy have the latest drive path point from theconvoy lead as the last index of their drive path."
@@ -3555,6 +3671,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_countdown.sqf",
             "syntaxes": [
                 {
                     "outline": "[_countDownTotal, _shownCountDown, _soundedCountDown, _soundName] spawn `KISKA_fnc_countdown`",
@@ -3581,10 +3698,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // print numbers when at 15 and play sound at 10\n    [30,15,10] spawn KISKA_fnc_countdown;\n\n```"
+                    "text": "```sqf\n// print numbers when at 15 and play sound at 10\n[30,15,10] spawn KISKA_fnc_countdown;\n```"
                 },
                 {
-                    "text": "```sqf\n    // print numbers when at 15 and play no sound\n    [30,15,-1] spawn KISKA_fnc_countdown;\n\n```"
+                    "text": "```sqf\n// print numbers when at 15 and play no sound\n[30,15,-1] spawn KISKA_fnc_countdown;\n```"
                 }
             ],
             "description": "Sleeps for a given time and eventually displays a certain amount on screen."
@@ -3596,6 +3713,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Tasks/fn_createTaskFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config, _owner, _taskState, _destination, _type, _notifyOnCreate, _visibleIn3D] call `KISKA_fnc_createTaskFromConfig`",
@@ -3634,10 +3752,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // simple task from config\n    [missionConfigFile >> MyTasks >> \"someTaskClass\",true] call KISKA_fnc_createTaskFromConfig;\n\n```"
+                    "text": "```sqf\n// simple task from config\n[missionConfigFile >> MyTasks >> \"someTaskClass\",true] call KISKA_fnc_createTaskFromConfig;\n```"
                 },
                 {
-                    "text": "```sqf\n    [\n        \"someTaskClass\", // will search in missionConfigFile >> \"KISKA_cfgTasks\"\n        true,\n        \"ASSIGNED\",\n        configNull, // get configed destination value\n        \"ATTACK\"\n    ] call KISKA_fnc_createTaskFromConfig;\n\n```"
+                    "text": "```sqf\n[\n    \"someTaskClass\", // will search in missionConfigFile >> \"KISKA_cfgTasks\"\n    true,\n    \"ASSIGNED\",\n    configNull, // get configed destination value\n    \"ATTACK\"\n] call KISKA_fnc_createTaskFromConfig;\n```"
                 }
             ],
             "description": "Creates a task from a config entry. Config should be placed inside KISKA_cfgTasks,just the string is needed to reference the config entry.\nParameters from index 2 onwards will accept configNull as an alias for retrievingthe configed value of the param if it is not changed (see example 2)"
@@ -3649,6 +3767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_createVehicleSelectMenu.sqf",
             "syntaxes": [
                 {
                     "outline": "[_classes] call `KISKA_fnc_createVehicleSelectMenu`",
@@ -3663,7 +3782,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _menuArray = [\n        [\"B_Heli_Transport_01_F\",\"B_Heli_Attack_01_dynamicLoadout_F\"]\n    ] call KISKA_fnc_createClassSelectMenu;\n\n```"
+                    "text": "```sqf\n_menuArray = [\n    [\"B_Heli_Transport_01_F\",\"B_Heli_Attack_01_dynamicLoadout_F\"]\n] call KISKA_fnc_createClassSelectMenu;\n```"
                 }
             ],
             "description": "Creates an array to be used with showCommandingMenu.Specifically, this is to provide class names to the command menu and thenallow a player to select a class from the menu such as when requesting CAS."
@@ -3675,6 +3794,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_cruiseMissileStrike.sqf",
             "syntaxes": [
                 {
                     "outline": "[_target, _side, _launchPos] call `KISKA_fnc_cruiseMissileStrike`",
@@ -3697,7 +3817,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [target_1] call KISKA_fnc_cruiseMissileStrike;\n\n```"
+                    "text": "```sqf\n[target_1] call KISKA_fnc_cruiseMissileStrike;\n```"
                 }
             ],
             "description": "Spawns a cruise missile at designated \"launcher\" and then guides it to a target.\nIf you need a missile that terrain follows, see KISKA_fnc_vlsFireAt."
@@ -3709,13 +3829,14 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_dataLinkMsg.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _canSkip, _lifetime, _sound] call `KISKA_fnc_datalinkMsg`",
                     "parameters": [
                         {
                             "name": "_message",
-                            "description": ": *(STRING or ARRAY)* - If string, the message to display as title.\n\n    If array:\n    - 0: _text : *(STRING)* - Text to display or path to .paa or .jpgimage (may be passed directly if only text is required)\n    - 1: _size : *(NUMBER)* - Scale of text\n    - 2: _color : *(ARRAY)* - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1])"
+                            "description": ": *(STRING or ARRAY)* - If string, the message to display as title.\n \n    If array:\n    - 0: _text : *(STRING)* - Text to display or path to .paa or .jpgimage (may be passed directly if only text is required)\n    - 1: _size : *(NUMBER)* - Scale of text\n    - 2: _color : *(ARRAY)* - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1])"
                         },
                         {
                             "name": "_canSkip",
@@ -3735,7 +3856,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"this is the message\", 5] call KISKA_fnc_datalinkMsg;\n\n```"
+                    "text": "```sqf\n[\"this is the message\", 5] call KISKA_fnc_datalinkMsg;\n```"
                 }
             ],
             "description": "Displays a message to the player and creates a diary entry of that message.Also can play a sound when the notification pops up."
@@ -3747,6 +3868,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_defend.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _position, _radius, _threshold, _patrol, _hold] call `KISKA_fnc_defend`",
@@ -3781,7 +3903,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [this] call KISKA_fnc_defend\n\n```"
+                    "text": "```sqf\n[this] call KISKA_fnc_defend\n```"
                 }
             ],
             "description": "A function for a group to defend a parsed location. Should be ran locally.\nUnits will mount nearby static machine guns and garrison in nearby buildings.10% chance to patrol the radius unless specified differently (100% when no available building positions).0% chance to hold defensive positions in combat unless specified differently.\nModifications:Accounted for doMove command's inability to use z-axis"
@@ -3793,6 +3915,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_deleteAtArray.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _indexToRemove, _namespace] call `KISKA_fnc_deleteAtArray`",
@@ -3815,7 +3938,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"myGlobalArrayVar\",someInfoHere] call KISKA_fnc_deleteAtArray;\n\n```"
+                    "text": "```sqf\n[\"myGlobalArrayVar\",someInfoHere] call KISKA_fnc_deleteAtArray;\n```"
                 }
             ],
             "description": "Removes an index from a global array.\nThis was used in lieu of creating a public variable to sync the array.In order to keep network traffic lower if the array becomes large."
@@ -3827,6 +3950,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_deleteAtArray_interface.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _indexToRemove, _namespace] call `KISKA_fnc_deleteAtArray_interface`",
@@ -3849,7 +3973,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"myGlobalArrayVar\",someInfoHere] call KISKA_fnc_deleteAtArray;\n\n```"
+                    "text": "```sqf\n[\"myGlobalArrayVar\",someInfoHere] call KISKA_fnc_deleteAtArray;\n```"
                 }
             ],
             "description": "Removes an index from a global array. Checks if machine hasInterface before.\nThis was used in lieu of creating a public variable to sync the array.In order to keep network traffic lower if the array becomes large."
@@ -3861,6 +3985,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_deleteRandomIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array] call `KISKA_fnc_deleteRandomIndex`",
@@ -3875,7 +4000,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _randomDeletedItem = [[1,2,3]] call KISKA_fnc_deleteRandomIndex;\n\n```"
+                    "text": "```sqf\nprivate _randomDeletedItem = [[1,2,3]] call KISKA_fnc_deleteRandomIndex;\n```"
                 }
             ],
             "description": "Removes and returns a random item from an array"
@@ -3887,6 +4012,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_detectControlKeys.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_detectControlKeys`",
@@ -3896,7 +4022,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT Function\n\n```"
+                    "text": "```sqf\nPRE-INIT Function\n```"
                 }
             ],
             "description": "Arma 3's support system currently has a bug that allows players to call inmultiple supports by having the map open and holding down a ctrl key and left\n - clicking while in the support menu. Each click will call in a support."
@@ -3908,6 +4034,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_disallowGroupRally.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToRemove, _deleteMarker] call `KISKA_fnc_disallowGroupRally`",
@@ -3926,7 +4053,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // disallows player's group to drop a rally point (if they're the server)\n    [player] call KISKA_fnc_disallowGroupRally;\n\n```"
+                    "text": "```sqf\n// disallows player's group to drop a rally point (if they're the server)\n[player] call KISKA_fnc_disallowGroupRally;\n```"
                 }
             ],
             "description": "Removes a groups ability to rally an deletes its marker if requested."
@@ -3938,6 +4065,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_doMagRepack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _doHint] call `KISKA_fnc_doMagRepack`",
@@ -3956,7 +4084,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player] call KISKA_fnc_doMagRepack;\n\n```"
+                    "text": "```sqf\n[player] call KISKA_fnc_doMagRepack;\n```"
                 }
             ],
             "description": "Completes a repack on the units current weapon."
@@ -3968,6 +4096,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_driveTo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_crew, _vehicle, _dismountPoint, _completionRadius, _speed, _codeOnComplete] call `KISKA_fnc_driveTo`",
@@ -3994,7 +4123,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_codeOnComplete",
-                            "description": ": *(CODE, STRING, or ARRAY)* - Code to run upon completion of disembark. See KISKA_fnc_callBack\n\n    Parameters:\n    - 0: *(OBJECT)* - The vehicle, crew (ARRAY), and crew groups (ARRAY)\n    - 1: *(OBJECT[])* - The crew of the vehicle\n    - 2: *(GROUP[])* - All the groups that are in the vehicle crew"
+                            "description": ": *(CODE, STRING, or ARRAY)* - Code to run upon completion of disembark. See KISKA_fnc_callBack\n \n    Parameters:\n    - 0: *(OBJECT)* - The vehicle, crew (ARRAY), and crew groups (ARRAY)\n    - 1: *(OBJECT[])* - The crew of the vehicle\n    - 2: *(GROUP[])* - All the groups that are in the vehicle crew"
                         }
                     ],
                     "returns": "*(BOOL)* - false if encountered error, true if success"
@@ -4002,7 +4131,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_group1, _vehicle, myDismountPoint] call KISKA_fnc_driveTo;\n\n```"
+                    "text": "```sqf\n[_group1, _vehicle, myDismountPoint] call KISKA_fnc_driveTo;\n```"
                 }
             ],
             "description": "Units will drive to point and get out of vehicle."
@@ -4014,6 +4143,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_dropOff.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _dropOffPosition, _unitsToDropOff, _completionRadius, _speed, _codeOnComplete] call `KISKA_fnc_dropOff`",
@@ -4040,7 +4170,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_codeOnComplete",
-                            "description": ": *(CODE, STRING, or ARRAY)* - Code to run upon completion of disembark. See KISKA_fnc_callBack\n\n    Params:\n\n        - 0. *(OBJECT)* - The vehicle that will drop of units\n        - 1. *(ARRAY)* - The units dropped off at this location"
+                            "description": ": *(CODE, STRING, or ARRAY)* - Code to run upon completion of disembark. See KISKA_fnc_callBack\n \n    Params:\n \n        - 0. *(OBJECT)* - The vehicle that will drop of units\n        - 1. *(ARRAY)* - The units dropped off at this location"
                         }
                     ],
                     "returns": "NOTHING"
@@ -4048,7 +4178,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        myVehicle,\n        myPosition,\n        player\n    ] call KISKA_fnc_dropOff;\n\n```"
+                    "text": "```sqf\n[\n    myVehicle,\n    myPosition,\n    player\n] call KISKA_fnc_dropOff;\n```"
                 }
             ],
             "description": "Tells a vehicle to move to a position and then drop off the specified units."
@@ -4060,6 +4190,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Tasks/fn_endTask.sqf",
             "syntaxes": [
                 {
                     "outline": "[_taskId, _state, _notify, _owner] call `KISKA_fnc_endTask`",
@@ -4086,7 +4217,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _taskIsSucceeded = [\"mytaskID\",0] call KISKA_fnc_endTask;\n\n```"
+                    "text": "```sqf\nprivate _taskIsSucceeded = [\"mytaskID\",0] call KISKA_fnc_endTask;\n```"
                 }
             ],
             "description": "Either completes, cancels, or ends a task and calls the task's onCompleteevent if it is defined in KISKA_cfgTasks.\nMeant to be paired with KISKA_fnc_createTaskFromConfig."
@@ -4098,6 +4229,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_engageHeliTurretsLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_heli, _sleepTime, _revealAccuracy, _detectionRadius, _skill, _makeInvulnerable, _turretsWithWeapons] spawn `KISKA_fnc_engageHeliTurretsLoop`",
@@ -4136,7 +4268,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        5,\n        4,\n        250,\n        1,\n        true\n    ] spawn KISKA_fnc_engageHeliTurretsLoop;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    5,\n    4,\n    250,\n    1,\n    true\n] spawn KISKA_fnc_engageHeliTurretsLoop;\n```"
                 }
             ],
             "description": "Sets up a helicopter's turrets to be able to properly engage enemies withoutwithout the pilot going crazy.\nStarts a loop that will reveal targets within a given radius to gunners to engage.\nYou can use variables in the _heli's namepsace to adjust params dynamically:\n    \"KISKA_heliTurrets_endLoop\" - ends the function\n    \"KISKA_heliTurrets_sleepTime\" - adjusts the _sleepTime param\n    \"KISKA_heliTurrets_revealAccuracy\" - adjusts the _revealAccuracy param\n    \"KISKA_heliTurrets_detectionRadius\" - adjusts the _detectionRadius param\n    \"KISKA_heliTurrets_running\" - checks if the system is running"
@@ -4148,6 +4280,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_errorNotification.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _lifetime] call `KISKA_fnc_errorNotification`",
@@ -4166,7 +4299,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"You made and error\"] call KISKA_fnc_errorNotification;\n\n```"
+                    "text": "```sqf\n[\"You made and error\"] call KISKA_fnc_errorNotification;\n```"
                 }
             ],
             "description": "Prints a simple KISKA Notify error notification on screen."
@@ -4178,6 +4311,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/EventHandlers/fn_eventHandler_addFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entityToAddEventHandlerTo, _config, _code] call `KISKA_fnc_eventHandler_addFromConfig`",
@@ -4200,7 +4334,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _eventID = [\n        player,\n        myConfig\n    ] call KISKA_fnc_eventHandler_addFromConfig\n\n```"
+                    "text": "```sqf\nprivate _eventID = [\n    player,\n    myConfig\n] call KISKA_fnc_eventHandler_addFromConfig\n```"
                 }
             ],
             "description": "Adds a configed custom eventhandler."
@@ -4212,6 +4346,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/EventHandlers/fn_eventHandler_createCBAStateMachine.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config] call `KISKA_fnc_eventHandler_createCBAStateMachine`",
@@ -4226,7 +4361,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _statemachine = [myConfig] call KISKA_fnc_eventHandler_createCBAStateMachine\n\n```"
+                    "text": "```sqf\n_statemachine = [myConfig] call KISKA_fnc_eventHandler_createCBAStateMachine\n```"
                 }
             ],
             "description": "Adds a configed custom eventhandler"
@@ -4238,6 +4373,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/EventHandlers/fn_eventHandler_remove.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity, _eventConfig, _id] call `KISKA_fnc_eventHandler_remove`",
@@ -4260,7 +4396,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _removed = [\n        player,\n        configFile >> \"KISKA_EventHandlers\" >> \"KISKA_combatBehaviourChangedEvent\",\n        0\n    ] call KISKA_fnc_eventHandler_remove\n\n```"
+                    "text": "```sqf\nprivate _removed = [\n    player,\n    configFile >> \"KISKA_EventHandlers\" >> \"KISKA_combatBehaviourChangedEvent\",\n    0\n] call KISKA_fnc_eventHandler_remove\n```"
                 }
             ],
             "description": "Removes a configed custom eventhandler.\nWorth noting that this will still return `true` even after the event has beenremoved as BIS_fnc_removeScriptedEventHandler essentially checks that the eventisn't one that never could have existed."
@@ -4272,6 +4408,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_exportLoadouts.sqf",
             "syntaxes": [
                 {
                     "outline": "[_units, _exportAsConfig] call `KISKA_fnc_exportLoadouts`",
@@ -4290,7 +4427,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _loadouts = [_units,true] call KISKA_fnc_exportLoadouts;\n\n```"
+                    "text": "```sqf\nprivate _loadouts = [_units,true] call KISKA_fnc_exportLoadouts;\n```"
                 }
             ],
             "description": "Exports a given unit or units loadout into an array or loadouts. This can be either a standard array or formatted for config files."
@@ -4302,6 +4439,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_exportSpawnPositions.sqf",
             "syntaxes": [
                 {
                     "outline": "[_layer, _convertToConfig] call `KISKA_fnc_exportSpawnPositions`",
@@ -4320,7 +4458,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"someLayer\",true] call KISKA_fnc_exportSpawnPositions;\n\n```"
+                    "text": "```sqf\n[\"someLayer\",true] call KISKA_fnc_exportSpawnPositions;\n```"
                 }
             ],
             "description": "Takes a layer of objects and produces an array of arrays that are their 3dATL position and current direction ([0,0,0,0]).\nCan also convert the arrays to config compatible format.\nThis will copy its output to the clipboard if run on the server;"
@@ -4332,6 +4470,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_findConfigAny.sqf",
             "syntaxes": [
                 {
                     "outline": "[_pathArray] call `KISKA_fnc_findConfigAny`",
@@ -4346,7 +4485,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _configPath = [[\"CfgMusic\",\"Music_Intro_02_MissionStart\"]] call KISKA_fnc_findConfigAny;\n\n```"
+                    "text": "```sqf\n_configPath = [[\"CfgMusic\",\"Music_Intro_02_MissionStart\"]] call KISKA_fnc_findConfigAny;\n```"
                 }
             ],
             "description": "Searchs missionConfigFile, campaignConfigFile, and the configFile\n (in that order) to find a config based upon the sub paths provided.\nReturns the first one it finds.\nThe BIS counterpart to this is BIS_fnc_loadClass and while it can be about 0.0005-0.0010msfaster if the path is short (about 2 entries). It can yield about 0.005ms faster in various cases."
@@ -4358,6 +4497,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_findIfBool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array, _codeToCheck, _thisArgs] call `KISKA_fnc_findIfBool`",
@@ -4380,7 +4520,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // returns true if any player is alive\n    [allPlayers,{alive _x}] call KISKA_fnc_findIfBool;\n\n```"
+                    "text": "```sqf\n// returns true if any player is alive\n[allPlayers,{alive _x}] call KISKA_fnc_findIfBool;\n```"
                 }
             ],
             "description": "Checks if an array index satisfies the provided code, and returns a BOOLfor whether or not one was found."
@@ -4392,6 +4532,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_addDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_GCH_addDiaryEntry`",
@@ -4401,7 +4542,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT function\n\n```"
+                    "text": "```sqf\nPRE-INIT function\n```"
                 }
             ],
             "description": "Creates a diary entry in the map for the player to open the Group Manager"
@@ -4413,6 +4554,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_addGroupEventhandlers.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group] call `KISKA_fnc_GCH_addGroupEventhandlers`",
@@ -4427,7 +4569,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group player] call KISKA_fnc_GCH_addGroupEventhandlers\n\n```"
+                    "text": "```sqf\n[group player] call KISKA_fnc_GCH_addGroupEventhandlers\n```"
                 }
             ],
             "description": "Adds group eventhandlers that help the GCH GUI function."
@@ -4439,6 +4581,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_addMissionEvents.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCH_addMissionEvents`",
@@ -4448,7 +4591,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT function\n\n```"
+                    "text": "```sqf\nPRE-INIT function\n```"
                 }
             ],
             "description": "Adds mission event handlers for keeping track of groups."
@@ -4460,6 +4603,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_canPlayerChangeGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToJoin] call `KISKA_fnc_GCH_canPlayerChangeGroup`",
@@ -4474,7 +4618,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [someGroup] call KISKA_fnc_GCH_canPlayerChangeGroup;\n\n```"
+                    "text": "```sqf\n[someGroup] call KISKA_fnc_GCH_canPlayerChangeGroup;\n```"
                 }
             ],
             "description": "The function that fires on the leave group button click event.The Event is added in KISKA_fnc_GCHOnLoad."
@@ -4486,6 +4630,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_doesGroupHaveAnotherPlayer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group] call `KISKA_fnc_GCH_doesGroupHaveAnotherPlayer`",
@@ -4500,7 +4645,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group player] call KISKA_fnc_GCH_doesGroupHaveAnotherPlayer\n\n```"
+                    "text": "```sqf\n[group player] call KISKA_fnc_GCH_doesGroupHaveAnotherPlayer\n```"
                 }
             ],
             "description": "Checks if a group contains another player other than the local player"
@@ -4512,6 +4657,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_dontExcludePlayerGroupDefault.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCH_dontExcludePlayerGroupDefault`",
@@ -4521,7 +4667,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    POST-INIT Function\n\n```"
+                    "text": "```sqf\nPOST-INIT Function\n```"
                 }
             ],
             "description": "In order to maintain a player-group-is-not-excluded by default in the Group Changer, when a player joins the game, they will set their groupto be not excluded on all other machines and JIP"
@@ -4533,6 +4679,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_getPlayerSide.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCH_getPlayerSide`",
@@ -4542,7 +4689,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _playerSide = call KISKA_fnc_GCH_getPlayerSide;\n\n```"
+                    "text": "```sqf\nprivate _playerSide = call KISKA_fnc_GCH_getPlayerSide;\n```"
                 }
             ],
             "description": "Returns the side of the player's group in order to avoid if the player iscaptive and the object is technically a part of the civ faction for instance."
@@ -4554,6 +4701,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_getSelectedGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCH_getSelectedGroup`",
@@ -4563,7 +4711,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _selectedGroup = [] call KISKA_fnc_GCH_getSelectedGroup;\n\n```"
+                    "text": "```sqf\nprivate _selectedGroup = [] call KISKA_fnc_GCH_getSelectedGroup;\n```"
                 }
             ],
             "description": "Returns the selected group in the group changer."
@@ -4575,6 +4723,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_getSideGroups.sqf",
             "syntaxes": [
                 {
                     "outline": "[_side] call `KISKA_fnc_GCH_getSideGroups`",
@@ -4589,7 +4738,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _playerSide = [] call KISKA_fnc_GCH_getPlayerSide;\n    _groups = [_playerSide] call KISKA_fnc_GCH_getSideGroups;\n\n```"
+                    "text": "```sqf\nprivate _playerSide = [] call KISKA_fnc_GCH_getPlayerSide;\n_groups = [_playerSide] call KISKA_fnc_GCH_getSideGroups;\n```"
                 }
             ],
             "description": "Gets all groups of a particular side and that are not exlcuded from the GCH"
@@ -4601,6 +4750,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_groupDeleteQuery.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _canDelete] call `KISKA_fnc_GCH_groupDeleteQuery`",
@@ -4619,7 +4769,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myGroup,false] call KISKA_fnc_GCH_groupDeleteQuery;\n\n```"
+                    "text": "```sqf\n[myGroup,false] call KISKA_fnc_GCH_groupDeleteQuery;\n```"
                 }
             ],
             "description": "Acts as a liason from a client to add a group to auto delete if necessary.\nOnly works where the group is local and need to use groupOwner to get thatwhich only works on the server."
@@ -4631,6 +4781,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_isAllowedToEdit.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupLeader] call `KISKA_fnc_GCH_isAllowedToEdit`",
@@ -4645,7 +4796,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _canEdit = [myGroup] call KISKA_fnc_GCH_isAllowedToEdit;\n\n```"
+                    "text": "```sqf\n_canEdit = [myGroup] call KISKA_fnc_GCH_isAllowedToEdit;\n```"
                 }
             ],
             "description": "Checks if a machine is allowed to edit a given property in the GCH dialog."
@@ -4657,6 +4808,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_isGroupExcluded.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _canBeNil] call `KISKA_fnc_GCH_isGroupExcluded`",
@@ -4675,7 +4827,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isExcluded = [group player] call KISKA_fnc_GCH_isGroupExcluded;\n\n```"
+                    "text": "```sqf\nprivate _isExcluded = [group player] call KISKA_fnc_GCH_isGroupExcluded;\n```"
                 }
             ],
             "description": "Checks if a group is excluded from the Group Changer menu."
@@ -4687,6 +4839,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_isOpen.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCH_isOpen`",
@@ -4696,7 +4849,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isOpen = call KISKA_fnc_GCH_isOpen;\n\n```"
+                    "text": "```sqf\nprivate _isOpen = call KISKA_fnc_GCH_isOpen;\n```"
                 }
             ],
             "description": "Checks if the group changer is open or not."
@@ -4708,6 +4861,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_openDialog.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCH_openDialog`",
@@ -4717,7 +4871,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_GCH_openDialog;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_GCH_openDialog;\n```"
                 }
             ],
             "description": "Opens KISKA Group Changer dialog."
@@ -4729,6 +4883,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_setGroupExcluded.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _isExcluded, _synchronize] call `KISKA_fnc_GCH_setGroupExcluded`",
@@ -4751,7 +4906,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // exclude group\n    private _isExcluded = [group player,true] call KISKA_fnc_GCH_setGroupExcluded;\n\n```"
+                    "text": "```sqf\n// exclude group\nprivate _isExcluded = [group player,true] call KISKA_fnc_GCH_setGroupExcluded;\n```"
                 }
             ],
             "description": "Sets a group's exclusion from the Group Changer."
@@ -4763,6 +4918,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_setLeaderRemote.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _unitToSet] call `KISKA_fnc_GCH_setLeaderRemote`",
@@ -4781,7 +4937,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group player, player] call KISKA_fnc_GCH_setLeaderRemote;\n\n```"
+                    "text": "```sqf\n[group player, player] call KISKA_fnc_GCH_setLeaderRemote;\n```"
                 }
             ],
             "description": "Remotely sets a leader of a group from the server. (Must be run on the server)"
@@ -4793,6 +4949,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_updateCurrentGroupSection.sqf",
             "syntaxes": [
                 {
                     "outline": "[_updateUnitList, _updateLeaderIndicator, _updateGroupId, _updateCanDeleteCombo, _updateCanRallyCombo] call `KISKA_fnc_GCH_updateCurrentGroupSection`",
@@ -4823,7 +4980,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // update just the unit list\n    [true] call KISKA_fnc_GCH_updateCurrentGroupSection;\n\n```"
+                    "text": "```sqf\n// update just the unit list\n[true] call KISKA_fnc_GCH_updateCurrentGroupSection;\n```"
                 }
             ],
             "description": "Updates the individual components of the current group section of the GUI."
@@ -4835,6 +4992,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_updateSideGroupsList.sqf",
             "syntaxes": [
                 {
                     "outline": "[_queryForGroups] call `KISKA_fnc_GCH_updateSideGroupsList`",
@@ -4849,7 +5007,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [true] call KISKA_fnc_GCH_updateSideGroupsList;\n\n```"
+                    "text": "```sqf\n[true] call KISKA_fnc_GCH_updateSideGroupsList;\n```"
                 }
             ],
             "description": "Updates the side's groups list for the GCH dialog."
@@ -4861,6 +5019,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] call `KISKA_fnc_GCHOnLoad`",
@@ -4875,7 +5034,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_display] call KISKA_fnc_GCHOnLoad;\n\n```"
+                    "text": "```sqf\n[_display] call KISKA_fnc_GCHOnLoad;\n```"
                 }
             ],
             "description": "Executes in the onload event for the KISKA's Group Changer Dislog"
@@ -4887,6 +5046,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_assignTeamCombo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_assignTeamCombo`",
@@ -4901,7 +5061,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_control] call KISKA_fnc_GCHOnLoad_assignTeamCombo;\n\n```"
+                    "text": "```sqf\n[_control] call KISKA_fnc_GCHOnLoad_assignTeamCombo;\n```"
                 }
             ],
             "description": "Adds control event handler to the combo box for turning it on and off."
@@ -4913,6 +5073,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCH_assignTeam.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _team] spawn `KISKA_fnc_GCHOnLoad_assignTeamCombo`",
@@ -4931,7 +5092,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [aUnit] remoteExec [\"KISKA_fnc_GCH_assignTeam\",LocalPlayerUnitOrLeaderOfGroup];\n\n```"
+                    "text": "```sqf\n[aUnit] remoteExec [\"KISKA_fnc_GCH_assignTeam\",LocalPlayerUnitOrLeaderOfGroup];\n```"
                 }
             ],
             "description": "Reassigns a unit's team"
@@ -4943,6 +5104,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_canBeDeletedCombo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_canBeDeletedCombo`",
@@ -4957,7 +5119,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_control] call KISKA_fnc_GCHOnLoad_canBeDeletedCombo;\n\n```"
+                    "text": "```sqf\n[_control] call KISKA_fnc_GCHOnLoad_canBeDeletedCombo;\n```"
                 }
             ],
             "description": "Adds control event handler to the combo box for turning it on and off."
@@ -4969,6 +5131,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_canRallyCombo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_canRallyCombo`",
@@ -4983,7 +5146,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_control] call KISKA_fnc_GCHOnLoad_canRallyCombo;\n\n```"
+                    "text": "```sqf\n[_control] call KISKA_fnc_GCHOnLoad_canRallyCombo;\n```"
                 }
             ],
             "description": "Adds control event handler to the combo box for turning it on and off."
@@ -4995,6 +5158,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_closeButton.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_closeButton`",
@@ -5009,7 +5173,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_control] call KISKA_fnc_GCHOnLoad_closeButton;\n\n```"
+                    "text": "```sqf\n[_control] call KISKA_fnc_GCHOnLoad_closeButton;\n```"
                 }
             ],
             "description": "Adds control event handler to the close buttont that will close the dialog."
@@ -5021,6 +5185,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_joinGroupButton.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_joinGroupButton`",
@@ -5035,7 +5200,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n   [buttonControl]  call KISKA_fnc_GCHOnLoad_joinGroupButton;\n\n```"
+                    "text": "```sqf\n[buttonControl]  call KISKA_fnc_GCHOnLoad_joinGroupButton;\n```"
                 }
             ],
             "description": "The function that fires on the join group button click event.The Event is called from KISKA_fnc_GCHOnLoad."
@@ -5047,6 +5212,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_leaveGroupButton.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCHOnload_leaveGroupButton`",
@@ -5056,7 +5222,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [buttonControl] call KISKA_fnc_GCHOnload_leaveGroupButton;\n\n```"
+                    "text": "```sqf\n[buttonControl] call KISKA_fnc_GCHOnload_leaveGroupButton;\n```"
                 }
             ],
             "description": "The function that fires on the leave group button click event.The Event is added in KISKA_fnc_GCHOnLoad."
@@ -5068,6 +5234,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_setGroupIdButton.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_setGroupIdButton`",
@@ -5082,7 +5249,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [buttonControl] call KISKA_fnc_GCHOnLoad_setGroupIdButton;\n\n```"
+                    "text": "```sqf\n[buttonControl] call KISKA_fnc_GCHOnLoad_setGroupIdButton;\n```"
                 }
             ],
             "description": "The function that fires on the set group id button click event.\nThis is called from KISKA_fnc_GCHOnLoad"
@@ -5094,6 +5261,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_setLeaderButton.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_GCHOnLoad_setLeaderButton`",
@@ -5103,7 +5271,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n       [buttonControl] call KISKA_fnc_GCHOnLoad_setLeaderButton;\n\n```"
+                    "text": "```sqf\n[buttonControl] call KISKA_fnc_GCHOnLoad_setLeaderButton;\n```"
                 }
             ],
             "description": "The function that fires on the set leader button click event.\nThe function is called in KISKA_fnc_GCHOnLoad."
@@ -5115,6 +5283,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_showAiCheckbox.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_showAiCheckbox`",
@@ -5129,7 +5298,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_control] call KISKA_fnc_GCHOnLoad_showAiCheckbox;\n\n```"
+                    "text": "```sqf\n[_control] call KISKA_fnc_GCHOnLoad_showAiCheckbox;\n```"
                 }
             ],
             "description": "Adds control event handler to check box and sets its intial state."
@@ -5141,6 +5310,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_GroupChanger/Functions/fn_GCHOnLoad_sideGroupsList.sqf",
             "syntaxes": [
                 {
                     "outline": "[_control] call `KISKA_fnc_GCHOnLoad_sideGroupsList`",
@@ -5155,7 +5325,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_control] call KISKA_fnc_GCHOnLoad_sideGroupsList;\n\n```"
+                    "text": "```sqf\n[_control] call KISKA_fnc_GCHOnLoad_sideGroupsList;\n```"
                 }
             ],
             "description": "Adds eventhandler to the listbox."
@@ -5167,6 +5337,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_generateUniqueId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_tag] call `KISKA_fnc_generateUniqueId`",
@@ -5181,13 +5352,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_generateUniqueId;\n    // KISKA_uid_0_0\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_generateUniqueId;\n// KISKA_uid_0_0\n```"
                 },
                 {
-                    "text": "```sqf\n    [\"MYTAG\"] call KISKA_fnc_generateUniqueId;\n    // MYTAG_uid_0_0\n\n```"
+                    "text": "```sqf\n[\"MYTAG\"] call KISKA_fnc_generateUniqueId;\n// MYTAG_uid_0_0\n```"
                 }
             ],
-            "description": "Creates a unique identifier with a given tag. \n\nThe id format is: *tag*_*clientOwner*_*increment* which as an example could be\n `KISKA_uid_0_0` as the first unique id made in a single player scenario."
+            "description": "Creates a unique identifier with a given tag. \n \nThe id format is: *tag*_*clientOwner*_*increment* which as an example could be\n `KISKA_uid_0_0` as the first unique id made in a single player scenario."
         },
         "configuration": {
             "label": "KISKA_fnc_generateUniqueId",
@@ -5196,6 +5367,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_getAmmoClassFromId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_getAmmoClassFromId`",
@@ -5210,7 +5382,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _class = [0] call KISKA_fnc_getAmmoClassFromId\n\n```"
+                    "text": "```sqf\n_class = [0] call KISKA_fnc_getAmmoClassFromId\n```"
                 }
             ],
             "description": "Takes a number (id) and translates it into the class name for that number"
@@ -5222,6 +5394,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_getAmmoTitleFromId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_getAmmoClassFromId`",
@@ -5236,7 +5409,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _title = [0] call KISKA_fnc_getAmmoClassFromId\n\n```"
+                    "text": "```sqf\n_title = [0] call KISKA_fnc_getAmmoClassFromId\n```"
                 }
             ],
             "description": "Takes a number (id) and translates it into the title name for that number.Used to fill out menus with a consistent string for the corresponding round type."
@@ -5248,6 +5421,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getBoundingBoxDimensions.sqf",
             "syntaxes": [
                 {
                     "outline": "[_object, _boxType, _isLOD] call `KISKA_fnc_getBoundingBoxDimensions`",
@@ -5270,7 +5444,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _playerBoxDimensions = [player] call KISKA_fnc_getBoundingBoxDimensions;\n\n```"
+                    "text": "```sqf\nprivate _playerBoxDimensions = [player] call KISKA_fnc_getBoundingBoxDimensions;\n```"
                 }
             ],
             "description": "Returns the length, width, and height of a given object's bounding box, fora given clipping type."
@@ -5282,6 +5456,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getBumperPositionRelative.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _isRearBumper] call `KISKA_fnc_getBumperPositionRelative`",
@@ -5300,7 +5475,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _rearBumperPositionRelatives = [vic,true] call KISKA_fnc_getBumperPositionRelative;\n\n```"
+                    "text": "```sqf\nprivate _rearBumperPositionRelatives = [vic,true] call KISKA_fnc_getBumperPositionRelative;\n```"
                 }
             ],
             "description": "Gets the PositionRelative of a vehicles front or rear bumper."
@@ -5312,6 +5487,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_getCasTitleFromId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_getCasTitleFromId`",
@@ -5326,7 +5502,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _title = [0] call KISKA_fnc_getCasTitleFromId\n\n```"
+                    "text": "```sqf\n_title = [0] call KISKA_fnc_getCasTitleFromId\n```"
                 }
             ],
             "description": "Takes a number (id) and translates it into the title name for that number.Used to fill out menus with a consistent string for the corresponding round type."
@@ -5338,6 +5514,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getContainerCargo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_primaryContainer] call `KISKA_fnc_getContainerCargo`",
@@ -5352,7 +5529,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [container] call KISKA_fnc_getContainerCargo;\n\n```"
+                    "text": "```sqf\n[container] call KISKA_fnc_getContainerCargo;\n```"
                 }
             ],
             "description": "Saves the cargo of a container in a formatterd array to be used withKISKA_fnc_pasteContainerCargo for copying cargos of containers.\nExact ammo counts will be preserved even inside of an item such as magazinesinside of a vest or backpack."
@@ -5364,6 +5541,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getCurrentWaypoint.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group] call `KISKA_fnc_getCurrentWaypoint`",
@@ -5378,7 +5556,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _waypoint = [myUnit] call KISKA_fnc_getCurrentWaypoint;\n\n```"
+                    "text": "```sqf\nprivate _waypoint = [myUnit] call KISKA_fnc_getCurrentWaypoint;\n```"
                 }
             ],
             "description": "Returns the units currentWaypoint"
@@ -5390,6 +5568,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getFromNetId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _fromObject] call `KISKA_fnc_getFromNetId`",
@@ -5408,7 +5587,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _entity = [\"0:0\"] call KISKA_fnc_netId;\n\n```"
+                    "text": "```sqf\n_entity = [\"0:0\"] call KISKA_fnc_netId;\n```"
                 }
             ],
             "description": "Gets an object or group from a netId."
@@ -5420,6 +5599,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getLatestPlayedMusicID.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_getLatestPlayedMusicID`",
@@ -5429,7 +5609,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _id = call KISKA_fnc_getLatestPlayedMusicID;\n\n```"
+                    "text": "```sqf\nprivate _id = call KISKA_fnc_getLatestPlayedMusicID;\n```"
                 }
             ],
             "description": "Returns the latest track ID of music that played (each song played increments)the ID by one.\nThis DOES NOT indicated whether or not this ID is still playing.See KISKA_fnc_getPlayingMusic to check what track is present (if any)."
@@ -5441,6 +5621,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getMissionLayerObjects.sqf",
             "syntaxes": [
                 {
                     "outline": "[_layer] call `KISKA_fnc_getMissionLayerObjects`",
@@ -5455,7 +5636,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _objects = [\"myLayer\"] call KISKA_fnc_getMissionLayerObjects;\n\n```"
+                    "text": "```sqf\n_objects = [\"myLayer\"] call KISKA_fnc_getMissionLayerObjects;\n```"
                 }
             ],
             "description": "Simply returns the objects of a mission layer."
@@ -5467,6 +5648,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getMostSpecificCfgValue.sqf",
             "syntaxes": [
                 {
                     "outline": "[_property, _configs, _ignoredValues, _ignoredTypes] call `KISKA_fnc_getMostSpecificCfgValue`",
@@ -5493,7 +5675,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _valueFromMostSpecificClass = [\n        \"myProperty\"\n        [\n            missionConfigFile >> \"SomeClass\",\n            missionConfigFile >> \"SomeClass\" >> \"SomeSubClass\",\n            missionConfigFile >> \"SomeClass\" >> \"SomeSubClass\" >> \"SomeFurtherSubClass\",\n        ],\n        [\"\"], // shouldn't be an empty string,\n        [123] // ignore number properties\n    ] call KISKA_fnc_getMostSpecificCfgValue;\n\n```"
+                    "text": "```sqf\nprivate _valueFromMostSpecificClass = [\n    \"myProperty\"\n    [\n        missionConfigFile >> \"SomeClass\",\n        missionConfigFile >> \"SomeClass\" >> \"SomeSubClass\",\n        missionConfigFile >> \"SomeClass\" >> \"SomeSubClass\" >> \"SomeFurtherSubClass\",\n    ],\n    [\"\"], // shouldn't be an empty string,\n    [123] // ignore number properties\n] call KISKA_fnc_getMostSpecificCfgValue;\n```"
                 }
             ],
             "description": "Picks the most specific value from a list of configs properties to check."
@@ -5505,6 +5687,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getMusicDuration.sqf",
             "syntaxes": [
                 {
                     "outline": "[_track] call `KISKA_fnc_getMusicDuration`",
@@ -5519,7 +5702,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _duration = [\"LeadTrack01_F_Curator\"] call KISKA_fnc_getMusicDuration;\n\n```"
+                    "text": "```sqf\n_duration = [\"LeadTrack01_F_Curator\"] call KISKA_fnc_getMusicDuration;\n```"
                 }
             ],
             "description": "Returns the duration of a track of music. Will return 0 if undefined duration or class."
@@ -5531,6 +5714,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getMusicFromClass.sqf",
             "syntaxes": [
                 {
                     "outline": "[_musicClass] call `KISKA_fnc_getMusicFromClass`",
@@ -5545,7 +5729,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"stealth\"] call KISKA_fnc_getMusicFromClass;\n\n```"
+                    "text": "```sqf\n[\"stealth\"] call KISKA_fnc_getMusicFromClass;\n```"
                 }
             ],
             "description": "Returns an array of track names for the given class of music."
@@ -5557,6 +5741,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getNearestIncriment.sqf",
             "syntaxes": [
                 {
                     "outline": "[_numberToCheck, _incriment] call `KISKA_fnc_getNearestIncriment`",
@@ -5575,7 +5760,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // -0.22\n    _nearestIncriment = [-0.223,0.01] call KISKA_fnc_getNearestIncriment;\n\n```"
+                    "text": "```sqf\n// -0.22\n_nearestIncriment = [-0.223,0.01] call KISKA_fnc_getNearestIncriment;\n```"
                 }
             ],
             "description": "Rounds off a number to the nearest incriment."
@@ -5587,6 +5772,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getPlayingMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_getPlayingMusic`",
@@ -5596,7 +5782,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _track = call KISKA_fnc_getPlayingMusic;\n\n```"
+                    "text": "```sqf\nprivate _track = call KISKA_fnc_getPlayingMusic;\n```"
                 }
             ],
             "description": "Returns the current playing tracks class name."
@@ -5608,6 +5794,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getPosRelativeSurface.sqf",
             "syntaxes": [
                 {
                     "outline": "[_centerPosition, _distance, _bearing, _zOffSet] call `KISKA_fnc_getPosRelativeSurface`",
@@ -5634,10 +5821,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        player,\n        100,\n        180\n    ] call KISKA_fnc_getPosRelativeSurface;\n\n```"
+                    "text": "```sqf\n[\n    player,\n    100,\n    180\n] call KISKA_fnc_getPosRelativeSurface;\n```"
                 },
                 {
-                    "text": "```sqf\n    [\n        player,\n        100,\n        180,\n        10 // 10 meters above water surface or terrain\n    ] call KISKA_fnc_getPosRelativeSurface;\n\n```"
+                    "text": "```sqf\n[\n    player,\n    100,\n    180,\n    10 // 10 meters above water surface or terrain\n] call KISKA_fnc_getPosRelativeSurface;\n```"
                 }
             ],
             "description": "Returns a relative position but that the position is at the 0 position for thesurface beneath (being either water or the terrain) in an ATL format.\nThis means the z will always be 0 or the height of the sea above the terrain levelat the given _centerPosition."
@@ -5649,6 +5836,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getRelativeVectorAndPos.sqf",
             "syntaxes": [
                 {
                     "outline": "[_parent, _child] call `KISKA_fnc_getRelativeVectorAndPos`",
@@ -5667,7 +5855,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private relativeArray = [\n        parentObject,\n        childObject\n    ] call KISKA_fnc_getRelativeVectorAndPos\n\n```"
+                    "text": "```sqf\nprivate relativeArray = [\n    parentObject,\n    childObject\n] call KISKA_fnc_getRelativeVectorAndPos\n```"
                 }
             ],
             "description": "Returns the relative vector dir and up and world position from one object toanother."
@@ -5679,6 +5867,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setRelativeVectorAndPos.sqf",
             "syntaxes": [
                 {
                     "outline": "[_parent, _child, _relativeInfo] call `KISKA_fnc_getRelativeVectorAndPos`",
@@ -5693,7 +5882,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_relativeInfo",
-                            "description": "*(ARRAY)* - An array containing the relative coordinates tochange to worldspace:\n\n        - 0. *(PoitionWorld[])* - Relative world pos\n        - 1. *(Vector[])* - Relative vector dir\n        - 2. *(Vector[])* - Relative vector up"
+                            "description": "*(ARRAY)* - An array containing the relative coordinates tochange to worldspace:\n \n        - 0. *(PoitionWorld[])* - Relative world pos\n        - 1. *(Vector[])* - Relative vector dir\n        - 2. *(Vector[])* - Relative vector up"
                         }
                     ],
                     "returns": "NOTHING"
@@ -5701,7 +5890,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        parentObject,\n        childObject,\n        [[0,0,0],[0,1,0],[0,0,1]]\n    ] call KISKA_fnc_setRelativeVectorAndPos;\n\n```"
+                    "text": "```sqf\n[\n    parentObject,\n    childObject,\n    [[0,0,0],[0,1,0],[0,0,1]]\n] call KISKA_fnc_setRelativeVectorAndPos;\n```"
                 }
             ],
             "description": "Sets the position and vector dir and up of one object to another based onrelative coordinates to the parent object."
@@ -5713,6 +5902,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_getSupportVehicleClasses.sqf",
             "syntaxes": [
                 {
                     "outline": "[_side, _typeId] call `KISKA_fnc_getSupportVehicleClasses`",
@@ -5731,7 +5921,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _bluforCAS_types = [BLUFOR,SUPPORT_TYPE_CAS] call KISKA_fnc_getSupportVehicleClasses;\n\n```"
+                    "text": "```sqf\n_bluforCAS_types = [BLUFOR,SUPPORT_TYPE_CAS] call KISKA_fnc_getSupportVehicleClasses;\n```"
                 }
             ],
             "description": "Gets mission configed default vehicle types available for KISKA supports."
@@ -5743,6 +5933,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getVariableTarget.sqf",
             "syntaxes": [
                 {
                     "outline": "[_variableName, _namespace, _defaultValue, _target, _awaitParams] spawn `KISKA_fnc_getVariableTarget`",
@@ -5773,7 +5964,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] spawn {\n        // need to call for direct return\n        private _serversSomeVariable = [\n            \"someVariable\",\n            missionNamespace,\n            \"\",\n            2\n        ] call KISKA_fnc_getVariableTarget;\n    };\n\n```"
+                    "text": "```sqf\n[] spawn {\n    // need to call for direct return\n    private _serversSomeVariable = [\n        \"someVariable\",\n        missionNamespace,\n        \"\",\n        2\n    ] call KISKA_fnc_getVariableTarget;\n};\n```"
                 }
             ],
             "description": "Gets a variable from a remote target object, id, or string (uses remoteExec targets)\nTakes a bit of time and therefore needs to be scheduled."
@@ -5785,6 +5976,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getVariableTarget_sendBack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_namespace, _variableName, _saveVariable, _defaultValue, _sendBackTarget] call `KISKA_fnc_getVariableTarget_sendBack`",
@@ -5815,7 +6007,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _namespace,\n        _variableName,\n        _saveVariable,\n        _defaultValue,\n        clientOwner\n    ] remoteExecCall [\"KISKA_fnc_getVariableTarget_sendBack\",_target];\n\n```"
+                    "text": "```sqf\n[\n    _namespace,\n    _variableName,\n    _saveVariable,\n    _defaultValue,\n    clientOwner\n] remoteExecCall [\"KISKA_fnc_getVariableTarget_sendBack\",_target];\n```"
                 }
             ],
             "description": "The send back component of KISKA_fnc_getVariableTarget that is executed on the target.Shouldn't be called on its own."
@@ -5827,6 +6019,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getVectorToTarget.sqf",
             "syntaxes": [
                 {
                     "outline": "[_object, _target] call `KISKA_fnc_getVectorToTarget`",
@@ -5845,7 +6038,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // angles to player\n    myObject setVectorDirAndUp ([myObject,player] call KISKA_fnc_getVectorToTarget);\n\n```"
+                    "text": "```sqf\n// angles to player\nmyObject setVectorDirAndUp ([myObject,player] call KISKA_fnc_getVectorToTarget);\n```"
                 }
             ],
             "description": "Returns vectorDir and vectorUp that should angle the object towards the target.\nE.g. this will point the nose of a plane towards a target if paired withsetVector commands."
@@ -5857,6 +6050,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_assignObjectOrGroupKey.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objectOrGroup] call `KISKA_fnc_hashmap_assignObjectOrGroupKey`",
@@ -5871,7 +6065,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _associatedKey = [\n\t\tsomeObject\n\t] call KISKA_fnc_hashmap_assignObjectOrGroupKey;\n\n```"
+                    "text": "```sqf\nprivate _associatedKey = [\n\tsomeObject\n] call KISKA_fnc_hashmap_assignObjectOrGroupKey;\n```"
                 }
             ],
             "description": "Provides a unique hashmap key for a given object or group.\nThe key can be reverse looked up for the object or group with KISKA_fnc_hashmap_getObjectOrGroupFromRealKey."
@@ -5883,6 +6077,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_deleteAt.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key] call `KISKA_fnc_hashmap_deleteAt`",
@@ -5901,7 +6096,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _value = [myMap,_key] call KISKA_fnc_hashmap_deleteAt;\n\n```"
+                    "text": "```sqf\nprivate _value = [myMap,_key] call KISKA_fnc_hashmap_deleteAt;\n```"
                 }
             ],
             "description": "Deletes a key/value pair if it's in a hashmap, supports objects and groups as keys.\nIdeally, not something that should be used if the map is not intended toalso hold groups and objects as keys."
@@ -5913,6 +6108,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_get.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key, _default] call `KISKA_fnc_hashmap_get`",
@@ -5935,7 +6131,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _value = [\n        myMap,\n        someObject,\n        \"Hello World\"\n    ] call KISKA_fnc_hashmap_get;\n\n```"
+                    "text": "```sqf\nprivate _value = [\n    myMap,\n    someObject,\n    \"Hello World\"\n] call KISKA_fnc_hashmap_get;\n```"
                 }
             ],
             "description": "Gets a value from a hashmap but also supports objects and groups as keys.\nIdeally, not something that should be used if the map is not intended toalso hold groups and objects as keys."
@@ -5947,6 +6143,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_getKiskaObjectGroupKeyMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_hashmap_getObjectOrGroupFromRealKey`",
@@ -5956,7 +6153,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _kiskaObjectOrGroupKeyHashMap = call KISKA_fnc_hashmap_getKiskaObjectGroupKeyMap;\n\n```"
+                    "text": "```sqf\nprivate _kiskaObjectOrGroupKeyHashMap = call KISKA_fnc_hashmap_getKiskaObjectGroupKeyMap;\n```"
                 }
             ],
             "description": "Retrieves the global hashmap used to associate a given real key with either agroup or object with KISKA hashmap functions."
@@ -5968,6 +6165,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_getObjectOrGroupFromRealKey.sqf",
             "syntaxes": [
                 {
                     "outline": "[_key] call `KISKA_fnc_hashmap_getObjectOrGroupFromRealKey`",
@@ -5982,7 +6180,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n\tprivate _key = [someObject] call KISKA_fnc_hashmap_getRealKey;\n    private _someObject = [\n\t\t_key\n\t] call KISKA_fnc_hashmap_getObjectOrGroupFromRealKey;\n\n```"
+                    "text": "```sqf\nprivate _key = [someObject] call KISKA_fnc_hashmap_getRealKey;\nprivate _someObject = [\n\t_key\n] call KISKA_fnc_hashmap_getObjectOrGroupFromRealKey;\n```"
                 }
             ],
             "description": "Translates a real key used be KISKA hashmaps for groups and objects back intothe associated group or object."
@@ -5994,6 +6192,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_getRealKey.sqf",
             "syntaxes": [
                 {
                     "outline": "[_key] call `KISKA_fnc_hashmap_getRealKey`",
@@ -6008,10 +6207,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _keyUsedInKiskaHashmap = [someObject] call KISKA_fnc_hashmap_getRealKey;\n\n```"
+                    "text": "```sqf\nprivate _keyUsedInKiskaHashmap = [someObject] call KISKA_fnc_hashmap_getRealKey;\n```"
                 }
             ],
-            "description": "Returns the actual value used for a key when using KISKA hashmap functions.\n\nThis really only applies to objects or groups as they will have a special stringused to identify them in the hashmap. Use this function to get the key of themif you need to do multiple operations on a hashmap with the same object or groupand do not want the overhead of the functions."
+            "description": "Returns the actual value used for a key when using KISKA hashmap functions.\n \nThis really only applies to objects or groups as they will have a special stringused to identify them in the hashmap. Use this function to get the key of themif you need to do multiple operations on a hashmap with the same object or groupand do not want the overhead of the functions."
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_getRealKey",
@@ -6020,6 +6219,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_in.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key] call `KISKA_fnc_hashmap_in`",
@@ -6038,7 +6238,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myMap,_key] call KISKA_fnc_hashmap_in;\n\n```"
+                    "text": "```sqf\n[myMap,_key] call KISKA_fnc_hashmap_in;\n```"
                 }
             ],
             "description": "Checks if a key exists in a hashmap, supports objects and groups as keys.\nIdeally, not something that should be used if the map is not intended toalso hold groups and objects as keys."
@@ -6050,6 +6250,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_set.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key, _value, _insertOnly] call `KISKA_fnc_hashmap_set`",
@@ -6076,7 +6277,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _inserted = [\n        myMap,\n        someObject,\n        \"Hello World\"\n    ] call KISKA_fnc_hashmap_set;\n\n```"
+                    "text": "```sqf\nprivate _inserted = [\n    myMap,\n    someObject,\n    \"Hello World\"\n] call KISKA_fnc_hashmap_set;\n```"
                 }
             ],
             "description": "Sets a key/value pair in a hashmap but also supports objects and groups as keys.\nIdeally, not something that should be used if the map is not intended toalso hold groups and objects as keys."
@@ -6088,6 +6289,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_helicopterGunner.sqf",
             "syntaxes": [
                 {
                     "outline": "[_centerPosition, _radius, _aircraftType, _timeOnStation, _supportSpeedLimit, _flyinHeight, _approachBearing, _side, _postSupportCode] call `KISKA_fnc_helicopterGunner`",
@@ -6126,7 +6328,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_postSupportCode",
-                            "description": ": *(CODE, ARRAY, or STRING)* - Code to execute after the support completes.See KISKA_fnc_callBack.The default behaviour is for the aircraft to move 2000 meters away and forits complete crew and self to be deleted. The _postSupportCode should return a `BOOL`that if `false` will NOT perform the default behaviour in addition to the callback.\n\n    Parameters:\n    - 0: *(OBJECT)* - The helicopter confucting support\n    - 1: *(GROUP)* - The group the pilot belongs to\n    - 2: *(OBJECT[])* - The full vehicle crew\n    - 3: *(OBJECT)* - The unit that *should* be the pilot of the helicopter\n    - 4: *(ARRAY)* - The position the helicopter was supporting"
+                            "description": ": *(CODE, ARRAY, or STRING)* - Code to execute after the support completes.See KISKA_fnc_callBack.The default behaviour is for the aircraft to move 2000 meters away and forits complete crew and self to be deleted. The _postSupportCode should return a `BOOL`that if `false` will NOT perform the default behaviour in addition to the callback.\n \n    Parameters:\n    - 0: *(OBJECT)* - The helicopter confucting support\n    - 1: *(GROUP)* - The group the pilot belongs to\n    - 2: *(OBJECT[])* - The full vehicle crew\n    - 3: *(OBJECT)* - The unit that *should* be the pilot of the helicopter\n    - 4: *(ARRAY)* - The position the helicopter was supporting"
                         }
                     ],
                     "returns": "ARRAY - The vehicle info0: *(OBJECT)* - The vehicle created1: *(OBJECT[])* - The vehicle crew2: *(GROUP)* - The group the crew is a part of"
@@ -6134,7 +6336,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        player,\n        250,\n        \"B_Heli_Attack_01_dynamicLoadout_F\"\n    ] call KISKA_fnc_helicopterGunner;\n\n```"
+                    "text": "```sqf\n[\n    player,\n    250,\n    \"B_Heli_Attack_01_dynamicLoadout_F\"\n] call KISKA_fnc_helicopterGunner;\n```"
                 }
             ],
             "description": "Spawns a helicopter (or uses an existing one) to partol a given area for a period of time andengage enemy targets in a given area."
@@ -6146,6 +6348,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_heliLand.sqf",
             "syntaxes": [
                 {
                     "outline": "[_aircraft, _landingPosition, _landMode, _createHelipad, _afterLandCode] call `KISKA_fnc_heliLand`",
@@ -6168,7 +6371,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_afterLandCode",
-                            "description": "*(CODE, STRING, or ARRAY)* - Code to spawn after the helicopter has landed. See KISKA_fnc_callBack\n\n    Parameters:\n    - 0: *(OBJECT)* - The helicopter"
+                            "description": "*(CODE, STRING, or ARRAY)* - Code to spawn after the helicopter has landed. See KISKA_fnc_callBack\n \n    Parameters:\n    - 0: *(OBJECT)* - The helicopter"
                         }
                     ],
                     "returns": "*(BOOL)* - True if helicopter can attempt, false if problem"
@@ -6176,7 +6379,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [myHeli,position player] call KISKA_fnc_heliLand;\n\n```"
+                    "text": "```sqf\n[myHeli,position player] call KISKA_fnc_heliLand;\n```"
                 }
             ],
             "description": "Makes a helicopter land at a given position."
@@ -6188,6 +6391,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_heliPatrol.sqf",
             "syntaxes": [
                 {
                     "outline": "[_helicopter, _patrolPoints, _spotDistance3D, _patrolHeight, _patrolSpeed, _randomPatrol] call `KISKA_fnc_heliPatrol`",
@@ -6222,7 +6426,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [heli,[logic1,logic2,logic3],500,200,false] call KISKA_fnc_heliPatrol;\n\n```"
+                    "text": "```sqf\n[heli,[logic1,logic2,logic3],500,200,false] call KISKA_fnc_heliPatrol;\n```"
                 }
             ],
             "description": "Has a helicopter patrol looking for enemy men.If \"spotted\", the helicopter will land in a safe area and drop off infantry if onboard.It will then move to engage the units if it has weapons or just stalk them if not.The infantry will continually stalk the unit until dead."
@@ -6234,6 +6438,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_hintDiary.sqf",
             "syntaxes": [
                 {
                     "outline": "[_hintText, _subject, _silent] call `KISKA_fnc_hintDiary`",
@@ -6256,7 +6461,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"this is the message\", \"Subject\"] call KISKA_fnc_hintDiary;\n\n```"
+                    "text": "```sqf\n[\"this is the message\", \"Subject\"] call KISKA_fnc_hintDiary;\n```"
                 }
             ],
             "description": "Displays a hint to the player and (always) creates a chronologicaldiary entry and an entry in the defined subject if desired."
@@ -6268,6 +6473,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_hover.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _hoverPosition, _shouldHoverStop, _onHoverEnd] call `KISKA_fnc_hover`",
@@ -6282,11 +6488,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_shouldHoverStop",
-                            "description": "*(CODE)* - Code that should return a boolean to determine if the vehicle should stop its hover.This condition is checked every 0.05s.\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle\n    - 1: _pilot - The currentPilot of _vehicle"
+                            "description": "*(CODE)* - Code that should return a boolean to determine if the vehicle should stop its hover.This condition is checked every 0.05s.\n \n    Parameters:\n    - 0: _vehicle - The drop vehicle\n    - 1: _pilot - The currentPilot of _vehicle"
                         },
                         {
                             "name": "_onHoverEnd",
-                            "description": "*(CODE, STRING, or ARRAY)* - Code that executes after the hover completes, see KISKA_fnc_callBackThis condition is checked every 0.05s.\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle\n    - 1: _pilot - The currentPilot of _vehicle"
+                            "description": "*(CODE, STRING, or ARRAY)* - Code that executes after the hover completes, see KISKA_fnc_callBackThis condition is checked every 0.05s.\n \n    Parameters:\n    - 0: _vehicle - The drop vehicle\n    - 1: _pilot - The currentPilot of _vehicle"
                         }
                     ],
                     "returns": "NOTHING"
@@ -6294,7 +6500,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n\t\tmyHeli,\n\t\tmyHoverPositionASL,\n\t\t{\n\t\t\tlocalNamespace getVariable [\"stopMyHover\",false]\n\t\t},\n\t\t{\n\t\t\thint \"after hover\";\n\t\t}\n    ] call KISKA_fnc_hover;\n\n```"
+                    "text": "```sqf\n[\n\tmyHeli,\n\tmyHoverPositionASL,\n\t{\n\t\tlocalNamespace getVariable [\"stopMyHover\",false]\n\t},\n\t{\n\t\thint \"after hover\";\n\t}\n] call KISKA_fnc_hover;\n```"
                 }
             ],
             "description": "Sends a vehicle to a given point to hover.\nPilots should ideally be placed in \"CARELESS\" behaviour when around enemies."
@@ -6306,6 +6512,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_idCounter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _namespace] call `KISKA_fnc_idCounter`",
@@ -6324,7 +6531,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _latesIndexFor_myId = [\"myId\"] call KISKA_fnc_idCounter;\n\n```"
+                    "text": "```sqf\nprivate _latesIndexFor_myId = [\"myId\"] call KISKA_fnc_idCounter;\n```"
                 }
             ],
             "description": "For a given string id, return the latest \"index\" for that id.This increments the id by one each time it is called. This function does notcheck if the provided namespace is not null, so ensure it is checked"
@@ -6336,6 +6543,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_initDynamicSimConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_initDynamicSimConfig`",
@@ -6345,7 +6553,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    POST-INIT Function\n\n```"
+                    "text": "```sqf\nPOST-INIT Function\n```"
                 }
             ],
             "description": "Initializes the dynamic simulation system with the given values based onmission config values."
@@ -6357,6 +6565,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isAdminOrHost.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_isAdminOrHost`",
@@ -6366,7 +6575,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _isAdminOrHost = call KISKA_fnc_isAdminOrHost;\n\n```"
+                    "text": "```sqf\n_isAdminOrHost = call KISKA_fnc_isAdminOrHost;\n```"
                 }
             ],
             "description": "Checks if the machine is an admin or host's."
@@ -6378,6 +6587,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isGroupAlive.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group] call `KISKA_fnc_isGroupAlive`",
@@ -6392,7 +6602,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group player] call KISKA_fnc_isGroupAlive;\n\n```"
+                    "text": "```sqf\n[group player] call KISKA_fnc_isGroupAlive;\n```"
                 }
             ],
             "description": "Checks if any unit in the group is alive."
@@ -6404,6 +6614,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_isGroupRallyAllowed.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToCheck] call `KISKA_fnc_isGroupRallyAllowed`",
@@ -6418,7 +6629,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // checks if player's group can use the rally system (if they're the server)\n    [player] call KISKA_fnc_isGroupRallyAllowed;\n\n```"
+                    "text": "```sqf\n// checks if player's group can use the rally system (if they're the server)\n[player] call KISKA_fnc_isGroupRallyAllowed;\n```"
                 }
             ],
             "description": "Checks if a group is has KISKA_canRally saved to its namespace on the serverwhich allows its members to place down rally points."
@@ -6430,6 +6641,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isMainMenu.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_isMainMenu`",
@@ -6439,7 +6651,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    isMainMenu = call KISKA_fnc_isMainMenu;\n\n```"
+                    "text": "```sqf\nisMainMenu = call KISKA_fnc_isMainMenu;\n```"
                 }
             ],
             "description": "Checks if loaded mission is main menu."
@@ -6451,6 +6663,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_isMusicPlaying.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_isMusicPlaying`",
@@ -6460,7 +6673,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _isSomethingPlaying = call KISKA_fnc_isMusicPlaying;\n\n```"
+                    "text": "```sqf\n_isSomethingPlaying = call KISKA_fnc_isMusicPlaying;\n```"
                 }
             ],
             "description": "Returns whether or not music is currently playing"
@@ -6472,6 +6685,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isPatchLoaded.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configName] call `KISKA_fnc_isPatchLoaded`",
@@ -6486,7 +6700,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"OPTRE_Core\"] call KISKA_fnc_isPatchLoaded;\n\n\n```"
+                    "text": "```sqf\n[\"OPTRE_Core\"] call KISKA_fnc_isPatchLoaded;\n```"
                 }
             ],
             "description": "Simply checks a config name to see if it is loaded under CFGPatches"
@@ -6498,6 +6712,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Respawn/fn_keepInGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_keepInGroup`",
@@ -6507,7 +6722,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT function\n\n```"
+                    "text": "```sqf\nPRE-INIT function\n```"
                 }
             ],
             "description": "Attempts to keep a player in the same group and team after they respawn."
@@ -6519,6 +6734,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_log.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _logWithError, _forceLog, _joinString, _scriptName] call `KISKA_fnc_log`",
@@ -6549,7 +6765,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    missionNamespace setVariable [\"KISKA_doLog\",true];\n    scriptName \"My Script\";\n    private _myvar = 1;\n    [[\"Hello Number\",_myvar]] call KISKA_fnc_log;\n\n    // prints [\"My Script\"] \"Hello Number 1\" to console\n\n```"
+                    "text": "```sqf\nmissionNamespace setVariable [\"KISKA_doLog\",true];\nscriptName \"My Script\";\nprivate _myvar = 1;\n[[\"Hello Number\",_myvar]] call KISKA_fnc_log;\n\n// prints [\"My Script\"] \"Hello Number 1\" to console\n```"
                 }
             ],
             "description": "Prints a log with a script name to console.\nWhether or not something is logged depends on whether the script is set inthe KISKA_logScripts array. If the script name (or \"all\") is found in the arraya log is printed."
@@ -6561,6 +6777,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_lookHere.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objectsToRotate, _positionsToLookAt, _setDirection] call `KISKA_fnc_lookHere`",
@@ -6583,7 +6800,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player,[[0,0,0]]] call KISKA_fnc_lookHere;\n\n```"
+                    "text": "```sqf\n[player,[[0,0,0]]] call KISKA_fnc_lookHere;\n```"
                 }
             ],
             "description": "Takes objects and sets their direction towards the nearest object or position within a set"
@@ -6595,6 +6812,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Managed Run/fn_managedRun_execute.sqf",
             "syntaxes": [
                 {
                     "outline": "[_nameOfCode, _args, _idNamespace, _idToRunAgainst, _isScheduled] call `KISKA_fnc_managedRun_execute`",
@@ -6625,7 +6843,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // add code for given id\n    [\n        \"KISKA_manage_allowDamage\",\n        {\n            params [\"_unit\",\"_isDamageAllowed\"];\n            _unit allowDamage _isDamageAllowed;\n        }\n    ] call KISKA_fnc_managedRun_updateCode;\n\n    // initial run\n    private _idOfRun = [\n        \"KISKA_manage_allowDamage\",\n        [player, false],\n        player\n    ] call KISKA_fnc_managedRun_execute;\n\n    // try to change in the future\n    [_idOfRun] spawn {\n        params [\"_idOfRun\"];\n        sleep 3;\n        // does nothing because id was overwritten in the meantime\n        [\n            \"KISKA_manage_allowDamage\",\n            [player, true],\n            player,\n            _idOfRun\n        ] call KISKA_fnc_managedRun_execute;\n\n        hint str (isDamageAllowed player) // false\n    };\n\n    private _idOfADifferentRun = [\n        \"KISKA_manage_allowDamage\",\n        [player, false],\n        player\n    ] call KISKA_fnc_managedRun_execute;\n\n```"
+                    "text": "```sqf\n// add code for given id\n[\n    \"KISKA_manage_allowDamage\",\n    {\n        params [\"_unit\",\"_isDamageAllowed\"];\n        _unit allowDamage _isDamageAllowed;\n    }\n] call KISKA_fnc_managedRun_updateCode;\n\n// initial run\nprivate _idOfRun = [\n    \"KISKA_manage_allowDamage\",\n    [player, false],\n    player\n] call KISKA_fnc_managedRun_execute;\n\n// try to change in the future\n[_idOfRun] spawn {\n    params [\"_idOfRun\"];\n    sleep 3;\n    // does nothing because id was overwritten in the meantime\n    [\n        \"KISKA_manage_allowDamage\",\n        [player, true],\n        player,\n        _idOfRun\n    ] call KISKA_fnc_managedRun_execute;\n\n    hint str (isDamageAllowed player) // false\n};\n\nprivate _idOfADifferentRun = [\n    \"KISKA_manage_allowDamage\",\n    [player, false],\n    player\n] call KISKA_fnc_managedRun_execute;\n```"
                 }
             ],
             "description": "Allows multiple systems to manage a particular functionality or subset of codeby restricting runs to only the latest id for a given namespace\nThe code must be added with KISKA_fnc_managedRun_updateCode.\nAn example is having competing systems that need to adjust the damage of the playerat different times an perhaps with delays. Perhaps one system starts by taking ownershipof this functionality to not allow the player to be damaged, however, later this systemwill reset wether or not the player has damage allowed after some delay.If another system (or the same one again in the future) wants to take ownership of thisfunctionality to also set the player to not allow damage BEFORE the previous systemhas reset the player's isDamageAllowed state, it could become complex to try and handlethe reset vs continuing to allow the player to not take damage. Instead, the previoussystem's code will now be blocked from running, as another id has taken ownership."
@@ -6637,6 +6855,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Managed Run/fn_managedRun_isDefined.sqf",
             "syntaxes": [
                 {
                     "outline": "[_nameOfCode] call `KISKA_fnc_managedRun_isDefined`",
@@ -6651,7 +6870,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // false\n    private _isDefined = [\"KISKA_test\"] call KISKA_fnc_managedRun_isDefined;\n    [\"KISKA_test\",{hint \"Hello World\"}] call KISKA_fnc_managedRun_updateCode;\n    // true now\n    _isDefined = [\"KISKA_test\"] call KISKA_fnc_managedRun_isDefined;\n\n```"
+                    "text": "```sqf\n// false\nprivate _isDefined = [\"KISKA_test\"] call KISKA_fnc_managedRun_isDefined;\n[\"KISKA_test\",{hint \"Hello World\"}] call KISKA_fnc_managedRun_updateCode;\n// true now\n_isDefined = [\"KISKA_test\"] call KISKA_fnc_managedRun_isDefined;\n```"
                 }
             ],
             "description": "Checks if a given name is currently defined in the managedRun code map."
@@ -6663,6 +6882,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Managed Run/fn_managedRun_updateCode.sqf",
             "syntaxes": [
                 {
                     "outline": "[_nameOfCode, _code] call `KISKA_fnc_managedRun_updateCode`",
@@ -6681,7 +6901,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_test\",{hint \"Hello World\"}] call KISKA_fnc_managedRun_updateCode;\n\n```"
+                    "text": "```sqf\n[\"KISKA_test\",{hint \"Hello World\"}] call KISKA_fnc_managedRun_updateCode;\n```"
                 }
             ],
             "description": "Adjusts the code for a given ID that will run when called from KISKA_fnc_managedRun_execute"
@@ -6693,6 +6913,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_markBorder.sqf",
             "syntaxes": [
                 {
                     "outline": "[_centerPos, _radius, _markerCount, _verticalOffset, _markerObjectClass] call `KISKA_fnc_markBorder`",
@@ -6723,7 +6944,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _markers = [\n        player\n    ] call KISKA_fnc_markBorder;\n\n```"
+                    "text": "```sqf\n_markers = [\n    player\n] call KISKA_fnc_markBorder;\n```"
                 }
             ],
             "description": "Places a number of objects around a given radius to mark an area."
@@ -6735,6 +6956,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_markPositions.sqf",
             "syntaxes": [
                 {
                     "outline": "[_positions] call `KISKA_fnc_markPositions`",
@@ -6749,7 +6971,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[0,0,0],[0,0,0]] call KISKA_fnc_markPositions;\n\n```"
+                    "text": "```sqf\n[[0,0,0],[0,0,0]] call KISKA_fnc_markPositions;\n```"
                 }
             ],
             "description": "Simply creates a 3d object helper marker on provided postitions. Works in 3den also."
@@ -6761,6 +6983,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_monitorFPS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_duration, _frequency, _print] spawn `KISKA_fnc_monitorFPS`",
@@ -6783,7 +7006,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [60] call KISKA_fnc_monitorFPS;\n\n```"
+                    "text": "```sqf\n[60] call KISKA_fnc_monitorFPS;\n```"
                 }
             ],
             "description": "Keeps track of the local machine's FPS for a given duration and printsdata to log file."
@@ -6795,6 +7018,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_musicEventHandlers.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_musicEventHandlers`",
@@ -6804,7 +7028,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PREINIT FUNCTION\n\n```"
+                    "text": "```sqf\nPREINIT FUNCTION\n```"
                 }
             ],
             "description": "A preInit function to create the required music event handlers forKISKA music functions"
@@ -6816,6 +7040,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_musicStartEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_trackClassname] call `KISKA_fnc_musicStartEvent`",
@@ -6830,7 +7055,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"trackThatStarted\"] call KISKA_fnc_musicStartEvent;\n\n```"
+                    "text": "```sqf\n[\"trackThatStarted\"] call KISKA_fnc_musicStartEvent;\n```"
                 }
             ],
             "description": "The function that should be activated when music starts playing."
@@ -6842,6 +7067,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_musicStopEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_stopAudio] call `KISKA_fnc_musicStopEvent`",
@@ -6856,7 +7082,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] call KISKA_fnc_musicStopEvent;\n\n```"
+                    "text": "```sqf\n[] call KISKA_fnc_musicStopEvent;\n```"
                 }
             ],
             "description": "The function that should be activated when music stops playing.\nIt can also be manually triggered and a param is added to stop the music audioby playing an empty track (\"\")."
@@ -6868,6 +7094,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_netId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity] call `KISKA_fnc_netId`",
@@ -6882,7 +7109,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _id = [player] call KISKA_fnc_netId;\n\n```"
+                    "text": "```sqf\n_id = [player] call KISKA_fnc_netId;\n```"
                 }
             ],
             "description": "Gets a \"netId\" for singleplayer and a `netId` when in multiplayer."
@@ -6894,13 +7121,14 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_notification.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _lifetime, _canSkip, _headerColor] call `KISKA_fnc_notification`",
                     "parameters": [
                         {
                             "name": "_message",
-                            "description": ": *(STRING or ARRAY)* - If string, the message to display as title.\n\n    If array:\n    - 0: _text : *(STRING)* - Text to display or path to .paa or .jpgimage (may be passed directly if only text is required)\n    - 1: _size : *(NUMBER)* - Scale of text\n    - 2: _color : *(NUMBER[])* - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1])"
+                            "description": ": *(STRING or ARRAY)* - If string, the message to display as title.\n \n    If array:\n    - 0: _text : *(STRING)* - Text to display or path to .paa or .jpgimage (may be passed directly if only text is required)\n    - 1: _size : *(NUMBER)* - Scale of text\n    - 2: _color : *(NUMBER[])* - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1])"
                         },
                         {
                             "name": "_lifetime",
@@ -6920,7 +7148,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"Hello World\"] call KISKA_fnc_notification;\n\n```"
+                    "text": "```sqf\n[\"Hello World\"] call KISKA_fnc_notification;\n```"
                 }
             ],
             "description": "Prints a simple KISKA Notify notification on screen."
@@ -6932,13 +7160,14 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_notify.sqf",
             "syntaxes": [
                 {
                     "outline": "[_titleLine, _subLine, _lifetime, _skippable] call `KISKA_fnc_notify`",
                     "parameters": [
                         {
                             "name": "_titleLine",
-                            "description": ": *(STRING, STRUCTURED TEXT, or ARRAY)* - If string, the message to display as title.\n\n    If array:\n    - 0. _text : *(STRING)* - Text to display or path to .paa or .jpgimage (may be passed directly if only text is required)\n    - 1. _size : *(NUMBER)* - Scale of text\n    - 2. _color : *(ARRAY)* - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1])"
+                            "description": ": *(STRING, STRUCTURED TEXT, or ARRAY)* - If string, the message to display as title.\n \n    If array:\n    - 0. _text : *(STRING)* - Text to display or path to .paa or .jpgimage (may be passed directly if only text is required)\n    - 1. _size : *(NUMBER)* - Scale of text\n    - 2. _color : *(ARRAY)* - RGB or RGBA color (range 0-1). (optional, default: [1, 1, 1, 1])"
                         },
                         {
                             "name": "_subLine",
@@ -6958,7 +7187,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        [\"Hello\",1.1,[0.75,0,0,1]],\n        \"World\",\n        5,\n        false\n    ] call KISKA_fnc_notify;\n\n```"
+                    "text": "```sqf\n[\n    [\"Hello\",1.1,[0.75,0,0,1]],\n    \"World\",\n    5,\n    false\n] call KISKA_fnc_notify;\n```"
                 }
             ],
             "description": "Display a text message. Multiple incoming messages are queued. Also controlsthe lifetime of a notification"
@@ -6970,6 +7199,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_paratroopers.sqf",
             "syntaxes": [
                 {
                     "outline": "[_dropZone, _unitsThatCanDrop, _dropVehicleClass, _numToDrop, _flyDirection, _flyInHeight, _side, _spawnDistance, _invincibleOnDrop] spawn `KISKA_fnc_paratroopers`",
@@ -7016,7 +7246,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] spawn KISKA_fnc_paratroopers;\n\n```"
+                    "text": "```sqf\n[] spawn KISKA_fnc_paratroopers;\n```"
                 }
             ],
             "description": "Takes a set of units and moves them into aircraft to be dropped over a positionvia parachute from a spawned vehicle"
@@ -7028,6 +7258,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_patrolSpecific.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _postions, _numWaypoints, _random, _behaviour, _speed, _combatMode, _formation] call `KISKA_fnc_patrolSpecific`",
@@ -7070,7 +7301,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_group,_positionsArray,5] call KISKA_fnc_patrolSpecific;\n\n```"
+                    "text": "```sqf\n[_group,_positionsArray,5] call KISKA_fnc_patrolSpecific;\n```"
                 }
             ],
             "description": "Creates a cycle of waypoints for a patrol using a predetermined set of possible points"
@@ -7082,6 +7313,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_playDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _pathArray] call `KISKA_fnc_playDrivePath`",
@@ -7100,7 +7332,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _vehicle,\n        _pathArray\n    ] call KISKA_fnc_playDrivePath;\n\n```"
+                    "text": "```sqf\n[\n    _vehicle,\n    _pathArray\n] call KISKA_fnc_playDrivePath;\n```"
                 }
             ],
             "description": "Uses setDriveOnPath to move a vehicle. Additionally makes sure the vehiclecan move before starting (turn engineOn and use doStop)."
@@ -7112,6 +7344,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_playMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "[_track, _startTime, _canInterrupt, _volume, _fadeTime] call `KISKA_fnc_playMusic`",
@@ -7142,10 +7375,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"track\", 0, true, 1, 3] spawn KISKA_fnc_playMusic;\n\n```"
+                    "text": "```sqf\n[\"track\", 0, true, 1, 3] spawn KISKA_fnc_playMusic;\n```"
                 },
                 {
-                    "text": "```sqf\n    [\n        \"track\",\n        [10,60]    // start ten seconds into the song, and play for 60 seconds\n    ] spawn KISKA_fnc_playMusic;\n\n```"
+                    "text": "```sqf\n[\n    \"track\",\n    [10,60]    // start ten seconds into the song, and play for 60 seconds\n] spawn KISKA_fnc_playMusic;\n```"
                 }
             ],
             "description": "Plays music with smooth fade between tracks. Must be run in scheduled environment (spawn)"
@@ -7157,6 +7390,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_playRandom3dSoundLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_origin, _sounds, _timeBetweenSounds, _soundParams, _onSoundPlayed] call `KISKA_fnc_playRandom3dSoundLoop`",
@@ -7175,7 +7409,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_soundParams",
-                            "description": "*(ARRAY)* - An array of parameters for playSound3D:\n\n    - 0. _distance *(NUMBER)* - Distance at which the sound can be heard\n    - 1. _volume *(NUMBER)* - Range from 0-5\n    - 2. _isInside *(BOOL)* - Is _origin inside\n    - 3. _pitch *(NUMBER)* - Range from 0-5"
+                            "description": "*(ARRAY)* - An array of parameters for playSound3D:\n \n    - 0. _distance *(NUMBER)* - Distance at which the sound can be heard\n    - 1. _volume *(NUMBER)* - Range from 0-5\n    - 2. _isInside *(BOOL)* - Is _origin inside\n    - 3. _pitch *(NUMBER)* - Range from 0-5"
                         },
                         {
                             "name": "_onSoundPlayed",
@@ -7187,10 +7421,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        player,\n        [],\n        5,\n        [],\n        {hint str _this}\n    ] call KISKA_fnc_playRandom3dSoundLoop;\n\n```"
+                    "text": "```sqf\n[\n    player,\n    [],\n    5,\n    [],\n    {hint str _this}\n] call KISKA_fnc_playRandom3dSoundLoop;\n```"
                 }
             ],
-            "description": "Randomly plays sounds (or music) in 3d space from a given list at one or multiple origins.\n\nThis function will produce synchronized audio on all machines."
+            "description": "Randomly plays sounds (or music) in 3d space from a given list at one or multiple origins.\n \nThis function will produce synchronized audio on all machines."
         },
         "configuration": {
             "label": "KISKA_fnc_playRandom3dSoundLoop",
@@ -7199,6 +7433,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_playSound2D.sqf",
             "syntaxes": [
                 {
                     "outline": "[_sound, _center, _radius, _threeDimensional] call `KISKA_fnc_playSound2D`",
@@ -7225,7 +7460,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"alarm\",player,20] call KISKA_fnc_playSound2D;\n\n```"
+                    "text": "```sqf\n[\"alarm\",player,20] call KISKA_fnc_playSound2D;\n```"
                 }
             ],
             "description": "Plays a 2D sound if a player is within a given area.Used due to say2D's broken \"maxTitlesDistance\"."
@@ -7237,6 +7472,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_playSound3D.sqf",
             "syntaxes": [
                 {
                     "outline": "[_sound, _origin, _distance, _volume, _isInside, _pitch] call `KISKA_fnc_playSound3D`",
@@ -7271,7 +7507,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"BattlefieldJet1_3D\",\n        (getPosASL player) vectorAdd [50,50,100],\n        2000\n    ] call KISKA_fnc_playSound3D;\n\n```"
+                    "text": "```sqf\n[\n    \"BattlefieldJet1_3D\",\n    (getPosASL player) vectorAdd [50,50,100],\n    2000\n] call KISKA_fnc_playSound3D;\n```"
                 }
             ],
             "description": "Plays a sound 3D but the function accepts the CFGSounds name rather then the file path."
@@ -7283,6 +7519,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_pushBackToArray.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _entryToAdd, _namespace] call `KISKA_fnc_pushBackToArray`",
@@ -7305,7 +7542,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"myGlobalArrayVar\",someInfoHere,missionNamespace] call KISKA_fnc_pushBackToArray;\n\n```"
+                    "text": "```sqf\n[\"myGlobalArrayVar\",someInfoHere,missionNamespace] call KISKA_fnc_pushBackToArray;\n```"
                 }
             ],
             "description": "Pushes back a value to a global array.\nThis was used in lieu of creating a public variable to sync the array.In order to keep network traffic lower if the array becomes large."
@@ -7317,6 +7554,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_pushBackToArray_interface.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _entryToAdd, _namespace] call `KISKA_fnc_pushBackToArray_interface`",
@@ -7339,7 +7577,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        \"myGlobalArrayVar\",\n        someInfoHere,\n        missionNamespace\n    ] call KISKA_fnc_pushBackToArray_interface;\n\n```"
+                    "text": "```sqf\n[\n    \"myGlobalArrayVar\",\n    someInfoHere,\n    missionNamespace\n] call KISKA_fnc_pushBackToArray_interface;\n```"
                 }
             ],
             "description": "Pushes back a value to a global array. Checks if machine hasInterface before pushing.\nThis was used in lieu of creating a public variable to sync the array.In order to keep network traffic lower if the array becomes large."
@@ -7351,6 +7589,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_radioChatter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_followSource, _soundParams] call `KISKA_fnc_radioChatter`",
@@ -7369,10 +7608,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // radio sound follows player\n    [\n        true,\n        [player]\n    ] call KISKA_fnc_radioChatter;\n\n```"
+                    "text": "```sqf\n// radio sound follows player\n[\n    true,\n    [player]\n] call KISKA_fnc_radioChatter;\n```"
                 },
                 {
-                    "text": "```sqf\n    // radio sound follows front of player\n    [\n        true,\n        [player,5,[0,1,0]]\n    ] call KISKA_fnc_radioChatter;\n\n```"
+                    "text": "```sqf\n// radio sound follows front of player\n[\n    true,\n    [player,5,[0,1,0]]\n] call KISKA_fnc_radioChatter;\n```"
                 }
             ],
             "description": "Plays a random radio ambient at the specified position.\nThis has a global effect now and should be executed on one machine."
@@ -7384,6 +7623,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_randomGear.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _uniforms, _headgear, _facewear, _vests, _backpacks, _primaryWeapons, _handguns, _secondaryWeapons] call `KISKA_fnc_randomGear`",
@@ -7430,7 +7670,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _uniforms = [\"U_B_CombatUniform_mcam_vest\"];\n    private _headgear = [];\n    private _facewear = [];\n    private _vests = [];\n    private _backpacks = [];\n    private _primaryWeapons = [\n        // add a mag an optic to rifle\n        [\"arifle_MXC_F\",[\"optic_Aco\",\"30Rnd_65x39_caseless_mag\"]]\n    ];\n\n    [\n        _unit,\n        _uniforms,\n        _headgear,\n        _facewear,\n        _vests,\n        _backpacks,\n        _primaryWeapons\n    ] call KISKA_fnc_randomGear;\n\n```"
+                    "text": "```sqf\nprivate _uniforms = [\"U_B_CombatUniform_mcam_vest\"];\nprivate _headgear = [];\nprivate _facewear = [];\nprivate _vests = [];\nprivate _backpacks = [];\nprivate _primaryWeapons = [\n    // add a mag an optic to rifle\n    [\"arifle_MXC_F\",[\"optic_Aco\",\"30Rnd_65x39_caseless_mag\"]]\n];\n\n[\n    _unit,\n    _uniforms,\n    _headgear,\n    _facewear,\n    _vests,\n    _backpacks,\n    _primaryWeapons\n] call KISKA_fnc_randomGear;\n```"
                 }
             ],
             "description": "Randomizes gear based upon input arrays for each slot. Be aware that this functionis very slow (can take >1ms) and should be used ideally on initialization for largenumbers of units. \nThe unit must be local to the machine where this function is executed.\nAll gear arrays can be weighted or unweighted arrays."
@@ -7442,6 +7682,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_randomIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array] call `KISKA_fnc_randomIndex`",
@@ -7456,7 +7697,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _randomIndex = [[1,2,3]] call KISKA_fnc_randomIndex;\n\n```"
+                    "text": "```sqf\nprivate _randomIndex = [[1,2,3]] call KISKA_fnc_randomIndex;\n```"
                 }
             ],
             "description": "Returns a random index of an array ~2x faster than BIS_fnc_randomIndex;"
@@ -7468,6 +7709,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_randomLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "[_units, _loadoutArray] call `KISKA_fnc_randomLoadout`",
@@ -7486,7 +7728,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [guy,[globalLoadout1,globalLoadout2]] call KISKA_fnc_randomLoadout;\n\n```"
+                    "text": "```sqf\n[guy,[globalLoadout1,globalLoadout2]] call KISKA_fnc_randomLoadout;\n```"
                 }
             ],
             "description": "Randomly assigns a loadout from the inputed array to the unit(s) provided."
@@ -7498,6 +7740,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "[_musicTracks, _interval, _canInterrupt, _tickId, _usedMusicTracks] call `KISKA_fnc_randomMusic`",
@@ -7528,10 +7771,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // space tracks by 20 seconds exactly each\n    [-1,arrayOfTracks,20] call KISKA_fnc_randomMusic;\n\n```"
+                    "text": "```sqf\n// space tracks by 20 seconds exactly each\n[-1,arrayOfTracks,20] call KISKA_fnc_randomMusic;\n```"
                 },
                 {
-                    "text": "```sqf\n    // space tracks by UP TO 20 seconds each\n    [-1,arrayOfTracks,[20]] call KISKA_fnc_randomMusic;\n\n```"
+                    "text": "```sqf\n// space tracks by UP TO 20 seconds each\n[-1,arrayOfTracks,[20]] call KISKA_fnc_randomMusic;\n```"
                 }
             ],
             "description": "Starts playing a random assortment of curated music tracks to all players on a server.This is essentially a multiplayer jukebox. Should only be executed on the server.\nAll songs will be played in a random order and then loop back to play in another random order infinitely.\nIt will not interrupt music commanded to play by other means.\nYou can define quiet time space between tracks."
@@ -7543,6 +7786,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_getCurrentTrack.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getCurrentTrack`",
@@ -7552,7 +7796,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _mostRecentRandomTrack = call KISKA_fnc_randomMusic_getCurrentTrack;\n\n```"
+                    "text": "```sqf\n_mostRecentRandomTrack = call KISKA_fnc_randomMusic_getCurrentTrack;\n```"
                 }
             ],
             "description": "Returns the most recent track selected by the random music system.Will be an empty string \"\" if none is defined.\nThis is regardless of whether the song is actually playing."
@@ -7564,6 +7808,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_getTrackInterval.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getTrackInterval`",
@@ -7573,7 +7818,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _interval = call KISKA_fnc_randomMusic_getTrackInterval;\n   \n```"
+                    "text": "```sqf\nprivate _interval = call KISKA_fnc_randomMusic_getTrackInterval;\n```"
                 }
             ],
             "description": "Retrieves the current tracks in the random music system that could play.\nPossible Values:\n    [NUMBER,NUMBER,NUMBER] - used with the \"random\" command's [min,mid,max]to get a uniform random space between tracks.\n    [NNUMBER] - used with denotes that the space between tracks can be UP TO this number.NUMBER - the exact time between tracks that will be the same every time."
@@ -7585,6 +7830,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_getUnusedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getUnusedTracks`",
@@ -7594,7 +7840,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _arrayOfTracks = call KISKA_fnc_randomMusic_getUnusedTracks;\n   \n```"
+                    "text": "```sqf\nprivate _arrayOfTracks = call KISKA_fnc_randomMusic_getUnusedTracks;\n```"
                 }
             ],
             "description": "Retrieves the current tracks in the random music system that could play."
@@ -7606,6 +7852,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_getUsedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getUsedTracks`",
@@ -7615,7 +7862,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _arrayOfTracks = call KISKA_fnc_randomMusic_getUsedTracks;\n   \n```"
+                    "text": "```sqf\nprivate _arrayOfTracks = call KISKA_fnc_randomMusic_getUsedTracks;\n```"
                 }
             ],
             "description": "Retrieves the tracks in the random music system that have already been played"
@@ -7627,6 +7874,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_getVolume.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getVolume`",
@@ -7636,7 +7884,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _volume = call KISKA_fnc_randomMusic_getVolume;\n   \n```"
+                    "text": "```sqf\nprivate _volume = call KISKA_fnc_randomMusic_getVolume;\n```"
                 }
             ],
             "description": "Retrieves the current volume that random music system plays tracks at"
@@ -7648,6 +7896,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_isSystemRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_isSystemRunning`",
@@ -7657,7 +7906,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isRunning = call KISKA_fnc_randomMusic_isSystemRunning;\n   \n```"
+                    "text": "```sqf\nprivate _isRunning = call KISKA_fnc_randomMusic_isSystemRunning;\n```"
                 }
             ],
             "description": "Retrieves whether or not the random music system is currently running"
@@ -7669,6 +7918,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_setCurrentTrack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_trackClass] call `KISKA_fnc_randomMusic_setCurrentTrack`",
@@ -7683,7 +7933,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"Some_Music_Track\"] call KISKA_fnc_randomMusic_setCurrentTrack;\n\n```"
+                    "text": "```sqf\n[\"Some_Music_Track\"] call KISKA_fnc_randomMusic_setCurrentTrack;\n```"
                 }
             ],
             "description": "Sets the current random track from the random music system."
@@ -7695,6 +7945,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_setSystemRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "[_setting] call `KISKA_fnc_randomMusic_setSystemRunning`",
@@ -7709,7 +7960,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // set to running\n    [true] call KISKA_fnc_randomMusic_setSystemRunning;\n   \n```"
+                    "text": "```sqf\n// set to running\n[true] call KISKA_fnc_randomMusic_setSystemRunning;\n```"
                 }
             ],
             "description": "Sets the boolean for determining if the random music system is running."
@@ -7721,6 +7972,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_setTrackInterval.sqf",
             "syntaxes": [
                 {
                     "outline": "[_interval] call `KISKA_fnc_randomMusic_setTrackInterval`",
@@ -7735,7 +7987,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [20] remoteExecCall [\"KISKA_fnc_randomMusic_setTrackInterval\",2];\n\n```"
+                    "text": "```sqf\n[20] remoteExecCall [\"KISKA_fnc_randomMusic_setTrackInterval\",2];\n```"
                 }
             ],
             "description": "Sets the dwell time variable that handles the time between random music tracksbeing played."
@@ -7747,6 +7999,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_setUnusedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "[_musicTracks] call `KISKA_fnc_randomMusic_setUnusedTracks`",
@@ -7761,7 +8014,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[\"someTrack\",\"anotherTrack\"]] call KISKA_fnc_randomMusic_setUnusedTracks;\n   \n```"
+                    "text": "```sqf\n[[\"someTrack\",\"anotherTrack\"]] call KISKA_fnc_randomMusic_setUnusedTracks;\n```"
                 }
             ],
             "description": "Sets the current tracks in the random music system that could play."
@@ -7773,6 +8026,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_setUsedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "[_usedMusicTracks] call `KISKA_fnc_randomMusic_setUsedTracks`",
@@ -7787,7 +8041,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[\"SomeTrack\",\"AnotherTrack\"]] call KISKA_fnc_randomMusic_setUsedTracks;\n   \n```"
+                    "text": "```sqf\n[[\"SomeTrack\",\"AnotherTrack\"]] call KISKA_fnc_randomMusic_setUsedTracks;\n```"
                 }
             ],
             "description": "Sets the tracks in the random music system that have already been played"
@@ -7799,6 +8053,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_setVolume.sqf",
             "syntaxes": [
                 {
                     "outline": "[_volume] call `KISKA_fnc_randomMusic_setVolume`",
@@ -7813,7 +8068,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [1] remoteExecCall [\"KISKA_fnc_randomMusic_setVolume\",2];\n\n```"
+                    "text": "```sqf\n[1] remoteExecCall [\"KISKA_fnc_randomMusic_setVolume\",2];\n```"
                 }
             ],
             "description": "Changes the volume at which random music specifically will play at (on all clients).\nOnly executes on server."
@@ -7825,6 +8080,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_stopClient.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_stopClient`",
@@ -7834,7 +8090,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_randomMusic_stopClient;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_randomMusic_stopClient;\n```"
                 }
             ],
             "description": "The clientside part of stopping random music system.Ideally, should not be called on its own but used from KISKA_fnc_randomMusic_stopServer"
@@ -7846,6 +8102,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random Music/fn_randomMusic_stopServer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_playLastSong] call `KISKA_fnc_randomMusic_stopServer`",
@@ -7860,7 +8117,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_randomMusic_stopServer;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_randomMusic_stopServer;\n```"
                 }
             ],
             "description": "Stops the random music system either abrubtly or allows the last song to play."
@@ -7872,6 +8129,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_reassignCurator.sqf",
             "syntaxes": [
                 {
                     "outline": "[_curatorObject, _isManual] call `KISKA_fnc_reassignCurator`",
@@ -7890,7 +8148,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // show hint messages\n    [myCuratorObject,true] call KISKA_fnc_reassignCurator;\n\n```"
+                    "text": "```sqf\n// show hint messages\n[myCuratorObject,true] call KISKA_fnc_reassignCurator;\n```"
                 }
             ],
             "description": "Reassigns a curator object to the local player."
@@ -7902,6 +8160,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_recordDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _frequency, _recordSpeed] call `KISKA_fnc_recordDrivePath`",
@@ -7924,7 +8183,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        objectParent player,\n        0.25\n    ] call KISKA_fnc_recordDrivePath\n\n```"
+                    "text": "```sqf\n[\n    objectParent player,\n    0.25\n] call KISKA_fnc_recordDrivePath\n```"
                 }
             ],
             "description": "Records an array of positons and speeds for use with setDriveOnPath command."
@@ -7936,6 +8195,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_remoteReturn_receive.sqf",
             "syntaxes": [
                 {
                     "outline": "[_code, _args, _scheduled, _uniqueId] call `KISKA_fnc_remoteReturn_receive`",
@@ -7962,7 +8222,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        _code,\n        _args,\n        _scheduled,\n        _uniqueId,\n        clientOwner\n    ] remoteExecCall [\"KISKA_fnc_remoteReturn_receive\",_target];\n\n```"
+                    "text": "```sqf\n[\n    _code,\n    _args,\n    _scheduled,\n    _uniqueId,\n    clientOwner\n] remoteExecCall [\"KISKA_fnc_remoteReturn_receive\",_target];\n```"
                 }
             ],
             "description": "The send back component of KISKAs remote returns.This catches what was sent in KISKA_fnc_remoteReturn_send and will send thevariable back to the remoteExecutedOwner."
@@ -7974,6 +8234,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_remoteReturn_send.sqf",
             "syntaxes": [
                 {
                     "outline": "[_code, _defaultValue, _target, _scheduled, _awaitParams] spawn `KISKA_fnc_remoteReturn_send`",
@@ -8004,10 +8265,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] spawn {\n        // need to call for direct return but in scheduled environment\n        _clientIdFromServer = [\"owner (_this select 0)\",[player],2] call KISKA_fnc_remoteReturn_send;\n    };\n\n```"
+                    "text": "```sqf\n[] spawn {\n    // need to call for direct return but in scheduled environment\n    _clientIdFromServer = [\"owner (_this select 0)\",[player],2] call KISKA_fnc_remoteReturn_send;\n};\n```"
                 }
             ],
-            "description": "Gets a remote return from a scripting command on a target machine.\n\nBasically remoteExec but with a return.\nNeeds to be run in a scheduled environment as it takes time to receivethe return.\nThis should not be abused to obtain large returns over the network.\n\nBe smart and use for simple types (not massive arrays)."
+            "description": "Gets a remote return from a scripting command on a target machine.\n \nBasically remoteExec but with a return.\nNeeds to be run in a scheduled environment as it takes time to receivethe return.\nThis should not be abused to obtain large returns over the network.\n \nBe smart and use for simple types (not massive arrays)."
         },
         "configuration": {
             "label": "KISKA_fnc_remoteReturn_send",
@@ -8016,6 +8277,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeArsenal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arsenals] call `KISKA_fnc_removeArsenal`",
@@ -8030,7 +8292,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[arsenal1, arsenal2]] call KISKA_fnc_removeArsenal;\n\n```"
+                    "text": "```sqf\n[[arsenal1, arsenal2]] call KISKA_fnc_removeArsenal;\n```"
                 }
             ],
             "description": "Removes both BIS and ACE arsenals from several or a single object.This has a global effect."
@@ -8042,6 +8304,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeBISArsenalAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arsenal] call `KISKA_fnc_removeBISArsenalAction`",
@@ -8056,7 +8319,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _done = [arsenal] call KISKA_fnc_removeBISArsenalAction;\n\n```"
+                    "text": "```sqf\n_done = [arsenal] call KISKA_fnc_removeBISArsenalAction;\n```"
                 }
             ],
             "description": "Removes the BIS arsenal action from the given object."
@@ -8068,6 +8331,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeEntityKilledEventHandler.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity, _eventId] call `KISKA_fnc_removeEntityKilledEventHandler`",
@@ -8086,7 +8350,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [aUnit,{hint _this}] call KISKA_fnc_removeEntityKilledEventHandler;\n\n```"
+                    "text": "```sqf\n[aUnit,{hint _this}] call KISKA_fnc_removeEntityKilledEventHandler;\n```"
                 }
             ],
             "description": "Removes a killed KISKA entity event handler."
@@ -8098,6 +8362,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeProximityPlayerAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_removeProximityPlayerAction`",
@@ -8112,7 +8377,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_removeProximityPlayerAction;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_removeProximityPlayerAction;\n```"
                 }
             ],
             "description": "Stages an action added with KISKA_fnc_addProximityPlayerAction for removal.This happens within the loop logic of KISKA_fnc_addProximityPlayerAction soit is NOT instant."
@@ -8124,6 +8389,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_savePlayerLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_savePlayerLoadout`",
@@ -8133,7 +8399,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT function\n\n```"
+                    "text": "```sqf\nPRE-INIT function\n```"
                 }
             ],
             "description": "Adds a kill and respawn eventhandler to the player object that restoressaves and restores the player loadout (if set in CBA menu settings)."
@@ -8145,6 +8411,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_resetMove.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit] call `KISKA_fnc_selectRandom`",
@@ -8159,10 +8426,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_unit] remoteExecCall [\"KISKA_fnc_resetMove\"]\n\n```"
+                    "text": "```sqf\n[_unit] remoteExecCall [\"KISKA_fnc_resetMove\"]\n```"
                 }
             ],
-            "description": "Call switchMove \"\" on a given unit. This function was created because as of release 2.10 there is an issue where remoteExec'ing switchMove \"\" on a unit directly within some functions (KISKA_fnc_ambientAnim_stop) does not work as intended \n (the intention being the unit returns to normal animations)\n\nRemoteexecuting this function, however, fixes the issue."
+            "description": "Call switchMove \"\" on a given unit. This function was created because as of release 2.10 there is an issue where remoteExec'ing switchMove \"\" on a unit directly within some functions (KISKA_fnc_ambientAnim_stop) does not work as intended \n (the intention being the unit returns to normal animations)\n \nRemoteexecuting this function, however, fixes the issue."
         },
         "configuration": {
             "label": "KISKA_fnc_selectRandom",
@@ -8171,6 +8438,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_selectRandom.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array, _valueType] call `KISKA_fnc_selectRandom`",
@@ -8189,13 +8457,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _randomValue = [[\n        \"thing1\",\n        \"thing2\"\n    ]] call KISKA_fnc_selectRandom;\n\n```"
+                    "text": "```sqf\nprivate _randomValue = [[\n    \"thing1\",\n    \"thing2\"\n]] call KISKA_fnc_selectRandom;\n```"
                 },
                 {
-                    "text": "```sqf\n    private _weight1 = 0.5;\n    private _weight2 = 0.5;\n\n    private _randomWeightedValue = [\n        [\n            \"thing1\", _weight1,\n            \"thing2\", _weight2\n        ],\n        \"\"\n    ] call KISKA_fnc_selectRandom;\n\n```"
+                    "text": "```sqf\nprivate _weight1 = 0.5;\nprivate _weight2 = 0.5;\n\nprivate _randomWeightedValue = [\n    [\n        \"thing1\", _weight1,\n        \"thing2\", _weight2\n    ],\n    \"\"\n] call KISKA_fnc_selectRandom;\n```"
                 },
                 {
-                    "text": "```sqf\n    private _weight1 = 0.5;\n    private _weight2 = 0.5;\n\n    private _randomWeightedValue = [\n        [\n            [\"thing1\", \"thing2\"],\n            [_weight1, _weight2]\n        ],\n        \"\"\n    ] call KISKA_fnc_selectRandom;\n\n```"
+                    "text": "```sqf\nprivate _weight1 = 0.5;\nprivate _weight2 = 0.5;\n\nprivate _randomWeightedValue = [\n    [\n        [\"thing1\", \"thing2\"],\n        [_weight1, _weight2]\n    ],\n    \"\"\n] call KISKA_fnc_selectRandom;\n```"
                 }
             ],
             "description": "Selects randomly an entry from an array be it weighted or unweighted."
@@ -8207,6 +8475,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setContainerCargo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_containerToLoad, _cargo] call `KISKA_fnc_setContainerCargo`",
@@ -8225,10 +8494,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [container,otherContainer] call KISKA_fnc_setContainerCargo;\n\n```"
+                    "text": "```sqf\n[container,otherContainer] call KISKA_fnc_setContainerCargo;\n```"
                 },
                 {
-                    "text": "```sqf\n    private _cargoToCopy = [otherContainer] call KISKA_fnc_getContainerCargo;\n    [container,_cargoToCopy] call KISKA_fnc_setContainerCargo;\n\n```"
+                    "text": "```sqf\nprivate _cargoToCopy = [otherContainer] call KISKA_fnc_getContainerCargo;\n[container,_cargoToCopy] call KISKA_fnc_setContainerCargo;\n```"
                 }
             ],
             "description": "Takes a cargo array formatted from KISKA_fnc_getContainerCargo and adds it to another container.Exact ammo counts will be preserved even inside of an item, such as magazines inside of a vest or backpack."
@@ -8240,6 +8509,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_setCrew.sqf",
             "syntaxes": [
                 {
                     "outline": "[_crew, _vehicle, _deleteCrewIfNull] call `KISKA_fnc_setCrew`",
@@ -8262,7 +8532,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_group1,_vehicle] call KISKA_fnc_setCrew;\n\n```"
+                    "text": "```sqf\n[_group1,_vehicle] call KISKA_fnc_setCrew;\n```"
                 }
             ],
             "description": "Moves units into a vehicle as crew and then as passengers."
@@ -8274,6 +8544,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setupMultiKillEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objects, _onThresholdMet, _threshold, _onKilled, _useMPKilled] call `KISKA_fnc_setupMultiKillEvent`",
@@ -8284,7 +8555,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onThresholdMet",
-                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes once it has been determinedthat the threshold has been met or exceeded. (See KISKA_fnc_callBack). If attemptingto add more units to an existing event, use the event id here (see returned hashmap below for id)and preceed the event id with a \"#\" (see examples)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\"\n\n// NOT USED if adding to existing event"
+                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes once it has been determinedthat the threshold has been met or exceeded. (See KISKA_fnc_callBack). If attemptingto add more units to an existing event, use the event id here (see returned hashmap below for id)and preceed the event id with a \"#\" (see examples)\n \n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\"\n\n// NOT USED if adding to existing event"
                         },
                         {
                             "name": "_threshold",
@@ -8292,22 +8563,22 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onKilled",
-                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes each time a unit has beenkilled (after the _onThresholdMet if threshold has been met). (See KISKA_fnc_callBack)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\""
+                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes each time a unit has beenkilled (after the _onThresholdMet if threshold has been met). (See KISKA_fnc_callBack)\n \n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\""
                         },
                         {
                             "name": "_useMPKilled",
                             "description": "*(BOOL)* - Whether or not to use \"MPKILLED\" events instead of \"KILLED\".IF TRUE, MUST BE RUN ON THE SERVER"
                         }
                     ],
-                    "returns": "*(HASHMAP)* - A hashmap containing info about the event:\n\n- `id`: *(STRING)* - A localNamespace variable name to access this hashmap\n- `total`: *(NUMBER)* - The total number of objects that have this killed event\n- `killed`: *(NUMBER)* - The total number of objects that have been killed with this event\n- `threshold`: *(NUMBER)* - A number that indicates the percentage of objects thatmust be killed (relative to the total) for this event to fire\n    (e.g. 1 means 100% of them need to be killed, 0.5 means 50%, etc.)\n- `thresholdMet`: *(BOOL)* - Whether or not the threshold has been met and thereforeonThresholdMet has fired\n- `onKilled`: *(CODE, ARRAY, or STRING)* - Code that executes each time a unit has beenkilled (after the _onThresholdMet if threshold has been met). (See KISKA_fnc_callBack)\nParams:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described\n\n- `onThresholdMet`: *(CODE, ARRAY, or STRING)* - Code that executes once it has been determinedthat the threshold has been met or exceeded. (See KISKA_fnc_callBack)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described\n\n- `eventCode`: *(CODE)* - The code that is attached to the killed eventhandler\n- `type`: *(STRING)* - Type of event, (`KILLED` or `MPKILLED`)\n- `objectToEventIdMap`: *(HASHMAP)* -  A hashmap that uses objects as keys (should use KISKA_fnc_hashmap_get)to get the killed eventhandler id attached to an object."
+                    "returns": "*(HASHMAP)* - A hashmap containing info about the event:\n\n- `id`: *(STRING)* - A localNamespace variable name to access this hashmap\n- `total`: *(NUMBER)* - The total number of objects that have this killed event\n- `killed`: *(NUMBER)* - The total number of objects that have been killed with this event\n- `threshold`: *(NUMBER)* - A number that indicates the percentage of objects thatmust be killed (relative to the total) for this event to fire\n    (e.g. 1 means 100% of them need to be killed, 0.5 means 50%, etc.)\n- `thresholdMet`: *(BOOL)* - Whether or not the threshold has been met and thereforeonThresholdMet has fired\n- `onKilled`: *(CODE, ARRAY, or STRING)* - Code that executes each time a unit has beenkilled (after the _onThresholdMet if threshold has been met). (See KISKA_fnc_callBack)\nParams:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described\n\n- `onThresholdMet`: *(CODE, ARRAY, or STRING)* - Code that executes once it has been determinedthat the threshold has been met or exceeded. (See KISKA_fnc_callBack)\n \n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described\n\n- `eventCode`: *(CODE)* - The code that is attached to the killed eventhandler\n- `type`: *(STRING)* - Type of event, (`KILLED` or `MPKILLED`)\n- `objectToEventIdMap`: *(HASHMAP)* -  A hashmap that uses objects as keys (should use KISKA_fnc_hashmap_get)to get the killed eventhandler id attached to an object."
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _eventMap = [\n        [someObject, anotherObject],\n        {\n            params [\"_killedEventParams\",\"_eventMap\"];\n            _killedEventParams params [\"_killedObject\"];\n            hint str [_killedEventParams, _eventMap];\n        }\n    ] call KISKA_fnc_setupMultiKillEvent;\n\n```"
+                    "text": "```sqf\nprivate _eventMap = [\n    [someObject, anotherObject],\n    {\n        params [\"_killedEventParams\",\"_eventMap\"];\n        _killedEventParams params [\"_killedObject\"];\n        hint str [_killedEventParams, _eventMap];\n    }\n] call KISKA_fnc_setupMultiKillEvent;\n```"
                 },
                 {
-                    "text": "```sqf\n    // add more objects to the existing event made above\n    private _eventMap = [\n        [andAdditionalObject],\n        (\"#\" + (_eventMap get \"id\"))\n    ] call KISKA_fnc_setupMultiKillEvent;\n\n```"
+                    "text": "```sqf\n// add more objects to the existing event made above\nprivate _eventMap = [\n    [andAdditionalObject],\n    (\"#\" + (_eventMap get \"id\"))\n] call KISKA_fnc_setupMultiKillEvent;\n```"
                 }
             ],
             "description": "Sets up an event that will fire when a percentage of objects are killed.Uses `\"KILLED\"` or `\"MPKILLED\"` eventhandlers.\nThis should be called where the arguements are local if `_useMPKilled` is `false`or on the server if `_useMPKilled` is `true`."
@@ -8319,6 +8590,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setWaypointExecStatement.sqf",
             "syntaxes": [
                 {
                     "outline": "[_waypoint, _statement, _existingId] call `KISKA_fnc_setWaypointExecStatement`",
@@ -8341,7 +8613,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _waypoint = myGroup addWaypoint [position player, 0];\n    private _id = [\n        _waypoint,\n        { hint str _this; }\n    ] call KISKA_fnc_setWaypointExecStatement\n\n```"
+                    "text": "```sqf\nprivate _waypoint = myGroup addWaypoint [position player, 0];\nprivate _id = [\n    _waypoint,\n    { hint str _this; }\n] call KISKA_fnc_setWaypointExecStatement\n```"
                 }
             ],
             "description": "Sets the (execution) statement of a given waypoint using an interface that allowsarg passing.\nThis statement will only be executed on the machine where added.\nBe aware that this will create variables on the provided waypoint's group. If a waypointis deleted, the variable on the group will still remain."
@@ -8353,6 +8625,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_showHide.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objects, _show, _enableDynamicSim] call `KISKA_fnc_showHide`",
@@ -8375,7 +8648,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [group1, true, true] call KISKA_fnc_showHide;\n\n```"
+                    "text": "```sqf\n[group1, true, true] call KISKA_fnc_showHide;\n```"
                 }
             ],
             "description": "On selected objects, will disable simulation and hide the object or the reverse."
@@ -8387,6 +8660,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_slingLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_heli, _liftObject, _dropOffPoint, _afterDropCode, _flightPath] call `KISKA_fnc_slingLoad`",
@@ -8405,7 +8679,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_afterDropCode",
-                            "description": ": *(ARRAY, CODE, or STRING)* - Code to execute after the drop off waypoint is complete.This is saved to the pilot's namespace in \"KISKA_postSlingLoadCode\" which is deleted afterit is called. (See KISKA_fnc_callBack)\n\n    Parmeters:\n    - 0. *(OBJECT)* - The pilot of the helicopter\n    - 1. *(OBJECT)* - The helicopter"
+                            "description": ": *(ARRAY, CODE, or STRING)* - Code to execute after the drop off waypoint is complete.This is saved to the pilot's namespace in \"KISKA_postSlingLoadCode\" which is deleted afterit is called. (See KISKA_fnc_callBack)\n \n    Parmeters:\n    - 0. *(OBJECT)* - The pilot of the helicopter\n    - 1. *(OBJECT)* - The helicopter"
                         },
                         {
                             "name": "_flightPath",
@@ -8417,7 +8691,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        heli,\n        someObject,\n        dropOff,\n        [\n            [heli],\n            {\n                hint str [_this,_thisArgs]\n            }\n        ]\n    ] call KISKA_fnc_slingLoad;\n\n```"
+                    "text": "```sqf\n[\n    heli,\n    someObject,\n    dropOff,\n    [\n        [heli],\n        {\n            hint str [_this,_thisArgs]\n        }\n    ]\n] call KISKA_fnc_slingLoad;\n```"
                 }
             ],
             "description": "Tells AI helicopter to pick up a given object and drop it off at a given location."
@@ -8429,6 +8703,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_sortStringsNumerically.sqf",
             "syntaxes": [
                 {
                     "outline": "[_strings, _order] call `KISKA_fnc_sortStringsNumerically`",
@@ -8447,7 +8722,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        [\"myString_2\",\"myString_3\",\"myString_1_1\",\"myString_1\"]\n    ] call KISKA_fnc_sortStringsNumerically;\n    // returns -> `[\"myString_1\",\"myString_1_1\",\"myString_2\",\"myString_3\"]`\n\n```"
+                    "text": "```sqf\n[\n    [\"myString_2\",\"myString_3\",\"myString_1_1\",\"myString_1\"]\n] call KISKA_fnc_sortStringsNumerically;\n// returns -> `[\"myString_1\",\"myString_1_1\",\"myString_2\",\"myString_3\"]`\n```"
                 }
             ],
             "description": "Takes an array or strings, where each string must end with an underscore and a digit\n (`\"something_1\"`) and can handle one extra sub level digit (`\"something_1_1\"`)."
@@ -8459,6 +8734,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_spawn.sqf",
             "syntaxes": [
                 {
                     "outline": "[_numberOfUnits, _numberOfUnitsPerGroup, _unitTypes, _spawnPositions, _canUnitsMove, _enableDynamic, _side, _allowedStances] call `KISKA_fnc_spawn`",
@@ -8501,7 +8777,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _spawnedUnits = [2, 2, _arrayOfTypes, [[0,0,0],spawnObject]] call KISKA_fnc_spawn;\n\n```"
+                    "text": "```sqf\n_spawnedUnits = [2, 2, _arrayOfTypes, [[0,0,0],spawnObject]] call KISKA_fnc_spawn;\n```"
                 }
             ],
             "description": "Randomly spawns units on an array of positions.\nPositionATL is expected and arrays can have 4 indexes with a direction for theunit to face being the 4th. If no direction is specified, a random one is chosen.Using an object instead of a position will result in the unit facing the same waythat the object is.\nThis is destructive on the _spawnPositions array so be sure to copy (+_spawnPositions)if you need to reuse the array."
@@ -8513,6 +8789,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_spawnGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_numberOfUnits, _unitTypes, _side, _position, _enableDynamicSimulation] call `KISKA_fnc_spawnGroup`",
@@ -8543,7 +8820,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _spawnedGroup = [4, _listOfUnitTypes, OPFOR, [0,0,0], true] call KISKA_fnc_spawnGroup;\n\n```"
+                    "text": "```sqf\n_spawnedGroup = [4, _listOfUnitTypes, OPFOR, [0,0,0], true] call KISKA_fnc_spawnGroup;\n```"
                 }
             ],
             "description": "Spawns a group, adds to curator, and sets to aware. Based on selected unit types"
@@ -8555,6 +8832,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_spawnVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_spawnPosition, _spawnDirection, _vehicleClass, _group, _forcePosition, _crewInstructions, _deleteOverflow] call `KISKA_fnc_spawnVehicle`",
@@ -8593,7 +8871,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player,0,\"someclass\"] call KISKA_fnc_spawnVehicle;\n\n```"
+                    "text": "```sqf\n[player,0,\"someclass\"] call KISKA_fnc_spawnVehicle;\n```"
                 }
             ],
             "description": "A slightly altered/optimized version of BIS_fnc_spawnVehicle.Has support for CUP aircraft to spawn at velocity."
@@ -8605,6 +8883,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_addSignal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_signalProperties, _global] call `KISKA_fnc_spectrum_addSignal`",
@@ -8623,7 +8902,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _signalId = [\n        [100,[0,0,0],100]\n    ] call KISKA_fnc_spectrum_addSignal;\n\n```"
+                    "text": "```sqf\nprivate _signalId = [\n    [100,[0,0,0],100]\n] call KISKA_fnc_spectrum_addSignal;\n```"
                 }
             ],
             "description": "Adds a signal that can be seen on a spectrum device."
@@ -8635,6 +8914,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_deleteSignal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _global] call `KISKA_fnc_spectrum_deleteSignal`",
@@ -8653,7 +8933,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_spectrumSignal_2_1\"] call KISKA_fnc_spectrum_deleteSignal;\n\n```"
+                    "text": "```sqf\n[\"KISKA_spectrumSignal_2_1\"] call KISKA_fnc_spectrum_deleteSignal;\n```"
                 }
             ],
             "description": "Deletes a signal with the given id."
@@ -8665,6 +8945,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_getMaxDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMaxDecibels`",
@@ -8674,7 +8955,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _max = call KISKA_fnc_spectrum_getMaxDecibels;\n\n```"
+                    "text": "```sqf\nprivate _max = call KISKA_fnc_spectrum_getMaxDecibels;\n```"
                 }
             ],
             "description": "Gets the current max decibel level scale of the spectrum device for the local machine."
@@ -8686,6 +8967,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_getMaxFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMaxFrequency`",
@@ -8695,7 +8977,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _max = call KISKA_fnc_spectrum_getMaxFrequency;\n\n```"
+                    "text": "```sqf\nprivate _max = call KISKA_fnc_spectrum_getMaxFrequency;\n```"
                 }
             ],
             "description": "Gets the current max frequency of the spectrum device for the local machine."
@@ -8707,6 +8989,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_getMinDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMinDecibels`",
@@ -8716,7 +8999,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _min = call KISKA_fnc_spectrum_getMinDecibels;\n\n```"
+                    "text": "```sqf\nprivate _min = call KISKA_fnc_spectrum_getMinDecibels;\n```"
                 }
             ],
             "description": "Gets the current min decibel level scale of the spectrum device for the local machine."
@@ -8728,6 +9011,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_getMinFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMinFrequency`",
@@ -8737,7 +9021,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _min = call KISKA_fnc_spectrum_getMinFrequency;\n\n```"
+                    "text": "```sqf\nprivate _min = call KISKA_fnc_spectrum_getMinFrequency;\n```"
                 }
             ],
             "description": "Gets the current min frequency of the spectrum device for the local machine."
@@ -8749,6 +9033,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_getSelection.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getSelection`",
@@ -8758,7 +9043,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _selection = call KISKA_fnc_spectrum_getSelection;\n    // _selection params [\"_min\",\"_max\"];\n\n```"
+                    "text": "```sqf\nprivate _selection = call KISKA_fnc_spectrum_getSelection;\n// _selection params [\"_min\",\"_max\"];\n```"
                 }
             ],
             "description": "Provides the current MHz area selected on the local machine. This is where theblue bar that the player manipulates with the scroll wheel is positioned."
@@ -8770,6 +9055,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_getSignalMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getSignalMap`",
@@ -8779,7 +9065,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _signalMap = call KISKA_fnc_spectrum_getSignalMap;\n\n```"
+                    "text": "```sqf\nprivate _signalMap = call KISKA_fnc_spectrum_getSignalMap;\n```"
                 }
             ],
             "description": "Returns a map of all the signals and their corresponding ids that have beenadded on the local machine."
@@ -8791,6 +9077,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_isInitialized.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_isInitialized`",
@@ -8800,7 +9087,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isInitialized = call KISKA_fnc_spectrum_isInitialized\n\n```"
+                    "text": "```sqf\nprivate _isInitialized = call KISKA_fnc_spectrum_isInitialized\n```"
                 }
             ],
             "description": "Determines whether the spectrum device display has been initialized.\nThis display will be created once a player has added the device to theirinventory. They do not have to equip the device."
@@ -8812,6 +9099,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_isTransmitting.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_isTransmitting`",
@@ -8821,7 +9109,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isTransmitting = call KISKA_fnc_spectrum_isTransmitting\n\n```"
+                    "text": "```sqf\nprivate _isTransmitting = call KISKA_fnc_spectrum_isTransmitting\n```"
                 }
             ],
             "description": "Checks whether or not the local machine is transimitting on the spectrum device.\nThis shows as a green tint to the player's selection area with the full spectrumdevice ui open, and as a wifi esque signal when merely holding the spectrum device."
@@ -8833,6 +9121,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setMaxDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "[_max] call `KISKA_fnc_spectrum_setMaxDecibels`",
@@ -8847,7 +9136,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [-10] call KISKA_fnc_spectrum_setMaxDecibels;\n\n```"
+                    "text": "```sqf\n[-10] call KISKA_fnc_spectrum_setMaxDecibels;\n```"
                 }
             ],
             "description": "Sets the current max decibel range of spectrum device for the local machine."
@@ -8859,6 +9148,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setMaxFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "[_max] call `KISKA_fnc_spectrum_setMaxFrequency`",
@@ -8873,7 +9163,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [125] call KISKA_fnc_spectrum_setMaxFrequency;\n\n```"
+                    "text": "```sqf\n[125] call KISKA_fnc_spectrum_setMaxFrequency;\n```"
                 }
             ],
             "description": "Sets the current max frequency of the spectrum device for the local machine."
@@ -8885,6 +9175,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setMinDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "[_min] call `KISKA_fnc_spectrum_setMinDecibels`",
@@ -8899,7 +9190,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [-60] call KISKA_fnc_spectrum_setMinDecibels;\n\n```"
+                    "text": "```sqf\n[-60] call KISKA_fnc_spectrum_setMinDecibels;\n```"
                 }
             ],
             "description": "Sets the current min decibel range of spectrum device for the local machine."
@@ -8911,6 +9202,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setMinFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "[_min] call `KISKA_fnc_spectrum_setMinFrequency`",
@@ -8925,7 +9217,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [80] call KISKA_fnc_spectrum_setMinFrequency;\n\n```"
+                    "text": "```sqf\n[80] call KISKA_fnc_spectrum_setMinFrequency;\n```"
                 }
             ],
             "description": "Sets the current min frequency of the spectrum device for the local machine."
@@ -8937,6 +9229,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setSelectionWidth.sqf",
             "syntaxes": [
                 {
                     "outline": "[_width] call `KISKA_fnc_spectrum_setSelectionWidth`",
@@ -8951,7 +9244,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n\t// bar is 2 MHz wide\n    [2] call KISKA_fnc_spectrum_setSelectionWidth;\n\n```"
+                    "text": "```sqf\n// bar is 2 MHz wide\n[2] call KISKA_fnc_spectrum_setSelectionWidth;\n```"
                 }
             ],
             "description": "Sets the selection area of the local machine's spectrum device. This is thebar that a user can \"scroll\" around the spectrum with."
@@ -8963,6 +9256,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setSignalDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _decibels, _global] call `KISKA_fnc_spectrum_setSignalDecibels`",
@@ -8985,7 +9279,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_spectrumSignal_2_1\",-100] call KISKA_fnc_spectrum_setSignalDecibels;\n\n```"
+                    "text": "```sqf\n[\"KISKA_spectrumSignal_2_1\",-100] call KISKA_fnc_spectrum_setSignalDecibels;\n```"
                 }
             ],
             "description": "Sets the signal's decibel level.\nNOTE: If you intend to update more than one property of a signal, use\n `KISKA_fnc_spectrum_updateSignal` as it is more efficient."
@@ -8997,6 +9291,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setSignalDistance.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _maxDistance, _global] call `KISKA_fnc_spectrum_setSignalDistance`",
@@ -9019,7 +9314,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_spectrumSignal_2_1\",1000] call KISKA_fnc_spectrum_setSignalDistance;\n\n```"
+                    "text": "```sqf\n[\"KISKA_spectrumSignal_2_1\",1000] call KISKA_fnc_spectrum_setSignalDistance;\n```"
                 }
             ],
             "description": "Sets the signal's distance that it can be heard from.\nNOTE: If you intend to update more than one property of a signal, use\n `KISKA_fnc_spectrum_updateSignal` as it is more efficient."
@@ -9031,6 +9326,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setSignalFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _frequency, _global] call `KISKA_fnc_spectrum_setSignalFrequency`",
@@ -9053,7 +9349,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_spectrumSignal_2_1\",100] call KISKA_fnc_spectrum_setSignalFrequency;\n\n```"
+                    "text": "```sqf\n[\"KISKA_spectrumSignal_2_1\",100] call KISKA_fnc_spectrum_setSignalFrequency;\n```"
                 }
             ],
             "description": "Sets the signal's frequency.\nNOTE: If you intend to update more than one property of a signal, use\n `KISKA_fnc_spectrum_updateSignal` as it is more efficient."
@@ -9065,6 +9361,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setSignalPosition.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _origin, _global] call `KISKA_fnc_spectrum_setSignalPosition`",
@@ -9087,7 +9384,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_spectrumSignal_2_1\",myOrigin] call KISKA_fnc_spectrum_setSignalPosition;\n\n```"
+                    "text": "```sqf\n[\"KISKA_spectrumSignal_2_1\",myOrigin] call KISKA_fnc_spectrum_setSignalPosition;\n```"
                 }
             ],
             "description": "Sets the signal's origin position.\nNOTE: If you intend to update more than one property of a signal, use\n `KISKA_fnc_spectrum_updateSignal` as it is more efficient."
@@ -9099,6 +9396,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_setTransmitting.sqf",
             "syntaxes": [
                 {
                     "outline": "[_isTransmitting] call `KISKA_fnc_spectrum_setTransmitting`",
@@ -9113,7 +9411,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [true] call KISKA_fnc_spectrum_setTransmitting;\n\n```"
+                    "text": "```sqf\n[true] call KISKA_fnc_spectrum_setTransmitting;\n```"
                 }
             ],
             "description": "Adjusts whether or not the spectrum device is in transmit mode.\nThis shows as a green tint to the player's selection area with the full spectrumdevice ui open, and as a wifi esque signal when merely holding the spectrum device."
@@ -9125,6 +9423,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_signalExists.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_spectrum_signalExists`",
@@ -9139,7 +9438,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _signalExists = [\"KISKA_spectrumSignal_2_1\"] call KISKA_fnc_spectrum_signalExists\n\n```"
+                    "text": "```sqf\nprivate _signalExists = [\"KISKA_spectrumSignal_2_1\"] call KISKA_fnc_spectrum_signalExists\n```"
                 }
             ],
             "description": "Checks if a given spectrum signal exists on the local machine."
@@ -9151,6 +9450,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_startSignalLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_startSignalLoop`",
@@ -9160,7 +9460,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_spectrum_startSignalLoop;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_spectrum_startSignalLoop;\n```"
                 }
             ],
             "description": "Handles starting a (sort of infinite) loop that will update a player'sspectrum device readings."
@@ -9172,6 +9472,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum Device/fn_spectrum_updateSignal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_signalProperties, _global] call `KISKA_fnc_spectrum_updateSignal`",
@@ -9190,10 +9491,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // should use KISKA_fnc_spectrum_updateSignal for snyched updates\n    // but if you only want a subset of machines:\n    [\n        [\n            \"KISKA_spectrumSignal_2_1\",\n            100,\n            [0,0,0],\n            100\n        ],\n        false\n    ] remoteExecCall [\n        \"KISKA_fnc_spectrum_updateSignal\",\n        [3,4]\n    ];\n\n```"
+                    "text": "```sqf\n// should use KISKA_fnc_spectrum_updateSignal for snyched updates\n// but if you only want a subset of machines:\n[\n    [\n        \"KISKA_spectrumSignal_2_1\",\n        100,\n        [0,0,0],\n        100\n    ],\n    false\n] remoteExecCall [\n    \"KISKA_fnc_spectrum_updateSignal\",\n    [3,4]\n];\n```"
                 },
                 {
-                    "text": "```sqf\n    // broadcast to all machines by default\n    [\n        [\n            \"KISKA_spectrumSignal_2_1\",\n            100,\n            [0,0,0],\n            100\n        ]\n    ] call KISKA_fnc_spectrum_updateSignal;\n\n```"
+                    "text": "```sqf\n// broadcast to all machines by default\n[\n    [\n        \"KISKA_spectrumSignal_2_1\",\n        100,\n        [0,0,0],\n        100\n    ]\n] call KISKA_fnc_spectrum_updateSignal;\n```"
                 }
             ],
             "description": "Updates a signal's base properties for the local machine or creates it if itdid not exist prior. It is not recommended to directly create a signal with thisfunction. Rather use `KISKA_fnc_spectrum_addSignal`.\nWARNING, this function updats ALL base properties. Meaning if you intend toa single property, use the corresponding setter function. For example, to updatethe origin position only and not every signal property, use \n `KISKA_fnc_spectrum_setSignalPosition`."
@@ -9205,6 +9506,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SpeechRecognition/SQF Functions/fn_SR_addGrammarXml.sqf",
             "syntaxes": [
                 {
                     "outline": "[_name, _xml] call `KISKA_fnc_SR_addGrammarXml`",
@@ -9223,7 +9525,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"name\",loadFile \"myXmlFile.xml\"] call KISKA_fnc_SR_addGrammarXml;\n\n```"
+                    "text": "```sqf\n[\"name\",loadFile \"myXmlFile.xml\"] call KISKA_fnc_SR_addGrammarXml;\n```"
                 }
             ],
             "description": "Adds an xml grammar file to the speech recognizer."
@@ -9235,6 +9537,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SpeechRecognition/SQF Functions/fn_SR_callExtension.sqf",
             "syntaxes": [
                 {
                     "outline": "[_functionToRun, _args] call `KISKA_fnc_SR_callExtension`",
@@ -9253,10 +9556,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _return = [\"kiska_ext_sr_startrecording\"] call KISKA_fnc_SR_callExtension;\n\n```"
+                    "text": "```sqf\nprivate _return = [\"kiska_ext_sr_startrecording\"] call KISKA_fnc_SR_callExtension;\n```"
                 },
                 {
-                    "text": "```sqf\n    private _return = [\n        \"kiska_ext_sr_addgrammarxml\",\n        [\"my grammar\",\"...gramarxml\"]\n    ] call KISKA_fnc_SR_callExtension;\n\n```"
+                    "text": "```sqf\nprivate _return = [\n    \"kiska_ext_sr_addgrammarxml\",\n    [\"my grammar\",\"...gramarxml\"]\n] call KISKA_fnc_SR_callExtension;\n```"
                 }
             ],
             "description": "Calls to KISKA_speechRecognition(_x64).dll extension to run a function withinit."
@@ -9268,6 +9571,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SpeechRecognition/SQF Functions/fn_SR_startRecording.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId] call `KISKA_fnc_SR_startRecording`",
@@ -9282,7 +9586,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _started = call KISKA_fnc_SR_startRecording;\n\n```"
+                    "text": "```sqf\nprivate _started = call KISKA_fnc_SR_startRecording;\n```"
                 }
             ],
             "description": "Starts KISKA Speech recognition's extension's listening to the the user'smicrophone to complete a speech recognition event."
@@ -9294,6 +9598,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SpeechRecognition/SQF Functions/fn_SR_stopRecording.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_SR_stopRecording`",
@@ -9303,7 +9608,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _stopped = call KISKA_fnc_SR_stopRecording;\n\n```"
+                    "text": "```sqf\nprivate _stopped = call KISKA_fnc_SR_stopRecording;\n```"
                 }
             ],
             "description": "Manually stops KISKA's Speech Recognition extension from listening to the user'smicrophone.\nNOTE: Every complete recognition of a phrase after beginning a recording will automatically stop the extension from listening. The purpose of this function is to manually tell the extension you want to stop recording during the act of saying a phrase"
@@ -9315,6 +9620,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_stalk.sqf",
             "syntaxes": [
                 {
                     "outline": "[_stalkerGroup, _stalked, _refreshInterval, _postStalking, _conditionToEndStalking] call `KISKA_fnc_stalk`",
@@ -9345,7 +9651,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        someGroup,\n        group player,\n        15,\n        {hint str _this},\n        {false}\n    ] spawn KISKA_fnc_stalk\n\n```"
+                    "text": "```sqf\n[\n    someGroup,\n    group player,\n    15,\n    {hint str _this},\n    {false}\n] spawn KISKA_fnc_stalk\n```"
                 }
             ],
             "description": "Rewrite of BIS_fnc_stalk for optimizations and features.One provided group will continually be provided waypoints to another group'spositions providing a \"stalking\" affect."
@@ -9357,6 +9663,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_staticLine.sqf",
             "syntaxes": [
                 {
                     "outline": "[_aircraft, _dropArray, _invincibleOnDrop] call `KISKA_fnc_staticLine`",
@@ -9379,10 +9686,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [plane,group] spawn KISKA_fnc_staticLine;\n\n```"
+                    "text": "```sqf\n[plane,group] spawn KISKA_fnc_staticLine;\n```"
                 },
                 {
-                    "text": "```sqf\n    [plane,[group1,unit2]] spawn KISKA_fnc_staticLine;\n\n```"
+                    "text": "```sqf\n[plane,[group1,unit2]] spawn KISKA_fnc_staticLine;\n```"
                 }
             ],
             "description": "Ejects units from vehicle and deploys chutes, will select CUP T10 chute if available.\nCAUTION:All units from a group THAT ARE IN THE SAME AIRCRAFT should be droppedwith the same function call. Not doing so can see odd behaviour from the aircraft.\nThis is tied to KISKA_fnc_staticLine_eject and the use of the leaveVehiclecommand. If there are units from the same group still in the aircraft when it isexecuted, the aircraft will ignore all commands and attempt to pickup those unitsthat were dropped."
@@ -9394,6 +9701,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_staticLine_eject.sqf",
             "syntaxes": [
                 {
                     "outline": "[_aircraft, _unit, _chuteType, _index, _invincibleOnDrop] call `KISKA_fnc_staticLine`",
@@ -9432,6 +9740,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_stopBattleSound.sqf",
             "syntaxes": [
                 {
                     "outline": "[_chatterId] call `KISKA_fnc_stopBattleSound`",
@@ -9446,7 +9755,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_stopBattleSound;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_stopBattleSound;\n```"
                 }
             ],
             "description": "Stops battle sounds playing for the given id."
@@ -9458,6 +9767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_stopMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "[_fadeTime] spawn `KISKA_fnc_stopMusic`",
@@ -9472,7 +9782,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [] spawn KISKA_fnc_stopMusic;\n\n```"
+                    "text": "```sqf\n[] spawn KISKA_fnc_stopMusic;\n```"
                 }
             ],
             "description": "Stops the currently playing music with a fade if desired."
@@ -9484,6 +9794,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_stopRadioChatter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_chatterId] call `KISKA_fnc_stopRadioChatter`",
@@ -9498,7 +9809,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_radioChatter;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_radioChatter;\n```"
                 }
             ],
             "description": "Stops radio chatter playing for the given id."
@@ -9510,6 +9821,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_stopRandom3dSoundLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_stopRandom3dSoundLoop`",
@@ -9524,7 +9836,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_stopRandom3dSoundLoop;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_stopRandom3dSoundLoop;\n```"
                 }
             ],
             "description": "Stops a 3d sound loop created with KISKA_fnc_playRandom3dSoundLoop;"
@@ -9536,6 +9848,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_str.sqf",
             "syntaxes": [
                 {
                     "outline": "[_value] call `KISKA_fnc_str`",
@@ -9550,7 +9863,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    _asString = [_someValue] call KISKA_fnc_str;\n\n```"
+                    "text": "```sqf\n_asString = [_someValue] call KISKA_fnc_str;\n```"
                 }
             ],
             "description": "Given that str command produces triple quoted strings if used on a string\n (which can be incompatible with other commands) this function simply formatsthem as \"'string'\" instead, and all other types as normal with str."
@@ -9562,6 +9875,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_supplyDrop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_classNames, _altittude, _dropPosition, _stopAdjustingHeight, _chuteVelocityFreq, _stage_1_height, _stage_1_velocityDiff, _stage_2_velocityDiff] call `KISKA_fnc_supplyDrop`",
@@ -9604,7 +9918,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [[\"className1\",\"className2\"], 500, player] call KISKA_fnc_supplyDrop;\n\n```"
+                    "text": "```sqf\n[[\"className1\",\"className2\"], 500, player] call KISKA_fnc_supplyDrop;\n```"
                 }
             ],
             "description": "Spawns a supply drop near the requested position. Crates will parachute in."
@@ -9616,6 +9930,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_supplyDrop_aircraft.sqf",
             "syntaxes": [
                 {
                     "outline": "[_dropPosition, _crates, _deleteCargo, _addArsenal, _flyinHeight, _flyDirection, _flyInRadius, _lifeTime, _side] call `KISKA_fnc_supplyDrop_aircraft`",
@@ -9662,7 +9977,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [position player] call KISKA_fnc_supplyDrop_aircraft;\n\n```"
+                    "text": "```sqf\n[position player] call KISKA_fnc_supplyDrop_aircraft;\n```"
                 }
             ],
             "description": "Spawns in an aircraft that flies over a DZ to drop off supplies."
@@ -9674,6 +9989,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_addDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_supportManager_addDiaryEntry`",
@@ -9683,7 +9999,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    POST-INIT function\n\n```"
+                    "text": "```sqf\nPOST-INIT function\n```"
                 }
             ],
             "description": "Creates a diary entry in the map for the player to open the support Manager"
@@ -9695,6 +10011,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_addToPool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entryToAdd, _bypassChecks] call `KISKA_fnc_supportManager_addToPool`",
@@ -9713,7 +10030,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"someClass\"] call KISKA_fnc_supportManager_addToPool;\n\n```"
+                    "text": "```sqf\n[\"someClass\"] call KISKA_fnc_supportManager_addToPool;\n```"
                 }
             ],
             "description": "Adds an entry into the local support manager pool."
@@ -9725,6 +10042,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_addToPool_global.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entryToAdd] call `KISKA_fnc_supportManager_addToPool_global`",
@@ -9739,7 +10057,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"someClass\"] call KISKA_fnc_supportManager_addToPool_global;\n\n```"
+                    "text": "```sqf\n[\"someClass\"] call KISKA_fnc_supportManager_addToPool_global;\n```"
                 }
             ],
             "description": "Adds an entry into the global support manager pool.\nTHIS FUNCTION HAS A GLOBAL EFFECT"
@@ -9751,6 +10069,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_onLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] call `KISKA_fnc_supportManager_onLoad`",
@@ -9765,7 +10084,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // called from config\n    [_this select 0] call KISKA_fnc_supportManager_onLoad;\n\n```"
+                    "text": "```sqf\n// called from config\n[_this select 0] call KISKA_fnc_supportManager_onLoad;\n```"
                 }
             ],
             "description": "Sets up uiNamespace globals for and intializes the Support Manager GUI."
@@ -9777,6 +10096,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_openDialog.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_supportManager_openDialog`",
@@ -9786,7 +10106,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_supportManager_openDialog;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_supportManager_openDialog;\n```"
                 }
             ],
             "description": "Opens KISKA Support Manager dialog."
@@ -9798,6 +10118,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_removeFromPool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_index] call `KISKA_fnc_supportManager_removeFromPool`",
@@ -9812,7 +10133,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_supportManager_removeFromPool;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_supportManager_removeFromPool;\n```"
                 }
             ],
             "description": "Removes the provided index from the pool."
@@ -9824,6 +10145,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_removeFromPool_global.sqf",
             "syntaxes": [
                 {
                     "outline": "[_index] call `KISKA_fnc_supportManager_removeFromPool_global`",
@@ -9838,7 +10160,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_supportManager_removeFromPool_global;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_supportManager_removeFromPool_global;\n```"
                 }
             ],
             "description": "Removes the provided index from the support pool with GLOBAl EFFECT."
@@ -9850,6 +10172,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_store_buttonClickEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_supportManager_store_buttonClickEvent`",
@@ -9859,7 +10182,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_supportManager_store_buttonClickEvent;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_supportManager_store_buttonClickEvent;\n```"
                 }
             ],
             "description": "Activates when the take button is pressed and gives player the support."
@@ -9871,6 +10194,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_take_buttonClickEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_supportManager_take_buttonClickEvent`",
@@ -9880,7 +10204,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_supportManager_take_buttonClickEvent;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_supportManager_take_buttonClickEvent;\n```"
                 }
             ],
             "description": "Activates when the take button is pressed and gives player the support."
@@ -9892,6 +10216,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_updateCurrentList.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_supportManager_updateCurrentList`",
@@ -9901,7 +10226,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_supportManager_updateCurrentList;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_supportManager_updateCurrentList;\n```"
                 }
             ],
             "description": "Acts as an event that will update the current supports list of a player inthe GUI."
@@ -9913,6 +10238,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_updatePoolList.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_supportManager_updatePoolList`",
@@ -9922,7 +10248,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_supportManager_updatePoolList;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_supportManager_updatePoolList;\n```"
                 }
             ],
             "description": "Acts as an event that will update the available supports pool list inthe Support Manager GUI."
@@ -9934,6 +10260,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_supportNotification.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportTypeId] call `KISKA_fnc_supportNotification`",
@@ -9948,7 +10275,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_supportNotification;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_supportNotification;\n```"
                 }
             ],
             "description": "Gives the player a sound or text notification that they called in a supportfrom the KISKA systems. Just used for feedback to know a call was placed.\nPlayers can adjust the notifcation settings in the CBA addon menu."
@@ -9960,6 +10287,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_supportRadio.sqf",
             "syntaxes": [
                 {
                     "outline": "[_messageType, _caller, _targets] call `KISKA_fnc_supportRadio`",
@@ -9982,7 +10310,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"artillery\"] call KISKA_fnc_supportRadio;\n\n```"
+                    "text": "```sqf\n[\"artillery\"] call KISKA_fnc_supportRadio;\n```"
                 }
             ],
             "description": "Decides what radio message to play to provided targets."
@@ -9994,6 +10322,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_executeEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineEvents, _timelineId, _timelineMap, _previousReturn] call `KISKA_fnc_timeline_executeEvent`",
@@ -10020,7 +10349,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_timelineEvents,\"KISKA_timeline_1\"] call KISKA_fnc_timeline_executeEvent\n\n```"
+                    "text": "```sqf\n[_timelineEvents,\"KISKA_timeline_1\"] call KISKA_fnc_timeline_executeEvent\n```"
                 }
             ],
             "description": "Executes a recursive chain timeline events. This should not be executed on itsown but begins from KISKA_fnc_timeline_start."
@@ -10032,6 +10361,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_getInfoMap.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId] call `KISKA_fnc_timeline_getInfoMap`",
@@ -10046,7 +10376,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _timelineMapForId = [\"KISKA_timeline_1\"] call KISKA_fnc_timeline_getInfoMap;\n\n```"
+                    "text": "```sqf\nprivate _timelineMapForId = [\"KISKA_timeline_1\"] call KISKA_fnc_timeline_getInfoMap;\n```"
                 }
             ],
             "description": "The Individual map defined for a specific timeline of the given ID. This isthe hashmap available in each timeline's event's code."
@@ -10058,6 +10388,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_getIsRunningMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_timeline_getIsRunningMap`",
@@ -10067,7 +10398,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isRunningMap = call KISKA_fnc_timeline_getIsRunningMap;\n\n```"
+                    "text": "```sqf\nprivate _isRunningMap = call KISKA_fnc_timeline_getIsRunningMap;\n```"
                 }
             ],
             "description": "Returns the map that keeps track of whether or not a given KISKA timeline iscurrently running."
@@ -10079,6 +10410,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_getMainMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_timeline_getMainMap`",
@@ -10088,10 +10420,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _mainTimelineMap = call KISKA_fnc_timeline_getMainMap;\n    private _timelineId = \"KISKA_timeline_1\";\n    private _timelineValues = _mainTimelineMap get _timelineId;\n    _timelineValues params [\"_timelineEvents\",\"_timelineMap\",\"_onTimelineStopped\"];\n\n```"
+                    "text": "```sqf\nprivate _mainTimelineMap = call KISKA_fnc_timeline_getMainMap;\nprivate _timelineId = \"KISKA_timeline_1\";\nprivate _timelineValues = _mainTimelineMap get _timelineId;\n_timelineValues params [\"_timelineEvents\",\"_timelineMap\",\"_onTimelineStopped\"];\n```"
                 }
             ],
-            "description": "The map that links a given timeline id to its info map. This is an internal functionthat you (likely) don't need to use except for altering timelines that have already started.\n\nSee KISKA_fnc_timeline_getInfoMap to retrieve an info map for a given timeline."
+            "description": "The map that links a given timeline id to its info map. This is an internal functionthat you (likely) don't need to use except for altering timelines that have already started.\n \nSee KISKA_fnc_timeline_getInfoMap to retrieve an info map for a given timeline."
         },
         "configuration": {
             "label": "KISKA_fnc_timeline_getMainMap",
@@ -10100,6 +10432,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_isRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId, _checkForFullCompletion] call `KISKA_fnc_timeline_isRunning`",
@@ -10118,10 +10451,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _isRunning = [\"KISKA_timeline_1\",false] call KISKA_fnc_timeline_isRunning;\n\n```"
+                    "text": "```sqf\nprivate _isRunning = [\"KISKA_timeline_1\",false] call KISKA_fnc_timeline_isRunning;\n```"
                 },
                 {
-                    "text": "```sqf\n    private _timelineIsNotComplete = [\"KISKA_timeline_1\",true] call KISKA_fnc_timeline_isRunning;\n\n```"
+                    "text": "```sqf\nprivate _timelineIsNotComplete = [\"KISKA_timeline_1\",true] call KISKA_fnc_timeline_isRunning;\n```"
                 }
             ],
             "description": "Checks if a timeline has either fully been complete (_checkForFullCompletion = true) or is simply qued for end at the start of its next event (_checkForFullCompletion = false)."
@@ -10133,6 +10466,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_setIsRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId, _isRunning] call `KISKA_fnc_timeline_setIsRunning`",
@@ -10151,7 +10485,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // internal function that should not be directly called\n\n```"
+                    "text": "```sqf\n// internal function that should not be directly called\n```"
                 }
             ],
             "description": "Sets whether a given timeline is considered to be running."
@@ -10163,6 +10497,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_start.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timeline, _onTimelineStopped] call `KISKA_fnc_timeline_start`",
@@ -10173,7 +10508,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onTimelineStopped",
-                            "description": "*(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack),code that will be executed once a timeline is stopped. \n\n    Parameters:\n    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.\n    - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID"
+                            "description": "*(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack),code that will be executed once a timeline is stopped. \n \n    Parameters:\n    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.\n    - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID"
                         }
                     ],
                     "returns": "*(STRING)* - The id of the new timeline"
@@ -10181,10 +10516,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    private _timeline = [\n        [\n            {\n                hint \"executed event #1\";\n                time + 3 // return/send to next and current wait condition\n            },\n            {\n                params [\"\",\"\",\"_eventReturn\"];\n                private _timeAfterWait = _eventReturn;\n                time >= _timeAfterWait // wait until current time is more than time + 3\n            },\n        ],\n        [\n            {hint \"executed event #2 ~3 seconds after event 1 completed\"}, 2\n        ]\n    ];\n    private _timelineId = [_timeline,{hint \"timeline end\"}] call KISKA_fnc_timeline_start;\n\n```"
+                    "text": "```sqf\nprivate _timeline = [\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to next and current wait condition\n        },\n        {\n            params [\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        },\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}, 2\n    ]\n];\nprivate _timelineId = [_timeline,{hint \"timeline end\"}] call KISKA_fnc_timeline_start;\n```"
                 }
             ],
-            "description": "Creates a timeline of events that can happen. Waits/executes in an unscheduledenvironment. \n\nThere is a non-trivial amount of overhead to this, however, sodo not use with the intention of needing precise events to happen but rather tonot clog the scheduler or use a decent interface with smaller units of code.\n\n\n```sqf\n    // A timeline is made up of events:\n    [\n        [], // event 1\n        [] // event 2\n    ]\n\n```\n\n\n\n```sqf\n    // Each event is made up of code to execute when the event comes up in the timeline,\n    /// and what to wait for when executing the NEXT event in the timeline AFTER the \n    /// current event completes:\n    [\n        [\n            {\n                hint \"executed event #1\"\n            },\n            3 // wait 3 seconds AFTER current event to execute event 2\n        ],\n        [\n            {\n                hint \"executed event #2 3 seconds after event 1 completed\"\n            },\n            1 // wait 1 second to run _onTimelineStopped code\n        ]\n    ]\n\n```\n\n\n\n```sqf\n    // Alternativeley, you can also wait for a condition before proceeeding to the next event:\n    private _endTime = time + 10;\n    [\n        [\n            {hint \"executed event #1\"},\n            3 // wait 3 seconds AFTER current event to execute event 1\n        ],\n        [\n            {hint \"executed event #2 3 seconds after event 1 completed\"},\n            [[_endTime],{\n                _thisArgs params [\"_endTime\"];\n                time >= (_endTime) // wait until current time is more than _endTime\n            }],\n            1 // check condition every second\n        ]\n    ]\n\n```\n\n\n\n```sqf\n    // You can chain timeline events together by returning\n    [\n        [\n            {\n                hint \"executed event #1\";\n                time + 3 // return/send to the next event and current wait condition\n            },\n            {\n                params [\"\",\"\",\"\",\"_eventReturn\"];\n                private _timeAfterWait = _eventReturn;\n                time >= _timeAfterWait // wait until current time is more than time + 3\n            },\n        ],\n        [\n            {hint \"executed event #2 ~3 seconds after event 1 completed\"}\n        ]\n    ]\n\n```"
+            "description": "Creates a timeline of events that can happen. Waits/executes in an unscheduledenvironment. \n \nThere is a non-trivial amount of overhead to this, however, sodo not use with the intention of needing precise events to happen but rather tonot clog the scheduler or use a decent interface with smaller units of code.\n\n\n```sqf\n// A timeline is made up of events:\n[\n    [], // event 1\n    [] // event 2\n]\n```\n\n\n\n```sqf\n// Each event is made up of code to execute when the event comes up in the timeline,\n/// and what to wait for when executing the NEXT event in the timeline AFTER the \n/// current event completes:\n[\n    [\n        {\n            hint \"executed event #1\"\n        },\n        3 // wait 3 seconds AFTER current event to execute event 2\n    ],\n    [\n        {\n            hint \"executed event #2 3 seconds after event 1 completed\"\n        },\n        1 // wait 1 second to run _onTimelineStopped code\n    ]\n]\n```\n\n \n\n```sqf\n// Alternativeley, you can also wait for a condition before proceeeding to the next event:\nprivate _endTime = time + 10;\n[\n    [\n        {hint \"executed event #1\"},\n        3 // wait 3 seconds AFTER current event to execute event 1\n    ],\n    [\n        {hint \"executed event #2 3 seconds after event 1 completed\"},\n        [[_endTime],{\n            _thisArgs params [\"_endTime\"];\n            time >= (_endTime) // wait until current time is more than _endTime\n        }],\n        1 // check condition every second\n    ]\n]\n```\n\n\n\n```sqf\n// You can chain timeline events together by returning\n[\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to the next event and current wait condition\n        },\n        {\n            params [\"\",\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        },\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}\n    ]\n]\n```"
         },
         "configuration": {
             "label": "KISKA_fnc_timeline_start",
@@ -10193,6 +10528,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_stop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId, _onTimelineStopped] call `KISKA_fnc_timeline_stop`",
@@ -10203,7 +10539,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onTimelineStopped",
-                            "description": "*(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack),code that will be executed once a timeline is stopped. \n\n    Parameters:\n    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.\n    - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID"
+                            "description": "*(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack),code that will be executed once a timeline is stopped. \n \n    Parameters:\n    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.\n    - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID"
                         }
                     ],
                     "returns": "NOTHING"
@@ -10211,10 +10547,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"KISKA_timeline_1\"] call KISKA_fnc_timeline_stop;\n\n```"
+                    "text": "```sqf\n[\"KISKA_timeline_1\"] call KISKA_fnc_timeline_stop;\n```"
                 },
                 {
-                    "text": "```sqf\n    [\"KISKA_timeline_1\",{hint str [\"timeline stopped!\",_this]}] call KISKA_fnc_timeline_stop;\n\n```"
+                    "text": "```sqf\n[\"KISKA_timeline_1\",{hint str [\"timeline stopped!\",_this]}] call KISKA_fnc_timeline_stop;\n```"
                 }
             ],
             "description": "Ques a timeline to end on the next execution of an event in it or at the veryend of the timeline. This will immediately set KISKA_fnc_timeline_isRunning\n (where _isFullyComplete-is-false) to be true."
@@ -10226,6 +10562,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_addDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_traitManager_addDiaryEntry`",
@@ -10235,7 +10572,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT function\n\n```"
+                    "text": "```sqf\nPRE-INIT function\n```"
                 }
             ],
             "description": "Creates a diary entry in the map for the player to open the trait Manager."
@@ -10247,6 +10584,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_addToPool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entryToAdd] call `KISKA_fnc_traitManager_addToPool`",
@@ -10261,7 +10599,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"medic\"] call KISKA_fnc_traitManager_addToPool;\n\n```"
+                    "text": "```sqf\n[\"medic\"] call KISKA_fnc_traitManager_addToPool;\n```"
                 }
             ],
             "description": "Adds an entry into the local trait manager pool."
@@ -10273,6 +10611,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_addToPool_global.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entryToAdd] call `KISKA_fnc_traitManager_addToPool_global`",
@@ -10287,7 +10626,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\"medic\"] call KISKA_fnc_traitManager_addToPool_global;\n\n```"
+                    "text": "```sqf\n[\"medic\"] call KISKA_fnc_traitManager_addToPool_global;\n```"
                 }
             ],
             "description": "Adds an entry into the global trait manager pool."
@@ -10299,6 +10638,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_onLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] call `KISKA_fnc_traitManager_onLoad`",
@@ -10313,7 +10653,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // called from config\n    [_this select 0] call KISKA_fnc_traitManager_onLoad;\n\n```"
+                    "text": "```sqf\n// called from config\n[_this select 0] call KISKA_fnc_traitManager_onLoad;\n```"
                 }
             ],
             "description": "Sets up uiNamespace globals for and intializes the Trait Manager GUI."
@@ -10325,6 +10665,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_onLoad_traitPool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] spawn `KISKA_fnc_traitManager_onLoad_traitPool`",
@@ -10339,7 +10680,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    // called from config\n    [_display] spawn KISKA_fnc_traitManager_onLoad_traitPool;\n\n```"
+                    "text": "```sqf\n// called from config\n[_display] spawn KISKA_fnc_traitManager_onLoad_traitPool;\n```"
                 }
             ],
             "description": "Begins the loop that syncs across the network and populates the pool list."
@@ -10351,6 +10692,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_openDialog.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_traitManager_openDialog`",
@@ -10360,7 +10702,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_traitManager_openDialog;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_traitManager_openDialog;\n```"
                 }
             ],
             "description": "Opens KISKA Trait Manager dialog."
@@ -10372,6 +10714,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_removeFromPool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_index] call `KISKA_fnc_traitManager_removeFromPool`",
@@ -10386,7 +10729,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_traitManager_removeFromPool;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_traitManager_removeFromPool;\n```"
                 }
             ],
             "description": "Removes the provided index from the pool."
@@ -10398,6 +10741,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_removeFromPool_global.sqf",
             "syntaxes": [
                 {
                     "outline": "[_index] call `KISKA_fnc_traitManager_removeFromPool_global`",
@@ -10412,7 +10756,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [0] call KISKA_fnc_traitManager_removeFromPool_global;\n\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_traitManager_removeFromPool_global;\n```"
                 }
             ],
             "description": "Removes the provided index from the trait pool with GLOBAl EFFECT."
@@ -10424,6 +10768,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_store_buttonClickEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_traitManager_store_buttonClickEvent`",
@@ -10433,7 +10778,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_traitManager_store_buttonClickEvent;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_traitManager_store_buttonClickEvent;\n```"
                 }
             ],
             "description": "Activates when the take button is pressed and gives player the support."
@@ -10445,6 +10790,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_take_buttonClickEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_traitManager_take_buttonClickEvent`",
@@ -10454,7 +10800,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_traitManager_take_buttonClickEvent;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_traitManager_take_buttonClickEvent;\n```"
                 }
             ],
             "description": "Activates when the take button is pressed and gives player the trait"
@@ -10466,6 +10812,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_updateCurrentList.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_traitManager_updateCurrentList`",
@@ -10475,7 +10822,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_traitManager_updateCurrentList;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_traitManager_updateCurrentList;\n```"
                 }
             ],
             "description": "Acts as an event that will update the current trait list of a player inthe GUI."
@@ -10487,6 +10834,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_updatePoolList.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_traittManager_updatePoolList`",
@@ -10496,7 +10844,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_traitManager_updatePoolList;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_traitManager_updatePoolList;\n```"
                 }
             ],
             "description": "Acts as an event that will update the available traits pool list inthe Trait Manager GUI."
@@ -10508,6 +10856,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support Framework/Functions/fn_updateFlareEffects.sqf",
             "syntaxes": [
                 {
                     "outline": "[_light, _flare] call `KISKA_fnc_updateFlareEffects`",
@@ -10526,7 +10875,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [_light,_flare] remoteExecCall [\"KISKA_fnc_updateFlareEffects\",0,_flare];\n\n```"
+                    "text": "```sqf\n[_light,_flare] remoteExecCall [\"KISKA_fnc_updateFlareEffects\",0,_flare];\n```"
                 }
             ],
             "description": "Due to the local nature of many light commands, this function is usedto sync up the brightness increase of the flares launched in the support function."
@@ -10538,6 +10887,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_updateRallyPointNotification.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_updateRallyPointNotification`",
@@ -10547,7 +10897,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    remoteExec [\"KISKA_fnc_updateRallyPointNotification\",somePlayer];\n\n```"
+                    "text": "```sqf\nremoteExec [\"KISKA_fnc_updateRallyPointNotification\",somePlayer];\n```"
                 }
             ],
             "description": "Informs the player that their rally point was updated"
@@ -10559,6 +10909,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_updateRespawnMarker.sqf",
             "syntaxes": [
                 {
                     "outline": "[_caller, _marker, _markerText] call `KISKA_fnc_updateRespawnMarker`",
@@ -10581,7 +10932,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player,myMarker,myMarkerText] call KISKA_fnc_updateRespawnMarker;\n\n```"
+                    "text": "```sqf\n[player,myMarker,myMarkerText] call KISKA_fnc_updateRespawnMarker;\n```"
                 }
             ],
             "description": "Deletes the old respawn marker and makes a new one."
@@ -10593,6 +10944,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_updateRespawnMarkerQuery.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_updateRespawnMarkerQuery`",
@@ -10602,7 +10954,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_updateRespawnMarkerQuery;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_updateRespawnMarkerQuery;\n```"
                 }
             ],
             "description": "Acts as a go between for use inside of a string in a diary entry expression.\n(You can't use remoteExecCall with a string inside of double strings)"
@@ -10614,6 +10966,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_ViewDistanceLimiter/Functions/fn_VDL_addOpenGuiDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_VDL_addOpenGuiDiaryEntry`",
@@ -10623,7 +10976,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    PRE-INIT function\n\n```"
+                    "text": "```sqf\nPRE-INIT function\n```"
                 }
             ],
             "description": "Creates a diary entry to open the VDL dialog."
@@ -10635,6 +10988,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_ViewDistanceLimiter/Functions/fn_VDL_controlsGroup_onLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_controlsGroup, _varName] call `KISKA_fnc_VDL_controlsGroup_onLoad`",
@@ -10653,7 +11007,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [controlsGroup,\"someName\"] call KISKA_fnc_VDL_controlsGroup_onLoad;\n\n```"
+                    "text": "```sqf\n[controlsGroup,\"someName\"] call KISKA_fnc_VDL_controlsGroup_onLoad;\n```"
                 }
             ],
             "description": "Acts as the onload event for the KISKA View Distance Limiter Dialog"
@@ -10665,6 +11019,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_ViewDistanceLimiter/Functions/fn_VDL_onLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_display] call `KISKA_fnc_VDL_onLoad`",
@@ -10679,7 +11034,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [display] call KISKA_fnc_VDL_onLoad;\n\n```"
+                    "text": "```sqf\n[display] call KISKA_fnc_VDL_onLoad;\n```"
                 }
             ],
             "description": "Acts as the onload event for the KISKA View Distance Limiter Dialog"
@@ -10691,6 +11046,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_ViewDistanceLimiter/Functions/fn_VDL_openDialog.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_VDL_openDialog`",
@@ -10700,7 +11056,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    call KISKA_fnc_VDL_openDialog;\n\n```"
+                    "text": "```sqf\ncall KISKA_fnc_VDL_openDialog;\n```"
                 }
             ],
             "description": "Opens the GUI for the VDL system."
@@ -10712,6 +11068,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_vehicleFactory.sqf",
             "syntaxes": [
                 {
                     "outline": "[_controlPanel, _spawnPosition, _vehicleTypes, _clearRadius, _onCreateCode] spawn `KISKA_fnc_vehicleFactory`",
@@ -10742,7 +11099,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [player,(getPosATL player) vectorAdd [2,2,0],\"B_MRAP_01_F\"] spawn KISKA_fnc_vehicleFactory;\n\n```"
+                    "text": "```sqf\n[player,(getPosATL player) vectorAdd [2,2,0],\"B_MRAP_01_F\"] spawn KISKA_fnc_vehicleFactory;\n```"
                 }
             ],
             "description": "Add an action to given object that allows the spawn of a vehicle"
@@ -10754,6 +11111,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_ViewDistanceLimiter/Functions/fn_viewDistanceLimiter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_targetFPS, _checkFreq, _minObjectDistance, _maxObjectDistance, _increment, _viewDistance] spawn `KISKA_fnc_viewDistanceLimiter`",
@@ -10788,7 +11146,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    Every 3 seconds, check\n    [45,3,500,1700,25,3000] spawn KISKA_fnc_viewDistanceLimiter;\n\n```"
+                    "text": "```sqf\nEvery 3 seconds, check\n[45,3,500,1700,25,3000] spawn KISKA_fnc_viewDistanceLimiter;\n```"
                 }
             ],
             "description": "Starts a looping function for limiting a player's viewDistance.Loop can be stopped by setting mission variable \"KISKA_VDL_run\" to false.All other values have global vars that can be edited while it is in use.\nSee each param for associated global var."
@@ -10800,6 +11158,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_virtualArty.sqf",
             "syntaxes": [
                 {
                     "outline": "[_target, _ammoType, _radius, _numberOfRounds, _delayBetween, _markPosition] spawn `KISKA_fnc_virtualArty`",
@@ -10834,7 +11193,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [target_1,\"Sh_155mm_AMOS\"] spawn KISKA_fnc_virtualArty;\n\n```"
+                    "text": "```sqf\n[target_1,\"Sh_155mm_AMOS\"] spawn KISKA_fnc_virtualArty;\n```"
                 }
             ],
             "description": "Calls for an artillery or mortar strike at a designated position and marks the spot."
@@ -10846,6 +11205,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_vlsFireAt.sqf",
             "syntaxes": [
                 {
                     "outline": "[_launcher, _target] call `KISKA_fnc_vlsFireAt`",
@@ -10864,7 +11224,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [VLS_1,target_1] call KISKA_fnc_vlsFireAt;\n\n```"
+                    "text": "```sqf\n[VLS_1,target_1] call KISKA_fnc_vlsFireAt;\n```"
                 }
             ],
             "description": "Orders VLS to fire at a target. Projectile will follow terrain."
@@ -10876,6 +11236,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_waitUntil.sqf",
             "syntaxes": [
                 {
                     "outline": "[_condition, _function, _interval, _parameters, _unscheduled] call `KISKA_fnc_waitUntil`",
@@ -10906,7 +11267,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n    [\n        {\n            true\n        },\n        {\n            hint \"wait\";\n        },\n        0.5,\n        [],\n        true\n    ] call KISKA_fnc_waitUntil;\n\n```"
+                    "text": "```sqf\n[\n    {\n        true\n    },\n    {\n        hint \"wait\";\n    },\n    0.5,\n    [],\n    true\n] call KISKA_fnc_waitUntil;\n```"
                 }
             ],
             "description": "Waitunil that allows variable evaluation time instead of frame by frame."

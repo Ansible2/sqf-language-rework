@@ -51,12 +51,12 @@ const REPO_TREE_URL =
 export class KiskaParserV2 implements DocParser {
     public readonly SEED_FILE_NAME: string = "KiskaFunctionLibrary.json";
     private readonly MAX_NUMBER_OF_CONCURRENT_REQUESTS = 20;
-    // private debug = false;
+    private debug = false;
 
     constructor() {}
 
     private getDocumentationLink(entry: IGithubTreeEntry): string {
-        return `https://github.com/Ansible2/Kiska-Function-Library/blob/${entry.sha}/${entry.path}`;
+        return `https://github.com/Ansible2/Kiska-Function-Library/blob/master/${entry.path}`;
     }
 
     async getLatestSeedFile(): Promise<string> {
@@ -133,9 +133,7 @@ export class KiskaParserV2 implements DocParser {
         const parsedPages: SQFItemConfig[] = [];
         pages.forEach((unparsedPage) => {
             try {
-                // example to start debug
-                // this.debug = unparsedPage.fileName.toLowerCase().includes("_timeline_start");
-
+                this.debug = unparsedPage.fileName.toLowerCase().includes("ambientanim.sqf");
                 const parsedPage = this.parseKiskaPage(unparsedPage);
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
@@ -278,24 +276,23 @@ export class KiskaParserV2 implements DocParser {
 
         convertedText = convertedText
             .replace(NEW_LINES_IN_SENTENCES_REGEX, "")
-            .replace(WHITESPACE_LINE_REGEX, "")
+            .replace(WHITESPACE_LINE_REGEX, " ")
             .replace(TYPES_REGEX, "*($1)*");
 
         for (const exampleCodeText of sqfCodeExamples) {
             convertedText = convertedText.replace(
                 SQF_CODE_REPLACEMENT_TOKEN,
-                ["\n```sqf", exampleCodeText, "```\n"].join("\n")
+                ["\n```sqf", exampleCodeText.trim().replace(INDENTS_REGEX, ""), "```\n"].join("\n")
             );
         }
 
         for (const exampleCodeText of configCodeExamples) {
             convertedText = convertedText.replace(
                 CONFIG_CODE_REPLACEMENT_TOKEN,
-                ["\n```cpp", exampleCodeText, "```\n"].join("\n")
+                ["\n```cpp", exampleCodeText.trim().replace(INDENTS_REGEX, ""), "```\n"].join("\n")
             );
         }
 
-        // TODO: examples aren't having indents removed
         return convertedText.trim().replace(INDENTS_REGEX, "");
     }
 
