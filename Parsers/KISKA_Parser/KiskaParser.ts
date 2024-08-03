@@ -48,7 +48,7 @@ const SCHEDULED_FUNCTION_TEXT = "if (!canSuspend) exitWith".toLowerCase();
 const REPO_TREE_URL =
     "https://api.github.com/repos/Ansible2/Kiska-Function-Library/git/trees/master?recursive=1";
 
-export class KiskaParserV2 implements DocParser {
+export class KiskaParser implements DocParser {
     public readonly SEED_FILE_NAME: string = "KiskaFunctionLibrary.json";
     private readonly MAX_NUMBER_OF_CONCURRENT_REQUESTS = 20;
     // private debug = false;

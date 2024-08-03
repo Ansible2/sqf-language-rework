@@ -3,7 +3,7 @@ import fs from "fs-extra";
 // import { KiskaParser } from "./KISKA Parser/KiskaParser";
 import { BikiParser } from "./Biki_Parser/BikiParser";
 import { DocParser } from "./SQFParser.namespace";
-import { KiskaParserV2 } from "./KISKA Parser/KiskaParserV2";
+import { KiskaParser } from "./KISKA_Parser/KiskaParser";
 
 let parseType = "";
 let command = "parse";
@@ -31,7 +31,7 @@ async function main() {
     let parser: DocParser | undefined = undefined;
     switch (parseType) {
         case "kiska": {
-            parser = new KiskaParserV2();
+            parser = new KiskaParser();
             break;
         }
         case "biki:commands": {
