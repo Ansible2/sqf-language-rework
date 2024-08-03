@@ -55,7 +55,7 @@ interface BikiSyntax {
     syntaxTitle: string;
 }
 
-export class BikiParserV2 implements DocParser {
+export class BikiParser implements DocParser {
     private xmlParser = new XMLParser();
     private textInterpreter = new BikiTextInterpreter();
     public readonly SEED_FILE_NAME;

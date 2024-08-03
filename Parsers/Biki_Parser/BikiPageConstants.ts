@@ -1,4 +1,4 @@
-import { UnparsedBikiPage } from "./BikiParserV2";
+import { UnparsedBikiPage } from "./BikiParser";
 
 type PageTitle = string;
 export const BIKI_EXCEPTIONS = new Map<PageTitle, (page: UnparsedBikiPage) => UnparsedBikiPage>();

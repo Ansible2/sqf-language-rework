@@ -1,7 +1,7 @@
 import * as path from "path";
 import fs from "fs-extra";
 // import { KiskaParser } from "./KISKA Parser/KiskaParser";
-import { BikiParserV2 } from "./BIKI Parser 2.0/BikiParserV2";
+import { BikiParser } from "./Biki_Parser/BikiParser";
 import { DocParser } from "./SQFParser.namespace";
 import { KiskaParserV2 } from "./KISKA Parser/KiskaParserV2";
 
@@ -35,11 +35,11 @@ async function main() {
             break;
         }
         case "biki:commands": {
-            parser = new BikiParserV2("commands");
+            parser = new BikiParser("commands");
             break;
         }
         case "biki:functions": {
-            parser = new BikiParserV2("functions");
+            parser = new BikiParser("functions");
             break;
         }
         default: {
