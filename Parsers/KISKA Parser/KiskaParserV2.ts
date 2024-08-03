@@ -51,7 +51,7 @@ const REPO_TREE_URL =
 export class KiskaParserV2 implements DocParser {
     public readonly SEED_FILE_NAME: string = "KiskaFunctionLibrary.json";
     private readonly MAX_NUMBER_OF_CONCURRENT_REQUESTS = 20;
-    private debug = false;
+    // private debug = false;
 
     constructor() {}
 
@@ -133,7 +133,6 @@ export class KiskaParserV2 implements DocParser {
         const parsedPages: SQFItemConfig[] = [];
         pages.forEach((unparsedPage) => {
             try {
-                this.debug = unparsedPage.fileName.toLowerCase().includes("ambientanim.sqf");
                 const parsedPage = this.parseKiskaPage(unparsedPage);
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
