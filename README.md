@@ -36,3 +36,10 @@ There are a number of `package.json` commands to run these parser implementation
 ## Grammars
 
 The [grammar files](/configuration/grammars/) will determine how the syntax highlighting is produced. Any errors in that will be regex issues in the `.grammar` files.
+
+## Build Extension
+
+1. After installation, run `npm run vsce`.
+1. Navigate to the `/.out` folder. There will be a file generated called `sqf-language-rework-{version}.vsix`.
+
+You can now distribute that `.vsix` file as the extension.
