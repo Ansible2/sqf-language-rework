@@ -2,7 +2,7 @@
     "name": "sqf-language-rework",
     "displayName": "SQF Language Rework",
     "description": "",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "engines": {
         "vscode": "^1.70.0"
     },
@@ -64,8 +64,7 @@
                     "Status Quo Function"
                 ],
                 "extensions": [
-                    ".sqf",
-                    ".sqm"
+                    ".sqf"
                 ],
                 "configuration": "./configuration/language-configs/sqf.configuration.json"
             },
@@ -76,7 +75,9 @@
                 ],
                 "extensions": [
                     ".ext",
-                    ".hpp"
+                    ".hpp",
+                    ".bikb",
+                    ".sqm"
                 ],
                 "configuration": "./configuration/language-configs/ext.configuration.json"
             }
