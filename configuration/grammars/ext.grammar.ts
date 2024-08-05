@@ -218,7 +218,7 @@ const grammarRepo: IRawRepository = {
 export const extGrammar: IRawGrammar = {
     // scopeName: "source.arma-config",
     scopeName: "source.ext",
-    fileTypes: ["ext", "hpp", "h", "cpp", "c", "sqm", "arma.cfg"],
+    fileTypes: ["ext", "hpp", "h", "cpp", "c", "sqm", "arma.cfg", "bikb"],
     name: "arma-config",
     patterns: patterns,
     repository: grammarRepo,
