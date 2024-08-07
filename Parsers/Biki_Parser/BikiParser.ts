@@ -853,6 +853,7 @@ class BikiTextInterpreter {
         localnamespace: SQFGrammarType.NamespaceLiteral,
         currentnamespace: SQFGrammarType.NamespaceLiteral,
         missionnamespace: SQFGrammarType.NamespaceLiteral,
+        player: SQFGrammarType.ReservedLiteral,
         missionprofilenamespace: SQFGrammarType.NamespaceLiteral,
         parsingnamespace: SQFGrammarType.NamespaceLiteral,
         profilenamespace: SQFGrammarType.NamespaceLiteral,

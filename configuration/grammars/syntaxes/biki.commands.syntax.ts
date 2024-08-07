@@ -55901,7 +55901,7 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "player",
-            "grammarType": "command"
+            "grammarType": "reserved-literal"
         }
     },
     {
