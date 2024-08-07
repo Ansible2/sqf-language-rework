@@ -54151,6 +54151,33 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "description": "`not` a is exactly the same as [[! a]].",
+            "examples": [
+                {
+                    "text": "```sqf\nnot false; // returns true\n```"
+                }
+            ],
+            "syntaxes": [
+                {
+                    "parameters": [
+                        {
+                            "name": "a",
+                            "description": "`Boolean`"
+                        }
+                    ],
+                    "outline": "`not` a",
+                    "returns": "`Boolean`"
+                }
+            ],
+            "documentationLink": "https://community.bistudio.com/wiki/not"
+        },
+        "configuration": {
+            "label": "not",
+            "grammarType": "condition-operator"
+        }
+    },
+    {
+        "documentation": {
             "description": "Returns the number of engines a helicopter has. {{Feature|afm}}",
             "examples": [
                 {
