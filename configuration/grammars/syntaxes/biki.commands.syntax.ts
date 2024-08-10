@@ -55359,7 +55359,7 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "param",
-            "grammarType": "command"
+            "grammarType": "property-accessor"
         }
     },
     {
@@ -55424,7 +55424,7 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "params",
-            "grammarType": "command"
+            "grammarType": "property-accessor"
         }
     },
     {

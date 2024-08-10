@@ -1,5 +1,10 @@
 import { XMLParser } from "fast-xml-parser";
-import { DocParser, IJSON, UnparsedItem, getStringReplacer } from "../SQFParser.namespace";
+import {
+    DocParser,
+    IJSON,
+    UnparsedItem,
+    getStringReplacer,
+} from "../SQFParser.namespace";
 import {
     ExampleConfig,
     SQFArgumentLocality,
@@ -11,7 +16,10 @@ import {
     SQFSyntaxConfig,
 } from "../../configuration/grammars/sqf.namespace";
 import fs from "fs";
-import { BIKI_ADDITIONAL_COMMAND_PAGES, BIKI_EXCEPTIONS } from "./BikiPageConstants";
+import {
+    BIKI_ADDITIONAL_COMMAND_PAGES,
+    BIKI_EXCEPTIONS,
+} from "./BikiPageConstants";
 
 interface BikiPage {
     title?: string;
@@ -90,7 +98,8 @@ export class BikiParser implements DocParser {
         formData.append("curonly", "1");
         formData.append("wpEditToken", "+\\");
 
-        const BIKI_EXPORT_URL = "https://community.bistudio.com/wiki/Special:Export/";
+        const BIKI_EXPORT_URL =
+            "https://community.bistudio.com/wiki/Special:Export/";
         const BIKI_EXPORT_METHOD = "POST";
         const getPageNamesResponse = await fetch(BIKI_EXPORT_URL, {
             body: formData,
@@ -144,7 +153,9 @@ export class BikiParser implements DocParser {
     /* ----------------------------------------------------------------------------
         convertToItemConfigs
     ---------------------------------------------------------------------------- */
-    async convertToItemConfigs(pages: UnparsedBikiPage[]): Promise<SQFItemConfig[]> {
+    async convertToItemConfigs(
+        pages: UnparsedBikiPage[]
+    ): Promise<SQFItemConfig[]> {
         const parsedPages: SQFItemConfig[] = [];
         if (this.parseType === "commands") {
             pages.push(...BIKI_ADDITIONAL_COMMAND_PAGES);
@@ -156,7 +167,10 @@ export class BikiParser implements DocParser {
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
             } catch (error) {
-                console.error(`Error while parsing BIKI entry: "${unparsedPage.title}"`, error);
+                console.error(
+                    `Error while parsing BIKI entry: "${unparsedPage.title}"`,
+                    error
+                );
             }
         });
 
@@ -197,23 +211,31 @@ export class BikiParser implements DocParser {
         if (exampleDetails) {
             exampleDetails.forEach((detail) => {
                 if (!detail.content) return;
-                const exampleInMarkdown = this.textInterpreter.convertTextToMarkdown(
-                    detail.content
-                );
+                const exampleInMarkdown =
+                    this.textInterpreter.convertTextToMarkdown(detail.content);
 
                 // some examples (BIS_fnc_3den_init) only have a dash (-) for example
-                const exampleDoesNotHaveActualContent = !/\w+/i.test(exampleInMarkdown);
+                const exampleDoesNotHaveActualContent = !/\w+/i.test(
+                    exampleInMarkdown
+                );
                 if (exampleDoesNotHaveActualContent) return;
 
                 examples.push({ text: exampleInMarkdown });
             });
         }
 
-        const descriptionDetail = detailsMap.get(BikiPageDetailType.Description)?.at(0);
-        const description = this.textInterpreter.convertTextToMarkdown(descriptionDetail?.content);
+        const descriptionDetail = detailsMap
+            .get(BikiPageDetailType.Description)
+            ?.at(0);
+        const description = this.textInterpreter.convertTextToMarkdown(
+            descriptionDetail?.content
+        );
 
-        const serverExecutionDetails = detailsMap.get(BikiPageDetailType.ServerExecution);
-        const serverExecution = serverExecutionDetails && serverExecutionDetails.length > 0;
+        const serverExecutionDetails = detailsMap.get(
+            BikiPageDetailType.ServerExecution
+        );
+        const serverExecution =
+            serverExecutionDetails && serverExecutionDetails.length > 0;
 
         const effectLocality = this.textInterpreter.getEffectLocality(
             detailsMap.get(BikiPageDetailType.EffectLocality)?.at(0)?.content
@@ -239,11 +261,13 @@ export class BikiParser implements DocParser {
                 argumentLocality,
                 effectLocality,
                 serverExecution,
-                documentationLink: this.textInterpreter.getDocumentationLink(titleFormatted),
+                documentationLink:
+                    this.textInterpreter.getDocumentationLink(titleFormatted),
             },
             configuration: {
                 label: this.textInterpreter.getLabel(titleFormatted),
-                grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
+                grammarType:
+                    this.textInterpreter.getSQFGrammarType(titleFormatted),
             },
         };
     }
@@ -265,8 +289,12 @@ export class BikiParser implements DocParser {
             const markdownContent = this.textInterpreter.convertTextToMarkdown(
                 parameterDetail.content
             );
-            const parameterConfig = this.textInterpreter.parseParameter(markdownContent);
-            if (parameterConfig.description !== null || parameterConfig.name !== null) {
+            const parameterConfig =
+                this.textInterpreter.parseParameter(markdownContent);
+            if (
+                parameterConfig.description !== null ||
+                parameterConfig.name !== null
+            ) {
                 syntax.parameters.push(parameterConfig);
             }
         });
@@ -323,8 +351,10 @@ export class BikiParser implements DocParser {
                 detailsMap.set(pageDetail.type, [pageDetail]);
             }
 
-            const isParameter = pageDetail.type === BikiPageDetailType.Parameter;
-            const isSyntaxExample = pageDetail.type === BikiPageDetailType.Syntax;
+            const isParameter =
+                pageDetail.type === BikiPageDetailType.Parameter;
+            const isSyntaxExample =
+                pageDetail.type === BikiPageDetailType.Syntax;
             const isReturn = pageDetail.type === BikiPageDetailType.Return;
             if (!isParameter && !isSyntaxExample && !isReturn) return;
 
@@ -334,7 +364,9 @@ export class BikiParser implements DocParser {
                 // only the parameters for syntaxes past the first include a number past 1
                 const syntaxIdString =
                     pageDetail.name
-                        .match(/(?<=s)\d|(?<=r)\d|(?<=p)(?:\d(?=\d)|(?=\d{1}))/i)
+                        .match(
+                            /(?<=s)\d|(?<=r)\d|(?<=p)(?:\d(?=\d)|(?=\d{1}))/i
+                        )
                         ?.at(0) || "1";
 
                 syntaxId = parseInt(syntaxIdString);
@@ -399,7 +431,8 @@ class BikiTextInterpreter {
 
         if (detail.startsWith("|type")) return BikiPageDetailType.PageType;
 
-        if (!!detail.match(/^\|exec\s*\=/)) return BikiPageDetailType.FunctionExecution;
+        if (!!detail.match(/^\|exec\s*\=/))
+            return BikiPageDetailType.FunctionExecution;
 
         return BikiPageDetailType.Unknown;
     }
@@ -602,7 +635,8 @@ class BikiTextInterpreter {
         POSITIONAGL: SQFDataType.PositionAGL,
         "POSITION#POSITIONAGL|POSITIONAGL": SQFDataType.PositionAGL,
         POSITIONRELATIVE: SQFDataType.PositionRelative,
-        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE": SQFDataType.PositionRelative,
+        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE":
+            SQFDataType.PositionRelative,
         "PARTICLE ARRAY": SQFDataType.ParticleArray,
         PARTICLEARRAY: SQFDataType.ParticleArray,
     };
@@ -612,9 +646,14 @@ class BikiTextInterpreter {
     ).map((typeName) => typeName.replaceAll("|", "\\|"));
 
     private parseWikiType(wikiType: string): SQFDataType {
-        const type = BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP[wikiType.toUpperCase()];
+        const type =
+            BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP[
+                wikiType.toUpperCase()
+            ];
         if (!type) {
-            throw new Error(`Could not find data type to match wiki type: ${wikiType}`);
+            throw new Error(
+                `Could not find data type to match wiki type: ${wikiType}`
+            );
         }
 
         return type;
@@ -668,7 +707,9 @@ class BikiTextInterpreter {
         [
             /\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
+                const subUrl = encodeURIComponent(
+                    replacementInfo.captureGroups[1]
+                );
                 const linkText = replacementInfo.captureGroups[2];
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
@@ -676,7 +717,9 @@ class BikiTextInterpreter {
         [
             /\{\{wikipedia\|(.*)\|(.*)\}\}/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
+                const subUrl = encodeURIComponent(
+                    replacementInfo.captureGroups[1]
+                );
                 const linkText = replacementInfo.captureGroups[2];
                 return `[${linkText}](${this.WIKIPEDIA_BASE_URL}/${subUrl})`;
             }),
@@ -685,7 +728,9 @@ class BikiTextInterpreter {
         [
             /\[\[([\w/:\s]+)\]\]/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1].trim());
+                const subUrl = encodeURIComponent(
+                    replacementInfo.captureGroups[1].trim()
+                );
                 const linkText = replacementInfo.captureGroups[1].trim();
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
@@ -702,48 +747,72 @@ class BikiTextInterpreter {
 
         // code blocks are seperated to ensure that any code formatting is not overwritten
         // during formatting
-        const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
+        const sqfCodeBlockMatches = convertedText.matchAll(
+            /(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi
+        );
         const convertedCodeExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
             const matchString = match[0];
             if (!matchString) continue;
             convertedCodeExamples.push(matchString);
-            convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
+            convertedText = convertedText.replace(
+                matchString,
+                "<SQFCodeToReplace>"
+            );
         }
 
         const dataTypeMatches = text.matchAll(
-            new RegExp(`\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\]\]`, "gi")
+            new RegExp(
+                `\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\]\]`,
+                "gi"
+            )
         );
         for (const match of dataTypeMatches) {
             const originalTypeText = match[0];
             const specificType = match[1];
-            text = text.replaceAll(originalTypeText, `\`${this.parseWikiType(specificType)}\``);
+            text = text.replaceAll(
+                originalTypeText,
+                `\`${this.parseWikiType(specificType)}\``
+            );
         }
 
         this.SIMPLE_REPLACEMENTS.forEach(
             ([selector, replacement]) =>
-                (convertedText = convertedText.replace(selector, replacement as string))
+                (convertedText = convertedText.replace(
+                    selector,
+                    replacement as string
+                ))
         );
 
         Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
             ([templateKey, templateInfo]) => {
                 const replacementText = templateInfo.text;
-                const simpleTextRegex = new RegExp(`\\{\\{${templateKey}\\}\\}`, "gi");
-                convertedText = convertedText.replace(simpleTextRegex, replacementText);
+                const simpleTextRegex = new RegExp(
+                    `\\{\\{${templateKey}\\}\\}`,
+                    "gi"
+                );
+                convertedText = convertedText.replace(
+                    simpleTextRegex,
+                    replacementText
+                );
 
                 if (templateInfo.gameVersionIcon) {
                     const gameVersionRegex = new RegExp(
                         `\\{\\{GVI\\|${templateKey}\\|([\\d\\.]+).*?\\}\\}`,
                         "gi"
                     );
-                    const gameIconMatches = convertedText.matchAll(gameVersionRegex);
+                    const gameIconMatches =
+                        convertedText.matchAll(gameVersionRegex);
                     for (const match of gameIconMatches) {
                         let newText = replacementText;
                         const gameVersion = match[2];
                         if (gameVersion) newText += ` v${gameVersion}`;
 
                         const originalString = match[0];
-                        convertedText = convertedText.replace(originalString, `**(${newText})**`);
+                        convertedText = convertedText.replace(
+                            originalString,
+                            `**(${newText})**`
+                        );
                     }
                 }
 
@@ -763,7 +832,10 @@ class BikiTextInterpreter {
                         }
 
                         const originalString = match[0];
-                        convertedText = convertedText.replace(originalString, newText);
+                        convertedText = convertedText.replace(
+                            originalString,
+                            newText
+                        );
                     }
                 }
             }
@@ -781,13 +853,18 @@ class BikiTextInterpreter {
             );
         }
 
-        return convertedText.replaceAll("<sqf>", "").replaceAll("</sqf>", "").trim();
+        return convertedText
+            .replaceAll("<sqf>", "")
+            .replaceAll("</sqf>", "")
+            .trim();
     }
 
     /* ----------------------------------------------------------------------------
         getEffectLocality
     ---------------------------------------------------------------------------- */
-    public getEffectLocality(pageDetailContent: string | undefined): SQFEffectLocality | undefined {
+    public getEffectLocality(
+        pageDetailContent: string | undefined
+    ): SQFEffectLocality | undefined {
         if (!pageDetailContent) return;
 
         pageDetailContent = pageDetailContent.toLowerCase();
@@ -826,8 +903,12 @@ class BikiTextInterpreter {
     ---------------------------------------------------------------------------- */
     public parseParameter(parameterContent: string): SQFParameterConfig {
         return {
-            name: parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
-            description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+)[\s\S]+/i)?.at(0) || null,
+            name:
+                parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
+            description:
+                parameterContent
+                    .match(/(?<=.+(?:\:|\s+-)\s+)[\s\S]+/i)
+                    ?.at(0) || null,
         };
     }
 
@@ -840,7 +921,7 @@ class BikiTextInterpreter {
         foreach: SQFGrammarType.ControlStatement,
         or: SQFGrammarType.ConditionOperator,
         and: SQFGrammarType.ConditionOperator,
-        toString: SQFGrammarType.Command,
+        tostring: SQFGrammarType.Command,
         "a && b": SQFGrammarType.ConditionOperator,
         "a or b": SQFGrammarType.ConditionOperator,
         true: SQFGrammarType.BooleanLiteral,
@@ -879,23 +960,23 @@ class BikiTextInterpreter {
         step: SQFGrammarType.ControlStatement,
         break: SQFGrammarType.ControlStatement,
         default: SQFGrammarType.ControlStatement,
-        breakOut: SQFGrammarType.ControlStatement,
-        breakTo: SQFGrammarType.ControlStatement,
-        breakWith: SQFGrammarType.ControlStatement,
+        breakout: SQFGrammarType.ControlStatement,
+        breakto: SQFGrammarType.ControlStatement,
+        breakwith: SQFGrammarType.ControlStatement,
         continue: SQFGrammarType.ControlStatement,
         call: SQFGrammarType.CodeExecutor,
         spawn: SQFGrammarType.CodeExecutor,
-        continueWith: SQFGrammarType.ControlStatement,
+        continuewith: SQFGrammarType.ControlStatement,
         else: SQFGrammarType.ControlStatement,
         exit: SQFGrammarType.ControlStatement,
-        forEachMemberTeam: SQFGrammarType.ControlStatement,
+        foreachmemberteam: SQFGrammarType.ControlStatement,
         exitWith: SQFGrammarType.ControlStatement,
         sleep: SQFGrammarType.ControlStatement,
         uisleep: SQFGrammarType.ControlStatement,
         then: SQFGrammarType.ControlStatement,
         throw: SQFGrammarType.ControlStatement,
         to: SQFGrammarType.ControlStatement,
-        waitUntil: SQFGrammarType.ControlStatement,
+        waituntil: SQFGrammarType.ControlStatement,
         with: SQFGrammarType.ControlStatement,
         halt: SQFGrammarType.ControlStatement,
         while: SQFGrammarType.ControlStatement,
@@ -903,11 +984,13 @@ class BikiTextInterpreter {
         assert: SQFGrammarType.ControlStatement,
         do: SQFGrammarType.ControlStatement,
         terminate: SQFGrammarType.ControlStatement,
-        forEachMemberAgent: SQFGrammarType.ControlStatement,
+        foreachmemberagent: SQFGrammarType.ControlStatement,
         from: SQFGrammarType.ControlStatement,
         get: SQFGrammarType.PropertyAccessor,
         set: SQFGrammarType.PropertyAccessor,
         select: SQFGrammarType.PropertyAccessor,
+        params: SQFGrammarType.PropertyAccessor,
+        param: SQFGrammarType.PropertyAccessor,
         getordefault: SQFGrammarType.PropertyAccessor,
         getordefaultcall: SQFGrammarType.PropertyAccessor,
         "a hash b": SQFGrammarType.PropertyAccessor,
@@ -932,11 +1015,11 @@ class BikiTextInterpreter {
         compilescript: SQFGrammarType.FileCompiler,
         compilefinal: SQFGrammarType.StringCompiler,
         exec: SQFGrammarType.FileExecutor,
-        execFSM: SQFGrammarType.FileExecutor,
-        execVM: SQFGrammarType.FileExecutor,
+        execfsm: SQFGrammarType.FileExecutor,
+        execvm: SQFGrammarType.FileExecutor,
         preprocessFile: SQFGrammarType.FileCompiler,
         loadfile: SQFGrammarType.FileCompiler,
-        preprocessFileLineNumbers: SQFGrammarType.FileCompiler,
+        preprocessfilelinenumbers: SQFGrammarType.FileCompiler,
     };
 
     /* ----------------------------------------------------------------------------
