@@ -1,6 +1,7 @@
 {
     "name": "sqf-language-rework",
     "displayName": "SQF Language Rework",
+    "publisher": "KISKA-Factory",
     "description": "",
     "version": "0.0.19",
     "engines": {
