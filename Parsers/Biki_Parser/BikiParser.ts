@@ -63,7 +63,7 @@ interface BikiSyntax {
     syntaxTitle: string;
 }
 
-export class BikiParser implements DocParser {
+class BikiParser implements DocParser {
     private xmlParser = new XMLParser();
     private textInterpreter = new BikiTextInterpreter();
     public readonly SEED_FILE_NAME;
@@ -407,7 +407,7 @@ export class BikiParser implements DocParser {
     }
 }
 
-class BikiTextInterpreter {
+export class BikiTextInterpreter {
     /* ----------------------------------------------------------------------------
         getDetailType
     ---------------------------------------------------------------------------- */
@@ -629,7 +629,7 @@ class BikiTextInterpreter {
         POSITIONATL: SQFDataType.PositionATL,
         "POSITION#POSITIONATL|POSITIONATL": SQFDataType.PositionATL,
         POSITIONASL: SQFDataType.PositionASL,
-        "POSITION#POSITIONASL\\|POSITIONASL": SQFDataType.PositionASL,
+        "POSITION#POSITIONASL|POSITIONASL": SQFDataType.PositionASL,
         POSITIONAGLS: SQFDataType.PositionAGLS,
         "POSITION#POSITIONAGLS|POSITIONAGLS": SQFDataType.PositionAGLS,
         POSITIONAGL: SQFDataType.PositionAGL,
@@ -1107,5 +1107,17 @@ class BikiTextInterpreter {
         if (!pageHandler) return page;
 
         return pageHandler(page);
+    }
+}
+
+export class BikiFunctionsParser extends BikiParser {
+    constructor() {
+        super("functions");
+    }
+}
+
+export class BikiCommandsParser extends BikiParser {
+    constructor() {
+        super("commands");
     }
 }
