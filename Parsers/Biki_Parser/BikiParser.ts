@@ -290,7 +290,7 @@ class BikiParser implements DocParser {
         syntaxMap: Map<number, BikiSyntax>;
     } | null {
         const matchPageDetailsRegEx =
-            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
+            /(?<=(?:\s|RV))(\|(\w+)\s*=)([\s\S]+?)(?=(?:\s\|\w+|$|}}\s*{{Note|\n}}\s*$))/gi;
         const pageDetails: IterableIterator<RegExpMatchArray> | undefined =
             page.text.matchAll(matchPageDetailsRegEx);
 
@@ -312,7 +312,7 @@ class BikiParser implements DocParser {
                 orginal: detailFull,
                 name: matchGroups[2],
                 content: matchGroups[3].trim(),
-                fullName: `|${matchGroups[2]}=`,
+                fullName: matchGroups[1], // includes | and =
             };
 
             allParsedDetails.push(pageDetail);
@@ -627,7 +627,7 @@ export class BikiTextInterpreter {
     private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
     private readonly BIKI_BASE_URL = "https://community.bistudio.com/wiki";
     private readonly SIMPLE_REPLACEMENTS: [
-        RegExp,
+        RegExp | string,
         string | ((substring: string, ...args: any[]) => string)
     ][] = [
         // bold text
@@ -654,6 +654,8 @@ export class BikiTextInterpreter {
                 return `_Example ${exampleNumber}_`;
             }),
         ],
+        // external links
+        [/{{link\|([\s\S]+?)\|([\s\S]+?)}}/gi, "[$2]($1)"],
         // Internal Hyperlinks
         [
             /\{\{\s*link\s*\|\s*(\w+)\#(.*?)\}\}/gi,
@@ -690,6 +692,7 @@ export class BikiTextInterpreter {
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
         ],
+        ["[[a or b|{{!}}{{!}}]]", "||"],
     ];
 
     /* ----------------------------------------------------------------------------
