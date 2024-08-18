@@ -23,12 +23,16 @@ describe("BikiCommandsParser", () => {
     });
 
     describe.concurrent("convertItemConfigs", () => {
-        for (const [name, testInputs] of Object.entries(BikiTestPages)) {
+        for (const [name, testStatics] of Object.entries(BikiTestPages)) {
             it(`should convert ${name} into a config`, async () => {
-                const result = await parser.convertToItemConfigs([testInputs.unparsed]);
+                const page: UnparsedBikiPage = {
+                    title: name,
+                    text: testStatics.unparsed,
+                };
+                const result = await parser.convertToItemConfigs([page]);
                 // undefined properties are removed once written to the actual file
                 const parsedConfig = removeUndefinedKeys(result[0]);
-                expect(parsedConfig).toEqual(testInputs.parsed);
+                expect(parsedConfig).toEqual(testStatics.parsed);
             });
         }
     });
