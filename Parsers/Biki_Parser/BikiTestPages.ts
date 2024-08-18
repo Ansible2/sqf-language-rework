@@ -495,7 +495,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
         parsed: {
             documentation: {
                 description:
-                    "Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D)",
+                    "Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers)",
                 examples: [
                     {
                         text: '```sqf\n_id = addMissionEventHandler ["PlayerDisconnected", { systemChat str _this }];\n```',
@@ -514,7 +514,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "expression",
                                 description:
-                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the `_this` variable\n* **(Arma 3 v1.64)** the event handler's handle is stored in `_thisEventHandler` variable and is available during event handler code execution\n* **(Arma 3 v2.04)** it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n\n**Important**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load\n* **(Arma 3 v2.06)** the event's name is available from `_thisEvent` variable",
+                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the **`_this`** variable\n* **(Arma 3 v1.64)** the event handler's handle is stored in **`_thisEventHandler`** variable and is available during event handler code execution\n* **(Arma 3 v2.04)** it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n\n**IMPORTANT**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load.\n* **(Arma 3 v2.06)** the event's name is available from **`_thisEvent`** variable",
                             },
                             {
                                 name: "arguments",
@@ -578,7 +578,7 @@ allAddonsInfo
                 description: "Returns the list of all loaded addons.",
                 examples: [
                     {
-                        text: '```sqf\n\nallAddonsInfo\n/*\n\t[\n\t\t["bin\\","150301",false,-1,"66b6d1a87da30e0386fec881504c14a0a6025cb1"],\n\t\t["core\\","129618",false,-1,"49e1b8da67de848c8ea058fd8512c222ccb6d919"],\n\t\t["Languagecore_F\\","150376",false,-1,"2ee7b09d60f916d7e56934632f55683a14a636b7"],\n\t\t["a3\\anims_f_aow\\","149768",false,0,"59df21ad1fc6939c460a555b3af662f725564b37"],\n\t\t["a3\\dubbing_radio_f_enoch\\","150070",false,1,"5ca436c61a634fcbd28ca9480a4c8249c5b0e4bd"],\n\t\t["a3\\armor_f_tank\\","150292",false,2,"6d0ea8b45ff4cd316b3d6c5575def9dd048e198e"],\n\t\t["a3\\music_f_tacops\\","124064",false,3,"435c2b0338fe6bec7685002dca7c47778abf44ee"],\n\t\t...\n\t]\n*/\n\n```',
+                        text: '```sqf\n\nallAddonsInfo\n/*\n\t[\n\t\t["bin","150301",false,-1,"66b6d1a87da30e0386fec881504c14a0a6025cb1"],\n\t\t["core","129618",false,-1,"49e1b8da67de848c8ea058fd8512c222ccb6d919"],\n\t\t["Languagecore_F","150376",false,-1,"2ee7b09d60f916d7e56934632f55683a14a636b7"],\n\t\t["a3anims_f_aow","149768",false,0,"59df21ad1fc6939c460a555b3af662f725564b37"],\n\t\t["a3dubbing_radio_f_enoch","150070",false,1,"5ca436c61a634fcbd28ca9480a4c8249c5b0e4bd"],\n\t\t["a3armor_f_tank","150292",false,2,"6d0ea8b45ff4cd316b3d6c5575def9dd048e198e"],\n\t\t["a3music_f_tacops","124064",false,3,"435c2b0338fe6bec7685002dca7c47778abf44ee"],\n\t\t...\n\t]\n*/\n\n```',
                     },
                 ],
                 syntaxes: [

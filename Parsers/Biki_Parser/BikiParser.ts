@@ -635,7 +635,7 @@ export class BikiTextInterpreter {
         // italic text
         [/\'\'+(.+?)\'\'+/gi, "_$1_"],
         // emphasized text
-        [/\{\{hl\|(.+?)\}\}/gi, "**`$1`**"],
+        [/{{hl\|(.+?)}}/gi, "**`$1`**"],
         // other commands
         [/\[\[(\w+)\]\]/gi, "`$1`"],
         // other language code block
@@ -648,7 +648,7 @@ export class BikiTextInterpreter {
         [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
         // Links to examples inside the doc
         [
-            /\{\{\s*link\s*\|\s*#Example\s*(\d+)\s*\}\}/gi,
+            /{{\s*link\s*\|\s*#Example\s*(\d+)\s*}}/gi,
             getStringReplacer((replacementInfo) => {
                 const exampleNumber = replacementInfo.captureGroups[1];
                 return `_Example ${exampleNumber}_`;
@@ -678,7 +678,7 @@ export class BikiTextInterpreter {
             }),
         ],
         [
-            /\{\{wikipedia\|(.*)\|(.*)\}\}/gi,
+            /{{wikipedia\|(.*)\|(.*)}}/gi,
             getStringReplacer((replacementInfo) => {
                 const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
                 const linkText = replacementInfo.captureGroups[2];
@@ -689,11 +689,13 @@ export class BikiTextInterpreter {
         [
             /\[\[([\w/:\s]+)\]\]/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1].trim());
+                const subUrl = replacementInfo.captureGroups[1].trim().replaceAll(" ", "_");
                 const linkText = replacementInfo.captureGroups[1].trim();
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
         ],
+        [/{{controls\|(\w+)}}/gi, "$1"],
+        [/{{controls\|(\w+)\|(\w+)}}/gi, "$1 + $2"],
         ["[[a or b|{{!}}{{!}}]]", "||"],
     ];
 
@@ -754,13 +756,19 @@ export class BikiTextInterpreter {
                         convertedText = convertedText.replace(originalString, `**(${newText})**`);
                     }
                 }
-
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
-                        `\\{\\{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)\\}\\}(?=(?:\\s+(?:\\|\\w+=|\\{\\{))|$)`,
+                        `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\\s+(?:\\|\\w+=|{{))|$)`,
                         "gi"
                     );
                     const featureMatches = convertedText.matchAll(featureRegex);
+                    if (convertedText.includes("important")) {
+                        console.debug("--------------------");
+                        console.debug("convertedText ->", convertedText);
+                        console.debug("source ->", featureRegex.source);
+                        console.debug("featureMatches ->", Array.from(featureMatches));
+                        console.debug("--------------------");
+                    }
                     for (const match of featureMatches) {
                         let newText: string;
                         const featureMessage = match[1];
