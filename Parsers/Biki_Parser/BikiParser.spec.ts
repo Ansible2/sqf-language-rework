@@ -24,6 +24,7 @@ describe("BikiCommandsParser", () => {
 
     describe.concurrent("convertItemConfigs", () => {
         for (const [name, testStatics] of Object.entries(BikiTestPages)) {
+            // if (name !== 'drawIcon3D') continue;
             it(`should convert ${name} into a config`, async () => {
                 const page: UnparsedBikiPage = {
                     title: name,
