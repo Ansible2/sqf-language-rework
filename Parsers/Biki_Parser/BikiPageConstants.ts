@@ -3,6 +3,7 @@ import { UnparsedBikiPage } from "./BikiParser";
 type PageTitle = string;
 export const BIKI_EXCEPTIONS = new Map<PageTitle, (page: UnparsedBikiPage) => UnparsedBikiPage>();
 
+// some biki pages are not properly included in the extract for the category of arma 3 commands
 export const BIKI_ADDITIONAL_COMMAND_PAGES: UnparsedBikiPage[] = [
     {
         title: "false",
