@@ -290,7 +290,7 @@ class BikiParser implements DocParser {
         syntaxMap: Map<number, BikiSyntax>;
     } | null {
         const matchPageDetailsRegEx =
-            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(^\|([\s\w]*)\=(?!\=)))/gim;
+            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
         const pageDetails: IterableIterator<RegExpMatchArray> | undefined =
             page.text.matchAll(matchPageDetailsRegEx);
 
