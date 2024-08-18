@@ -635,7 +635,7 @@ export class BikiTextInterpreter {
         // italic text
         [/\'\'+(.+?)\'\'+/gi, "_$1_"],
         // emphasized text
-        [/\{\{hl\|(.+?)\}\}/gi, "`**$1**`"],
+        [/\{\{hl\|(.+?)\}\}/gi, "**`$1`**"],
         // other commands
         [/\[\[(\w+)\]\]/gi, "`$1`"],
         // other language code block
@@ -658,20 +658,22 @@ export class BikiTextInterpreter {
         [/{{link\|([\s\S]+?)\|([\s\S]+?)}}/gi, "[$2]($1)"],
         // Internal Hyperlinks
         [
-            /\{\{\s*link\s*\|\s*(\w+)\#(.*?)\}\}/gi,
+            /{{\s*link\s*\|\s*([\s\w]+)\#(.*?)}}/gi,
             getStringReplacer((replacementInfo) => {
-                const originalSubSection = replacementInfo.captureGroups[2];
+                const originalSubSection = replacementInfo.captureGroups[2].trim();
                 const subUrl = originalSubSection.replaceAll(" ", "_");
-                const section = replacementInfo.captureGroups[1];
-                return `[${section} - ${originalSubSection}](${this.BIKI_BASE_URL}/${section}#${subUrl})`;
+                const section = replacementInfo.captureGroups[1].trim();
+                return `[${section} - ${originalSubSection}](${
+                    this.BIKI_BASE_URL
+                }/${section.replaceAll(" ", "_")}#${subUrl})`;
             }),
         ],
         // Described Internal Hyperlinks
         [
-            /\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi,
+            /\[\[([\w\s#:]+)\|([\S\s]+?)\]\]/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
-                const linkText = replacementInfo.captureGroups[2];
+                const subUrl = replacementInfo.captureGroups[1].trim().replaceAll(" ", "_");
+                const linkText = replacementInfo.captureGroups[2].trim();
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
         ],
@@ -723,10 +725,13 @@ export class BikiTextInterpreter {
             text = text.replaceAll(originalTypeText, `\`${this.parseWikiType(specificType)}\``);
         }
 
-        this.SIMPLE_REPLACEMENTS.forEach(
-            ([selector, replacement]) =>
-                (convertedText = convertedText.replace(selector, replacement as string))
-        );
+        this.SIMPLE_REPLACEMENTS.forEach(([selector, replacement]) => {
+            if (typeof selector === "string") {
+                convertedText = convertedText.replaceAll(selector, replacement as string);
+                return;
+            }
+            convertedText = convertedText.replace(selector, replacement as string);
+        });
 
         Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
             ([templateKey, templateInfo]) => {
@@ -742,7 +747,7 @@ export class BikiTextInterpreter {
                     const gameIconMatches = convertedText.matchAll(gameVersionRegex);
                     for (const match of gameIconMatches) {
                         let newText = replacementText;
-                        const gameVersion = match[2];
+                        const gameVersion = match[1];
                         if (gameVersion) newText += ` v${gameVersion}`;
 
                         const originalString = match[0];

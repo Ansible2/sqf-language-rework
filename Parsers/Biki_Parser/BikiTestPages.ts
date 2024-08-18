@@ -22,12 +22,12 @@ export const BikiTestPages: {
                             {
                                 name: "position",
                                 description:
-                                    "`Array` format [Position3D](https://community.bistudio.com/wiki/Position%23Introduction), **(Arma 3)** `Object` or `Group`",
+                                    "`Array` format [Position3D](https://community.bistudio.com/wiki/Position#Introduction), **(Arma 3 v2.14)** `Object` or `Group`",
                             },
                             {
                                 name: "polygon",
                                 description:
-                                    "`Array` of [Position3D](https://community.bistudio.com/wiki/Position%23Introduction) - positions in format: [position1, position2...., positionN]",
+                                    "`Array` of [Position3D](https://community.bistudio.com/wiki/Position#Introduction) - positions in format: [position1, position2...., positionN]",
                             },
                         ],
                         outline: "position `inPolygon` polygon",
@@ -339,7 +339,7 @@ if (count _array == 0 || { (_array select 0) != player }) then
                         returns: "`Boolean`",
                     },
                 ],
-                documentationLink: "https://community.bistudio.com/wiki/||",
+                documentationLink: "https://community.bistudio.com/wiki/a_or_b",
             },
             configuration: {
                 label: "||",
@@ -425,7 +425,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "object",
                                 description:
-                                    "`Object` - PhysX object or **(Arma 3 2.14)** **(local arguement)** unit, in which case the unit must be local and will be [set unconscious](https://community.bistudio.com/wiki/setUnconscious)",
+                                    "`Object` - PhysX object or **(Arma 3 v2.14)** **(local arguement)** unit, in which case the unit must be local and will be [set unconscious](https://community.bistudio.com/wiki/setUnconscious)",
                             },
                             {
                                 name: "force",
@@ -435,7 +435,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "position",
                                 description:
-                                    "`Array` - in format [x,y,z], in _object_'s [relative position](https://community.bistudio.com/wiki/Position%23PositionRelative)",
+                                    "`Array` - in format [x,y,z], in _object_'s [relative position](https://community.bistudio.com/wiki/Position#PositionRelative)",
                             },
                             {
                                 name: "setUnconscious",
@@ -495,7 +495,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
         parsed: {
             documentation: {
                 description:
-                    "Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers)",
+                    "Adds event handler attached to the current mission and returns event handler handle. For the list of available mission event handlers see: [Arma 3: Mission Event Handlers](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D)",
                 examples: [
                     {
                         text: '```sqf\n_id = addMissionEventHandler ["PlayerDisconnected", { systemChat str _this }];\n```',
@@ -514,12 +514,12 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "expression",
                                 description:
-                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the `_this` variable\n* **(Arma 3 1.64)** the event handler's handle is stored in `_thisEventHandler` variable and is available during event handler code execution\n* **(Arma 3 2.04)** it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in `_thisArgs` variable\n\n**Important**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load\n* **(Arma 3 2.06)** the event's name is available from `_thisEvent` variable",
+                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the `_this` variable\n* **(Arma 3 v1.64)** the event handler's handle is stored in `_thisEventHandler` variable and is available during event handler code execution\n* **(Arma 3 v2.04)** it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n\n**Important**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load\n* **(Arma 3 v2.06)** the event's name is available from `_thisEvent` variable",
                             },
                             {
                                 name: "arguments",
                                 description:
-                                    "`Array` - (Optional, default <sqf inline>[]) additional arguments to be passed to the EH code. Available during code execution via `_thisArgs` variable.",
+                                    "`Array` - (Optional, default <sqf inline>[]) additional arguments to be passed to the EH code. Available during code execution via **`_thisArgs`** variable.",
                             },
                         ],
                         outline: "`addMissionEventHandler` [event, expression, arguments]",
@@ -586,7 +586,7 @@ allAddonsInfo
                         parameters: [],
                         outline: "`allAddonsInfo`",
                         returns:
-                            '`Array` of `Array`s in format [prefix, version, isPatched, modIndex, hash], where:\n* prefix: `String` - addon prefix\n* version: `String` - addon revision version\n* isPatched: `Boolean` - `true` if patching is enabled and this addon is being patched \n* **(Arma 3 2.14)** modIndex: `Number` - index of mod in `getLoadedModsInfo` array. -1 if not found.\n* **(Arma 3 2.14)** hash: `String` - hash of the addon PBO file. "" if hashing fails.',
+                            '`Array` of `Array`s in format [prefix, version, isPatched, modIndex, hash], where:\n* prefix: `String` - addon prefix\n* version: `String` - addon revision version\n* isPatched: `Boolean` - `true` if patching is enabled and this addon is being patched \n* **(Arma 3 v2.14)** modIndex: `Number` - index of mod in `getLoadedModsInfo` array. -1 if not found.\n* **(Arma 3 v2.14)** hash: `String` - hash of the addon PBO file. "" if hashing fails.',
                     },
                 ],
                 documentationLink: "https://community.bistudio.com/wiki/allAddonsInfo",
@@ -647,7 +647,7 @@ if (_someString in allMapMarkers) then
         parsed: {
             documentation: {
                 description:
-                    'Returns all map marker names, including user-placed markers.\n\n**NOTE**: \n* **(Arma 3)** User-defined markers have the following name format: `**_USER_DEFINED #<PlayerID>/<MarkerID>/<ChannelID>**`, where:\n** <PlayerID> - unique network id of the player in `String` format, also available as `String` in the 6th param in ["PlayerConnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerConnected) and ["PlayerDisconnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerDisconnected) Event Handlers\n** <MarkerID> - an incrementing marker counter id\n** <ChannelID> - id of the chat channel in which the marker was placed (see `currentChannel`)\n* To obtain the custom waypoint\'s (set with LShift + LMB) position, see `customWaypointPosition`.',
+                    'Returns all map marker names, including user-placed markers.\n\n**NOTE**: \n* **(Arma 3 v1.58)** User-defined markers have the following name format: **`_USER_DEFINED #<PlayerID>/<MarkerID>/<ChannelID>`**, where:\n** <PlayerID> - unique network id of the player in `String` format, also available as `String` in the 6th param in ["PlayerConnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerConnected) and ["PlayerDisconnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerDisconnected) Event Handlers\n** <MarkerID> - an incrementing marker counter id\n** <ChannelID> - id of the chat channel in which the marker was placed (see `currentChannel`)\n* To obtain the custom waypoint\'s (set with LShift + LMB) position, see `customWaypointPosition`.',
                 examples: [
                     {
                         text: '```sqf\n_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]\n```',
@@ -882,7 +882,7 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
         parsed: {
             documentation: {
                 description:
-                    'Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma%203%3A%20Mission%20Event%20Handlers%23Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n<sqf inline>showHUD false will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position%23Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for `**activeWidth**` and `**activeHeight**` set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2) and half the screen tall (<sqf inline>safeZoneH / 2), divide these by the according config values: \n```sqf\n\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");\n\n```',
+                    'Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n<sqf inline>showHUD false will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position#Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for **`activeWidth`** and **`activeHeight`** set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2) and half the screen tall (<sqf inline>safeZoneH / 2), divide these by the according config values: \n```sqf\n\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");\n\n```',
                 examples: [
                     {
                         text: 'Icon and text:\n\n```sqf\n\naddMissionEventHandler ["Draw3D", {\n\tdrawIcon3D ["targetIcon.paa", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, "Target", 1, 0.05, "TahomaB"];\n}];\n\n```',
@@ -894,7 +894,7 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
                         text: '```sqf\n\niconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t"COMPASS",\n\t\t0,\n\t\t0.3,\n\t\t"PuristaMedium",\n\t\t"center",\n\t\ttrue\n\t];\n}];\n\n```',
                     },
                     {
-                        text: 'Since **(Arma 3)**\n\n```sqf\n\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t"RobotoCondensed",\n\t\t"right",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n\n```',
+                        text: 'Since **(Arma 3 v2.04)**\n\n```sqf\n\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t"RobotoCondensed",\n\t\t"right",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n\n```',
                     },
                 ],
                 syntaxes: [
@@ -907,12 +907,12 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
                             {
                                 name: "color",
                                 description:
-                                    "* `Array` format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - icon color\n* **(Arma 3 2.04)** `Array` of two `Array`s format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - Icon and text color",
+                                    "* `Array` format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - icon color\n* **(Arma 3 v2.04)** `Array` of two `Array`s format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - Icon and text color",
                             },
                             {
                                 name: "position",
                                 description:
-                                    "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position%23PositionAGL) - icon position",
+                                    "`Array` format [PositionAGL](https://community.bistudio.com/wiki/Position#PositionAGL) - icon position",
                             },
                             {
                                 name: "width",
@@ -944,7 +944,7 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
                             {
                                 name: "font",
                                 description:
-                                    '`String` - (Optional, default "RobotoCondensedBold") font class name from `CfgFontFamilies` (see |[FXY File Format#Available Fonts](https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts))',
+                                    '`String` - (Optional, default "RobotoCondensedBold") font class name from **`CfgFontFamilies`** (see [FXY File Format - Available Fonts](https://community.bistudio.com/wiki/FXY_File_Format#Available_Fonts))',
                             },
                             {
                                 name: "textAlign",
