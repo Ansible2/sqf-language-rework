@@ -758,17 +758,12 @@ export class BikiTextInterpreter {
                 }
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
-                        `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\\s+(?:\\|\\w+=|{{))|$)`,
+                        `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}`,
+                        // `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\\s+(?:\\|\\w+=|{{))|$)`,
                         "gi"
                     );
                     const featureMatches = convertedText.matchAll(featureRegex);
-                    if (convertedText.includes("important")) {
-                        console.debug("--------------------");
-                        console.debug("convertedText ->", convertedText);
-                        console.debug("source ->", featureRegex.source);
-                        console.debug("featureMatches ->", Array.from(featureMatches));
-                        console.debug("--------------------");
-                    }
+          
                     for (const match of featureMatches) {
                         let newText: string;
                         const featureMessage = match[1];
