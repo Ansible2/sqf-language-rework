@@ -458,6 +458,7 @@ export class BikiTextInterpreter {
         text: string;
         gameVersionIcon?: boolean;
         feature?: boolean;
+        icon?: boolean;
     }> = {
         // collected from https://community.bistudio.com/wiki/Category:Templates
         ofp: {
@@ -520,6 +521,14 @@ export class BikiTextInterpreter {
         warning: {
             text: "WARNING",
             feature: true,
+        },
+        localargument: {
+            text: "Local Argument",
+            icon: true,
+        },
+        globalargument: {
+            text: "Global Argument",
+            icon: true,
         },
     };
 
@@ -620,16 +629,13 @@ export class BikiTextInterpreter {
         return type;
     }
 
-    // TODO:
-    // link replacement [[Control_Structures#if-Statement|here]] (in "if" doc)
-    // remove <nowiki/> declarations, not sure what these actually mean. shows up in "if" doc
-
     private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
     private readonly BIKI_BASE_URL = "https://community.bistudio.com/wiki";
     private readonly SIMPLE_REPLACEMENTS: [
         RegExp | string,
         string | ((substring: string, ...args: any[]) => string)
     ][] = [
+        ["[[a or b|{{!}}{{!}}]]", "||"],
         // bold text
         [/\'\'\'+(.+?)\'\'\'+/gi, "**$1**"],
         // italic text
@@ -696,7 +702,7 @@ export class BikiTextInterpreter {
         ],
         [/{{controls\|(\w+)}}/gi, "$1"],
         [/{{controls\|(\w+)\|(\w+)}}/gi, "$1 + $2"],
-        ["[[a or b|{{!}}{{!}}]]", "||"],
+        ["<nowiki/>", ""],
     ];
 
     /* ----------------------------------------------------------------------------
@@ -738,12 +744,12 @@ export class BikiTextInterpreter {
         Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
             ([templateKey, templateInfo]) => {
                 const replacementText = templateInfo.text;
-                const simpleTextRegex = new RegExp(`\\{\\{${templateKey}\\}\\}`, "gi");
+                const simpleTextRegex = new RegExp(`{{${templateKey}}}`, "gi");
                 convertedText = convertedText.replace(simpleTextRegex, replacementText);
 
                 if (templateInfo.gameVersionIcon) {
                     const gameVersionRegex = new RegExp(
-                        `\\{\\{GVI\\|${templateKey}\\|([\\d\\.]+).*?\\}\\}`,
+                        `{{GVI\\|${templateKey}\\|([\\d\\.]+).*?}}`,
                         "gi"
                     );
                     const gameIconMatches = convertedText.matchAll(gameVersionRegex);
@@ -753,9 +759,10 @@ export class BikiTextInterpreter {
                         if (gameVersion) newText += ` v${gameVersion}`;
 
                         const originalString = match[0];
-                        convertedText = convertedText.replace(originalString, `**(${newText})**`);
+                        convertedText = convertedText.replace(originalString, `(**${newText}**)`);
                     }
                 }
+
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
                         `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}`,
@@ -763,7 +770,7 @@ export class BikiTextInterpreter {
                         "gi"
                     );
                     const featureMatches = convertedText.matchAll(featureRegex);
-          
+
                     for (const match of featureMatches) {
                         let newText: string;
                         const featureMessage = match[1];
@@ -775,6 +782,16 @@ export class BikiTextInterpreter {
 
                         const originalString = match[0];
                         convertedText = convertedText.replace(originalString, newText);
+                    }
+                }
+
+                if (templateInfo.icon) {
+                    const iconRegex = new RegExp(`{{icon\\|${templateKey}\\|[\\d\\.]+.*?}}`, "gi");
+                    const iconMatches = convertedText.matchAll(iconRegex);
+                    for (const match of iconMatches) {
+                        let newText = replacementText;
+                        const originalString = match[0];
+                        convertedText = convertedText.replace(originalString, `(**${newText}**)`);
                     }
                 }
             }
@@ -987,6 +1004,7 @@ export class BikiTextInterpreter {
             "a == b": "a_==_b",
             "config greater greater name": "config_greater_greater_name",
             "a ^ b": "a_^_b",
+            "||": "a_or_b",
         };
 
         const urlName = urlMap[name.toLowerCase()];

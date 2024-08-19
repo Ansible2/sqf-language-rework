@@ -22,7 +22,7 @@ export const BikiTestPages: {
                             {
                                 name: "position",
                                 description:
-                                    "`Array` format [Position3D](https://community.bistudio.com/wiki/Position#Introduction), **(Arma 3 v2.14)** `Object` or `Group`",
+                                    "`Array` format [Position3D](https://community.bistudio.com/wiki/Position#Introduction), (**Arma 3 v2.14**) `Object` or `Group`",
                             },
                             {
                                 name: "polygon",
@@ -83,7 +83,7 @@ player inPolygon _positions; // true if in the drawn shape, false if not
         parsed: {
             documentation: {
                 description:
-                    'Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/%3ACategory%3AActions) for action names and syntaxes.\n**Arma 3**: \nSince Arma 3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action ["GetInDriver", car]; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.',
+                    'Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/:Category:Actions) for action names and syntaxes.\n**Arma 3**: \nSince Arma 3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, <sqf inline>player action ["GetInDriver", car]; executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.',
                 examples: [
                     {
                         text: '```sqf\nplayer action ["SitDown", player];\n```',
@@ -425,7 +425,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "object",
                                 description:
-                                    "`Object` - PhysX object or **(Arma 3 v2.14)** **(local arguement)** unit, in which case the unit must be local and will be [set unconscious](https://community.bistudio.com/wiki/setUnconscious)",
+                                    "`Object` - PhysX object or (**Arma 3 v2.04**)(**Local Argument**) unit, in which case the unit must be local and will be [set unconscious](https://community.bistudio.com/wiki/setUnconscious)",
                             },
                             {
                                 name: "force",
@@ -514,7 +514,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "expression",
                                 description:
-                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the **`_this`** variable\n* **(Arma 3 v1.64)** the event handler's handle is stored in **`_thisEventHandler`** variable and is available during event handler code execution\n* **(Arma 3 v2.04)** it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n**IMPORTANT**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load.\n* **(Arma 3 v2.06)** the event's name is available from **`_thisEvent`** variable",
+                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the **`_this`** variable\n* (**Arma 3 v1.64**) the event handler's handle is stored in **`_thisEventHandler`** variable and is available during event handler code execution\n* (**Arma 3 v2.04**) it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n**IMPORTANT**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load.\n* (**Arma 3 v2.06**) the event's name is available from **`_thisEvent`** variable",
                             },
                             {
                                 name: "arguments",
@@ -586,7 +586,7 @@ allAddonsInfo
                         parameters: [],
                         outline: "`allAddonsInfo`",
                         returns:
-                            '`Array` of `Array`s in format [prefix, version, isPatched, modIndex, hash], where:\n* prefix: `String` - addon prefix\n* version: `String` - addon revision version\n* isPatched: `Boolean` - `true` if patching is enabled and this addon is being patched \n* **(Arma 3 v2.14)** modIndex: `Number` - index of mod in `getLoadedModsInfo` array. -1 if not found.\n* **(Arma 3 v2.14)** hash: `String` - hash of the addon PBO file. "" if hashing fails.',
+                            '`Array` of `Array`s in format [prefix, version, isPatched, modIndex, hash], where:\n* prefix: `String` - addon prefix\n* version: `String` - addon revision version\n* isPatched: `Boolean` - `true` if patching is enabled and this addon is being patched \n* (**Arma 3 v2.14**) modIndex: `Number` - index of mod in `getLoadedModsInfo` array. -1 if not found.\n* (**Arma 3 v2.14**) hash: `String` - hash of the addon PBO file. "" if hashing fails.',
                     },
                 ],
                 documentationLink: "https://community.bistudio.com/wiki/allAddonsInfo",
@@ -647,7 +647,7 @@ if (_someString in allMapMarkers) then
         parsed: {
             documentation: {
                 description:
-                    'Returns all map marker names, including user-placed markers.\n\n**NOTE**: \n* **(Arma 3 v1.58)** User-defined markers have the following name format: **`_USER_DEFINED #<PlayerID>/<MarkerID>/<ChannelID>`**, where:\n** <PlayerID> - unique network id of the player in `String` format, also available as `String` in the 6th param in ["PlayerConnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerConnected) and ["PlayerDisconnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerDisconnected) Event Handlers\n** <MarkerID> - an incrementing marker counter id\n** <ChannelID> - id of the chat channel in which the marker was placed (see `currentChannel`)\n* To obtain the custom waypoint\'s (set with LShift + LMB) position, see `customWaypointPosition`.',
+                    'Returns all map marker names, including user-placed markers.\n\n**NOTE**: \n* (**Arma 3 v1.58**) User-defined markers have the following name format: **`_USER_DEFINED #<PlayerID>/<MarkerID>/<ChannelID>`**, where:\n** <PlayerID> - unique network id of the player in `String` format, also available as `String` in the 6th param in ["PlayerConnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerConnected) and ["PlayerDisconnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerDisconnected) Event Handlers\n** <MarkerID> - an incrementing marker counter id\n** <ChannelID> - id of the chat channel in which the marker was placed (see `currentChannel`)\n* To obtain the custom waypoint\'s (set with LShift + LMB) position, see `customWaypointPosition`.',
                 examples: [
                     {
                         text: '```sqf\n_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]\n```',
@@ -894,7 +894,7 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
                         text: '```sqf\n\niconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t"COMPASS",\n\t\t0,\n\t\t0.3,\n\t\t"PuristaMedium",\n\t\t"center",\n\t\ttrue\n\t];\n}];\n\n```',
                     },
                     {
-                        text: 'Since **(Arma 3 v2.04)**\n\n```sqf\n\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t"RobotoCondensed",\n\t\t"right",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n\n```',
+                        text: 'Since (**Arma 3 v2.04**)\n\n```sqf\n\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t"RobotoCondensed",\n\t\t"right",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n\n```',
                     },
                 ],
                 syntaxes: [
@@ -907,7 +907,7 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
                             {
                                 name: "color",
                                 description:
-                                    "* `Array` format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - icon color\n* **(Arma 3 v2.04)** `Array` of two `Array`s format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - Icon and text color",
+                                    "* `Array` format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - icon color\n* (**Arma 3 v2.04**) `Array` of two `Array`s format [Color (RGBA)](https://community.bistudio.com/wiki/Color) - Icon and text color",
                             },
                             {
                                 name: "position",
