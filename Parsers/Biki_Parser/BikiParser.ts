@@ -530,6 +530,14 @@ export class BikiTextInterpreter {
             text: "Global Argument",
             icon: true,
         },
+        localeffect: {
+            text: "Local Effect",
+            icon: true,
+        },
+        globaleffect: {
+            text: "Global Effect",
+            icon: true,
+        },
     };
 
     /* ----------------------------------------------------------------------------
@@ -660,6 +668,14 @@ export class BikiTextInterpreter {
                 return `_Example ${exampleNumber}_`;
             }),
         ],
+        // Links to syntaxes inside the doc
+        [
+            /{{\s*link\s*\|\s*#Syntax\s*(\d+)\s*}}/gi,
+            getStringReplacer((replacementInfo) => {
+                const exampleNumber = replacementInfo.captureGroups[1];
+                return `_Syntax ${exampleNumber}_`;
+            }),
+        ],
         // external links
         [/{{link\|([\s\S]+?)\|([\s\S]+?)}}/gi, "[$2]($1)"],
         // Internal Hyperlinks
@@ -725,7 +741,7 @@ export class BikiTextInterpreter {
         }
 
         const dataTypeMatches = text.matchAll(
-            new RegExp(`\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\]\]`, "gi")
+            new RegExp(`\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`, "gi")
         );
         for (const match of dataTypeMatches) {
             const originalTypeText = match[0];
@@ -765,7 +781,7 @@ export class BikiTextInterpreter {
 
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
-                        `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}`,
+                        `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\n+|$))`,
                         // `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\\s+(?:\\|\\w+=|{{))|$)`,
                         "gi"
                     );

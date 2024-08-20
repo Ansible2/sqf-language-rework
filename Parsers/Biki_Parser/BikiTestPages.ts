@@ -981,4 +981,226 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
             },
         },
     },
+    setRain: {
+        unparsed: `{{RV|type=command
+
+|game1= ofp
+|version1= 1.75
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Environment
+
+|eff= global
+
+|serverExec= server
+
+|descr= Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.
+A rain density of zero is no rain, one is maximum rain. Rain is not possible when [[overcast]] is less than 0.7.
+
+{{Feature|arma3|
+Since {{arma3}} this command is multiplayer-synchronised:
+* if executed on the server, the changes will propagate globally.
+* if executed on a client, the effect is local, temporary and will soon change to the server setting.
+Minimum [[overcast]] needed for rain in {{arma3}} is '''0.5'''.
+}}
+
+{{Feature|important|
+Alternative syntaxes ({{Link|#Syntax 2}} and {{Link|#Syntax 3}}):
+* set rain particle params. Rain particles params are client-side params and are ignored on dedicated server. Use helper function [[BIS_fnc_setRain]] if sync is needed in Multiplayer
+* have a '''[[Multiplayer Scripting#Locality|local]]''' {{Icon|localeffect|32}} effect
+}}
+
+|mp= Prior to {{arma3}}, each client and the server could have different rain values.
+
+|s1= time [[setRain]] rain
+
+|p1= time: [[Number]] - transition time in seconds to the new value
+
+|p2= rain: [[Number]] - new rain value in range 0..1.
+
+|r1= [[Nothing]]
+
+|s2= [[setRain]] rainParams
+|s2effect= local
+|s2since= arma3 2.08
+
+|p21= rainParams: [[Array]] - array of custom [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] params - see [[rainParams]]. Use empty array [] to reset to default config values
+
+|r2= [[Nothing]]
+
+|s3= [[setRain]] config
+|s3effect= local
+|s3since= arma3 2.08
+
+|p41= config: [[Config]] - config path to a custom class, which contains [[Arma 3: CfgWorlds Config Reference#class RainParticles | {{hl|RainParticles}}]] class. Use [[configNull]] to reset to default config values
+
+|r3= [[Nothing]]
+
+|x1= <sqf>60 setRain 1;</sqf>
+
+|x2= Force no rain:
+<sqf>
+0 setRain 0;
+forceWeatherChange;
+999999 setRain 0;
+</sqf>
+
+|x3= Snow-like effect (Since {{arma3}} v2.08):
+<sqf>
+0 setOvercast 1;
+0 setRain 1;
+0 setFog 0.1;		// snow affects visibility at distance
+setHumidity 0.9;	// don't want to see dust clouds
+enableEnvironment [false, true];	// don't want to see snakes and butterflies either
+forceWeatherChange;
+setRain [
+	"a3\\data_f\\rainnormal_ca.paa",	// rainDropTexture
+	1,				// texDropCount
+	0.01,			// minRainDensity
+	15,				// effectRadius
+	0.1,			// windCoef
+	2,				// dropSpeed
+	0.5,			// rndSpeed
+	0.5,			// rndDir
+	0.02,			// dropWidth
+	0.02,			// dropHeight
+	[0.1, 0.1, 0.1, 1],	// dropColor
+	0.1,			// lumSunFront
+	0.1,			// lumSunBack
+	5.5,			// refractCoef
+	0.3,			// refractSaturation
+	true,			// snow
+	false			// dropColorStrong
+];
+</sqf>
+
+See also [[BIS_fnc_setRain]] since {{arma3}} v2.10:
+<sqf>
+0 setOvercast 1;
+0 setRain 1;
+0 setFog 0.1;		// snow affects visibility at distance
+setHumidity 0.9;	// don't want to see dust clouds
+enableEnvironment [false, true];	// don't want to see snakes and butterflies either
+forceWeatherChange;
+[
+	"a3\\data_f\\snowflake4_ca.paa",	// rainDropTexture
+	4,				// texDropCount
+	0.01,			// minRainDensity
+	25,				// effectRadius
+	0.05,			// windCoef
+	2.5,			// dropSpeed
+	0.5,			// rndSpeed
+	0.5,			// rndDir
+	0.07,			// dropWidth
+	0.07,			// dropHeight
+	[1, 1, 1, 0.5],	// dropColor
+	0.0,			// lumSunFront
+	0.2,			// lumSunBack
+	0.5,			// refractCoef
+	0.5,			// refractSaturation
+	true,			// snow
+	false			// dropColorStrong
+]
+call BIS_fnc_setRain;
+</sqf>
+
+|seealso= [[rainParams]] [[BIS_fnc_setRain]] [[overcast]] [[setOvercast]] [[rain]] [[nextWeatherChange]] [[forceWeatherChange]] [[setFog]] [[setHumidity]]
+}}
+
+{{Note
+|user= Zapat
+|timestamp= 20151215143100
+|text= [[setTimeMultiplier]] does '''not''' affect transition time.
+}}
+
+{{Note
+|user= Killzone_Kid
+|timestamp= 20161116220600
+|text= Using {{Link|#Example 2}} on dedicated server might need additional interference on JIP clients. The reason is that JIP has [[rain]] value > 0 slowly changing to 0. To force client to sync one can execute this on client:
+<sqf>skipTime 1; skipTime -1;</sqf>
+}}
+`,
+        parsed: {
+            documentation: {
+                description:
+                    "Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.\nA rain density of zero is no rain, one is maximum rain. Rain is not possible when `overcast` is less than 0.7.\n\n**Arma 3**: \nSince Arma 3 this command is multiplayer-synchronised:\n* if executed on the server, the changes will propagate globally.\n* if executed on a client, the effect is local, temporary and will soon change to the server setting.\nMinimum `overcast` needed for rain in Arma 3 is **0.5**.\n\n\n**IMPORTANT**: \nAlternative syntaxes (_Syntax 2_ and _Syntax 3_):\n* set rain particle params. Rain particles params are client-side params and are ignored on dedicated server. Use helper function `BIS_fnc_setRain` if sync is needed in Multiplayer\n* have a **[local](https://community.bistudio.com/wiki/Multiplayer_Scripting#Locality)** (**Local Effect**) effect",
+                examples: [
+                    {
+                        text: "```sqf\n60 setRain 1;\n```",
+                    },
+                    {
+                        text: "Force no rain:\n\n```sqf\n\n0 setRain 0;\nforceWeatherChange;\n999999 setRain 0;\n\n```",
+                    },
+                    {
+                        text: "Snow-like effect (Since Arma 3 v2.08):\n\n```sqf\n\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\nsetRain [\n\t\"a3\\data_f\\rainnormal_ca.paa\",\t// rainDropTexture\n\t1,\t\t\t\t// texDropCount\n\t0.01,\t\t\t// minRainDensity\n\t15,\t\t\t\t// effectRadius\n\t0.1,\t\t\t// windCoef\n\t2,\t\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.02,\t\t\t// dropWidth\n\t0.02,\t\t\t// dropHeight\n\t[0.1, 0.1, 0.1, 1],\t// dropColor\n\t0.1,\t\t\t// lumSunFront\n\t0.1,\t\t\t// lumSunBack\n\t5.5,\t\t\t// refractCoef\n\t0.3,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n];\n\n```\n\n\nSee also `BIS_fnc_setRain` since Arma 3 v2.10:\n\n```sqf\n\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\n[\n\t\"a3\\data_f\\snowflake4_ca.paa\",\t// rainDropTexture\n\t4,\t\t\t\t// texDropCount\n\t0.01,\t\t\t// minRainDensity\n\t25,\t\t\t\t// effectRadius\n\t0.05,\t\t\t// windCoef\n\t2.5,\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.07,\t\t\t// dropWidth\n\t0.07,\t\t\t// dropHeight\n\t[1, 1, 1, 0.5],\t// dropColor\n\t0.0,\t\t\t// lumSunFront\n\t0.2,\t\t\t// lumSunBack\n\t0.5,\t\t\t// refractCoef\n\t0.5,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n]\ncall BIS_fnc_setRain;\n\n```",
+                    },
+                ],
+                syntaxes: [
+                    {
+                        parameters: [
+                            {
+                                name: "time",
+                                description:
+                                    "`Number` - transition time in seconds to the new value",
+                            },
+                            {
+                                name: "rain",
+                                description: "`Number` - new rain value in range 0..1.",
+                            },
+                        ],
+                        outline: "time `setRain` rain",
+                        returns: "`Nothing`",
+                    },
+                    {
+                        parameters: [
+                            {
+                                name: "rainParams",
+                                description:
+                                    "`Array` - array of custom [**`RainParticles`**](https://community.bistudio.com/wiki/Arma_3:_CfgWorlds_Config_Reference#class_RainParticles) params - see `rainParams`. Use empty array [] to reset to default config values",
+                            },
+                        ],
+                        outline: "`setRain` rainParams",
+                        returns: "`Nothing`",
+                    },
+                    {
+                        parameters: [
+                            {
+                                name: "config",
+                                description:
+                                    "`Config` - config path to a custom class, which contains [**`RainParticles`**](https://community.bistudio.com/wiki/Arma_3:_CfgWorlds_Config_Reference#class_RainParticles) class. Use `configNull` to reset to default config values",
+                            },
+                        ],
+                        outline: "`setRain` config",
+                        returns: "`Nothing`",
+                    },
+                ],
+                effectLocality: "Global Effect",
+                serverExecution: true,
+                documentationLink: "https://community.bistudio.com/wiki/setRain",
+            },
+            configuration: {
+                label: "setRain",
+                grammarType: "command",
+            },
+        },
+    },
 };
+
+// TODO: add setRain
