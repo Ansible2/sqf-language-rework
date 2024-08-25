@@ -1,10 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
-import {
-    DocParser,
-    IJSON,
-    UnparsedItem,
-    getStringReplacer,
-} from "../SQFParser.namespace";
+import { DocParser, IJSON, UnparsedItem, getStringReplacer } from "../SQFParser.namespace";
 import {
     ExampleConfig,
     SQFArgumentLocality,
@@ -16,10 +11,7 @@ import {
     SQFSyntaxConfig,
 } from "../../configuration/grammars/sqf.namespace";
 import fs from "fs";
-import {
-    BIKI_ADDITIONAL_COMMAND_PAGES,
-    BIKI_EXCEPTIONS,
-} from "./BikiPageConstants";
+import { BIKI_ADDITIONAL_COMMAND_PAGES, BIKI_EXCEPTIONS } from "./BikiPageConstants";
 
 interface BikiPage {
     title?: string;
@@ -98,8 +90,7 @@ class BikiParser implements DocParser {
         formData.append("curonly", "1");
         formData.append("wpEditToken", "+\\");
 
-        const BIKI_EXPORT_URL =
-            "https://community.bistudio.com/wiki/Special:Export/";
+        const BIKI_EXPORT_URL = "https://community.bistudio.com/wiki/Special:Export/";
         const BIKI_EXPORT_METHOD = "POST";
         const getPageNamesResponse = await fetch(BIKI_EXPORT_URL, {
             body: formData,
@@ -153,9 +144,7 @@ class BikiParser implements DocParser {
     /* ----------------------------------------------------------------------------
         convertToItemConfigs
     ---------------------------------------------------------------------------- */
-    async convertToItemConfigs(
-        pages: UnparsedBikiPage[]
-    ): Promise<SQFItemConfig[]> {
+    async convertToItemConfigs(pages: UnparsedBikiPage[]): Promise<SQFItemConfig[]> {
         const parsedPages: SQFItemConfig[] = [];
         if (this.parseType === "commands") {
             pages.push(...BIKI_ADDITIONAL_COMMAND_PAGES);
@@ -167,10 +156,7 @@ class BikiParser implements DocParser {
                 if (!parsedPage) return;
                 parsedPages.push(parsedPage);
             } catch (error) {
-                console.error(
-                    `Error while parsing BIKI entry: "${unparsedPage.title}"`,
-                    error
-                );
+                console.error(`Error while parsing BIKI entry: "${unparsedPage.title}"`, error);
             }
         });
 
@@ -211,31 +197,23 @@ class BikiParser implements DocParser {
         if (exampleDetails) {
             exampleDetails.forEach((detail) => {
                 if (!detail.content) return;
-                const exampleInMarkdown =
-                    this.textInterpreter.convertTextToMarkdown(detail.content);
+                const exampleInMarkdown = this.textInterpreter.convertTextToMarkdown(
+                    detail.content
+                );
 
                 // some examples (BIS_fnc_3den_init) only have a dash (-) for example
-                const exampleDoesNotHaveActualContent = !/\w+/i.test(
-                    exampleInMarkdown
-                );
+                const exampleDoesNotHaveActualContent = !/\w+/i.test(exampleInMarkdown);
                 if (exampleDoesNotHaveActualContent) return;
 
                 examples.push({ text: exampleInMarkdown });
             });
         }
 
-        const descriptionDetail = detailsMap
-            .get(BikiPageDetailType.Description)
-            ?.at(0);
-        const description = this.textInterpreter.convertTextToMarkdown(
-            descriptionDetail?.content
-        );
+        const descriptionDetail = detailsMap.get(BikiPageDetailType.Description)?.at(0);
+        const description = this.textInterpreter.convertTextToMarkdown(descriptionDetail?.content);
 
-        const serverExecutionDetails = detailsMap.get(
-            BikiPageDetailType.ServerExecution
-        );
-        const serverExecution =
-            serverExecutionDetails && serverExecutionDetails.length > 0;
+        const serverExecutionDetails = detailsMap.get(BikiPageDetailType.ServerExecution);
+        const serverExecution = serverExecutionDetails && serverExecutionDetails.length > 0;
 
         const effectLocality = this.textInterpreter.getEffectLocality(
             detailsMap.get(BikiPageDetailType.EffectLocality)?.at(0)?.content
@@ -261,13 +239,11 @@ class BikiParser implements DocParser {
                 argumentLocality,
                 effectLocality,
                 serverExecution,
-                documentationLink:
-                    this.textInterpreter.getDocumentationLink(titleFormatted),
+                documentationLink: this.textInterpreter.getDocumentationLink(titleFormatted),
             },
             configuration: {
                 label: this.textInterpreter.getLabel(titleFormatted),
-                grammarType:
-                    this.textInterpreter.getSQFGrammarType(titleFormatted),
+                grammarType: this.textInterpreter.getSQFGrammarType(titleFormatted),
             },
         };
     }
@@ -289,12 +265,8 @@ class BikiParser implements DocParser {
             const markdownContent = this.textInterpreter.convertTextToMarkdown(
                 parameterDetail.content
             );
-            const parameterConfig =
-                this.textInterpreter.parseParameter(markdownContent);
-            if (
-                parameterConfig.description !== null ||
-                parameterConfig.name !== null
-            ) {
+            const parameterConfig = this.textInterpreter.parseParameter(markdownContent);
+            if (parameterConfig.description !== null || parameterConfig.name !== null) {
                 syntax.parameters.push(parameterConfig);
             }
         });
@@ -318,7 +290,7 @@ class BikiParser implements DocParser {
         syntaxMap: Map<number, BikiSyntax>;
     } | null {
         const matchPageDetailsRegEx =
-            /(?<=^{{RV[.\s\S]*)(\|([\s\w]*)\=(?!\=)([\S\s]*?))(?=(\s*\n+}}\s*$)|(\|([\s\w]*)\=(?!\=)))/gi;
+            /(?<=(?:\s|RV))(\|(\w+)\s*=)([\s\S]+?)(?=(?:\s\|\w+|$|}}\s*{{Note|\n}}\s*$))/gi;
         const pageDetails: IterableIterator<RegExpMatchArray> | undefined =
             page.text.matchAll(matchPageDetailsRegEx);
 
@@ -340,7 +312,7 @@ class BikiParser implements DocParser {
                 orginal: detailFull,
                 name: matchGroups[2],
                 content: matchGroups[3].trim(),
-                fullName: `|${matchGroups[2]}=`,
+                fullName: matchGroups[1], // includes | and =
             };
 
             allParsedDetails.push(pageDetail);
@@ -351,10 +323,8 @@ class BikiParser implements DocParser {
                 detailsMap.set(pageDetail.type, [pageDetail]);
             }
 
-            const isParameter =
-                pageDetail.type === BikiPageDetailType.Parameter;
-            const isSyntaxExample =
-                pageDetail.type === BikiPageDetailType.Syntax;
+            const isParameter = pageDetail.type === BikiPageDetailType.Parameter;
+            const isSyntaxExample = pageDetail.type === BikiPageDetailType.Syntax;
             const isReturn = pageDetail.type === BikiPageDetailType.Return;
             if (!isParameter && !isSyntaxExample && !isReturn) return;
 
@@ -364,9 +334,7 @@ class BikiParser implements DocParser {
                 // only the parameters for syntaxes past the first include a number past 1
                 const syntaxIdString =
                     pageDetail.name
-                        .match(
-                            /(?<=s)\d|(?<=r)\d|(?<=p)(?:\d(?=\d)|(?=\d{1}))/i
-                        )
+                        .match(/(?<=s)\d|(?<=r)\d|(?<=p)(?:\d(?=\d)|(?=\d{1}))/i)
                         ?.at(0) || "1";
 
                 syntaxId = parseInt(syntaxIdString);
@@ -431,8 +399,7 @@ export class BikiTextInterpreter {
 
         if (detail.startsWith("|type")) return BikiPageDetailType.PageType;
 
-        if (!!detail.match(/^\|exec\s*\=/))
-            return BikiPageDetailType.FunctionExecution;
+        if (!!detail.match(/^\|exec\s*\=/)) return BikiPageDetailType.FunctionExecution;
 
         return BikiPageDetailType.Unknown;
     }
@@ -491,6 +458,7 @@ export class BikiTextInterpreter {
         text: string;
         gameVersionIcon?: boolean;
         feature?: boolean;
+        icon?: boolean;
     }> = {
         // collected from https://community.bistudio.com/wiki/Category:Templates
         ofp: {
@@ -553,6 +521,22 @@ export class BikiTextInterpreter {
         warning: {
             text: "WARNING",
             feature: true,
+        },
+        localargument: {
+            text: "Local Argument",
+            icon: true,
+        },
+        globalargument: {
+            text: "Global Argument",
+            icon: true,
+        },
+        localeffect: {
+            text: "Local Effect",
+            icon: true,
+        },
+        globaleffect: {
+            text: "Global Effect",
+            icon: true,
         },
     };
 
@@ -635,8 +619,7 @@ export class BikiTextInterpreter {
         POSITIONAGL: SQFDataType.PositionAGL,
         "POSITION#POSITIONAGL|POSITIONAGL": SQFDataType.PositionAGL,
         POSITIONRELATIVE: SQFDataType.PositionRelative,
-        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE":
-            SQFDataType.PositionRelative,
+        "POSITION#POSITIONRELATIVE|POSITIONRELATIVE": SQFDataType.PositionRelative,
         "PARTICLE ARRAY": SQFDataType.ParticleArray,
         PARTICLEARRAY: SQFDataType.ParticleArray,
     };
@@ -646,35 +629,28 @@ export class BikiTextInterpreter {
     ).map((typeName) => typeName.replaceAll("|", "\\|"));
 
     private parseWikiType(wikiType: string): SQFDataType {
-        const type =
-            BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP[
-                wikiType.toUpperCase()
-            ];
+        const type = BikiTextInterpreter.WIKI_TYPE_CONVERSION_MAP[wikiType.toUpperCase()];
         if (!type) {
-            throw new Error(
-                `Could not find data type to match wiki type: ${wikiType}`
-            );
+            throw new Error(`Could not find data type to match wiki type: ${wikiType}`);
         }
 
         return type;
     }
 
-    // TODO:
-    // link replacement [[Control_Structures#if-Statement|here]] (in "if" doc)
-    // remove <nowiki/> declarations, not sure what these actually mean. shows up in "if" doc
-
     private readonly WIKIPEDIA_BASE_URL = "https://en.wikipedia.org/wiki";
     private readonly BIKI_BASE_URL = "https://community.bistudio.com/wiki";
     private readonly SIMPLE_REPLACEMENTS: [
-        RegExp,
+        RegExp | string,
         string | ((substring: string, ...args: any[]) => string)
     ][] = [
+        ["[[a or b|{{!}}{{!}}]]", "||"],
+        ["[[! a|!]]", "!"],
         // bold text
         [/\'\'\'+(.+?)\'\'\'+/gi, "**$1**"],
         // italic text
         [/\'\'+(.+?)\'\'+/gi, "_$1_"],
         // emphasized text
-        [/\{\{hl\|(.+?)\}\}/gi, "`**$1**`"],
+        [/{{hl\|(?:\[\[){0,1}(.+?)(?:\]\]){0,1}}}/gi, "**`$1`**"],
         // other commands
         [/\[\[(\w+)\]\]/gi, "`$1`"],
         // other language code block
@@ -687,39 +663,47 @@ export class BikiTextInterpreter {
         [/\s*\<(\/{0,1})spoiler\>\s*/gi, ""],
         // Links to examples inside the doc
         [
-            /\{\{\s*link\s*\|\s*#Example\s*(\d+)\s*\}\}/gi,
+            /{{\s*link\s*\|\s*#Example\s*(\d+)\s*}}/gi,
             getStringReplacer((replacementInfo) => {
                 const exampleNumber = replacementInfo.captureGroups[1];
                 return `_Example ${exampleNumber}_`;
             }),
         ],
+        // Links to syntaxes inside the doc
+        [
+            /{{\s*link\s*\|\s*#Syntax\s*(\d+)\s*}}/gi,
+            getStringReplacer((replacementInfo) => {
+                const exampleNumber = replacementInfo.captureGroups[1];
+                return `_Syntax ${exampleNumber}_`;
+            }),
+        ],
+        // external links
+        [/{{link\|([\s\S]+?)\|([\s\S]+?)}}/gi, "[$2]($1)"],
         // Internal Hyperlinks
         [
-            /\{\{\s*link\s*\|\s*(\w+)\#(.*?)\}\}/gi,
+            /{{\s*link\s*\|\s*([\s\w]+)\#(.*?)}}/gi,
             getStringReplacer((replacementInfo) => {
-                const originalSubSection = replacementInfo.captureGroups[2];
+                const originalSubSection = replacementInfo.captureGroups[2].trim();
                 const subUrl = originalSubSection.replaceAll(" ", "_");
-                const section = replacementInfo.captureGroups[1];
-                return `[${section} - ${originalSubSection}](${this.BIKI_BASE_URL}/${section}#${subUrl})`;
+                const section = replacementInfo.captureGroups[1].trim();
+                return `[${section} - ${originalSubSection}](${
+                    this.BIKI_BASE_URL
+                }/${section.replaceAll(" ", "_")}#${subUrl})`;
             }),
         ],
         // Described Internal Hyperlinks
         [
-            /\[\[([\w\s#:]+)\|([\w\s]+)\]\]/gi,
+            /\[\[([\w\s#:]+)\|([\S\s]+?)\]\]/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(
-                    replacementInfo.captureGroups[1]
-                );
-                const linkText = replacementInfo.captureGroups[2];
+                const subUrl = replacementInfo.captureGroups[1].trim().replaceAll(" ", "_");
+                const linkText = replacementInfo.captureGroups[2].trim();
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
         ],
         [
-            /\{\{wikipedia\|(.*)\|(.*)\}\}/gi,
+            /{{wikipedia\|(.*)\|(.*)}}/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(
-                    replacementInfo.captureGroups[1]
-                );
+                const subUrl = encodeURIComponent(replacementInfo.captureGroups[1]);
                 const linkText = replacementInfo.captureGroups[2];
                 return `[${linkText}](${this.WIKIPEDIA_BASE_URL}/${subUrl})`;
             }),
@@ -728,13 +712,14 @@ export class BikiTextInterpreter {
         [
             /\[\[([\w/:\s]+)\]\]/gi,
             getStringReplacer((replacementInfo) => {
-                const subUrl = encodeURIComponent(
-                    replacementInfo.captureGroups[1].trim()
-                );
+                const subUrl = replacementInfo.captureGroups[1].trim().replaceAll(" ", "_");
                 const linkText = replacementInfo.captureGroups[1].trim();
                 return `[${linkText}](${this.BIKI_BASE_URL}/${subUrl})`;
             }),
         ],
+        [/{{controls\|(\w+)}}/gi, "$1"],
+        [/{{controls\|(\w+)\|(\w+)}}/gi, "$1 + $2"],
+        ["<nowiki/>", ""],
     ];
 
     /* ----------------------------------------------------------------------------
@@ -747,81 +732,62 @@ export class BikiTextInterpreter {
 
         // code blocks are seperated to ensure that any code formatting is not overwritten
         // during formatting
-        const sqfCodeBlockMatches = convertedText.matchAll(
-            /(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi
-        );
+        const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
         const convertedCodeExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
             const matchString = match[0];
             if (!matchString) continue;
             convertedCodeExamples.push(matchString);
-            convertedText = convertedText.replace(
-                matchString,
-                "<SQFCodeToReplace>"
-            );
+            convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
         }
 
         const dataTypeMatches = text.matchAll(
-            new RegExp(
-                `\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\]\]`,
-                "gi"
-            )
+            new RegExp(`\\[\\[(${BikiTextInterpreter.WIKI_TYPES_REGEX_STRING})\\]\\]`, "gi")
         );
         for (const match of dataTypeMatches) {
             const originalTypeText = match[0];
             const specificType = match[1];
-            text = text.replaceAll(
-                originalTypeText,
-                `\`${this.parseWikiType(specificType)}\``
-            );
+            text = text.replaceAll(originalTypeText, `\`${this.parseWikiType(specificType)}\``);
         }
 
-        this.SIMPLE_REPLACEMENTS.forEach(
-            ([selector, replacement]) =>
-                (convertedText = convertedText.replace(
-                    selector,
-                    replacement as string
-                ))
-        );
+        this.SIMPLE_REPLACEMENTS.forEach(([selector, replacement]) => {
+            if (typeof selector === "string") {
+                convertedText = convertedText.replaceAll(selector, replacement as string);
+                return;
+            }
+            convertedText = convertedText.replace(selector, replacement as string);
+        });
 
         Object.entries(BikiTextInterpreter.TEMPLATE_KEY_MAP).forEach(
             ([templateKey, templateInfo]) => {
                 const replacementText = templateInfo.text;
-                const simpleTextRegex = new RegExp(
-                    `\\{\\{${templateKey}\\}\\}`,
-                    "gi"
-                );
-                convertedText = convertedText.replace(
-                    simpleTextRegex,
-                    replacementText
-                );
+                const simpleTextRegex = new RegExp(`{{${templateKey}}}`, "gi");
+                convertedText = convertedText.replace(simpleTextRegex, replacementText);
 
                 if (templateInfo.gameVersionIcon) {
                     const gameVersionRegex = new RegExp(
-                        `\\{\\{GVI\\|${templateKey}\\|([\\d\\.]+).*?\\}\\}`,
+                        `{{GVI\\|${templateKey}\\|([\\d\\.]+).*?}}`,
                         "gi"
                     );
-                    const gameIconMatches =
-                        convertedText.matchAll(gameVersionRegex);
+                    const gameIconMatches = convertedText.matchAll(gameVersionRegex);
                     for (const match of gameIconMatches) {
                         let newText = replacementText;
-                        const gameVersion = match[2];
+                        const gameVersion = match[1];
                         if (gameVersion) newText += ` v${gameVersion}`;
 
                         const originalString = match[0];
-                        convertedText = convertedText.replace(
-                            originalString,
-                            `**(${newText})**`
-                        );
+                        convertedText = convertedText.replace(originalString, `(**${newText}**)`);
                     }
                 }
 
                 if (templateInfo.feature) {
                     const featureRegex = new RegExp(
-                        `\\{\\{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)\\}\\}(?=(?:\\s+(?:\\|\\w+=|\\{\\{))|$)`,
+                        `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\n+|$))`,
+                        // `{{Feature\\s*\\|\\s*${templateKey}\\s*\\|([\\s\\S]+?)}}(?=(?:\\s+(?:\\|\\w+=|{{))|$)`,
                         "gi"
                     );
                     const featureMatches = convertedText.matchAll(featureRegex);
+
                     for (const match of featureMatches) {
                         let newText: string;
                         const featureMessage = match[1];
@@ -832,10 +798,17 @@ export class BikiTextInterpreter {
                         }
 
                         const originalString = match[0];
-                        convertedText = convertedText.replace(
-                            originalString,
-                            newText
-                        );
+                        convertedText = convertedText.replace(originalString, newText);
+                    }
+                }
+
+                if (templateInfo.icon) {
+                    const iconRegex = new RegExp(`{{icon\\|${templateKey}\\|[\\d\\.]+.*?}}`, "gi");
+                    const iconMatches = convertedText.matchAll(iconRegex);
+                    for (const match of iconMatches) {
+                        let newText = replacementText;
+                        const originalString = match[0];
+                        convertedText = convertedText.replace(originalString, `(**${newText}**)`);
                     }
                 }
             }
@@ -853,18 +826,13 @@ export class BikiTextInterpreter {
             );
         }
 
-        return convertedText
-            .replaceAll("<sqf>", "")
-            .replaceAll("</sqf>", "")
-            .trim();
+        return convertedText.replaceAll("<sqf>", "").replaceAll("</sqf>", "").trim();
     }
 
     /* ----------------------------------------------------------------------------
         getEffectLocality
     ---------------------------------------------------------------------------- */
-    public getEffectLocality(
-        pageDetailContent: string | undefined
-    ): SQFEffectLocality | undefined {
+    public getEffectLocality(pageDetailContent: string | undefined): SQFEffectLocality | undefined {
         if (!pageDetailContent) return;
 
         pageDetailContent = pageDetailContent.toLowerCase();
@@ -903,12 +871,8 @@ export class BikiTextInterpreter {
     ---------------------------------------------------------------------------- */
     public parseParameter(parameterContent: string): SQFParameterConfig {
         return {
-            name:
-                parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
-            description:
-                parameterContent
-                    .match(/(?<=.+(?:\:|\s+-)\s+)[\s\S]+/i)
-                    ?.at(0) || null,
+            name: parameterContent.match(/.+?(?=(?:\:|\s+-)\s+)/i)?.at(0) || null,
+            description: parameterContent.match(/(?<=.+(?:\:|\s+-)\s+)[\s\S]+/i)?.at(0) || null,
         };
     }
 
@@ -1057,6 +1021,7 @@ export class BikiTextInterpreter {
             "a == b": "a_==_b",
             "config greater greater name": "config_greater_greater_name",
             "a ^ b": "a_^_b",
+            "||": "a_or_b",
         };
 
         const urlName = urlMap[name.toLowerCase()];
