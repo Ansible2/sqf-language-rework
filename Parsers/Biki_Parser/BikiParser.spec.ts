@@ -50,7 +50,6 @@ describe("BikiTextInterpreter", () => {
             const text =
                 "[[Array]] format [[Position#Introduction|Position3D]], {{GVI|arma3|2.14|size= 0.75}} [[Object]] or [[Group]]";
             const markdown = textInterpreter.convertTextToMarkdown(text);
-            console.debug(markdown);
             expect(markdown).toBe(
                 "`Array` format [Position3D](https://community.bistudio.com/wiki/Position#Introduction), (**Arma 3 v2.14**) `Object` or `Group`"
             );

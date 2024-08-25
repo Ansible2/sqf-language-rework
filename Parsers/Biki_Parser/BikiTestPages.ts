@@ -1201,6 +1201,89 @@ call BIS_fnc_setRain;
             },
         },
     },
+    ["!"]: {
+        unparsed: `{{RV|type=command
+
+|sortKey= #
+
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Variables
+|gr2= Math
+
+|descr= Returns the negation of a Boolean expression. This means {{hl|[[true]]}} becomes {{hl|[[false]]}} and vice versa.
+
+|alias= [[not]]
+
+|s1= [[! a|!]] a
+
+|p1= a: [[Boolean]]
+
+|r1= [[Boolean]]
+
+|x1= The code
+<sqf>private _isAlive = alive player;
+if (!_isAlive) then
+{
+	hint "The player is dead!";
+};</sqf>
+is the same as
+<sqf>private _isAlive = alive player;
+if (not _isAlive) then
+{
+	hint "The player is dead!";
+};</sqf>
+
+|seealso= [[not]] [[Operators]]
+}}
+`,
+        parsed: {
+            documentation: {
+                description:
+                    "Returns the negation of a Boolean expression. This means **`true`** becomes **`false`** and vice versa.",
+                examples: [
+                    {
+                        text: 'The code\n\n```sqf\nprivate _isAlive = alive player;\nif (!_isAlive) then\n{\n\thint "The player is dead!";\n};\n```\n\nis the same as\n\n```sqf\nprivate _isAlive = alive player;\nif (not _isAlive) then\n{\n\thint "The player is dead!";\n};\n```',
+                    },
+                ],
+                syntaxes: [
+                    {
+                        parameters: [
+                            {
+                                name: "a",
+                                description: "`Boolean`",
+                            },
+                        ],
+                        outline: "! a",
+                        returns: "`Boolean`",
+                    },
+                ],
+                documentationLink: "https://community.bistudio.com/wiki/!",
+            },
+            configuration: {
+                label: "!",
+                grammarType: "command",
+            },
+        },
+    },
 };
 
-// TODO: add setRain

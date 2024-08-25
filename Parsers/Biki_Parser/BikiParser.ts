@@ -644,12 +644,13 @@ export class BikiTextInterpreter {
         string | ((substring: string, ...args: any[]) => string)
     ][] = [
         ["[[a or b|{{!}}{{!}}]]", "||"],
+        ["[[! a|!]]", "!"],
         // bold text
         [/\'\'\'+(.+?)\'\'\'+/gi, "**$1**"],
         // italic text
         [/\'\'+(.+?)\'\'+/gi, "_$1_"],
         // emphasized text
-        [/{{hl\|(.+?)}}/gi, "**`$1`**"],
+        [/{{hl\|(?:\[\[){0,1}(.+?)(?:\]\]){0,1}}}/gi, "**`$1`**"],
         // other commands
         [/\[\[(\w+)\]\]/gi, "`$1`"],
         // other language code block
