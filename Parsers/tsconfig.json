@@ -5,5 +5,12 @@
     },
     "extends": "../tsconfig.json",
     "include": ["../Parsers"],
-    "exclude": ["../.vscode-test", "../node_modules", "../build-process", "../scripts", "../extension", "../configuration"]
+    "exclude": [
+        "../.vscode-test",
+        "../node_modules",
+        "../build-process",
+        "../scripts",
+        "../extension",
+        "../configuration"
+    ]
 }
