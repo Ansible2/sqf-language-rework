@@ -1,20 +1,7 @@
-import { expect, describe, it, beforeEach } from "vitest";
+import { removeUndefinedKeys } from "../SQFParser.namespace";
 import { BikiCommandsParser, BikiTextInterpreter, UnparsedBikiPage } from "./BikiParser";
 import { BikiTestPages } from "./BikiTestPages";
-
-function removeUndefinedKeys<T extends object>(obj: T): T {
-    for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            const value = obj[key];
-            if (value === undefined) {
-                delete obj[key];
-            } else if (typeof value === "object" && value !== null) {
-                obj[key] = removeUndefinedKeys(value);
-            }
-        }
-    }
-    return obj;
-}
+import { beforeEach, describe, expect, it } from "vitest";
 
 describe("BikiCommandsParser", () => {
     let parser: BikiCommandsParser;
@@ -24,7 +11,6 @@ describe("BikiCommandsParser", () => {
 
     describe.concurrent("convertItemConfigs", () => {
         for (const [name, testStatics] of Object.entries(BikiTestPages)) {
-            // if (name !== 'addMissionEventHandler') continue;
             it(`should convert ${name} into a config`, async () => {
                 const page: UnparsedBikiPage = {
                     title: name,

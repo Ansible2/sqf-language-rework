@@ -98,3 +98,17 @@ export interface ISecrets {
 export async function getParserSecrets(): Promise<ISecrets> {
     return fs.readJson(path.resolve(__dirname, "./secrets.json"));
 }
+
+export function removeUndefinedKeys<T extends object>(obj: T): T {
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            const value = obj[key];
+            if (value === undefined) {
+                delete obj[key];
+            } else if (typeof value === "object" && value !== null) {
+                obj[key] = removeUndefinedKeys(value);
+            }
+        }
+    }
+    return obj;
+}
