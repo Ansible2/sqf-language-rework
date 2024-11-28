@@ -9,7 +9,7 @@ function removeUndefinedKeys<T extends object>(obj: T): T {
             if (value === undefined) {
                 delete obj[key];
             } else if (typeof value === "object" && value !== null) {
-                obj[key] = removeUndefinedKeys(value as T);
+                obj[key] = removeUndefinedKeys(value);
             }
         }
     }
