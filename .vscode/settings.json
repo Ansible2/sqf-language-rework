@@ -8,5 +8,5 @@
     "files.insertFinalNewline": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "cSpell.enabledLanguageIds": ["markdown"]
+    "cSpell.enabledFileTypes": { "*": false, "markdown": true }
 }
