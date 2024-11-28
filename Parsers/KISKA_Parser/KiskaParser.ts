@@ -16,7 +16,7 @@ import {
 import path from "path";
 import fs from "fs-extra";
 
-interface UnparsedKiskaPage extends UnparsedItem {
+export interface UnparsedKiskaPage extends UnparsedItem {
     fileName: string;
     documentationLink: string;
 }
@@ -26,7 +26,8 @@ const WHITESPACE_LINE_REGEX = /^\s+$/gim;
 // for sub bulleted lists like in KISKA_fnc_ambientAnim
 // remove one layer of indentation
 const INDENTS_REGEX = /^(?:\t| {4})/gim;
-const NEW_LINES_IN_SENTENCES_REGEX = /(?<!\n\s+)\n[\t ]*(?=\w)/gi;
+// added the [ ]{0,1} just in case of errant extra spaces
+const NEW_LINES_IN_SENTENCES_REGEX = /(?<!\n\s+)[ ]{0,1}\n[\t ]*(?=\w)/gi;
 const HEADER_REGEX = /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i;
 const FUNCTION_NAME_REGEX = /(?<=function:\s*)\b.*/i;
 const DESCRIPTION_SECTION_REGEX = /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i;
@@ -274,7 +275,7 @@ export class KiskaParser implements DocParser {
         }
 
         convertedText = convertedText
-            .replace(NEW_LINES_IN_SENTENCES_REGEX, "")
+            .replace(NEW_LINES_IN_SENTENCES_REGEX, " ")
             .replace(WHITESPACE_LINE_REGEX, " ")
             .replace(TYPES_REGEX, "*($1)*");
 
