@@ -159,7 +159,7 @@ export class KiskaParser implements DocParser {
 
         const itemConfig: SQFItemConfig = {
             documentation: {
-                documentationLink: unparsedPage.documentationLink,
+                documentationLink: encodeURI(unparsedPage.documentationLink),
                 syntaxes: [],
                 examples: [],
             },
