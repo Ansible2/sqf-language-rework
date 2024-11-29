@@ -15,7 +15,7 @@ describe("KiskaParser", () => {
                 const result = await parser.convertToItemConfigs([testStatics.unparsed]);
                 // undefined properties are removed once written to the actual file
                 const parsedConfig = removeUndefinedKeys(result[0]);
-                expect(parsedConfig).toEqual(testStatics.parsed);
+                expect(testStatics.parsed).toEqual(parsedConfig);
             });
         }
     });

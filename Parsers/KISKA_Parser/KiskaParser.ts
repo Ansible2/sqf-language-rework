@@ -27,7 +27,8 @@ const WHITESPACE_LINE_REGEX = /^\s+$/gim;
 // remove one layer of indentation
 const INDENTS_REGEX = /^(?:\t| {4})/gim;
 // added the [ ]{0,1} just in case of errant extra spaces
-const NEW_LINES_IN_SENTENCES_REGEX = /(?<!\n\s+)[ ]{0,1}\n[\t ]*(?=\w)/gi;
+const NEW_LINES_IN_SENTENCES_REGEX = /(?<=[\w.,]) *\n +(?=\w)/gi;
+const WHITESPACE_BEFORE_NEW_LINE_REGEX = /[ \t]+(?=\n)/gi;
 const HEADER_REGEX = /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i;
 const FUNCTION_NAME_REGEX = /(?<=function:\s*)\b.*/i;
 const DESCRIPTION_SECTION_REGEX = /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i;
@@ -276,7 +277,8 @@ export class KiskaParser implements DocParser {
 
         convertedText = convertedText
             .replace(NEW_LINES_IN_SENTENCES_REGEX, " ")
-            .replace(WHITESPACE_LINE_REGEX, " ")
+            .replace(WHITESPACE_LINE_REGEX, "")
+            .replace(WHITESPACE_BEFORE_NEW_LINE_REGEX, "")
             .replace(TYPES_REGEX, "*($1)*");
 
         for (const exampleCodeText of sqfCodeExamples) {
