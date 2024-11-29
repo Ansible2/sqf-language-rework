@@ -1400,19 +1400,19 @@ Notice that the previous insignia has been '''cleared''' first to make the chang
     <ns>0</ns>
     <id>16159</id>
     <revision>
-      <id>352427</id>
-      <parentid>352146</parentid>
-      <timestamp>2024-02-09T15:26:09Z</timestamp>
+      <id>364798</id>
+      <parentid>352427</parentid>
+      <timestamp>2024-06-14T14:01:53Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "since= Arma3" to "since= arma3"</comment>
-      <origin>352427</origin>
+      <comment>Some wiki formatting</comment>
+      <origin>364798</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="915" sha1="dk7t1106wrmhmwvjmsiq8o3bz1jjmu9" xml:space="preserve">{{RV|type=function
+      <text bytes="932" sha1="pcli2pkjq1clfrozh4zmczvrzgarcsg" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.06
@@ -1429,23 +1429,27 @@ Notice that the previous insignia has been '''cleared''' first to make the chang
 
 |p1= taskID: [[String]] - ID of the task
 
-|p2= owner: [[String]] - owner of the task.(Optional) Can be:
-* [[Boolean]] - true to useall playable units
-* [[Object]]- specific object
+|p2= owner: [[String]] - (Optional) owner of the task. Can be:
+* [[Boolean]] - true to use all playable units
+* [[Object]] - specific object
 * [[Group]] - all objects in the group
 * [[Side]] - all objects of the given side
 * [[Array]] - collection of above types
-|p3= removeFromJIP: [[Boolean]] - [[true]] to also remove task from JIP queue, default [[false]]
+
+|p3= removeFromJIP: [[Boolean]] - (Optional, default [[false]]) [[true]] to also remove task from JIP queue
 |p3since= arma3 2.08
+
 |r1= [[Nothing]]
 
 |x1= &lt;sqf&gt;["task_1"] call BIS_fnc_deleteTask;&lt;/sqf&gt;
+
 |x2= &lt;sqf&gt;["task_1", west] call BIS_fnc_deleteTask;&lt;/sqf&gt;
+
 |x3= &lt;sqf&gt;["task_1", [west, player, group soldier]] call BIS_fnc_deleteTask;&lt;/sqf&gt;
 
-|seealso=  [[Arma 3: Task Framework]]
+|seealso= [[Arma 3: Task Framework]]
 }}</text>
-      <sha1>dk7t1106wrmhmwvjmsiq8o3bz1jjmu9</sha1>
+      <sha1>pcli2pkjq1clfrozh4zmczvrzgarcsg</sha1>
     </revision>
   </page>
   <page>
@@ -3700,19 +3704,19 @@ private _missionDetails = _missionsList select _index;
     <ns>0</ns>
     <id>24839</id>
     <revision>
-      <id>348156</id>
-      <parentid>348091</parentid>
-      <timestamp>2023-11-08T11:32:59Z</timestamp>
+      <id>364843</id>
+      <parentid>348156</parentid>
+      <timestamp>2024-06-17T11:13:02Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "(\|p[0-9]+ *= *[^(]+\(Optional(, default[^)]*)\) )V([a-z])" to "$1v$3"</comment>
-      <origin>348156</origin>
+      <comment>Some wiki formatting</comment>
+      <origin>364843</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="851" sha1="oe4wxt2t97aobjjzkw28qr2rsd66491" xml:space="preserve">{{RV|type=function
+      <text bytes="861" sha1="3syynvsszdbgtxpnc2b6sxf00ozlfr1" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.00
@@ -3723,27 +3727,27 @@ private _missionDetails = _missionsList select _index;
 
 |eff= global
 
-|descr=Close a door with an animated doorhandle.
+|descr= Close a door with an animated doorhandle.
 
 |s1= [building, doorAnimation, handleDownAnimation, doorHandleUpAnimation, animationPhase] call [[BIS_fnc_doorClose]]
 
-|p1=building: [[Object]] - (Optional, default [[objNull]]) building
+|p1= building: [[Object]] - (Optional, default [[objNull]]) building
 
-|p2=doorAnimation: [[String]] - (Optional, default "") name of the door animation
+|p2= doorAnimation: [[String]] - (Optional, default "") name of the door animation
 
-|p3=handleDownAnimation: [[String]] - (Optional, default "") animation source of handle down
+|p3= handleDownAnimation: [[String]] - (Optional, default "") animation source of handle down
 
-|p4=doorHandleUpAnimation: [[String]] - (Optional, default "") animation source of handle up
+|p4= doorHandleUpAnimation: [[String]] - (Optional, default "") animation source of handle up
 
-|p5=animationPhase: [[Number]] - (Optional, default 0) value from 0-1
+|p5= animationPhase: [[Number]] - (Optional, default 0) value from 0-1
 
 |r1= [[Nothing]]
 
-|x1= &lt;sqf&gt;[building,"doorAnimation","animationUp","animationDown",1] call BIS_fnc_doorClose;&lt;/sqf&gt;
+|x1= &lt;sqf&gt;[building, "doorAnimation", "animationUp", "animationDown", 1] call BIS_fnc_doorClose;&lt;/sqf&gt;
 
 |seealso= [[animate]] [[animateSource]] [[BIS_fnc_door]]
 }}</text>
-      <sha1>oe4wxt2t97aobjjzkw28qr2rsd66491</sha1>
+      <sha1>3syynvsszdbgtxpnc2b6sxf00ozlfr1</sha1>
     </revision>
   </page>
   <page>
@@ -13294,26 +13298,26 @@ The same vehicle, when the boolean parameter is false, will return "UNKNOWN"
     <ns>0</ns>
     <id>26762</id>
     <revision>
-      <id>309597</id>
-      <parentid>281068</parentid>
-      <timestamp>2022-05-05T12:07:29Z</timestamp>
+      <id>364939</id>
+      <parentid>309597</parentid>
+      <timestamp>2024-07-02T16:08:08Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "&lt;code&gt;(\[[a-zA-Z0-9_, ]*\] )?(call|spawn) \[\[(BI[NS]\_fnc\_[a-zA-Z0-9_]+)\]\];?&lt;\/code&gt;" to "&lt;sqf&gt;$1$2 $3;&lt;/sqf&gt;"</comment>
-      <origin>309597</origin>
+      <comment>Some wiki formatting</comment>
+      <origin>364939</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="297" sha1="6cv2q41fb4w5n8fko629f0g0u5bst5e" xml:space="preserve">{{RV|type=function
+      <text bytes="303" sha1="cmnur52u72diqc18194ee11pmo1mo9d" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.94
 
 |gr1= Contact 
 
-|descr= &lt;pre&gt;//--- Obsolete, replace dby BIN_fnc_initQuests
+|descr= &lt;pre&gt;//--- Obsolete, replace dby BIN_fnc_initQuests&lt;/pre&gt;
 {{Wiki|placeholder}} {{Feature|arma3contact}} 
 
 |s1= &lt;!-- [] call [[BIN_fnc_initTasks]] --&gt;
@@ -13326,7 +13330,7 @@ The same vehicle, when the boolean parameter is false, will return "UNKNOWN"
 
 |seealso=
 }}</text>
-      <sha1>6cv2q41fb4w5n8fko629f0g0u5bst5e</sha1>
+      <sha1>cmnur52u72diqc18194ee11pmo1mo9d</sha1>
     </revision>
   </page>
   <page>
@@ -19838,52 +19842,44 @@ The same vehicle, when the boolean parameter is false, will return "UNKNOWN"
     <ns>0</ns>
     <id>26647</id>
     <revision>
-      <id>281154</id>
-      <parentid>272911</parentid>
-      <timestamp>2021-06-14T09:05:09Z</timestamp>
+      <id>369823</id>
+      <parentid>281154</parentid>
+      <timestamp>2024-10-14T09:22:12Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "\|game([0-9])=([^
-]+) *
-
-\|version([0-9])=([^
-]+) *
-" to "|game$1=$2
-|version$3=$4
-"</comment>
-      <origin>281154</origin>
+      <comment>Page filling</comment>
+      <origin>369823</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="552" sha1="6gtktkpfnk32tt7lw83z2gi5h9im3on" xml:space="preserve">{{RV|type=function
+      <text bytes="661" sha1="fxdji8mj53cefrejbolvj5czszawmpc" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.94
 
 |gr1= Object Manipulation
 
-|descr= &lt;pre&gt;/*
-	Input:
-		0: _unit [object] - Name of unit (works only with man type units)
-		1: _force [vector] - Amount of force that will be applied to colliding object
-		2: _position [string] (optional) - Name of selection from which it will try to calculate center point (default: spine1)
-	Usage:
-	[player,[0,100,0]] call BIN_fnc_setRagdoll -
-*/&lt;/pre&gt;
-{{Wiki|placeholder}}
+|descr= Set the provided unit in ragdoll state (pushed by an invisible object).
+{{Feature|informative|{{GVI|arma3|2.18}} [[addForce]] can be used in vanilla {{arma3}}.}}
+
 {{Feature|arma3contact}}
 
-|s1= &lt;!-- [] call [[BIN_fnc_setRagdoll]] --&gt;
+|s1= [unit, force, selectionPos] call [[BIN_fnc_setRagdoll]]
 
-|r1=
+|p1= unit: [[Object]] - the unit to ragdoll
 
-|x1=
+|p2= unit: [[Array]] format [[Vector3D]] - force applied to the colliding object
 
-|seealso=
+|p3= unit: [[String]]
+
+|r1= [[String]] event ID from [[BIS_fnc_addStackedEventHandler]]
+
+|x1= &lt;sqf&gt;[player, [0, 100, 0]] call BIN_fnc_setRagdoll;&lt;/sqf&gt;
+
+|seealso= [[setUnconscious]] [[addForce]]
 }}</text>
-      <sha1>6gtktkpfnk32tt7lw83z2gi5h9im3on</sha1>
+      <sha1>fxdji8mj53cefrejbolvj5czszawmpc</sha1>
     </revision>
   </page>
   <page>
@@ -33518,19 +33514,19 @@ Description: Init variables.
     <ns>0</ns>
     <id>12521</id>
     <revision>
-      <id>364313</id>
-      <parentid>327925</parentid>
-      <timestamp>2024-05-06T09:38:46Z</timestamp>
+      <id>369448</id>
+      <parentid>369447</parentid>
+      <timestamp>2024-09-06T05:10:03Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>Hypoxic125</username>
+        <id>11179</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "[[Arma 3 " to "[[Arma 3: "</comment>
-      <origin>364313</origin>
+      <comment>changed "unit" to "soldier"</comment>
+      <origin>369448</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1561" sha1="i1nl32br9uevwllkfsxr1sa8w8qlhy3" xml:space="preserve">{{RV|type=function
+      <text bytes="1694" sha1="ela2x6m4is33ekqmn54vny33m0cmbrw" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.60
@@ -33540,7 +33536,7 @@ Description: Init variables.
 |eff= global
 
 |descr= Add a respawn inventory for [[Arma 3: Respawn#MenuInventory|respawn menu]].&lt;br&gt;
-Available loadouts are defined in [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]].
+Available loadouts are defined in [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]]. Or you may use an existing CfgVehicles soldier class as reference.
 
 |s1= [target, inventoryParams] call [[BIS_fnc_addRespawnInventory]]
 
@@ -33551,9 +33547,9 @@ Available loadouts are defined in [[Description.ext#CfgRespawnInventory|CfgRespa
 * [[Object]]
 
 |p2= inventoryParams: [[Array]] or [[String]]
-* [[String]] - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class
+* [[String]] - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class or [[CfgVehicles]] soldier class
 * [[Array]] - format [class, number, limit]
-** class: [[String]] - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class
+** class: [[String]] - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class or [[CfgVehicles]] soldier class
 ** number: [[Number]] - Number of players who can use this inventory (-1 = no limit, default)
 ** limit: [[Number]] - Limit for role assigned to given loadout (-1 = no limit, default) 
 *** Only role or only loadout can be limited at one moment, if there is limit for both, then only role uses limit.
@@ -33567,7 +33563,7 @@ Available loadouts are defined in [[Description.ext#CfgRespawnInventory|CfgRespa
 
 |seealso= [[Arma 3: Respawn]] [[BIS_fnc_removeRespawnInventory]] [[BIS_fnc_getRespawnInventories]] [[BIS_fnc_setRespawnInventory]]
 }}</text>
-      <sha1>i1nl32br9uevwllkfsxr1sa8w8qlhy3</sha1>
+      <sha1>ela2x6m4is33ekqmn54vny33m0cmbrw</sha1>
     </revision>
   </page>
   <page>
@@ -44226,19 +44222,19 @@ Can by called 2 ways:
     <ns>0</ns>
     <id>16042</id>
     <revision>
-      <id>326916</id>
-      <parentid>326342</parentid>
-      <timestamp>2022-07-12T21:44:38Z</timestamp>
+      <id>369457</id>
+      <parentid>367228</parentid>
+      <timestamp>2024-09-06T08:44:54Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "&lt;code&gt; *([^&lt;|{]*) *&lt;\/code&gt;" to "&lt;sqf&gt;$1&lt;/sqf&gt;"</comment>
-      <origin>326916</origin>
+      <comment>Text replacement - "with [https://community.bistudio.com/wiki/Arma_3:_Cheats#ENDLOAD ENDLOAD cheat code]" to "with the {{Link|Arma 3: Cheats#ENDLOAD|ENDLOAD cheat code}}"</comment>
+      <origin>369457</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="577" sha1="26re28dsnfmzivayvvotl6kdaidbsbj" xml:space="preserve">{{RV|type=function
+      <text bytes="694" sha1="rq7ev2rxuhv6nq50pjfdhbwc6jstz9t" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 0.58
@@ -44246,6 +44242,7 @@ Can by called 2 ways:
 |gr1= GUI
 
 |descr= Unregister a loading screen. When none other remains, end the loading.
+{{Feature|arma3|The loading screen can be force-ended with the {{Link|Arma 3: Cheats#ENDLOAD|ENDLOAD cheat code}}.}}
 
 |s1= screenId call [[BIS_fnc_endLoadingScreen]]
 
@@ -44259,7 +44256,7 @@ uiSleep 3;
 
 |seealso= [[BIS_fnc_startLoadingScreen]] [[startLoadingScreen]] [[endLoadingScreen]]
 }}</text>
-      <sha1>26re28dsnfmzivayvvotl6kdaidbsbj</sha1>
+      <sha1>rq7ev2rxuhv6nq50pjfdhbwc6jstz9t</sha1>
     </revision>
   </page>
   <page>
@@ -45843,32 +45840,32 @@ Size increments can be changed using ''_this select 1'', another example provide
     <ns>0</ns>
     <id>15943</id>
     <revision>
-      <id>327733</id>
-      <parentid>327720</parentid>
-      <timestamp>2022-07-13T10:22:50Z</timestamp>
+      <id>369461</id>
+      <parentid>369460</parentid>
+      <timestamp>2024-09-06T08:51:22Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Some wiki formatting</comment>
-      <origin>327733</origin>
+      <comment>Fix</comment>
+      <origin>369461</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="917" sha1="kqwba4i4lw0qh780m6hto03zubuu9eo" xml:space="preserve">{{RV|type=function
+      <text bytes="963" sha1="fg0x78yccmac263e9yj5vzusyy727cz" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.08
 
 |gr1= Diagnostic
 
-|descr= Imports CfgVehicles image links from Community Wiki (https://community.bistudio.com/).
+|descr= Imports CfgVehicles image links from the Community Wiki ({{Link|https://community.bistudio.com/|https://community.bistudio.com/}}).
 # Run the script. It will copy a text into clipboard
 # Open your [[Special:MyPage/Sandbox|Sandbox]] and paste the text into edit field
-# '''Preview''' the page (don't save it)
+# '''Preview''' the page (do not save it)
 # Copy the resulting text and use it in your scripts
 
-Result is to the following format:
+Result is in the following format:
 &lt;sqf&gt;
 _imagesCfgVehicles = [
 	"papercar","https://community.bistudio.com/wikidata/images/8/85/Arma3_CfgVehicles_PaperCar.jpg",
@@ -45878,7 +45875,7 @@ _imagesCfgVehicles = [
 ];
 &lt;/sqf&gt;
 
-{{Feature|important|Be wary that this function is '''CPU-demanding''' and may lock your computer for 5-10 seconds!}}
+{{Feature|important|Be wary that this function is '''CPU-demanding''' and may lock your computer for 5-10 seconds.}}
 
 |s1= call [[BIS_fnc_importImageLinks]]
 
@@ -45888,7 +45885,7 @@ _imagesCfgVehicles = [
 
 |seealso= [[Special:Upload|Upload a File on the Wiki]]
 }}</text>
-      <sha1>kqwba4i4lw0qh780m6hto03zubuu9eo</sha1>
+      <sha1>fg0x78yccmac263e9yj5vzusyy727cz</sha1>
     </revision>
   </page>
   <page>
@@ -46267,26 +46264,27 @@ _number = BIS_curator getVariable "DestroyVehicle";&lt;/sqf&gt;
     <ns>0</ns>
     <id>18963</id>
     <revision>
-      <id>309781</id>
-      <parentid>273111</parentid>
-      <timestamp>2022-05-05T12:09:50Z</timestamp>
+      <id>370197</id>
+      <parentid>309781</parentid>
+      <timestamp>2024-11-06T12:59:24Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "&lt;code&gt;(\[[a-zA-Z0-9_, ]*\] )?(call|spawn) \[\[(BI[NS]\_fnc\_[a-zA-Z0-9_]+)\]\];?&lt;\/code&gt;" to "&lt;sqf&gt;$1$2 $3;&lt;/sqf&gt;"</comment>
-      <origin>309781</origin>
+      <comment>Some wiki formatting</comment>
+      <origin>370197</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1527" sha1="fc5ar4g5pz7cgrfh60klhedvtmieipv" xml:space="preserve">{{RV|type=function
+      <text bytes="1527" sha1="kfrwf1khd07uhfc83abcwvwnwvfz5dm" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.00
 
 |gr1= Aircraft Functionality
 
-|descr= &lt;pre&gt;/*
+|descr= &lt;pre&gt;
+/*
 	Author: Bravo Zero One development
 	- John_Spartan
 
@@ -46295,12 +46293,12 @@ _number = BIS_curator getVariable "DestroyVehicle";&lt;/sqf&gt;
 	- Additional option for player to separate from ejetor seat via user action. default ejection function will ato deploy parachute at 350 m altitude. This is a manual override.
 	- Generic parachute used, currently only one model in game so no need to parametarize.
 
-	Exucution:
+	Execution:
 	- Call the function via user action defined on the ejector seat vehicle.
 
 		Example:
 		class UserActions
-	    {
+		{
 
 			class Ejection_Seat_Eject
 			{
@@ -46317,7 +46315,7 @@ _number = BIS_curator getVariable "DestroyVehicle";&lt;/sqf&gt;
 			};
 		};
 
-	Requirments:
+	Requirements:
 	- Compatible ejector seat must have a user action set up to triger this fnc.
 
 	Parameter(s):
@@ -46326,7 +46324,8 @@ _number = BIS_curator getVariable "DestroyVehicle";&lt;/sqf&gt;
 
 	Returns: nothing
 	Result: Pilot will be forced from ejection seat vehicle to parachute. Semi-authenthic behaviour.
-*/&lt;/pre&gt;
+*/
+&lt;/pre&gt;
 
 {{Wiki|placeholder}}
 
@@ -46338,7 +46337,7 @@ _number = BIS_curator getVariable "DestroyVehicle";&lt;/sqf&gt;
 
 |seealso=
 }}</text>
-      <sha1>fc5ar4g5pz7cgrfh60klhedvtmieipv</sha1>
+      <sha1>kfrwf1khd07uhfc83abcwvwnwvfz5dm</sha1>
     </revision>
   </page>
   <page>
@@ -64296,36 +64295,42 @@ Throw // Throw-like weapons (grenade weapon, melee weapons from mods, etc).
     <ns>0</ns>
     <id>18832</id>
     <revision>
-      <id>352536</id>
-      <parentid>352504</parentid>
-      <timestamp>2024-02-12T16:42:19Z</timestamp>
+      <id>370326</id>
+      <parentid>352536</parentid>
+      <timestamp>2024-11-27T10:38:52Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "[[Arma 3: Mission Parameters" to "[[Mission Parameters"</comment>
-      <origin>352536</origin>
+      <comment>Add version and description</comment>
+      <origin>370326</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="400" sha1="m7dzk55j6s5sowlxm6lwe9064eznm5i" xml:space="preserve">{{RV|type=function
+      <text bytes="808" sha1="n6i4le1hlyu4zo0vk6hhw7gqo8vl3dq" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
-|version1= 1.00
+|version1= 1.62
 
 |gr1= Mission Parameters
 
-|descr= Grabs server param into global variable. ('''bis_reviveParam_requiredTrait''')
+|descr= Stores the provided value in the global {{hl|BIS_reviveParam_requiredTrait}} mission variable.
 
-|s1= call [[BIS_fnc_paramReviveRequiredTrait]]
+|s1= [value] call [[BIS_fnc_paramReviveRequiredTrait]]
+
+|p1= value: [[Number]] - (Optional, default -100)
 
 |r1= [[Nothing]]
 
-|x1= &lt;sqf&gt;call BIS_fnc_paramReviveRequiredTrait;&lt;/sqf&gt;
+|x1= &lt;sqf&gt;
+[42] call BIS_fnc_paramReviveRequiredTrait;	// BIS_reviveParam_requiredTrait is now 42
+"hi" call BIS_fnc_paramReviveRequiredTrait;	// BIS_reviveParam_requiredTrait is now -100
+42 call BIS_fnc_paramReviveRequiredTrait;	// BIS_reviveParam_requiredTrait is now 42
+call BIS_fnc_paramReviveRequiredTrait;		// BIS_reviveParam_requiredTrait is now -100
+&lt;/sqf&gt;
 
-|seealso= [[Mission Parameters]] [[:Category:Function Group: Mission Parameters|Mission Parameters Functions]]
+|seealso= [[Mission Parameters]] {{Link|Arma 3: Revive}} [[:Category:Function Group: Mission Parameters|Mission Parameters Functions]]
 }}</text>
-      <sha1>m7dzk55j6s5sowlxm6lwe9064eznm5i</sha1>
+      <sha1>n6i4le1hlyu4zo0vk6hhw7gqo8vl3dq</sha1>
     </revision>
   </page>
   <page>
@@ -69512,19 +69517,19 @@ systemChat str [configName _cfgSelected, _cfgSelected];
     <ns>0</ns>
     <id>16162</id>
     <revision>
-      <id>363838</id>
-      <parentid>353735</parentid>
-      <timestamp>2024-04-23T15:04:45Z</timestamp>
+      <id>369829</id>
+      <parentid>369827</parentid>
+      <timestamp>2024-10-15T15:21:45Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "﻿" to ""</comment>
-      <origin>363838</origin>
+      <comment>Fix</comment>
+      <origin>369829</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="5087" sha1="lvuxmzgxseo891k60gkz4homtslu7cd" xml:space="preserve">{{RV|type=function
+      <text bytes="5137" sha1="t8jw5pk20r6gm44b935b6fvcchaxtda" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.00
@@ -69579,7 +69584,7 @@ systemChat str [configName _cfgSelected, _cfgSelected];
 
 |p7= '''showNotification''': [[Boolean]] - (Optional, default [[true]]) true to show notification, false to disable it
 
-|p8= '''type''': [[String]] - (Optional, default "") task type from [[Description.ext#CfgTaskTypes|CfgTaskTypes]], if not defined, type "" is being used
+|p8= '''type''': [[String]] - (Optional, default "") {{Link|Arma 3: Task Framework#Task Icons|vanilla}} or {{Link|Description.ext#CfgTaskTypes|custom}} task type; if not defined, empty (no) type is used
 
 |p9= '''visibleIn3D''': [[Boolean]] - (Optional, default [[false]]) true to make task always visible in 3D
 
@@ -69671,7 +69676,7 @@ class CfgTaskDescriptions
 [east, "infiltrate", "hyp_infiltrate", objNull, "ASSIGNED", -1, true, "MOVE", false] call BIS_fnc_taskCreate;
 &lt;/sqf&gt;
 }}</text>
-      <sha1>lvuxmzgxseo891k60gkz4homtslu7cd</sha1>
+      <sha1>t8jw5pk20r6gm44b935b6fvcchaxtda</sha1>
     </revision>
   </page>
   <page>
@@ -78122,36 +78127,44 @@ In order to skip any optional parameter in between other parameters, send [[nil]
     <ns>0</ns>
     <id>18848</id>
     <revision>
-      <id>309809</id>
-      <parentid>273394</parentid>
-      <timestamp>2022-05-05T12:09:51Z</timestamp>
+      <id>369493</id>
+      <parentid>309809</parentid>
+      <timestamp>2024-09-07T05:22:29Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>Hypoxic125</username>
+        <id>11179</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "&lt;code&gt;(\[[a-zA-Z0-9_, ]*\] )?(call|spawn) \[\[(BI[NS]\_fnc\_[a-zA-Z0-9_]+)\]\];?&lt;\/code&gt;" to "&lt;sqf&gt;$1$2 $3;&lt;/sqf&gt;"</comment>
-      <origin>309809</origin>
+      <comment>Added initial information</comment>
+      <origin>369493</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="245" sha1="52aw0gtngjryljx0tzzc5hya5clx4ih" xml:space="preserve">{{RV|type=function
+      <text bytes="699" sha1="7ozzpujpz1e9anhsdf9dnodcjrox7o0" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.00
 
 |gr1= Respawn
 
-|descr= ''N/A''
+|descr= Gets or sets inventory menu loadout metadata for class CfgRespawnInventory
 
-|s1= &lt;!-- [] call [[BIS_fnc_showRespawnMenuInventoryMetadata]] --&gt;
+|s1= ["get", 0] call [[BIS_fnc_showRespawnMenuInventoryMetadata]]
 
-|r1=
+|p1= [[String]] - mode:
+* "set"
+* "get"
+* "delete"
+
+|p2= [[Number]] - List box selection for: "BIS_RscRespawnControlsMap_ctrlRoleList"
+
+|r1= [[Array]] of Arrays:
+* 0: [[Array]] - Array containing role data: &lt;([[String]])DisplayName, ([[Config]])Config, ([[String]])Icon Path&gt;
+* 1: [[Array]] - Array containing loadout data: &lt;([[String]])Classname, ([[String]])DisplayName, ([[Config]])Config&gt;
 
 |x1= &lt;!-- &lt;sqf&gt;[] call BIS_fnc_showRespawnMenuInventoryMetadata;&lt;/sqf&gt; --&gt;
 
 |seealso=
 }}</text>
-      <sha1>52aw0gtngjryljx0tzzc5hya5clx4ih</sha1>
+      <sha1>7ozzpujpz1e9anhsdf9dnodcjrox7o0</sha1>
     </revision>
   </page>
   <page>
@@ -78823,23 +78836,19 @@ A carrier consists of multiple sub-objects that are linked together based on pre
     <ns>0</ns>
     <id>24733</id>
     <revision>
-      <id>351481</id>
-      <parentid>338520</parentid>
-      <timestamp>2023-12-06T09:58:21Z</timestamp>
+      <id>364795</id>
+      <parentid>364794</parentid>
+      <timestamp>2024-06-13T20:08:17Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "
-(	*class [a-zA-Z0-9_]+): *([a-zA-Z0-9_]+ *)
-" to "
-$1 : $2
-"</comment>
-      <origin>351481</origin>
+      <comment>Some wiki formatting</comment>
+      <origin>364795</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1640" sha1="hwbs63o7wviq2p1rgfshx1bqp8vmtil" xml:space="preserve">{{RV|type=function
+      <text bytes="1671" sha1="2rxcuvd8tftc7yc6xnlf3ldwpkx0152" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.84
@@ -78851,20 +78860,23 @@ It calls [[BIS_fnc_destroyer01AnimateHangarDoors]].
 
 {{Feature|important|Object (ship) must have all animations correctly defined and user actions configured.}}
 
-|s1= [shipPart, mode] call [[BIS_fnc_destroyer01OperateHangarDoors]]
+|s1= [shipPart, doorState] call [[BIS_fnc_destroyer01OperateHangarDoors]]
 
 |p1= shipPart: [[Object]]
 
-|r1= mode: [[Number]] - doors' animation state; 1 to open, 0 to close
+|p2= doorState: [[Number]] - doors' animation state; 1 to open, 0 to close
+
+|r1= [[Nothing]]
 
 |x1= &lt;sqf&gt;
 [this, 1] call BIS_fnc_destroyer01OperateHangarDoors; // to open doors
 [this, 0] call BIS_fnc_destroyer01OperateHangarDoors; // to close doors
 &lt;/sqf&gt;
+
 &lt;syntaxhighlight lang="cpp"&gt;
 class OpenHangarDoor_1
 {
-	displayNameDefault		="&lt;img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' /&gt;";
+	displayNameDefault		= "&lt;img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' /&gt;";
 	displayName 			= "$STR_DN_OUT_O_DOOR";
 	position 				= "pos_Door_Hangar_1_Trigger";
 	priority 				= 0.4;
@@ -78873,6 +78885,7 @@ class OpenHangarDoor_1
 	condition 				= "(((nearestObjects [this, ['Land_Destroyer_01_hull_04_F'], 50, false]) select 0) animationPhase 'Door_Hangar_1_1_open') &lt; 0.1;";
 	statement 				= "[this, 1] call BIS_fnc_destroyer01OperateHangarDoors;";
 };
+
 class CloseHangarDoor_1 : OpenHangarDoor_1
 {
 	displayName 			= "$STR_DN_OUT_C_DOOR";
@@ -78884,7 +78897,7 @@ class CloseHangarDoor_1 : OpenHangarDoor_1
 
 |seealso= [[BIS_fnc_destroyer01AnimateHangarDoors]]
 }}</text>
-      <sha1>hwbs63o7wviq2p1rgfshx1bqp8vmtil</sha1>
+      <sha1>2rxcuvd8tftc7yc6xnlf3ldwpkx0152</sha1>
     </revision>
   </page>
   <page>
@@ -82389,38 +82402,59 @@ BIS_unit addEventHandler ["HandleDamage",
     <ns>0</ns>
     <id>18941</id>
     <revision>
-      <id>348136</id>
-      <parentid>342135</parentid>
-      <timestamp>2023-11-08T11:32:36Z</timestamp>
+      <id>364854</id>
+      <parentid>348136</parentid>
+      <timestamp>2024-06-25T09:14:18Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "(\|p[0-9]+ *= *[^(]+\(Optional(, default[^)]*)\) )T([a-z])" to "$1t$3"</comment>
-      <origin>348136</origin>
+      <comment>Add class list</comment>
+      <origin>364854</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1030" sha1="8zeu4wpl7lewgnli6bqhfuvxp24n8aa" xml:space="preserve">{{RV|type=function
+      <text bytes="1471" sha1="2ilqqvqbsd2380k7lf8y0h19a0lgd71" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.56
 
 |gr1= Eden Editor
 
-|descr=Copies all available attributes to the clipboard.
+|descr= Copies all available attributes to the clipboard.
 
 |s1= class call [[BIS_fnc_3DENExportAttributes]]
 
-|p1=mode: [[String]] - (Optional, default "object") type of attributes to be exported. Classes from [[configFile]] &gt;&gt; Cfg3DEN &gt;&gt; class
+|p1= mode: [[String]] - (Optional, default "Object") type of attributes to be exported (case-insensitive). Classes from &lt;sqf inline&gt;configFile &gt;&gt; "Cfg3DEN"&lt;/sqf&gt;:
+{{Columns|5|
+* {{hl|"Attributes"}}
+* {{hl|"Camera"}}
+* {{hl|"Comment"}}
+* {{hl|"Connections"}}
+* {{hl|"Default"}}
+* {{hl|"EventHandlers"}}
+* {{hl|"Favorites"}}
+* {{hl|"Group"}}
+* {{hl|"History"}}
+* {{hl|"Layer"}}
+* {{hl|"Logic"}}
+* {{hl|"Marker"}}
+* {{hl|"Messages"}}
+* {{hl|"Mission"}}
+* {{hl|"Notifications"}}
+* {{hl|"Object"}}
+* {{hl|"Trigger"}}
+* {{hl|"Tutorials"}}
+* {{hl|"Updates"}}
+* {{hl|"Waypoint"}}
+}}
 
 |r1= [[Nothing]]
 
-|x1= &lt;sqf&gt;"trigger" call BIS_fnc_3DENExportAttributes;&lt;/sqf&gt;
+|x1= &lt;sqf&gt;"Trigger" call BIS_fnc_3DENExportAttributes;&lt;/sqf&gt;
 
 |seealso= [[:Category:Eden Editor|Eden Editor]] [[BIS_fnc_3DENCamera]] [[BIS_fnc_3DENControlsHint]] [[BIS_fnc_3DENDiagCreateList]] [[BIS_fnc_3DENDiagFonts]] [[BIS_fnc_3DENDiagMouseControl]] [[BIS_fnc_3DENDrawLocations]] [[BIS_fnc_3DENEntityMenu]] [[BIS_fnc_3DENExportOldSQM]] [[BIS_fnc_3DENExportTerrainBuilder]] [[BIS_fnc_3DENFlashlight]] [[BIS_fnc_3DENGrid]] [[BIS_fnc_3DENIntel]] [[BIS_fnc_3DENInterface]] [[BIS_fnc_3DENListLocations]] [[BIS_fnc_3DENMissionPreview]] [[BIS_fnc_3DENModuleDescription]] [[BIS_fnc_3DENShowMessage]] [[BIS_fnc_3DENStatusBar]] [[BIS_fnc_3DENToolbar]] [[BIS_fnc_3DENTutorial]] [[BIS_fnc_3DENVisionMode]]
 }}</text>
-      <sha1>8zeu4wpl7lewgnli6bqhfuvxp24n8aa</sha1>
+      <sha1>2ilqqvqbsd2380k7lf8y0h19a0lgd71</sha1>
     </revision>
   </page>
   <page>
@@ -85727,19 +85761,18 @@ The value slowly decreases towards 0.
     <ns>0</ns>
     <id>18198</id>
     <revision>
-      <id>352064</id>
-      <parentid>349250</parentid>
-      <timestamp>2024-02-01T23:24:37Z</timestamp>
+      <id>369828</id>
+      <parentid>352064</parentid>
+      <timestamp>2024-10-15T15:21:35Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "{{Feature|Informative|" to "{{Feature|informative|"</comment>
-      <origin>352064</origin>
+      <comment>Add type link</comment>
+      <origin>369828</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="504" sha1="hy3n90vwqevd74ufp5k9v4l3q0dkonc" xml:space="preserve">{{RV|type=function
+      <text bytes="594" sha1="002a652ry1a5mdrmjcfz4nhelx4ywhb" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.58
@@ -85749,11 +85782,11 @@ The value slowly decreases towards 0.
 
 |descr= Sets task type to given task. {{Feature|informative| See [[Arma 3: Task Framework]] for more information.}}
 
-|s1= [taskID,type] call [[BIS_fnc_taskSetType]]
+|s1= [id, type] call [[BIS_fnc_taskSetType]]
 
-|p1= taskID: [[String]] - task ID
+|p1= id: [[String]] - task ID
 
-|p2= taskType: [[String]] - task Type from [[configfile]]  &gt;&gt; "CfgTaskTypes"
+|p2= type: [[String]] - {{Link|Arma 3: Task Framework#Task Icons|vanilla}} or {{Link|Description.ext#CfgTaskTypes|custom}} task type; if not defined, empty (no) type is used
 
 |r1= [[String]] - task ID.
 
@@ -85761,7 +85794,7 @@ The value slowly decreases towards 0.
 
 |seealso=  [[Arma 3: Task Framework]]
 }}</text>
-      <sha1>hy3n90vwqevd74ufp5k9v4l3q0dkonc</sha1>
+      <sha1>002a652ry1a5mdrmjcfz4nhelx4ywhb</sha1>
     </revision>
   </page>
   <page>
@@ -89899,21 +89932,19 @@ The delimiter for [[BIS_fnc_stringToMarker]] is the first character of the strin
     <ns>0</ns>
     <id>16041</id>
     <revision>
-      <id>327447</id>
-      <parentid>327153</parentid>
-      <timestamp>2022-07-12T22:12:10Z</timestamp>
+      <id>369455</id>
+      <parentid>367227</parentid>
+      <timestamp>2024-09-06T08:44:52Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "
-|s1=[" to "
-|s1= ["</comment>
-      <origin>327447</origin>
+      <comment>Text replacement - "with [https://community.bistudio.com/wiki/Arma_3:_Cheats#ENDLOAD ENDLOAD cheat code]" to "with the {{Link|Arma 3: Cheats#ENDLOAD|ENDLOAD cheat code}}"</comment>
+      <origin>369455</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="678" sha1="gc9fwiurl9wr8uizwq8f2lla9giq0qw" xml:space="preserve">{{RV|type=function
+      <text bytes="796" sha1="jzqx5wxwd2rqj7ennvcn0folt32ofid" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 0.58
@@ -89921,6 +89952,8 @@ The delimiter for [[BIS_fnc_stringToMarker]] is the first character of the strin
 |gr1= Systems
 
 |descr= Register a loading screen. Start the loading when it is the first one registered.
+
+{{Feature|arma3|The loading screen can be force-ended with the {{Link|Arma 3: Cheats#ENDLOAD|ENDLOAD cheat code}}.}}
 
 |s1= [screenId, layout] call [[BIS_fnc_startLoadingScreen]]
 
@@ -89936,7 +89969,7 @@ uiSleep 3;
 
 |seealso= [[BIS_fnc_endLoadingScreen]] [[startLoadingScreen]] [[endLoadingScreen]]
 }}</text>
-      <sha1>gc9fwiurl9wr8uizwq8f2lla9giq0qw</sha1>
+      <sha1>jzqx5wxwd2rqj7ennvcn0folt32ofid</sha1>
     </revision>
   </page>
   <page>
@@ -90257,20 +90290,19 @@ Can be reexecuted to change its colour, but once executed this function '''canno
     <ns>0</ns>
     <id>15661</id>
     <revision>
-      <id>348980</id>
-      <parentid>324666</parentid>
-      <timestamp>2023-11-08T14:45:45Z</timestamp>
+      <id>369527</id>
+      <parentid>348980</parentid>
+      <timestamp>2024-09-15T18:22:20Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "(\|[pr][0-9]+ *= *[^-
-]*) *- *P([a-gi-z ])" to "$1 - p$2"</comment>
-      <origin>348980</origin>
+      <comment>Text replacement - "Since {{arma3}} v1.57" to "Since {{arma3}} v1.58"</comment>
+      <origin>369527</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1715" sha1="93nju9syo9nh6cx5yf77mh932zzunl1" xml:space="preserve">{{RV|type=function
+      <text bytes="1715" sha1="m789yv6tnq2p43pf6t5w0y2bie6wp2p" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -90287,7 +90319,7 @@ Can be reexecuted to change its colour, but once executed this function '''canno
 |gr1= Object Manipulation
 
 |descr= Detects whether position is within area '''or''' calculates distance to the nearest edge of trigger area by using optional params.
-{{Feature|arma3|Since {{arma3}} v1.57 [[inArea]] is available for an area check.}}
+{{Feature|arma3|Since {{arma3}} v1.58 [[inArea]] is available for an area check.}}
 
 |s1= [area, position, returnDistance, includeFloorCeiling] call [[BIS_fnc_inTrigger]]
 
@@ -90315,7 +90347,7 @@ _inTrigger = [_trigger, player] call BIS_fnc_inTrigger; // _inTrigger = true
 
 |seealso= [[createTrigger]] [[createMarker]] [[setTriggerArea]] [[setMarkerSize]] [[triggerArea]] [[markerSize]] [[inArea]] [[inAreaArray]] [[BIS_fnc_getArea]]
 }}</text>
-      <sha1>93nju9syo9nh6cx5yf77mh932zzunl1</sha1>
+      <sha1>m789yv6tnq2p43pf6t5w0y2bie6wp2p</sha1>
     </revision>
   </page>
   <page>
@@ -92885,21 +92917,18 @@ Additionally, generated position could be checked against the list of blackliste
     <ns>0</ns>
     <id>15666</id>
     <revision>
-      <id>292377</id>
-      <parentid>282940</parentid>
-      <timestamp>2021-08-07T23:54:48Z</timestamp>
+      <id>370214</id>
+      <parentid>292377</parentid>
+      <timestamp>2024-11-08T23:49:23Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - ";[ 	]+
-" to ";
-"</comment>
-      <origin>292377</origin>
+      <comment>Page filling</comment>
+      <origin>370214</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1582" sha1="js5u7imgfdnp9n4gg4vc4jbdgjtuc0s" xml:space="preserve">{{RV|type=function
+      <text bytes="1706" sha1="4fuuumh425gswt7j653z94sez03s24l" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -92915,42 +92944,44 @@ Additionally, generated position could be checked against the list of blackliste
 
 |gr1= Communication Menu
 
-|descr= &lt;pre&gt;
-/*
-	File: fn_createMenu.sqf
+|descr= Create custom commanding menu (with multiple pages if necessary).
 
-	Description:
-	Create custom commanding menu (with multiple pages if necessary).
+|s1= [namePath, variable, itemDetails, subMenu, codeStr, parameters, showKey] call [[BIS_fnc_createmenu]]
 
-	Parameter(s):
-		_this select 0 - STRING or ARRAY - Name of menu or [Name, Context sensitive]
-		_this select 1 - STRING - Variable in which will be menu params stored (as variable_0, variable_1, ...)
-		_this select 2 - ARRAY - Array with menu items (can be either [items] or [[items],[itemNames],[itemEnable]] if you want to set custom params (names, enable values))
-		_this select 3 - STRING - Name of submenu which will open when item is activated. Name of selected item is passed to string as %1
-		_this select 4 - STRING - Expression which is executed when item is activated. Name of selected item is passed to string as %1, ID is %2.
-		_this select 5 - ANYTHING (Optional) - params passed to expression. Whole argument is passed as %3
-		_this select 6 - BOOLEAN - False to hide number shortcuts
+|p1= namePath: [[String]] or [[Array]] - can be one of:
+* [[String]] - menu name
+* [[Array]] - format [menuName, context]
 
-	Returned value(s):
-		True
-		
-	Example:
-	  c = ["first","second"]; ["Menu", "b", c, "","hint 'ahoj'"] call BIS_FNC_createmenu; showCommandingMenu "#USER:b_0"  
-	  c = [["firstData","secondData"],["First","Second"]]; ["Menu", "b", c, "","hint (str '%1' + str '%2' + str '%3')"] call BIS_FNC_createmenu;  showCommandingMenu "#USER:b_0";
-	  see news:g7p3po$gik$1@new-server.localdomain
-*/&lt;/pre&gt;
+|p2= variable: [[String]] - variable in which will be menu params stored (as {{hl|''variable''_0}}, {{hl|''variable''_1}} etc)
 
-{{Wiki|placeholder}}
+|p3= itemDetails: [[Array]] - menu items, format can be one of:
+* [items]
+* [&lt;nowiki/&gt;[items], [itemNames], [itemEnable]] if custom parameters are to be set(names, enable values)
 
-|s1= &lt;!-- [] call [[BIS_fnc_createmenu]] --&gt;
+|p4= subMenu: [[String]] - name of the submenu which will open when item is activated. Name of the selected item is passed to string as {{hl|%1}}
 
-|r1=
+|p5= codeStr: [[String]] - expression which is executed when ''item'' is activated; item's name is passed to string as {{hl|%1}}, ID as {{hl|%2}}, ''parameters'' (below) as {{hl|%3}}
 
-|x1=
+|p6= parameters: [[Anything]] - (Optional) passed to ''codeStr'' as {{hl|%3}}
 
-|seealso=
+|p7= showKey: [[Boolean]] - (Optional, default [[true]]) [[false]] to hide number shortcuts
+
+|r1= [[Boolean]] - always [[true]]
+
+|x1= &lt;sqf&gt;
+["Menu", "b", ["first", "second"], "","hint 'ahoj'"] call BIS_fnc_createMenu;
+showCommandingMenu "#USER:b_0";
+&lt;/sqf&gt;
+
+|x2= &lt;sqf&gt;
+private _itemDetails = [["firstData", "secondData"], ["First", "Second"]];
+["Menu", "b", _itemDetails, "", "hint (str '%1' + str '%2' + str '%3')"] call BIS_fnc_createMenu;
+showCommandingMenu "#USER:b_0";
+&lt;/sqf&gt;
+
+|seealso= [[Conversations]]
 }}</text>
-      <sha1>js5u7imgfdnp9n4gg4vc4jbdgjtuc0s</sha1>
+      <sha1>4fuuumh425gswt7j653z94sez03s24l</sha1>
     </revision>
   </page>
   <page>
@@ -93928,19 +93959,18 @@ private _array = ["a", "b", true, 3, 8];
     <ns>0</ns>
     <id>15759</id>
     <revision>
-      <id>352020</id>
-      <parentid>349490</parentid>
-      <timestamp>2024-02-01T23:24:22Z</timestamp>
+      <id>369625</id>
+      <parentid>352020</parentid>
+      <timestamp>2024-09-28T23:00:15Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "{{Feature|Informative|" to "{{Feature|informative|"</comment>
-      <origin>352020</origin>
+      <comment>Add soundVolume default values</comment>
+      <origin>369625</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="2989" sha1="bofowspilwxi0b85jlvvtepe6k416to" xml:space="preserve">{{RV|type=function
+      <text bytes="3149" sha1="pxqj9dvconkuxraumnoyx9941u4nwdm" xml:space="preserve">{{RV|type=function
 
 |game1= tkoh
 |version1= 1.00
@@ -93979,7 +94009,7 @@ Conversation must be declared in [[Description.ext#CfgSentences|Description.ext/
 
 |p4= radioMode: [[Boolean]], [[String]], [[Object]] or [[Code]] - (Optional, default: [[false]]) can be:
 * [[Boolean]] - true to force radio
-* [[String]] - name of radio channel, original or [[radioChannelCreate|custom]]
+* [[String]] - name of radio channel ("DIRECT" or "VEHICLE") or [[radioChannelCreate|custom]]
 * [[Object]] - listener's channel
 * [[Code]] - returned value of code
 
@@ -93991,7 +94021,7 @@ Conversation must be declared in [[Description.ext#CfgSentences|Description.ext/
 * [[Array]] - replacement units for those defined in .bikb file (in chronological order)
 * [[Boolean]] - when true, dummy logics will be created for all actor units which doesn't exist (default: false or value of 'BIS_fnc_kbTell_createDummy' variable)
 
-|p7= soundVolume: [[Number]] - (Optional, default 0.1) music and sound volumes will be multiplied by this value when conversation starts
+|p7= soundVolume: [[Number]] - (Optional, default {{GVI|tkoh|1.00|size= 0.75}} 0.2, {{GVI|arma3|1.00|size= 0.75}} -1) music and sound volumes lowering ratio during the conversation, range 0..1 (e.g 0 = no music, 0.25 = a quarter of the current volume, 1 or out of range = no change)
 
 |p8= radioProtocol: [[Boolean]] - (Optional, default [[true]]) true to disable radio protocol message while the conversation is playing
 
@@ -94001,7 +94031,7 @@ Conversation must be declared in [[Description.ext#CfgSentences|Description.ext/
 
 |seealso= [[Conversations]] [[kbTell]] [[BIS_fnc_kbCanSpeak]] [[BIS_fnc_kbCreateDummy]] [[BIS_fnc_kbIsSpeaking]] [[BIS_fnc_kbMenu]] [[BIS_fnc_kbPriority]] [[BIS_fnc_kbSentence]] [[BIS_fnc_kbSkip]] [[BIS_fnc_kbTellLocal]] [[BIS_fnc_kbTopicConfig]]
 }}</text>
-      <sha1>bofowspilwxi0b85jlvvtepe6k416to</sha1>
+      <sha1>pxqj9dvconkuxraumnoyx9941u4nwdm</sha1>
     </revision>
   </page>
   <page>
@@ -94723,20 +94753,19 @@ _db // ["#MILLER",["&amp;KILLS",1000]]&lt;/sqf&gt;
     <ns>0</ns>
     <id>16043</id>
     <revision>
-      <id>348946</id>
-      <parentid>327213</parentid>
-      <timestamp>2023-11-08T14:45:37Z</timestamp>
+      <id>369453</id>
+      <parentid>367229</parentid>
+      <timestamp>2024-09-06T08:44:48Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "(\|[pr][0-9]+ *= *[^-
-]*) *- *P([a-gi-z ])" to "$1 - p$2"</comment>
-      <origin>348946</origin>
+      <comment>Text replacement - "with [https://community.bistudio.com/wiki/Arma_3:_Cheats#ENDLOAD ENDLOAD cheat code]" to "with the {{Link|Arma 3: Cheats#ENDLOAD|ENDLOAD cheat code}}"</comment>
+      <origin>369453</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="482" sha1="snle9590fkei04bfook64m9e4zx8cfg" xml:space="preserve">{{RV|type=function
+      <text bytes="599" sha1="tsp0levvsdsy2unlp7bjy2kj9iw41ez" xml:space="preserve">{{RV|type=function
 
 |game1= tkoh
 |version1= 1.00
@@ -94747,6 +94776,7 @@ _db // ["#MILLER",["&amp;KILLS",1000]]&lt;/sqf&gt;
 |gr1= GUI
 
 |descr= Progress scripted loading screen. The value will be preserved even when a new screen is opened.
+{{Feature|arma3|The loading screen can be force-ended with the {{Link|Arma 3: Cheats#ENDLOAD|ENDLOAD cheat code}}.}}
 
 |s1= [progress] call [[BIS_fnc_progressLoadingScreen]]
 
@@ -94758,7 +94788,7 @@ _db // ["#MILLER",["&amp;KILLS",1000]]&lt;/sqf&gt;
 
 |seealso= [[Loading Screens]] [[BIS_fnc_displayLoading]]
 }}</text>
-      <sha1>snle9590fkei04bfook64m9e4zx8cfg</sha1>
+      <sha1>tsp0levvsdsy2unlp7bjy2kj9iw41ez</sha1>
     </revision>
   </page>
   <page>
@@ -97150,23 +97180,23 @@ $1 - a$2"</comment>
     </revision>
   </page>
   <page>
-    <title>BIS fnc customGPSvideo</title>
+    <title>BIS fnc customGPSVideo</title>
     <ns>0</ns>
     <id>9602</id>
     <revision>
-      <id>328643</id>
-      <parentid>328462</parentid>
-      <timestamp>2022-07-13T17:04:17Z</timestamp>
+      <id>365057</id>
+      <parentid>365055</parentid>
+      <timestamp>2024-07-16T09:31:55Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "[[BIS fnc " to "[[BIS_fnc_"</comment>
-      <origin>328643</origin>
+      <comment>Fix</comment>
+      <origin>365057</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="734" sha1="3u3f3t6xlknk0zhacjae6jcwqqpfm96" xml:space="preserve">{{RV|type=function
+      <text bytes="826" sha1="mrju8tq26s6auqmuut7lz4i6otsddlg" xml:space="preserve">{{RV|type=function
 
 |game1= arma2oa
 |version1= 1.56
@@ -97182,25 +97212,27 @@ $1 - a$2"</comment>
 |eff= local
 
 |descr= Plays in-game video in GPS frame.&lt;br&gt;
-If [[BIS_fnc_customGPS]] changed GPS texture, it is used.&lt;br&gt;
-GPS GUI layer is {{hl|19}}.
+If [[BIS_fnc_customGPS]] changed the GPS texture, it is used. GPS GUI layer is {{hl|19}}.
+{{Feature|arma3|Does not work in {{arma3}}. See [[BIS_fnc_playVideo]] instead.}}
 
-|s1= [path, ''sizeCoef''] spawn [[BIS_fnc_customGPSvideo]]
+|s1= [path, sizeCoef] spawn '''BIS_fnc_customGPSVideo'''
 
 |p1= path: [[String]] - full path to image file
 
-|p2= sizeCoef ''(Optional)'': [[Number]] - screen size coeficient (default is 1)
+|p2= sizeCoef: [[Number]] - (Optional, default 1) screen size coefficient
 
-|r1= [[Script Handle|Script]] - script which terminates itself once video ends
+|r1= [[Script Handle]] - script which terminates itself once video ends
 
-|x1= &lt;sqf&gt;private _script = ["\ca\video_pmc\CP00_Reynolds_b.ogv",1.04] spawn BIS_fnc_customGPSvideo;
-waitUntil {scriptDone _script};&lt;/sqf&gt;
+|x1= &lt;sqf&gt;
+private _script = ["\ca\video_pmc\CP00_Reynolds_b.ogv", 1.04] spawn BIS_fnc_customGPSVideo;
+waitUntil { scriptDone _script };
+&lt;/sqf&gt;
 
 |exec= spawn
 
-|seealso= [[Functions Library]]
+|seealso= [[BIS_fnc_playVideo]] [[BIS_fnc_customGPS]]
 }}</text>
-      <sha1>3u3f3t6xlknk0zhacjae6jcwqqpfm96</sha1>
+      <sha1>mrju8tq26s6auqmuut7lz4i6otsddlg</sha1>
     </revision>
   </page>
   <page>
@@ -100014,54 +100046,6 @@ private _capturedData = [[0, [8208.26, 1953.13, 296.04], 67]];
     </revision>
   </page>
   <page>
-    <title>BIS fnc customGPSVideo</title>
-    <ns>0</ns>
-    <id>15751</id>
-    <revision>
-      <id>329966</id>
-      <parentid>327185</parentid>
-      <timestamp>2022-08-09T17:17:18Z</timestamp>
-      <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
-      </contributor>
-      <minor/>
-      <comment>Text replacement - "[[Script Handle|Script handle]]" to "[[Script Handle]]"</comment>
-      <origin>329966</origin>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="539" sha1="72kllcqzck1pwgadnbzuivfmt3db4ak" xml:space="preserve">{{RV|type=function
-
-|game1= arma2oa
-|version1= 1.56
-
-|game2= tkoh
-|version2= 1.00
-
-|game3= arma3
-|version3= 0.50
-
-|gr1= GUI
-
-|descr= Plays in-game video in GPS frame.
-{{Feature|arma3|Does not work in {{arma3}}. See [[BIS_fnc_playVideo]] instead}}
-
-|s1= [videoFilePath, sizeCoef] call [[BIS_fnc_customGPSVideo]]
-
-|p1= videoFilePath: [[String]] - video file path
-
-|p2= sizeCoef: [[Number]] - (Optional, default 1)
-
-|r1= [[Script Handle]]
-
-|x1= &lt;sqf&gt;["myVideo.ogv", 0.75] call BIS_fnc_customGPSVideo;&lt;/sqf&gt;
-
-|seealso= [[BIS_fnc_playVideo]]
-}}</text>
-      <sha1>72kllcqzck1pwgadnbzuivfmt3db4ak</sha1>
-    </revision>
-  </page>
-  <page>
     <title>BIS fnc HUDLimits</title>
     <ns>0</ns>
     <id>15819</id>
@@ -100505,19 +100489,19 @@ private _array = [0,1,2,3,4];
     <ns>0</ns>
     <id>15685</id>
     <revision>
-      <id>328497</id>
-      <parentid>326649</parentid>
-      <timestamp>2022-07-13T16:11:15Z</timestamp>
+      <id>370223</id>
+      <parentid>328497</parentid>
+      <timestamp>2024-11-11T05:36:36Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>Hypoxic125</username>
+        <id>11179</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "&lt;code&gt;([^&lt;]+)&lt;\/code&gt;" to "&lt;sqf&gt;$1&lt;/sqf&gt;"</comment>
-      <origin>328497</origin>
+      <comment>added array of numbers example</comment>
+      <origin>370223</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="556" sha1="orsiflcx4ut7jj1tk3yzlr1xftg4eat" xml:space="preserve">{{RV|type=function
+      <text bytes="635" sha1="jg17fncs4g9z97xqm4kbhy821a7c67z" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -100547,9 +100531,14 @@ private _array = [0,1,2,3,4];
 _result = "7.62" call BIS_fnc_parseNumber;
 _result = { 7.62 } call BIS_fnc_parseNumber;&lt;/sqf&gt;
 
+|x2=
+&lt;sqf&gt;
+"[10,20,30]" call BIS_fnc_parseNumber; //returns [10,20,30]
+&lt;/sqf&gt;
+
 |seealso= [[parseNumber]]
 }}</text>
-      <sha1>orsiflcx4ut7jj1tk3yzlr1xftg4eat</sha1>
+      <sha1>jg17fncs4g9z97xqm4kbhy821a7c67z</sha1>
     </revision>
   </page>
   <page>
@@ -102508,19 +102497,17 @@ _result params ["_vehicle", "_crew", "_group"];
     <ns>0</ns>
     <id>33016</id>
     <revision>
-      <id>330180</id>
-      <parentid>330172</parentid>
-      <timestamp>2022-08-23T13:29:34Z</timestamp>
+      <id>370247</id>
+      <parentid>330180</parentid>
+      <timestamp>2024-11-14T17:13:01Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>Killzone Kid</username>
+        <id>9533</id>
       </contributor>
-      <minor/>
-      <comment>Some wiki formatting</comment>
-      <origin>330180</origin>
+      <origin>370247</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1439" sha1="dven7iid68yugj6j4swtkk8l39ewsia" xml:space="preserve">{{RV|type=function
+      <text bytes="1568" sha1="gp96octu6ay2bsnu6pbbkcypswpcmk8" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 2.10
@@ -102542,34 +102529,35 @@ _result params ["_vehicle", "_crew", "_group"];
 |x1= &lt;sqf&gt;
 0 setOvercast 1;
 0 setRain 1;
-0 setFog 0.1;						// snow affects visibility at distance
-setHumidity 0.9;					// don't want to see dust clouds
+0 setFog 0.1;		// snow affects visibility at distance
+setHumidity 0.9;	// don't want to see dust clouds
 enableEnvironment [false, true];	// don't want to see snakes and butterflies either
 forceWeatherChange;
 [
-	"a3\data_f\rainnormal_ca.paa",	// rainDropTexture
-	1,								// texDropCount
-	0.01,							// minRainDensity
-	15,								// effectRadius
-	0.1,							// windCoef
-	2,								// dropSpeed
-	0.5,							// rndSpeed
-	0.5,							// rndDir
-	0.02,							// dropWidth
-	0.02,							// dropHeight
-	[0.1, 0.1, 0.1, 1],				// dropColor
-	0.1,							// lumSunFront
-	0.1,							// lumSunBack
-	5.5,							// refractCoef
-	0.3,							// refractSaturation
-	true,							// snow
-	false							// dropColorStrong
-] call BIS_fnc_setRain;
+	"a3\data_f\snowflake4_ca.paa",	// rainDropTexture - 4 means it has 4 flakes in it. Other available textures: snowflake8_ca.paa, snowflake16_ca.paa
+	4,				// texDropCount - 4 because we are using texture with 4 flakes. Change to 8 or 16 in accordance with other textures used
+	0.01,			// minRainDensity
+	25,				// effectRadius
+	0.05,			// windCoef
+	2.5,			// dropSpeed
+	0.5,			// rndSpeed
+	0.5,			// rndDir
+	0.07,			// dropWidth
+	0.07,			// dropHeight
+	[1, 1, 1, 0.5],	// dropColor
+	0.0,			// lumSunFront
+	0.2,			// lumSunBack
+	0.5,			// refractCoef
+	0.5,			// refractSaturation
+	true,			// snow
+	false			// dropColorStrong
+]
+call BIS_fnc_setRain;
 &lt;/sqf&gt;
 
 |seealso= [[rainParams]] [[setRain]]
 }}</text>
-      <sha1>dven7iid68yugj6j4swtkk8l39ewsia</sha1>
+      <sha1>gp96octu6ay2bsnu6pbbkcypswpcmk8</sha1>
     </revision>
   </page>
   <page>
@@ -102658,27 +102646,24 @@ forceWeatherChange;
     <ns>0</ns>
     <id>38101</id>
     <revision>
-      <id>363754</id>
-      <parentid>352397</parentid>
-      <timestamp>2024-04-17T20:50:51Z</timestamp>
+      <id>369764</id>
+      <parentid>363754</parentid>
+      <timestamp>2024-10-08T15:08:57Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "&amp;#8629;|version1= 2.18" to "
+      <comment>Text replacement - "&amp;#8629;|version1= 2.18&amp;#8629;&amp;#8629;|branch= dev&amp;#8629;" to "
 |version1= 2.18
-
-|branch= dev"</comment>
-      <origin>363754</origin>
+"</comment>
+      <origin>369764</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="611" sha1="iis33wwisz40qpptexh45kmuay4kbfw" xml:space="preserve">{{RV|type=function
+      <text bytes="597" sha1="801nq5k43l5vkb0t0wlbi6zq9ph7o58" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 2.18
-
-|branch= dev
 
 |gr1= Vehicles
 
@@ -102696,7 +102681,7 @@ forceWeatherChange;
 
 |seealso= [[BIS_fnc_unflipVehicle]]
 }}</text>
-      <sha1>iis33wwisz40qpptexh45kmuay4kbfw</sha1>
+      <sha1>801nq5k43l5vkb0t0wlbi6zq9ph7o58</sha1>
     </revision>
   </page>
   <page>

@@ -4302,7 +4302,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>//--- Obsolete, replace dby BIN_fnc_initQuests\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
+            "description": "<pre>//--- Obsolete, replace dby BIN_fnc_initQuests</pre>\n{{Wiki|placeholder}} {{Feature|arma3contact}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIN_fnc_initTasks;\n```\n -->"
@@ -6840,12 +6840,30 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tInput:\n\t\t0: _unit [object] - Name of unit (works only with man type units)\n\t\t1: _force [vector] - Amount of force that will be applied to colliding object\n\t\t2: _position [string] (optional) - Name of selection from which it will try to calculate center point (default: spine1)\n\tUsage:\n\t[player,[0,100,0]] call BIN_fnc_setRagdoll -\n*/</pre>\n{{Wiki|placeholder}}\n{{Feature|arma3contact}}",
-            "examples": [],
+            "description": "Set the provided unit in ragdoll state (pushed by an invisible object).\n**NOTE**: (**Arma 3 v2.18**) `addForce` can be used in vanilla Arma 3.\n\n{{Feature|arma3contact}}",
+            "examples": [
+                {
+                    "text": "```sqf\n[player, [0, 100, 0]] call BIN_fnc_setRagdoll;\n```"
+                }
+            ],
             "syntaxes": [
                 {
-                    "parameters": [],
-                    "outline": "<!-- [] call `BIN_fnc_setRagdoll` -->"
+                    "parameters": [
+                        {
+                            "name": "unit",
+                            "description": "`Object` - the unit to ragdoll"
+                        },
+                        {
+                            "name": "unit",
+                            "description": "`Array` format `Vector3D` - force applied to the colliding object"
+                        },
+                        {
+                            "name": "unit",
+                            "description": "`String`"
+                        }
+                    ],
+                    "outline": "[unit, force, selectionPos] call `BIN_fnc_setRagdoll`",
+                    "returns": "`String` event ID from `BIS_fnc_addStackedEventHandler`"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIN_fnc_setRagdoll"
@@ -8011,7 +8029,7 @@ export const configs: SQFItemConfig[] = [
             "description": "Copies all available attributes to the clipboard.",
             "examples": [
                 {
-                    "text": "```sqf\n\"trigger\" call BIS_fnc_3DENExportAttributes;\n```"
+                    "text": "```sqf\n\"Trigger\" call BIS_fnc_3DENExportAttributes;\n```"
                 }
             ],
             "syntaxes": [
@@ -8019,7 +8037,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "mode",
-                            "description": "`String` - (Optional, default \"object\") type of attributes to be exported. Classes from `configFile` >> Cfg3DEN >> class"
+                            "description": "`String` - (Optional, default \"Object\") type of attributes to be exported (case-insensitive). Classes from <sqf inline>configFile >> \"Cfg3DEN\":\n{{Columns|5|\n* **`\"Attributes\"`**\n* **`\"Camera\"`**\n* **`\"Comment\"`**\n* **`\"Connections\"`**\n* **`\"Default\"`**\n* **`\"EventHandlers\"`**\n* **`\"Favorites\"`**\n* **`\"Group\"`**\n* **`\"History\"`**\n* **`\"Layer\"`**\n* **`\"Logic\"`**\n* **`\"Marker\"`**\n* **`\"Messages\"`**\n* **`\"Mission\"`**\n* **`\"Notifications\"`**\n* **`\"Object\"`**\n* **`\"Trigger\"`**\n* **`\"Tutorials\"`**\n* **`\"Updates\"`**\n* **`\"Waypoint\"`**\n}}"
                         }
                     ],
                     "outline": "class call `BIS_fnc_3DENExportAttributes`",
@@ -8801,7 +8819,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Add a respawn inventory for [respawn menu](https://community.bistudio.com/wiki/Arma_3:_Respawn#MenuInventory).\n\nAvailable loadouts are defined in [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]].",
+            "description": "Add a respawn inventory for [respawn menu](https://community.bistudio.com/wiki/Arma_3:_Respawn#MenuInventory).\n\nAvailable loadouts are defined in [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]]. Or you may use an existing CfgVehicles soldier class as reference.",
             "examples": [
                 {
                     "text": "```sqf\n[west, \"WEST1\"] call BIS_fnc_addRespawnInventory;\n```"
@@ -8819,7 +8837,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "inventoryParams",
-                            "description": "`Array` or `String`\n* `String` - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class\n* `Array` - format [class, number, limit]\n** class: `String` - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class\n** number: `Number` - Number of players who can use this inventory (-1 = no limit, default)\n** limit: `Number` - Limit for role assigned to given loadout (-1 = no limit, default) \n*** Only role or only loadout can be limited at one moment, if there is limit for both, then only role uses limit.\n*** If the limit definition for role is called multiple times with different numbers, then the highest number is used."
+                            "description": "`Array` or `String`\n* `String` - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class or `CfgVehicles` soldier class\n* `Array` - format [class, number, limit]\n** class: `String` - [[Description.ext#CfgRespawnInventory|CfgRespawnInventory]] class or `CfgVehicles` soldier class\n** number: `Number` - Number of players who can use this inventory (-1 = no limit, default)\n** limit: `Number` - Limit for role assigned to given loadout (-1 = no limit, default) \n*** Only role or only loadout can be limited at one moment, if there is limit for both, then only role uses limit.\n*** If the limit definition for role is called multiple times with different numbers, then the highest number is used."
                         }
                     ],
                     "outline": "[target, inventoryParams] call `BIS_fnc_addRespawnInventory`",
@@ -14627,12 +14645,49 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>\n/*\n\tFile: fn_createMenu.sqf\n\n\tDescription:\n\tCreate custom commanding menu (with multiple pages if necessary).\n\n\tParameter(s):\n\t\t_this select 0 - STRING or ARRAY - Name of menu or [Name, Context sensitive]\n\t\t_this select 1 - STRING - Variable in which will be menu params stored (as variable_0, variable_1, ...)\n\t\t_this select 2 - ARRAY - Array with menu items (can be either [items] or [[items],[itemNames],[itemEnable]] if you want to set custom params (names, enable values))\n\t\t_this select 3 - STRING - Name of submenu which will open when item is activated. Name of selected item is passed to string as %1\n\t\t_this select 4 - STRING - Expression which is executed when item is activated. Name of selected item is passed to string as %1, ID is %2.\n\t\t_this select 5 - ANYTHING (Optional) - params passed to expression. Whole argument is passed as %3\n\t\t_this select 6 - BOOLEAN - False to hide number shortcuts\n\n\tReturned value(s):\n\t\tTrue\n\t\t\n\tExample:\n\t  c = [\"first\",\"second\"]; [\"Menu\", \"b\", c, \"\",\"hint 'ahoj'\"] call BIS_FNC_createmenu; showCommandingMenu \"#USER:b_0\"  \n\t  c = [[\"firstData\",\"secondData\"],[\"First\",\"Second\"]]; [\"Menu\", \"b\", c, \"\",\"hint (str '%1' + str '%2' + str '%3')\"] call BIS_FNC_createmenu;  showCommandingMenu \"#USER:b_0\";\n\t  see news:g7p3po$gik$1@new-server.localdomain\n*/</pre>\n\n{{Wiki|placeholder}}",
-            "examples": [],
+            "description": "Create custom commanding menu (with multiple pages if necessary).",
+            "examples": [
+                {
+                    "text": "```sqf\n\n[\"Menu\", \"b\", [\"first\", \"second\"], \"\",\"hint 'ahoj'\"] call BIS_fnc_createMenu;\nshowCommandingMenu \"#USER:b_0\";\n\n```"
+                },
+                {
+                    "text": "```sqf\n\nprivate _itemDetails = [[\"firstData\", \"secondData\"], [\"First\", \"Second\"]];\n[\"Menu\", \"b\", _itemDetails, \"\", \"hint (str '%1' + str '%2' + str '%3')\"] call BIS_fnc_createMenu;\nshowCommandingMenu \"#USER:b_0\";\n\n```"
+                }
+            ],
             "syntaxes": [
                 {
-                    "parameters": [],
-                    "outline": "<!-- [] call `BIS_fnc_createmenu` -->"
+                    "parameters": [
+                        {
+                            "name": "namePath",
+                            "description": "`String` or `Array` - can be one of:\n* `String` - menu name\n* `Array` - format [menuName, context]"
+                        },
+                        {
+                            "name": "variable",
+                            "description": "`String` - variable in which will be menu params stored (as **`_variable__0`**, **`_variable__1`** etc)"
+                        },
+                        {
+                            "name": "itemDetails",
+                            "description": "`Array` - menu items, format can be one of:\n* [items]\n* [[items], [itemNames], [itemEnable]] if custom parameters are to be set(names, enable values)"
+                        },
+                        {
+                            "name": "subMenu",
+                            "description": "`String` - name of the submenu which will open when item is activated. Name of the selected item is passed to string as **`%1`**"
+                        },
+                        {
+                            "name": "codeStr",
+                            "description": "`String` - expression which is executed when _item_ is activated; item's name is passed to string as **`%1`**, ID as **`%2`**, _parameters_ (below) as **`%3`**"
+                        },
+                        {
+                            "name": "parameters",
+                            "description": "`Anything` - (Optional) passed to _codeStr_ as **`%3`**"
+                        },
+                        {
+                            "name": "showKey",
+                            "description": "`Boolean` - (Optional, default `true`) `false` to hide number shortcuts"
+                        }
+                    ],
+                    "outline": "[namePath, variable, itemDetails, subMenu, codeStr, parameters, showKey] call `BIS_fnc_createmenu`",
+                    "returns": "`Boolean` - always `true`"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_createMenu"
@@ -15653,10 +15708,10 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Plays in-game video in GPS frame.\n\nIf `BIS_fnc_customGPS` changed GPS texture, it is used.\n\nGPS GUI layer is **`19`**.",
+            "description": "Plays in-game video in GPS frame.\n\nIf `BIS_fnc_customGPS` changed the GPS texture, it is used. GPS GUI layer is **`19`**.\n**Arma 3**: Does not work in Arma 3. See `BIS_fnc_playVideo` instead.",
             "examples": [
                 {
-                    "text": "```sqf\nprivate _script = [\"\\ca\\video_pmc\\CP00_Reynolds_b.ogv\",1.04] spawn BIS_fnc_customGPSvideo;\nwaitUntil {scriptDone _script};\n```"
+                    "text": "```sqf\n\nprivate _script = [\"\\ca\\video_pmc\\CP00_Reynolds_b.ogv\", 1.04] spawn BIS_fnc_customGPSVideo;\nwaitUntil { scriptDone _script };\n\n```"
                 }
             ],
             "syntaxes": [
@@ -15667,46 +15722,15 @@ export const configs: SQFItemConfig[] = [
                             "description": "`String` - full path to image file"
                         },
                         {
-                            "name": "sizeCoef _(Optional)_",
-                            "description": "`Number` - screen size coeficient (default is 1)"
+                            "name": "sizeCoef",
+                            "description": "`Number` - (Optional, default 1) screen size coefficient"
                         }
                     ],
-                    "outline": "[path, _sizeCoef_] spawn `BIS_fnc_customGPSvideo`",
-                    "returns": "[Script](https://community.bistudio.com/wiki/Script_Handle) - script which terminates itself once video ends"
+                    "outline": "[path, sizeCoef] spawn **BIS_fnc_customGPSVideo**",
+                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script_Handle) - script which terminates itself once video ends"
                 }
             ],
             "effectLocality": "Local Effect",
-            "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_customGPSvideo"
-        },
-        "configuration": {
-            "label": "BIS_fnc_customGPSvideo",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "description": "Plays in-game video in GPS frame.\n**Arma 3**: Does not work in Arma 3. See `BIS_fnc_playVideo` instead",
-            "examples": [
-                {
-                    "text": "```sqf\n[\"myVideo.ogv\", 0.75] call BIS_fnc_customGPSVideo;\n```"
-                }
-            ],
-            "syntaxes": [
-                {
-                    "parameters": [
-                        {
-                            "name": "videoFilePath",
-                            "description": "`String` - video file path"
-                        },
-                        {
-                            "name": "sizeCoef",
-                            "description": "`Number` - (Optional, default 1)"
-                        }
-                    ],
-                    "outline": "[videoFilePath, sizeCoef] call `BIS_fnc_customGPSVideo`",
-                    "returns": "[Script Handle](https://community.bistudio.com/wiki/Script_Handle)"
-                }
-            ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_customGPSVideo"
         },
         "configuration": {
@@ -16742,11 +16766,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "owner",
-                            "description": "`String` - owner of the task.(Optional) Can be:\n* `Boolean` - true to useall playable units\n* `Object`- specific object\n* `Group` - all objects in the group\n* `Side` - all objects of the given side\n* `Array` - collection of above types"
+                            "description": "`String` - (Optional) owner of the task. Can be:\n* `Boolean` - true to use all playable units\n* `Object` - specific object\n* `Group` - all objects in the group\n* `Side` - all objects of the given side\n* `Array` - collection of above types"
                         },
                         {
                             "name": "removeFromJIP",
-                            "description": "`Boolean` - `true` to also remove task from JIP queue, default `false`"
+                            "description": "`Boolean` - (Optional, default `false`) `true` to also remove task from JIP queue"
                         }
                     ],
                     "outline": "[taskID, owner, removeFromJIP] call `BIS_fnc_deleteTask`",
@@ -16989,7 +17013,7 @@ export const configs: SQFItemConfig[] = [
             "description": "This function is designed to handle animations of ship hangar doors from vehicle user action (see [important|Object (ship) must have all animations correctly defined and user actions configured.](#Examples}}).\nIt calls `BIS_fnc_destroyer01AnimateHangarDoors`.\n\n{{Feature)",
             "examples": [
                 {
-                    "text": "```sqf\n\n[this, 1] call BIS_fnc_destroyer01OperateHangarDoors; // to open doors\n[this, 0] call BIS_fnc_destroyer01OperateHangarDoors; // to close doors\n\n```\n\n```cpp\nclass OpenHangarDoor_1\n{\n\tdisplayNameDefault\t\t=\"<img image='\\A3\\Ui_f\\data\\IGUI\\Cfg\\Actions\\open_door_ca.paa' size='2.5' />\";\n\tdisplayName \t\t\t= \"$STR_DN_OUT_O_DOOR\";\n\tposition \t\t\t\t= \"pos_Door_Hangar_1_Trigger\";\n\tpriority \t\t\t\t= 0.4;\n\tradius \t\t\t\t\t= 1.5;\n\tonlyForPlayer \t\t\t= 0;\n\tcondition \t\t\t\t= \"(((nearestObjects [this, ['Land_Destroyer_01_hull_04_F'], 50, false]) select 0) animationPhase 'Door_Hangar_1_1_open') < 0.1;\";\n\tstatement \t\t\t\t= \"[this, 1] call BIS_fnc_destroyer01OperateHangarDoors;\";\n};\nclass CloseHangarDoor_1 : OpenHangarDoor_1\n{\n\tdisplayName \t\t\t= \"$STR_DN_OUT_C_DOOR\";\n\tposition \t\t\t\t= \"pos_Door_Hangar_1_Trigger\";\n\tcondition \t\t\t\t= \"(((nearestObjects [this, ['Land_Destroyer_01_hull_04_F'], 50, false]) select 0) animationPhase 'Door_Hangar_1_1_open') >= 0.1;\";\n\tstatement \t\t\t\t= \"[this, 0] call BIS_fnc_destroyer01OperateHangarDoors;\";\n};\n```"
+                    "text": "```sqf\n\n[this, 1] call BIS_fnc_destroyer01OperateHangarDoors; // to open doors\n[this, 0] call BIS_fnc_destroyer01OperateHangarDoors; // to close doors\n\n```\n\n\n```cpp\nclass OpenHangarDoor_1\n{\n\tdisplayNameDefault\t\t= \"<img image='\\A3\\Ui_f\\data\\IGUI\\Cfg\\Actions\\open_door_ca.paa' size='2.5' />\";\n\tdisplayName \t\t\t= \"$STR_DN_OUT_O_DOOR\";\n\tposition \t\t\t\t= \"pos_Door_Hangar_1_Trigger\";\n\tpriority \t\t\t\t= 0.4;\n\tradius \t\t\t\t\t= 1.5;\n\tonlyForPlayer \t\t\t= 0;\n\tcondition \t\t\t\t= \"(((nearestObjects [this, ['Land_Destroyer_01_hull_04_F'], 50, false]) select 0) animationPhase 'Door_Hangar_1_1_open') < 0.1;\";\n\tstatement \t\t\t\t= \"[this, 1] call BIS_fnc_destroyer01OperateHangarDoors;\";\n};\n\nclass CloseHangarDoor_1 : OpenHangarDoor_1\n{\n\tdisplayName \t\t\t= \"$STR_DN_OUT_C_DOOR\";\n\tposition \t\t\t\t= \"pos_Door_Hangar_1_Trigger\";\n\tcondition \t\t\t\t= \"(((nearestObjects [this, ['Land_Destroyer_01_hull_04_F'], 50, false]) select 0) animationPhase 'Door_Hangar_1_1_open') >= 0.1;\";\n\tstatement \t\t\t\t= \"[this, 0] call BIS_fnc_destroyer01OperateHangarDoors;\";\n};\n```"
                 }
             ],
             "syntaxes": [
@@ -16998,10 +17022,14 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "shipPart",
                             "description": "`Object`"
+                        },
+                        {
+                            "name": "doorState",
+                            "description": "`Number` - doors' animation state; 1 to open, 0 to close"
                         }
                     ],
-                    "outline": "[shipPart, mode] call `BIS_fnc_destroyer01OperateHangarDoors`",
-                    "returns": "mode: `Number` - doors' animation state; 1 to open, 0 to close"
+                    "outline": "[shipPart, doorState] call `BIS_fnc_destroyer01OperateHangarDoors`",
+                    "returns": "`Nothing`"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_destroyer01OperateHangarDoors"
@@ -18386,7 +18414,7 @@ export const configs: SQFItemConfig[] = [
             "description": "Close a door with an animated doorhandle.",
             "examples": [
                 {
-                    "text": "```sqf\n[building,\"doorAnimation\",\"animationUp\",\"animationDown\",1] call BIS_fnc_doorClose;\n```"
+                    "text": "```sqf\n[building, \"doorAnimation\", \"animationUp\", \"animationDown\", 1] call BIS_fnc_doorClose;\n```"
                 }
             ],
             "syntaxes": [
@@ -19612,7 +19640,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "<pre>/*\n\tAuthor: Bravo Zero One development\n\t- John_Spartan\n\n\tDescription:\n\t- This function is designed as part of set of functions to implement semi-authenthic ejection system on fixed wing aircrfat that have such functionality enabled/configured.\n\t- Additional option for player to separate from ejetor seat via user action. default ejection function will ato deploy parachute at 350 m altitude. This is a manual override.\n\t- Generic parachute used, currently only one model in game so no need to parametarize.\n\n\tExucution:\n\t- Call the function via user action defined on the ejector seat vehicle.\n\n\t\tExample:\n\t\tclass UserActions\n\t    {\n\n\t\t\tclass Ejection_Seat_Eject\n\t\t\t{\n\t\t\t\tpriority = 0.05;\n\t\t\t\tshortcut = \"Eject\";\n\t\t\t\tdisplayName = \"$STR_A3_action_deploy_parachute\";\n\t\t\t\tcondition = \"player in this\";\n\t\t\t\tstatement = \"[this] spawn BIS_fnc_ejectionSeatRelease\";\n\t\t\t\tposition = \"pilotcontrol\";\n\t\t\t\tradius = 10;\n\t\t\t\tonlyforplayer = 1;\n\t\t\t\tshowWindow = 0;\n\t\t\t\thideOnUse = 1;\n\t\t\t};\n\t\t};\n\n\tRequirments:\n\t- Compatible ejector seat must have a user action set up to triger this fnc.\n\n\tParameter(s):\n\t\t_this select 0: mode (Scalar)\n\t\t0: ejector seat/object\n\n\tReturns: nothing\n\tResult: Pilot will be forced from ejection seat vehicle to parachute. Semi-authenthic behaviour.\n*/</pre>\n\n{{Wiki|placeholder}}",
+            "description": "<pre>\n/*\n\tAuthor: Bravo Zero One development\n\t- John_Spartan\n\n\tDescription:\n\t- This function is designed as part of set of functions to implement semi-authenthic ejection system on fixed wing aircrfat that have such functionality enabled/configured.\n\t- Additional option for player to separate from ejetor seat via user action. default ejection function will ato deploy parachute at 350 m altitude. This is a manual override.\n\t- Generic parachute used, currently only one model in game so no need to parametarize.\n\n\tExecution:\n\t- Call the function via user action defined on the ejector seat vehicle.\n\n\t\tExample:\n\t\tclass UserActions\n\t\t{\n\n\t\t\tclass Ejection_Seat_Eject\n\t\t\t{\n\t\t\t\tpriority = 0.05;\n\t\t\t\tshortcut = \"Eject\";\n\t\t\t\tdisplayName = \"$STR_A3_action_deploy_parachute\";\n\t\t\t\tcondition = \"player in this\";\n\t\t\t\tstatement = \"[this] spawn BIS_fnc_ejectionSeatRelease\";\n\t\t\t\tposition = \"pilotcontrol\";\n\t\t\t\tradius = 10;\n\t\t\t\tonlyforplayer = 1;\n\t\t\t\tshowWindow = 0;\n\t\t\t\thideOnUse = 1;\n\t\t\t};\n\t\t};\n\n\tRequirements:\n\t- Compatible ejector seat must have a user action set up to triger this fnc.\n\n\tParameter(s):\n\t\t_this select 0: mode (Scalar)\n\t\t0: ejector seat/object\n\n\tReturns: nothing\n\tResult: Pilot will be forced from ejection seat vehicle to parachute. Semi-authenthic behaviour.\n*/\n</pre>\n\n{{Wiki|placeholder}}",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIS_fnc_ejectionSeatRelease;\n```\n -->"
@@ -19748,7 +19776,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Unregister a loading screen. When none other remains, end the loading.",
+            "description": "Unregister a loading screen. When none other remains, end the loading.\n**Arma 3**: The loading screen can be force-ended with the [ENDLOAD cheat code](Arma 3: Cheats#ENDLOAD).",
             "examples": [
                 {
                     "text": "```sqf\n[\"myLoadingScreen\", \"Loading… wait for my splendid™ mission!\"] call BIS_fnc_startLoadingScreen;\nuiSleep 3;\n\"myLoadingScreen\" call BIS_fnc_endLoadingScreen;\n```"
@@ -25570,7 +25598,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Imports CfgVehicles image links from Community Wiki (https://community.bistudio.com/).\n# Run the script. It will copy a text into clipboard\n# Open your [[Special:MyPage/Sandbox|Sandbox]] and paste the text into edit field\n# **Preview** the page (don't save it)\n# Copy the resulting text and use it in your scripts\n\nResult is to the following format:\n\n```sqf\n\n_imagesCfgVehicles = [\n\t\"papercar\",\"https://community.bistudio.com/wikidata/images/8/85/Arma3_CfgVehicles_PaperCar.jpg\",\n\t\"firesectortarget\",\"\",\n\t\"building\",\"\",\n\t// etc\n];\n\n```\n\n\n**IMPORTANT**: Be wary that this function is **CPU-demanding** and may lock your computer for 5-10 seconds!",
+            "description": "Imports CfgVehicles image links from the Community Wiki ([https://community.bistudio.com/](https://community.bistudio.com/)).\n# Run the script. It will copy a text into clipboard\n# Open your [[Special:MyPage/Sandbox|Sandbox]] and paste the text into edit field\n# **Preview** the page (do not save it)\n# Copy the resulting text and use it in your scripts\n\nResult is in the following format:\n\n```sqf\n\n_imagesCfgVehicles = [\n\t\"papercar\",\"https://community.bistudio.com/wikidata/images/8/85/Arma3_CfgVehicles_PaperCar.jpg\",\n\t\"firesectortarget\",\"\",\n\t\"building\",\"\",\n\t// etc\n];\n\n```\n\n\n**IMPORTANT**: Be wary that this function is **CPU-demanding** and may lock your computer for 5-10 seconds.",
             "examples": [
                 {
                     "text": "```sqf\ncall BIS_fnc_importImageLinks;\n```"
@@ -26532,7 +26560,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Detects whether position is within area **or** calculates distance to the nearest edge of trigger area by using optional params.\n**Arma 3**: Since Arma 3 v1.57 `inArea` is available for an area check.",
+            "description": "Detects whether position is within area **or** calculates distance to the nearest edge of trigger area by using optional params.\n**Arma 3**: Since Arma 3 v1.58 `inArea` is available for an area check.",
             "examples": [
                 {
                     "text": "```sqf\n\nprivate _trigger = createTrigger [\"EmptyDetector\", getPosATL player];\n_trigger setTriggerArea [10, 10, 0, false];\n_inTrigger = [_trigger, player] call BIS_fnc_inTrigger; // _inTrigger = true\n\n```"
@@ -27644,7 +27672,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "radioMode",
-                            "description": "`Boolean`, `String`, `Object` or `Code` - (Optional, default: `false`) can be:\n* `Boolean` - true to force radio\n* `String` - name of radio channel, original or [custom](https://community.bistudio.com/wiki/radioChannelCreate)\n* `Object` - listener's channel\n* `Code` - returned value of code"
+                            "description": "`Boolean`, `String`, `Object` or `Code` - (Optional, default: `false`) can be:\n* `Boolean` - true to force radio\n* `String` - name of radio channel (\"DIRECT\" or \"VEHICLE\") or [custom](https://community.bistudio.com/wiki/radioChannelCreate)\n* `Object` - listener's channel\n* `Code` - returned value of code"
                         },
                         {
                             "name": "code",
@@ -27656,7 +27684,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "soundVolume",
-                            "description": "`Number` - (Optional, default 0.1) music and sound volumes will be multiplied by this value when conversation starts"
+                            "description": "`Number` - (Optional, default {{GVI|tkoh|1.00|size= 0.75}} 0.2, (**Arma 3 v1.00**) -1) music and sound volumes lowering ratio during the conversation, range 0..1 (e.g 0 = no music, 0.25 = a quarter of the current volume, 1 or out of range = no change)"
                         },
                         {
                             "name": "radioProtocol",
@@ -36914,16 +36942,21 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Grabs server param into global variable. (**bis_reviveParam_requiredTrait**)",
+            "description": "Stores the provided value in the global **`BIS_reviveParam_requiredTrait`** mission variable.",
             "examples": [
                 {
-                    "text": "```sqf\ncall BIS_fnc_paramReviveRequiredTrait;\n```"
+                    "text": "```sqf\n\n[42] call BIS_fnc_paramReviveRequiredTrait;\t// BIS_reviveParam_requiredTrait is now 42\n\"hi\" call BIS_fnc_paramReviveRequiredTrait;\t// BIS_reviveParam_requiredTrait is now -100\n42 call BIS_fnc_paramReviveRequiredTrait;\t// BIS_reviveParam_requiredTrait is now 42\ncall BIS_fnc_paramReviveRequiredTrait;\t\t// BIS_reviveParam_requiredTrait is now -100\n\n```"
                 }
             ],
             "syntaxes": [
                 {
-                    "parameters": [],
-                    "outline": "call `BIS_fnc_paramReviveRequiredTrait`",
+                    "parameters": [
+                        {
+                            "name": "value",
+                            "description": "`Number` - (Optional, default -100)"
+                        }
+                    ],
+                    "outline": "[value] call `BIS_fnc_paramReviveRequiredTrait`",
                     "returns": "`Nothing`"
                 }
             ],
@@ -37044,6 +37077,9 @@ export const configs: SQFItemConfig[] = [
             "examples": [
                 {
                     "text": "```sqf\nprivate _result = 7.62 call BIS_fnc_parseNumber;\n_result = \"7.62\" call BIS_fnc_parseNumber;\n_result = { 7.62 } call BIS_fnc_parseNumber;\n```"
+                },
+                {
+                    "text": "```sqf\n\n\"[10,20,30]\" call BIS_fnc_parseNumber; //returns [10,20,30]\n\n```"
                 }
             ],
             "syntaxes": [
@@ -37806,7 +37842,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Progress scripted loading screen. The value will be preserved even when a new screen is opened.",
+            "description": "Progress scripted loading screen. The value will be preserved even when a new screen is opened.\n**Arma 3**: The loading screen can be force-ended with the [ENDLOAD cheat code](Arma 3: Cheats#ENDLOAD).",
             "examples": [
                 {
                     "text": "```sqf\nprivate _IDD = _prog = [0.75] call BIS_fnc_progressLoadingScreen;\n```"
@@ -43063,7 +43099,7 @@ export const configs: SQFItemConfig[] = [
             "description": "A helper function for setting `rainParams` in multiplayer. The call to the function could be placed in [[Event Scripts#init.sqf|init.sqf]] to sync `rainParams` between all clients and JIP. Alternatively execute on server.",
             "examples": [
                 {
-                    "text": "```sqf\n\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t\t\t\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t\t\t\t\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\n[\n\t\"a3\\data_f\\rainnormal_ca.paa\",\t// rainDropTexture\n\t1,\t\t\t\t\t\t\t\t// texDropCount\n\t0.01,\t\t\t\t\t\t\t// minRainDensity\n\t15,\t\t\t\t\t\t\t\t// effectRadius\n\t0.1,\t\t\t\t\t\t\t// windCoef\n\t2,\t\t\t\t\t\t\t\t// dropSpeed\n\t0.5,\t\t\t\t\t\t\t// rndSpeed\n\t0.5,\t\t\t\t\t\t\t// rndDir\n\t0.02,\t\t\t\t\t\t\t// dropWidth\n\t0.02,\t\t\t\t\t\t\t// dropHeight\n\t[0.1, 0.1, 0.1, 1],\t\t\t\t// dropColor\n\t0.1,\t\t\t\t\t\t\t// lumSunFront\n\t0.1,\t\t\t\t\t\t\t// lumSunBack\n\t5.5,\t\t\t\t\t\t\t// refractCoef\n\t0.3,\t\t\t\t\t\t\t// refractSaturation\n\ttrue,\t\t\t\t\t\t\t// snow\n\tfalse\t\t\t\t\t\t\t// dropColorStrong\n] call BIS_fnc_setRain;\n\n```"
+                    "text": "```sqf\n\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\n[\n\t\"a3\\data_f\\snowflake4_ca.paa\",\t// rainDropTexture - 4 means it has 4 flakes in it. Other available textures: snowflake8_ca.paa, snowflake16_ca.paa\n\t4,\t\t\t\t// texDropCount - 4 because we are using texture with 4 flakes. Change to 8 or 16 in accordance with other textures used\n\t0.01,\t\t\t// minRainDensity\n\t25,\t\t\t\t// effectRadius\n\t0.05,\t\t\t// windCoef\n\t2.5,\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.07,\t\t\t// dropWidth\n\t0.07,\t\t\t// dropHeight\n\t[1, 1, 1, 0.5],\t// dropColor\n\t0.0,\t\t\t// lumSunFront\n\t0.2,\t\t\t// lumSunBack\n\t0.5,\t\t\t// refractCoef\n\t0.5,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n]\ncall BIS_fnc_setRain;\n\n```"
                 }
             ],
             "syntaxes": [
@@ -44060,7 +44096,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "_N/A_",
+            "description": "Gets or sets inventory menu loadout metadata for class CfgRespawnInventory",
             "examples": [
                 {
                     "text": "<!-- \n```sqf\n[] call BIS_fnc_showRespawnMenuInventoryMetadata;\n```\n -->"
@@ -44068,8 +44104,18 @@ export const configs: SQFItemConfig[] = [
             ],
             "syntaxes": [
                 {
-                    "parameters": [],
-                    "outline": "<!-- [] call `BIS_fnc_showRespawnMenuInventoryMetadata` -->"
+                    "parameters": [
+                        {
+                            "name": "`String`",
+                            "description": "mode:\n* \"set\"\n* \"get\"\n* \"delete\""
+                        },
+                        {
+                            "name": "`Number`",
+                            "description": "List box selection for: \"BIS_RscRespawnControlsMap_ctrlRoleList\""
+                        }
+                    ],
+                    "outline": "[\"get\", 0] call `BIS_fnc_showRespawnMenuInventoryMetadata`",
+                    "returns": "`Array` of Arrays:\n* 0: `Array` - Array containing role data: <(`String`)DisplayName, (`Config`)Config, (`String`)Icon Path>\n* 1: `Array` - Array containing loadout data: <(`String`)Classname, (`String`)DisplayName, (`Config`)Config>"
                 }
             ],
             "documentationLink": "https://community.bistudio.com/wiki/BIS_fnc_showRespawnMenuInventoryMetadata"
@@ -45423,7 +45469,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Register a loading screen. Start the loading when it is the first one registered.",
+            "description": "Register a loading screen. Start the loading when it is the first one registered.\n\n**Arma 3**: The loading screen can be force-ended with the [ENDLOAD cheat code](Arma 3: Cheats#ENDLOAD).",
             "examples": [
                 {
                     "text": "```sqf\n[\"myLoadingScreen\", \"Loading… wait for my splendid™ mission!\"] call BIS_fnc_startLoadingScreen;\nuiSleep 3;\n\"myLoadingScreen\" call BIS_fnc_endLoadingScreen;\n```"
@@ -46121,7 +46167,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "**type**",
-                            "description": "`String` - (Optional, default \"\") task type from [[Description.ext#CfgTaskTypes|CfgTaskTypes]], if not defined, type \"\" is being used"
+                            "description": "`String` - (Optional, default \"\") [vanilla](Arma 3: Task Framework#Task Icons) or [custom](Description.ext#CfgTaskTypes) task type; if not defined, empty (no) type is used"
                         },
                         {
                             "name": "**visibleIn3D**",
@@ -46628,15 +46674,15 @@ export const configs: SQFItemConfig[] = [
                 {
                     "parameters": [
                         {
-                            "name": "taskID",
+                            "name": "id",
                             "description": "`String` - task ID"
                         },
                         {
-                            "name": "taskType",
-                            "description": "`String` - task Type from `configfile`  >> \"CfgTaskTypes\""
+                            "name": "type",
+                            "description": "`String` - [vanilla](Arma 3: Task Framework#Task Icons) or [custom](Description.ext#CfgTaskTypes) task type; if not defined, empty (no) type is used"
                         }
                     ],
-                    "outline": "[taskID,type] call `BIS_fnc_taskSetType`",
+                    "outline": "[id, type] call `BIS_fnc_taskSetType`",
                     "returns": "`String` - task ID."
                 }
             ],
