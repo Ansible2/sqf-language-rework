@@ -7425,19 +7425,19 @@ The first method is about '''18 times faster'''.
     <ns>0</ns>
     <id>16076</id>
     <revision>
-      <id>337418</id>
-      <parentid>336881</parentid>
-      <timestamp>2023-01-28T19:54:04Z</timestamp>
+      <id>370879</id>
+      <parentid>337418</parentid>
+      <timestamp>2025-02-21T10:44:03Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Some wiki formatting</comment>
-      <origin>337418</origin>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370879</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1829" sha1="ja25ck7qddv7nxsomrbon1w891t3nga" xml:space="preserve">{{RV|type=function
+      <text bytes="1825" sha1="8l6997q6qhy1hd2j57wr8775v25ui3v" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.02
@@ -7446,7 +7446,7 @@ The first method is about '''18 times faster'''.
 
 |descr= Triggers a countdown.
 {{Feature|informative|
-The '''initial''' countdown can be accessed ''via'' [[missionNamespace]]'s variable '''BIS_fnc_countdown_time'''.&lt;br&gt;
+The '''initial''' countdown can be accessed via [[missionNamespace]]'s variable '''BIS_fnc_countdown_time'''.&lt;br&gt;
 The initial value is either &lt;sqf inline&gt;serverTime + timeInSeconds&lt;/sqf&gt; (if set globally) or &lt;sqf inline&gt;time + timeInSeconds&lt;/sqf&gt; (if set locally).
 To return the left-over time see {{Link|#Example 4}}.
 }}
@@ -7483,7 +7483,7 @@ To return the left-over time see {{Link|#Example 4}}.
 
 |seealso= [[BIS_fnc_VRTimer]]
 }}</text>
-      <sha1>ja25ck7qddv7nxsomrbon1w891t3nga</sha1>
+      <sha1>8l6997q6qhy1hd2j57wr8775v25ui3v</sha1>
     </revision>
   </page>
   <page>
@@ -7997,19 +7997,18 @@ This will run [[hideObject]] on all other clients besides the client (or server)
     <ns>0</ns>
     <id>18196</id>
     <revision>
-      <id>342227</id>
-      <parentid>342051</parentid>
-      <timestamp>2023-07-09T12:27:28Z</timestamp>
+      <id>370758</id>
+      <parentid>342227</parentid>
+      <timestamp>2025-02-06T22:25:56Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>AVespade</username>
+        <id>11208</id>
       </contributor>
-      <minor/>
-      <comment>Text replacement - "[[:Category:Eden Editor]]" to "[[:Category:Eden Editor|Eden Editor]]"</comment>
-      <origin>342227</origin>
+      <comment>Added mods @ specification</comment>
+      <origin>370758</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="2585" sha1="71elul6hukoz4dm1lfmej4muwuex2i0" xml:space="preserve">{{RV|type=function
+      <text bytes="2729" sha1="l14z6zgsrew0q8qwycpaoe8iy80eqen" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.60
@@ -8034,7 +8033,7 @@ To increase the limit, add the following line at the end of the profile file:
 
 |p3= sides: [[Array]] of [[Side]]s - (Optional, default all sides) list of sides. Only objects of these sides will be used
 
-|p4= mods: [[Array]] of [[String]] - (Optional, default all mods) list of CfgMods classes. Only objects belonging to these mods will be used
+|p4= mods: [[Array]] of [[String]] - (Optional, default all mods) list of CfgMods classes. External mods should be prefixed with "@". Only objects belonging to these mods will be used
 
 |p5= addons: [[Array]] of [[String]] - (Optional, default all addons) list of CfgPatches classes. Only objects belonging to these addons will be used
 
@@ -8065,9 +8064,12 @@ To increase the limit, add the following line at the end of the profile file:
 |x7= &lt;sqf&gt;// Only the B_Soldier_F
 [nil, "all", [], [], [], ["B_Soldier_F"]] spawn BIS_fnc_exportEditorPreviews;&lt;/sqf&gt;
 
+|x8= &lt;sqf&gt;// Props in CBA
+[nil, "props", [], ["@cba_a3"]] spawn BIS_fnc_exportEditorPreviews;&lt;/sqf&gt;
+
 |seealso= [[screenshot]] [[Eden_Editor:_Configuring_Asset_Previews|Configuring Asset Previews]]
 }}</text>
-      <sha1>71elul6hukoz4dm1lfmej4muwuex2i0</sha1>
+      <sha1>l14z6zgsrew0q8qwycpaoe8iy80eqen</sha1>
     </revision>
   </page>
   <page>
@@ -44469,19 +44471,19 @@ uiSleep 3;
     <ns>0</ns>
     <id>15987</id>
     <revision>
-      <id>349481</id>
-      <parentid>347800</parentid>
-      <timestamp>2023-11-08T17:09:02Z</timestamp>
+      <id>370443</id>
+      <parentid>349481</parentid>
+      <timestamp>2024-12-10T00:25:43Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>Honger</username>
+        <id>11203</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "(Optional, default {{hl|[]}})" to "(Optional, default &lt;sqf inline&gt;[]&lt;/sqf&gt;)"</comment>
-      <origin>349481</origin>
+      <comment>Expanded description for the mode parameter</comment>
+      <origin>370443</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="3368" sha1="nba0e2ma5mjdf72151nuxi95lv6cjy0" xml:space="preserve">{{RV|type=function
+      <text bytes="3439" sha1="bslhagy6g96pz1g334lce1m57sts0ba" xml:space="preserve">{{RV|type=function
 
 |game1= arma3
 |version1= 1.00
@@ -44524,7 +44526,7 @@ uiSleep 3;
 
 |p8= mode: [[Number]] - (Optional, default 0)
 * 0: normal (disables saving and sets {{hl|BIS_missionStarted}} to [[nil]])
-* 1: world scenes
+* 1: world scenes (i.e. for main menu background, doesn't display text and does not end)
 
 |p9= fadeIn: [[Boolean]] - (Optional, default [[true]]) fade in after completion
 
@@ -44582,7 +44584,7 @@ _handle spawn { waitUntil { scriptDone _this }; enableSaving [_savingEnabled, fa
 &lt;sqf&gt;true setCamUseTI 1;&lt;/sqf&gt;
 The effect will automatically be terminated once the establishing shot ended.
 }}</text>
-      <sha1>nba0e2ma5mjdf72151nuxi95lv6cjy0</sha1>
+      <sha1>bslhagy6g96pz1g334lce1m57sts0ba</sha1>
     </revision>
   </page>
   <page>
@@ -68693,19 +68695,19 @@ _actionConfig	= [player,  true] call BIS_fnc_moveAction;
     <ns>0</ns>
     <id>15695</id>
     <revision>
-      <id>352173</id>
-      <parentid>323942</parentid>
-      <timestamp>2024-02-01T23:25:38Z</timestamp>
+      <id>370878</id>
+      <parentid>352173</parentid>
+      <timestamp>2025-02-21T10:44:03Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "{{Feature|Warning|" to "{{Feature|warning|"</comment>
-      <origin>352173</origin>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370878</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="2778" sha1="aat66xh3a90dgfv4kqc6jnqa9ez9gid" xml:space="preserve">{{RV|type=function
+      <text bytes="2774" sha1="i6txcos8yhaql5fgg8591oa8xzjt9lt" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -68758,7 +68760,7 @@ _actionConfig	= [player,  true] call BIS_fnc_moveAction;
 
 |p6= altitude: [[Number]] - (Optional, default 0) custom altitude to use instead of 0 or 15m
 
-|p7= doMove: [[Anything]] - (Optional, default [[false]]) nil to [[setPos]] unit, any value to make it move ''via'' 
+|p7= doMove: [[Anything]] - (Optional, default [[false]]) nil to [[setPos]] unit, any value to make it move via 
 [[doMove]] ([[true]] for readability)
 
 |r1= [[Nothing]]
@@ -68767,7 +68769,7 @@ _actionConfig	= [player,  true] call BIS_fnc_moveAction;
 
 |seealso= [[playMove]] [[switchMove]] [[playAction]]
 }}</text>
-      <sha1>aat66xh3a90dgfv4kqc6jnqa9ez9gid</sha1>
+      <sha1>i6txcos8yhaql5fgg8591oa8xzjt9lt</sha1>
     </revision>
   </page>
   <page>
@@ -71117,19 +71119,19 @@ _bestSeries = [["halo1","halo2"],["ofp","arma2"]] call BIS_fnc_selectRandom; // 
     <ns>0</ns>
     <id>15644</id>
     <revision>
-      <id>329959</id>
-      <parentid>325133</parentid>
-      <timestamp>2022-08-09T17:17:12Z</timestamp>
+      <id>370886</id>
+      <parentid>329959</parentid>
+      <timestamp>2025-02-21T10:44:04Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "[[Script Handle|Script handle]]" to "[[Script Handle]]"</comment>
-      <origin>329959</origin>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370886</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="913" sha1="8uq1f1c5trfct89kfrz0eqy9n4380e2" xml:space="preserve">{{RV|type=function
+      <text bytes="909" sha1="5njpynm7vaskooulmn0wlrg7a3zjq23" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -71147,7 +71149,7 @@ _bestSeries = [["halo1","halo2"],["ofp","arma2"]] call BIS_fnc_selectRandom; // 
 
 |eff= local
 
-|descr= Function to measure FPS. Spawns code running for given time and displays result on screen ''via'' [[titleText]], [[globalChat]] '''and''' [[diag_log]].
+|descr= Function to measure FPS. Spawns code running for given time and displays result on screen via [[titleText]], [[globalChat]] '''and''' [[diag_log]].
 Variable '''BIS_fps_output''' is filled with [[diag_log]] content too.
 
 |s1= [duration, sceneId, startDelay] call [[BIS_fnc_fps]]
@@ -71164,7 +71166,7 @@ Variable '''BIS_fps_output''' is filled with [[diag_log]] content too.
 
 |seealso= [[diag_fps]] [[diag_fpsMin]] [[diag_frameNo]] [[diag_tickTime]]
 }}</text>
-      <sha1>8uq1f1c5trfct89kfrz0eqy9n4380e2</sha1>
+      <sha1>5njpynm7vaskooulmn0wlrg7a3zjq23</sha1>
     </revision>
   </page>
   <page>
@@ -91385,19 +91387,19 @@ Display must be already using color macros, function will just refresh the value
     <ns>0</ns>
     <id>15824</id>
     <revision>
-      <id>327732</id>
-      <parentid>327721</parentid>
-      <timestamp>2022-07-13T10:21:28Z</timestamp>
+      <id>370866</id>
+      <parentid>327732</parentid>
+      <timestamp>2025-02-21T10:43:59Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Some wiki formatting</comment>
-      <origin>327732</origin>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370866</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1000" sha1="q7zs1qzpc4wbkeloju15joqwb8b7mhg" xml:space="preserve">{{RV|type=function
+      <text bytes="996" sha1="ruvp597gphkozmq0qxdzvytbtmqg40s" xml:space="preserve">{{RV|type=function
 
 |game1= tkoh
 |version1= 1.00
@@ -91413,7 +91415,7 @@ Display must be already using color macros, function will just refresh the value
 Executed script is:
 &lt;sqf&gt;helicopter execVM "hsim\air_h\data\scripts\main_rotor_destruction.sqf";&lt;/sqf&gt;
 
-helicopter rotor status can be found ''via'' variable '''HSim_mainRotorDestroyed''':
+helicopter rotor status can be found via variable '''HSim_mainRotorDestroyed''':
 &lt;sqf&gt;_isRotorDestroyed = helicopter getVariable ["HSim_mainRotorDestroyed", false];&lt;/sqf&gt;
 }}
 
@@ -91431,7 +91433,7 @@ helicopter rotor status can be found ''via'' variable '''HSim_mainRotorDestroyed
 
 |seealso=
 }}</text>
-      <sha1>q7zs1qzpc4wbkeloju15joqwb8b7mhg</sha1>
+      <sha1>ruvp597gphkozmq0qxdzvytbtmqg40s</sha1>
     </revision>
   </page>
   <page>
@@ -92728,21 +92730,19 @@ Additionally, generated position could be checked against the list of blackliste
     <ns>0</ns>
     <id>15854</id>
     <revision>
-      <id>327279</id>
-      <parentid>325141</parentid>
-      <timestamp>2022-07-12T22:11:51Z</timestamp>
+      <id>370880</id>
+      <parentid>327279</parentid>
+      <timestamp>2025-02-21T10:44:03Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "
-|s1=[" to "
-|s1= ["</comment>
-      <origin>327279</origin>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370880</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1142" sha1="iz15o7ow9qdv4v5fxrlau5cpscv77eo" xml:space="preserve">{{RV|type=function
+      <text bytes="1138" sha1="ooscqgvc9dl7dalplgox8lr1z2px9hd" xml:space="preserve">{{RV|type=function
 
 |game1= tkoh
 |version1= 1.00
@@ -92770,7 +92770,7 @@ Additionally, generated position could be checked against the list of blackliste
 * 8: nm (nautical miles)
 * 9: kts (knots)
 
-|p3= to: [[Number]] - (Optional, default detected system of units ''via'' [[systemOfUnits]]) destination unit. See ''from''.
+|p3= to: [[Number]] - (Optional, default detected system of units via [[systemOfUnits]]) destination unit. See ''from''.
 
 |p4= mode: [[Number]] - (Optional, default 0) can be one of:
 * 0: destination value (Scalar)
@@ -92785,7 +92785,7 @@ Additionally, generated position could be checked against the list of blackliste
 
 |seealso= [[systemOfUnits]]
 }}</text>
-      <sha1>iz15o7ow9qdv4v5fxrlau5cpscv77eo</sha1>
+      <sha1>ooscqgvc9dl7dalplgox8lr1z2px9hd</sha1>
     </revision>
   </page>
   <page>
@@ -93959,18 +93959,17 @@ private _array = ["a", "b", true, 3, 8];
     <ns>0</ns>
     <id>15759</id>
     <revision>
-      <id>369625</id>
-      <parentid>352020</parentid>
-      <timestamp>2024-09-28T23:00:15Z</timestamp>
+      <id>370523</id>
+      <parentid>369625</parentid>
+      <timestamp>2025-01-01T18:16:34Z</timestamp>
       <contributor>
-        <username>Lou Montana</username>
-        <id>10739</id>
+        <username>Killzone Kid</username>
+        <id>9533</id>
       </contributor>
-      <comment>Add soundVolume default values</comment>
-      <origin>369625</origin>
+      <origin>370523</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="3149" sha1="pxqj9dvconkuxraumnoyx9941u4nwdm" xml:space="preserve">{{RV|type=function
+      <text bytes="3175" sha1="6kacqfr7upvh1u6aftz5jfnwu380g55" xml:space="preserve">{{RV|type=function
 
 |game1= tkoh
 |version1= 1.00
@@ -94009,7 +94008,8 @@ Conversation must be declared in [[Description.ext#CfgSentences|Description.ext/
 
 |p4= radioMode: [[Boolean]], [[String]], [[Object]] or [[Code]] - (Optional, default: [[false]]) can be:
 * [[Boolean]] - true to force radio
-* [[String]] - name of radio channel ("DIRECT" or "VEHICLE") or [[radioChannelCreate|custom]]
+* [[String]] - name of radio channel ("DIRECT" or "VEHICLE")
+* [[Number]] - [[radioChannelCreate|custom]] radio channel
 * [[Object]] - listener's channel
 * [[Code]] - returned value of code
 
@@ -94031,7 +94031,7 @@ Conversation must be declared in [[Description.ext#CfgSentences|Description.ext/
 
 |seealso= [[Conversations]] [[kbTell]] [[BIS_fnc_kbCanSpeak]] [[BIS_fnc_kbCreateDummy]] [[BIS_fnc_kbIsSpeaking]] [[BIS_fnc_kbMenu]] [[BIS_fnc_kbPriority]] [[BIS_fnc_kbSentence]] [[BIS_fnc_kbSkip]] [[BIS_fnc_kbTellLocal]] [[BIS_fnc_kbTopicConfig]]
 }}</text>
-      <sha1>pxqj9dvconkuxraumnoyx9941u4nwdm</sha1>
+      <sha1>6kacqfr7upvh1u6aftz5jfnwu380g55</sha1>
     </revision>
   </page>
   <page>
@@ -95849,19 +95849,19 @@ singleMissionKeys</text>
     <ns>0</ns>
     <id>15698</id>
     <revision>
-      <id>352188</id>
-      <parentid>329964</parentid>
-      <timestamp>2024-02-01T23:25:54Z</timestamp>
+      <id>370889</id>
+      <parentid>352188</parentid>
+      <timestamp>2025-02-21T10:44:04Z</timestamp>
       <contributor>
         <username>Lou Montana</username>
         <id>10739</id>
       </contributor>
       <minor/>
-      <comment>Text replacement - "{{Feature|Warning|" to "{{Feature|warning|"</comment>
-      <origin>352188</origin>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370889</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1514" sha1="mklj63bba1daquwn0lmm2e3x670vuam" xml:space="preserve">{{RV|type=function
+      <text bytes="1510" sha1="6ixl1b7428j10bb6urjbuy0kx2no9gh" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -95880,7 +95880,7 @@ singleMissionKeys</text>
 |gr2= Scenes
 
 |descr= {{Feature|warning|This function is broken (at least in {{arma3}}) as it has a typo, displaying an error on each use!  (typo '''line 63''', {{hl|[centrum]}} instead of {{hl|[_centrum]}}).}}
-This function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard ''via'' [[copyToClipboard]].&lt;br&gt;
+This function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard via [[copyToClipboard]].&lt;br&gt;
 Result is to format:
 &lt;sqf&gt;[
 	// 11 elements for one object
@@ -95904,7 +95904,7 @@ Result is to format:
 
 |seealso= [[BIS_fnc_sceneSetObjects]] [[BIS_fnc_objectsGrabber]] [[BIS_fnc_objectsMapper]]
 }}</text>
-      <sha1>mklj63bba1daquwn0lmm2e3x670vuam</sha1>
+      <sha1>6ixl1b7428j10bb6urjbuy0kx2no9gh</sha1>
     </revision>
   </page>
   <page>
@@ -102430,17 +102430,19 @@ This function should work properly in {{arma3}}, but be aware that if "crew" con
     <ns>0</ns>
     <id>9169</id>
     <revision>
-      <id>352931</id>
-      <parentid>327905</parentid>
-      <timestamp>2024-03-05T00:21:54Z</timestamp>
+      <id>370876</id>
+      <parentid>352931</parentid>
+      <timestamp>2025-02-21T10:44:01Z</timestamp>
       <contributor>
-        <username>Killzone Kid</username>
-        <id>9533</id>
+        <username>Lou Montana</username>
+        <id>10739</id>
       </contributor>
-      <origin>352931</origin>
+      <minor/>
+      <comment>Text replacement - " ''via'' " to " via "</comment>
+      <origin>370876</origin>
       <model>wikitext</model>
       <format>text/x-wiki</format>
-      <text bytes="1568" sha1="56vt252um8jhqyc4ixq0nytpc7erume" xml:space="preserve">{{RV|type=function
+      <text bytes="1564" sha1="aisqz92puqs7j3qjyk5fh4v1vmhodc4" xml:space="preserve">{{RV|type=function
 
 |game1= arma2
 |version1= 1.00
@@ -102460,7 +102462,7 @@ This function should work properly in {{arma3}}, but be aware that if "crew" con
 
 {{Feature|important|Before '''{{arma3}}''' ({{arma2}}, {{tkoh}}):
 * a [[Functions Library|Functions Module]] '''must''' be placed in order to use this function
-* a side's [[createCenter|center]] has to exist (by already having a unit of said side on the map)/be created ''via'' [[createCenter]] or the vehicle will spawn empty.
+* a side's [[createCenter|center]] has to exist (by already having a unit of said side on the map)/be created via [[createCenter]] or the vehicle will spawn empty.
 }}
 
 |s1= [position, direction, type, sideOrGroup] call [[BIS_fnc_spawnVehicle]]
@@ -102489,7 +102491,7 @@ _result params ["_vehicle", "_crew", "_group"];
 
 |seealso= [[:Category:CfgVehicles]] [[respawnVehicle]] [[createVehicle]] [[createUnit]] [[crew]]
 }}</text>
-      <sha1>56vt252um8jhqyc4ixq0nytpc7erume</sha1>
+      <sha1>aisqz92puqs7j3qjyk5fh4v1vmhodc4</sha1>
     </revision>
   </page>
   <page>

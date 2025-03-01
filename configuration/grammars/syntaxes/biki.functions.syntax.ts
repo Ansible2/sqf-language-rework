@@ -14337,7 +14337,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "to",
-                            "description": "`Number` - (Optional, default detected system of units _via_ `systemOfUnits`) destination unit. See _from_."
+                            "description": "`Number` - (Optional, default detected system of units via `systemOfUnits`) destination unit. See _from_."
                         },
                         {
                             "name": "mode",
@@ -14361,7 +14361,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Triggers a countdown.\n**NOTE**: \nThe **initial** countdown can be accessed _via_ `missionNamespace`'s variable **BIS_fnc_countdown_time**.\n\nThe initial value is either <sqf inline>serverTime + timeInSeconds (if set globally) or <sqf inline>time + timeInSeconds (if set locally).\nTo return the left-over time see _Example 4_.",
+            "description": "Triggers a countdown.\n**NOTE**: \nThe **initial** countdown can be accessed via `missionNamespace`'s variable **BIS_fnc_countdown_time**.\n\nThe initial value is either <sqf inline>serverTime + timeInSeconds (if set globally) or <sqf inline>time + timeInSeconds (if set locally).\nTo return the left-over time see _Example 4_.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _initialCountdown = [50,false] call BIS_fnc_countdown; // sets countdown to 50 seconds where function is executed\n```"
@@ -20196,7 +20196,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mode",
-                            "description": "`Number` - (Optional, default 0)\n* 0: normal (disables saving and sets **`BIS_missionStarted`** to `nil`)\n* 1: world scenes"
+                            "description": "`Number` - (Optional, default 0)\n* 0: normal (disables saving and sets **`BIS_missionStarted`** to `nil`)\n* 1: world scenes (i.e. for main menu background, doesn't display text and does not end)"
                         },
                         {
                             "name": "fadeIn",
@@ -21789,6 +21789,9 @@ export const configs: SQFItemConfig[] = [
                 },
                 {
                     "text": "```sqf\n// Only the B_Soldier_F\n[nil, \"all\", [], [], [], [\"B_Soldier_F\"]] spawn BIS_fnc_exportEditorPreviews;\n```"
+                },
+                {
+                    "text": "```sqf\n// Props in CBA\n[nil, \"props\", [], [\"@cba_a3\"]] spawn BIS_fnc_exportEditorPreviews;\n```"
                 }
             ],
             "syntaxes": [
@@ -21808,7 +21811,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "mods",
-                            "description": "`Array` of `String` - (Optional, default all mods) list of CfgMods classes. Only objects belonging to these mods will be used"
+                            "description": "`Array` of `String` - (Optional, default all mods) list of CfgMods classes. External mods should be prefixed with \"@\". Only objects belonging to these mods will be used"
                         },
                         {
                             "name": "addons",
@@ -22917,7 +22920,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Function to measure FPS. Spawns code running for given time and displays result on screen _via_ `titleText`, `globalChat` **and** `diag_log`.\nVariable **BIS_fps_output** is filled with `diag_log` content too.",
+            "description": "Function to measure FPS. Spawns code running for given time and displays result on screen via `titleText`, `globalChat` **and** `diag_log`.\nVariable **BIS_fps_output** is filled with `diag_log` content too.",
             "examples": [
                 {
                     "text": "```sqf\nprivate _scriptHandle = [10, \"50 units on screen\", 3] call BIS_fnc_fps;\n```"
@@ -25057,7 +25060,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Handling EH-based helicopter damage, event handler in question being {{sic|[Da_mm_aged](https://community.bistudio.com/wiki/Arma_3:_Event_Handlers#Dammaged)}}.\n\n**NOTE**: \nExecuted script is:\n\n```sqf\nhelicopter execVM \"hsim\\air_h\\data\\scripts\\main_rotor_destruction.sqf\";\n```\n\n\nhelicopter rotor status can be found _via_ variable **HSim_mainRotorDestroyed**:\n\n```sqf\n_isRotorDestroyed = helicopter getVariable [\"HSim_mainRotorDestroyed\", false];\n```",
+            "description": "Handling EH-based helicopter damage, event handler in question being {{sic|[Da_mm_aged](https://community.bistudio.com/wiki/Arma_3:_Event_Handlers#Dammaged)}}.\n\n**NOTE**: \nExecuted script is:\n\n```sqf\nhelicopter execVM \"hsim\\air_h\\data\\scripts\\main_rotor_destruction.sqf\";\n```\n\n\nhelicopter rotor status can be found via variable **HSim_mainRotorDestroyed**:\n\n```sqf\n_isRotorDestroyed = helicopter getVariable [\"HSim_mainRotorDestroyed\", false];\n```",
             "examples": [
                 {
                     "text": "```sqf\nmyHelicopter addEventHandler [\"Dammaged\", { _this call BIS_fnc_helicopterDamage; }];\n```"
@@ -27672,7 +27675,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "radioMode",
-                            "description": "`Boolean`, `String`, `Object` or `Code` - (Optional, default: `false`) can be:\n* `Boolean` - true to force radio\n* `String` - name of radio channel (\"DIRECT\" or \"VEHICLE\") or [custom](https://community.bistudio.com/wiki/radioChannelCreate)\n* `Object` - listener's channel\n* `Code` - returned value of code"
+                            "description": "`Boolean`, `String`, `Object` or `Code` - (Optional, default: `false`) can be:\n* `Boolean` - true to force radio\n* `String` - name of radio channel (\"DIRECT\" or \"VEHICLE\")\n* `Number` - [custom](https://community.bistudio.com/wiki/radioChannelCreate) radio channel\n* `Object` - listener's channel\n* `Code` - returned value of code"
                         },
                         {
                             "name": "code",
@@ -30262,7 +30265,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "doMove",
-                            "description": "`Anything` - (Optional, default `false`) nil to `setPos` unit, any value to make it move _via_ \n`doMove` (`true` for readability)"
+                            "description": "`Anything` - (Optional, default `false`) nil to `setPos` unit, any value to make it move via \n`doMove` (`true` for readability)"
                         }
                     ],
                     "outline": "[anim, person1, vehicle_, person2, isOnBoard, altitude, doMove_] call `BIS_fnc_miscAnim`",
@@ -41843,7 +41846,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "**WARNING**: This function is broken (at least in Arma 3) as it has a typo, displaying an error on each use!  (typo **line 63**, **`[centrum]`** instead of **`[_centrum]`**).\nThis function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard _via_ `copyToClipboard`.\n\nResult is to format:\n\n```sqf\n[\n\t// 11 elements for one object\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t// ...\n]\n```\n\n**IMPORTANT**: Please note that the clipboard result is a one-level array, meaning that all parameters are defined one after the other!",
+            "description": "**WARNING**: This function is broken (at least in Arma 3) as it has a typo, displaying an error on each use!  (typo **line 63**, **`[centrum]`** instead of **`[_centrum]`**).\nThis function gets objects (but centre object) positions and direction relative to the choosen object and copies the result to the clipboard via `copyToClipboard`.\n\nResult is to format:\n\n```sqf\n[\n\t// 11 elements for one object\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t_nameOfObject, _objectClass, _objectToGet, _computedAngle, _distance, _newDir, _vectorUp, _vectorDir, _animation, _elevASL, _elev,\n\t// ...\n]\n```\n\n**IMPORTANT**: Please note that the clipboard result is a one-level array, meaning that all parameters are defined one after the other!",
             "examples": [
                 {
                     "text": "```sqf\n[player, 20, \"Car\"] call BIS_fnc_sceneGetObjects;\n```"
@@ -45296,7 +45299,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "description": "Function to spawn a certain vehicle type with all crew (including turrets). The vehicle can either become part of an existing `group` or create a new `group`.\n\n**IMPORTANT**: Before **Arma 3** (Arma 2, {{tkoh}}):\n* a [Functions Module](https://community.bistudio.com/wiki/Functions_Library) **must** be placed in order to use this function\n* a side's [center](https://community.bistudio.com/wiki/createCenter) has to exist (by already having a unit of said side on the map)/be created _via_ `createCenter` or the vehicle will spawn empty.",
+            "description": "Function to spawn a certain vehicle type with all crew (including turrets). The vehicle can either become part of an existing `group` or create a new `group`.\n\n**IMPORTANT**: Before **Arma 3** (Arma 2, {{tkoh}}):\n* a [Functions Module](https://community.bistudio.com/wiki/Functions_Library) **must** be placed in order to use this function\n* a side's [center](https://community.bistudio.com/wiki/createCenter) has to exist (by already having a unit of said side on the map)/be created via `createCenter` or the vehicle will spawn empty.",
             "examples": [
                 {
                     "text": "```sqf\n[getPos player, 180, \"BMP3\", east] call BIS_fnc_spawnVehicle;\n```"
