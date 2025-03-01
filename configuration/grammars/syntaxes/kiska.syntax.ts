@@ -3,7 +3,7 @@ import { SQFItemConfig } from "../sqf.namespace";
 export const configs: SQFItemConfig[] = [
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_AAAZone.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_AAAZone.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _radius, _checkTime] spawn `KISKA_fnc_AAAZone`",
@@ -38,7 +38,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/fn_ACE_addSupportMenuAction.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/fn_ACE_addSupportMenuAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_player] spawn `KISKA_fnc_ACE_addSupportMenuAction`",
@@ -65,7 +65,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast%20Rope/fn_ACE_deployFastRope.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_deployFastRope.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _unitsToDeploy, _ropeOrigins] call `KISKA_fnc_ACE_deployFastRope`",
@@ -100,7 +100,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast%20Rope/fn_ACE_deployRopes.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_deployRopes.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _ropeOrigins] call `KISKA_fnc_ACE_deployRopes`",
@@ -131,7 +131,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast%20Rope/fn_ACE_fastRope.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_fastRope.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _dropPosition, _unitsToDeploy, _afterDropCode, _hoverHeight, _ropeOrigins] call `KISKA_fnc_ACE_fastRope`",
@@ -181,7 +181,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/Fast%20Rope/fn_ACE_setOnPrepareFastrope.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_setOnPrepareFastrope.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _onPrepare] call `KISKA_fnc_ACE_setOnPrepareFastrope`",
@@ -192,7 +192,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_onPrepare",
-                            "description": "*(CODE, ARRAY, or STRING)* - A function that returns a number being the time it takes for the ropes to deploy from the given vehicle\n    (SEE KISKA_fnc_callBack for array syntax).\n\n    Args:\n        - 0. *(OBJECT)* - The helicopter conducting a fastrope"
+                            "description": "*(CODE, ARRAY, or STRING)* - A function that returns a number being the time it takes for the ropes to deploy from the given vehicle\n    (SEE KISKA_fnc_callBack for array syntax).\n\n    parameters:\n        - 0. *(OBJECT)* - The helicopter conducting a fastrope"
                         }
                     ],
                     "returns": "NOTHING"
@@ -203,7 +203,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[\n    _vehicle,\n    {4} // takes 4 seconds to lower ropes\n] call KISKA_fnc_ACE_setOnPrepareFastrope;\n```"
                 }
             ],
-            "description": "Sets the onprepare function of a specific vehicle when it conducts fastroping with KISKA_fnc_fastRope (not any other implementation of ACE fastroping).\n\nBy default, ACE uses a config value (on the vehicle's class) of a string that is the name of the function to call. This function will overwrite that config function or add support for vehicles that do not have an onPrepare function defined.\n\nThe onPrepare function is what happens just prior to the helicopter dropping its ropes. You may want to do something like openning the vehicles doors before the units fastrope, for example.\n\nYour new onPrepare function can return a number that will then be used as the time it takes for the ropes to be lowered down from the helicopter\n (the default is 4 seconds)."
+            "description": "Sets the onprepare function of a specific vehicle when it conducts fastroping with KISKA_fnc_ACE_fastRope (not any other implementation of ACE fastroping).\n\nBy default, ACE uses a config value (on the vehicle's class) of a string that is the name of the function to call. This function will overwrite that config function or add support for vehicles that do not have an onPrepare function defined.\n\nThe onPrepare function is what happens just prior to the helicopter dropping its ropes. You may want to do something like openning the vehicles doors before the units fastrope, for example.\n\nYour new onPrepare function can return a number that will then be used as the time it takes for the ropes to be lowered down from the helicopter\n (the default is 4 seconds)."
         },
         "configuration": {
             "label": "KISKA_fnc_ACE_setOnPrepareFastrope",
@@ -212,7 +212,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACE/fn_ACE_unconsciousIsCaptive.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/fn_ACE_unconsciousIsCaptive.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_ACE_unconsciousIsCaptive`",
@@ -234,7 +234,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/ACEX/fn_ACEX_setHCTransfer.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACEX/fn_ACEX_setHCTransfer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _setting] call `KISKA_fnc_ACEX_setHCTransfer`",
@@ -268,7 +268,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addArsenal.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addArsenal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arsenals] call `KISKA_fnc_addArsenal`",
@@ -295,7 +295,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_addCommMenuItem.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_addCommMenuItem.sqf",
             "syntaxes": [
                 {
                     "outline": "[_owner, _itemClass, _textArguements, _expressionArguments, _notification, _addToHash] call `KISKA_fnc_addCommMenuItem`",
@@ -342,7 +342,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addEntityKilledEventHandler.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addEntityKilledEventHandler.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity, _event] call `KISKA_fnc_addEntityKilledEventHandler`",
@@ -353,7 +353,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_event",
-                            "description": "*(CODE, STRING, or ARRAY)* - The code to execute (SEE KISKA_fnc_callBack for array syntax). Parmeters:\n\n        - 0. *(OBJECT)* - The killed entity\n        - 1. *(OBJECT)* - The killer entity (vehicle or person)\n        - 2. *(OBJECT)* - The instigator entity\n        - 3. *(BOOL)* - same as useEffects in `setDamage` alt syntax"
+                            "description": "*(CODE, STRING, or ARRAY)* - The code to execute (SEE KISKA_fnc_callBack for array syntax).\n\n    Parmeters:\n    - 0. *(OBJECT)* - The killed entity\n    - 1. *(OBJECT)* - The killer entity (vehicle or person)\n    - 2. *(OBJECT)* - The instigator entity\n    - 3. *(BOOL)* - same as useEffects in `setDamage` alt syntax"
                         }
                     ],
                     "returns": "*(NUMBER)* - The entity killed event handler ID for the unit"
@@ -373,7 +373,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addKiskaDiaryEntry.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addKiskaDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "[_textEntry, _task, _taskState, _showTitle] call `KISKA_fnc_addKiskaDiaryEntry`",
@@ -412,7 +412,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addMagRepack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addMagRepack.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_addMagRepack`",
@@ -434,7 +434,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeMagRepack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_removeMagRepack.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_addMagRepack`",
@@ -456,7 +456,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addProximityPlayerAction.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addProximityPlayerAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_center, _radius, _action, _refreshInterval] call `KISKA_fnc_addProximityPlayerAction`",
@@ -495,7 +495,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_addRallyPointDiaryEntry.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_addRallyPointDiaryEntry.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_addRallyPointDiaryEntry`",
@@ -517,7 +517,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_addTeleportAction.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addTeleportAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objectToAddTo, _teleportPosition, _text, _conditionShow] call `KISKA_fnc_addTeleportAction`",
@@ -556,7 +556,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_alivePlayers.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_alivePlayers.sqf",
             "syntaxes": [
                 {
                     "outline": "[_noHeadless] call `KISKA_fnc_alivePlayers`",
@@ -583,7 +583,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_allowGroupRally.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_allowGroupRally.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToAdd] call `KISKA_fnc_allowGroupRally`",
@@ -610,7 +610,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim.sqf",
             "syntaxes": [
                 {
                     "outline": "[_units, _animationParams, _exitOnCombat, _equipmentLevel, _animationMap] call `KISKA_fnc_ambientAnim`",
@@ -621,11 +621,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_animationParams",
-                            "description": "*(HASHMAP, STRING[], (STRING,NUMBER)[], or STRING)* - This can be three things:\n\n    - If a string, a single animation set that is located in the `_animationMap`\n    - If an array, you can have weighted or unweighted array of strings that are random animation sets to select from\n    - lastly, you can have a HASHMAP setup for snap to animations:\n\n        - `_animSet` *(STRING[], (STRING,NUMBER)[], or STRING)* - A single snapto animation set or weighted/unweighted array to randomly select from.\n        - `_snapToRange` *(NUMBER)* - This is how far will be searched around the unit to find an object to \"snap\" onto. Cannot be more then 10m.\n        - `_backupAnims` *(STRING[], (STRING,NUMBER)[], or STRING)* - Same as `_snapToAnimationSet` but for animations to use in the even that ALL of the `_snapToAnimationSet` animations fail to be used due to valid objects not being within range.\n        - `_fallbackFunction` *(CODE, ARRAY, or STRING)* - (See `KISKA_fnc_callBack`) In the event that a unit is not able to find an object to snap to AND1 no _backupAnims are present, this function will be called with the following params. If you still want the unit to be animated in this case, pass `{}`, `\"\"`, or `[]`\n\n            - 0: _unit *(OBJECT)* - The unit\n            - 1: _animationParams *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 2: _exitOnCombat *(BOOL)*\n            - 3: _equipmentLevel *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 4: _animationMap *(HASHMAP or CONFIG)*"
+                            "description": "*(HASHMAP, STRING[], (STRING,NUMBER)[], or STRING)* - This can be three things:\n\n    - If a string, a single animation set that is located in the `_animationMap`\n    - If an array, you can have weighted or unweighted array of strings that are random animation sets to select from\n    - lastly, you can have a HASHMAP setup for snap to animations:\n\n        - `_animSet` *(STRING[], (STRING,NUMBER)[], or STRING)* - A single snapto animation set or weighted/unweighted array to randomly select from.\n        - `_snapToRange` *(NUMBER)* - This is how far will be searched around the unit to find an object to \"snap\" onto. Cannot be more then 10m.\n        - `_backupAnims` *(STRING[], (STRING,NUMBER)[], or STRING)* - Same as `_animSet` but for animations to use in the even that ALL of the `_animSet` animations fail to be used due to valid objects not being within range.\n        - `_fallbackFunction` *(CODE, ARRAY, or STRING)* - (See `KISKA_fnc_callBack`) In the event that a unit is not able to find an object to snap to AND no _backupAnims are present, this function will be called with the following params. If you still want the unit to be animated in this case, pass `{}`, `\"\"`, or `[]`\n\n            - 0: _unit *(OBJECT)* - The unit\n            - 1: _animationParams *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 2: _exitOnCombat *(BOOL)*\n            - 3: _equipmentLevel *(STRING[], (STRING,NUMBER)[], or STRING)*\n            - 4: _animationMap *(HASHMAP or CONFIG)*"
                         },
                         {
                             "name": "_exitOnCombat",
-                            "description": "*(BOOL)* - True for unit to return to the state it was in prior to KISKA_fnc_ambientAnim being called when they are enter combat behaviour."
+                            "description": "*(BOOL)* - Whether or not units will stop ambient animations upon detecting an enemy."
                         },
                         {
                             "name": "_equipmentLevel",
@@ -659,7 +659,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_isAnimated.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_isAnimated.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit] call `KISKA_fnc_ambientAnim`",
@@ -686,7 +686,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_addAttachLogicGroup.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_addAttachLogicGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_logicGroup] call `KISKA_fnc_ambientAnim_addAttachLogicGroup`",
@@ -713,7 +713,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_getNearestAttachLogicGroup.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_getNearestAttachLogicGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_position] call `KISKA_fnc_ambientAnim_addAttachLogicGroup`",
@@ -740,7 +740,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_createMapFromConfig.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_createMapFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config] call `KISKA_fnc_ambientAnim_createMapFromConfig`",
@@ -767,7 +767,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_getAttachLogicGroupsMap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_getAttachLogicGroupsMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_ambientAnim_getAttachLogicGroupsMap`",
@@ -789,7 +789,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_play.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_play.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _previousAnim] call `KISKA_fnc_ambientAnim_play`",
@@ -820,7 +820,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_setStoredLoadout.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_setStoredLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _loadout] call `KISKA_fnc_ambientAnim_setStoredLoadout`",
@@ -851,7 +851,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Animations/fn_ambientAnim_stop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Animations/fn_ambientAnim_stop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _triggeredByDeletion] call `KISKA_fnc_ambientAnim_stop`",
@@ -882,7 +882,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_ambientNewsRadio.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_ambientNewsRadio.sqf",
             "syntaxes": [
                 {
                     "outline": "[_origin, _duration, _distance, _volume, _isInside] call `KISKA_fnc_ambientNewsRadio`",
@@ -925,7 +925,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_arsenalSupplyDrop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_arsenalSupplyDrop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_dropPosition, _dropAlt, _flyDirection, _flyInRadius, _lifeTime, _side] call `KISKA_fnc_arsenalSupplyDrop`",
@@ -972,7 +972,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_arty.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_arty.sqf",
             "syntaxes": [
                 {
                     "outline": "[_gun, _target, _rounds, _randomDistance, _randomDirection, _fireTime] spawn `KISKA_fnc_arty`",
@@ -1019,7 +1019,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_assignUnitLoadout.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Loadouts/fn_assignUnitLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config, _units] call `KISKA_fnc_assignUnitLoadout`",
@@ -1050,7 +1050,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_attack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_attack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _position, _radius, _behaviour, _combatMode, _override] call `KISKA_fnc_attack`",
@@ -1097,7 +1097,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_balanceHeadless.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_balanceHeadless.sqf",
             "syntaxes": [
                 {
                     "outline": "[_checkInterval] spawn `KISKA_fnc_balanceHeadless`",
@@ -1124,7 +1124,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig`",
@@ -1151,7 +1151,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_agents.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_agents.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_agents`",
@@ -1178,7 +1178,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_infantry.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_infantry.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_infantry`",
@@ -1205,7 +1205,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_landVehicles.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_landVehicles.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_landVehicles`",
@@ -1232,7 +1232,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_patrols.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_patrols.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_patrols`",
@@ -1259,7 +1259,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_simples.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_simples.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_simples`",
@@ -1286,7 +1286,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_createFromConfig_turrets.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_turrets.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_turrets`",
@@ -1313,7 +1313,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_getHashmap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getHashmap.sqf",
             "syntaxes": [
                 {
                     "outline": "[_baseConfig] call `KISKA_fnc_bases_getHashmap`",
@@ -1340,7 +1340,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_getInfantryClasses.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getInfantryClasses.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configClasses] call `KISKA_fnc_bases_getInfantryClasses`",
@@ -1367,7 +1367,54 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_getSide.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getPropertyValue.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_property, _setConfigPath, _default, _isBool, _canSelectFromSetRoot, _canSelectFromBaseRoot] call `KISKA_fnc_bases_getPropertyValue`",
+                    "parameters": [
+                        {
+                            "name": "_property",
+                            "description": "*(STRING)* - The property to get the value of"
+                        },
+                        {
+                            "name": "_setConfigPath",
+                            "description": "*(CONFIG)* - The config of the base set that is being searched\n    (e.g. missionConfigFile >> KISKA_Bases >> MyBase >> infantry >> sets >> MyInfantrySet)"
+                        },
+                        {
+                            "name": "_default",
+                            "description": "*(ANY)* - The default value to return if the property search returns `nil`"
+                        },
+                        {
+                            "name": "_isBool",
+                            "description": "*(BOOL)* - Whether or not the property should be interpreted as a boolean value (Default: `false`)"
+                        },
+                        {
+                            "name": "_canSelectFromSetRoot",
+                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the set class (e.g. missionConfigFile >> KISKA_Bases >> MyBase >> infantry)\n    (Default: `true`)"
+                        },
+                        {
+                            "name": "_canSelectFromBaseRoot",
+                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the KISKA base class (e.g. missionConfigFile >> KISKA_Bases >> MyBase)\n    (Default: `true`)"
+                        }
+                    ],
+                    "returns": "*(ANY)* - The property value"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _turretConfig = missionConfigFile >> KISKA_Bases >> MyBase >> turrets >> sets >> MyTurretSet\nprivate _turretSpawnPositions = [\n    \"spawnPositions\",\n    _turretConfig,\n    [],\n] call KISKA_fnc_bases_getPropertyValue;\n```"
+                }
+            ],
+            "description": "Used to sift through the various levels of possible properties for a kiska base."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_bases_getPropertyValue",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getSide.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configClasses] call `KISKA_fnc_bases_getSide`",
@@ -1394,7 +1441,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_initAmbientAnimFromClass.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_initAmbientAnimFromClass.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configToInit, _units] call `KISKA_fnc_bases_initAmbientAnimFromClass`",
@@ -1425,7 +1472,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_initReinforceFromClass.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_initReinforceFromClass.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _config] call `KISKA_fnc_bases_initReinforceFromClass`",
@@ -1456,7 +1503,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_setupReactivity.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_setupReactivity.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _reinforceId, _canCallIds, _priority, _onEnemyDetected] call `KISKA_fnc_bases_setupReactivity`",
@@ -1499,7 +1546,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Bases/fn_bases_triggerReaction.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_triggerReaction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _detectedTarget] call `KISKA_fnc_bases_triggerReaction`",
@@ -1530,7 +1577,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_battleSound.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_battleSound.sqf",
             "syntaxes": [
                 {
                     "outline": "[_source, _distance, _duration, _intensity] call `KISKA_fnc_battleSound`",
@@ -1572,7 +1619,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_buildCommandMenu.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_buildCommandMenu.sqf",
             "syntaxes": [
                 {
                     "outline": "[_menuName, _menuTitle, _menuParams] call `KISKA_fnc_buildCommandMenu`",
@@ -1607,7 +1654,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_callBack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_callBack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_defaultArgs, _callBackFunction, _runInScheduled] call `KISKA_fnc_callBack`",
@@ -1642,7 +1689,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_callingForArsenalSupplyDrop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForArsenalSupplyDrop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForArsenalSupplyDrop`",
@@ -1668,7 +1715,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[] call KISKA_fnc_callingForArsenalSupplyDrop;\n```"
                 }
             ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abrstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
+            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
         },
         "configuration": {
             "label": "KISKA_fnc_callingForArsenalSupplyDrop",
@@ -1677,7 +1724,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_callingForArty.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForArty.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _roundCount] call `KISKA_fnc_callingForArty`",
@@ -1703,7 +1750,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[] call KISKA_fnc_callingForArty;\n```"
                 }
             ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abrstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
+            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
         },
         "configuration": {
             "label": "KISKA_fnc_callingForArty",
@@ -1712,7 +1759,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_callingForCAS.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForCAS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _useCount] call `KISKA_fnc_callingForCAS`",
@@ -1738,7 +1785,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[] call KISKA_fnc_callingForCAS;\n```"
                 }
             ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abrstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
+            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
         },
         "configuration": {
             "label": "KISKA_fnc_callingForCAS",
@@ -1747,7 +1794,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_callingForHelicopterCAS.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForHelicopterCAS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForHelicopterCAS`",
@@ -1773,7 +1820,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[] call KISKA_fnc_callingForHelicopterCAS;\n```"
                 }
             ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abrstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
+            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
         },
         "configuration": {
             "label": "KISKA_fnc_callingForHelicopterCAS",
@@ -1782,7 +1829,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_callingForSupplyDrop_aircraft.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForSupplyDrop_aircraft.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForSupplyDrop_aircraft`",
@@ -1808,7 +1855,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[] call KISKA_fnc_callingForSupplyDrop_aircraft;\n```"
                 }
             ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abrstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
+            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
         },
         "configuration": {
             "label": "KISKA_fnc_callingForSupplyDrop_aircraft",
@@ -1817,7 +1864,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_callingForSupportMaster.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForSupportMaster.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForSupportMaster`",
@@ -1843,7 +1890,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[\"myClass\",_this] call KISKA_fnc_callingForSupportMaster;\n```"
                 }
             ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abrstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
+            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
         },
         "configuration": {
             "label": "KISKA_fnc_callingForSupportMaster",
@@ -1852,7 +1899,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_CAS.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_CAS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_attackPosition, _attackTypeID, _attackDirection, _planeClass, _side, _spawnHeight, _spawnDistance, _breakOffDistance, _attackPositionOffset, _attackDistance] call `KISKA_fnc_CAS`",
@@ -1915,7 +1962,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_CASAttack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_CASAttack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_plane, _dummyTarget, _weaponsToUse, _attackTypeID, _attackPosition, _breakOffDistance] call `KISKA_fnc_CASAttack`",
@@ -1962,7 +2009,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/CIWS/fn_ciwsAlarm.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CIWS/fn_ciwsAlarm.sqf",
             "syntaxes": [
                 {
                     "outline": "[_turret] spawn `KISKA_fnc_ciwsAlarm`",
@@ -1989,7 +2036,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/CIWS/fn_ciwsInit.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CIWS/fn_ciwsInit.sqf",
             "syntaxes": [
                 {
                     "outline": "[_turret, _searchDistance, _engageAboveAltitude, _searchInterval, _doNotFireBelowAngle, _pitchTolerance, _rotationTolerance, _soundAlarm, _engageTypes] spawn `KISKA_fnc_ciwsInit`",
@@ -2048,7 +2095,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/CIWS/fn_ciwsSiren.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CIWS/fn_ciwsSiren.sqf",
             "syntaxes": [
                 {
                     "outline": "[_turret] call `KISKA_fnc_ciwsSiren`",
@@ -2075,7 +2122,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_classTurretsWithGuns.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_classTurretsWithGuns.sqf",
             "syntaxes": [
                 {
                     "outline": "[_classToCheck] call `KISKA_fnc_classTurretsWithGuns`",
@@ -2102,7 +2149,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_clearCargoGlobal.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_clearCargoGlobal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_object] call `KISKA_fnc_clearCargoGlobal`",
@@ -2129,7 +2176,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_clearWaypoints.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_clearWaypoints.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _numberToRemove, _stopUnits] call `KISKA_fnc_clearWaypoints`",
@@ -2164,7 +2211,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_commandMenuTree.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_commandMenuTree.sqf",
             "syntaxes": [
                 {
                     "outline": "[_menuPath, _endExpression, _exitExpression] spawn `KISKA_fnc_commandMenuTree`",
@@ -2393,7 +2440,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_addVehicle.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_addVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _vehicle, _insertIndex, _convoySeperation] call `KISKA_fnc_convoy_addVehicle`",
@@ -2432,7 +2479,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_addVehicleKilledEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_addVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_addVehicleKilledEvent`",
@@ -2459,7 +2506,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_clearVehicleDebugFollowedPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_clearVehicleDebugFollowedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _deleteExisting] call `KISKA_fnc_convoy_clearVehicleDebugFollowedPath`",
@@ -2490,7 +2537,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_clearVehicleDebugFollowPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_clearVehicleDebugFollowPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _deleteExisting] call `KISKA_fnc_convoy_clearVehicleDebugFollowPath`",
@@ -2521,7 +2568,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_create.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_create.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vics, _convoySeperation] call `KISKA_fnc_convoy_create`",
@@ -2552,7 +2599,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_delete.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_delete.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_delete`",
@@ -2579,7 +2626,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getBumperPosition.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getBumperPosition.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _isRearBumper] call `KISKA_fnc_convoy_getBumperPosition`",
@@ -2610,7 +2657,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyHashMapFromVehicle.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getConvoyHashMapFromVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getConvoyHashMapFromVehicle`",
@@ -2637,7 +2684,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyLeader.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getConvoyLeader.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_getConvoyLeader`",
@@ -2664,7 +2711,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyStatemachine.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getConvoyStatemachine.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_getConvoyStatemachine`",
@@ -2691,7 +2738,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getConvoyVehicles.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getConvoyVehicles.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _fromIndex] call `KISKA_fnc_convoy_getConvoyVehicles`",
@@ -2728,7 +2775,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getPointBuffer.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getPointBuffer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_getPointBuffer`",
@@ -2755,7 +2802,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleAtIndex.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleAtIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _index] call `KISKA_fnc_convoy_getVehicleAtIndex`",
@@ -2786,7 +2833,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugFollowedPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleDebugFollowedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugFollowedPath`",
@@ -2813,7 +2860,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugFollowPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleDebugFollowPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugFollowPath`",
@@ -2840,7 +2887,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugMarkerType_followedPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleDebugMarkerType_followedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugMarkerType_followedPath`",
@@ -2867,7 +2914,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDebugMarkerType_followPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleDebugMarkerType_followPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDebugMarkerType_followPath`",
@@ -2894,7 +2941,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleDrivePath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleDrivePath`",
@@ -2921,7 +2968,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleIndex.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleIndex`",
@@ -2948,7 +2995,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleLastAddedPoint.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleLastAddedPoint.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleLastAddedPoint`",
@@ -2975,7 +3022,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleSeperation.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_getVehicleSeperation`",
@@ -3002,7 +3049,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleDeadDriver_default.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_handleDeadDriver_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _convoyHashMap, _convoyLead, _deadDriver] call `KISKA_fnc_convoy_handleDeadDriver_default`",
@@ -3041,7 +3088,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleUnconsciousDriver_default.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_handleUnconsciousDriver_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _convoyHashMap, _convoyLead, _unconsciousDriver] call `KISKA_fnc_convoy_handleUnconsciousDriver_default`",
@@ -3080,7 +3127,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleVehicleCantMove_default.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_handleVehicleCantMove_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_disabledVehicle, _convoyHashMap, _convoyLead] call `KISKA_fnc_convoy_handleVehicleCantMove_default`",
@@ -3115,7 +3162,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_handleVehicleKilled_default.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_handleVehicleKilled_default.sqf",
             "syntaxes": [
                 {
                     "outline": "[_killedVehicle, _convoyHashMap, _convoyLead] call `KISKA_fnc_convoy_handleVehicleKilled_default`",
@@ -3150,7 +3197,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_isVehicleInDebug.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_isVehicleInDebug.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_isVehicleInDebug`",
@@ -3177,7 +3224,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_modifyVehicleDrivePath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_modifyVehicleDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _lastIndexToModify, _pointsToAdd] call `KISKA_fnc_convoy_modifyVehicleDrivePath`",
@@ -3212,7 +3259,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_onEachFrame.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_onEachFrame.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_convoy_onEachFrame`",
@@ -3234,7 +3281,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_removeVehicle.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_removeVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_removeVehicle`",
@@ -3261,7 +3308,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_removeVehicleKilledEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_removeVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_removeVehicleKilledEvent`",
@@ -3288,7 +3335,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getDefaultSeperation.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getDefaultSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_setDefaultSeperation`",
@@ -3315,7 +3362,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setDefaultSeperation.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setDefaultSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _seperation] call `KISKA_fnc_convoy_setDefaultSeperation`",
@@ -3346,7 +3393,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setPointBuffer.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setPointBuffer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap, _minBufferBetweenPoints] call `KISKA_fnc_convoy_setPointBuffer`",
@@ -3377,7 +3424,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDebug.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setVehicleDebug.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _debugMode] call `KISKA_fnc_convoy_setVehicleDebug`",
@@ -3408,7 +3455,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDebugMarkerType_followedPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setVehicleDebugMarkerType_followedPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _type] call `KISKA_fnc_convoy_setVehicleDebugMarkerType_followedPath`",
@@ -3439,7 +3486,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDebugMarkerType_followPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setVehicleDebugMarkerType_followPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _type] call `KISKA_fnc_convoy_setVehicleDebugMarkerType_followPath`",
@@ -3470,7 +3517,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleDriveOnPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setVehicleDriveOnPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _mode] call `KISKA_fnc_convoy_setVehicleDriveOnPath`",
@@ -3501,7 +3548,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_getVehicleKilledEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_getVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_setVehicleKilledEvent`",
@@ -3528,7 +3575,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleKilledEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setVehicleKilledEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _eventCode] call `KISKA_fnc_convoy_setVehicleKilledEvent`",
@@ -3559,7 +3606,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_setVehicleSeperation.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_setVehicleSeperation.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _seperation] call `KISKA_fnc_convoy_setVehicleSeperation`",
@@ -3590,7 +3637,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_shouldVehicleDriveOnPath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_shouldVehicleDriveOnPath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_shouldVehicleDriveOnPath`",
@@ -3617,7 +3664,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_stopVehicle.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_stopVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle] call `KISKA_fnc_convoy_stopVehicle`",
@@ -3644,7 +3691,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Convoy/fn_convoy_syncLatestDrivePoint.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Convoy/fn_convoy_syncLatestDrivePoint.sqf",
             "syntaxes": [
                 {
                     "outline": "[_convoyHashMap] call `KISKA_fnc_convoy_syncLatestDrivePoint`",
@@ -3671,7 +3718,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_countdown.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_countdown.sqf",
             "syntaxes": [
                 {
                     "outline": "[_countDownTotal, _shownCountDown, _soundedCountDown, _soundName] spawn `KISKA_fnc_countdown`",
@@ -3713,7 +3760,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Tasks/fn_createTaskFromConfig.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Tasks/fn_createTaskFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config, _owner, _taskState, _destination, _type, _notifyOnCreate, _visibleIn3D] call `KISKA_fnc_createTaskFromConfig`",
@@ -3767,7 +3814,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_createVehicleSelectMenu.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_createVehicleSelectMenu.sqf",
             "syntaxes": [
                 {
                     "outline": "[_classes] call `KISKA_fnc_createVehicleSelectMenu`",
@@ -3794,7 +3841,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_cruiseMissileStrike.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_cruiseMissileStrike.sqf",
             "syntaxes": [
                 {
                     "outline": "[_target, _side, _launchPos] call `KISKA_fnc_cruiseMissileStrike`",
@@ -3829,7 +3876,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_dataLinkMsg.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_dataLinkMsg.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _canSkip, _lifetime, _sound] call `KISKA_fnc_datalinkMsg`",
@@ -3868,7 +3915,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_defend.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_defend.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _position, _radius, _threshold, _patrol, _hold] call `KISKA_fnc_defend`",
@@ -3915,7 +3962,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_deleteAtArray.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_deleteAtArray.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _indexToRemove, _namespace] call `KISKA_fnc_deleteAtArray`",
@@ -3950,7 +3997,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_deleteAtArray_interface.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_deleteAtArray_interface.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _indexToRemove, _namespace] call `KISKA_fnc_deleteAtArray_interface`",
@@ -3985,7 +4032,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_deleteRandomIndex.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_deleteRandomIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array] call `KISKA_fnc_deleteRandomIndex`",
@@ -4012,7 +4059,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_detectControlKeys.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_detectControlKeys.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_detectControlKeys`",
@@ -4034,7 +4081,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_disallowGroupRally.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_disallowGroupRally.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToRemove, _deleteMarker] call `KISKA_fnc_disallowGroupRally`",
@@ -4065,7 +4112,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_doMagRepack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_doMagRepack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _doHint] call `KISKA_fnc_doMagRepack`",
@@ -4096,7 +4143,42 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_driveTo.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_drawBoundingBox.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_object, _color, _lod] call `KISKA_fnc_drawBoundingBox`",
+                    "parameters": [
+                        {
+                            "name": "_object",
+                            "description": ": *(OBJECT)* - The object to draw the box around."
+                        },
+                        {
+                            "name": "_color",
+                            "description": ": *(NUMBER[])* Default: `[1,0,1,1]` - The color of the boundingBox in RGBA format."
+                        },
+                        {
+                            "name": "_lod",
+                            "description": ": *(NUMBER | STRING)* Default: `0` - See `boundingBoxReal` for valid args."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The id of the bounding box for removal"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[] spawn {\n    private _boundingBoxId = [\n        myObject,\n        [1,0,1,1],\n        0\n    ] call KISKA_fnc_drawBoundingBox;\n    \n    sleep 10;\n    \n    [_boundingBoxId] call KISKA_fnc_removeBoundingBoxDraw;\n};\n```"
+                }
+            ],
+            "description": "Draws the given bounding box of _corner_a specified object."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_drawBoundingBox",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_driveTo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_crew, _vehicle, _dismountPoint, _completionRadius, _speed, _codeOnComplete] call `KISKA_fnc_driveTo`",
@@ -4143,7 +4225,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_dropOff.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_dropOff.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _dropOffPosition, _unitsToDropOff, _completionRadius, _speed, _codeOnComplete] call `KISKA_fnc_dropOff`",
@@ -4190,7 +4272,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Tasks/fn_endTask.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Tasks/fn_endTask.sqf",
             "syntaxes": [
                 {
                     "outline": "[_taskId, _state, _notify, _owner] call `KISKA_fnc_endTask`",
@@ -4229,7 +4311,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_engageHeliTurretsLoop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_engageHeliTurretsLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_heli, _sleepTime, _revealAccuracy, _detectionRadius, _skill, _makeInvulnerable, _turretsWithWeapons] spawn `KISKA_fnc_engageHeliTurretsLoop`",
@@ -4280,7 +4362,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_errorNotification.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_errorNotification.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _lifetime] call `KISKA_fnc_errorNotification`",
@@ -4311,7 +4393,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/EventHandlers/fn_eventHandler_addFromConfig.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/EventHandlers/fn_eventHandler_addFromConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entityToAddEventHandlerTo, _config, _code] call `KISKA_fnc_eventHandler_addFromConfig`",
@@ -4346,7 +4428,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/EventHandlers/fn_eventHandler_createCBAStateMachine.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/EventHandlers/fn_eventHandler_createCBAStateMachine.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config] call `KISKA_fnc_eventHandler_createCBAStateMachine`",
@@ -4373,7 +4455,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/EventHandlers/fn_eventHandler_remove.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/EventHandlers/fn_eventHandler_remove.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity, _eventConfig, _id] call `KISKA_fnc_eventHandler_remove`",
@@ -4408,7 +4490,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_exportLoadouts.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_exportLoadouts.sqf",
             "syntaxes": [
                 {
                     "outline": "[_units, _exportAsConfig] call `KISKA_fnc_exportLoadouts`",
@@ -4439,7 +4521,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_exportSpawnPositions.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_exportSpawnPositions.sqf",
             "syntaxes": [
                 {
                     "outline": "[_layer, _convertToConfig] call `KISKA_fnc_exportSpawnPositions`",
@@ -4470,7 +4552,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_findConfigAny.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_findConfigAny.sqf",
             "syntaxes": [
                 {
                     "outline": "[_pathArray] call `KISKA_fnc_findConfigAny`",
@@ -4497,7 +4579,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_findIfBool.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_findIfBool.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array, _codeToCheck, _thisArgs] call `KISKA_fnc_findIfBool`",
@@ -5337,7 +5419,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_generateUniqueId.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_generateUniqueId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_tag] call `KISKA_fnc_generateUniqueId`",
@@ -5367,7 +5449,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_getAmmoClassFromId.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getAmmoClassFromId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_getAmmoClassFromId`",
@@ -5394,7 +5476,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_getAmmoTitleFromId.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getAmmoTitleFromId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_getAmmoClassFromId`",
@@ -5421,7 +5503,38 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getBoundingBoxDimensions.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_getBoundingBoxCenter.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_object, _lod] call `KISKA_fnc_getBoundingBoxCenter`",
+                    "parameters": [
+                        {
+                            "name": "_object",
+                            "description": ": *(OBJECT)* - The object to get the bounding box center of."
+                        },
+                        {
+                            "name": "_lod",
+                            "description": ": *(NUMBER | STRING)* Default: `0` - The lod to get the bounding box of. See `boundingBoxReal` for valid args."
+                        }
+                    ],
+                    "returns": "*(PositionWorld[])* - The center position of the bounding box."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _centerPositionWorld = [myObject] call KISKA_fnc_getBoundingBoxCenter;\n```"
+                }
+            ],
+            "description": "Gets the center of a given object's bounding box."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getBoundingBoxCenter",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getBoundingBoxDimensions.sqf",
             "syntaxes": [
                 {
                     "outline": "[_object, _boxType, _isLOD] call `KISKA_fnc_getBoundingBoxDimensions`",
@@ -5432,14 +5545,14 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_boxType",
-                            "description": "*(NUMBER or STRING)* - The `boundingBoxReal` command's clipping type or\n\tthe LOD name/resolution if `_isLOD` is true."
+                            "description": "*(NUMBER or STRING)* - The `boundingBoxReal` command's clipping type or the LOD name/resolution if `_isLOD` is true."
                         },
                         {
                             "name": "_isLOD",
                             "description": "*(BOOL)* - Whether or not to use the LOD syntax of `boundingBoxReal`"
                         }
                     ],
-                    "returns": "*(NUMBER[])* - `[Length,Width,Height]` of the given object's dimensions"
+                    "returns": "*(NUMBER[])* - `[Width,Length,Height]` of the given object's dimensions"
                 }
             ],
             "examples": [
@@ -5447,7 +5560,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _playerBoxDimensions = [player] call KISKA_fnc_getBoundingBoxDimensions;\n```"
                 }
             ],
-            "description": "Returns the length, width, and height of a given object's bounding box, for\n a given clipping type."
+            "description": "Returns the length, width, and height of a given object's bounding box, for a given clipping type."
         },
         "configuration": {
             "label": "KISKA_fnc_getBoundingBoxDimensions",
@@ -5456,7 +5569,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getBumperPositionRelative.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getBumperPositionRelative.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _isRearBumper] call `KISKA_fnc_getBumperPositionRelative`",
@@ -5487,7 +5600,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_getCasTitleFromId.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getCasTitleFromId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_getCasTitleFromId`",
@@ -5514,7 +5627,73 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getContainerCargo.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getConditionalConfigValue.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_conditionalConfig, _property, _isBool] call `KISKA_fnc_getConditionalConfigValue`",
+                    "parameters": [
+                        {
+                            "name": "_conditionalConfig",
+                            "description": "*(CONFIG)* - Default: `configNull` - The config path to parse dynamic data from"
+                        },
+                        {
+                            "name": "_property",
+                            "description": "*(STRING)* - Default: `\"\"` - The config path to parse dynamic data from"
+                        },
+                        {
+                            "name": "_isBool",
+                            "description": "*(BOOL)* - Default: `false` - Will convert a number value into a `BOOL`. If the value is more than `0`, the it will be `true`. Any values `<= 0` will be `false`"
+                        }
+                    ],
+                    "returns": "*(NUMBER | STRING | ARRAY | BOOL)* - The value for the given conditional config.\n `nil` in cases where config value is not found or no conditions are met."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _value = [\n    missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"Conditional\",\n    \"myProperty\"\n] call KISKA_fnc_getConditionalConfigValue;\n```"
+                }
+            ],
+            "description": "Retrieves the conditional value located in a given config. This code will cache configs and their values after being run once within the `localNamespace`.\n\nThe syntax for a conditional config:\n(begin config example)\n    // `_conditionalConfig` param would be the config path to `MyConditionalClass`\n    class MyConditionalClass\n    {\n        class ExampleCondition_1\n        {\n            // A list of addon directories (names) as they would appear in getLoadedModsInfo (case-insensitive).\n            // All addons in the list must be loaded present. addons[] = { \"A3\" };\n\n            // A list of CfgPatches classNames that need to be present. patches[] = { \"A3_Data_F\"};\n\n            // Uncompiled code that must return a boolean value.\n            // `false` means the ExampleCondition_1's value will not be used\n                //"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getConditionalConfigValue",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getConfigData.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config, _isBool] call `KISKA_fnc_getConfigData`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG)* - Default: `configNull` - The config path to get data from"
+                        },
+                        {
+                            "name": "_isBool",
+                            "description": "*(BOOL)* - Default: `false` - Will convert a number value into a `BOOL`. If the value is more than `0`, the it will be `true`. Any values `<= 0` will be `false`"
+                        }
+                    ],
+                    "returns": "*(NUMBER | STRING | ARRAY | BOOL)* - The value at the given config path"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _value = [\n    configFile >> \"CfgVehicles\" >> \"Car\" >> \"displayname\"\n] call KISKA_fnc_getConfigData;\n```"
+                }
+            ],
+            "description": "Retrieves the value located at a given config path.\n\nFaster than BIS_fnc_getCfgData."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getConfigData",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getContainerCargo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_primaryContainer] call `KISKA_fnc_getContainerCargo`",
@@ -5541,7 +5720,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getCurrentWaypoint.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getCurrentWaypoint.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group] call `KISKA_fnc_getCurrentWaypoint`",
@@ -5568,7 +5747,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getFromNetId.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getFromNetId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _fromObject] call `KISKA_fnc_getFromNetId`",
@@ -5599,7 +5778,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getLatestPlayedMusicID.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_getLatestPlayedMusicID.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_getLatestPlayedMusicID`",
@@ -5621,7 +5800,29 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getMissionLayerObjects.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getLoadedModsInfo.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_getLoadedModsInfo`",
+                    "parameters": [],
+                    "returns": "*(ARRAY)* - see `getLoadedModsInfo`"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _modsInfo = call KISKA_fnc_getLoadedModsInfo;\n```"
+                }
+            ],
+            "description": "An alias for the command `getLoadedModsInfo` but with a caching layer in the\n `uiNamespace`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getLoadedModsInfo",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getMissionLayerObjects.sqf",
             "syntaxes": [
                 {
                     "outline": "[_layer] call `KISKA_fnc_getMissionLayerObjects`",
@@ -5648,7 +5849,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getMostSpecificCfgValue.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getMostSpecificCfgValue.sqf",
             "syntaxes": [
                 {
                     "outline": "[_property, _configs, _ignoredValues, _ignoredTypes] call `KISKA_fnc_getMostSpecificCfgValue`",
@@ -5687,7 +5888,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getMusicDuration.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_getMusicDuration.sqf",
             "syntaxes": [
                 {
                     "outline": "[_track] call `KISKA_fnc_getMusicDuration`",
@@ -5714,7 +5915,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getMusicFromClass.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_getMusicFromClass.sqf",
             "syntaxes": [
                 {
                     "outline": "[_musicClass] call `KISKA_fnc_getMusicFromClass`",
@@ -5741,7 +5942,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getNearestIncriment.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getNearestIncriment.sqf",
             "syntaxes": [
                 {
                     "outline": "[_numberToCheck, _incriment] call `KISKA_fnc_getNearestIncriment`",
@@ -5772,7 +5973,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_getPlayingMusic.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_getPlayingMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_getPlayingMusic`",
@@ -5794,7 +5995,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getPosRelativeSurface.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getPosRelativeSurface.sqf",
             "syntaxes": [
                 {
                     "outline": "[_centerPosition, _distance, _bearing, _zOffSet] call `KISKA_fnc_getPosRelativeSurface`",
@@ -5836,7 +6037,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getRelativeVectorAndPos.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getRelativeVectorAndPos.sqf",
             "syntaxes": [
                 {
                     "outline": "[_parent, _child] call `KISKA_fnc_getRelativeVectorAndPos`",
@@ -5867,7 +6068,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setRelativeVectorAndPos.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_setRelativeVectorAndPos.sqf",
             "syntaxes": [
                 {
                     "outline": "[_parent, _child, _relativeInfo] call `KISKA_fnc_getRelativeVectorAndPos`",
@@ -5902,7 +6103,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_getSupportVehicleClasses.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getSupportVehicleClasses.sqf",
             "syntaxes": [
                 {
                     "outline": "[_side, _typeId] call `KISKA_fnc_getSupportVehicleClasses`",
@@ -5933,7 +6134,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getVariableTarget.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getVariableTarget.sqf",
             "syntaxes": [
                 {
                     "outline": "[_variableName, _namespace, _defaultValue, _target, _awaitParams] spawn `KISKA_fnc_getVariableTarget`",
@@ -5976,7 +6177,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getVariableTarget_sendBack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getVariableTarget_sendBack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_namespace, _variableName, _saveVariable, _defaultValue, _sendBackTarget] call `KISKA_fnc_getVariableTarget_sendBack`",
@@ -6019,7 +6220,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_getVectorToTarget.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getVectorToTarget.sqf",
             "syntaxes": [
                 {
                     "outline": "[_object, _target] call `KISKA_fnc_getVectorToTarget`",
@@ -6050,7 +6251,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_assignObjectOrGroupKey.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_assignObjectOrGroupKey.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objectOrGroup] call `KISKA_fnc_hashmap_assignObjectOrGroupKey`",
@@ -6077,7 +6278,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_deleteAt.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_deleteAt.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key] call `KISKA_fnc_hashmap_deleteAt`",
@@ -6108,7 +6309,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_get.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_get.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key, _default] call `KISKA_fnc_hashmap_get`",
@@ -6143,7 +6344,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_getKiskaObjectGroupKeyMap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getKiskaObjectGroupKeyMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_hashmap_getObjectOrGroupFromRealKey`",
@@ -6165,7 +6366,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_getObjectOrGroupFromRealKey.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getObjectOrGroupFromRealKey.sqf",
             "syntaxes": [
                 {
                     "outline": "[_key] call `KISKA_fnc_hashmap_getObjectOrGroupFromRealKey`",
@@ -6192,7 +6393,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_getRealKey.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getRealKey.sqf",
             "syntaxes": [
                 {
                     "outline": "[_key] call `KISKA_fnc_hashmap_getRealKey`",
@@ -6219,7 +6420,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_in.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_in.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key] call `KISKA_fnc_hashmap_in`",
@@ -6250,7 +6451,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Hashmap/fn_hashmap_set.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_set.sqf",
             "syntaxes": [
                 {
                     "outline": "[_map, _key, _value, _insertOnly] call `KISKA_fnc_hashmap_set`",
@@ -6289,7 +6490,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_helicopterGunner.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_helicopterGunner.sqf",
             "syntaxes": [
                 {
                     "outline": "[_centerPosition, _radius, _aircraftType, _timeOnStation, _supportSpeedLimit, _flyinHeight, _approachBearing, _side, _postSupportCode] call `KISKA_fnc_helicopterGunner`",
@@ -6348,7 +6549,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_heliLand.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_heliLand.sqf",
             "syntaxes": [
                 {
                     "outline": "[_aircraft, _landingPosition, _landMode, _createHelipad, _afterLandCode] call `KISKA_fnc_heliLand`",
@@ -6371,7 +6572,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_afterLandCode",
-                            "description": "*(CODE, STRING, or ARRAY)* - Code to spawn after the helicopter has landed. See KISKA_fnc_callBack\n\n    Parameters:\n    - 0: *(OBJECT)* - The helicopter"
+                            "description": "*(CODE, STRING, or ARRAY)* - Code to `spawn` after the helicopter has landed. See `KISKA_fnc_callBack`.\n\n    Parameters:\n    - 0: *(OBJECT)* - The helicopter"
                         }
                     ],
                     "returns": "*(BOOL)* - True if helicopter can attempt, false if problem"
@@ -6391,7 +6592,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_heliPatrol.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_heliPatrol.sqf",
             "syntaxes": [
                 {
                     "outline": "[_helicopter, _patrolPoints, _spotDistance3D, _patrolHeight, _patrolSpeed, _randomPatrol] call `KISKA_fnc_heliPatrol`",
@@ -6438,7 +6639,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_hintDiary.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_hintDiary.sqf",
             "syntaxes": [
                 {
                     "outline": "[_hintText, _subject, _silent] call `KISKA_fnc_hintDiary`",
@@ -6473,7 +6674,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_hover.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_hover.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _hoverPosition, _shouldHoverStop, _onHoverEnd] call `KISKA_fnc_hover`",
@@ -6512,7 +6713,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_idCounter.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_idCounter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _namespace] call `KISKA_fnc_idCounter`",
@@ -6543,7 +6744,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_initDynamicSimConfig.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_initDynamicSimConfig.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_initDynamicSimConfig`",
@@ -6565,7 +6766,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isAdminOrHost.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isAdminOrHost.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_isAdminOrHost`",
@@ -6587,7 +6788,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isGroupAlive.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isGroupAlive.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group] call `KISKA_fnc_isGroupAlive`",
@@ -6614,7 +6815,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_isGroupRallyAllowed.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_isGroupRallyAllowed.sqf",
             "syntaxes": [
                 {
                     "outline": "[_groupToCheck] call `KISKA_fnc_isGroupRallyAllowed`",
@@ -6641,7 +6842,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isMainMenu.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isMainMenu.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_isMainMenu`",
@@ -6663,7 +6864,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_isMusicPlaying.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_isMusicPlaying.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_isMusicPlaying`",
@@ -6685,7 +6886,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_isPatchLoaded.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isPatchLoaded.sqf",
             "syntaxes": [
                 {
                     "outline": "[_configName] call `KISKA_fnc_isPatchLoaded`",
@@ -6712,7 +6913,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Respawn/fn_keepInGroup.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Respawn/fn_keepInGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_keepInGroup`",
@@ -6734,7 +6935,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_log.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_log.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _logWithError, _forceLog, _joinString, _scriptName] call `KISKA_fnc_log`",
@@ -6777,7 +6978,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_lookHere.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_lookHere.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objectsToRotate, _positionsToLookAt, _setDirection] call `KISKA_fnc_lookHere`",
@@ -6812,7 +7013,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Managed%20Run/fn_managedRun_execute.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Managed%20Run/fn_managedRun_execute.sqf",
             "syntaxes": [
                 {
                     "outline": "[_nameOfCode, _args, _idNamespace, _idToRunAgainst, _isScheduled] call `KISKA_fnc_managedRun_execute`",
@@ -6855,7 +7056,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Managed%20Run/fn_managedRun_isDefined.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Managed%20Run/fn_managedRun_isDefined.sqf",
             "syntaxes": [
                 {
                     "outline": "[_nameOfCode] call `KISKA_fnc_managedRun_isDefined`",
@@ -6882,7 +7083,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Managed%20Run/fn_managedRun_updateCode.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Managed%20Run/fn_managedRun_updateCode.sqf",
             "syntaxes": [
                 {
                     "outline": "[_nameOfCode, _code] call `KISKA_fnc_managedRun_updateCode`",
@@ -6913,7 +7114,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_markBorder.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_markBorder.sqf",
             "syntaxes": [
                 {
                     "outline": "[_centerPos, _radius, _markerCount, _verticalOffset, _markerObjectClass] call `KISKA_fnc_markBorder`",
@@ -6956,7 +7157,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_markPositions.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_markPositions.sqf",
             "syntaxes": [
                 {
                     "outline": "[_positions] call `KISKA_fnc_markPositions`",
@@ -6983,7 +7184,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_monitorFPS.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_monitorFPS.sqf",
             "syntaxes": [
                 {
                     "outline": "[_duration, _frequency, _print] spawn `KISKA_fnc_monitorFPS`",
@@ -7018,7 +7219,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_musicEventHandlers.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_musicEventHandlers.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_musicEventHandlers`",
@@ -7040,7 +7241,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_musicStartEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_musicStartEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_trackClassname] call `KISKA_fnc_musicStartEvent`",
@@ -7067,7 +7268,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_musicStopEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_musicStopEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_stopAudio] call `KISKA_fnc_musicStopEvent`",
@@ -7094,7 +7295,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_netId.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_netId.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity] call `KISKA_fnc_netId`",
@@ -7121,7 +7322,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_notification.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_notification.sqf",
             "syntaxes": [
                 {
                     "outline": "[_message, _lifetime, _canSkip, _headerColor] call `KISKA_fnc_notification`",
@@ -7160,7 +7361,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_notify.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_notify.sqf",
             "syntaxes": [
                 {
                     "outline": "[_titleLine, _subLine, _lifetime, _skippable] call `KISKA_fnc_notify`",
@@ -7199,7 +7400,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_paratroopers.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_paratroopers.sqf",
             "syntaxes": [
                 {
                     "outline": "[_dropZone, _unitsThatCanDrop, _dropVehicleClass, _numToDrop, _flyDirection, _flyInHeight, _side, _spawnDistance, _invincibleOnDrop] spawn `KISKA_fnc_paratroopers`",
@@ -7258,7 +7459,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_patrolSpecific.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_patrolSpecific.sqf",
             "syntaxes": [
                 {
                     "outline": "[_group, _postions, _numWaypoints, _random, _behaviour, _speed, _combatMode, _formation] call `KISKA_fnc_patrolSpecific`",
@@ -7269,7 +7470,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_postions",
-                            "description": "*(ARRAY)* - An array of possible positions to patrol between, can be either positions or objects"
+                            "description": "*((PositionATL[] | Position2D[] | OBJECT)[])* - An array of possible positions to patrol between. Can be either positions or objects."
                         },
                         {
                             "name": "_numWaypoints",
@@ -7313,7 +7514,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_playDrivePath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_playDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_vehicle, _pathArray] call `KISKA_fnc_playDrivePath`",
@@ -7344,7 +7545,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_playMusic.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_playMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "[_track, _startTime, _canInterrupt, _volume, _fadeTime] call `KISKA_fnc_playMusic`",
@@ -7390,7 +7591,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_playRandom3dSoundLoop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_playRandom3dSoundLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_origin, _sounds, _timeBetweenSounds, _soundParams, _onSoundPlayed] call `KISKA_fnc_playRandom3dSoundLoop`",
@@ -7433,7 +7634,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_playSound2D.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_playSound2D.sqf",
             "syntaxes": [
                 {
                     "outline": "[_sound, _center, _radius, _threeDimensional] call `KISKA_fnc_playSound2D`",
@@ -7472,7 +7673,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_playSound3D.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_playSound3D.sqf",
             "syntaxes": [
                 {
                     "outline": "[_sound, _origin, _distance, _volume, _isInside, _pitch] call `KISKA_fnc_playSound3D`",
@@ -7519,7 +7720,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_pushBackToArray.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_pushBackToArray.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _entryToAdd, _namespace] call `KISKA_fnc_pushBackToArray`",
@@ -7554,7 +7755,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_pushBackToArray_interface.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_pushBackToArray_interface.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arrayVariableName, _entryToAdd, _namespace] call `KISKA_fnc_pushBackToArray_interface`",
@@ -7589,7 +7790,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_radioChatter.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_radioChatter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_followSource, _soundParams] call `KISKA_fnc_radioChatter`",
@@ -7623,7 +7824,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_randomGear.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Loadouts/fn_randomGear.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _uniforms, _headgear, _facewear, _vests, _backpacks, _primaryWeapons, _handguns, _secondaryWeapons] call `KISKA_fnc_randomGear`",
@@ -7682,7 +7883,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_randomIndex.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_randomIndex.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array] call `KISKA_fnc_randomIndex`",
@@ -7709,7 +7910,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_randomLoadout.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Loadouts/fn_randomLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "[_units, _loadoutArray] call `KISKA_fnc_randomLoadout`",
@@ -7740,7 +7941,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "[_musicTracks, _interval, _canInterrupt, _tickId, _usedMusicTracks] call `KISKA_fnc_randomMusic`",
@@ -7786,7 +7987,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_getCurrentTrack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_getCurrentTrack.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getCurrentTrack`",
@@ -7808,7 +8009,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_getTrackInterval.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_getTrackInterval.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getTrackInterval`",
@@ -7830,7 +8031,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_getUnusedTracks.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_getUnusedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getUnusedTracks`",
@@ -7852,7 +8053,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_getUsedTracks.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_getUsedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getUsedTracks`",
@@ -7874,7 +8075,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_getVolume.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_getVolume.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_getVolume`",
@@ -7896,7 +8097,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_isSystemRunning.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_isSystemRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_isSystemRunning`",
@@ -7918,7 +8119,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_setCurrentTrack.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_setCurrentTrack.sqf",
             "syntaxes": [
                 {
                     "outline": "[_trackClass] call `KISKA_fnc_randomMusic_setCurrentTrack`",
@@ -7945,7 +8146,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_setSystemRunning.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_setSystemRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "[_setting] call `KISKA_fnc_randomMusic_setSystemRunning`",
@@ -7972,7 +8173,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_setTrackInterval.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_setTrackInterval.sqf",
             "syntaxes": [
                 {
                     "outline": "[_interval] call `KISKA_fnc_randomMusic_setTrackInterval`",
@@ -7999,7 +8200,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_setUnusedTracks.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_setUnusedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "[_musicTracks] call `KISKA_fnc_randomMusic_setUnusedTracks`",
@@ -8026,7 +8227,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_setUsedTracks.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_setUsedTracks.sqf",
             "syntaxes": [
                 {
                     "outline": "[_usedMusicTracks] call `KISKA_fnc_randomMusic_setUsedTracks`",
@@ -8053,7 +8254,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_setVolume.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_setVolume.sqf",
             "syntaxes": [
                 {
                     "outline": "[_volume] call `KISKA_fnc_randomMusic_setVolume`",
@@ -8080,7 +8281,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_stopClient.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_stopClient.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_randomMusic_stopClient`",
@@ -8102,7 +8303,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/Random%20Music/fn_randomMusic_stopServer.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/Random%20Music/fn_randomMusic_stopServer.sqf",
             "syntaxes": [
                 {
                     "outline": "[_playLastSong] call `KISKA_fnc_randomMusic_stopServer`",
@@ -8129,7 +8330,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_reassignCurator.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_reassignCurator.sqf",
             "syntaxes": [
                 {
                     "outline": "[_curatorObject, _isManual] call `KISKA_fnc_reassignCurator`",
@@ -8160,7 +8361,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_recordDrivePath.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_recordDrivePath.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit, _frequency, _recordSpeed] call `KISKA_fnc_recordDrivePath`",
@@ -8195,7 +8396,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_remoteReturn_receive.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_remoteReturn_receive.sqf",
             "syntaxes": [
                 {
                     "outline": "[_code, _args, _scheduled, _uniqueId] call `KISKA_fnc_remoteReturn_receive`",
@@ -8234,7 +8435,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_remoteReturn_send.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_remoteReturn_send.sqf",
             "syntaxes": [
                 {
                     "outline": "[_code, _defaultValue, _target, _scheduled, _awaitParams] spawn `KISKA_fnc_remoteReturn_send`",
@@ -8277,7 +8478,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeArsenal.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_removeArsenal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arsenals] call `KISKA_fnc_removeArsenal`",
@@ -8304,7 +8505,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeBISArsenalAction.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_removeBISArsenalAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_arsenal] call `KISKA_fnc_removeBISArsenalAction`",
@@ -8331,7 +8532,38 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeEntityKilledEventHandler.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_removeBoundingBoxDraw.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_object, _id] call `KISKA_fnc_removeBoundingBoxDraw`",
+                    "parameters": [
+                        {
+                            "name": "_object",
+                            "description": ": *(OBJECT)* - The object to draw the box around."
+                        },
+                        {
+                            "name": "_id",
+                            "description": ": *(STRING)* Default: `\"all\"` - The bounding box Id to remove. If the ID is `\"all\"`, all bounding boxes will be removed from the object."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[] spawn {\n    private _boundingBoxId = [\n        myObject,\n        [1,0,1,1],\n        0\n    ] call KISKA_fnc_drawBoundingBox;\n    \n    sleep 10;\n    \n    [_boundingBoxId] call KISKA_fnc_removeBoundingBoxDraw;\n};\n```"
+                }
+            ],
+            "description": "Removes a select or all boudning boxes drawn with `KISKA_fnc_drawBoundingBox`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_removeBoundingBoxDraw",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_removeEntityKilledEventHandler.sqf",
             "syntaxes": [
                 {
                     "outline": "[_entity, _eventId] call `KISKA_fnc_removeEntityKilledEventHandler`",
@@ -8362,7 +8594,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_removeProximityPlayerAction.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_removeProximityPlayerAction.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_removeProximityPlayerAction`",
@@ -8389,7 +8621,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Loadouts/fn_savePlayerLoadout.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Loadouts/fn_savePlayerLoadout.sqf",
             "syntaxes": [
                 {
                     "outline": "spawn `KISKA_fnc_savePlayerLoadout`",
@@ -8411,7 +8643,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_resetMove.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_resetMove.sqf",
             "syntaxes": [
                 {
                     "outline": "[_unit] call `KISKA_fnc_selectRandom`",
@@ -8438,7 +8670,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_selectRandom.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_selectRandom.sqf",
             "syntaxes": [
                 {
                     "outline": "[_array, _valueType] call `KISKA_fnc_selectRandom`",
@@ -8475,7 +8707,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setContainerCargo.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_setContainerCargo.sqf",
             "syntaxes": [
                 {
                     "outline": "[_containerToLoad, _cargo] call `KISKA_fnc_setContainerCargo`",
@@ -8509,7 +8741,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_setCrew.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_setCrew.sqf",
             "syntaxes": [
                 {
                     "outline": "[_crew, _vehicle, _deleteCrewIfNull] call `KISKA_fnc_setCrew`",
@@ -8544,7 +8776,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setupMultiKillEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_setupMultiKillEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objects, _onThresholdMet, _threshold, _onKilled, _useMPKilled] call `KISKA_fnc_setupMultiKillEvent`",
@@ -8590,7 +8822,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_setWaypointExecStatement.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_setWaypointExecStatement.sqf",
             "syntaxes": [
                 {
                     "outline": "[_waypoint, _statement, _existingId] call `KISKA_fnc_setWaypointExecStatement`",
@@ -8625,7 +8857,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_showHide.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_showHide.sqf",
             "syntaxes": [
                 {
                     "outline": "[_objects, _show, _enableDynamicSim] call `KISKA_fnc_showHide`",
@@ -8660,7 +8892,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_slingLoad.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_slingLoad.sqf",
             "syntaxes": [
                 {
                     "outline": "[_heli, _liftObject, _dropOffPoint, _afterDropCode, _flightPath] call `KISKA_fnc_slingLoad`",
@@ -8703,7 +8935,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_sortStringsNumerically.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_sortStringsNumerically.sqf",
             "syntaxes": [
                 {
                     "outline": "[_strings, _order] call `KISKA_fnc_sortStringsNumerically`",
@@ -8734,7 +8966,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_spawn.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_spawn.sqf",
             "syntaxes": [
                 {
                     "outline": "[_numberOfUnits, _numberOfUnitsPerGroup, _unitTypes, _spawnPositions, _canUnitsMove, _enableDynamic, _side, _allowedStances] call `KISKA_fnc_spawn`",
@@ -8789,7 +9021,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_spawnGroup.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_spawnGroup.sqf",
             "syntaxes": [
                 {
                     "outline": "[_numberOfUnits, _unitTypes, _side, _position, _enableDynamicSimulation] call `KISKA_fnc_spawnGroup`",
@@ -8832,7 +9064,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_spawnVehicle.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_spawnVehicle.sqf",
             "syntaxes": [
                 {
                     "outline": "[_spawnPosition, _spawnDirection, _vehicleClass, _group, _forcePosition, _crewInstructions, _deleteOverflow] call `KISKA_fnc_spawnVehicle`",
@@ -8883,7 +9115,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_addSignal.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_addSignal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_signalProperties, _global] call `KISKA_fnc_spectrum_addSignal`",
@@ -8914,7 +9146,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_deleteSignal.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_deleteSignal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _global] call `KISKA_fnc_spectrum_deleteSignal`",
@@ -8945,7 +9177,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_getMaxDecibels.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_getMaxDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMaxDecibels`",
@@ -8967,7 +9199,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_getMaxFrequency.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_getMaxFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMaxFrequency`",
@@ -8989,7 +9221,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_getMinDecibels.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_getMinDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMinDecibels`",
@@ -9011,7 +9243,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_getMinFrequency.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_getMinFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getMinFrequency`",
@@ -9033,7 +9265,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_getSelection.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_getSelection.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getSelection`",
@@ -9055,7 +9287,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_getSignalMap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_getSignalMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_getSignalMap`",
@@ -9077,7 +9309,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_isInitialized.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_isInitialized.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_isInitialized`",
@@ -9099,7 +9331,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_isTransmitting.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_isTransmitting.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_isTransmitting`",
@@ -9121,7 +9353,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setMaxDecibels.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setMaxDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "[_max] call `KISKA_fnc_spectrum_setMaxDecibels`",
@@ -9148,7 +9380,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setMaxFrequency.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setMaxFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "[_max] call `KISKA_fnc_spectrum_setMaxFrequency`",
@@ -9175,7 +9407,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setMinDecibels.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setMinDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "[_min] call `KISKA_fnc_spectrum_setMinDecibels`",
@@ -9202,7 +9434,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setMinFrequency.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setMinFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "[_min] call `KISKA_fnc_spectrum_setMinFrequency`",
@@ -9229,7 +9461,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setSelectionWidth.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setSelectionWidth.sqf",
             "syntaxes": [
                 {
                     "outline": "[_width] call `KISKA_fnc_spectrum_setSelectionWidth`",
@@ -9256,7 +9488,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setSignalDecibels.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setSignalDecibels.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _decibels, _global] call `KISKA_fnc_spectrum_setSignalDecibels`",
@@ -9291,7 +9523,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setSignalDistance.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setSignalDistance.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _maxDistance, _global] call `KISKA_fnc_spectrum_setSignalDistance`",
@@ -9326,7 +9558,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setSignalFrequency.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setSignalFrequency.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _frequency, _global] call `KISKA_fnc_spectrum_setSignalFrequency`",
@@ -9361,7 +9593,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setSignalPosition.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setSignalPosition.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id, _origin, _global] call `KISKA_fnc_spectrum_setSignalPosition`",
@@ -9396,7 +9628,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_setTransmitting.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_setTransmitting.sqf",
             "syntaxes": [
                 {
                     "outline": "[_isTransmitting] call `KISKA_fnc_spectrum_setTransmitting`",
@@ -9423,7 +9655,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_signalExists.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_signalExists.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_spectrum_signalExists`",
@@ -9450,7 +9682,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_startSignalLoop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_startSignalLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_spectrum_startSignalLoop`",
@@ -9472,7 +9704,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Spectrum%20Device/fn_spectrum_updateSignal.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Spectrum%20Device/fn_spectrum_updateSignal.sqf",
             "syntaxes": [
                 {
                     "outline": "[_signalProperties, _global] call `KISKA_fnc_spectrum_updateSignal`",
@@ -9620,7 +9852,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_stalk.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_stalk.sqf",
             "syntaxes": [
                 {
                     "outline": "[_stalkerGroup, _stalked, _refreshInterval, _postStalking, _conditionToEndStalking] call `KISKA_fnc_stalk`",
@@ -9663,7 +9895,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_staticLine.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_staticLine.sqf",
             "syntaxes": [
                 {
                     "outline": "[_aircraft, _dropArray, _invincibleOnDrop] call `KISKA_fnc_staticLine`",
@@ -9701,7 +9933,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_staticLine_eject.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_staticLine_eject.sqf",
             "syntaxes": [
                 {
                     "outline": "[_aircraft, _unit, _chuteType, _index, _invincibleOnDrop] call `KISKA_fnc_staticLine`",
@@ -9740,7 +9972,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_stopBattleSound.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_stopBattleSound.sqf",
             "syntaxes": [
                 {
                     "outline": "[_chatterId] call `KISKA_fnc_stopBattleSound`",
@@ -9767,7 +9999,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Music/fn_stopMusic.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_stopMusic.sqf",
             "syntaxes": [
                 {
                     "outline": "[_fadeTime] spawn `KISKA_fnc_stopMusic`",
@@ -9794,7 +10026,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_stopRadioChatter.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_stopRadioChatter.sqf",
             "syntaxes": [
                 {
                     "outline": "[_chatterId] call `KISKA_fnc_stopRadioChatter`",
@@ -9821,7 +10053,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Sound/fn_stopRandom3dSoundLoop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Sound/fn_stopRandom3dSoundLoop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_id] call `KISKA_fnc_stopRandom3dSoundLoop`",
@@ -9848,7 +10080,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_str.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_str.sqf",
             "syntaxes": [
                 {
                     "outline": "[_value] call `KISKA_fnc_str`",
@@ -9875,7 +10107,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_supplyDrop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_supplyDrop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_classNames, _altittude, _dropPosition, _stopAdjustingHeight, _chuteVelocityFreq, _stage_1_height, _stage_1_velocityDiff, _stage_2_velocityDiff] call `KISKA_fnc_supplyDrop`",
@@ -9930,7 +10162,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_supplyDrop_aircraft.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_supplyDrop_aircraft.sqf",
             "syntaxes": [
                 {
                     "outline": "[_dropPosition, _crates, _deleteCargo, _addArsenal, _flyinHeight, _flyDirection, _flyInRadius, _lifeTime, _side] call `KISKA_fnc_supplyDrop_aircraft`",
@@ -10260,7 +10492,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_supportNotification.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_supportNotification.sqf",
             "syntaxes": [
                 {
                     "outline": "[_supportTypeId] call `KISKA_fnc_supportNotification`",
@@ -10287,7 +10519,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_supportRadio.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_supportRadio.sqf",
             "syntaxes": [
                 {
                     "outline": "[_messageType, _caller, _targets] call `KISKA_fnc_supportRadio`",
@@ -10322,7 +10554,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_executeEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_executeEvent.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineEvents, _timelineId, _timelineMap, _previousReturn] call `KISKA_fnc_timeline_executeEvent`",
@@ -10361,7 +10593,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_getInfoMap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_getInfoMap.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId] call `KISKA_fnc_timeline_getInfoMap`",
@@ -10388,7 +10620,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_getIsRunningMap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_getIsRunningMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_timeline_getIsRunningMap`",
@@ -10410,7 +10642,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_getMainMap.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_getMainMap.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_timeline_getMainMap`",
@@ -10432,7 +10664,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_isRunning.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_isRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId, _checkForFullCompletion] call `KISKA_fnc_timeline_isRunning`",
@@ -10466,7 +10698,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_setIsRunning.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_setIsRunning.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId, _isRunning] call `KISKA_fnc_timeline_setIsRunning`",
@@ -10497,18 +10729,18 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_start.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_start.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timeline, _onTimelineStopped] call `KISKA_fnc_timeline_start`",
                     "parameters": [
                         {
                             "name": "_timeline",
-                            "description": "*(ARRAY)* - An array of timeline events that will happen. See description above for formats"
+                            "description": "*(ARRAY)* - An array of timeline events that will happen. See description above for formats."
                         },
                         {
                             "name": "_onTimelineStopped",
-                            "description": "*(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack), code that will be executed once a timeline is stopped.\n\n    Parameters:\n    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.\n    - 1: *(HASHMAP)* - The Individual map defined for a specific timeline of the given ID"
+                            "description": "*(CODE, STRING, or ARRAY)* - (see KISKA_fnc_callBack), code that will be executed once a timeline is stopped.\n\n    Parameters:\n    - 0: *(ARRAY)* - The timeline array in the state when the stoppage actually happens.\n    - 1: *(HASHMAP)* - The individual map defined for a specific timeline of the given ID."
                         }
                     ],
                     "returns": "*(STRING)* - The id of the new timeline"
@@ -10519,7 +10751,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _timeline = [\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to next and current wait condition\n        },\n        {\n            params [\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        },\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}, 2\n    ]\n];\nprivate _timelineId = [_timeline,{hint \"timeline end\"}] call KISKA_fnc_timeline_start;\n```"
                 }
             ],
-            "description": "Creates a timeline of events that can happen. Waits/executes in an unscheduled environment.\n\nThere is a non-trivial amount of overhead to this, however, so do not use with the intention of needing precise events to happen but rather to not clog the scheduler or use a decent interface with smaller units of code.\n\n\n```sqf\n// A timeline is made up of events:\n[\n    [], // event 1\n    [] // event 2\n]\n```\n\n\n\n```sqf\n// Each event is made up of code to execute when the event comes up in the timeline,\n/// and what to wait for when executing the NEXT event in the timeline AFTER the \n/// current event completes:\n[\n    [\n        {\n            hint \"executed event #1\"\n        },\n        3 // wait 3 seconds AFTER current event to execute event 2\n    ],\n    [\n        {\n            hint \"executed event #2 3 seconds after event 1 completed\"\n        },\n        1 // wait 1 second to run _onTimelineStopped code\n    ]\n]\n```\n\n\n\n```sqf\n// Alternativeley, you can also wait for a condition before proceeeding to the next event:\nprivate _endTime = time + 10;\n[\n    [\n        {hint \"executed event #1\"},\n        3 // wait 3 seconds AFTER current event to execute event 1\n    ],\n    [\n        {hint \"executed event #2 3 seconds after event 1 completed\"},\n        [[_endTime],{\n            _thisArgs params [\"_endTime\"];\n            time >= (_endTime) // wait until current time is more than _endTime\n        }],\n        1 // check condition every second\n    ]\n]\n```\n\n\n\n```sqf\n// You can chain timeline events together by returning\n[\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to the next event and current wait condition\n        },\n        {\n            params [\"\",\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        },\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}\n    ]\n]\n```"
+            "description": "Creates a timeline of events that can happen. Waits/executes in an unscheduled environment.\n\nThere is a non-trivial amount of overhead to this, however, so do not use with the intention of needing precise events to happen but rather to not clog the scheduler or use a decent interface with smaller units of code.\n\n\n```sqf\n// A timeline is made up of events:\n[\n    [], // event 1\n    [] // event 2\n]\n```\n\n\n\n```sqf\n// Each event is made up of code to execute when the event comes up in the timeline,\n/// and what to wait for when executing the NEXT event in the timeline AFTER the \n/// current event completes:\n[\n    [\n        {\n            hint \"executed event #1\"\n        },\n        3 // wait 3 seconds AFTER current event to execute event 2\n    ],\n    [\n        {\n            hint \"executed event #2 3 seconds after event 1 completed\"\n        },\n        1 // wait 1 second to run _onTimelineStopped code\n    ]\n]\n```\n\n\n\n```sqf\n// Alternativeley, you can also wait for a condition before proceeeding to the next event:\nprivate _endTime = time + 10;\n[\n    [\n        {hint \"executed event #1\"},\n        3 // wait 3 seconds AFTER current event to execute event 1\n    ],\n    [\n        {hint \"executed event #2 3 seconds after event 1 completed\"},\n        [[_endTime],{\n            _thisArgs params [\"_endTime\"];\n            time >= (_endTime) // wait until current time is more than _endTime\n        }],\n        1 // check condition every second\n    ]\n]\n```\n\n\n\n```sqf\n// You can chain timeline events together by returning\n[\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to the next event and current wait condition\n        },\n        {\n            params [\"\",\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        }\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}\n    ]\n]\n```"
         },
         "configuration": {
             "label": "KISKA_fnc_timeline_start",
@@ -10528,7 +10760,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Timeline/fn_timeline_stop.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Timeline/fn_timeline_stop.sqf",
             "syntaxes": [
                 {
                     "outline": "[_timelineId, _onTimelineStopped] call `KISKA_fnc_timeline_stop`",
@@ -10856,7 +11088,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/Support%20Framework/Functions/fn_updateFlareEffects.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_updateFlareEffects.sqf",
             "syntaxes": [
                 {
                     "outline": "[_light, _flare] call `KISKA_fnc_updateFlareEffects`",
@@ -10887,7 +11119,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_updateRallyPointNotification.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_updateRallyPointNotification.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_updateRallyPointNotification`",
@@ -10909,7 +11141,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_updateRespawnMarker.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_updateRespawnMarker.sqf",
             "syntaxes": [
                 {
                     "outline": "[_caller, _marker, _markerText] call `KISKA_fnc_updateRespawnMarker`",
@@ -10944,7 +11176,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Rally/fn_updateRespawnMarkerQuery.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_updateRespawnMarkerQuery.sqf",
             "syntaxes": [
                 {
                     "outline": "call `KISKA_fnc_updateRespawnMarkerQuery`",
@@ -11068,7 +11300,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_vehicleFactory.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_vehicleFactory.sqf",
             "syntaxes": [
                 {
                     "outline": "[_controlPanel, _spawnPosition, _vehicleTypes, _clearRadius, _onCreateCode] spawn `KISKA_fnc_vehicleFactory`",
@@ -11158,7 +11390,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Supports/fn_virtualArty.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_virtualArty.sqf",
             "syntaxes": [
                 {
                     "outline": "[_target, _ammoType, _radius, _numberOfRounds, _delayBetween, _markPosition] spawn `KISKA_fnc_virtualArty`",
@@ -11205,7 +11437,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/AI/fn_vlsFireAt.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_vlsFireAt.sqf",
             "syntaxes": [
                 {
                     "outline": "[_launcher, _target] call `KISKA_fnc_vlsFireAt`",
@@ -11236,7 +11468,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Utilities/fn_waitUntil.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_waitUntil.sqf",
             "syntaxes": [
                 {
                     "outline": "[_condition, _function, _interval, _parameters, _unscheduled] call `KISKA_fnc_waitUntil`",
