@@ -1,5 +1,6 @@
-import { IRawGrammar, IRawRepository, IRawRule } from "vscode-textmate/release/rawGrammar";
+import { IRawGrammar } from "vscode-textmate";
 
+type IRawRule = IRawGrammar["patterns"][0];
 const patterns: IRawRule[] = [
     { include: "#comments" },
     { include: "#classes" },
@@ -9,6 +10,7 @@ const patterns: IRawRule[] = [
     { include: "#numbers" },
 ];
 
+type IRawRepository = IRawGrammar["repository"];
 const grammarRepo: IRawRepository = {
     $base: {},
     $self: {},

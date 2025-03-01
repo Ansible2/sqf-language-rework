@@ -1,4 +1,4 @@
-import { IRawGrammar, IRawRepository } from "vscode-textmate/release/rawGrammar";
+import { IRawGrammar } from "vscode-textmate";
 import { SQFGrammarType, SQFItemConfig } from "./sqf.namespace";
 import { getSqfItemConfigs } from "./config";
 
@@ -114,6 +114,7 @@ function getSingleWordRegexSpecialStart(words: string | string[]): string {
     return `(?i)(?<=(\\s+|^))(${words})\\b`;
 }
 
+type IRawRepository = IRawGrammar["repository"];
 const grammarRepo: IRawRepository = {
     $base: {},
     $self: {},
