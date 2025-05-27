@@ -93,6 +93,7 @@ export interface IGithubBlobResponse {
 
 export interface ISecrets {
     KiskaToken: string;
+    bikiCookie: string;
 }
 
 export async function getParserSecrets(): Promise<ISecrets> {

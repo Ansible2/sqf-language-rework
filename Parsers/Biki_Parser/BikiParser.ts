@@ -1,5 +1,11 @@
 import { XMLParser } from "fast-xml-parser";
-import { DocParser, IJSON, UnparsedItem, getStringReplacer } from "../SQFParser.namespace";
+import {
+    DocParser,
+    IJSON,
+    UnparsedItem,
+    getParserSecrets,
+    getStringReplacer,
+} from "../SQFParser.namespace";
 import {
     ExampleConfig,
     SQFArgumentLocality,
@@ -90,11 +96,18 @@ class BikiParser implements DocParser {
         formData.append("curonly", "1");
         formData.append("wpEditToken", "+\\");
 
+        const bikiCookie = (await getParserSecrets()).bikiCookie;
         const BIKI_EXPORT_URL = "https://community.bistudio.com/wiki/Special:Export/";
         const BIKI_EXPORT_METHOD = "POST";
+        const BIKI_HEADERS = {
+            Cookie: bikiCookie,
+            "User-Agent":
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        };
         const getPageNamesResponse = await fetch(BIKI_EXPORT_URL, {
             body: formData,
             method: BIKI_EXPORT_METHOD,
+            headers: BIKI_HEADERS,
         }).then((response) => response.text());
 
         // ooui-php-2 is the id of the textarea input that the pages are loaded to
@@ -117,6 +130,7 @@ class BikiParser implements DocParser {
         return await fetch(BIKI_EXPORT_URL, {
             body: formData,
             method: BIKI_EXPORT_METHOD,
+            headers: BIKI_HEADERS,
         }).then((response) => response.text());
     }
 
