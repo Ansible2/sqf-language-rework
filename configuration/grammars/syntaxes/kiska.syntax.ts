@@ -295,53 +295,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_addCommMenuItem.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_owner, _itemClass, _textArguements, _expressionArguments, _notification, _addToHash] call `KISKA_fnc_addCommMenuItem`",
-                    "parameters": [
-                        {
-                            "name": "_owner",
-                            "description": "*(OBJECT)* - The person to add the support to"
-                        },
-                        {
-                            "name": "_itemClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_textArguements",
-                            "description": "*(ANY)* - Any arguements to pass to the text displayed in the menu"
-                        },
-                        {
-                            "name": "_expressionArguments",
-                            "description": "*(ANY)* - Any arguements to pass to the expression"
-                        },
-                        {
-                            "name": "_notification",
-                            "description": "*(STRING)* - The class of notification to display when added"
-                        },
-                        {
-                            "name": "_addToHash",
-                            "description": "*(BOOL)* - Add to KISKA_playersSupportMap"
-                        }
-                    ],
-                    "returns": "*(NUMBER)* - The comm menu ID"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_id = [player,\"myClass\"] call KISKA_fnc_addCommMenuItem;\n```"
-                }
-            ],
-            "description": "This is an alias of sorts of Bohemia's BIS_fnc_addCommMenuItem. It is mostly made with the purpose of using default values and specifically passing a -1 by default to _expressionArguments.\n\nAlso initializes/adds entries to the KISKA_playersSupportMap which is used for keeping track of the number of uses left on a support if they are passed between the Support Manager."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_addCommMenuItem",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_addEntityKilledEventHandler.sqf",
             "syntaxes": [
                 {
@@ -920,53 +873,6 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_ambientNewsRadio",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_arsenalSupplyDrop.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_dropPosition, _dropAlt, _flyDirection, _flyInRadius, _lifeTime, _side] call `KISKA_fnc_arsenalSupplyDrop`",
-                    "parameters": [
-                        {
-                            "name": "_dropPosition",
-                            "description": ": *(ARRAY)* - The position (area) to drop the arsenal 1: _vehicleClass : *(STRING)* - The class of the vehicle to drop the arsenal"
-                        },
-                        {
-                            "name": "_dropAlt",
-                            "description": ": *(NUMBER)* - The flyInHeight of the drop vehicle"
-                        },
-                        {
-                            "name": "_flyDirection",
-                            "description": ": *(NUMBER)* - The compass bearing for the aircraft to apporach from (if < 0, it's random)"
-                        },
-                        {
-                            "name": "_flyInRadius",
-                            "description": ": *(NUMBER)* - How far out the drop vehicle will spawn and then fly in"
-                        },
-                        {
-                            "name": "_lifeTime",
-                            "description": ": *(NUMBER)* - How long until the arsenal is deleted"
-                        },
-                        {
-                            "name": "_side",
-                            "description": ": *(SIDE)* - The side of the drop vehicle"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[position player] call KISKA_fnc_arsenalSupplyDrop;\n```"
-                }
-            ],
-            "description": "Spawns in an aircraft that flies over a DZ to drop off an arsenal."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_arsenalSupplyDrop",
             "grammarType": "function"
         }
     },
@@ -1619,41 +1525,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_buildCommandMenu.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_menuName, _menuTitle, _menuParams] call `KISKA_fnc_buildCommandMenu`",
-                    "parameters": [
-                        {
-                            "name": "_menuName",
-                            "description": ": *(STRING)* - The name of the menu global variable"
-                        },
-                        {
-                            "name": "_menuTitle",
-                            "description": ": *(STRING)* - The title of the menu that will appear when it is openned"
-                        },
-                        {
-                            "name": "_menuParams",
-                            "description": ": *(ARRAY)* - An array of arrays formatted as:\n\n    - 0. *(STRING)* - The name of the menu option\n    - 1. *(NUMBER)* - The key code for quick menu select (key 1 is code 2, 2 is 3, etc. use 0 for no key)\n    - 2. *(ANY)* - The value to assign to this menu option"
-                        }
-                    ],
-                    "returns": "*(ARRAY)* - The created menu array"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_createdMenu = [] call KISKA_fnc_buildCommandMenu\n```"
-                }
-            ],
-            "description": "Creates a showCommandingMenu compatible menu global array to be used with KISKA_fnc_commandMenuTree.\n\nThis will be saved as a missionNamespace global var."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_buildCommandMenu",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_callBack.sqf",
             "syntaxes": [
                 {
@@ -1684,216 +1555,6 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_callBack",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForArsenalSupplyDrop.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForArsenalSupplyDrop`",
-                    "parameters": [
-                        {
-                            "name": "_supportClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
-                        },
-                        {
-                            "name": "_count",
-                            "description": "*(NUMBER)* - Used for keeping track of how many of a count a support has left (such as rounds)"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[] call KISKA_fnc_callingForArsenalSupplyDrop;\n```"
-                }
-            ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_callingForArsenalSupplyDrop",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForArty.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportClass, _commMenuArgs, _roundCount] call `KISKA_fnc_callingForArty`",
-                    "parameters": [
-                        {
-                            "name": "_supportClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
-                        },
-                        {
-                            "name": "_roundCount",
-                            "description": "*(NUMBER)* - Used for keeping track of how many of a count a support has left (such as rounds)"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[] call KISKA_fnc_callingForArty;\n```"
-                }
-            ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_callingForArty",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForCAS.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportClass, _commMenuArgs, _useCount] call `KISKA_fnc_callingForCAS`",
-                    "parameters": [
-                        {
-                            "name": "_supportClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
-                        },
-                        {
-                            "name": "_useCount",
-                            "description": "*(NUMBER)* - Used for keeping track of how many of a count a support has left (such as rounds)"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[] call KISKA_fnc_callingForCAS;\n```"
-                }
-            ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_callingForCAS",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForHelicopterCAS.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForHelicopterCAS`",
-                    "parameters": [
-                        {
-                            "name": "_supportClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
-                        },
-                        {
-                            "name": "_count",
-                            "description": "*(NUMBER)* - Used for keeping track of how many of a count a support has left (such as rounds)"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[] call KISKA_fnc_callingForHelicopterCAS;\n```"
-                }
-            ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_callingForHelicopterCAS",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForSupplyDrop_aircraft.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForSupplyDrop_aircraft`",
-                    "parameters": [
-                        {
-                            "name": "_supportClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* - The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem\n    - 5. _supportType *(NUMBER)* - The Support Type ID"
-                        },
-                        {
-                            "name": "_count",
-                            "description": "*(NUMBER)* - Used for keeping track of how many of a count a support has left (such as rounds)"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[] call KISKA_fnc_callingForSupplyDrop_aircraft;\n```"
-                }
-            ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_callingForSupplyDrop_aircraft",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_callingForSupportMaster.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportClass, _commMenuArgs, _count] call `KISKA_fnc_callingForSupportMaster`",
-                    "parameters": [
-                        {
-                            "name": "_supportClass",
-                            "description": "*(STRING)* - The class as defined in the CfgCommunicationMenu"
-                        },
-                        {
-                            "name": "_commMenuArgs",
-                            "description": "*(ARRAY)* - The arguements passed by the CfgCommunicationMenu entry\n\n    - 0. _caller *(OBJECT)* - The player calling for support\n    - 1. _targetPosition *(ARRAY)* - The position (AGLS) at which the call is being made\n        (where the player is looking or if in the map, the position where their cursor is)\n    - 2. _target *(OBJECT)* - The cursorTarget object of the player\n    - 3. _is3d *(BOOL)* - False if in map, true if not\n    - 4. _commMenuId *(NUMBER)* The ID number of the Comm Menu added by BIS_fnc_addCommMenuItem"
-                        },
-                        {
-                            "name": "_count",
-                            "description": "*(NUMBER)* - Used for keeping track of how many of a count a support has left (such as rounds)"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\"myClass\",_this] call KISKA_fnc_callingForSupportMaster;\n```"
-                }
-            ],
-            "description": "Used as a means of expanding on the \"expression\" property of the CfgCommunicationMenu.\n\nThis is essentially just another level of abstraction to be able to more easily reuse code between similar supports and make things easier to read instead of fitting it all in the config."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_callingForSupportMaster",
             "grammarType": "function"
         }
     },
@@ -2211,22 +1872,18 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_commandMenuTree.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_closeAirSupport.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_menuPath, _endExpression, _exitExpression] spawn `KISKA_fnc_commandMenuTree`",
+                    "outline": "[_aircraftParams, _fireOrders] call `KISKA_fnc_closeAirSupport`",
                     "parameters": [
                         {
-                            "name": "_menuPath",
-                            "description": "*(ARRAY)* - The menu global variable paths (in order)"
+                            "name": "_aircraftParams",
+                            "description": ": *(HASHMAP)* - A hashmap of various parameters that affect ther aircraft.\n\n    - `aircraftClass`: *(STRING)* Default: `\"\"` - the class of aircraft to spawn.\n    - `side`: *(SIDE)* Default: `BLUFOR` - The side of the aircraft to spawn.\n    - `allowDamage`: *(BOOLEAN)* Default: `false` - Whether or not the aircraft and crew take damage.\n    - `attackPosition`: *(PositionASL[] | OBJECT)* Default: `objNull` - The primary position to fire at.\n    - `directionOfAttack`: *(NUMBER)* Default: `0` - The direction the aircraft will be facing during it's attack run.\n    - `initialHeightAboveTarget`: *(NUMBER)* Default: `1300` - The aircraft's initial altitude.\n    - `initialDistanceToTarget`: *(NUMBER)* Default: `2000` - The distance from the `_attackPosition` the aircraft will spawn.\n    - `breakOffDistance`: *(NUMBER)* Default: `500` - The three dimensional distance between the `_attackPosition`\n        and the aircraft at which point it will abandon it's firing orders and egress.\n    - `numberOfFlaresToDump`: *(NUMBER)* Default: `4` - The number of flares to fire off after breaking off.\n    - `approachSpeed`: *(NUMBER)* Default: `75` - How many meters per second will the aircraft be flying while approaching the `_attackPosition`.\n    - `vectorToTargetOffset`: *(NUMBER[])* Default: `[0,0,0]` - Used with `vectorAdd` on the aircraft's starting position to get the vector it will follow to engage the target. This can be used if an aircraft seems to be firing off target."
                         },
                         {
-                            "name": "_endExpression",
-                            "description": "*(STRING, CODE, or ARRAY)* - The code to be executed at the end of the path. It receives all menu parameters in _this. (see KISKA_fnc_callBack)"
-                        },
-                        {
-                            "name": "_exitExpression",
-                            "description": "*(STRING, CODE, or ARRAY)* - The code to be executed in the event that the menu is closed by the player. It gets all added params up to that point in _this.\n    (see KISKA_fnc_callBack)"
+                            "name": "_fireOrders",
+                            "description": ": *([STRING,STRING,NUMBER,NUMBER,STRING,NUMBER][])* - An array of firing orders that determine how an aircraft will fire at the target. See `KISKA_fnc_closeAirSupport_parseFireOrders` for more detail."
                         }
                     ],
                     "returns": "NOTHING"
@@ -2234,13 +1891,362 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\n    [\"#USER:myMenu_1\",\"#USER:myMenu_2\"],\n    \"hint str _this\"\n] spawn KISKA_fnc_commandMenuTree\n```"
+                    "text": "```sqf\n// fire gun\n[\n    createHashMapFromArray [\n        [\"aircraftClass\",\"B_Plane_CAS_01_dynamicLoadout_F\"],\n        [\"numberOfFlaresToDump\",4],\n        [\"attackPosition\",theTarget]\n    ],\n    [\n        [\n            \"Gatling_30mm_Plane_CAS_01_F\",\n            \"\",\n            50,\n            0.05,\n            \"\",\n            0.1\n        ]\n    ]\n] call KISKA_fnc_closeAirSupport;\n```"
+                },
+                {
+                    "text": "```sqf\n// drop napalm\n[\n    createHashMapFromArray [\n        [\"aircraftClass\",\"B_Plane_CAS_01_dynamicLoadout_F\"],\n        [\"numberOfFlaresToDump\",0],\n        [\"attackPosition\",theTarget]\n    ],\n    [\n        [\n            \"pylon\",\n            \"vn_bomb_f4_out_500_blu1b_fb_mag_x4\",\n            4,\n            0.5,\n            \"guide_to_strafe_target\",\n            1\n        ]\n    ]\n] call KISKA_fnc_closeAirSupport;\n```"
+                },
+                {
+                    "text": "```sqf\n// shoot gun and fire rockets\n[\n    createHashMapFromArray [\n        [\"aircraftClass\",\"B_Plane_CAS_01_dynamicLoadout_F\"],\n        [\"numberOfFlaresToDump\",0],\n        [\"attackPosition\",theTarget]\n    ],\n    [\n        [\n            \"Gatling_30mm_Plane_CAS_01_F\",\n            \"\",\n            50,\n            0.05,\n            \"\",\n            0\n        ],\n        [\n            \"pylon\",\n            \"PylonRack_7Rnd_Rocket_04_HE_F\",\n            7,\n            0.5,\n            \"guide_to_strafe_target\",\n            0.01\n        ]\n    ]\n] call KISKA_fnc_closeAirSupport;\n```"
                 }
             ],
-            "description": "Creates a command menu tree dynamically instead of needing to define sub menus"
+            "description": "A more detailed version of KISKA_fnc_CAS that allows the caller to specify a number of parameters."
         },
         "configuration": {
-            "label": "KISKA_fnc_commandMenuTree",
+            "label": "KISKA_fnc_closeAirSupport",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_closeAirSupport_fire.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_aircraft, _attackTarget, _strafeTarget, _fireOrders] call `KISKA_fnc_closeAirSupport_fire`",
+                    "parameters": [
+                        {
+                            "name": "_aircraft",
+                            "description": ": *(OBJECT)* - The aircraft doing the firing."
+                        },
+                        {
+                            "name": "_attackTarget",
+                            "description": ": *(OBJECT)* - The original target that the aircraft is meant to fire at."
+                        },
+                        {
+                            "name": "_strafeTarget",
+                            "description": ": *(OBJECT)* - A target that will act as a guide for strafing the target."
+                        },
+                        {
+                            "name": "_fireOrders",
+                            "description": ": *([STRING,STRING,NUMBER,NUMBER,STRING,NUMBER][])* - List of fire orders."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nShould not be called on its own but in KISKA_fnc_closeAirSupport\n```"
+                }
+            ],
+            "description": "Instructs the aircraft to fire its weapons for `KISKA_fnc_closeAirSupport`\n and will guide munitions if needed."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_closeAirSupport_fire",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_closeAirSupport_parseFireOrders.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_aircraft, _fireOrders] call `KISKA_fnc_closeAirSupport_fire`",
+                    "parameters": [
+                        {
+                            "name": "_aircraft",
+                            "description": ": *(OBJECT)* - The aircraft that will be following the fire orders"
+                        },
+                        {
+                            "name": "_fireOrders",
+                            "description": ": *([STRING,STRING,NUMBER,NUMBER,STRING,NUMBER][])* - List of fire orders.\n\n    A fire single fire order can consist of the following arguments:\n    - 0. *(STRING)* - The weapon to fire's className. If this is to be a pylon weapon, simply set to `pylon`.\n    - 1. *(STRING)* - The weapon to fire's magazine className. If this is to be a pylon magazine, ensure you've set the weapon className to\n        \"pylon\". If no magazine is provided but a weapon is, the default magazine for the weapon will be used.\n    - 2. *(NUMBER)* - The number of trigger pulls. If less than 0, all rounds in the magazine will be fired.\n    - 3. *(NUMBER)* - The amount of seconds between each time the AI pulls the trigger.\n    - 4. *(STRING)* - Either `\"guide_to_original_target\"`, `\"guide_to_strafe_target\"`, or `\"\"`.\n        `guide_to_original_target` will guide each round of the weapon fired directly to the attack position specified. `guide_to_strafe_target` will guide each round onto the stafing target giving the illusion of strafing. Leave empty if no guidance is necessary. This can be performance intensive.\n    - 5. *(NUMBER)* - For every 0.01 seconds the aircraft is firing these munitions, how much space should there be added to the aicraft's nose position? This will help with strafing a target."
+                        }
+                    ],
+                    "returns": "*([STRING,STRING,NUMBER,NUMBER,STRING,NUMBER][])* - a parsed list of fire orders."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// Should not be called on its own but in `KISKA_fnc_closeAirSupport`\n```"
+                }
+            ],
+            "description": "Parses and validates a list of fire orders for an aircraft to follow to do CAS with `KISKA_fnc_closeAirSupport`"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_closeAirSupport_fire",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_detectControlKeys.sqf",
+            "syntaxes": [
+                {
+                    "outline": "spawn `KISKA_fnc_commMenu_detectControlKeys`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nPRE-INIT Function\n```"
+                }
+            ],
+            "description": "Arma 3's support system currently has a bug that allows players to call in multiple supports by having the map open and holding down a ctrl key and left\n - clicking while in the support menu. Each click will call in a support."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_detectControlKeys",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_onSupportAdded.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _supportConfig, _numberOfUsesLeft] call `KISKA_fnc_commMenu_onSupportAdded`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The support's id"
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support config"
+                        },
+                        {
+                            "name": "_numberOfUsesLeft",
+                            "description": "*(NUMBER)* - The number of support uses left or rounds available to use."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_supports_1\",\n    missionConfigFile >> \"CfgCommunicationMenu\" >> \"MySupport\",\n    1\n] call KISKA_fnc_commMenu_onSupportAdded;\n```"
+                }
+            ],
+            "description": "Designed to be an event handler for when a support that's meant to be used in the event a support item that is part of the comm menu is added."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_onSupportAdded",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_onSupportRemoved.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _supportConfig] call `KISKA_fnc_commMenu_onSupportRemoved`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The support's id"
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support's config"
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_supports_1\",\n    missionConfigFile >> \"CfgCommunicationMenu\" >> \"MySupport\",\n    1\n] call KISKA_fnc_commMenu_onSupportRemoved;\n```"
+                }
+            ],
+            "description": "Called when a comm menu support is removed be it through a manual process or when a player uses all of a given support."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_onSupportRemoved",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_onSupportSelected.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _targetPosition, _cursorTarget, _is3D] call `KISKA_fnc_commMenu_onSupportSelected`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The KISKA support id of the selected support."
+                        },
+                        {
+                            "name": "_targetPosition",
+                            "description": "*(PositionASL[])* - The position of the player's cursor in the map or where they are looking if it is 3d."
+                        },
+                        {
+                            "name": "_cursorTarget",
+                            "description": "*(OBJECT)* - The `cursorTarget` at the time of the selection."
+                        },
+                        {
+                            "name": "_is3D",
+                            "description": "*(BOOL)* - Whether or not the support was selected in the map or while not looking at the map."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"myClass\",_this] call KISKA_fnc_commMenu_onSupportSelected;\n```"
+                }
+            ],
+            "description": "Triggers when a communication menu item is selected from the commanding menu.\n\nActivates the given support's `onSupportSelected` event."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_onSupportSelected",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_openArty.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _supportConfig] call `KISKA_fnc_commMenu_openArty`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the specific support."
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support's config path."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_support_1\",\n    configFile >> \"MyArtillerySupport\"\n] call KISKA_fnc_commMenu_openArty;\n```"
+                }
+            ],
+            "description": "Opens a commanding menu that will allow the player to select the parameters of an artillery strike."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_openArty",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_openCAS.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _supportConfig] call `KISKA_fnc_commMenu_openCAS`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the specific support."
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support's config path."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_support_1\",\n    configFile >> \"MyCASSupport\"\n] call KISKA_fnc_commMenu_openCAS;\n```"
+                }
+            ],
+            "description": "Opens a commanding menu that will allow the player to select the parameters of a CAS strike."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_openCAS",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_openHelicopterCAS.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _supportConfig] call `KISKA_fnc_commMenu_openHelicopterCAS`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the specific support."
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support's config path."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_support_1\",\n    configFile >> \"MyHelicopterCAS\"\n] call KISKA_fnc_commMenu_openHelicopterCAS;\n```"
+                }
+            ],
+            "description": "Opens a commanding menu that will allow the player to select the parameters of a helicopter version 1 CAS support."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_openHelicopterCAS",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_openSupplyDrop.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _supportConfig] call `KISKA_fnc_commMenu_openSupplyDrop`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the specific support."
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support's config path."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_support_1\",\n    configFile >> \"MySupplyDrop\"\n] call KISKA_fnc_commMenu_openSupplyDrop;\n```"
+                }
+            ],
+            "description": "Opens a commanding menu that will allow the player to select the parameters of a supply drop."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_openSupplyDrop",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Command%20Menu%20Support%20Caller/fn_commMenu_refresh.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_commMenu_refresh`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\ncall KISKA_fnc_commMenu_refresh;\n```"
+                }
+            ],
+            "description": "Redefines the global `BIS_fnc_addCommMenuItem_menu` array with all the player's current comm menu supports."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_commMenu_refresh",
             "grammarType": "function"
         }
     },
@@ -3760,6 +3766,48 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_createAssetAtPosition.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_className, _position, _lifetime, _local] call `KISKA_fnc_createAssetAtPosition`",
+                    "parameters": [
+                        {
+                            "name": "_className",
+                            "description": "*(STRING)* - A `createVehicle` compatible class name of the asset to create."
+                        },
+                        {
+                            "name": "_position",
+                            "description": "*(OBJECT or PositionASL[])* - The place to spawn the object."
+                        },
+                        {
+                            "name": "_lifetime",
+                            "description": "*(NUMBER)* - Default: `-1` - How long in seconds until the created object is deleted. A value below `0` indicates it will never be deleted."
+                        },
+                        {
+                            "name": "_local",
+                            "description": "*(NUMBER)* - Default: `false` - Whether or not to create the object on the local machine only."
+                        }
+                    ],
+                    "returns": "*(OBJECT)* - The created object"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _smokeEmitter = [\n    \"G_40mm_SmokeBlue_infinite\", // defined in CfgAmmo\n    MyPosition,\n    20\n] call KISKA_fnc_createAssetAtPosition;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _chemLight = [\n    \"Chemlight_blue_Infinite\",\n    [0,0,0],\n    -1,\n    true\n] call KISKA_fnc_createAssetAtPosition;\n```"
+                }
+            ],
+            "description": "Creates an asset using `createVehicle` command and places it at the given position, possibly for a temporary amount of time. Ideally used for something like smoke plumes of configured lights for example."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_createAssetAtPosition",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Tasks/fn_createTaskFromConfig.sqf",
             "syntaxes": [
                 {
@@ -3809,33 +3857,6 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_createTaskFromConfig",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_createVehicleSelectMenu.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_classes] call `KISKA_fnc_createVehicleSelectMenu`",
-                    "parameters": [
-                        {
-                            "name": "_classes",
-                            "description": ": *(STRING[])* - The class names to add to the list (in the order to appear)"
-                        }
-                    ],
-                    "returns": "*(ARRAY)* - The created array"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_menuArray = [\n    [\"B_Heli_Transport_01_F\",\"B_Heli_Attack_01_dynamicLoadout_F\"]\n] call KISKA_fnc_createClassSelectMenu;\n```"
-                }
-            ],
-            "description": "Creates an array to be used with showCommandingMenu. Specifically, this is to provide class names to the command menu and then allow a player to select a class from the menu such as when requesting CAS."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_createVehicleSelectMenu",
             "grammarType": "function"
         }
     },
@@ -4059,28 +4080,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_detectControlKeys.sqf",
-            "syntaxes": [
-                {
-                    "outline": "spawn `KISKA_fnc_detectControlKeys`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\nPRE-INIT Function\n```"
-                }
-            ],
-            "description": "Arma 3's support system currently has a bug that allows players to call in multiple supports by having the map open and holding down a ctrl key and left\n - clicking while in the support menu. Each click will call in a support."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_detectControlKeys",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Rally/fn_disallowGroupRally.sqf",
             "syntaxes": [
                 {
@@ -4173,6 +4172,50 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_drawBoundingBox",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_drawLookingAtMarker_start.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_drawLookingAtMarker_start`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\ncall KISKA_fnc_drawLookingAtMarker_start;\n// some time later\ncall KISKA_fnc_drawLookingAtMarker_stop;\n```"
+                }
+            ],
+            "description": "Draws a 3D marker to indicate where the player is currently looking."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_drawLookingAtMarker_start",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_drawLookingAtMarker_stop.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_drawLookingAtMarker_stop`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\ncall KISKA_fnc_drawLookingAtMarker_start;\n// some time later\ncall KISKA_fnc_drawLookingAtMarker_stop;\n```"
+                }
+            ],
+            "description": "Stops a marker being drawn that was started with `KISKA_fnc_drawLookingAtMarker_start`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_drawLookingAtMarker_stop",
             "grammarType": "function"
         }
     },
@@ -5449,60 +5492,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getAmmoClassFromId.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_id] call `KISKA_fnc_getAmmoClassFromId`",
-                    "parameters": [
-                        {
-                            "name": "_id",
-                            "description": ": *(NUMBER)* - The ammo type ID"
-                        }
-                    ],
-                    "returns": "*(STRING)* - ClassName for the corresponding Id number, otherwise empty string"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_class = [0] call KISKA_fnc_getAmmoClassFromId\n```"
-                }
-            ],
-            "description": "Takes a number (id) and translates it into the class name for that number"
-        },
-        "configuration": {
-            "label": "KISKA_fnc_getAmmoClassFromId",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getAmmoTitleFromId.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_id] call `KISKA_fnc_getAmmoClassFromId`",
-                    "parameters": [
-                        {
-                            "name": "_id",
-                            "description": ": *(NUMBER)* - The ammo type ID"
-                        }
-                    ],
-                    "returns": "*(STRING)* - ClassName for the corresponding Id number, otherwise empty string"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_title = [0] call KISKA_fnc_getAmmoClassFromId\n```"
-                }
-            ],
-            "description": "Takes a number (id) and translates it into the title name for that number. Used to fill out menus with a consistent string for the corresponding round type."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_getAmmoClassFromId",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_getBoundingBoxCenter.sqf",
             "syntaxes": [
                 {
@@ -5600,33 +5589,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getCasTitleFromId.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_id] call `KISKA_fnc_getCasTitleFromId`",
-                    "parameters": [
-                        {
-                            "name": "_id",
-                            "description": ": *(NUMBER)* - The ammo type ID"
-                        }
-                    ],
-                    "returns": "*(STRING)* - ClassName for the corresponding Id number, otherwise empty string"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_title = [0] call KISKA_fnc_getCasTitleFromId\n```"
-                }
-            ],
-            "description": "Takes a number (id) and translates it into the title name for that number. Used to fill out menus with a consistent string for the corresponding round type."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_getCasTitleFromId",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getConditionalConfigValue.sqf",
             "syntaxes": [
                 {
@@ -5665,7 +5627,7 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getConfigData.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_config, _isBool] call `KISKA_fnc_getConfigData`",
+                    "outline": "[_config, _isBool, _defaultValue] call `KISKA_fnc_getConfigData`",
                     "parameters": [
                         {
                             "name": "_config",
@@ -5674,14 +5636,21 @@ export const configs: SQFItemConfig[] = [
                         {
                             "name": "_isBool",
                             "description": "*(BOOL)* - Default: `false` - Will convert a number value into a `BOOL`. If the value is more than `0`, the it will be `true`. Any values `<= 0` will be `false`"
+                        },
+                        {
+                            "name": "_defaultValue",
+                            "description": "*(NUMBER | STRING | ARRAY | BOOL | NIL)* - Default: `nil` -\n    In the event that the config value is undefined, this value will be returned."
                         }
                     ],
-                    "returns": "*(NUMBER | STRING | ARRAY | BOOL)* - The value at the given config path"
+                    "returns": "*(NUMBER | STRING | ARRAY | BOOL | NIL)* - The value at the given config path,\n    `nil` if undefined and no default value is provided."
                 }
             ],
             "examples": [
                 {
                     "text": "```sqf\nprivate _value = [\n    configFile >> \"CfgVehicles\" >> \"Car\" >> \"displayname\"\n] call KISKA_fnc_getConfigData;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _defaultZeroValue = [\n    configFile >> \"null\" >> \"config\",\n    false,\n    0\n] call KISKA_fnc_getConfigData;\n```"
                 }
             ],
             "description": "Retrieves the value located at a given config path.\n\nFaster than BIS_fnc_getCfgData."
@@ -5817,6 +5786,28 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_getLoadedModsInfo",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_getMapCursorPosition.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_getMapCursorPosition`",
+                    "parameters": [],
+                    "returns": "*(PostionASL[] | NIL)* - The position that the player's cursor is on the map. Will be `nil` in the event that the map is not open."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _position = call KISKA_fnc_getMapCursorPosition;\n```"
+                }
+            ],
+            "description": "Gets the ASL position that corresponds to the player's map cursor position."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getMapCursorPosition",
             "grammarType": "function"
         }
     },
@@ -5973,6 +5964,41 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getOrDefaultSet.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_namespace, _variableName, _getDefault] call `KISKA_fnc_getOrDefaultSet`",
+                    "parameters": [
+                        {
+                            "name": "_namespace",
+                            "description": "*(NAMESPACE)* - Anything that supports `getVariable` and `setVariable`."
+                        },
+                        {
+                            "name": "_variableName",
+                            "description": "*(STRING)* - The name of the variable to get and/or set."
+                        },
+                        {
+                            "name": "_getDefault",
+                            "description": "*(CODE)* - Code that must return the default value of the variable. Will only be called in the event that the provided variable `isNil`."
+                        }
+                    ],
+                    "returns": "*(ANY)* - The value of the variable"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _value = [\n    localNamespace,\n    \"MyVariable\",\n    {[]} // set \"MyVariable\" in localNamespace to [] if it does not exist\n] call KISKA_fnc_getOrDefaultSet;\n```"
+                }
+            ],
+            "description": "Gets a namespace variable or calls the provided code that will set the default value."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getOrDefaultSet",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Music/fn_getPlayingMusic.sqf",
             "syntaxes": [
                 {
@@ -5995,43 +6021,65 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getPosRelativeSurface.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_getPositionPlayerLookingAt.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_centerPosition, _distance, _bearing, _zOffSet] call `KISKA_fnc_getPosRelativeSurface`",
-                    "parameters": [
-                        {
-                            "name": "_centerPosition",
-                            "description": "*(OBJECT or Position)* - The center position to find a relative position to. If a 2d position, height will be 0."
-                        },
-                        {
-                            "name": "_distance",
-                            "description": "*(NUMBER)* - The distance away from the _centerPosition to get the position"
-                        },
-                        {
-                            "name": "_bearing",
-                            "description": "*(NUMBER)* - The direction relative to the position to find the new position"
-                        },
-                        {
-                            "name": "_zOffSet",
-                            "description": "*(NUMBER)* - An offset to add to the Z-axis AFTER the surface position is found"
-                        }
-                    ],
-                    "returns": "PositionATL[] - the new position"
+                    "outline": "call `KISKA_fnc_getPositionPlayerLookingAt`",
+                    "parameters": [],
+                    "returns": "*(PostionASL[])* - The position the player is currently looking"
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\n    player,\n    100,\n    180\n] call KISKA_fnc_getPosRelativeSurface;\n```"
-                },
-                {
-                    "text": "```sqf\n[\n    player,\n    100,\n    180,\n    10 // 10 meters above water surface or terrain\n] call KISKA_fnc_getPosRelativeSurface;\n```"
+                    "text": "```sqf\nprivate _position = call KISKA_fnc_getPositionPlayerLookingAt;\n```"
                 }
             ],
-            "description": "Returns a relative position but that the position is at the 0 position for the surface beneath (being either water or the terrain) in an ATL format.\n\nThis means the z will always be 0 or the height of the sea above the terrain level at the given _centerPosition."
+            "description": "Gets the ASL position that the player is currently looking at. Moves with a player's head position and collides with objects in the path of their vision. Works up to a maximum of 5000m given the limitations of `lineIntersectsSurfaces`, however, will use the player's `viewDistance` if it is less than that."
         },
         "configuration": {
-            "label": "KISKA_fnc_getPosRelativeSurface",
+            "label": "KISKA_fnc_getPositionPlayerLookingAt",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Positions/fn_getPosRelativeASL.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_origin, _distance, _bearing, _aglOffset] call `KISKA_fnc_getPosRelativeASL`",
+                    "parameters": [
+                        {
+                            "name": "_origin",
+                            "description": "*(OBJECT or Position)* - The center position to find a relative position to."
+                        },
+                        {
+                            "name": "_distance",
+                            "description": "*(NUMBER)* Default: `0` - The distance away from the `_origin`\n    to get the position."
+                        },
+                        {
+                            "name": "_bearing",
+                            "description": "*(NUMBER)* Default: `0` - The direction relative to the `_origin`\n    to find the new position."
+                        },
+                        {
+                            "name": "_aglOffset",
+                            "description": "*(NUMBER)* Default: `0` - An offset to add to the Z-axis above ground level of the found position."
+                        }
+                    ],
+                    "returns": "PositionASL[] - the new position"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _positon = [\n    player,\n    100,\n    180\n] call KISKA_fnc_getPosRelativeASL;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _position = [\n    player,\n    100,\n    180,\n    10 // 10 meters above whatever AGL surface is at the \n] call KISKA_fnc_getPosRelativeASL;\n```"
+                }
+            ],
+            "description": "Returns a position relative to another. Same as `getPos` alternative syntax but the returned position is in ASL format."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getPosRelativeASL",
             "grammarType": "function"
         }
     },
@@ -6098,37 +6146,6 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_getRelativeVectorAndPos",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_getSupportVehicleClasses.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_side, _typeId] call `KISKA_fnc_getSupportVehicleClasses`",
-                    "parameters": [
-                        {
-                            "name": "_side",
-                            "description": "*(SIDE)* - The side to search for"
-                        },
-                        {
-                            "name": "_typeId",
-                            "description": "*(NUMBER)* - The type of vehicle to search for"
-                        }
-                    ],
-                    "returns": "*(ARRAY)* - A list of vehicles listed under the relevant config"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_bluforCAS_types = [BLUFOR,SUPPORT_TYPE_CAS] call KISKA_fnc_getSupportVehicleClasses;\n```"
-                }
-            ],
-            "description": "Gets mission configed default vehicle types available for KISKA supports."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_getSupportVehicleClasses",
             "grammarType": "function"
         }
     },
@@ -6485,6 +6502,40 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_set",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_hashMapParams.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_argsMap, _paramDetails] call `KISKA_fnc_hashmapParams`",
+                    "parameters": [
+                        {
+                            "name": "_argsMap",
+                            "description": ": *(HASHMAP)* - Any hashmap."
+                        },
+                        {
+                            "name": "_paramDetails",
+                            "description": ": *([STRING,CODE,ANY[]][])* - An array of\n    [hashmap key, code that returns a default value, an array of valid types]"
+                        }
+                    ],
+                    "returns": "[ANY[],STRING[]] or STRING - An array of variable values from the hashmap and their corresponding suggested variable names. Suggested variable names are the key names provided in the `_paramDetails` argument plus a leading underscore\n    `_` should the key not already begin with one. Should a string be returned instead, this means a map value had an incorrect type according to the `_paramDetails`."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _map = createHashMapFromArray [\n    [\"a\",1],[\"_b\",2],[\"c\",3]\n];\n\nprivate _mapParams = [\n    _map,\n    [\n        [\"a\",{0},[123]],\n        [\"_b\",{0},[123]]\n    ]\n] call KISKA_fnc_hashMapParams;\n(_mapParams select 0) params (_mapParams select 1);\n[_a,_b]\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _map = createHashMapFromArray [\n    [\"a\",1],[\"_b\",2],[\"c\",3]\n];\n\nprivate _error = [\n    _map,\n    [\n        [\"a\",{0},[123]],\n        [\"_b\",{\"bbbb\"},[\"\"]]\n    ]\n] call KISKA_fnc_hashMapParams;\nhint _error; // _b is not the right type\n```"
+                }
+            ],
+            "description": "Converts a hashmap into a list of validated potential private variables.\n\nSimilar to the `params` command."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_hashmapParams",
             "grammarType": "function"
         }
     },
@@ -7395,6 +7446,45 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_notify",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_openCommandingMenuPath.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_menuPath, _endExpression, _exitExpression, _finally] spawn `KISKA_fnc_openCommandingMenuPath`",
+                    "parameters": [
+                        {
+                            "name": "_menuPath",
+                            "description": "*(ARRAY)* - An array of menus to open in their given sequence\n\n    A menu is an array of several components:\n    - 0. _menuTitle : *(STRING)* - the title of the commanding menu (appears above the menu).\n    - 1. _menuOptions : *([STRING,ANY][])* - an array of `[option label, value]` that will appear in this given order in the commanding menu. If the value is CODE, it will be called if and when selecting the given option."
+                        },
+                        {
+                            "name": "_endExpression",
+                            "description": "*(STRING, CODE, or ARRAY)* - The code to be executed at the end of the path. It receives all menu parameters in _this. (see `KISKA_fnc_callBack`)"
+                        },
+                        {
+                            "name": "_exitExpression",
+                            "description": "*(STRING, CODE, or ARRAY)* - The code to be executed in the event that the menu is closed by the player. It gets all added params up to that point in _this.\n    (see `KISKA_fnc_callBack`)"
+                        },
+                        {
+                            "name": "_finally",
+                            "description": "*(STRING, CODE, or ARRAY)* - Code that will be executed finally regardless of whether the `_endExpression` or `_exitExpression` is triggered. It receives all menu parameters in _this. (see `KISKA_fnc_callBack`)"
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    [\n        [\n            \"First Menu\",\n            [\"option 1\",\"FirstMenu_1\"],\n            [\"option 2\",\"FirstMenu_2\"]\n        ],\n        [\n            \"Second Menu\",\n            [\"option 1\",\"SecondMenu_1\"],\n            [\"option 2\",\"SecondMenu_2\"]\n        ]\n    ],\n    {\n        hint str [\"Reached end of menus with values\",_this];\n    },\n    {\n        hint str [\"Exited menu prematurely with values\",_this];\n    }\n] spawn KISKA_fnc_openCommandingMenuPath\n```"
+                }
+            ],
+            "description": "Opens a command menu path dynamically instead of needing to define sub menus."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_openCommandingMenuPath",
             "grammarType": "function"
         }
     },
@@ -8892,6 +8982,357 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_showNotification.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_baseNotification, _args, _overwrites] call `KISKA_fnc_showNotification`",
+                    "parameters": [
+                        {
+                            "name": "_baseNotification",
+                            "description": "*(CONFIG | STRING | HASHMAP)* - Config entry of the notification. If a string, the config is expected to be located under a `\"CfgNotifications\"` config\n    (e.g. `configFile >> \"CfgNotifications\" >> \"MyNotification\"`) and will be found with `KISKA_fnc_findConfigAny`. HashMap keys are case sensitive:\n\n        - `title` *(STRING)*: Text at the top of the notification popup.\n        - `iconPicture` *(STRING)*: The path of a picture to show on the lefthand side of the notification.\n        - `iconText` *(STRING)*: Text to display in the lefthand side panel.\n        - `description` *(STRING)*: Text to show in the righthand bottom handle.\n        - `color` *(COLOR(RGBA))*: Color of all the text and icons in the notification. Will overwrite `colorIconPicture` and `colorIconText` if they are undefined when `_baseNotification` is a config.\n        - `colorIconPicture` *(COLOR(RGBA))*: Color of the icon picture.\n        - `colorIconText` *(COLOR(RGBA))*: Color of the icon text.\n        - `duration` *(NUMBER)*: How long the notification is shown.\n        - `priority` *(NUMBER)*: The priority of the notification; higher will put the notification higher in the queue.\n        - `sound` *(STRING)*: A string className of a sound defined in `CfgSounds` of a sound that will play when the notification is opened.\n        - `soundClose` *(STRING)*: A string className of a sound defined in `CfgSounds` of a sound that will play when the notification is closed.\n        - `soundRadio` *(STRING)*: A string className of a sound defined in `CfgSounds`. Unknown when it plays.\n        - `iconSize` *(NUMBER)*: Ccale of the icon."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY[])* - Array of args to be passed to the template. Same as `BIS_fnc_showNotification`."
+                        },
+                        {
+                            "name": "_overwrites",
+                            "description": "*(HASHMAP)* - A hashmap containing any values from the `_baseNotification`\n    to overwrite."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"Warning\"] call KISKA_fnc_showNotification;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    configFile >> \"MyNotifications\" >> \"MyNotification\"\n] call KISKA_fnc_showNotification;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _map = createHashMapFromArray [\n    [\"title\",\"hello world\"],\n    [\"description\",\"my description\"]\n];\n[_map] call KISKA_fnc_showNotification;\n```"
+                }
+            ],
+            "description": "A reimplementation of `BIS_fnc_showNotification`, this function works in tandem, however, the arguements are changed for more flexibility."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_showNotification",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_addItemToPool.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId, _itemToAdd, _itemId] call `KISKA_fnc_simpleStore_addItemToPool`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        },
+                        {
+                            "name": "_itemToAdd",
+                            "description": "*(ANY)* - Whatever value that is meant to be added."
+                        },
+                        {
+                            "name": "_itemId",
+                            "description": "*(STRING)* Default: `{_storeId}_item_{number}` - A unique identifier for the item. If one is not provided, an ID is generated using `KISKA_fnc_generateUniqueId`."
+                        }
+                    ],
+                    "returns": "*(STRING)* - the item's `_itemId`"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"myStore\",\n    \"MyValue\"\n] call KISKA_fnc_simpleStore_addItemToPool;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    \"myStore\",\n    \"MyValue\",\n    \"KISKA_itemId\"\n] call KISKA_fnc_simpleStore_addItemToPool;\n```"
+                }
+            ],
+            "description": "Adds an entry into the local Simple Store pool for the given id."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_addItemToPool",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_addItemToPool_global.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId, _itemToAdd] call `KISKA_fnc_simpleStore_addItemToPool_global`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        },
+                        {
+                            "name": "_itemToAdd",
+                            "description": "*(ANY)* - Whatever value that is meant to be added."
+                        }
+                    ],
+                    "returns": "*(STRING)* - the item's global identifier which is also used for the JIP queue."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _itemId = [\n    \"myStore\",\n    \"MyValue\"\n] call KISKA_fnc_simpleStore_addItemToPool_global;\n```"
+                }
+            ],
+            "description": "The same as `KISKA_fnc_simpleStore_addItemToPool` except it abstracts away the generating of an item's id and handling of JIP messages. Ideally should be used in conjunction with `KISKA_fnc_simpleStore_removeItemFromPool_global`.\n\nThis will trigger an execution of `KISKA_fnc_simpleStore_addItemToPool` on all machines and add a JIP queue message."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_addItemToPool_global",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_getDisplay.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId] call `KISKA_fnc_simpleStore_getDisplay`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        }
+                    ],
+                    "returns": "DISPLAY - The simple store's display or `displayNull` in the event that it is not currently open."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _myStoreDisplay = [\n    \"myStore\"\n] call KISKA_fnc_simpleStore_getDisplay;\n```"
+                }
+            ],
+            "description": "Gets the display for the given stimple store."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_getDisplay",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_getPoolItems.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId] call `KISKA_fnc_simpleStore_getPoolItems`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        }
+                    ],
+                    "returns": "*(HASHMAP)* - The specified simple store's item map"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _storeItemsMap = [\n    \"myStore\"\n] call KISKA_fnc_simpleStore_getPoolItems;\n```"
+                }
+            ],
+            "description": "Gets the current map of pool items for a particular simple store id."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_getPoolItems",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_getStoreMap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_simpleStore_getStoreMap`",
+                    "parameters": [],
+                    "returns": "HASHMAP - The data which maps a store id to it's pool list."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _storeIdToPoolItemsMap = call KISKA_fnc_simpleStore_getStoreMap;\nprivate _myStoresPoolItems = _storeIdToPoolItemsMap get \"myStore\";\n```"
+                }
+            ],
+            "description": "Gets the global map that stores the store id and what the current pool items list is."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_getStoreMap",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_isStoreOpen.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId] call `KISKA_fnc_simpleStore_isStoreOpen`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        }
+                    ],
+                    "returns": "BOOL - whether or not the store is open."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _isMyStoreOpen = [\n    \"myStore\"\n] call KISKA_fnc_simpleStore_isStoreOpen;\n```"
+                }
+            ],
+            "description": "Checks if the given store is open."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_isStoreOpen",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_open.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_simpleStore_open`",
+                    "parameters": [],
+                    "returns": "*(DISPLAY)* - The simple store dialog's display"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nmyStoreSelectedItems = [];\nprivate _args = createHashMapFromArray [\n    [\"_storeId\",\"myStore\"],\n    [\"_fn_getSelectedItems\",{myStoreSelectedItems}],\n    [\n        \"_fn_onTake\",\n        {\n            params [\"_storeId\",\"_itemId\"];\n            _this call KISKA_fnc_simpleStore_removeItemFromPool;\n        }\n    ],\n    [\n        \"_fn_onStore\",\n        {\n            params [\"_storeId\",\"_data\",\"_index\"];\n            [\n                _storeId,\n                myStoreSelectedItems deleteAt _index\n            ] call KISKA_fnc_simpleStore_addItemToPool;\n        }\n    ]\n];\n_args call KISKA_fnc_simpleStore_open;\n```"
+                }
+            ],
+            "description": "Opens a simple store dialog/initializes it if it has not been opened prior."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_open",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_refreshPoolList.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId] call `KISKA_fnc_simpleStore_refreshPoolList`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"myStore\"] call KISKA_fnc_simpleStore_refreshPoolList;\n```"
+                }
+            ],
+            "description": "Triggers a refresh of the data that is in the pool list box of the given store."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_refreshPoolList",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_refreshSelectedList.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId] call `KISKA_fnc_simpleStore_refreshSelectedList`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"myStore\"] call KISKA_fnc_simpleStore_refreshSelectedList;\n```"
+                }
+            ],
+            "description": "Triggers a refresh of the data that is in the selected items list box of the given store for the local machine."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_refreshSelectedList",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_removeItemFromPool.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId, _poolItemId] call `KISKA_fnc_simpleStore_removeItemFromPool`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        },
+                        {
+                            "name": "_poolItemId",
+                            "description": "*(STRING)* - The id of the item to remove from the item pool."
+                        }
+                    ],
+                    "returns": "*(ANY)* - whatever the removed item was"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _removedItem = [\n    \"myStore\",\n    \"KISKA_myStore_item_1\"\n] call KISKA_fnc_simpleStore_removeItemFromPool;\n```"
+                }
+            ],
+            "description": "Removes the item with the provided ID from the item pool of the given store."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_removeItemFromPool",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_removeItemFromPool_global.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_storeId, _poolItemId] call `KISKA_fnc_simpleStore_removeItemFromPool_global`",
+                    "parameters": [
+                        {
+                            "name": "_storeId",
+                            "description": "*(STRING)* - The id for the particular simple store."
+                        },
+                        {
+                            "name": "_poolItemId",
+                            "description": "*(STRING)* - The id of the item to remove from the item pool."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"myStore\",\n    \"KISKA_myStore_item_1\"\n] call KISKA_fnc_simpleStore_removeItemFromPool_global;\n```"
+                }
+            ],
+            "description": "The same as `KISKA_fnc_simpleStore_removeItemFromPool` except it abstracts away the removal of a JIP queue message for the item to be added to the pool.\n\nThis will execute `KISKA_fnc_simpleStore_removeItemFromPool` on all machines."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_simpleStore_removeItemFromPool_global",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_slingLoad.sqf",
             "syntaxes": [
                 {
@@ -9067,27 +9508,23 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_spawnVehicle.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_spawnPosition, _spawnDirection, _vehicleClass, _group, _forcePosition, _crewInstructions, _deleteOverflow] call `KISKA_fnc_spawnVehicle`",
+                    "outline": "[_spawnPosition, _spawnDirection, _vehicleClass, _group, _crewInstructions, _deleteOverflow] call `KISKA_fnc_spawnVehicle`",
                     "parameters": [
                         {
                             "name": "_spawnPosition",
-                            "description": "*(ARRAY or OBJECT)* - 3D array in the format of PositionATL\n    (PositionAGL if boat or amphibious). Objects can be used, however, this"
+                            "description": "*(PositionASL[] or OBJECT)* - Where the vehicle should spawn."
                         },
                         {
                             "name": "_spawnDirection",
-                            "description": "*(NUMBER)* - The direction the vehicle is facing when created (relative to north)\n    if _spawnPosition is an object and _spawnDirection == -1, _spawnDirection will be set to the direction of the _spawnPosition object"
+                            "description": "*(NUMBER)* - The direction the vehicle is facing when created (relative to north)\n    if `_spawnPosition` is an object and `_spawnDirection == -1`, `_spawnDirection` will be set to the direction of the `_spawnPosition` object"
                         },
                         {
                             "name": "_vehicleClass",
-                            "description": "*(STRING)* - The typeOf vehicle to spawn"
+                            "description": "*(STRING)* - The `typeOf` vehicle to spawn"
                         },
                         {
                             "name": "_group",
                             "description": "*(SIDE or GROUP)* - Either the side to create a group on or an already existing group to add the units to"
-                        },
-                        {
-                            "name": "_forcePosition",
-                            "description": "*(BOOL)* - Force vehicle to spawn at exact coordinates Does nothing when _spawnPosition is an object"
                         },
                         {
                             "name": "_crewInstructions",
@@ -9106,7 +9543,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[player,0,\"someclass\"] call KISKA_fnc_spawnVehicle;\n```"
                 }
             ],
-            "description": "A slightly altered/optimized version of BIS_fnc_spawnVehicle. Has support for CUP aircraft to spawn at velocity."
+            "description": "A slightly altered/optimized version of `BIS_fnc_spawnVehicle`.\n\nHas support for CUP aircraft to spawn at velocity."
         },
         "configuration": {
             "label": "KISKA_fnc_spawnVehicle",
@@ -10110,50 +10547,22 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_supplyDrop.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_classNames, _altittude, _dropPosition, _stopAdjustingHeight, _chuteVelocityFreq, _stage_1_height, _stage_1_velocityDiff, _stage_2_velocityDiff] call `KISKA_fnc_supplyDrop`",
+                    "outline": "[_argsMap] call `KISKA_fnc_supplyDrop`",
                     "parameters": [
                         {
-                            "name": "_classNames",
-                            "description": "*(ARRAY)* - Classnames of boxes you want dropped. Also determines the number of crates"
-                        },
-                        {
-                            "name": "_altittude",
-                            "description": "*(NUMBER)* - Start height of drop"
-                        },
-                        {
-                            "name": "_dropPosition",
-                            "description": "*(OBJECT, GROUP, ARRAY, LOCATION, TASK)* - Position you want the drop to be near\n\nOPTIONAL:"
-                        },
-                        {
-                            "name": "_stopAdjustingHeight",
-                            "description": "*(NUMBER)* - The height (ATL) at which the velocity of the crates should top being managed"
-                        },
-                        {
-                            "name": "_chuteVelocityFreq",
-                            "description": "*(NUMBER)* - The frequency in seconds at which the velocity of the crates should be managed"
-                        },
-                        {
-                            "name": "_stage_1_height",
-                            "description": "*(NUMBER)* - The height above which the _stage_1_velocityDiff is used to manage the downward velocity of the crates"
-                        },
-                        {
-                            "name": "_stage_1_velocityDiff",
-                            "description": "*(NUMBER)* - The downward velocity of the crates above _stage_1_height"
-                        },
-                        {
-                            "name": "_stage_2_velocityDiff",
-                            "description": "*(NUMBER)* - The downward velocity of the crates below _stage_1_height"
+                            "name": "_argsMap",
+                            "description": "*(HASHMAP)* - a map of arguments for the supply drop:\n\n    - `objectClassNames`: *(STRING[])* - a list of classnames of objects that will be created and parachute down.\n    - `dropPosition`: *(PositionASL[] or OBJECT)* - The position around which the objects will approximately land.\n    - `dropAltitude`: *(NUMBER)* Default: `100` - The height that the dropped objects begin their descent.\n    - `dropPositionRadius`: *(NUMBER)* Default: `50` - A randomization radius around the `dropPosition` in which the objects will be created.\n    - `parachuteClass`: *(NUMBER)* Default: `b_parachute_02_F` - The classname of the parachute.\n    - `dropZVelocity`: *(NUMBER)* Default: `-15` - The m/s rate of descent that will be applied to the parachutes while every `velocityUpdateFrequency`\n        denoted time and if the object is above a surface beneath it as defined with `distanceToStopVelocityUpdates`.\n    - `velocityUpdateFrequency`: *(NUMBER)* Default: `0.1` - How frequently to update the objects downward velocity.\n    - `distanceToStopVelocityUpdates`: *(NUMBER)* Default: `80` - At what distance to the surface beneath the objects should the velocity stop being applied.\n    - `allowDamage`: *(BOOL)* Default: `true` - Whether or not to automatically disable damage on the dropped objects.\n    - `addArsenals`: *(BOOL)* Default: `false` - Whether or not to automatically add arsenals to the dropped objects with `KISKA_fnc_addArsenal`.\n    - `clearCargo`: *(BOOL)* Default: `false` - Whether or not to automatically globally delete the dropped object's cargo with `KISKA_fnc_clearCargoGlobal`."
                         }
                     ],
-                    "returns": "*(ARRAY)* - The containers dropped"
+                    "returns": "*(OBJECT[])* - The created objects that were dropped."
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[[\"className1\",\"className2\"], 500, player] call KISKA_fnc_supplyDrop;\n```"
+                    "text": "```sqf\nprivate _argsMap = createHashMapFromArray [\n    [\"objectClassNames\",[\"B_supplyCrate_F\",\"B_supplyCrate_F\"]],\n    [\"dropPosition\",target]\n];\nprivate _crates = [_argsMap] call KISKA_fnc_supplyDrop;\n```"
                 }
             ],
-            "description": "Spawns a supply drop near the requested position. Crates will parachute in."
+            "description": "Creates a number of specified objects and parachutes for them to drop down from the sky."
         },
         "configuration": {
             "label": "KISKA_fnc_supplyDrop",
@@ -10162,46 +10571,14 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_supplyDrop_aircraft.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_supplyDropWithAircraft.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_dropPosition, _crates, _deleteCargo, _addArsenal, _flyinHeight, _flyDirection, _flyInRadius, _lifeTime, _side] call `KISKA_fnc_supplyDrop_aircraft`",
+                    "outline": "[_argsMap] call `KISKA_fnc_supplyDropWithAircraft`",
                     "parameters": [
                         {
-                            "name": "_dropPosition",
-                            "description": ": *(ARRAY or OBJECT)* - The position (area) to drop the arsenal 1: _vehicleClass : *(STRING)* - The class of the vehicle to drop the arsenal"
-                        },
-                        {
-                            "name": "_crates",
-                            "description": ": *(ARRAY)* - An array of strings that are the classnames of the crates to drop"
-                        },
-                        {
-                            "name": "_deleteCargo",
-                            "description": ": *(BOOL)* - Delete all the default cargo inside the crates"
-                        },
-                        {
-                            "name": "_addArsenal",
-                            "description": ": *(BOOL)* - add an arsenal to all the crates"
-                        },
-                        {
-                            "name": "_flyinHeight",
-                            "description": ": *(NUMBER)* - The flyInHeight of the drop vehicle"
-                        },
-                        {
-                            "name": "_flyDirection",
-                            "description": ": *(NUMBER)* - The compass bearing for the aircraft to apporach from (if < 0, it's random)"
-                        },
-                        {
-                            "name": "_flyInRadius",
-                            "description": ": *(NUMBER)* - How far out the drop vehicle will spawn and then fly in"
-                        },
-                        {
-                            "name": "_lifeTime",
-                            "description": ": *(NUMBER)* - How long until the arsenal is deleted"
-                        },
-                        {
-                            "name": "_side",
-                            "description": ": *(SIDE)* - The side of the drop vehicle"
+                            "name": "_argsMap",
+                            "description": "*(HASHMAP)* - a map of arguments for the supply drop:\n\n    - `dropPosition`: *(PositionASL[] or OBJECT)* - See `KISKA_fnc_supplyDrop`.\n    - `dropAltitude`: *(NUMBER)* - See `KISKA_fnc_supplyDrop`.\n    - `aircraftClass: *(STRING)* - The class name of the aircraft that will be created to fly over the drop zone.\n    - `side`: *(SIDE)* Default: `BLUFOR` - The side of the created aircraft.\n    - `directionOfAircraft`: *(NUMBER)* Default: `-1` - The bearing the aircraft will be flying towards. `-1` denotes a random direction.\n    - `spawnDistance`: *(NUMBER)* Default: `2000` - How far away from the drop zone to spawn the aircraft.\n    - `objectClassNames`: *(STRING[])* - See `KISKA_fnc_supplyDrop`.\n    - `dropPositionRadius`: *(NUMBER)* - See `KISKA_fnc_supplyDrop`.\n    - `parachuteClass`: *(NUMBER)* - See `KISKA_fnc_supplyDrop`.\n    - `dropZVelocity`: *(NUMBER)* - See `KISKA_fnc_supplyDrop`.\n    - `velocityUpdateFrequency`: *(NUMBER)* - See `KISKA_fnc_supplyDrop`.\n    - `distanceToStopVelocityUpdates`: *(NUMBER)* - See `KISKA_fnc_supplyDrop`.\n    - `allowDamage`: *(BOOL)* - See `KISKA_fnc_supplyDrop`.\n    - `addArsenals`: *(BOOL)* - See `KISKA_fnc_supplyDrop`.\n    - `clearCargo`: *(BOOL)* - See `KISKA_fnc_supplyDrop`."
                         }
                     ],
                     "returns": "NOTHING"
@@ -10209,13 +10586,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[position player] call KISKA_fnc_supplyDrop_aircraft;\n```"
+                    "text": "```sqf\nprivate _argsMap = createHashMapFromArray [\n    [\"objectClassNames\",[\"B_supplyCrate_F\",\"B_supplyCrate_F\"]],\n    [\"dropPosition\",target],\n    [\"aircraftClass\",\"B_T_VTOL_01_vehicle_F\"]\n];\n[_argsMap] call KISKA_fnc_supplyDropWithAircraft;\n```"
                 }
             ],
-            "description": "Spawns in an aircraft that flies over a DZ to drop off supplies."
+            "description": "A sub implementation of `KISKA_fnc_supplyDrop` that will in addition to dropping a set of objects, will have an aircraft fly over the drop zone simulating the cargo drop."
         },
         "configuration": {
-            "label": "KISKA_fnc_supplyDrop_aircraft",
+            "label": "KISKA_fnc_supplyDropWithAircraft",
             "grammarType": "function"
         }
     },
@@ -10246,26 +10623,29 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_addToPool.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_entryToAdd, _bypassChecks] call `KISKA_fnc_supportManager_addToPool`",
+                    "outline": "[_supportConfig, _numberOfUsesLeft] call `KISKA_fnc_supportManager_addToPool`",
                     "parameters": [
                         {
-                            "name": "_entryToAdd",
-                            "description": "*(STRING or ARRAY)* - The support class or [support class,uses left]"
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG | STRING)* - The config or a string of a class that is in a `KISKA_Supports` class in either the\n`missionConfigFile`, `campaignConfigFile`, or `configFile`."
                         },
                         {
-                            "name": "_bypassChecks",
-                            "description": "*(BOOL)* - Decides whether or not to perform checks on _entryToAdd for errors"
+                            "name": "_numberOfUsesLeft",
+                            "description": "*(NUMBER)* - Default: `-1` - The number of support uses left or rounds available to use. If less than 0, the configed value will be used."
                         }
                     ],
-                    "returns": "NOTHING"
+                    "returns": "*(STRING)* - the item's global identifier which is also used for the JIP queue."
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\"someClass\"] call KISKA_fnc_supportManager_addToPool;\n```"
+                    "text": "```sqf\n[\"someClassInKISKA_Supports\"] call KISKA_fnc_supportManager_addToPool;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _itemId = [\n    configFile >> \"CfgCommunicationMenu\" >> \"MySupport\"\n] call KISKA_fnc_supportManager_addToPool;\n```"
                 }
             ],
-            "description": "Adds an entry into the local support manager pool."
+            "description": "Adds an entry into the support manager pool globally."
         },
         "configuration": {
             "label": "KISKA_fnc_supportManager_addToPool",
@@ -10274,77 +10654,23 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_addToPool_global.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_open.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_entryToAdd] call `KISKA_fnc_supportManager_addToPool_global`",
-                    "parameters": [
-                        {
-                            "name": "_entryToAdd",
-                            "description": "*(STRING or ARRAY)* - The support class or [support class,uses left]"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\"someClass\"] call KISKA_fnc_supportManager_addToPool_global;\n```"
-                }
-            ],
-            "description": "Adds an entry into the global support manager pool.\n\nTHIS FUNCTION HAS A GLOBAL EFFECT"
-        },
-        "configuration": {
-            "label": "KISKA_fnc_supportManager_addToPool_global",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_onLoad.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_display] call `KISKA_fnc_supportManager_onLoad`",
-                    "parameters": [
-                        {
-                            "name": "_display",
-                            "description": "*(DISPLAY)* - The loaded display"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n// called from config\n[_this select 0] call KISKA_fnc_supportManager_onLoad;\n```"
-                }
-            ],
-            "description": "Sets up uiNamespace globals for and intializes the Support Manager GUI."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_supportManager_onLoad",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_openDialog.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_supportManager_openDialog`",
+                    "outline": "call `KISKA_fnc_supportManager_open`",
                     "parameters": [],
                     "returns": "NOTHING"
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\ncall KISKA_fnc_supportManager_openDialog;\n```"
+                    "text": "```sqf\ncall KISKA_fnc_supportManager_open;\n```"
                 }
             ],
             "description": "Opens KISKA Support Manager dialog."
         },
         "configuration": {
-            "label": "KISKA_fnc_supportManager_openDialog",
+            "label": "KISKA_fnc_supportManager_open",
             "grammarType": "function"
         }
     },
@@ -10353,11 +10679,11 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_removeFromPool.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_index] call `KISKA_fnc_supportManager_removeFromPool`",
+                    "outline": "[_itemId] call `KISKA_fnc_supportManager_removeFromPool`",
                     "parameters": [
                         {
-                            "name": "_index",
-                            "description": "*(NUMBER)* - The selected index"
+                            "name": "_itemId",
+                            "description": "*(STRING)* - The ID of the item in the pool to remove."
                         }
                     ],
                     "returns": "NOTHING"
@@ -10365,10 +10691,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[0] call KISKA_fnc_supportManager_removeFromPool;\n```"
+                    "text": "```sqf\nprivate _itemId = [\n    configFile >> \"CfgCommunicationMenu\" >> \"MySupport\"\n] call KISKA_fnc_supportManager_addToPool;\n\n// ... some time later ...\n\n[_itemId] call KISKA_fnc_supportManager_removeFromPool;\n```"
                 }
             ],
-            "description": "Removes the provided index from the pool."
+            "description": "Removes the item with the provided ID from the support manager pool globally."
         },
         "configuration": {
             "label": "KISKA_fnc_supportManager_removeFromPool",
@@ -10377,14 +10703,60 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_removeFromPool_global.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_add.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_index] call `KISKA_fnc_supportManager_removeFromPool_global`",
+                    "outline": "[_supportConfig, _numberOfUsesLeft] call `KISKA_fnc_supports_add`",
                     "parameters": [
                         {
-                            "name": "_index",
-                            "description": "*(NUMBER)* - The selected index"
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG | STRING)* - Config entry of the support. If a string, the config is expected to be located under a `\"KISKA_Supports\"` config\n    (e.g. `missionConfigFile >> \"KISKA_Supports\" >> \"MySupport\"`) and will be found with `KISKA_fnc_findConfigAny`."
+                        },
+                        {
+                            "name": "_numberOfUsesLeft",
+                            "description": "*(NUMBER)* - Default: `-1` - The number of support uses left or rounds available to use. If less than 0, the configed value will be used."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The supports id"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"MySupport\" // MySupport class is defined in \"KISKA_Supports\"\n] call KISKA_fnc_supports_add;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _supportId = [\n    missionConfigFile >> \"CustomSupports >> \"MySupport\",\n    20\n] call KISKA_fnc_supports_add;\n```"
+                }
+            ],
+            "description": "Adds a support to the local player's support KISKA support pool."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_add",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_call.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId, _targetPosition, _numberOfTimesUsed, _onCallArgs] call `KISKA_fnc_supports_call`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the support to use."
+                        },
+                        {
+                            "name": "_targetPosition",
+                            "description": "*(PositionASL[])* - The position for the support to target."
+                        },
+                        {
+                            "name": "_numberOfTimesUsed",
+                            "description": "*(NUMBER)* - Default: `1` - The number of times the support uses are to be decremented. A value below zero will be interpreted as zero."
+                        },
+                        {
+                            "name": "_onCallArgs",
+                            "description": "*(ANY)* - Default: `[]` - Any additional arguments to provide to the support's configured `onSupportCalled` event."
                         }
                     ],
                     "returns": "NOTHING"
@@ -10392,110 +10764,28 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[0] call KISKA_fnc_supportManager_removeFromPool_global;\n```"
+                    "text": "```sqf\n// marked as using one time\n[\"KISKA_support_1\",[0,0,0]] call KISKA_fnc_supports_call;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    \"KISKA_support_1\",\n    getPosASL MyTarget,\n    1,\n    [\"some_additional_args\"] // additional onSupportCalled event args\n] call KISKA_fnc_supports_call;\n```"
+                },
+                {
+                    "text": "```sqf\n// infinite uses\n[\"KISKA_support_1\",[0,0,0],0] call KISKA_fnc_supports_call;\n```"
                 }
             ],
-            "description": "Removes the provided index from the support pool with GLOBAl EFFECT."
+            "description": "Triggers a given support's on call event by it's ID and will decrement its number of uses left and remove it if the remaining uses is less than or equal to 0."
         },
         "configuration": {
-            "label": "KISKA_fnc_supportManager_removeFromPool_global",
+            "label": "KISKA_fnc_supports_call",
             "grammarType": "function"
         }
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_store_buttonClickEvent.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_genericNotification.sqf",
             "syntaxes": [
                 {
-                    "outline": "call `KISKA_fnc_supportManager_store_buttonClickEvent`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_supportManager_store_buttonClickEvent;\n```"
-                }
-            ],
-            "description": "Activates when the take button is pressed and gives player the support."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_supportManager_store_buttonClickEvent",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_take_buttonClickEvent.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_supportManager_take_buttonClickEvent`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_supportManager_take_buttonClickEvent;\n```"
-                }
-            ],
-            "description": "Activates when the take button is pressed and gives player the support."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_supportManager_take_buttonClickEvent",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_updateCurrentList.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_supportManager_updateCurrentList`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_supportManager_updateCurrentList;\n```"
-                }
-            ],
-            "description": "Acts as an event that will update the current supports list of a player in the GUI."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_supportManager_updateCurrentList",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SupportManager/Functions/fn_supportManager_updatePoolList.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_supportManager_updatePoolList`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_supportManager_updatePoolList;\n```"
-                }
-            ],
-            "description": "Acts as an event that will update the available supports pool list in the Support Manager GUI."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_supportManager_updatePoolList",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_supportNotification.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_supportTypeId] call `KISKA_fnc_supportNotification`",
+                    "outline": "[_supportTypeId] call `KISKA_fnc_supports_genericNotification`",
                     "parameters": [
                         {
                             "name": "_supportTypeId",
@@ -10507,34 +10797,34 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[0] call KISKA_fnc_supportNotification;\n```"
+                    "text": "```sqf\n[0] call KISKA_fnc_supports_genericNotification;\n```"
                 }
             ],
             "description": "Gives the player a sound or text notification that they called in a support from the KISKA systems. Just used for feedback to know a call was placed.\n\nPlayers can adjust the notifcation settings in the CBA addon menu."
         },
         "configuration": {
-            "label": "KISKA_fnc_supportNotification",
+            "label": "KISKA_fnc_supports_genericNotification",
             "grammarType": "function"
         }
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_supportRadio.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_genericRadioMessage.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_messageType, _caller, _targets] call `KISKA_fnc_supportRadio`",
+                    "outline": "[_messageType, _caller, _targets] call `KISKA_fnc_supports_genericRadioMessage`",
                     "parameters": [
                         {
                             "name": "_messageType",
-                            "description": "*(STRING)* - The type of radio message to send"
+                            "description": "*(STRING)* - The type of radio message to send. An invalid type will result in a default message being played.\n\n    Valid Options:\n    - \"artillery\"\n    - \"strike\"\n    - \"supply drop\"\n    - \"supply drop requested\"\n    - \"cas request\"\n    - \"cas abort\"\n    - \"uav request\"\n    - \"helo down\"\n    - \"transport request\""
                         },
                         {
                             "name": "_caller",
-                            "description": "*(OBJECT)* - The person sending the call (default is local player)"
+                            "description": "*(OBJECT)* - Default: `player` - The person sending the call"
                         },
                         {
                             "name": "_targets",
-                            "description": "*(NUMBER, OBJECT, STRING, GROUP, SIDE, ARRAY)* - The remoteExec targets for the radio call"
+                            "description": "*(NUMBER, OBJECT, STRING, GROUP, SIDE, ARRAY)* - Default: `clientOwner` -\n    The remoteExec targets for the radio call."
                         }
                     ],
                     "returns": "NOTHING"
@@ -10542,13 +10832,235 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\"artillery\"] call KISKA_fnc_supportRadio;\n```"
+                    "text": "```sqf\n[\"artillery\"] call KISKA_fnc_supports_genericRadioMessage;\n```"
                 }
             ],
             "description": "Decides what radio message to play to provided targets."
         },
         "configuration": {
-            "label": "KISKA_fnc_supportRadio",
+            "label": "KISKA_fnc_supports_genericRadioMessage",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_getCommonTargetPosition.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_supports_getCommonTargetPosition`",
+                    "parameters": [],
+                    "returns": "*(PositionASL[])* - The common target point."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _positionToTarget = call KISKA_fnc_supports_getCommonTargetPosition;\n```"
+                }
+            ],
+            "description": "Retrieves either the position the player is currently looking at or if the map is open, their cursor position."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_getCommonTargetPosition",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_getMap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_supports_getMap`",
+                    "parameters": [],
+                    "returns": "*(HASHMAP)* - The hashmap containing information about the player's supports."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _supportMap = call KISKA_fnc_supports_getMap;\n```"
+                }
+            ],
+            "description": "Retrieves the hashmap that contains a players current supports."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_getMap",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_getNumberOfUsesLeft.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId] call `KISKA_fnc_supports_getNumberOfUsesLeft`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the support to check."
+                        }
+                    ],
+                    "returns": "*(NUMBER | NIL)* - the number of support uses left or `nil` if the support ID is not found"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _numberLeft = [\"KISKA_support_1\"] call KISKA_fnc_supports_getNumberOfUsesLeft;\n```"
+                }
+            ],
+            "description": "Gets the specific number of uses left for a given support by its ID"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_getNumberOfUsesLeft",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Standard%20Support%20Events/fn_supports_onCalledCloseAirSupport.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_onCallArgs] call `KISKA_fnc_supports_onCalledCloseAirSupport`",
+                    "parameters": [
+                        {
+                            "name": "_onCallArgs",
+                            "description": "*([HASHMAP,ARRAY])* - An array of the aircraft params map and the fire orders to give to the aircraft. See `KISKA_fnc_closeAirSupport`\n    for more details."
+                        }
+                    ],
+                    "returns": "*(BOOL)*"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "The standard translator to handle a close air support configured support's\n `onSupportCalled` event that is triggered by `KISKA_fnc_supports_call`. This standard handler then translates that to and actual call of\n `KISKA_fnc_closeAirSupport`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_onCalledCloseAirSupport",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Standard%20Support%20Events/fn_supports_onCalledHelicopterGunner.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_onCallArgs] call `KISKA_fnc_supports_onCalledHelicopterGunner`",
+                    "parameters": [
+                        {
+                            "name": "_onCallArgs",
+                            "description": "*(ARRAY)* - An array of parameters to pass to `KISKA_fnc_helicopterGunner`"
+                        }
+                    ],
+                    "returns": "*(BOOL)*"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "The standard translator to handle a helicopter gunner configured support's\n `onSupportCalled` event that is triggered by `KISKA_fnc_supports_call`. This standard handler then translates that to and actual call of\n `KISKA_fnc_helicopterGunner`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_onCalledHelicopterGunner",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Standard%20Support%20Events/fn_supports_onCalledSupplyDrop.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_argsMap] call `KISKA_fnc_supports_onCalledSupplyDrop`",
+                    "parameters": [
+                        {
+                            "name": "_argsMap",
+                            "description": "*(HASHMAP)* - The hashmap of args to provide to the supply drop function."
+                        }
+                    ],
+                    "returns": "*(BOOL)*"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "The standard translator to handle a supply drop configured support's\n `onSupportCalled` event that is triggered by `KISKA_fnc_supports_call`.\n\nThis standard handler then translates that to and actual call of\n `KISKA_fnc_supplyDrop` or `KISKA_fnc_supplyDropWithAircraft` depending on whether the `_argsMap` contains an `aircraftClass` key."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_onCalledSupplyDrop",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Standard%20Support%20Events/fn_supports_onCalledVirtualArty.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_onCallArgs, _supportId, _supportConfig, _targetPosition, _numberOfRoundsToFire] call `KISKA_fnc_supports_onCalledVirtualArty`",
+                    "parameters": [
+                        {
+                            "name": "_onCallArgs",
+                            "description": "*([STRING,NUMBER])* - An array in the shape of `[ammo class, radius of fire]`."
+                        },
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the specific support."
+                        },
+                        {
+                            "name": "_supportConfig",
+                            "description": "*(CONFIG)* - The support's config path."
+                        },
+                        {
+                            "name": "_targetPosition",
+                            "description": "*(PositionASL[])* - The position to target."
+                        },
+                        {
+                            "name": "_numberOfRoundsToFire",
+                            "description": "*(NUMBER)* - How many rounds to fire"
+                        }
+                    ],
+                    "returns": "*(BOOL)*"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "The standard translator to handle a virtual artillery configured support's\n `onSupportCalled` event that is triggered by `KISKA_fnc_supports_call`. This standard handler then translates that to and actual call of\n `KISKA_fnc_virtualArty`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_onCalledVirtualArty",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/Common/fn_supports_remove.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_supportId] call `KISKA_fnc_supports_remove`",
+                    "parameters": [
+                        {
+                            "name": "_supportId",
+                            "description": "*(STRING)* - The ID of the support to remove."
+                        }
+                    ],
+                    "returns": "*([CONFIG,NUMBER])* - The support config and the number of uses left."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"KISKA_support_1\"] call KISKA_fnc_supports_remove;\n```"
+                }
+            ],
+            "description": "Removes a support from the local player's support KISKA support pool.\n\nAlso calls the supports configured `onSupportRemoved` event."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_supports_remove",
             "grammarType": "function"
         }
     },
@@ -11088,7 +11600,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Support%20Framework/fn_updateFlareEffects.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_updateFlareEffects.sqf",
             "syntaxes": [
                 {
                     "outline": "[_light, _flare] call `KISKA_fnc_updateFlareEffects`",
