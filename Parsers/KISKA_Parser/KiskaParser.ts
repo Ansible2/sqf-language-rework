@@ -31,7 +31,7 @@ const NEW_LINES_IN_SENTENCES_REGEX = /(?<=[\w.,]) *\n +(?=\w)/gi;
 const WHITESPACE_BEFORE_NEW_LINE_REGEX = /[ \t]+(?=\n)/gi;
 const HEADER_REGEX = /(?<=\/\* \-+\r*\n+)([\s\S]*?)(?=\r*\n+\-+ \*\/\r*\n+)/i;
 const FUNCTION_NAME_REGEX = /(?<=function:\s*)\b.*/i;
-const DESCRIPTION_SECTION_REGEX = /(?<=description:\r*\n*)([\s\S]*?)(?=Parameters:)/i;
+const DESCRIPTION_SECTION_REGEX = /(?<=description:\r*\n*)([\s\S]*?)(?=^Parameters:)/im;
 const RETURNS_SECTION_REGEX = /(?<=Returns:\r*\n*)([\s\S]*?)(?=(author[\w\W]*?:|examples:))/i;
 const PARAMETERS_SECTION_REGEX = /(?<=parameters:\r*\n*)([\s\S]*?)(?=(Examples:|returns:))/i;
 const INDIVIDUAL_PARAMETERS_REGEX =
@@ -278,7 +278,6 @@ export class KiskaParser implements DocParser {
         convertedText = convertedText
             .replace(NEW_LINES_IN_SENTENCES_REGEX, " ")
             .replace(WHITESPACE_LINE_REGEX, "")
-            .replace(WHITESPACE_BEFORE_NEW_LINE_REGEX, "")
             .replace(TYPES_REGEX, "*($1)*");
 
         for (const exampleCodeText of sqfCodeExamples) {
@@ -295,7 +294,10 @@ export class KiskaParser implements DocParser {
             );
         }
 
-        return convertedText.trim().replace(INDENTS_REGEX, "");
+        return convertedText
+            .trim()
+            .replace(INDENTS_REGEX, "")
+            .replace(WHITESPACE_BEFORE_NEW_LINE_REGEX, "");
     }
 
     private matchFirst(text: string, regex: RegExp): string | null {

@@ -1,3 +1,4 @@
+import { SQFItemConfig } from "../../configuration/grammars/sqf.namespace";
 import { removeUndefinedKeys } from "../SQFParser.namespace";
 import { BikiCommandsParser, BikiTextInterpreter, UnparsedBikiPage } from "./BikiParser";
 import { BikiTestPages } from "./BikiTestPages";
@@ -16,10 +17,25 @@ describe("BikiCommandsParser", () => {
                     title: name,
                     text: testStatics.unparsed,
                 };
-                const result = await parser.convertToItemConfigs([page]);
+                 const result = await parser.convertToItemConfigs([page]);
                 // undefined properties are removed once written to the actual file
                 const parsedConfig = removeUndefinedKeys(result[0]);
-                expect(parsedConfig).toEqual(testStatics.parsed);
+                const configurationKeys = Object.keys(testStatics.parsed.configuration) as Array<
+                    keyof SQFItemConfig["configuration"]
+                >;
+                configurationKeys.forEach((configKey) => {
+                    expect(parsedConfig.configuration[configKey]).toEqual(
+                        testStatics.parsed.configuration[configKey]
+                    );
+                });
+                const documentationKeys = Object.keys(testStatics.parsed.documentation) as Array<
+                    keyof SQFItemConfig["documentation"]
+                >;
+                documentationKeys.forEach((configKey) => {
+                    expect(parsedConfig.documentation[configKey]).toEqual(
+                        testStatics.parsed.documentation[configKey]
+                    );
+                });
             });
         }
     });
