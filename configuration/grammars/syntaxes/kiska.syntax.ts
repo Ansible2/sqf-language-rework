@@ -3449,7 +3449,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n// debug enabled \n[\n    _vehicle,\n    true\n] call KISKA_fnc_convoy_setVehicleDebug;\n```"
+                    "text": "```sqf\n// debug enabled\n[\n    _vehicle,\n    true\n] call KISKA_fnc_convoy_setVehicleDebug;\n```"
                 }
             ],
             "description": "Sets whether or not a given vehicle is in debug mode for convoys."
@@ -3542,7 +3542,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n// do-drive-on-path enabled \n[\n    _vehicle,\n    true\n] call KISKA_fnc_convoy_setVehicleDriveOnPath;\n```"
+                    "text": "```sqf\n// do-drive-on-path enabled\n[\n    _vehicle,\n    true\n] call KISKA_fnc_convoy_setVehicleDriveOnPath;\n```"
                 }
             ],
             "description": "Sets whether or not the vehicle will initiate new `setDriveOnPath`'s whenever new positions are added to its internal drive path.\n\nWhile false, a vehicle will continue to add points from the lead vehicle to its drive path and will continue to drive on the path prior to the setting of this to false unless otherwise stopped."
@@ -4165,7 +4165,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[] spawn {\n    private _boundingBoxId = [\n        myObject,\n        [1,0,1,1],\n        0\n    ] call KISKA_fnc_drawBoundingBox;\n    \n    sleep 10;\n    \n    [_boundingBoxId] call KISKA_fnc_removeBoundingBoxDraw;\n};\n```"
+                    "text": "```sqf\n[] spawn {\n    private _boundingBoxId = [\n        myObject,\n        [1,0,1,1],\n        0\n    ] call KISKA_fnc_drawBoundingBox;\n\n    sleep 10;\n\n    [_boundingBoxId] call KISKA_fnc_removeBoundingBoxDraw;\n};\n```"
                 }
             ],
             "description": "Draws the given bounding box of _corner_a specified object."
@@ -5615,7 +5615,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _value = [\n    missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"Conditional\",\n    \"myProperty\"\n] call KISKA_fnc_getConditionalConfigValue;\n```"
                 }
             ],
-            "description": "Retrieves the conditional value located in a given config. This code will cache configs and their values after being run once within the `localNamespace`.\n\nThe syntax for a conditional config:\n(begin config example)\n    // `_conditionalConfig` param would be the config path to `MyConditionalClass`\n    class MyConditionalClass\n    {\n        class ExampleCondition_1\n        {\n            // A list of addon directories (names) as they would appear in getLoadedModsInfo (case-insensitive).\n            // All addons in the list must be loaded present. addons[] = { \"A3\" };\n\n            // A list of CfgPatches classNames that need to be present. patches[] = { \"A3_Data_F\"};\n\n            // Uncompiled code that must return a boolean value.\n            // `false` means the ExampleCondition_1's value will not be used\n                //"
+            "description": "Retrieves the conditional value located in a given config. This code will cache configs and their values after being run once within the `localNamespace`.\n\nThe syntax for a conditional config:\n\n```cpp\n// `_conditionalConfig` param would be the config path to `MyConditionalClass`\nclass MyConditionalClass\n{\n    class ExampleCondition_1\n    {\n        // A list of addon directories (names) as they would appear in getLoadedModsInfo (case-insensitive).\n        // All addons in the list must be loaded present.\n        addons[] = { \"A3\" };\n\n        // A list of CfgPatches classNames that need to be present.\n        patches[] = { \"A3_Data_F\"};\n\n        // Uncompiled code that must return a boolean value.\n        // `false` means the ExampleCondition_1's value will not be used\n            // Parameters:\n            // 0: <CONFIG> - The parent condition class (MyConditionalClass)\n            // 1: <CONFIG> - The current conditional class (MyConditionalClass >> ExampleCondition_1)\n            // 2: <STRING> - The property being searched for\n        condition = \"hint str _this; true\";\n\n        // A class filled with the properties that you can get\n        class properties\n        {\n            exampleProperty_1 = 1;\n        };\n    };\n\n    class ExampleCondition_2\n    {\n        class properties\n        {\n            exampleProperty_1 = 0;\n            exampleProperty_2 = 1;\n        };\n    };\n};\n```\n\n\nConfigs will be prioritized in the order that they are defined. Meaning in the example above, should both `ExampleCondition_1` and `ExampleCondition_2` be met, `ExampleCondition_1` will be used since it is defined higher.\n\nAnother important note, **only** the highest priority conditional classes' values will be retrievable. Taking the example above again, the `ExampleCondition_1` class does not have `exampleProperty_2`\n defined. But assuming `ExampleCondition_1`'s conditions are met and it is chosen, `KISKA_fnc_getConditionalConfigValue`\n will then return `nil` when searching in `MyConditionalClass` for a value at `exampleProperty_2`.\n\nShould any of the conditional properties (`addons`,`patches`,`condition`) be excluded, they will simply be treated as a `true` value. Meaning that if none of the properties are defined, the conditional class will always be valid."
         },
         "configuration": {
             "label": "KISKA_fnc_getConditionalConfigValue",
@@ -6073,7 +6073,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _positon = [\n    player,\n    100,\n    180\n] call KISKA_fnc_getPosRelativeASL;\n```"
                 },
                 {
-                    "text": "```sqf\nprivate _position = [\n    player,\n    100,\n    180,\n    10 // 10 meters above whatever AGL surface is at the \n] call KISKA_fnc_getPosRelativeASL;\n```"
+                    "text": "```sqf\nprivate _position = [\n    player,\n    100,\n    180,\n    10 // 10 meters above whatever AGL surface is at the\n] call KISKA_fnc_getPosRelativeASL;\n```"
                 }
             ],
             "description": "Returns a position relative to another. Same as `getPos` alternative syntax but the returned position is in ASL format."
@@ -8641,7 +8641,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[] spawn {\n    private _boundingBoxId = [\n        myObject,\n        [1,0,1,1],\n        0\n    ] call KISKA_fnc_drawBoundingBox;\n    \n    sleep 10;\n    \n    [_boundingBoxId] call KISKA_fnc_removeBoundingBoxDraw;\n};\n```"
+                    "text": "```sqf\n[] spawn {\n    private _boundingBoxId = [\n        myObject,\n        [1,0,1,1],\n        0\n    ] call KISKA_fnc_drawBoundingBox;\n\n    sleep 10;\n\n    [_boundingBoxId] call KISKA_fnc_removeBoundingBoxDraw;\n};\n```"
                 }
             ],
             "description": "Removes a select or all boudning boxes drawn with `KISKA_fnc_drawBoundingBox`."
@@ -11263,7 +11263,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _timeline = [\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to next and current wait condition\n        },\n        {\n            params [\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        },\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}, 2\n    ]\n];\nprivate _timelineId = [_timeline,{hint \"timeline end\"}] call KISKA_fnc_timeline_start;\n```"
                 }
             ],
-            "description": "Creates a timeline of events that can happen. Waits/executes in an unscheduled environment.\n\nThere is a non-trivial amount of overhead to this, however, so do not use with the intention of needing precise events to happen but rather to not clog the scheduler or use a decent interface with smaller units of code.\n\n\n```sqf\n// A timeline is made up of events:\n[\n    [], // event 1\n    [] // event 2\n]\n```\n\n\n\n```sqf\n// Each event is made up of code to execute when the event comes up in the timeline,\n/// and what to wait for when executing the NEXT event in the timeline AFTER the \n/// current event completes:\n[\n    [\n        {\n            hint \"executed event #1\"\n        },\n        3 // wait 3 seconds AFTER current event to execute event 2\n    ],\n    [\n        {\n            hint \"executed event #2 3 seconds after event 1 completed\"\n        },\n        1 // wait 1 second to run _onTimelineStopped code\n    ]\n]\n```\n\n\n\n```sqf\n// Alternativeley, you can also wait for a condition before proceeeding to the next event:\nprivate _endTime = time + 10;\n[\n    [\n        {hint \"executed event #1\"},\n        3 // wait 3 seconds AFTER current event to execute event 1\n    ],\n    [\n        {hint \"executed event #2 3 seconds after event 1 completed\"},\n        [[_endTime],{\n            _thisArgs params [\"_endTime\"];\n            time >= (_endTime) // wait until current time is more than _endTime\n        }],\n        1 // check condition every second\n    ]\n]\n```\n\n\n\n```sqf\n// You can chain timeline events together by returning\n[\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to the next event and current wait condition\n        },\n        {\n            params [\"\",\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        }\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}\n    ]\n]\n```"
+            "description": "Creates a timeline of events that can happen. Waits/executes in an unscheduled environment.\n\nThere is a non-trivial amount of overhead to this, however, so do not use with the intention of needing precise events to happen but rather to not clog the scheduler or use a decent interface with smaller units of code.\n\n\n```sqf\n// A timeline is made up of events:\n[\n    [], // event 1\n    [] // event 2\n]\n```\n\n\n\n```sqf\n// Each event is made up of code to execute when the event comes up in the timeline,\n/// and what to wait for when executing the NEXT event in the timeline AFTER the\n/// current event completes:\n[\n    [\n        {\n            hint \"executed event #1\"\n        },\n        3 // wait 3 seconds AFTER current event to execute event 2\n    ],\n    [\n        {\n            hint \"executed event #2 3 seconds after event 1 completed\"\n        },\n        1 // wait 1 second to run _onTimelineStopped code\n    ]\n]\n```\n\n\n\n```sqf\n// Alternativeley, you can also wait for a condition before proceeeding to the next event:\nprivate _endTime = time + 10;\n[\n    [\n        {hint \"executed event #1\"},\n        3 // wait 3 seconds AFTER current event to execute event 1\n    ],\n    [\n        {hint \"executed event #2 3 seconds after event 1 completed\"},\n        [[_endTime],{\n            _thisArgs params [\"_endTime\"];\n            time >= (_endTime) // wait until current time is more than _endTime\n        }],\n        1 // check condition every second\n    ]\n]\n```\n\n\n\n```sqf\n// You can chain timeline events together by returning\n[\n    [\n        {\n            hint \"executed event #1\";\n            time + 3 // return/send to the next event and current wait condition\n        },\n        {\n            params [\"\",\"\",\"\",\"_eventReturn\"];\n            private _timeAfterWait = _eventReturn;\n            time >= _timeAfterWait // wait until current time is more than time + 3\n        }\n    ],\n    [\n        {hint \"executed event #2 ~3 seconds after event 1 completed\"}\n    ]\n]\n```"
         },
         "configuration": {
             "label": "KISKA_fnc_timeline_start",
