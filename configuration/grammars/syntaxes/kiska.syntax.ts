@@ -1037,7 +1037,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(STRING or CONFIG)* - The config path of the base config or if in missionConfigFile >> \"KISKA_bases\" config, its class"
+                            "description": "*(STRING or CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1064,7 +1064,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(CONFIG)* - The config path of the base config"
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1091,7 +1091,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(CONFIG)* - The config path of the base config"
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1118,7 +1118,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(CONFIG)* - The config path of the base config"
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1145,7 +1145,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(CONFIG)* - The config path of the base config"
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1172,7 +1172,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(CONFIG)* - The config path of the base config"
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1199,7 +1199,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_baseConfig",
-                            "description": "*(CONFIG)* - The config path of the base config"
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\""
                         }
                     ],
                     "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
@@ -1214,6 +1214,45 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_bases_createFromConfig_turrets",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getClassConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_class, _setConfigPath, _canSelectFromSetRoot, _canSelectFromBaseRoot] call `KISKA_fnc_bases_getClassConfig`",
+                    "parameters": [
+                        {
+                            "name": "_class",
+                            "description": "*(STRING)* - The name of the class to obtain."
+                        },
+                        {
+                            "name": "_setConfigPath",
+                            "description": "*(CONFIG)* - The config of the base set that is being searched\n    (e.g. `missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"infantry\" >> \"sets\" >> \"MyInfantrySet\"`)"
+                        },
+                        {
+                            "name": "_canSelectFromSetRoot",
+                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the set class (e.g. `missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"infantry\"`)\n    (Default: `true`)"
+                        },
+                        {
+                            "name": "_canSelectFromBaseRoot",
+                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the KISKA base class (e.g. `missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\"`)\n    (Default: `true`)"
+                        }
+                    ],
+                    "returns": "*(CONFIG)* - The most specific config of the class or `configNull` if not found."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _agentsConfig = missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"turrets\" >> \"sets\" >> \"agents\";\nprivate _agentsRandomGearConfig = [\n    \"KISKA_randomGear\",\n    _agentsConfig,\n    true,\n    false\n] call KISKA_fnc_bases_getClassConfig;\n```"
+                }
+            ],
+            "description": "Used to sift through the various levels of possible configs for a KISKA base.\n\nVery similar to `KISKA_fnc_bases_getPropertyValue` except it's used to obtain an entire config class by the given name."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_bases_getClassConfig",
             "grammarType": "function"
         }
     },
@@ -1246,33 +1285,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getInfantryClasses.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_configClasses] call `KISKA_fnc_bases_getInfantryClasses`",
-                    "parameters": [
-                        {
-                            "name": "_configClasses",
-                            "description": "*(ARRAY)* - An array of CONFIGs to select the \"infantryClasses\"\n    property from. If a string, value is found, it will be treated as a function that should return an array of classnames."
-                        }
-                    ],
-                    "returns": "*(STRING[])* - An array of STRING class names"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\n    [\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\",\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\",\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\" >> \"myInfantryClass\"\n    ]\n] call KISKA_fnc_bases_getInfantryClasses;\n```"
-                }
-            ],
-            "description": "Selects the most specific config's infantryClasses property and returns its value."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_bases_getInfantryClasses",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getPropertyValue.sqf",
             "syntaxes": [
                 {
@@ -1284,7 +1296,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_setConfigPath",
-                            "description": "*(CONFIG)* - The config of the base set that is being searched\n    (e.g. missionConfigFile >> KISKA_Bases >> MyBase >> infantry >> sets >> MyInfantrySet)"
+                            "description": "*(CONFIG)* - The config of the base set that is being searched\n    (e.g. `missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"infantry\" >> \"sets\" >> \"MyInfantrySet\"`)"
                         },
                         {
                             "name": "_default",
@@ -1296,11 +1308,11 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_canSelectFromSetRoot",
-                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the set class (e.g. missionConfigFile >> KISKA_Bases >> MyBase >> infantry)\n    (Default: `true`)"
+                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the set class (e.g. `missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"infantry\"`)\n    (Default: `true`)"
                         },
                         {
                             "name": "_canSelectFromBaseRoot",
-                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the KISKA base class (e.g. missionConfigFile >> KISKA_Bases >> MyBase)\n    (Default: `true`)"
+                            "description": "*(BOOL)* - Whether or not the property can be retrieved from the root of the KISKA base class (e.g. `missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\"`)\n    (Default: `true`)"
                         }
                     ],
                     "returns": "*(ANY)* - The property value"
@@ -1308,40 +1320,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\nprivate _turretConfig = missionConfigFile >> KISKA_Bases >> MyBase >> turrets >> sets >> MyTurretSet\nprivate _turretSpawnPositions = [\n    \"spawnPositions\",\n    _turretConfig,\n    [],\n] call KISKA_fnc_bases_getPropertyValue;\n```"
+                    "text": "```sqf\nprivate _turretConfig = missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"turrets\" >> \"sets\" >> \"MyTurretSet\";\nprivate _turretSpawnPositions = [\n    \"spawnPositions\",\n    _turretConfig,\n    [],\n] call KISKA_fnc_bases_getPropertyValue;\n```"
                 }
             ],
-            "description": "Used to sift through the various levels of possible properties for a kiska base."
+            "description": "Used to sift through the various levels of possible properties for a KISKA base."
         },
         "configuration": {
             "label": "KISKA_fnc_bases_getPropertyValue",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_getSide.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_configClasses] call `KISKA_fnc_bases_getSide`",
-                    "parameters": [
-                        {
-                            "name": "_configClasses",
-                            "description": "*(ARRAY)* - An array of CONFIGs to select the \"side\" property from That will be converted from a number in the side"
-                        }
-                    ],
-                    "returns": "*(SIDE)* - The returned side for the given configs"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\n    [\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\"\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\",\n        missionConfigFile >> \"KISKA_Bases\" >> \"myBase\" >> \"Infantry\" >> \"myInfantryClass\"\n    ]\n] call KISKA_fnc_bases_getSide;\n```"
-                }
-            ],
-            "description": "Selects the most specific config's infantryClasses property and returns its value."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_bases_getSide",
             "grammarType": "function"
         }
     },
@@ -4595,7 +4580,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_findConfigAny.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_findConfigAny.sqf",
             "syntaxes": [
                 {
                     "outline": "[_pathArray] call `KISKA_fnc_findConfigAny`",
@@ -5589,42 +5574,34 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getConditionalConfigValue.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_getConditionalConfigClass.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_conditionalConfig, _property, _isBool] call `KISKA_fnc_getConditionalConfigValue`",
+                    "outline": "[_conditionalConfigParent] call `KISKA_fnc_getConditionalConfigClass`",
                     "parameters": [
                         {
-                            "name": "_conditionalConfig",
-                            "description": "*(CONFIG)* - Default: `configNull` - The config path to parse dynamic data from"
-                        },
-                        {
-                            "name": "_property",
-                            "description": "*(STRING)* - Default: `\"\"` - The config path to parse dynamic data from"
-                        },
-                        {
-                            "name": "_isBool",
-                            "description": "*(BOOL)* - Default: `false` - Will convert a number value into a `BOOL`. If the value is more than `0`, the it will be `true`. Any values `<= 0` will be `false`"
+                            "name": "_conditionalConfigParent",
+                            "description": "*(CONFIG)* - Default: `configNull` - The config path to parse dynamic data from. This should include a class underneath it named `KISKA_conditional`."
                         }
                     ],
-                    "returns": "*(NUMBER | STRING | ARRAY | BOOL)* - The value for the given conditional config.\n `nil` in cases where config value is not found or no conditions are met."
+                    "returns": "*(CONFIG)* - The conditional config class, `configNull` in the event a config can't be found."
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\nprivate _value = [\n    missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\" >> \"Conditional\",\n    \"myProperty\"\n] call KISKA_fnc_getConditionalConfigValue;\n```"
+                    "text": "```sqf\n(missionConfigFile >> \"MyClass\") call KISKA_fnc_getConditionalConfigClass\n```"
                 }
             ],
-            "description": "Retrieves the conditional value located in a given config. This code will cache configs and their values after being run once within the `localNamespace`.\n\nThe syntax for a conditional config:\n\n```cpp\n// `_conditionalConfig` param would be the config path to `MyConditionalClass`\nclass MyConditionalClass\n{\n    class ExampleCondition_1\n    {\n        // A list of addon directories (names) as they would appear in getLoadedModsInfo (case-insensitive).\n        // All addons in the list must be loaded present.\n        addons[] = { \"A3\" };\n\n        // A list of CfgPatches classNames that need to be present.\n        patches[] = { \"A3_Data_F\"};\n\n        // Uncompiled code that must return a boolean value.\n        // `false` means the ExampleCondition_1's value will not be used\n            // Parameters:\n            // 0: <CONFIG> - The parent condition class (MyConditionalClass)\n            // 1: <CONFIG> - The current conditional class (MyConditionalClass >> ExampleCondition_1)\n            // 2: <STRING> - The property being searched for\n        condition = \"hint str _this; true\";\n\n        // A class filled with the properties that you can get\n        class properties\n        {\n            exampleProperty_1 = 1;\n        };\n    };\n\n    class ExampleCondition_2\n    {\n        class properties\n        {\n            exampleProperty_1 = 0;\n            exampleProperty_2 = 1;\n        };\n    };\n};\n```\n\n\nConfigs will be prioritized in the order that they are defined. Meaning in the example above, should both `ExampleCondition_1` and `ExampleCondition_2` be met, `ExampleCondition_1` will be used since it is defined higher.\n\nAnother important note, **only** the highest priority conditional classes' values will be retrievable. Taking the example above again, the `ExampleCondition_1` class does not have `exampleProperty_2`\n defined. But assuming `ExampleCondition_1`'s conditions are met and it is chosen, `KISKA_fnc_getConditionalConfigValue`\n will then return `nil` when searching in `MyConditionalClass` for a value at `exampleProperty_2`.\n\nShould any of the conditional properties (`addons`,`patches`,`condition`) be excluded, they will simply be treated as a `true` value. Meaning that if none of the properties are defined, the conditional class will always be valid."
+            "description": "Similar to `KISKA_fnc_getConfigDataConditional` except this will return the selected conditional class's config instead of a given value in the class.\n\nThe syntax for a conditional config:\n\n```cpp\n// `_conditionalConfigParent` param would be the config path to `MyClass`\nclass MyClass\n{\n    class KISKA_conditional\n    {\n        cacheResult = 1; // defaults to true\n\n        class ExampleCondition_1\n        {\n            // A list of addon directories (names) as they would appear in getLoadedModsInfo (case-insensitive).\n            // All addons in the list must be loaded.\n            addons[] = { \"A3\" };\n\n            // A list of CfgPatches classNames that need to be present.\n            patches[] = { \"A3_Data_F\"};\n\n            // Uncompiled code that must return a boolean value.\n            // `false` means the ExampleCondition_1's value will not be used\n                // Parameters:\n                // 0: <CONFIG> - The parent condition class (\"MyConditionalClass\")\n                // 1: <CONFIG> - The current conditional class (`\"MyClass\" >> \"KISKA_conditional\" >> \"ExampleCondition_1\"`)\n            condition = \"hint str _this; true\";\n\n            // A class filled with the properties that you can get\n            class properties\n            {\n                exampleProperty_1 = 1;\n            };\n        };\n\n        class ExampleCondition_2\n        {\n            class properties\n            {\n                exampleProperty_1 = 0;\n                exampleProperty_2 = 1;\n            };\n        };\n    };\n\n    exampleProperty_1 = \"default value\";\n};\n```\n\n\nConfigs will be prioritized in the order that they are defined. Meaning in the example above, should both `ExampleCondition_1` and `ExampleCondition_2` be met, `ExampleCondition_1` will be used since it is defined higher.\n\nIn the case that no conditional classes are met or none exist, the `_conditionalConfigParent`'s scope will be searched for the property using `KISKA_fnc_getConfigData`.\n\nThe result of the value initially calculated after all the condition checks is by default cached with the `cacheResult` property being interpreted as `true`. This means that the compilation and run of the `condition` properties of the classes will be performed only once and that value will be saved.\n\nShould any of the conditional properties (`addons`,`patches`,`condition`) be excluded, they will simply be treated as a `true` value. Meaning that if none of the properties are defined, the conditional class will always be valid."
         },
         "configuration": {
-            "label": "KISKA_fnc_getConditionalConfigValue",
+            "label": "KISKA_fnc_getConditionalConfigClass",
             "grammarType": "function"
         }
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getConfigData.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_getConfigData.sqf",
             "syntaxes": [
                 {
                     "outline": "[_config, _isBool, _defaultValue] call `KISKA_fnc_getConfigData`",
@@ -5657,6 +5634,45 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_getConfigData",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_getConfigDataConditional.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_conditionalConfigParent, _property, _isBool, _defaultValue] call `KISKA_fnc_getConfigDataConditional`",
+                    "parameters": [
+                        {
+                            "name": "_conditionalConfigParent",
+                            "description": "*(CONFIG)* - Default: `configNull` - The config path to parse dynamic data from. This should include a class underneath it named `KISKA_conditional`."
+                        },
+                        {
+                            "name": "_property",
+                            "description": "*(STRING)* - Default: `\"\"` - The config path to parse dynamic data from"
+                        },
+                        {
+                            "name": "_isBool",
+                            "description": "*(BOOL)* - Default: `false` - Will convert a number value into a `BOOL`. If the value is more than `0`, the it will be `true`. Any values `<= 0` will be `false`"
+                        },
+                        {
+                            "name": "_defaultValue",
+                            "description": "*(NUMBER | STRING | ARRAY | BOOL | NIL)* - Default: `nil` -\n    In the event that the config value is undefined, this value will be returned."
+                        }
+                    ],
+                    "returns": "*(NUMBER | STRING | ARRAY | BOOL)* - The value for the given conditional config.\n `nil` in cases where config value is not found or no conditions are met."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _value = [\n    missionConfigFile >> \"KISKA_Bases\" >> \"MyBase\",\n    \"myProperty\"\n] call KISKA_fnc_getConfigDataConditional;\n```"
+                }
+            ],
+            "description": "Retrieves the conditional value located in a given config. This code will cache configs and their values after being run once within the `localNamespace`.\n\nAn important note, **only** the highest priority conditional classes' values will be retrievable.\n\nSee `KISKA_fnc_getConditionalConfigClass` for more details in the selection of a conditional class."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_getConfigDataConditional",
             "grammarType": "function"
         }
     },
@@ -5840,7 +5856,7 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getMostSpecificCfgValue.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_getMostSpecificCfgValue.sqf",
             "syntaxes": [
                 {
                     "outline": "[_property, _configs, _ignoredValues, _ignoredTypes] call `KISKA_fnc_getMostSpecificCfgValue`",
@@ -5979,7 +5995,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_getDefault",
-                            "description": "*(CODE)* - Code that must return the default value of the variable. Will only be called in the event that the provided variable `isNil`."
+                            "description": "*(CODE, STRING, or ARRAY)* - Code that must return the default value of the variable. Will only be called in the event that the provided variable `isNil`. See `KISKA_fnc_callBack`"
                         }
                     ],
                     "returns": "*(ANY)* - The value of the variable"
@@ -5988,6 +6004,9 @@ export const configs: SQFItemConfig[] = [
             "examples": [
                 {
                     "text": "```sqf\nprivate _value = [\n    localNamespace,\n    \"MyVariable\",\n    {[]} // set \"MyVariable\" in localNamespace to [] if it does not exist\n] call KISKA_fnc_getOrDefaultSet;\n```"
+                },
+                {
+                    "text": "```sqf\n// _value == \"MyString\"\nprivate _value = [\n    localNamespace,\n    \"MyVariable\",\n    [[\"MyString\"],{ _thisArgs select 0 }]\n] call KISKA_fnc_getOrDefaultSet;\n```"
                 }
             ],
             "description": "Gets a namespace variable or calls the provided code that will set the default value."
@@ -6263,6 +6282,33 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_getVectorToTarget",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_hasConditionalConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_conditionalConfigParent] call `KISKA_fnc_hasConditionalConfig`",
+                    "parameters": [
+                        {
+                            "name": "_conditionalConfigParent",
+                            "description": "*(CONFIG)* - Default: `configNull` - The config path to check whether or not it has a conditional class."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - Whether or not the config has a conditional class."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _hasConditionalClass = [\n    missionConfigFile >> \"MyConfig\"\n] call KISKA_fnc_hasConditionalConfig;\n```"
+                }
+            ],
+            "description": "Checks if the given config (class) has a class underneath it named `KISKA_conditional`\n making it eligible to be used with `KISKA_fnc_getConfigDataConditional`.\n\n\n```cpp\nclass MyConfig\n{\n    class KISKA_conditional // returns true\n    {\n        // ...\n    };\n};\n```"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_hasConditionalConfig",
             "grammarType": "function"
         }
     },
@@ -6834,6 +6880,28 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_isAdminOrHost",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isEmptyCode.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_isEmptyCode`",
+                    "parameters": [],
+                    "returns": "*(BOOL)* - Whether or not the given argument is equal to empty code."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n{} call KISKA_fnc_isEmptyCode; // true\n(compileFinal \"\") call KISKA_fnc_isEmptyCode; // true\n\"\" call KISKA_fnc_isEmptyCode; // false\n```"
+                }
+            ],
+            "description": "Checks if the provided argument is an empty code block. Also handles the fact that a `compileFinal`'d block is not actually equal to `{}`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_isEmptyCode",
             "grammarType": "function"
         }
     },
@@ -7917,11 +7985,11 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Loadouts/fn_randomGear.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_unit, _uniforms, _headgear, _facewear, _vests, _backpacks, _primaryWeapons, _handguns, _secondaryWeapons] call `KISKA_fnc_randomGear`",
+                    "outline": "[_units, _uniforms, _headgear, _facewear, _vests, _backpacks, _primaryWeapons, _handguns, _secondaryWeapons] call `KISKA_fnc_randomGear`",
                     "parameters": [
                         {
-                            "name": "_unit",
-                            "description": ": *(OBJECT)* - The unit to randomize gear"
+                            "name": "_units",
+                            "description": ": *(OBJECT or OBJECT[])* - The units to randomize the gear of"
                         },
                         {
                             "name": "_uniforms",
@@ -7945,15 +8013,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_primaryWeapons",
-                            "description": ": *([STRING,(STRING[] | (STRING,NUMBER)[])][])* - Primary weapons and items to add to them (see example)"
+                            "description": ": *([STRING,(STRING[] | (STRING,NUMBER)[])][])* - An array of primary weapons and items to add to them (see example). The items will be added using `addPrimaryWeaponItem`."
                         },
                         {
                             "name": "_handguns",
-                            "description": ": *([STRING,(STRING[] | (STRING,NUMBER)[])][])* - Handgun weapons and items to add to them"
+                            "description": ": *([STRING,(STRING[] | (STRING,NUMBER)[])][])* - An array of handgun weapons and items to add to them (see example). The items will be added using `addHandgunItem`."
                         },
                         {
                             "name": "_secondaryWeapons",
-                            "description": ": *([STRING,(STRING[] | (STRING,NUMBER)[])][])* - Secondary (launcher) weapons and items to add to them"
+                            "description": ": *([STRING,(STRING[] | (STRING,NUMBER)[])][])* - An array of secondary (launcher) weapons and items to add to them (see example). The items will be added using `addSecondaryWeaponItem`."
                         }
                     ],
                     "returns": "NOTHING"
@@ -7961,13 +8029,50 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\nprivate _uniforms = [\"U_B_CombatUniform_mcam_vest\"];\nprivate _headgear = [];\nprivate _facewear = [];\nprivate _vests = [];\nprivate _backpacks = [];\nprivate _primaryWeapons = [\n    // add a mag an optic to rifle\n    [\"arifle_MXC_F\",[\"optic_Aco\",\"30Rnd_65x39_caseless_mag\"]]\n];\n\n[\n    _unit,\n    _uniforms,\n    _headgear,\n    _facewear,\n    _vests,\n    _backpacks,\n    _primaryWeapons\n] call KISKA_fnc_randomGear;\n```"
+                    "text": "```sqf\nprivate _uniforms = [\"U_B_CombatUniform_mcam_vest\"];\nprivate _headgear = [];\nprivate _facewear = [];\nprivate _vests = [];\nprivate _backpacks = [];\nprivate _primaryWeapons = [\n    // add a mag and optic to rifle\n    [\"arifle_MXC_F\",[\"optic_Aco\",\"30Rnd_65x39_caseless_mag\"]]\n];\n\n[\n    _units,\n    _uniforms,\n    _headgear,\n    _facewear,\n    _vests,\n    _backpacks,\n    _primaryWeapons\n] call KISKA_fnc_randomGear;\n```"
+                },
+                {
+                    "text": "```sqf\n// Weighted array\nprivate _uniforms = [\n    \"U_B_CombatUniform_mcam_vest\", 0.5,\n    \"U_B_CombatUniform_mcam_tshirt\", 0.25,\n    \"U_B_CombatUniform_mcam\", 0.25\n];\n\n[\n    _units,\n    _uniforms\n] call KISKA_fnc_randomGear;\n```"
                 }
             ],
-            "description": "Randomizes gear based upon input arrays for each slot. Be aware that this function is very slow (can take >1ms) and should be used ideally on initialization for large numbers of units.\n\nThe unit must be local to the machine where this function is executed.\n\nAll gear arrays can be weighted or unweighted arrays."
+            "description": "Randomizes gear based upon input arrays for each slot. Be aware that this function is very slow (can take >1ms for a single unit) and should be used ideally on initialization for large numbers of units.\n\nThe units must be local to the machine where this function is executed.\n\nAll gear arrays can be weighted or unweighted arrays."
         },
         "configuration": {
             "label": "KISKA_fnc_randomGear",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Loadouts/fn_randomGearFromConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_units, _gearConfig] call `KISKA_fnc_randomGearFromConfig`",
+                    "parameters": [
+                        {
+                            "name": "_units",
+                            "description": ": *(OBJECT or OBJECT[])* - The unit or units to randomize the gear of."
+                        },
+                        {
+                            "name": "_gearConfig",
+                            "description": ": *(CONFIG or STRING)* - A config that contains weighted or unweighted arrays that match the inputs of `KISKA_fnc_randomGear` (\"uniforms\", \"headgear\", etc.). If a STRING, it is assumed it is the className that exists in `missionConfigFile >> \"KISKA_RandomGear\"`"
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    player,\n    missionConfigFile >> \"KISKA_randomGear\" >> \"MyRandomGearConfigClass\"\n] call KISKA_fnc_randomGear;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    [unit_1, unit_2],\n    \"MyRandomGearConfigClass\"\n] call KISKA_fnc_randomGearFromConfig;\n```"
+                }
+            ],
+            "description": "Randomizes gear based upon input arrays for each slot. See `KISKA_fnc_randomGear`\n for details on behavior.\n\nConfigs can also be conditional (see `KISKA_fnc_getConditionalConfigClass`).\n\nHere is an example config class for random gear:\n\n```cpp\nclass MyRandomGearConfigClass\n{\n    headgear[] = {\n        \"H_Booniehat_khk_hs\",\n        \"H_HelmetB\"\n    };\n    vests[] = {\n        \"V_PlateCarrier1_rgr\",\n        \"V_PlateCarrier2_rgr\"\n    };\n    primaryWeapons[] = {\n        {\"arifle_MX_F\",{\"optic_Aco\",\"30Rnd_65x39_caseless_mag\"}},\n        {\"arifle_MX_F\",{\"optic_Hamr\",\"30Rnd_65x39_caseless_mag\"}}\n    };\n    handguns[] = {\n        {\"hgun_Pistol_heavy_01_F\"}\n    };\n    // Weighted array\n    facewear[] = {\n        \"\", 1, // empty\n        \"G_Shades_Black\", 0.5,\n        \"G_Tactical_Clear\", 0.75,\n        \"G_Tactical_Black\", 2\n    };\n};\n```"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_randomGearFromConfig",
             "grammarType": "function"
         }
     },
