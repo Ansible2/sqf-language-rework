@@ -6314,33 +6314,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_assignObjectOrGroupKey.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_objectOrGroup] call `KISKA_fnc_hashmap_assignObjectOrGroupKey`",
-                    "parameters": [
-                        {
-                            "name": "_objectOrGroup",
-                            "description": "*(OBJECT or GROUP)* - The object or group to assign a key to"
-                        }
-                    ],
-                    "returns": "*(STRING)* - The string key used to uniquely identify the given object or group"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\nprivate _associatedKey = [\n\tsomeObject\n] call KISKA_fnc_hashmap_assignObjectOrGroupKey;\n```"
-                }
-            ],
-            "description": "Provides a unique hashmap key for a given object or group.\n\nThe key can be reverse looked up for the object or group with\n KISKA_fnc_hashmap_getObjectOrGroupFromRealKey."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_hashmap_assignObjectOrGroupKey",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_deleteAt.sqf",
             "syntaxes": [
                 {
@@ -7333,6 +7306,435 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_monitorFPS",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_addObjects.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id, _objects] call `KISKA_fnc_multiKillEvent_addObjects`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        },
+                        {
+                            "name": "_objects",
+                            "description": "*(OBJECT | OBJECT[])* - The objects to add to the multi kill event."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_multiKillEvent_uid_0_0\",\n    MyObject\n] call KISKA_fnc_multiKillEvent_addObjects;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    \"KISKA_multiKillEvent_uid_0_0\",\n    [MyObject_1,MyObject_2]\n] call KISKA_fnc_multiKillEvent_addObjects;\n```"
+                }
+            ],
+            "description": "Adds objects to the list that must be killed for a multi kill event to complete."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_addObjects",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_create.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_objects, _onThresholdMet, _threshold, _onKilled, _useMPKilled] call `KISKA_fnc_multiKillEvent_create`",
+                    "parameters": [
+                        {
+                            "name": "_objects",
+                            "description": "*(OBJECT[])* - An array of objects to add some form of killed event handlers to."
+                        },
+                        {
+                            "name": "_onThresholdMet",
+                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes once the given threshold have been killed (executed after the `onKilled` of whatever the last killed object was). (See `KISKA_fnc_callBack`)\n\n    Params:\n    - 0. *(ARRAY)* - The default arguments passed to either the MPKILLED or KILLED event handler.\n    - 1. *(STRING)* - The ID of the multi kill event."
+                        },
+                        {
+                            "name": "_threshold",
+                            "description": "*(NUMBER)* - A number between `0` and `1` that denotes the percentage of objects that must've been killed to trigger the `_onThresholdMet`.\n    (e.g. `1` means 100% of them need to be killed, `0.5` means 50%, etc.)"
+                        },
+                        {
+                            "name": "_onKilled",
+                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes each time a unit has been killed (after the `_onThresholdMet` if threshold has been met). (See `KISKA_fnc_callBack`)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\""
+                        },
+                        {
+                            "name": "_useMPKilled",
+                            "description": "*(BOOL)* - Whether or not to use `\"MPKILLED\"` events instead of `\"KILLED\"`. IF TRUE, MUST BE RUN ON THE SERVER"
+                        }
+                    ],
+                    "returns": "*(STRING)* - An ID to identify the multi kill event."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _id = [\n    [someObject, anotherObject],\n    {\n        params [\"_killedEventParams\",\"_eventId\"];\n        _killedEventParams params [\"_killedObject\"];\n        hint str _this;\n    }\n] call KISKA_fnc_multiKillEvent_create;\n```"
+                }
+            ],
+            "description": "Sets up an event that will fire when a percentage of objects are killed. Uses `\"KILLED\"` or `\"MPKILLED\"` eventhandlers.\n\nThis should be called where the arguments are local if `_useMPKilled` is `false`\nor on the server if `_useMPKilled` is `true`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_create",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_delete.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_delete`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - `true` if the event was deleted or does not exist.\n    `false` if the event exists but its threshold was met and therefore it will not be deleted."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _wasDeleted = \"KISKA_multiKillEvent_uid_0_0\"\n    call KISKA_fnc_multiKillEvent_delete;\n```"
+                }
+            ],
+            "description": "Removes all traces of a multi kill event.\n\nThis can only be performed on an event that has not had its threshold met."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_delete",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_getContainerMap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_getContainerMap`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(HASHMAP)* - A hashmap for all the event maps"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _containerMap = call KISKA_fnc_multiKillEvent_getContainerMap;\n```"
+                }
+            ],
+            "description": "Returns the map that contains the event maps"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_getContainerMap",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_getEventMap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_getEventMap`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(HASHMAP | NIL)* - A hashmap containing info about the event:\n\n- `id`: *(STRING)* - The ID of the multi kill event.\n- `total`: *(NUMBER)* - The total number of objects that have this killed event.\n- `killedCount`: *(NUMBER)* - The total number of objects that have been killed with this event.\n- `threshold`: *(NUMBER)* - A number that indicates the percentage of objects that must be killed (relative to the total) for this event to fire\n    (e.g. `1` means 100% of them need to be killed, `0.5` means 50%, etc.)\n- `thresholdMet`: *(BOOL)* - Whether or not the threshold has been met and therefore onThresholdMet has fired\n- `onKilled`: *(CODE, ARRAY, or STRING)* - Code that executes each time an object has been killed (executed before the `onThresholdMet` if threshold has been met).\n    (See `KISKA_fnc_callBack`)\n\n    Params:\n    - 0. *(ARRAY)* - The default arguments passed to either the MPKILLED or KILLED event handler.\n    - 1. *(STRING)* - The ID of the multi kill event.\n\n- `onThresholdMet`: *(CODE, ARRAY, or STRING)* - Code that executes once the given threshold have been killed (executed after the `onKilled` of whatever the last killed object was). (See `KISKA_fnc_callBack`)\n\n    Params:\n    - 0. *(ARRAY)* - The default arguments passed to either the MPKILLED or KILLED event handler.\n    - 1. *(STRING)* - The ID of the multi kill event.\n\n- `eventCode`: *(CODE)* - The code that is attached to the killed eventhandler\n- `type`: *(STRING)* - Type of event, (`\"KILLED\"` or `\"MPKILLED\"`)\n- `objectHashSet`: *(HASHMAP)* - A hashmap that effectively acts as a hash set that contains all the objects in the multi kill event. This is meant to be used with the KISKA hashmap function family. The values are all the objects and the keys are effectively the objects themselves."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _eventMap = \"KISKA_multiKillEvent_uid_0_0\" call KISKA_fnc_multiKillEvent_getEventMap;\n```"
+                }
+            ],
+            "description": "Returns the metadata map for a multi kill event. Ideally should not be modified directly as it may create unintended behaviour."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_getEventMap",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_getKilledCount.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_getKilledCount`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(NUMBER | NIL)*"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _numberOfKilledObjects = [\n    \"KISKA_multiKillEvent_uid_0_0\"\n] call KISKA_fnc_multiKillEvent_getKilledCount;\n```"
+                }
+            ],
+            "description": "Returns the number of objects that have been killed throughout the course of the multi kill event's lifetime."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_getKilledCount",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_getTotal.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_getTotal`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(NUMBER | NIL)* - The total number of objects assigned to the multi kill event."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _totalNumberOfObjects = [\n    \"KISKA_multiKillEvent_uid_0_0\"\n] call KISKA_fnc_multiKillEvent_getTotal;\n```"
+                }
+            ],
+            "description": "Returns the total number of objects that have been assigned to the multi kill event at the current moment."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_getTotal",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_getType.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_getType`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(STRING | NIL)* - The type of kill event (`\"KILLED\"` or `\"MPKILLED\"`)"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _type = [\n    \"KISKA_multiKillEvent_uid_0_0\"\n] call KISKA_fnc_multiKillEvent_getType;\n```"
+                }
+            ],
+            "description": "Returns the event type for the given multi kill event. Whether or not the event is a MPKILLED or KILLED event."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_getType",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_isObjectInEvent.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_isObjectInEvent`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - Whether the object is part of the multi kill event. If the event of the given ID does not exist or the given `_object` is null `false` will also be returned."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _isInMultiKillEvent = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n    MyObject\n] call KISKA_fnc_multiKillEvent_isObjectInEvent;\n```"
+                }
+            ],
+            "description": "Checks whether or not the threshold of the given multi kill event has been met."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_isObjectInEvent",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_isThresholdMet.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id] call `KISKA_fnc_multiKillEvent_isThresholdMet`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - Whether the threshold for the kill event has been met. Also will return `false` if the event does not exist."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _thresholdMet = [\n    \"KISKA_multiKillEvent_uid_0_0\"\n] call KISKA_fnc_multiKillEvent_isThresholdMet;\n```"
+                }
+            ],
+            "description": "Checks whether or not the threshold of the given multi kill event has been met."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_isThresholdMet",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_onKilled.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id, _onKilled] call `KISKA_fnc_multiKillEvent_onKilled`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        },
+                        {
+                            "name": "_onKilled",
+                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes each time an object has been killed (executed before the `onThresholdMet` if threshold has been met).\n    (See `KISKA_fnc_callBack`)\n\n    Params:\n    - 0. *(ARRAY)* - The default arguments passed to either the MPKILLED or KILLED event handler.\n    - 1. *(STRING)* - The ID of the multi kill event."
+                        }
+                    ],
+                    "returns": "*(CODE, ARRAY, STRING, or NIL)* - The current value of the onKilled property."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newOnKilled = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n    {hint \"hello\"}\n] call KISKA_fnc_multiKillEvent_onKilled;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _currentOnKilled = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n] call KISKA_fnc_multiKillEvent_onKilled;\n```"
+                }
+            ],
+            "description": "Gets or sets the code that is executed when a given object is killed that is part of the given multi kill event."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_onKilled",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_onThresholdMet.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id, _onThresholdMet] call `KISKA_fnc_multiKillEvent_onThresholdMet`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        },
+                        {
+                            "name": "_onThresholdMet",
+                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes once the given threshold have been killed (executed after the `onKilled` of whatever the last killed object was). (See `KISKA_fnc_callBack`)\n\n    Params:\n    - 0. *(ARRAY)* - The default arguments passed to either the MPKILLED or KILLED event handler.\n    - 1. *(STRING)* - The ID of the multi kill event."
+                        }
+                    ],
+                    "returns": "*(CODE, ARRAY, STRING, or NIL)* - The current value of the onThresholdMet property."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newOnThresholdMet = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n    {hint \"hello\"}\n] call KISKA_fnc_multiKillEvent_onThresholdMet;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _currentOnThresholdMet = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n] call KISKA_fnc_multiKillEvent_onThresholdMet;\n```"
+                }
+            ],
+            "description": "Gets or sets the code that is executed when the threshold of objects required to complete the multi kill event have been killed."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_onThresholdMet",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_removeObjects.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id, _objects] call `KISKA_fnc_multiKillEvent_removeObjects`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        },
+                        {
+                            "name": "_objects",
+                            "description": "*(OBJECT | OBJECT[])* - The objects to remove from the multi kill event."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"KISKA_multiKillEvent_uid_0_0\",\n    MyObject\n] call KISKA_fnc_multiKillEvent_removeObjects;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    \"KISKA_multiKillEvent_uid_0_0\",\n    [MyObject_1,MyObject_2]\n] call KISKA_fnc_multiKillEvent_removeObjects;\n```"
+                }
+            ],
+            "description": "Removes objects from the list that must be killed for a multi kill event to complete."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_removeObjects",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Multi%20Kill%20Event/fn_multiKillEvent_threshold.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_id, _threshold] call `KISKA_fnc_multiKillEvent_threshold`",
+                    "parameters": [
+                        {
+                            "name": "_id",
+                            "description": "*(STRING)* - The multi kill event ID."
+                        },
+                        {
+                            "name": "_threshold",
+                            "description": "*(NUMBER | NIL)* - Default: `nil` - What to set the threshold to. The number will be clamped to be between `0` and `1`. If `nil`, the function will act as a getter for the current value."
+                        }
+                    ],
+                    "returns": "*(NUMBER | NIL)* - The current threshold of the event or `nil` if the event does not exist."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newThreshold = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n    1\n] call KISKA_fnc_multiKillEvent_threshold;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _currentThreshold = [\n    \"KISKA_multiKillEvent_uid_0_0\",\n] call KISKA_fnc_multiKillEvent_threshold;\n```"
+                }
+            ],
+            "description": "Gets or sets the threshold of the multi kill event which is the percentage of killed objects that must be met in order for the event to be considered complete.\n (e.g. 1 means 100% of them need to be killed, 0.5 means 50%, etc.)"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_multiKillEvent_threshold",
             "grammarType": "function"
         }
     },
@@ -8966,52 +9368,6 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_setCrew",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_setupMultiKillEvent.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_objects, _onThresholdMet, _threshold, _onKilled, _useMPKilled] call `KISKA_fnc_setupMultiKillEvent`",
-                    "parameters": [
-                        {
-                            "name": "_objects",
-                            "description": "*(ARRAY)* - An array of objects to add some form of killed event handlers to"
-                        },
-                        {
-                            "name": "_onThresholdMet",
-                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes once it has been determined that the threshold has been met or exceeded. (See KISKA_fnc_callBack). If attempting to add more units to an existing event, use the event id here (see returned hashmap below for id)\n    and preceed the event id with a \"#\" (see examples)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\"\n\n// NOT USED if adding to existing event"
-                        },
-                        {
-                            "name": "_threshold",
-                            "description": "*(NUMBER)* - A number between 0 and 1 that denotes the percentage of objects that must've been killed to trigger the _onThresholdMet.\n    (e.g. 1 means 100% of them need to be killed, 0.5 means 50%, etc.)"
-                        },
-                        {
-                            "name": "_onKilled",
-                            "description": "*(CODE, ARRAY, or STRING)* - Code that executes each time a unit has been killed (after the _onThresholdMet if threshold has been met). (See KISKA_fnc_callBack)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described below in \"Returns\""
-                        },
-                        {
-                            "name": "_useMPKilled",
-                            "description": "*(BOOL)* - Whether or not to use \"MPKILLED\" events instead of \"KILLED\". IF TRUE, MUST BE RUN ON THE SERVER"
-                        }
-                    ],
-                    "returns": "*(HASHMAP)* - A hashmap containing info about the event:\n\n- `id`: *(STRING)* - A localNamespace variable name to access this hashmap\n- `total`: *(NUMBER)* - The total number of objects that have this killed event\n- `killed`: *(NUMBER)* - The total number of objects that have been killed with this event\n- `threshold`: *(NUMBER)* - A number that indicates the percentage of objects that must be killed (relative to the total) for this event to fire\n    (e.g. 1 means 100% of them need to be killed, 0.5 means 50%, etc.)\n- `thresholdMet`: *(BOOL)* - Whether or not the threshold has been met and therefore onThresholdMet has fired\n- `onKilled`: *(CODE, ARRAY, or STRING)* - Code that executes each time a unit has been killed (after the _onThresholdMet if threshold has been met). (See KISKA_fnc_callBack)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described\n\n- `onThresholdMet`: *(CODE, ARRAY, or STRING)* - Code that executes once it has been determined that the threshold has been met or exceeded. (See KISKA_fnc_callBack)\n\n    Params:\n    - 0. *(ARRAY)* - the killed evenhandler params\n    - 1. *(HASHMAP)* - the hashmap described\n\n- `eventCode`: *(CODE)* - The code that is attached to the killed eventhandler\n- `type`: *(STRING)* - Type of event, (`KILLED` or `MPKILLED`)\n- `objectToEventIdMap`: *(HASHMAP)* -  A hashmap that uses objects as keys (should use KISKA_fnc_hashmap_get)\n    to get the killed eventhandler id attached to an object."
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\nprivate _eventMap = [\n    [someObject, anotherObject],\n    {\n        params [\"_killedEventParams\",\"_eventMap\"];\n        _killedEventParams params [\"_killedObject\"];\n        hint str [_killedEventParams, _eventMap];\n    }\n] call KISKA_fnc_setupMultiKillEvent;\n```"
-                },
-                {
-                    "text": "```sqf\n// add more objects to the existing event made above\nprivate _eventMap = [\n    [andAdditionalObject],\n    (\"#\" + (_eventMap get \"id\"))\n] call KISKA_fnc_setupMultiKillEvent;\n```"
-                }
-            ],
-            "description": "Sets up an event that will fire when a percentage of objects are killed. Uses `\"KILLED\"` or `\"MPKILLED\"` eventhandlers.\n\nThis should be called where the arguements are local if `_useMPKilled` is `false`\nor on the server if `_useMPKilled` is `true`."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_setupMultiKillEvent",
             "grammarType": "function"
         }
     },
