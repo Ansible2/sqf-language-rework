@@ -1864,7 +1864,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_aircraftParams",
-                            "description": ": *(HASHMAP)* - A hashmap of various parameters that affect ther aircraft.\n\n    - `aircraftClass`: *(STRING)* Default: `\"\"` - the class of aircraft to spawn.\n    - `side`: *(SIDE)* Default: `BLUFOR` - The side of the aircraft to spawn.\n    - `allowDamage`: *(BOOLEAN)* Default: `false` - Whether or not the aircraft and crew take damage.\n    - `attackPosition`: *(PositionASL[] | OBJECT)* Default: `objNull` - The primary position to fire at.\n    - `directionOfAttack`: *(NUMBER)* Default: `0` - The direction the aircraft will be facing during it's attack run.\n    - `initialHeightAboveTarget`: *(NUMBER)* Default: `1300` - The aircraft's initial altitude.\n    - `initialDistanceToTarget`: *(NUMBER)* Default: `2000` - The distance from the `_attackPosition` the aircraft will spawn.\n    - `breakOffDistance`: *(NUMBER)* Default: `500` - The three dimensional distance between the `_attackPosition`\n        and the aircraft at which point it will abandon it's firing orders and egress.\n    - `numberOfFlaresToDump`: *(NUMBER)* Default: `4` - The number of flares to fire off after breaking off.\n    - `approachSpeed`: *(NUMBER)* Default: `75` - How many meters per second will the aircraft be flying while approaching the `_attackPosition`.\n    - `vectorToTargetOffset`: *(NUMBER[])* Default: `[0,0,0]` - Used with `vectorAdd` on the aircraft's starting position to get the vector it will follow to engage the target. This can be used if an aircraft seems to be firing off target."
+                            "description": ": *(HASHMAP)* - A hashmap of various parameters that affect ther aircraft.\n\n    - `aircraftClass`: *(STRING)* Default: `\"\"` - the class of aircraft to spawn.\n    - `side`: *(SIDE)* Default: `BLUFOR` - The side of the aircraft to spawn.\n    - `allowDamage`: *(BOOLEAN)* Default: `false` - Whether or not the aircraft and crew take damage.\n    - `attackPosition`: *(PositionASL[] | OBJECT)* Default: `objNull` - The primary position to fire at.\n    - `directionOfAttack`: *(NUMBER)* Default: `0` - The direction the aircraft will be facing during it's attack run.\n    - `fireDistance`: *(NUMBER)* Default: `initialDistanceToTarget` - The distance to the target at which the aircraft will begin firing.\n    - `initialHeightAboveTarget`: *(NUMBER)* Default: `1300` - The aircraft's initial altitude.\n    - `initialDistanceToTarget`: *(NUMBER)* Default: `2000` - The distance from the `_attackPosition` the aircraft will spawn.\n    - `breakOffDistance`: *(NUMBER)* Default: `500` - The three dimensional distance between the `_attackPosition`\n        and the aircraft at which point it will abandon it's firing orders and egress.\n    - `numberOfFlaresToDump`: *(NUMBER)* Default: `4` - The number of flares to fire off after breaking off.\n    - `approachSpeed`: *(NUMBER)* Default: `75` - How many meters per second will the aircraft be flying while approaching the `_attackPosition`.\n    - `vectorToTargetOffset`: *(NUMBER[])* Default: `[0,0,0]` - Used with `vectorAdd` on the aircraft's starting position to get the vector it will follow to engage the target. This can be used if an aircraft seems to be firing off target."
                         },
                         {
                             "name": "_fireOrders",
@@ -1936,7 +1936,7 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Supports/fn_closeAirSupport_parseFireOrders.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_aircraft, _fireOrders] call `KISKA_fnc_closeAirSupport_fire`",
+                    "outline": "[_aircraft, _fireOrders] call `KISKA_fnc_closeAirSupport_parseFireOrders`",
                     "parameters": [
                         {
                             "name": "_aircraft",
@@ -1955,10 +1955,10 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n// Should not be called on its own but in `KISKA_fnc_closeAirSupport`\n```"
                 }
             ],
-            "description": "Parses and validates a list of fire orders for an aircraft to follow to do CAS with `KISKA_fnc_closeAirSupport`"
+            "description": "Parses and validates a list of fire orders for an aircraft to follow to do CAS with `KISKA_fnc_closeAirSupport`."
         },
         "configuration": {
-            "label": "KISKA_fnc_closeAirSupport_fire",
+            "label": "KISKA_fnc_closeAirSupport_parseFireOrders",
             "grammarType": "function"
         }
     },
@@ -2426,6 +2426,190 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_compass_updateConstants",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Conversations/Functions/fn_convo_close.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_convo_close`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\ncall KISKA_fnc_convo_close;\n```"
+                }
+            ],
+            "description": "Cleans up the conversation system and closes the response dialog."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_convo_close",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Conversations/Functions/fn_convo_createResponseDialog.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_speakingTo, _conversationConfig, _topicConfig] call `KISKA_fnc_convo_createResponseDialog`",
+                    "parameters": [
+                        {
+                            "name": "_speakingTo",
+                            "description": "*(OBJECT)* - The NPC \"person\" the player is supposed to be speaking to. Can also be something like a game logic."
+                        },
+                        {
+                            "name": "_conversationConfig",
+                            "description": "*(CONFIG)* - The config of the opened conversation in\n    `_topicConfig >> \"conversations\"` class to open a dialog for."
+                        },
+                        {
+                            "name": "_topicConfig",
+                            "description": "*(CONFIG)* - A config path to the *conversation* topic config."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nSHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Creates or shows the response dialog to be able to selecte a response during a KISKA conversation."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_convo_createResponseDialog",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Conversations/Functions/fn_convo_hasOptionBeenSelected.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_selectedOptionConfig] call `KISKA_fnc_convo_hasOptionBeenSelected`",
+                    "parameters": [
+                        {
+                            "name": "_selectedOptionConfig",
+                            "description": "*(CONFIG)* - The config of the selected option\n    (`TOPIC_CONFIG >> \"conversations\" >> \"MyConvo\" >> \"Options\" >> \"MyOption\"`)\n    config to check."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _optionConfig =\n    missionConfigFile >>\n    \"KISKA_speech\" >>\n    \"MyTopic\" >>\n    \"conversations\" >>\n    \"MyOptions\" >>\n    \"Option_1\";\nprivate _wasSelected = _optionConfig call KISKA_fnc_convo_hasOptionBeenSelected;\n```"
+                }
+            ],
+            "description": "Determines whether or not the local player has selected a given dialogue option."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_convo_hasOptionBeenSelected",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Conversations/Functions/fn_convo_markOptionAsSelected.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_selectedOptionConfig] call `KISKA_fnc_convo_markOptionAsSelected`",
+                    "parameters": [
+                        {
+                            "name": "_selectedOptionConfig",
+                            "description": "*(CONFIG)* - The config of the selected option\n    (`TOPIC_CONFIG >> \"conversations\" >> \"MyConvo\" >> \"Options\" >> \"MyOption\"`)\n    config to use."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _optionConfig =\n    missionConfigFile >>\n    \"KISKA_speech\" >>\n    \"MyTopic\" >>\n    \"conversations\" >>\n    \"MyOptions\" >>\n    \"Option_1\";\n_optionConfig call KISKA_fnc_convo_markOptionAsSelected;\n```"
+                }
+            ],
+            "description": "Handles the logic of when an option is selected during a conversation."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_convo_markOptionAsSelected",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Conversations/Functions/fn_convo_onOptionSelected.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_selectedOptionConfig, _speakingTo, _topicConfig] call `KISKA_fnc_convo_onOptionSelected`",
+                    "parameters": [
+                        {
+                            "name": "_selectedOptionConfig",
+                            "description": "*(CONFIG)* - The config of the selected option\n    (`_topicConfig >> \"conversations\" >> \"MyConvo\" >> \"Options\" >> \"MyOption\"`)\n    config to use."
+                        },
+                        {
+                            "name": "_speakingTo",
+                            "description": "*(OBJECT)* - The NPC \"person\" the player is supposed to be speaking to. Can also be something like a game logic."
+                        },
+                        {
+                            "name": "_topicConfig",
+                            "description": "*(CONFIG)* - A config path to the *conversation* topic config."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nSHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Handles the logic of when an option is selected during a conversation."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_convo_onOptionSelected",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_Conversations/Functions/fn_convo_open.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_topicConfig, _conversationName, _speakingTo] call `KISKA_fnc_convo_open`",
+                    "parameters": [
+                        {
+                            "name": "_topicConfig",
+                            "description": "*(CONFIG or STRING)* - A config path to the *conversation* topic config or if a string the class name of a topic config located in the default root KISKA config (see `KISKA_fnc_speech_getDefaultConfigRoot`)."
+                        },
+                        {
+                            "name": "_conversationName",
+                            "description": "*(STRING)* - the class name of the line in the\n    `_topicConfig >> \"conversations\"` class to open a dialog for."
+                        },
+                        {
+                            "name": "_speakingTo",
+                            "description": "*(OBJECT)* - The NPC \"person\" the player is supposed to be speaking to. Can also be something like a game logic. 3. _playPreamble *(BOOL)* - Default: `false` - Whether or not the configured `preambleLine`s should be spoken by the `_speakingTo` entity."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"MyTopicConfigClass\",\n    \"MyConversationConfigClass\",\n    BIS_HQ\n] call KISKA_fnc_convo_open;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    missionConfigFile >> \"MySpeechConfig\" >> \"MyTopicConfigClass\",\n    \"MyConversationConfigClass\",\n    Miller,\n    false\n] call KISKA_fnc_convo_open;\n```"
+                }
+            ],
+            "description": "Initializes a converstaion sequence. This is the entry point to start a conversation between the local player and a given NPC that is a configured KISKA conversation. A KISKA conversation is an RPG like communication system."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_convo_open",
             "grammarType": "function"
         }
     },
@@ -6622,7 +6806,7 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_heliLand.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_aircraft, _landingPosition, _landMode, _createHelipad, _afterLandCode] call `KISKA_fnc_heliLand`",
+                    "outline": "[_aircraft, _landingPosition, _landMode, _landingDirection, _afterLandCode] call `KISKA_fnc_heliLand`",
                     "parameters": [
                         {
                             "name": "_aircraft",
@@ -6630,15 +6814,15 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_landingPosition",
-                            "description": "*(ARRAY or OBJECT)* - Where to land. If object, position ATL is used."
+                            "description": "*(PositionASL[] or OBJECT)* - Where to land. If object, position ATL is used."
                         },
                         {
                             "name": "_landMode",
                             "description": "*(STRING)* - Options are `\"LAND\"`, `\"GET IN\"`, and `\"GET OUT\"`"
                         },
                         {
-                            "name": "_createHelipad",
-                            "description": "*(BOOL)* - If true, and invisible helipad will be created. Helipads strongly encourage where a unit will land."
+                            "name": "_landingDirection",
+                            "description": "*(NUMBER)* - The direction the vehicle should face when landed.\n    `-1` means that there shouldn't be any change to the direction. Be aware that this will have to `setDir` of the helipad."
                         },
                         {
                             "name": "_afterLandCode",
@@ -10636,6 +10820,266 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_addTopic.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config, _units] call `KISKA_fnc_speech_addTopic`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG or STRING)* - A config path to the topic config or if a string the class name of a topic config located in the default root KISKA config."
+                        },
+                        {
+                            "name": "_units",
+                            "description": "*(OBJECT[])* - The units to add the topic to."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The topic's name."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"MyTopicClassInDefaultRoot\",[player]] call KISKA_fnc_speech_addTopic;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\",\n    [player]\n] call KISKA_fnc_speech_addTopic;\n```"
+                }
+            ],
+            "description": "Adds a configured topic to a given list of units."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_addTopic",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_getBikbPath.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_topicConfig] call `KISKA_fnc_speech_getBikbPath`",
+                    "parameters": [
+                        {
+                            "name": "_topicConfig",
+                            "description": "*(CONFIG or STRING)* - A config path to the topic config or if a string the class name of a topic config located in the default root KISKA config."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The configured file path."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _path = [\"MyTopicClassInDefaultRoot\"] call KISKA_fnc_speech_getBikbPath;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _path = [\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\"\n] call KISKA_fnc_speech_getBikbPath;\n```"
+                }
+            ],
+            "description": "Gets the configured bikb file path of a given speech topic config."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_getBikbPath",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_getDefaultConfigRoot.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_speech_getDefaultConfigRoot`",
+                    "parameters": [],
+                    "returns": "*(CONFIG)* - The default config path"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _defaultConfig = call KISKA_fnc_speech_getDefaultConfigRoot;\n```"
+                }
+            ],
+            "description": "Returns the default config path of where configuration for KISKA speeches can\n go."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_getDefaultConfigRoot",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_getFsmPath.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config] call `KISKA_fnc_speech_getFsmPath`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG or STRING)* - A config path to the topic config or if a string the class name of a topic config located in the default root KISKA config."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The configured file path."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _path = [\"MyTopicClassInDefaultRoot\"] call KISKA_fnc_speech_getFsmPath;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _path = [\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\"\n] call KISKA_fnc_speech_getFsmPath;\n```"
+                }
+            ],
+            "description": "Gets the configured FSM file path of a given speech topic config."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_getFsmPath",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_getTopicEventHandler.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config] call `KISKA_fnc_speech_getTopicEventHandler`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG or STRING)* - A config path to the topic config or if a string the class name of a topic config located in the default root KISKA config."
+                        }
+                    ],
+                    "returns": "*(CODE)* - The compiled eventhandler code."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _eventHandler = [\"MyTopicClassInDefaultRoot\"] call KISKA_fnc_speech_getTopicEventHandler;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _eventHandler = [\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\"\n] call KISKA_fnc_speech_getTopicEventHandler;\n```"
+                }
+            ],
+            "description": "Gets the configured eventhandler code of a given speech topic config."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_getTopicEventHandler",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_getTopicName.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config] call `KISKA_fnc_speech_getTopicName`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG or STRING)* - A config path to the topic config or if a string the class name of a topic config located in the default root KISKA config."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The configured topic name."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _name = [\"MyTopicClassInDefaultRoot\"] call KISKA_fnc_speech_getTopicName;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _name = [\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\"\n] call KISKA_fnc_speech_getTopicName;\n```"
+                }
+            ],
+            "description": "Gets the configured topic name of a given speech topic config."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_getTopicName",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_say.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_topicConfig, _lines, _speaker, _listener, _optionsMap, _onAllLinesSaid] call `KISKA_fnc_speech_say`",
+                    "parameters": [
+                        {
+                            "name": "_topicConfig",
+                            "description": "*(CONFIG or STRING)* - A config path to the topic config or if a string the class name of a topic config located in the default root KISKA config."
+                        },
+                        {
+                            "name": "_lines",
+                            "description": "*(STRING or STRING[])* - The class name(s) of the line(s) in the\n    `_topicConfig >> \"lines\" >> \"Sentences\"` class to speak."
+                        },
+                        {
+                            "name": "_speaker",
+                            "description": "*(OBJECT)* - The unit to speak the line. Does not necessarily need be a man unit."
+                        },
+                        {
+                            "name": "_listener",
+                            "description": "*(OBJECT)* - The unit that the line is meant to be spoken to. Does not necessarily need be a man unit."
+                        },
+                        {
+                            "name": "_optionsMap",
+                            "description": "*(HASHMAP)* - Default: `nil` - An optional hashmap of options that will overwrite any configured options.\n\n    - `radioChannel`: *(STRING, NUMBER, or BOOL)* - Either a radio channel name or a custom radio channel number. `true` or `false` can be used to simply force a radio effect to the listener or have no affect respectively. (see `kbTell` for more details)\n    - `maxRange`: *(number)* - The maximum allowable distance between the `_speaker`\n        and `_listener`. Should the distance be exceeded, the line does not play.\n    - `subtitle`: *(STRING)* - Text to display that is what the speaker said.\n    - `speakerName`: *(STRING)* - The name of the speaker. If no name is provided here or in the config the `name _speaker` is used instead.\n    - `onLineSaid`: *(CODE)* - An eventhandler that will activate after the line is spoken\n\n        Parameters:\n            - 0: *(CONFIG)* - The config path of the topic.\n            - 1: *(CONFIG)* - The config path of the line."
+                        },
+                        {
+                            "name": "_onAllLinesSaid",
+                            "description": "*(CODE, STRING, ARRAY)* - Default: `{}` - Code to execute once all the lines have been said. (see `KISKA_fnc_callBack` for examples).\n\n    Parameters:\n        - 0: *(CONFIG)* - The config path of the topic.\n        - 1: *(OBJECT)* - The speaker."
+                        }
+                    ],
+                    "returns": "*(STRING)* - the topic name"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"MyTopicClassInDefaultRoot\",\n    \"MyLine\",\n    player,\n    BIS_HQ\n] call KISKA_fnc_speech_say;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\",\n    \"MyLine\",\n    player,\n    BIS_HQ,\n    createHashMapFromArray [\n        [\"radioChannel\",true]\n    ]\n] call KISKA_fnc_speech_say;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    configFile >> \"MySpeechConfigs\" >> \"MyTopicConfig\",\n    [\"MyLine\",\"MyOtherLine\"],\n    player,\n    BIS_HQ,\n    createHashMapFromArray [\n        [\"radioChannel\",true] // applies to all lines\n    ]\n] call KISKA_fnc_speech_say;\n```"
+                }
+            ],
+            "description": "Speaks the given line of dialogue for all to hear."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_say",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Speech/fn_speech_showSubtitles.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_subtitle, _speakerName] call `KISKA_fnc_speech_showSubtitles`",
+                    "parameters": [
+                        {
+                            "name": "_subtitle",
+                            "description": "*(STRING)* - The text of what's being said."
+                        },
+                        {
+                            "name": "_speakerName",
+                            "description": "*(STRING)* - Default: `\"unknown\"` - The name of the speaker."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"Hello World\",\"someone\"] call KISKA_fnc_speech_showSubtitles;\n```"
+                }
+            ],
+            "description": "Shows subtitles for a given line of text."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_speech_showSubtitles",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SpeechRecognition/SQF%20Functions/fn_SR_addGrammarXml.sqf",
             "syntaxes": [
                 {
@@ -11088,7 +11532,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_supportConfig",
-                            "description": "*(CONFIG | STRING)* - The config or a string of a class that is in a `KISKA_Supports` class in either the\n`missionConfigFile`, `campaignConfigFile`, or `configFile`."
+                            "description": "*(CONFIG | STRING)* - The config or a string of a class that is in a `KISKA_Supports` class in either the\n    `missionConfigFile`, `campaignConfigFile`, or `configFile`."
                         },
                         {
                             "name": "_numberOfUsesLeft",
@@ -12472,7 +12916,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\n    {\n        true\n    },\n    {\n        hint \"wait\";\n    },\n    0.5,\n    [],\n    true\n] call KISKA_fnc_waitUntil;\n```"
+                    "text": "```sqf\nprivate _variable = 123;\n[\n    {\n        params [\"_variable\"];\n        true\n    },\n    {\n        params [\"_variable\"];\n        hint \"wait\";\n    },\n    0.5,\n    [_variable],\n    true\n] call KISKA_fnc_waitUntil;\n```"
                 }
             ],
             "description": "Waitunil that allows variable evaluation time instead of frame by frame."
