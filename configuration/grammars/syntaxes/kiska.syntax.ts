@@ -12221,7 +12221,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\nPRE-INIT function\n```"
+                    "text": "```sqf\nPOST-INIT function\n```"
                 }
             ],
             "description": "Creates a diary entry in the map for the player to open the trait Manager."
@@ -12236,22 +12236,25 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_addToPool.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_entryToAdd] call `KISKA_fnc_traitManager_addToPool`",
+                    "outline": "[_traitConfig] call `KISKA_fnc_traitManager_addToPool`",
                     "parameters": [
                         {
-                            "name": "_entryToAdd",
-                            "description": "*(STRING)* - The trait to add"
+                            "name": "_traitConfig",
+                            "description": "*(CONFIG | STRING)* - The config of a trait or a string of a class that is in a `KISKA_Traits` class in either the\n    `missionConfigFile`, `campaignConfigFile`, or `configFile`."
                         }
                     ],
-                    "returns": "NOTHING"
+                    "returns": "*(STRING)* - the item's global identifier which is also used for the JIP queue."
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\"medic\"] call KISKA_fnc_traitManager_addToPool;\n```"
+                    "text": "```sqf\n\"someClassInKISKA_Traits\" call KISKA_fnc_traitManager_addToPool;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _itemId = [\n    configFile >> \"Traits\" >> \"MyTrait\"\n] call KISKA_fnc_traitManager_addToPool;\n```"
                 }
             ],
-            "description": "Adds an entry into the local trait manager pool."
+            "description": "Adds an entry into the support manager pool globally."
         },
         "configuration": {
             "label": "KISKA_fnc_traitManager_addToPool",
@@ -12260,104 +12263,23 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_addToPool_global.sqf",
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_open.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_entryToAdd] call `KISKA_fnc_traitManager_addToPool_global`",
-                    "parameters": [
-                        {
-                            "name": "_entryToAdd",
-                            "description": "*(STRING)* - The trait to add"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\"medic\"] call KISKA_fnc_traitManager_addToPool_global;\n```"
-                }
-            ],
-            "description": "Adds an entry into the global trait manager pool."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_addToPool_global",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_onLoad.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_display] call `KISKA_fnc_traitManager_onLoad`",
-                    "parameters": [
-                        {
-                            "name": "_display",
-                            "description": "*(DISPLAY)* - The loaded display"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n// called from config\n[_this select 0] call KISKA_fnc_traitManager_onLoad;\n```"
-                }
-            ],
-            "description": "Sets up uiNamespace globals for and intializes the Trait Manager GUI."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_onLoad",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_onLoad_traitPool.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_display] spawn `KISKA_fnc_traitManager_onLoad_traitPool`",
-                    "parameters": [
-                        {
-                            "name": "_display",
-                            "description": "*(DISPLAY)* - The loaded display of the trait manager"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n// called from config\n[_display] spawn KISKA_fnc_traitManager_onLoad_traitPool;\n```"
-                }
-            ],
-            "description": "Begins the loop that syncs across the network and populates the pool list."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_onLoad_traitPool",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_openDialog.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_traitManager_openDialog`",
+                    "outline": "call `KISKA_fnc_traitManager_open`",
                     "parameters": [],
                     "returns": "NOTHING"
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\ncall KISKA_fnc_traitManager_openDialog;\n```"
+                    "text": "```sqf\ncall KISKA_fnc_traitManager_open;\n```"
                 }
             ],
             "description": "Opens KISKA Trait Manager dialog."
         },
         "configuration": {
-            "label": "KISKA_fnc_traitManager_openDialog",
+            "label": "KISKA_fnc_traitManager_open",
             "grammarType": "function"
         }
     },
@@ -12366,11 +12288,11 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_removeFromPool.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_index] call `KISKA_fnc_traitManager_removeFromPool`",
+                    "outline": "[_itemId] call `KISKA_fnc_traitManager_removeFromPool`",
                     "parameters": [
                         {
-                            "name": "_index",
-                            "description": "*(NUMBER)* - The selected index"
+                            "name": "_itemId",
+                            "description": "*(STRING)* - The ID of the item in the pool to remove."
                         }
                     ],
                     "returns": "NOTHING"
@@ -12378,128 +12300,13 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[0] call KISKA_fnc_traitManager_removeFromPool;\n```"
+                    "text": "```sqf\nprivate _itemId = [\n    configFile >> \"KISKA_Traits\" >> \"MyTrait\"\n] call KISKA_fnc_traitManager_addToPool;\n\n// ... some time later ...\n\n_itemId call KISKA_fnc_traitManager_removeFromPool;\n```"
                 }
             ],
-            "description": "Removes the provided index from the pool."
+            "description": "Removes the item with the provided ID from the trait manager pool globally."
         },
         "configuration": {
             "label": "KISKA_fnc_traitManager_removeFromPool",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_removeFromPool_global.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_index] call `KISKA_fnc_traitManager_removeFromPool_global`",
-                    "parameters": [
-                        {
-                            "name": "_index",
-                            "description": "*(NUMBER)* - The selected index"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[0] call KISKA_fnc_traitManager_removeFromPool_global;\n```"
-                }
-            ],
-            "description": "Removes the provided index from the trait pool with GLOBAl EFFECT."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_removeFromPool_global",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_store_buttonClickEvent.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_traitManager_store_buttonClickEvent`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_traitManager_store_buttonClickEvent;\n```"
-                }
-            ],
-            "description": "Activates when the take button is pressed and gives player the support."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_store_buttonClickEvent",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_take_buttonClickEvent.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_traitManager_take_buttonClickEvent`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_traitManager_take_buttonClickEvent;\n```"
-                }
-            ],
-            "description": "Activates when the take button is pressed and gives player the trait"
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_take_buttonClickEvent",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_updateCurrentList.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_traitManager_updateCurrentList`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_traitManager_updateCurrentList;\n```"
-                }
-            ],
-            "description": "Acts as an event that will update the current trait list of a player in the GUI."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traitManager_updateCurrentList",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_TraitManager/Functions/fn_traitManager_updatePoolList.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_traittManager_updatePoolList`",
-                    "parameters": [],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\ncall KISKA_fnc_traitManager_updatePoolList;\n```"
-                }
-            ],
-            "description": "Acts as an event that will update the available traits pool list in the Trait Manager GUI."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_traittManager_updatePoolList",
             "grammarType": "function"
         }
     },
