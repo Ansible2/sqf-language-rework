@@ -1285,5 +1285,193 @@ if (not _isAlive) then
             },
         },
     },
-};
+    count: {
+        parsed: {
+            documentation: {
+                description:
+                    "Can be used to count:\n* The number of elements in an array (returns the already internally known array size)\n* The number of elements in an array matching the condition\n* The number of sub-entries in a config entry\n* (**Arma 3 v1.28**) The number of characters in an ANSI string **NOTE**: If Unicode support is desired, see `forceUnicode`.",
+                examples: [
+                    {
+                        text: "```sqf\ncount [0, 0, 1, 2]; // returns 4\ncount units group player; // returns number of units in player group\n```",
+                    },
+                    {
+                        text: "```sqf\nprivate _cnt = { _x == 4 } count [1, 9, 8, 3, 4, 4, 4, 5, 6]; // returns 3\n_cnt = { alive _x } count allUnits; // returns the number of alive units\n```",
+                    },
+                    {
+                        text: '```sqf\nprivate _cnt = count (configFile >> "CfgVehicles");\n```',
+                    },
+                    {
+                        text: '```sqf\nhint str count "japa is the man!"; // 16\n```',
+                    },
+                    {
+                        text: '```sqf\nhint format ["There are %1 elements in the provided hashmap", count _myHashMap];\n```',
+                    },
+                ],
+                syntaxes: [
+                    {
+                        parameters: [
+                            {
+                                name: "value",
+                                description: "`Array`, `String`, `Config` or `HashMap`",
+                            },
+                        ],
+                        outline: "`count` value",
+                        returns: "`Number`",
+                    },
+                    {
+                        parameters: [
+                            {
+                                name: "condition",
+                                description:
+                                    "`Code` - condition that must return `true` for the tested element to be counted. The variable **`Magic Variables#x|_x`** will contain the currently tested element\n**Arma 3**: If the provided array contains different data types, use `isEqualTo` for item comparison instead of [[==]].",
+                            },
+                            {
+                                name: "array",
+                                description: "`Array`",
+                            },
+                        ],
+                        outline: "condition `count` array",
+                        returns: "`Number`",
+                    },
+                ],
+                documentationLink: "https://community.bistudio.com/wiki/count",
+            },
+            configuration: {
+                label: "count",
+                grammarType: "command",
+            },
+        },
+        unparsed: `{{RV|type=command
 
+|game1= ofp
+|version1= 1.00
+
+|game2= ofpe
+|version2= 1.00
+
+|game3= arma1
+|version3= 1.00
+
+|game4= arma2
+|version4= 1.00
+
+|game5= arma2oa
+|version5= 1.50
+
+|game6= tkoh
+|version6= 1.00
+
+|game7= arma3
+|version7= 0.50
+
+|gr1= Arrays
+
+|gr2= Strings
+
+|gr3= Config
+
+|gr4= HashMap
+
+|descr= Can be used to count:
+* The number of elements in an array (returns the already internally known array size)
+* The number of elements in an array matching the condition
+* The number of sub-entries in a config entry
+* {{GVI|arma3|1.28|size= 0.75}} The number of characters in an ANSI string {{Feature|informative|If Unicode support is desired, see [[forceUnicode]].}}
+
+|s1= [[count]] value
+
+|p1= value: [[Array]], [[String]], [[Config]] or [[HashMap]]
+
+|r1= [[Number]]
+
+|s2= condition [[count]] array
+
+|p21= condition: [[Code]] - condition that must return [[true]] for the tested element to be counted. The variable {{hl|[[Magic Variables#x|_x]]}} will contain the currently tested element
+{{Feature|arma3|If the provided array contains different data types, use [[isEqualTo]] for item comparison instead of [[==]].}}
+
+|p22= array: [[Array]]
+
+|r2= [[Number]]
+
+|x1= <sqf>
+count [0, 0, 1, 2]; // returns 4
+count units group player; // returns number of units in player group
+</sqf>
+
+|x2= <sqf>
+private _cnt = { _x == 4 } count [1, 9, 8, 3, 4, 4, 4, 5, 6]; // returns 3
+_cnt = { alive _x } count allUnits; // returns the number of alive units
+</sqf>
+
+|x3= <sqf>private _cnt = count (configFile >> "CfgVehicles");</sqf>
+
+|x4= <sqf>hint str count "japa is the man!"; // 16</sqf>
+
+|x5= <sqf>hint format ["There are %1 elements in the provided hashmap", count _myHashMap];</sqf>
+
+|seealso= [[apply]] [[select]] [[in]] [[find]] [[countFriendly]] [[countEnemy]] [[countUnknown]] [[countSide]] [[countType]] [[findIf]] [[forceUnicode]]
+}}
+
+{{Note
+|user= Hardrock
+|timestamp= 20060803142700
+|text= ''Notes from before the conversion:''<br>
+Use this to calculate how many "M16" mags a soldier has left. 
+<sqf>{ _x == "M16" } count magazines soldier1;</sqf>
+Take care when using count to determine how many units are left alive in a group: count units [[group]] [[player]] or count units groupname Will return the number of units the leader of the group thinks are alive. If some units have been killed out of sight of other members of the group then it may take sometime for this to be the actual numbers in the group. To determine exactly how many units are really alive in a group use: 
+<sqf>{ alive _x } count units group player;</sqf>
+or
+<sqf>{ alive _x } count units groupname;</sqf>
+}}
+
+{{Note
+|user= Heeeere's Johnny!
+|timestamp= 20141215000100
+|text= ''count'' can be (ab)used for a very fast and simple check if at least one element in an array fulfills a certain condition:
+<sqf>
+if ({ if (/* _x fulfills condition */) exitWith {1}; false } count _array isEqualTo 1) then
+{
+	// do whatever here
+};
+</sqf>
+This code will exit the ''count'' loop as soon as it finds an element fulfilling the condition, leaving the ''count'' with the value of 1, hence make the larger if-condition be ''true''.<br>
+If no array element fulfills the condition, the ''count'' will be 0 and the if-condition will be ''false''.
+}}
+
+{{Note
+|user= Killzone_Kid
+|timestamp= 20141229212300
+|text= Quit loop at first fulfilled condition (same as above but faster):
+<sqf>
+{
+	if (_x == 4) exitWith {
+		// do something when we reach 4
+	}
+} count [1,2,3,4,5,6];
+</sqf>
+}}
+
+{{Note
+|user= Heeeere's Johnny!
+|timestamp= 20150102223200
+|text= Using [[exitWith]] inside a '''count''' loop will overwrite the default functionality and make '''count''' return whatever the '''exitWith''' returns:
+<sqf>
+_result = {
+	if (_x isEqualTo 3) exitWith { "Hello" }
+} count [1,2,3,4,5];
+// _result = "Hello"
+</sqf>
+}}
+
+{{Note
+|user= Ebay
+|timestamp= 20160822194100
+|text= With the alternative syntax each iteration should result in an interior return of bool or nothing. Example:
+<sqf>
+createDialog "RscFunctionsViewer";
+{ lbAdd [292901, _x]; } count ["first", "second", "third"];
+</sqf>
+[[lbAdd]] returns a number, so this throws "Error Type Number, expected Bool". Tested in A2OA 1.63.131129
+}}`,
+    },
+};
