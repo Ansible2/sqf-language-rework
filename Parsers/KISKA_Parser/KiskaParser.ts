@@ -71,7 +71,7 @@ export class KiskaParser implements DocParser {
         const gitTree = await fetch(REPO_TREE_URL, REQUEST_OPTIONS).then(
             (response) => response.json() as unknown as IGithubTreeResponse
         );
-        console.log("Completed tree fetch with", gitTree.tree.length, "items");
+        console.log("Completed tree fetch with", gitTree?.tree?.length, "items");
 
         const getUnparsedKiskaPage = async (
             entry: IGithubTreeEntry
