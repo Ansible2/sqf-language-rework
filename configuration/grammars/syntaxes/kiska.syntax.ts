@@ -65,153 +65,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_deployFastRope.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_vehicle, _unitsToDeploy, _ropeOrigins] call `KISKA_fnc_ACE_deployFastRope`",
-                    "parameters": [
-                        {
-                            "name": "_vehicle",
-                            "description": "*(OBJECT)* - The vehicle to fastrope from"
-                        },
-                        {
-                            "name": "_unitsToDeploy",
-                            "description": "*(ARRAY)* - An array of units to drop from the _vehicle. This function has a destructive effect on this array (deletes entries)"
-                        },
-                        {
-                            "name": "_ropeOrigins",
-                            "description": "*(ARRAY)* - An array of either relative (to the vehicle) attachment points for the ropes or a memory point to attachTo"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\n    _vehicle,\n    (fullCrew [_vehicle,\"cargo\"]) apply {\n        _x select 0\n    }\n] call KISKA_fnc_ACE_deployFastRope;\n```"
-                }
-            ],
-            "description": "An edit of the ACE function to allow for custom drop of units."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_ACE_deployFastRope",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_deployRopes.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_vehicle, _ropeOrigins] call `KISKA_fnc_ACE_deployRopes`",
-                    "parameters": [
-                        {
-                            "name": "_vehicle",
-                            "description": "*(OBJECT)* - The vehicle to fastrope from"
-                        },
-                        {
-                            "name": "_ropeOrigins",
-                            "description": "*(ARRAY)* - An array of either relative (to the vehicle) attachment points for the ropes or a memory point to attachTo"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[heli] call KISKA_fnc_ACE_deployRopes;\n```"
-                }
-            ],
-            "description": "An edit of ace_fastroping_fnc_deployRopes to allow for custom drop of units."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_ACE_deployRopes",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_fastRope.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_vehicle, _dropPosition, _unitsToDeploy, _afterDropCode, _hoverHeight, _ropeOrigins] call `KISKA_fnc_ACE_fastRope`",
-                    "parameters": [
-                        {
-                            "name": "_vehicle",
-                            "description": "*(OBJECT)* - The vehicle to fastrope from"
-                        },
-                        {
-                            "name": "_dropPosition",
-                            "description": "*(ARRAY or OBJECT)* - The positionASL to drop the units off at; Z coordinate matters"
-                        },
-                        {
-                            "name": "_unitsToDeploy",
-                            "description": "*(CODE, STRING, ARRAY, OBJECT[], GROUP, or OBJECT)* - An array of units to drop from the _vehicle, Or code that will run once the helicopter has reached the drop point that must return an array of object\n    (see KISKA_fnc_callBack for examples)\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle"
-                        },
-                        {
-                            "name": "_afterDropCode",
-                            "description": "*(CODE, STRING or ARRAY)* - Code to execute after the drop is complete, see KISKA_fnc_callBack\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle"
-                        },
-                        {
-                            "name": "_hoverHeight",
-                            "description": "*(NUMBER)* - The height the helicopter should hover above the drop position while units are fastroping. Max is 28, min is 5"
-                        },
-                        {
-                            "name": "_ropeOrigins",
-                            "description": "*(ARRAY)* - An array of: either relative (to the vehicle) attachment points for the ropes and/or memory points to attachTo"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n//  basic example\n[\n    _vehicle,\n    _position,\n    (fullCrew [_vehicle,\"cargo\"]) apply {\n        _x select 0\n    },\n    {hint \"fastrope done\"},\n    28,\n    [[0,0,0]]\n] call KISKA_fnc_ACE_fastRope;\n```"
-                },
-                {
-                    "text": "```sqf\n// using code instead to defer the list of units to drop\n// until the helicopter is over the drop point\n[\n    _vehicle,\n    _position,\n    {\n        params [\"_vehicle\"];\n\n        (fullCrew [_vehicle,\"cargo\"]) apply {\n            _x select 0\n        }\n    },\n    {hint \"fastrope done\"},\n    28,\n    [[0,0,0]]\n] call KISKA_fnc_ACE_fastRope;\n```"
-                }
-            ],
-            "description": "Sends a vehicle to a given point and fastropes the given units from the helicopter.\n\nPilots should ideally be placed in \"CARELESS\" behaviour when around enemies."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_ACE_fastRope",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/Fast%20Rope/fn_ACE_setOnPrepareFastrope.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_vehicle, _onPrepare] call `KISKA_fnc_ACE_setOnPrepareFastrope`",
-                    "parameters": [
-                        {
-                            "name": "_vehicle",
-                            "description": "*(OBJECT)* - The vehicle to fastrope from"
-                        },
-                        {
-                            "name": "_onPrepare",
-                            "description": "*(CODE, ARRAY, or STRING)* - A function that returns a number being the time it takes for the ropes to deploy from the given vehicle\n    (SEE KISKA_fnc_callBack for array syntax).\n\n    parameters:\n        - 0. *(OBJECT)* - The helicopter conducting a fastrope"
-                        }
-                    ],
-                    "returns": "NOTHING"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[\n    _vehicle,\n    {4} // takes 4 seconds to lower ropes\n] call KISKA_fnc_ACE_setOnPrepareFastrope;\n```"
-                }
-            ],
-            "description": "Sets the onprepare function of a specific vehicle when it conducts fastroping with KISKA_fnc_ACE_fastRope (not any other implementation of ACE fastroping).\n\nBy default, ACE uses a config value (on the vehicle's class) of a string that is the name of the function to call. This function will overwrite that config function or add support for vehicles that do not have an onPrepare function defined.\n\nThe onPrepare function is what happens just prior to the helicopter dropping its ropes. You may want to do something like openning the vehicles doors before the units fastrope, for example.\n\nYour new onPrepare function can return a number that will then be used as the time it takes for the ropes to be lowered down from the helicopter\n (the default is 4 seconds)."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_ACE_setOnPrepareFastrope",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ACE/fn_ACE_unconsciousIsCaptive.sqf",
             "syntaxes": [
                 {
@@ -1517,7 +1370,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_defaultArgs",
-                            "description": "*(ARRAY)* - Default arguements. These would be what a function writer would put inside of their code as arguements that will always be passed in the _this magic variable"
+                            "description": "*(ANY)* - Default arguements. These would be what a function writer would put inside of their code as arguements that will always be passed in the _this magic variable"
                         },
                         {
                             "name": "_callBackFunction",
@@ -4764,6 +4617,355 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_createRope.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_ropeInfoMap, _bottomLength] call `KISKA_fnc_fastRope_createRope`",
+                    "parameters": [
+                        {
+                            "name": "_ropeInfoMap",
+                            "description": "*(HASMAP)* - The info map for the specific rope that is being created."
+                        },
+                        {
+                            "name": "_bottomLength",
+                            "description": "*(NUMBER)* - Default: `1` - The length of the bottom segment of the rope which is effectively the rope itself for most purposes."
+                        }
+                    ],
+                    "returns": "*(OBJECT[])* - The top and bottom rope segments."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newRopeSegments = [\n    _ropeInfoMap,\n    18\n] call KISKA_fnc_fastRope_createRope;\n```"
+                }
+            ],
+            "description": "Creates the rope segments of what appears to be a single rope for a fast rope.\n\nAlso assigns eventhandlers for ropes breaking and adds references to the\n `_ropeInfoMap` under `\"_ropeTop\"` and `\"_ropeBottom\"` keys."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_createRope",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_deployRopes.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRope_deployRopes`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Creates ropes and deploys them from either the FRIES system or the vehicle from the given `_ropeOrigins`.\n\nA HASHMAP[] of information about each rope deployed from all origins (in order)\n will be placed into the `_ropeInfoMaps` key of the `_fastRopeInfoMap`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_deployRopes",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_do.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_argsMap] call `KISKA_fnc_fastRope_do`",
+                    "parameters": [
+                        {
+                            "name": "_argsMap",
+                            "description": "*(HASHMAP)* - A hashmap of various parameters for the fastrope.\n    - `vehicle`: *(OBJECT)* - The vehicle to fastrope units from.\n    - `dropPosition`: *(PositionsASL[] | OBJECT)* - The position to drop units off.\n    - `hoverHeight`: *(NUMBER)* - The height above the drop position that the helicopter will hover. Defaults to `20`, min is `5`, max is `28`.\n    - `unitsToDeploy`: *(CODE, STRING, [ARRAY,CODE], [ARRAY,STRING], OBJECT[], GROUP, or OBJECT)* -\n        An array of units to drop from the `_vehicle` or code that will run once the helicopter has reached the drop point that must return an OBJECT[].\n        (see `KISKA_fnc_callBack` for examples).\n\n        Parameters:\n            - 0: *(OBJECT)* - The fastrope vehicle.\n\n    - `onDropEnded`: *(CODE, STRING, [ARRAY,CODE])* - Code that will be executed once all the units have been dropped off, the vehicle's engine is no longer on, or the vehicle is no longer alive. The default behaviour can be found in `KISKA_fnc_fastRopeEvent_onDropEndedDefault`. However, the vehicle's config will also be searched for the event first (see `KISKA_fnc_fastRope_getConfigData`).\n        (see `KISKA_fnc_callBack` for type examples).\n\n        Parameters:\n            - 0: *(HASHMAP)* - A hashmap containing various pieces of information pertaining to the drop.\n\n    - `onDropComplete`: *(CODE, STRING, [ARRAY,CODE])* - Code that will be executed once all the units have been dropped off, the vehicle's engine is no longer on, or the vehicle is no longer alive, AND the `onDropEnded` has run. This defaults to empty code and is used in case a user does not want to overwrite\n        `onDropEnded`'s behaviour.\n        (see `KISKA_fnc_callBack` for type examples).\n\n        Parameters:\n            - 0: *(HASHMAP)* - A hashmap containing various pieces of information pertaining to the drop.\n\n    - `onHoverStarted`: *(CODE, STRING, [ARRAY,CODE])* - Code that will be executed once the vehicle has approixmately reached its hover position. The default behaviour can be found in `KISKA_fnc_fastRopeEvent_onHoverStartedDefault`. However, the vehicle's config will also be searched for the event first (see `KISKA_fnc_fastRope_getConfigData`).\n        (see `KISKA_fnc_callBack` for type examples).\n\n        Parameters:\n            - 0: *(HASHMAP)* - A hashmap containing various pieces of information pertaining to the drop.\n\n    - `getRopeOrigins`: *(CODE, STRING, [ARRAY,CODE])* - Code that will be executed once in and must return a type of `(STRING | PostiionRelative[])[]`. These will be where ropes will hang from relative to either String entries are memory points. The default behaviour is to get the rope origins from the vehicle's config using\n        `KISKA_fnc_fastRope_getConfigData`.\n        (see `KISKA_fnc_callBack` for type examples).\n\n        Parameters:\n            - 0: *(OBJECT)* - The fastrope vehicle."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _paramsMap = createHashMapFromArray [\n    [\"vehicle\",MyHelicopter],\n    [\"dropPosition\",MyDropPosition],\n    [\n        \"unitsToDeploy\",\n        (fullCrew [_vehicle,\"cargo\"]) apply {\n            _x select 0\n        }\n    ],\n    [\n        \"onDropComplete\",\n        {\n            hint \"fastrope done\"\n        }\n    ]\n];\n_paramsMap call KISKA_fnc_fastRope_do;\n```"
+                },
+                {
+                    "text": "```sqf\n// using code instead to defer the list of units to drop\n// until the helicopter is over the drop point\nprivate _paramsMap = createHashMapFromArray [\n    [\"vehicle\",MyHelicopter],\n    [\"dropPosition\",MyDropPosition],\n    [\n        \"unitsToDeploy\",\n        {\n            params [\"_vehicle\"];\n            (fullCrew [_vehicle,\"cargo\"]) apply {\n                _x select 0\n            }\n        }\n    ],\n    [\n        \"onDropComplete\",\n        {\n            hint \"fastrope done\"\n        }\n    ],\n    [\n        \"getRopeOrigins\",\n        { [[0,0,0]] }\n    ]\n];\n_paramsMap call KISKA_fnc_fastRope_do;\n```"
+                }
+            ],
+            "description": "Sends a vehicle to a given point and fastropes the given units from the helicopter.\n\nPilots should ideally be placed in \"CARELESS\" behaviour when around enemies."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_do",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_dropUnits.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRope_dropUnits`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Drops the units from the aircraft using fastropes. Will recursively call itself until all the units are dropped."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_dropUnits",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_end.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRope_end`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Handles much of the cleanup of a fastrope in the event that the helicopter should cease the fastrope or has dropped off all the units.\n\nImportant note: FRIES objects are deleted ten seconds after this function is called so it can be used in the `onDropEnd` event."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_end",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_executeRemoteEvent.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_event, _args] call `KISKA_fnc_fastRope_executeRemoteEvent`",
+                    "parameters": [
+                        {
+                            "name": "_event",
+                            "description": "*(STRING)* - The remote event to execute. Case Insensitive."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* - The arguments for the given event."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"UpdateAttachmentDummyMass\",\n    [_ropeUnitAttachmentDummy,getPosASLVisual _hook]\n] remoteExecCall [\"KISKA_fnc_fastRope_executeRemoteEvent\",_ropeUnitAttachmentDummy];\n```"
+                }
+            ],
+            "description": "Meant to execute a piece of code on a (potentially) remote machine during fastroping.\n\nEvents:\n- `\"UpdateAttachmentDummyMass\"` - Adjusts the given attachment dummy's mass and position to prepare it for a unit to fastrope down. Arguments:\n    - _ropeUnitAttachmentDummy *(OBJECT)* - The unit attachment dummy to adjust.\n    - _hookPosition *(PositionASL[])* - The position of the hook the rope is hangning from.\n- `\"StartAttachmentDescentLoop\"` - Adds a perframe handler to the local machine that will continuously push the attachment dummy down to give the appearance of sliding down the rope. Arguments:\n    - _ropeUnitAttachmentDummy *(OBJECT)* - The unit attachment dummy to descend.\n- `\"EndAttachmentDescentLoop\"` - Ends the loop added with `\"StartAttachmentDescentLoop\"`\n    and returns the attachment dummy's mass to normal. Arguments:\n    - _ropeUnitAttachmentDummy *(OBJECT)* - The unit attachment dummy to stop descending.\n    - _hookPosition *(PositionASL[])* - The position of the hook the rope is hangning from.\n- `\"StartFastRopeAnimation\"` - Changes the given unit's animation to be that of fastroping and if that unit is a player, will start a loop to continuously play a sliding-down sound. Arguments:\n    - _unit *(OBJECT)* - The unit fastroping.\n- `\"EndFastRopeAnimation\"` - Ends the sound loop made in `\"StartFastRopeAnimation\"`, resets the unit's animations, and will play a (local 2D) thud sound if the unit is a player. Arguments:\n    - _unit *(OBJECT)* - The unit fastroping."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_executeRemoteEvent",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_getConfigData.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_vehicleConfig, _dataToFetch] call `KISKA_fnc_fastRope_getConfigData`",
+                    "parameters": [
+                        {
+                            "name": "_vehicleConfig",
+                            "description": "*(OBJECT | CONFIG)* - The vehicle that a fastrope will be conducted from or its config path."
+                        },
+                        {
+                            "name": "_dataToFetch",
+                            "description": "*(STRING)* - The data to fetch from the config. CASE-SENSITIVE Options are: \"friesType\", \"ropeOrigins\", \"friesAttachmentPoint\", \""
+                        }
+                    ],
+                    "returns": "*(STRING | ARRAY | CODE)* - The configured value or compiled code for the config value."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _ropeOrigins = [\n    (configOf MyVehicle),\n    \"ropeOrigins\"\n] call KISKA_fnc_fastRope_getConfigData;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _friesType = [\n    MyVehicle,\n    \"friesType\"\n] call KISKA_fnc_fastRope_getConfigData;\n```"
+                }
+            ],
+            "description": "Retrieves config data relevant to to fastroping. Has some interoperability with similar properites configured for ACE fastroping. Values are cached after the first retrieval.\n\nConfig data is expected to be defined inside a\n `*(CONFIG)* >> \"CfgVehicles\" >> *(VEHICLE-CLASS)* >> \"KISKA_fastRope\"` config class. This can be under any config and will be located with `KISKA_fnc_findConfigAny`\n opting for the most specific. This allows consistent config overrides should one choose to do so instead of doing so through SQF.\n\n\n```cpp\n// inside description.ext\nclass CfgVehicles\n{\n    class B_Heli_Light_01_F\n    {\n        class KISKA_FastRope\n        {\n            ropeOrigins[] = {\"ropeOriginRight\",\"ropeOriginLeft\"};\n            friesType = \"KISKA_FriesAnchorBar\";\n            friesAttachmentPoint[] = {0,0.550,-0.007};\n        };\n    };\n};\n```\n\n\nValues that can be retireved:\n\n- \"friesType\" *(STRING)* : The vehicle class of a FRIES attachment point (basically hooks)\n    that the ropes would hang from. If the bespoke KISKA property is not defined, the ACE property `ace_fastrope_friesType` will also be searched for.\n- \"ropeOrigins\" *((PositionRelative[] | STRING)[])* : The relative position of where the ropes should be attached to the FRIES object or in the case that no \"friesType\" is defined, the vehicle tself. Expected to be an array of relative positions and/or memory points to `attachTo`. If the bespoke KISKA property is not defined, the ACE property `ace_fastrope_ropeOrigins` will also be searched for.\n- \"friesAttachmentPoint\" *(PositionRelative[])* : The relative position to use `attachTo`\n    in order to attach the `friesType` to the fast roping vehicle. If the bespoke KISKA property is not defined, the ACE property `ace_fastrope_friesAttachmentPoint` will also be searched for.\n- \"onHoverStarted\" *(STRING)* : Uncompiled code that runs once the vehicle has (within ~2m)\n    reached the intended position that the vehicle will hover to fastrope units down. See the default implementation `KISKA_fnc_fastRopeEvent_onHoverStartedDefault`.\n    `_this` will be the *(HASHMAP)* fastrope info map.\n- \"onDropEnded\" *(STRING)* : Uncompiled code that runs once the vehicle has severed the ropes from the vehicle. See the default implementation `KISKA_fnc_fastRopeEvent_onDropEndedDefault`.\n    `_this` will be the *(HASHMAP)* fastrope info map."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_getConfigData",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_isVehicleStillCapable.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRope_isVehicleStillCapable`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - Whether or not units can still fastrope from this vehicle."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _unitsCanStillFastRope =\n    _fastRopeInfoMap call KISKA_fnc_fastRope_isVehicleStillCapable;\n```"
+                }
+            ],
+            "description": "Checks if a vehicle can still drop units after it has been told to fastrope.\n\nThe vehicle must be alive, and its engine must be on (`isEngineOn`). The `_fastRopeInfoMap` must also return `false` for `_allRopesBroken`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_isVehicleStillCapable",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_ropeAttachedUnit.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_ropeInfoMap, _setAttachedUnit] call `KISKA_fnc_fastRope_ropeAttachedUnit`",
+                    "parameters": [
+                        {
+                            "name": "_ropeInfoMap",
+                            "description": "*(HASHMAP)* - The info map of the rope to attach or detach a unit from."
+                        },
+                        {
+                            "name": "_setAttachedUnit",
+                            "description": "*(OBJECT)* - Default: `nil` - A `nil` value will detach the currently attached unit from the rope. If an object, that unit will be attached to the rope."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// attach player to the rope\n[MY_ROPE_INFO, player] call KISKA_fnc_fastRope_ropeAttachedUnit;\n```"
+                },
+                {
+                    "text": "```sqf\n// detach unit from rope\n[MY_ROPE_INFO] call KISKA_fnc_fastRope_ropeAttachedUnit;\n```"
+                }
+            ],
+            "description": "Attaches or detachs a given unit from the given rope.\n\nAlso sets the rope info as being occupied or unoccupied."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_ropeAttachedUnit",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/fn_fastRope_startDeploymentProcess.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRope_startDeploymentProcess`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// SHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Begins the deployment process by waiting until the vehicle is allowed to deploy ropes and then deploys those ropes and initiates `KISKA_fnc_fastRope_dropUnits`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRope_startDeploymentProcess",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/CommonEvents/fn_fastRopeEvent_onDropEndedDefault.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRopeEvent_onDropEndedDefault`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n_fastRopeInfoMap call KISKA_fnc_fastRopeEvent_onDropEndedDefault;\n```"
+                }
+            ],
+            "description": "The default behaviour for when a fastroping vehicle has either completed its dropping off of units or the vehicle has encountered something that caused the fastrope to end.\n\nThe default behaviour is to attempt to close any doors of the vehicle and retract the hooks of the fries system. This is targetted at vanilla vehicles."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRopeEvent_onDropEndedDefault",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_FastRope/Functions/CommonEvents/fn_fastRopeEvent_onHoverStartedDefault.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_fastRopeInfoMap] call `KISKA_fnc_fastRopeEvent_onHoverStartedDefault`",
+                    "parameters": [
+                        {
+                            "name": "_fastRopeInfoMap",
+                            "description": "*(HASHMAP)* - The hashmap that contains various pieces of information pertaining to the given fastrope instance."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n_fastRopeInfoMap call KISKA_fnc_fastRopeEvent_onHoverStartedDefault;\n```"
+                }
+            ],
+            "description": "The default behaviour for when a fastroping vehicle begins hovering over the drop zone. Most of this logic is pulled from ACE.\n\nThe default behaviour is to not allow the helicopter to deploy ropes until the doors are open and the FRIES hooks are extended. This is designed to work primarily with vanilla helicopters. The idea is to manage animations that should be conducted before the ropes are deployed."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_fastRopeEvent_onHoverStartedDefault",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Configs/fn_findConfigAny.sqf",
             "syntaxes": [
                 {
@@ -4771,7 +4973,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_pathArray",
-                            "description": ": *(ARRAY)* - The array in string format"
+                            "description": ": *(STRING[])* - A config path broken up into individual pieces"
                         }
                     ],
                     "returns": "*(CONFIG)* - The first config path if found or configNull if not"
@@ -4779,10 +4981,10 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n_configPath = [[\"CfgMusic\",\"Music_Intro_02_MissionStart\"]] call KISKA_fnc_findConfigAny;\n```"
+                    "text": "```sqf\nprivate _configPath = [[\"CfgMusic\",\"Music_Intro_02_MissionStart\"]] call KISKA_fnc_findConfigAny;\n```"
                 }
             ],
-            "description": "Searchs missionConfigFile, campaignConfigFile, and the configFile\n (in that order) to find a config based upon the sub paths provided.\n\nReturns the first one it finds.\n\nThe BIS counterpart to this is BIS_fnc_loadClass and while it can be about 0.0005-0.0010ms faster if the path is short (about 2 entries). It can yield about 0.005ms faster in various cases."
+            "description": "Searchs `missionConfigFile`, `campaignConfigFile`, and the `configFile`\n (in that order) to find a config based upon the sub paths provided.\n\nReturns the first one it finds.\n\nThe BIS counterpart to this is `BIS_fnc_loadClass` and while it can be about 0.0005-0.0010ms faster if the path is short (about 2 entries). It can yield about 0.005ms faster in various cases."
         },
         "configuration": {
             "label": "KISKA_fnc_findConfigAny",
@@ -6931,7 +7133,7 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_hover.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_vehicle, _hoverPosition, _shouldHoverStop, _onHoverEnd] call `KISKA_fnc_hover`",
+                    "outline": "[_vehicle, _hoverPosition, _callBackMap] call `KISKA_fnc_hover`",
                     "parameters": [
                         {
                             "name": "_vehicle",
@@ -6942,12 +7144,8 @@ export const configs: SQFItemConfig[] = [
                             "description": "*(PositionASL[] or OBJECT)* - The positionASL to drop the units off at; Z coordinate matters"
                         },
                         {
-                            "name": "_shouldHoverStop",
-                            "description": "*(CODE)* - Code that should return a boolean to determine if the vehicle should stop its hover. This condition is checked every 0.05s.\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle\n    - 1: _pilot - The currentPilot of _vehicle"
-                        },
-                        {
-                            "name": "_onHoverEnd",
-                            "description": "*(CODE, STRING, or ARRAY)* - Code that executes after the hover completes, see KISKA_fnc_callBack This condition is checked every 0.05s.\n\n    Parameters:\n    - 0: _vehicle - The drop vehicle\n    - 1: _pilot - The currentPilot of _vehicle"
+                            "name": "_callBackMap",
+                            "description": "*(HASHMAP)* - A map of callback functions that can be optionally added:\n\n    - `_shouldHoverStop`: *(CODE)* - Code that should return a boolean to determine if the vehicle should stop its hover. This condition is checked every 0.05s. Parameters:\n        - 0: _vehicle - The hover vehicle\n        - 1: _pilot - The `currentPilot` of the vehicle\n\n    - `_onHoverEnd`: *(CODE, STRING, or ARRAY)* - Code that executes after the hover completes, see `KISKA_fnc_callBack`\n        Parameters:\n        - 0: _vehicle - The hover vehicle\n        - 1: _pilot - The `currentPilot` of the vehicle\n\n    - `_onHoverStart`: *(CODE, STRING, or ARRAY)* - Code that executes after the vehicle is within 5m of the hover position, see `KISKA_fnc_callBack`\n        Parameters:\n        - 0: _vehicle - The hover vehicle\n        - 1: _pilot - The `currentPilot` of the vehicle"
                         }
                     ],
                     "returns": "NOTHING"
@@ -6955,7 +7153,7 @@ export const configs: SQFItemConfig[] = [
             ],
             "examples": [
                 {
-                    "text": "```sqf\n[\n\tmyHeli,\n\tmyHoverPositionASL,\n\t{\n\t\tlocalNamespace getVariable [\"stopMyHover\",false]\n\t},\n\t{\n\t\thint \"after hover\";\n\t}\n] call KISKA_fnc_hover;\n```"
+                    "text": "```sqf\n[\n    myHeli,\n    myHoverPositionASL,\n    createHashMapFromArray [\n        [\n            \"_shouldHoverStop\",\n            {\n                localNamespace getVariable [\"stopMyHover\",false]\n            }\n        ],\n        [\n            \"_onHoverEnd\",\n            {\n                hint \"after hover\";\n            }\n        ]\n    ]\n] call KISKA_fnc_hover;\n```"
                 }
             ],
             "description": "Sends a vehicle to a given point to hover.\n\nPilots should ideally be placed in \"CARELESS\" behaviour when around enemies."
@@ -9843,8 +10041,13 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/KISKA_SimpleStore/Functions/fn_simpleStore_open.sqf",
             "syntaxes": [
                 {
-                    "outline": "call `KISKA_fnc_simpleStore_open`",
-                    "parameters": [],
+                    "outline": "[_paramsMap] call `KISKA_fnc_simpleStore_open`",
+                    "parameters": [
+                        {
+                            "name": "_paramsMap",
+                            "description": ": *(HASHMAP)* - A hashmap of the following arguments:\n    - `_storeId` *(STRING)*: The id for the particular simple store.\n    - `_fn_poolItemToListboxItem` *(CODE)*: A mapping function that will be called on every item in the pool items list to convert it into a listbox item to show in the UI. In the event that the function returns `nil` the item will be excluded from the pool list.\n\n            Parameters:\n\n            - 0: *(ANY)* - A pool item.\n            - 1: *(NUMBER)* - The index of the item in the pool.\n\n            Should return an array containing:\n\n            - 0: *(STRING)* - The text of the listbox element.\n            - 1: *(STRING)* - Default: `\"\"` - A path for the picture of the element.\n            - 2: *(ARRAY)* - Default: `[]` - An RBGA array for the picture's color.\n            - 3: *(ARRAY)* - Default: `[]` - An RBGA array for the picture's color when selected.\n            - 4: *(STRING)* - Default: `\"\"` - The element's tooltip.\n\n    - `_fn_getSelectedItems` *(CODE)*: A function that will be called whenever\n        `KISKA_fnc_simpleStore_refreshSelectedList` is. Must return an array of items formatted the same as an item returned from `_fn_poolItemToListboxItem`\n        with the addition of index 5 being the listbox item's `data` property.\n\n        Passed the following args:\n\n            - 0: *(STRING)* - The store id.\n\n    - `_fn_onTake` *(CODE)*: A function that will be called when the Take button is clicked. Passed the following args:\n\n            - 0: *(STRING)* - The store id.\n            - 1: *(ANY)* - Whatever the item from the pool that was selected.\n            - 2: *(STRING)* - The item's id from the pool items map retrieved from\n                `KISKA_fnc_simpleStore_getPoolItems`. Will be an empty string (`\"\"`)\n                if no item is selected.\n\n    - `_fn_onStore` *(CODE)*: A function that will be called when the Store button is clicked. Passed the following args:\n\n            - 0: *(STRING)* - The store id.\n            - 1: *(STRING)* - The item's `lbData`.\n            - 2: *(NUMBER)* - The index of the selected item in the selected items list. This is the index of the source array, not the index in the list box.\n\n    - `_storeTitle` *(STRING)*: Default `\"KISKA Simple Store\"` - The text that appears at on the top banner.\n    - `_storePoolTitle` *(STRING)*: Default `\"Pool List\"` - The text that appears above the pool list to identify it.\n    - `_storeSelectedItemsTitle` *(STRING)*: Default `\"Selected List\"` - The text that appears above the selected items list to identify it.\n    - `_headerBannerBackgroundColor` *(COLOR(RGBA))*: Default `profile color` - The color of the store title header."
+                        }
+                    ],
                     "returns": "*(DISPLAY)* - The simple store dialog's display"
                 }
             ],
@@ -12072,7 +12275,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _mainTimelineMap = call KISKA_fnc_timeline_getMainMap;\nprivate _timelineId = \"KISKA_timeline_1\";\nprivate _timelineValues = _mainTimelineMap get _timelineId;\n_timelineValues params [\"_timelineEvents\",\"_timelineMap\",\"_onTimelineStopped\"];\n```"
                 }
             ],
-            "description": "The map that links a given timeline id to its info map. This is an internal function that you (likely) don't need to use except for altering timelines that have already started.\n\nSee KISKA_fnc_timeline_getInfoMap to retrieve an info map for a given timeline."
+            "description": "The map that links a given timeline id to its info map. This is an internal function that you (likely) don't need to use except for altering timelines that have already started.\n\nSee `KISKA_fnc_timeline_getInfoMap` to retrieve an info map for a given timeline."
         },
         "configuration": {
             "label": "KISKA_fnc_timeline_getMainMap",
@@ -12695,14 +12898,14 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_waitUntil.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_condition, _function, _interval, _parameters, _unscheduled] call `KISKA_fnc_waitUntil`",
+                    "outline": "[_condition, _onConditionMet, _interval, _parameters, _unscheduled] call `KISKA_fnc_waitUntil`",
                     "parameters": [
                         {
                             "name": "_condition",
                             "description": "*(CODE, STRING, or ARRAY)* - Code that must evaluate as a `BOOL`. If `(_interval <= 0) AND (_unscheduled isEqualTo true)`, this will only accept CODE or `STRING` as an arguement for performance reasons and `_parameters` will be available in `_this`.\n    (See KISKA_fnc_callBack)"
                         },
                         {
-                            "name": "_function",
+                            "name": "_onConditionMet",
                             "description": "*(CODE, STRING, or ARRAY)* - The code to execute upon condition being reached.\n    (See KISKA_fnc_callBack)"
                         },
                         {
