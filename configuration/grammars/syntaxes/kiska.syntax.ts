@@ -1045,6 +1045,33 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_simpleUnits.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_baseConfig] call `KISKA_fnc_bases_createFromConfig_simpleUnits`",
+                    "parameters": [
+                        {
+                            "name": "_baseConfig",
+                            "description": "*(CONFIG)* - The config path of the base config or the string className of a config located in `missionConfigFile >> \"KISKA_bases\"."
+                        }
+                    ],
+                    "returns": "*(HASHMAP)* - see KISKA_fnc_bases_getHashmap"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    \"SomeBaseConfig\"\n] call KISKA_fnc_bases_createFromConfig_simpleUnits;\n```"
+                }
+            ],
+            "description": "Spawns a configed KISKA bases' simple units. These are units created with the `createVehicle` command."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_bases_createFromConfig_simpleUnits",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Bases/fn_bases_createFromConfig_turrets.sqf",
             "syntaxes": [
                 {
@@ -1121,7 +1148,7 @@ export const configs: SQFItemConfig[] = [
                             "description": "*(CONFIG or STRING)* - The config path of the base config"
                         }
                     ],
-                    "returns": "*(HASHMAP)* - a hashmap containing data about the base:\n\n- `unit list`: *(OBJECT[])* - All spawned units (includes turret units)\n- `group list`: *(GROUP[])* - All spawned groups (does NOT include turret units)\n- `turret gunners`: *(OBJECT[])* - All turret units\n- `infantry units`: *(OBJECT[])* - All infantry spawned units\n- `infantry groups`: *(GROUP[])* - All infantry spawned groups\n- `patrol units`: *(OBJECT[])* - All patrol spawned units\n- `patrol groups`: *(GROUP[])* - All patrol spawned groups\n- `land vehicles`: *(OBJECT[])* - All land spawned vehicles\n- `land vehicle groups`: *(GROUP[])* - All land vehicle crew groups\n- `agent list`: *(OBJECT[])* - All spawned agents"
+                    "returns": "*(HASHMAP)* - a hashmap containing data about the base:\n\n- `unit list`: *(OBJECT[])* - All spawned units (includes turret units, DOES NOT include simple units)\n- `group list`: *(GROUP[])* - All spawned groups (does NOT include turret units)\n- `turret gunners`: *(OBJECT[])* - All turret units\n- `infantry units`: *(OBJECT[])* - All infantry spawned units\n- `infantry groups`: *(GROUP[])* - All infantry spawned groups\n- `patrol units`: *(OBJECT[])* - All patrol spawned units\n- `patrol groups`: *(GROUP[])* - All patrol spawned groups\n- `land vehicles`: *(OBJECT[])* - All land spawned vehicles\n- `land vehicle groups`: *(GROUP[])* - All land vehicle crew groups\n- `agent list`: *(OBJECT[])* - All spawned agents\n- `simple units`: *(OBJECT[])* - All spawned simple units"
                 }
             ],
             "examples": [
