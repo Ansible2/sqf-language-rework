@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import * as fsPromises from "fs/promises";
 import * as jsonFile from "jsonfile";
 import { BuildContext, BuildPaths } from "./build-context";
@@ -11,10 +11,7 @@ async function doEsbuild() {
     console.log("Starting on esbuild...");
     try {
         await esbuild.build({
-            entryPoints: [
-                "extension/server/src/server.ts",
-                "extension/client/src/extension.ts",
-            ],
+            entryPoints: ["extension/server/src/server.ts", "extension/client/src/extension.ts"],
             bundle: true,
             outdir: ".out/extension",
             external: ["vscode"],
@@ -47,11 +44,13 @@ const createDirectory = (path: string): void => {
 };
 
 const build = async () => {
+    const outPaths: BuildPaths = BuildContext.out;
+    fs.emptyDirSync(outPaths.directories.top);
+
     console.log("\nExecuting build process...");
     await doEsbuild();
 
     const inPaths: BuildPaths = BuildContext.in;
-    const outPaths: BuildPaths = BuildContext.out;
 
     /* ----------------------------------------------------------------------------
 		Create .out Directories
@@ -95,7 +94,7 @@ const build = async () => {
     const writeExtGrammar: Promise<void> = jsonFile.writeFile(
         outPaths.files.extGrammar,
         extGrammar,
-		jsonWriteOptions
+        jsonWriteOptions
     );
 
     /* ----------------------------------------------------------------------------
@@ -105,10 +104,7 @@ const build = async () => {
         inPaths.files.packageJson,
         outPaths.files.packageJson
     );
-    const copyReadMe: Promise<void> = copyFileTo(
-        inPaths.files.readme,
-        outPaths.files.readme
-    );
+    const copyReadMe: Promise<void> = copyFileTo(inPaths.files.readme, outPaths.files.readme);
     const copyVscodeIgnore: Promise<void> = copyFileTo(
         inPaths.files.vscodeIgnore,
         outPaths.files.vscodeIgnore
