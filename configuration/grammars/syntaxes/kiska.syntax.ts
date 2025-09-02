@@ -6043,7 +6043,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _defaultZeroValue = [\n    configFile >> \"null\" >> \"config\",\n    false,\n    0\n] call KISKA_fnc_getConfigData;\n```"
                 }
             ],
-            "description": "Retrieves the value located at a given config path.\n\nFaster than BIS_fnc_getCfgData."
+            "description": "Retrieves the value located at a given config path.\n\nFaster than `BIS_fnc_getCfgData`."
         },
         "configuration": {
             "label": "KISKA_fnc_getConfigData",
@@ -7245,6 +7245,85 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/InvisibleWalls/fn_invisibleWalls_create.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_wallType, _localOnly, _spawnPositions] call `KISKA_fnc_invisibleWalls_create`",
+                    "parameters": [
+                        {
+                            "name": "_wallType",
+                            "description": "*(STRING)* - The type to us for an invisible wall; most likely a VR block."
+                        },
+                        {
+                            "name": "_localOnly",
+                            "description": "*(BOOL)* - Whether or not to create the wall locally only (`createVehicleLocal`)."
+                        },
+                        {
+                            "name": "_spawnPositions",
+                            "description": "*((OBJECT | [PositionWorld[],VectorDir[],VectorUp[]])[])* -\n    An array of objects and/or positions and vectors to create the walls at."
+                        }
+                    ],
+                    "returns": "*(OBJECT[])* - The created invisible walls. If a spawn position is a null object, the invisible wall for that object will not be created and the resulting array will have `objNull` at that index."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _invisibleWalls = [\n    \"Land_VR_Slope_01_F\",\n    false,\n    [\n        MyObject\n        // [getPosWorld MyObject,vectorDir MyObject, vectorUp MyObject] // same as MyObject\n    ]\n] call KISKA_fnc_invisibleWalls_create;\n```"
+                }
+            ],
+            "description": "Creates invisible walls at the given locations. When an object is used as a reference, the object's vector direction and up will also be copied."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_invisibleWalls_create",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/InvisibleWalls/fn_invisibleWalls_init.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_invisibleWalls_init`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nPOST-INIT Function\n```"
+                }
+            ],
+            "description": "Automatically runs `KISKA_fnc_invisibleWalls_replaceCommon` at the start of a mission if the `missionConfigFile >> \"KiskaReplaceInvisibleWallsAtInit\"` returns\n `true` with `KISKA_fnc_getConfigData`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_invisibleWalls_init",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/InvisibleWalls/fn_invisibleWalls_replaceCommon.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_invisibleWalls_replaceCommon`",
+                    "parameters": [],
+                    "returns": "*([OBJECT[],OBJECT[]])* - The created invisible walls. Index 0 are global walls, index 1 are local only walls."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _invisibleWalls = call KISKA_fnc_invisibleWalls_replaceCommon;\n```"
+                }
+            ],
+            "description": "Replaces several VR blocks with KISKA versions that do not have a shadow and will set them to be invisible. Should the KISKA versions without shadows be unavailable, the vanilla counterpart (with a shadow) will be used instead.\n\nWhen replacing an object, if the object to replace is only local to the machine then the created invisible wall will also be local and vice a versa.\n\nWARNING: This function runs several world sized nearObjects scans. It is recommended that this function be run ONCE and during initialization if possible. Any object replaced with an invisible wall will be DELETED.\n\nThese are the types of walls that will be replaced and their replacements:\n\n\n```sqf\n[\n    // [TYPE TO REPLACE, TYPE TO REPLACE WITH]\n    [\"Land_VR_Block_01_F\",\"KISKA_Land_VR_Block_01_F_No_Shadow\"],\n    [\"Land_VR_Slope_01_F\",\"KSIKA_Land_VR_Slope_01_F_No_Shadow\"],\n    [\"Land_VR_Block_03_F\",\"KSIKA_Land_VR_Block_03_F_No_Shadow\"],\n    [\"Land_VR_Block_02_F\",\"KSIKA_Land_VR_Block_02_F_No_Shadow\"],\n    [\"Land_VR_Block_04_F\",\"KSIKA_Land_VR_Block_04_F_No_Shadow\"],\n    [\"Land_VR_Shape_01_cube_1m_F\",\"KSIKA_Land_VR_Shape_01_cube_1m_F_No_Shadow\"],\n    [\"Land_VR_CoverObject_01_kneelHigh_F\",\"KSIKA_Land_VR_CoverObject_01_kneelHigh_F_No_Shadow\"],\n    [\"Land_VR_CoverObject_01_standHigh_F\",\"KSIKA_Land_VR_CoverObject_01_standHigh_F_No_Shadow\"],\n    [\"Land_VR_CoverObject_01_kneel_F\",\"KSIKA_Land_VR_CoverObject_01_kneel_F_No_Shadow\"],\n    [\"Land_VR_CoverObject_01_kneelLow_F\",\"KSIKA_Land_VR_CoverObject_01_kneelLow_F_No_Shadow\"],\n    [\"Land_VR_CoverObject_01_stand_F\",\"KSIKA_Land_VR_CoverObject_01_stand_F_No_Shadow\"]\n]\n```"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_invisibleWalls_replaceCommon",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isAdminOrHost.sqf",
             "syntaxes": [
                 {
@@ -7382,6 +7461,33 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_isMusicPlaying",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_isObjectLocalOnly.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_object] call `KISKA_fnc_isObjectLocalOnly`",
+                    "parameters": [
+                        {
+                            "name": "_object",
+                            "description": "*(OBJECT)* - The object to check."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - `false` if the object is local to only the current machine."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _isLocalOnly = MyObject call KISKA_fnc_isObjectLocalOnly;\n```"
+                }
+            ],
+            "description": "Checks if a created vehicle has a `netId` of `\"0:0\"`. If it does, it is a local only object."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_isObjectLocalOnly",
             "grammarType": "function"
         }
     },
