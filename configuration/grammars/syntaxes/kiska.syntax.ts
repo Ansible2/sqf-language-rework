@@ -362,6 +362,48 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_addWaypoint.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_group, _center, _wpType, _optionalArgsMap] call `KISKA_fnc_addWaypoint`",
+                    "parameters": [
+                        {
+                            "name": "_group",
+                            "description": "*(GROUP or OBJECT)* - The group or unit to give waypoints to."
+                        },
+                        {
+                            "name": "_center",
+                            "description": "*(MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT[], or Position[])* -\n    The position to place the waypoint's center."
+                        },
+                        {
+                            "name": "_wpType",
+                            "description": "*(STRING)* Default: `\"MOVE\"` - The type of waypoint to create. See `setWaypointType` for options."
+                        },
+                        {
+                            "name": "_optionalArgsMap",
+                            "description": "*(HASHMAP)* - A hashmap of various parameters for the waypoint.\n\n    - `randomRadius`: *(NUMBER)* Default: `0` - Random waypoint placement within the given radius from the `_center`; `-1` can be used for exact waypoint placement but `_center` should be of type PositionASL[].\n\n    - `behaviour`: *(STRING)* Default: `\"UNCHANGED\"` - See `setWaypointBehaviour` for options.\n\n    - `combatMode`: *(STRING)* Default: `\"NO CHANGE\"` - See `setWaypointCombatMode` for options.\n\n    - `speed`: *(STRING)* Default: `\"UNCHANGED\"` - See `setWaypointSpeed` for options.\n\n    - `formation`: *(STRING)* Default: `\"NO CHANGE\"` - See `setWaypointFormation` for options.\n\n    - `timeout`: *(NUMBER[])* Default: `[0,0,0]` - See `setWaypointTimeout` for options.\n\n    - `compRadius`: *(NUMBER)* Default: `0` - See `setWaypointCompletionRadius` for options.\n\n    - `onComplete`: *(CODE, STRING, or ARRAY)* Default: `{}` - Code to execute upon compleition of the waypoint. See `KISKA_fnc_setWaypointExecStatement`."
+                        }
+                    ],
+                    "returns": "*(WAYPOINT[])* - The `[Group, Waypoint Index]` that was created."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _waypoint = [player,[0,0,0]] call KISKA_fnc_addWaypoint;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _waypoint = [\n    player,\n    [0,0,0],\n    \"DESTROY\",\n    createHashMapFromArray [\n        [\"onComplete\",{ hint \"waypoint complete!\" }]\n    ]\n] call KISKA_fnc_addWaypoint;\n```"
+                }
+            ],
+            "description": "Adds a waypoint to a group."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_addWaypoint",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_alivePlayers.sqf",
             "syntaxes": [
                 {
@@ -1535,6 +1577,533 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_addBISEventHandler.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_subject, _thisType, _thisFnc, _arguments] call `KISKA_fnc_CBA_addBISEventHandler`",
+                    "parameters": [
+                        {
+                            "name": "_subject",
+                            "description": "*(OBJECT, CONTROL, DISPLAY, or missionNamespace)* - Thing to attach event handler to."
+                        },
+                        {
+                            "name": "_thisType",
+                            "description": "*(STRING)* - Event handler type."
+                        },
+                        {
+                            "name": "_thisFnc",
+                            "description": "*(CODE)* - Event handler code."
+                        },
+                        {
+                            "name": "_arguments",
+                            "description": "*(ANY)* Default: `[]` - Arguments to pass to event handler."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The ID of the event handler. Same as `_thisID`.\n\nExample:\n\n```sqf\n// one time fired event handler that removes itself\nprivate _id = [\n    player,\n    \"fired\",\n    {\n        systemChat _thisArgs;\n        player removeEventHandler [\"fired\", _thisID]\n    },\n    \"bananas\"\n] call KISKA_fnc_CBA_addBISEventHandler;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n// one time fired event handler that removes itself\nprivate _id = [\n    player,\n    \"fired\",\n    {\n        systemChat _thisArgs;\n        player removeEventHandler [\"fired\", _thisID]\n    },\n    \"bananas\"\n] call KISKA_fnc_CBA_addBISEventHandler;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_fnc_addBISEventHandler` from CBA3.\n\nAdds an event handler with arguments. Additional arguments are passed as\n `_thisArgs`. The ID is passed as `_thisID`. There is a slight overhead on the event call using this function."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_addBISEventHandler",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_addPerFrameHandler.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_function, _delay, _args] call `KISKA_fnc_CBA_addPerFrameHandler`",
+                    "parameters": [
+                        {
+                            "name": "_function",
+                            "description": "*(CODE)* - Code that will execute that the given interval."
+                        },
+                        {
+                            "name": "_delay",
+                            "description": "*(NUMBER)* Default: `0` - The number of seconds between each execution. If `0`, the code will be executed every frame."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* Default: `[]` - Parameters passed to the function executing. This will be the same reference every execution."
+                        }
+                    ],
+                    "returns": "*(NUMBER)* - An id or handle that can be used to modify and/or remove the handler in the future.\n\nExample:\n\n```sqf\nprivate _handle = [\n    {\n        player sideChat format [\"every frame! _this: %1\", _this];\n    },\n    0,\n    [\"some\",\"params\",1,2,3]\n] call KISKA_fnc_CBA_addPerFrameHandler;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _handle = [\n    {\n        player sideChat format [\"every frame! _this: %1\", _this];\n    },\n    0,\n    [\"some\",\"params\",1,2,3]\n] call KISKA_fnc_CBA_addPerFrameHandler;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA system that enables `CBA_fnc_addPerFrameHandler`.\n\nExecutes a piece of code at the given interval."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_addPerFrameHandler",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_compileFinal.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_name, _function] call `KISKA_fnc_CBA_compileFinal`",
+                    "parameters": [
+                        {
+                            "name": "_name",
+                            "description": "*(STRING)* - The name of the function that will be saved to the `missionNamespace`."
+                        },
+                        {
+                            "name": "_function",
+                            "description": "*(CODE)* - The code to set the function name to."
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n[\"MyFunction\", {systemChat str _this}] call KISKA_fnc_CBA_compileFinal;\n// call (missionNamespace getVariable \"MyFunction\");\ncall MyFunction;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\"MyFunction\", {systemChat str _this}] call KISKA_fnc_CBA_compileFinal;\n// call (missionNamespace getVariable \"MyFunction\");\ncall MyFunction;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_fnc_compileFinal` from CBA3. Will `compileFinal` a piece of code and place it in the `missionNamespace` with the given name."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_compileFinal",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_directCall.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_code, _args] call `KISKA_fnc_CBA_directCall`",
+                    "parameters": [
+                        {
+                            "name": "_code",
+                            "description": "*(CODE)* - Code to execute."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* Default: `[]` - Parameters to call the code with."
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n0 spawn {\n    {systemChat str canSuspend} call KISKA_fnc_CBA_directCall;\n};\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n0 spawn {\n    {systemChat str canSuspend} call KISKA_fnc_CBA_directCall;\n};\n```"
+                }
+            ],
+            "description": "Copied function `CBA_fnc_directCall` from CBA3.\n\nExecutes a piece of code in unscheduled environment."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_directCall",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_execNextFrame.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_code, _args] call `KISKA_fnc_CBA_execNextFrame`",
+                    "parameters": [
+                        {
+                            "name": "_code",
+                            "description": "*(CODE)* - Code to execute."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* Default: `[]` - Parameters to call the code with."
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n0 spawn {\n    {systemChat str canSuspend} call KISKA_fnc_CBA_directCall;\n};\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n0 spawn {\n    {systemChat str canSuspend} call KISKA_fnc_CBA_directCall;\n};\n```"
+                }
+            ],
+            "description": "Copied function `CBA_fnc_execNextFrame` from CBA3.\n\nExecutes a code once in and unscheduled environment on the next frame."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_execNextFrame",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_getGroup.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_entity] call `KISKA_fnc_CBA_getGroup`",
+                    "parameters": [
+                        {
+                            "name": "_entity",
+                            "description": "*(MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT or POSITION)* -\n    The entity to find the position of."
+                        }
+                    ],
+                    "returns": "*(GROUP)* - The group.\n\nExample:\n\n```sqf\n_group = player call KISKA_fnc_CBA_getGroup\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n_group = player call KISKA_fnc_CBA_getGroup\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_getGroup`.\n\nA function used to find out the group of an object."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_getGroup",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_getPos.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_entity] call `KISKA_fnc_CBA_getPos`",
+                    "parameters": [
+                        {
+                            "name": "_entity",
+                            "description": "*(MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT or POSITION)* -\n    The entity to find the position of."
+                        }
+                    ],
+                    "returns": "*(PostionAGLS[] or Position[])* - The resulting position, if the passed `_entity`\n    was an array (and not a waypoint array), then a copy is returned.\n\nExample:\n\n```sqf\nprivate _position = (group player) call KISKA_fnc_CBA_getPos\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _position = (group player) call KISKA_fnc_CBA_getPos\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_getPos`.\n\nA function used to get the position of an entity.\n\nZ will always be 0 for `MARKER`, `LOCATION` and `TASK`. If entity is `GROUP`, the position of the group leader will be reported. For `OBJECT` and `GROUP`, the z will be relative to the first RoadWay LOD below the object (AGLS format). If `POSITION` was provided, the position array will be copied. Defaults to [0,0,0]\n if the entity is null or undefined."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_getPos",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_inheritsFrom.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config, _baseConfig] call `KISKA_fnc_CBA_inheritsFrom`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG)* - Class to check if it is a descendent of `_baseConfig`."
+                        },
+                        {
+                            "name": "_baseConfig",
+                            "description": "*(CONFIG)* - Potential ancestor config class."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - `true` if `_config` is a decendent of `_baseConfig`\n\nExample:\n\n```sqf\nprivate _rifle = configFile >> \"CfgWeapons\" >> \"m16a4_acg_gl\";\nprivate _baseRifle = configFile >> \"CfgWeapons\" >> \"RifleCore\";\nprivate _inherits = [_rifle, _baseRifle] call KISKA_fnc_CBA_inheritsFrom;\n// => true in this case, since all rifles are descended from RifleCoreprivate\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _rifle = configFile >> \"CfgWeapons\" >> \"m16a4_acg_gl\";\nprivate _baseRifle = configFile >> \"CfgWeapons\" >> \"RifleCore\";\nprivate _inherits = [_rifle, _baseRifle] call KISKA_fnc_CBA_inheritsFrom;\n// => true in this case, since all rifles are descended from RifleCoreprivate\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_inheritsFrom`.\n\nChecks whether a config entry inherits, directly or indirectly, from another one. For objects, it is probably simpler to use the *isKindOf* command."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_inheritsFrom",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_players.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_CBA_players`",
+                    "parameters": [],
+                    "returns": "*(OBEJCT[])* - a list of all player objects.\n\nExample:\n\n```sqf\nprivate _players = call KISKA_fnc_CBA_players;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _players = call KISKA_fnc_CBA_players;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_fnc_players` from CBA3.\n\nReports all (human) player objects. Does not include headless client entities."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_players",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_randPos.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_position, _radius, _direction, _angle] call `KISKA_fnc_CBA_randPos`",
+                    "parameters": [
+                        {
+                            "name": "_position",
+                            "description": "*(MARKER, OBJECT, LOCATION, GROUP, TASK or POSITION)* - The area to find a position within."
+                        },
+                        {
+                            "name": "_radius",
+                            "description": "*(NUMBER)* - Random radius."
+                        },
+                        {
+                            "name": "_direction",
+                            "description": "*(NUMBER)* Default: `0` - Randomization direction."
+                        },
+                        {
+                            "name": "_angle",
+                            "description": "*(NUMBER)* Default: `360` - the angle of the circular arc in which the random position will end up."
+                        }
+                    ],
+                    "returns": "*(PostionAGL[])* - The random position.\n\nExample:\n\n```sqf\nprivate _position = [position, radius] call KISKA_fnc_CBA_randPos\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _position = [position, radius] call KISKA_fnc_CBA_randPos\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_randPos`.\n\nA function used to randomize a position around a given center."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_randPos",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_randPosArea.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_area, _perimeter] call `KISKA_fnc_CBA_randPosArea`",
+                    "parameters": [
+                        {
+                            "name": "_area",
+                            "description": "*(MARKER, TRIGGER, LOCATION, ARRAY)* - The area to find a position within."
+                        },
+                        {
+                            "name": "_perimeter",
+                            "description": "*(BOOL)* Default: `false` - `true` to return only positions on the area perimeter."
+                        }
+                    ],
+                    "returns": "*(ARRAY)* - The position or empty array if invalid area was provided.\n\nExample:\n\n```sqf\nprivate _position = [[center, a, b, angle, isRectangle]] call KISKA_fnc_CBA_randPosArea;\n```\n\n\n\n```sqf\nprivate _position = [marker, true] call KISKA_fnc_CBA_randPosArea;\n```\n\n\n\n```sqf\nprivate _position = [trigger] call KISKA_fnc_CBA_randPosArea;\n```\n\n\n\n```sqf\nprivate _position = [location] call KISKA_fnc_CBA_randPosArea;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _position = [[center, a, b, angle, isRectangle]] call KISKA_fnc_CBA_randPosArea;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _position = [marker, true] call KISKA_fnc_CBA_randPosArea;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _position = [trigger] call KISKA_fnc_CBA_randPosArea;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _position = [location] call KISKA_fnc_CBA_randPosArea;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_randPosArea`.\n\nFind a random (uniformly distributed) position within the given area without rejection sampling.\n\n*You can use `KISKA_fnc_CBA_randPos` to find a position within a simple radius."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_randPosArea",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_removePerFrameHandler.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_function, _delay, _args] call `KISKA_fnc_CBA_removePerFrameHandler`",
+                    "parameters": [
+                        {
+                            "name": "_function",
+                            "description": "*(CODE)* - Code that will execute that the given interval."
+                        },
+                        {
+                            "name": "_delay",
+                            "description": "*(NUMBER)* Default: `0` - The number of seconds between each execution. If `0`, the code will be executed every frame."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* Default: `[]` - Parameters passed to the function executing. This will be the same reference every execution."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - `true` if removed successful, `false` otherwise.\n\nExample:\n\n```sqf\n0 spawn {\n    private _handle = [\n        {\n            player sideChat format[\"every frame! _this: %1\", _this];\n        },\n        0,\n        [\"some\",\"params\",1,2,3]\n    ] call KISKA_fnc_CBA_addPerFrameHandler;\n\n    sleep 10;\n\n    _handle call KISKA_fnc_CBA_removePerFrameHandler;\n};\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n0 spawn {\n    private _handle = [\n        {\n            player sideChat format[\"every frame! _this: %1\", _this];\n        },\n        0,\n        [\"some\",\"params\",1,2,3]\n    ] call KISKA_fnc_CBA_addPerFrameHandler;\n\n    sleep 10;\n\n    _handle call KISKA_fnc_CBA_removePerFrameHandler;\n};\n```"
+                }
+            ],
+            "description": "Copied version of the CBA system that enables `CBA_fnc_removePerFrameHandler`.\n\nRemoves a per frame handler created with `KISKA_fnc_CBA_addPerFrameHandler`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_removePerFrameHandler",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_shuffle.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_array, _inPlace] call `KISKA_fnc_CBA_shuffle`",
+                    "parameters": [
+                        {
+                            "name": "_array",
+                            "description": "*(ARRAY)* - Array of values to shuffle."
+                        },
+                        {
+                            "name": "_inPlace",
+                            "description": "*(BOOL)* Default: `false` - Alter `_array`, `false` will copy array."
+                        }
+                    ],
+                    "returns": "*(ARRAY)* - The shuffled array.\n\nExample:\n\n```sqf\nprivate _result = [[1, 2, 3, 4, 5]] call KISKA_fnc_CBA_shuffle;\n// _result could be [4, 2, 5, 1, 3]\n\n_array = [1, 2, 3, 4, 5];\n[_array, true] call KISKA_fnc_CBA_shuffle;\n// _array could now be [4, 2, 5, 1, 3]\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _result = [[1, 2, 3, 4, 5]] call KISKA_fnc_CBA_shuffle;\n// _result could be [4, 2, 5, 1, 3]\n\n_array = [1, 2, 3, 4, 5];\n[_array, true] call KISKA_fnc_CBA_shuffle;\n// _array could now be [4, 2, 5, 1, 3]\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_shuffle`.\n\nA function used to randomize a position around a given center."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_shuffle",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_simplifyAngle.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_angle] call `KISKA_fnc_CBA_simplifyAngle`",
+                    "parameters": [
+                        {
+                            "name": "_angle",
+                            "description": "*(NUMBER)* - The unadjusted angle"
+                        }
+                    ],
+                    "returns": "*(NUMBER)* - The angle\n\nExample:\n\n```sqf\n[912] call KISKA_fnc_CBA_simplifyAngle;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[912] call KISKA_fnc_CBA_simplifyAngle;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA function `CBA_fnc_simplifyAngle`.\n\nReturns an equivalent angle to the specified angle in the range 0 to 360.\n\nIf the input angle is in the range 0 to 360, it will be returned unchanged."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_simplifyAngle",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_waitAndExecute.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_function, _args, _delay] call `KISKA_fnc_CBA_waitAndExecute`",
+                    "parameters": [
+                        {
+                            "name": "_function",
+                            "description": "*(CODE)* - The code to execute after the wait time"
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* - Any arguments to pass to the `_function`"
+                        },
+                        {
+                            "name": "_delay",
+                            "description": "*(NUMBER)* - How long to wait until executed the `_function` in seconds"
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n[\n    {\n        player sideChat format [\"5s later! _this: %1\", _this];\n    },\n    [\"some\",\"params\",1,2,3],\n    5\n] call KISKA_fnc_CBA_waitAndExecute;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    {\n        player sideChat format [\"5s later! _this: %1\", _this];\n    },\n    [\"some\",\"params\",1,2,3],\n    5\n] call KISKA_fnc_CBA_waitAndExecute;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA system that enables `CBA_fnc_waitAndExecute`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_waitAndExecute",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_waitUntilAndExecute.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_condition, _statement, _args, _timeout, _timeoutCode] call `KISKA_fnc_CBA_waitUntilAndExecute`",
+                    "parameters": [
+                        {
+                            "name": "_condition",
+                            "description": "*(CODE)* - The function to evaluate as condition."
+                        },
+                        {
+                            "name": "_statement",
+                            "description": "*(CODE)* - The function to run if the condition is true before timeout."
+                        },
+                        {
+                            "name": "_args",
+                            "description": "*(ANY)* Default: `[]` - Parameters passed to the functions\n    (statement and condition) executing."
+                        },
+                        {
+                            "name": "_timeout",
+                            "description": "*(NUMBER)* Default: `-1` - If >= 0, timeout for the condition in seconds. If < 0, no timeout. Exactly 0 means timeout immediately on the next iteration."
+                        },
+                        {
+                            "name": "_timeoutCode",
+                            "description": "*(CODE)* Default: `{}` - When provided, will be executed if condition times out."
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n[\n    { (_this select 0) == vehicle (_this select 0) },\n    { (_this select 0) setDamage 1; },\n    [player]\n] call KISKA_fnc_CBA_waitUntilAndExecute;\n```\n\n\n```sqf\n[\n    { backpackCargo _this isEqualTo [] },\n    { deleteVehicle _this; },\n    _holder,\n    5,\n    { hint backpackCargo _this; }\n] call KISKA_fnc_CBA_waitUntilAndExecute;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    { (_this select 0) == vehicle (_this select 0) },\n    { (_this select 0) setDamage 1; },\n    [player]\n] call KISKA_fnc_CBA_waitUntilAndExecute;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    { backpackCargo _this isEqualTo [] },\n    { deleteVehicle _this; },\n    _holder,\n    5,\n    { hint backpackCargo _this; }\n] call KISKA_fnc_CBA_waitUntilAndExecute;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA system that enables `CBA_fnc_waitUntilAndExecute`.\n\nExecutes a code once in unscheduled environment after a condition is `true`. It's also possible to add a timeout >= 0, in which case a different code is executed. Then it will be waited until `_timeout` time has elapsed or _condition evaluates to `true`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_waitUntilAndExecute",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CIWS/fn_ciwsAlarm.sqf",
             "syntaxes": [
                 {
@@ -2306,6 +2875,179 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_compass_updateConstants",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ContainerCargo/fn_containerCargo_get.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_primaryContainer] call `KISKA_fnc_containerCargo_get`",
+                    "parameters": [
+                        {
+                            "name": "_primaryContainer",
+                            "description": "*(OBJECT)* - The container to save the cargo of"
+                        }
+                    ],
+                    "returns": "*(ARRAY)* - Formatted array of all items in cargo space of a container. Used with `KISKA_fnc_containerCargo_set`. Will return `[]` if no cargo is present."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _cargo = [container] call KISKA_fnc_containerCargo_get;\n```"
+                }
+            ],
+            "description": "Saves the cargo of a container in a formatterd array to be used with\n `KISKA_fnc_containerCargo_set` for copying cargos of containers.\n\nExact ammo counts will be preserved even inside of an item such as magazines inside of a vest or backpack."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_containerCargo_get",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ContainerCargo/fn_containerCargo_getContainerType.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_classname] call `KISKA_fnc_containerCargo_getContainerType`",
+                    "parameters": [
+                        {
+                            "name": "_classname",
+                            "description": "*(STRING)* - The classname of the container to find the type of."
+                        }
+                    ],
+                    "returns": "*(STRING)* - `\"vest\"`, `\"uniform\"`, or `\"backpack\"`. If the classname does not match any of these types, an empty string `\"\"` will be returned."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _containerType = [\n    \"b_bergen_dgtl_f\"\n] call KISKA_fnc_containerCargo_getContainerType;\n```"
+                }
+            ],
+            "description": "Used to retrieve the type of container that a given class is.\n\nWill only return a value if the classname is that of a vest, uniform, or backpack."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_containerCargo_getContainerType",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ContainerCargo/fn_containerCargo_getFromConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config] call `KISKA_fnc_containerCargo_getFromConfig`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG)* - The config class where the manifest for the container is defined."
+                        }
+                    ],
+                    "returns": "*(ARRAY)* - An array of cargo compatible with `KISKA_fnc_containerCargo_set`."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _configuredContainerCargo = [\n    missionConfigFile >> \"MyContainerCargo\"\n] call KISKA_fnc_containerCargo_getFromConfig;\n\n[MyContainer,_configuredContainerCargo] call KISKA_fnc_containerCargo_set;\n```"
+                }
+            ],
+            "description": "Translates a config class into an array compatible with `KISKA_fnc_containerCargo_set`.\n\nHere is an example config layout:\n\n(begin config example)\n    class Example\n    {\n        class weapons\n        {\n            class arifle_AK12_GL_F\n            {\n                class profile_1 // name doesn't matter\n                {\n                    count = 2; // there will be two weapons with these attachments in the container\n\n                    primaryMagazine = \"30Rnd_762x39_AK12_Mag_F\";\n                    primaryAmmo = 30;\n                    secondaryAmmo = 1;\n                    secondaryMagazine = \"1Rnd_HE_Grenade_shell\";\n                    optic = \"optic_Arco\";\n                    rail = \"acc_flashlight\";\n                    muzzle = \"muzzle_snds_B_khk_F\";\n                    bipod = \"\";\n                };\n            };\n        };\n\n        // containers are items that can potentially store other items\n        // such as uniforms, vests, and backpacks.\n        // containers can infintely define all the same properties of the parent container\n        // beneath them so you can store containers within sub containers for example class containers\n        {\n            class B_Bergen_dgtl_F\n            {\n                class empty\n                {\n                    count = 1;\n                };\n                class full\n                {\n                    count = 2;\n                    // items within the container class weapons\n                    {\n                        class arifle_AK12_GL_F\n                        {\n                            class full\n                            {\n                                count = 1;\n                                primaryMagazine = \"30Rnd_762x39_AK12_Mag_F\";\n                                primaryAmmo = 30;\n                                secondaryAmmo = 1;\n                                secondaryMagazine = \"1Rnd_HE_Grenade_shell\";\n                                optic = \"optic_Arco\";\n                                rail = \"acc_flashlight\";\n                                muzzle = \"muzzle_snds_B_khk_F\";\n                                bipod = \"\";\n                            };\n                        };\n                    };\n\n                    // containers within containers class containers\n                    {\n                        class U_B_survival_uniform\n                        {\n                            class filled\n                            {\n                                count = 1;\n                                class items\n                                {\n                                    class H_Booniehat_mgrn\n                                    {\n                                        count = 1;\n                                    };\n                                };\n                            };\n                        };\n                    };\n                };\n            };\n\n            class U_B_survival_uniform\n            {\n                class empty\n                {\n                    count = 1;\n                };\n\n                class filled\n                {\n                    count = 2;\n                    class items\n                    {\n                        class H_Booniehat_mgrn\n                        {\n                            count = 1;\n                        };\n                    };\n                };\n            };\n        };\n\n        class magazines\n        {\n            class 30Rnd_762x39_AK12_Mag_F\n            {\n                class full\n                {\n                    count = 30;\n                };\n                class partial\n                {\n                    count = 10;\n                    ammo = 10;\n                };\n            };\n        };\n\n        class items\n        {\n            class ItemRadio\n            {\n                count = 1;\n            };\n        };\n    };\n(end example)"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_containerCargo_getFromConfig",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ContainerCargo/fn_containerCargo_set.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_containerToLoad, _cargo] call `KISKA_fnc_containerCargo_set`",
+                    "parameters": [
+                        {
+                            "name": "_containerToLoad",
+                            "description": "*(OBJECT)* - The container to add the cargo to."
+                        },
+                        {
+                            "name": "_cargo",
+                            "description": "*(ARRAY or OBJECT)* - An array of various items, magazines, and weapons formatted from\n    `KISKA_fnc_containerCargo_get` or the object to copy from"
+                        }
+                    ],
+                    "returns": "*(BOOL)* - True if cargo was set"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[container,otherContainer] call KISKA_fnc_containerCargo_set;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _cargoToCopy = [otherContainer] call KISKA_fnc_containerCargo_get;\n[container,_cargoToCopy] call KISKA_fnc_containerCargo_set;\n```"
+                }
+            ],
+            "description": "Takes a cargo array formatted from `KISKA_fnc_containerCargo_get` and adds it to another container. Exact ammo counts will be preserved even inside of an item, such as magazines inside of a vest or backpack."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_containerCargo_set",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ContainerCargo/fn_containerCargo_setFromConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_container, _config] call `KISKA_fnc_containerCargo_setFromConfig`",
+                    "parameters": [
+                        {
+                            "name": "_container",
+                            "description": "*(OBJECT)* - The container to set the cargo of."
+                        },
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG)* - The config of the container cargo to set on the `_container`."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    MyContainer,\n    missionConfigFile >> \"MyContainerCargo\"\n] call KISKA_fnc_containerCargo_setFromConfig;\n```"
+                }
+            ],
+            "description": "Sets (overwrites) the cargo of a given container based on a config defined as stated in `KISKA_fnc_containerCargo_getFromConfig`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_containerCargo_setFromConfig",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/ContainerCargo/fn_containerCargo_toHashmap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_cargoList] call `KISKA_fnc_containerCargo_toHashmap`",
+                    "parameters": [
+                        {
+                            "name": "_cargoList",
+                            "description": "*(ARRAY)* - An array in the format of that returned from\n    `KISKA_fnc_containerCargo_get`."
+                        }
+                    ],
+                    "returns": "*(HASHMAP)* - A hashmap representation of the cargo."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _cargoMap = [\n    [MyContainer] call KISKA_fnc_containerCargo_get\n] call KISKA_fnc_containerCargo_toHashmap;\n\nprivate _cargoAsConfig = [_cargoMap] call KISKA_fnc_hashmapToConfig;\ncopyToClipboard _cargoAsConfig;\n```"
+                }
+            ],
+            "description": "Converts an array of the shape returned from `KISKA_fnc_containerCargo_get`\n into a hashmap structure such that it can be exported to a class with\n `KISKA_fnc_hashmapToConfig`."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_containerCargo_toHashmap",
             "grammarType": "function"
         }
     },
@@ -6091,33 +6833,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getContainerCargo.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_primaryContainer] call `KISKA_fnc_getContainerCargo`",
-                    "parameters": [
-                        {
-                            "name": "_primaryContainer",
-                            "description": "*(OBJECT)* - The container to save the cargo of"
-                        }
-                    ],
-                    "returns": "*(ARRAY)* - Formatted array of all items in cargo space of a container. Used with KISKA_fnc_setContainerCargo. Will return [] if no cargo is present."
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[container] call KISKA_fnc_getContainerCargo;\n```"
-                }
-            ],
-            "description": "Saves the cargo of a container in a formatterd array to be used with KISKA_fnc_pasteContainerCargo for copying cargos of containers.\n\nExact ammo counts will be preserved even inside of an item such as magazines inside of a vest or backpack."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_getContainerCargo",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_getCurrentWaypoint.sqf",
             "syntaxes": [
                 {
@@ -6950,7 +7665,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_paramDetails",
-                            "description": ": *([STRING,CODE,ANY[]][])* - An array of\n    [hashmap key, code that returns a default value, an array of valid types]"
+                            "description": ": *([STRING,CODE,ANY[],(NUMBER | NUMBER[])][])* - An array of\n    [\n        hashmap key, code that returns a default value, an array of valid types, if value is an array, the valid number of entries in that array\n    ]"
                         }
                     ],
                     "returns": "[ANY[],STRING[]] or STRING - An array of variable values from the hashmap and their corresponding suggested variable names. Suggested variable names are the key names provided in the `_paramDetails` argument plus a leading underscore\n    `_` should the key not already begin with one. Should a string be returned instead, this means a map value had an incorrect type according to the `_paramDetails`."
@@ -6968,6 +7683,33 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_hashmapParams",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_hashmapToConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_classMap] call `KISKA_fnc_hashmapToConfig`",
+                    "parameters": [
+                        {
+                            "name": "_classMap",
+                            "description": "*(HASMAP)* - The hashmap to convert to a config."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The string class representation of the hashmap."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _configString = [\n    createHashMapFromArray [\n        [\n            \"ExampleClass\",\n            createHashMapFromArray [\n                [\"numberProperty\",1],\n                [\"stringProperty\",\"hello world\"],\n                [\"arrayProperty\",[1,[2],[[3]]] ],\n                [\"subClass\", createHashMapFromArray [[\"subProp\",1]] ]\n            ]\n        ]\n    ]\n] call KISKA_fnc_hashmapToConfig;\ncopyToClipboard _configString;\n```"
+                }
+            ],
+            "description": "Converts a hashmap into a string config representation.\n\nIf a property is a HASHMAP, it is considered a class and will be recursively parsed."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_hashmapToConfig",
             "grammarType": "function"
         }
     },
@@ -9819,40 +10561,6 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Utilities/fn_setContainerCargo.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_containerToLoad, _cargo] call `KISKA_fnc_setContainerCargo`",
-                    "parameters": [
-                        {
-                            "name": "_containerToLoad",
-                            "description": "*(OBJECT)* - The container to add the cargo to."
-                        },
-                        {
-                            "name": "_cargo",
-                            "description": "*(ARRAY or OBJECT)* - An array of various items, magazines, and weapons formatted from KISKA_fnc_getContainerCargo or the object to copy from"
-                        }
-                    ],
-                    "returns": "*(BOOL)* - True if cargo was set"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n[container,otherContainer] call KISKA_fnc_setContainerCargo;\n```"
-                },
-                {
-                    "text": "```sqf\nprivate _cargoToCopy = [otherContainer] call KISKA_fnc_getContainerCargo;\n[container,_cargoToCopy] call KISKA_fnc_setContainerCargo;\n```"
-                }
-            ],
-            "description": "Takes a cargo array formatted from KISKA_fnc_getContainerCargo and adds it to another container. Exact ammo counts will be preserved even inside of an item, such as magazines inside of a vest or backpack."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_setContainerCargo",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_setCrew.sqf",
             "syntaxes": [
                 {
@@ -9914,7 +10622,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _waypoint = myGroup addWaypoint [position player, 0];\nprivate _id = [\n    _waypoint,\n    { hint str _this; }\n] call KISKA_fnc_setWaypointExecStatement\n```"
                 }
             ],
-            "description": "Sets the (execution) statement of a given waypoint using an interface that allows arg passing.\n\nThis statement will only be executed on the machine where added.\n\nBe aware that this will create variables on the provided waypoint's group. If a waypoint is deleted, the variable on the group will still remain."
+            "description": "Sets the (execution) statement of a given waypoint using an interface that allows for the passing of arguments.\n\nThis statement will only be executed on the machine where it was added.\n\nBe aware that this will create variables on the provided waypoint's group. If a waypoint is deleted, the variable on the group will still remain."
         },
         "configuration": {
             "label": "KISKA_fnc_setWaypointExecStatement",
@@ -12302,6 +13010,52 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_supports_remove",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/AI/fn_taskPatrol.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_group, _center, _radius, _numberOfWaypoints, _waypointArgsMap] call `KISKA_fnc_taskPatrol`",
+                    "parameters": [
+                        {
+                            "name": "_group",
+                            "description": "*(GROUP or OBJECT)* - The group or unit to give waypoints to."
+                        },
+                        {
+                            "name": "_center",
+                            "description": "*(MARKER, OBJECT, LOCATION, GROUP, TASK, WAYPOINT[], or Position[])* -\n    The position to place the waypoint's center."
+                        },
+                        {
+                            "name": "_radius",
+                            "description": "*(NUMBER)* Default: `100` - The radius of the area to create random patrol points."
+                        },
+                        {
+                            "name": "_numberOfWaypoints",
+                            "description": "*(NUMBER)* Default: `3` - The number of waypoints to generate for the group. Minimum of `2`."
+                        },
+                        {
+                            "name": "_waypointArgsMap",
+                            "description": "*(HASHMAP)* - A hashmap of various parameters for the waypoints.\n\n    - `type`: *(STRING)* Default: `\"MOVE\"` - See `setWaypointType` for options.\n\n    - `behaviour`: *(STRING)* Default: `\"UNCHANGED\"` - See `setWaypointBehaviour` for options.\n\n    - `combatMode`: *(STRING)* Default: `\"NO CHANGE\"` - See `setWaypointCombatMode` for options.\n\n    - `speed`: *(STRING)* Default: `\"UNCHANGED\"` - See `setWaypointSpeed` for options.\n\n    - `formation`: *(STRING)* Default: `\"NO CHANGE\"` - See `setWaypointFormation` for options.\n\n    - `timeout`: *(NUMBER[])* Default: `[0,0,0]` - See `setWaypointTimeout` for options.\n\n    - `compRadius`: *(NUMBER)* Default: `0` - See `setWaypointCompletionRadius` for options.\n\n    - `onComplete`: *(CODE, STRING, or ARRAY)* Default: `{}` - Code to execute upon compleition of the waypoint. See `KISKA_fnc_setWaypointExecStatement`."
+                        }
+                    ],
+                    "returns": "*(WAYPOINT[][])* - The list of waypoints `[Group, Waypoint Index][]` that were created."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[MyGroup,[0,0,0]] call KISKA_fnc_taskPatrol;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _waypoints = [\n    player,\n    [0,0,0],\n    200,\n    5,\n    createHashMapFromArray [\n        [\"onComplete\",{ hint \"waypoint complete!\" }],\n        [\"type\",\"DESTROY\"]\n    ]\n] call KISKA_fnc_taskPatrol;\n```"
+                }
+            ],
+            "description": "A modified version of `CBA_fnc_taskPatrol`.\n\nA function for a group to randomly patrol a parsed radius and location.\n\nShould be executed where the `_group` is local."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_taskPatrol",
             "grammarType": "function"
         }
     },
