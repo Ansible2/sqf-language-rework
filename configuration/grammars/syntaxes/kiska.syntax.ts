@@ -2941,7 +2941,7 @@ export const configs: SQFItemConfig[] = [
                     "parameters": [
                         {
                             "name": "_config",
-                            "description": "*(CONFIG)* - The config class where the manifest for the container is defined."
+                            "description": "*(CONFIG | STRING)* - The config class where the manifest for the container is defined. If of type STRING, this should be a classname defined in\n    `missionConfigFile >> \"KISKA_cargo\"`."
                         }
                     ],
                     "returns": "*(ARRAY)* - An array of cargo compatible with `KISKA_fnc_containerCargo_set`."
@@ -3006,7 +3006,7 @@ export const configs: SQFItemConfig[] = [
                         },
                         {
                             "name": "_config",
-                            "description": "*(CONFIG)* - The config of the container cargo to set on the `_container`."
+                            "description": "*(CONFIG | STRING)* - The config of the container cargo to set on the `_container`. If of type STRING, this should be a classname defined in `missionConfigFile >> \"KISKA_cargo\"`."
                         }
                     ],
                     "returns": "NOTHING"
@@ -3015,6 +3015,9 @@ export const configs: SQFItemConfig[] = [
             "examples": [
                 {
                     "text": "```sqf\n[\n    MyContainer,\n    missionConfigFile >> \"MyContainerCargo\"\n] call KISKA_fnc_containerCargo_setFromConfig;\n```"
+                },
+                {
+                    "text": "```sqf\n[\n    MyContainer,\n    \"MyContainerCargo\"\n] call KISKA_fnc_containerCargo_setFromConfig;\n```"
                 }
             ],
             "description": "Sets (overwrites) the cargo of a given container based on a config defined as stated in `KISKA_fnc_containerCargo_getFromConfig`."
