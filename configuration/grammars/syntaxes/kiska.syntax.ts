@@ -3390,7 +3390,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _convoyHashMap = [\n    [leadVehicle],\n    10\n] call KISKA_fnc_convoy_create;\n```"
                 }
             ],
-            "description": "Creates an advanced KISKA convoy. Vehicles should be already physically placed in the order that they intend to travel in. If creating in an urban setting, ensure vehicles are in a straight line so that they do not initially crash into a building.\n\nThis will create a CBA statemachine that processes one vehicle a frame. It manages the speed of the vehicle relative to the vehicle in front to keep a desired spacing between them. The space between each vehicle can be customized for that specific vehicle or any individual one.\n\nThe first vehicle added to the convoy WILL NOT have its movement managed in any capacity. All other vehicles will essentially follow the path of the lead vehicle. You should limit the speed and control the path of the lead vehicle for your specific use case.\n\nA convoy requires at least one vehicle (the lead vehicle) to be valid at any given moment. It will be automatically deleted otherwise."
+            "description": "Creates an advanced KISKA convoy. Vehicles should be already physically placed in the order that they intend to travel in. If creating in an urban setting, ensure vehicles are in a straight line so that they do not initially crash into a building.\n\nThis will create a KISKA statemachine that processes one vehicle a frame. It manages the speed of the vehicle relative to the vehicle in front to keep a desired spacing between them. The space between each vehicle can be customized for that specific vehicle or any individual one.\n\nThe first vehicle added to the convoy WILL NOT have its movement managed in any capacity. All other vehicles will essentially follow the path of the lead vehicle. You should limit the speed and control the path of the lead vehicle for your specific use case.\n\nA convoy requires at least one vehicle (the lead vehicle) to be valid at any given moment. It will be automatically deleted otherwise."
         },
         "configuration": {
             "label": "KISKA_fnc_convoy_create",
@@ -5260,33 +5260,6 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_eventHandler_addFromConfig",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/EventHandlers/fn_eventHandler_createCBAStateMachine.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_config] call `KISKA_fnc_eventHandler_createCBAStateMachine`",
-                    "parameters": [
-                        {
-                            "name": "_config",
-                            "description": "*(CONFIG)* - The config of the statemachine"
-                        }
-                    ],
-                    "returns": "*(LOCATION)* - The statemachine"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\n_statemachine = [myConfig] call KISKA_fnc_eventHandler_createCBAStateMachine\n```"
-                }
-            ],
-            "description": "Adds a configed custom eventhandler"
-        },
-        "configuration": {
-            "label": "KISKA_fnc_eventHandler_createCBAStateMachine",
             "grammarType": "function"
         }
     },
@@ -7467,7 +7440,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _value = [myMap,_key] call KISKA_fnc_hashmap_deleteAt;\n```"
                 }
             ],
-            "description": "Deletes a key/value pair if it's in a hashmap, supports objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold groups and objects as keys."
+            "description": "Deletes a key/value pair if it's in a hashmap, supports namespace types such as objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold nullable or namespace types as keys."
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_deleteAt",
@@ -7494,67 +7467,18 @@ export const configs: SQFItemConfig[] = [
                             "description": "*(ANY)* - The value to return if the map does not contain the value"
                         }
                     ],
-                    "returns": "*(ANY)* - The saved value, default value, or nil if not found and no default provided"
+                    "returns": "*(ANY)* - The saved value, default value, or `nil` if not found and no default provided."
                 }
             ],
             "examples": [
                 {
-                    "text": "```sqf\nprivate _value = [\n    myMap,\n    someObject,\n    \"Hello World\"\n] call KISKA_fnc_hashmap_get;\n```"
+                    "text": "```sqf\nprivate _value = [myMap,someObject,\"Hello World\"] call KISKA_fnc_hashmap_get;\n```"
                 }
             ],
-            "description": "Gets a value from a hashmap but also supports objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold groups and objects as keys."
+            "description": "Gets a value from a hashmap but also supports namespace types such as objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold nullable or namespace types as keys."
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_get",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getKiskaObjectGroupKeyMap.sqf",
-            "syntaxes": [
-                {
-                    "outline": "call `KISKA_fnc_hashmap_getObjectOrGroupFromRealKey`",
-                    "parameters": [],
-                    "returns": "*(HASHMAP)* - The hashmap used for finding the given object or group from\n a real key used in a KISKA hashmap"
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\nprivate _kiskaObjectOrGroupKeyHashMap = call KISKA_fnc_hashmap_getKiskaObjectGroupKeyMap;\n```"
-                }
-            ],
-            "description": "Retrieves the global hashmap used to associate a given real key with either a\n group or object with KISKA hashmap functions."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_hashmap_getObjectOrGroupFromRealKey",
-            "grammarType": "function"
-        }
-    },
-    {
-        "documentation": {
-            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getObjectOrGroupFromRealKey.sqf",
-            "syntaxes": [
-                {
-                    "outline": "[_key] call `KISKA_fnc_hashmap_getObjectOrGroupFromRealKey`",
-                    "parameters": [
-                        {
-                            "name": "_key",
-                            "description": "*(STRING)* - The real key used to identify an object or group in a KISKA hashmap"
-                        }
-                    ],
-                    "returns": "*(OBJECT, GROUP, or NIL)* - The object or group that is associated with a given key.\n `NIL` if no object or group matches the given key."
-                }
-            ],
-            "examples": [
-                {
-                    "text": "```sqf\nprivate _key = [someObject] call KISKA_fnc_hashmap_getRealKey;\nprivate _someObject = [\n\t_key\n] call KISKA_fnc_hashmap_getObjectOrGroupFromRealKey;\n```"
-                }
-            ],
-            "description": "Translates a real key used be KISKA hashmaps for groups and objects back into\n the associated group or object."
-        },
-        "configuration": {
-            "label": "KISKA_fnc_hashmap_getObjectOrGroupFromRealKey",
             "grammarType": "function"
         }
     },
@@ -7578,10 +7502,59 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _keyUsedInKiskaHashmap = [someObject] call KISKA_fnc_hashmap_getRealKey;\n```"
                 }
             ],
-            "description": "Returns the actual value used for a key when using KISKA hashmap functions.\n\nThis really only applies to objects or groups as they will have a special string\n used to identify them in the hashmap. Use this function to get the key of them\n if you need to do multiple operations on a hashmap with the same object or group\n and do not want the overhead of the functions."
+            "description": "Returns the actual value used for a key when using KISKA hashmap functions.\n\nThis really only applies to nullable types and namespaces such as objects or groups as they will have a special string used to identify them in the hashmap. Use this function to get the key of them if you need to do multiple operations on a hashmap with the same vanilla unsupported type and do not want the overhead of the functions."
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_getRealKey",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getVariableFromRealKey.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_key] call `KISKA_fnc_hashmap_getVariableFromRealKey`",
+                    "parameters": [
+                        {
+                            "name": "_key",
+                            "description": "*(STRING)* - The real key used to identify an object or group in a KISKA hashmap"
+                        }
+                    ],
+                    "returns": "*(NAMESPACE, LOCATION, GROUP, OBJECT, TEAMMEMBER, TASK, CONTROL, DISPLAY, or NIL)* -\n    The nullable or namespace that is associated with a given key. `NIL` if no variable matches the given key."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _key = [someObject] call KISKA_fnc_hashmap_getRealKey;\nprivate _someObject = [\n    _key\n] call KISKA_fnc_hashmap_getVariableFromRealKey;\n```"
+                }
+            ],
+            "description": "Translates a real key used by KISKA hashmaps for nullable types and namespaces back into the associated variable."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_hashmap_getVariableFromRealKey",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_getVariableKeyMap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_hashmap_getVariableKeyMap`",
+                    "parameters": [],
+                    "returns": "*(HASHMAP)* - The hashmap used for finding the given nullable type or namespace from a real key used in a KISKA hashmap."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _variableKeyMap = call KISKA_fnc_hashmap_getVariableKeyMap;\n```"
+                }
+            ],
+            "description": "Retrieves the global hashmap used to associate a given real key with either a group or object with KISKA hashmap functions."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_hashmap_getVariableKeyMap",
             "grammarType": "function"
         }
     },
@@ -7609,10 +7582,32 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\n[myMap,_key] call KISKA_fnc_hashmap_in;\n```"
                 }
             ],
-            "description": "Checks if a key exists in a hashmap, supports objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold groups and objects as keys."
+            "description": "Checks if a key exists in a hashmap, supports namespace types such as objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold nullable or namespace types as keys."
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_in",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/Hashmap/fn_hashmap_purgeVariableKeyMap.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_hashmap_purgeVariableKeyMap`",
+                    "parameters": [],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\ncall KISKA_fnc_hashmap_purgeVariableKeyMap;\n```"
+                }
+            ],
+            "description": "Removes any hashmap entries in the `KISKA_fnc_hashmap_getVariableKeyMap` that have null values. Can be used if for whatever reason there is concern that the map is filled with many unecessary values."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_hashmap_purgeVariableKeyMap",
             "grammarType": "function"
         }
     },
@@ -7648,7 +7643,7 @@ export const configs: SQFItemConfig[] = [
                     "text": "```sqf\nprivate _inserted = [\n    myMap,\n    someObject,\n    \"Hello World\"\n] call KISKA_fnc_hashmap_set;\n```"
                 }
             ],
-            "description": "Sets a key/value pair in a hashmap but also supports objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold groups and objects as keys."
+            "description": "Sets a key/value pair in a hashmap but also supports namespace types such as objects and groups as keys.\n\nIdeally, not something that should be used if the map is not intended to also hold nullable or namespace types as keys."
         },
         "configuration": {
             "label": "KISKA_fnc_hashmap_set",
@@ -12279,6 +12274,306 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_stalk",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_addState.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_stateMachineMap, _whileStateActive, _onStateEntered, _onStateLeaving, _stateId] call `KISKA_fnc_stateMachine_addState`",
+                    "parameters": [
+                        {
+                            "name": "_stateMachineMap",
+                            "description": "*(HASHMAP)* - The state machine's hashmap."
+                        },
+                        {
+                            "name": "_whileStateActive",
+                            "description": "*(CODE)* Default: `{}` - Code that is executed while the state is active (frequency depends on amount of objects active in the state machine).\n\n    Parameters:\n    - `_this` - Whatever the current item in the list is.\n    - `_thisState`: *(STRING)* - The name of the state."
+                        },
+                        {
+                            "name": "_onStateEntered",
+                            "description": "*(CODE)* Default: `{}` - Code that is executed once the state has been entered. After a transition is completed (also once for the intial state).\n\n    Parameters:\n    - `_this` - Whatever the current item in the list is.\n    - `_thisOrigin`: *(STRING)* - The name of the previous state.\n    - `_thisTransition`: *(STRING)* - The name of the transition that was completed.\n    - `_thisTarget`: *(STRING)* - The name of the state that was entered."
+                        },
+                        {
+                            "name": "_onStateLeaving",
+                            "description": "*(CODE)* Default: `{}` - Code that is executed once when exiting the state, before the transition is started.\n\n    Parameters:\n    - `_this` - Whatever the current item in the list is.\n    - `_thisOrigin`: *(STRING)* - The name of the previous state.\n    - `_thisTransition`: *(STRING)* - The name of the transition that was completed.\n    - `_thisTarget`: *(STRING)* - The name of the state that was entered."
+                        },
+                        {
+                            "name": "_stateId",
+                            "description": "*(STRING)* Default: `\"\"` - A unique identifier for the state. If an empty string, `KISKA_fnc_generateUniqueId` will be used to create an id. The id will be all caps."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The state's id or an empty string if encountering an error.\n\nExample:\n\n```sqf\nprivate _stateId = [_stateMachineMap, {}] call KISKA_fnc_stateMachine_addState;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _stateId = [_stateMachineMap, {}] call KISKA_fnc_stateMachine_addState;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_statemachine_fnc_addState` from CBA.\n\nAdds a state to a state machine."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_addState",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_addTransition.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_stateMachineMap, _originalState, _targetState, _condition, _onTransition, _transitionId] call `KISKA_fnc_stateMachine_addTransition`",
+                    "parameters": [
+                        {
+                            "name": "_stateMachineMap",
+                            "description": "*(HASHMAP)* - The state machine's hashmap."
+                        },
+                        {
+                            "name": "_originalState",
+                            "description": "*(STRING)* - The state that the transition will originate from."
+                        },
+                        {
+                            "name": "_targetState",
+                            "description": "*(STRING)* - The state that the transition will be going towards."
+                        },
+                        {
+                            "name": "_condition",
+                            "description": "*(CODE)* - Condition under which the transition will happen. Should return BOOL.\n\n    Parameters:\n    - `_this` - Whatever the current item in the list is.\n    - `_thisOrigin`: *(STRING)* - The name of the previous state.\n    - `_thisTransition`: *(STRING)* - The name of the transition that was completed.\n    - `_thisTarget`: *(STRING)* - The name of the state that was entered."
+                        },
+                        {
+                            "name": "_onTransition",
+                            "description": "*(CODE)* Default: `{}` - code that gets executed once transition happens.\n\n    Parameters:\n    - `_this` - Whatever the current item in the list is.\n    - `_thisOrigin`: *(STRING)* - The name of the previous state.\n    - `_thisTransition`: *(STRING)* - The name of the transition that was completed.\n    - `_thisTarget`: *(STRING)* - The name of the state that was entered."
+                        },
+                        {
+                            "name": "_transitionId",
+                            "description": "*(STRING)* Default: `\"\"` - A unique identifier for the transition. If an empty string, `KISKA_fnc_generateUniqueId` will be used to create an id. The id will be all caps."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The transition's id.\n\nExample:\n\n```sqf\n[\n    _stateMachine,\n    \"initial\",\n    \"end\",\n    {true},\n    {\n        systemChat format [\n            \"%1 transitioned from %2 to %3 via %4.\",\n            _this, _thisOrigin, _thisTarget, _thisTransition\n        ];\n    },\n    \"dummyTransition\"\n] call KISKA_fnc_stateMachine_addTransition;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    _stateMachine,\n    \"initial\",\n    \"end\",\n    {true},\n    {\n        systemChat format [\n            \"%1 transitioned from %2 to %3 via %4.\",\n            _this, _thisOrigin, _thisTarget, _thisTransition\n        ];\n    },\n    \"dummyTransition\"\n] call KISKA_fnc_stateMachine_addTransition;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_stateMachine_fnc_addTransition` from CBA.\n\nCreates a transition between two states."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_addTransition",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_create.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_list, _skipNull] call `KISKA_fnc_stateMachine_create`",
+                    "parameters": [
+                        {
+                            "name": "_list",
+                            "description": "*(CODE | ARRAY)* - List of anything over which the state machine will iterate over. The list contents must support `setVariable`. If of type CODE, the code must return a valid list and will be run after each each list cycle."
+                        },
+                        {
+                            "name": "_skipNull",
+                            "description": "*(BOOL)* Default: `false` - Skip null entities within the list."
+                        }
+                    ],
+                    "returns": "*(HASHMAP)* - The hashamp the represents the state machine and contains infromation relevant to running it.\n\nExample:\n\n```sqf\nprivate _stateMachine = [\n    [MyObject_1,MyObject_2],\n    true\n] call KISKA_fnc_stateMachine_create;\n```\n\n\n\n```sqf\nprivate _stateMachine = call KISKA_fnc_stateMachine_create;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _stateMachine = [\n    [MyObject_1,MyObject_2],\n    true\n] call KISKA_fnc_stateMachine_create;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _stateMachine = call KISKA_fnc_stateMachine_create;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_stateMachine_fnc_create` from CBA.\n\nCreates a stateMachine instance. A stateMachine loops over a given list of entities, processing only a single entity in the list per frame.\n\nNOTE: A created state machine does not begin executing each frame until it has at least one state that has been added (`KISKA_fnc_stateMachine_addState`)."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_create",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_createFromConfig.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_config] call `KISKA_fnc_stateMachine_createFromConfig`",
+                    "parameters": [
+                        {
+                            "name": "_config",
+                            "description": "*(CONFIG)* - The configuration of the state machine."
+                        }
+                    ],
+                    "returns": "*(HASHMAP)* - The hashamp the represents the state machine and contains infromation relevant to running it.\n\nExample:\n\n```sqf\nprivate _stateMachine = [\n    missionConfigFile >> \"My_Statemachine\"\n] call KISKA_fnc_stateMachine_createFromConfig;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _stateMachine = [\n    missionConfigFile >> \"My_Statemachine\"\n] call KISKA_fnc_stateMachine_createFromConfig;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_stateMachine_fnc_createFromConfig` from CBA.\n\nCreates a stateMachine instance from a given config. A stateMachine loops over a given list of entities, processing only a single entity in the list per frame.\n\n\n```cpp\nclass MyAddon_Statemachine\n{\n    // Class properties have the same name as the corresponding function parameters\n    // and code goes into strings.\n    list = \"allGroups select {!isPlayer leader _x}\";\n    skipNull = 1;\n\n    // For all code properties:\n    // If this string is a missionNamespace variable that is code (global function),\n    // That function will be used as the code.\n    // Otherwised the string will be compiled into a code.\n\n\n    // States are just subclasses of the state machine\n    class Initial\n    {\n        whileStateActive = \"\";\n        onStateEntered = \"\";\n        onStateLeaving = \"\";\n\n        // Transitions are also just subclasses of states\n        class Aware\n        {\n            targetState = \"Alert\";\n            condition = \"combatMode _this == 'YELLOW'\";\n            onTransition = \"{ \\\n                _x setSkill ['spotDistance', ((_x skill 'spotDistance') * 1.5) min 1]; \\\n                _x setSkill ['spotTime',     ((_x skill 'spotTime')     * 1.5) min 1]; \\\n            } forEach (units _this);\";\n        };\n\n        class InCombat : Aware\n        {\n            condition = \"combatMode _this == 'RED'\";\n        };\n    };\n\n    // Empty classes will also work if the state contains no transitions or onState code.\n    class Alert\n    {};\n};\n```"
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_createFromConfig",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_delete.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_stateMachine] call `KISKA_fnc_stateMachine_delete`",
+                    "parameters": [
+                        {
+                            "name": "_stateMachine",
+                            "description": "*(HASHMAP)* - The state machine to delete."
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n[_stateMachine] call KISKA_fnc_stateMachine_delete;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[_stateMachine] call KISKA_fnc_stateMachine_delete;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_stateMachine_fnc_delete` from CBA.\n\nStops and deletes a state machine."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_delete",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_dumpPerformanceCounters.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_stateMachine_dumpPerformanceCounters`",
+                    "parameters": [],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n[] call KISKA_fnc_stateMachine_dumpPerformanceCounters;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[] call KISKA_fnc_stateMachine_dumpPerformanceCounters;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_statemachine_fnc_dumpPerformanceCounters` from CBA.\n\nDumps the performance counters for each state machine to the `.rpt` log. Requires that `KISKA_fnc_stateMachine_onEachFrame` and this function have\n `STATEMACHINE_PERFORMANCE_COUNTERS` `#define`d within their exectuion.\n\nNote that `diag_tickTime` has very limited precision; results may become more accurate with longer test runtime."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_dumpPerformanceCounters",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_getCurrentState.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_listItem, _stateMachineMap] call `KISKA_fnc_stateMachine_getCurrentState`",
+                    "parameters": [
+                        {
+                            "name": "_listItem",
+                            "description": "*(NAMESPACE, OBJECT, GROUP, TEAMMEMBER, TASK, LOCATION)* -\n    The item in the state machine to get the state of."
+                        },
+                        {
+                            "name": "_stateMachineMap",
+                            "description": "*(HASHMAP)* - The state machine's hashmap."
+                        }
+                    ],
+                    "returns": "*(STRING)* - State of the given item, will be an empty string if the item is not found in the state machine.\n\nExample:\n\n```sqf\nprivate _currentState = [\n    player,\n    _stateMachine\n] call KISKA_fnc_stateMachine_getCurrentState;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _currentState = [\n    player,\n    _stateMachine\n] call KISKA_fnc_stateMachine_getCurrentState;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_statemachine_fnc_getCurrentState` from CBA.\n\nGets the current state of the given item in the state machine."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_getCurrentState",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_manualTransition.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_listItem, _stateMachineMap, _thisOrigin, _thisTarget, _onTransition, _thisTransition] call `KISKA_fnc_stateMachine_manualTransition`",
+                    "parameters": [
+                        {
+                            "name": "_listItem",
+                            "description": "*(NAMESPACE, OBJECT, GROUP, TEAMMEMBER, TASK, LOCATION)* -\n    The item in the state machine to get the state of."
+                        },
+                        {
+                            "name": "_stateMachineMap",
+                            "description": "*(HASHMAP)* - The state machine's hashmap."
+                        },
+                        {
+                            "name": "_thisOrigin",
+                            "description": "*(STRING)* Default: `\"\"` - The state that the transition is supposed to be **coming from**. If this state was added to the state machine, its `onStateLeaving` function will be called."
+                        },
+                        {
+                            "name": "_thisTarget",
+                            "description": "*(STRING)* Default: `\"\"` - The state that the transition is supposed to be **going to**. If this state was added to the state machine, its `onStateEntered` function will be called."
+                        },
+                        {
+                            "name": "_onTransition",
+                            "description": "*(CODE)* Default: `{}` - The transition code to be executed.\n\n    Parameters:\n    - `_this` - Same as `_listItem`.\n    - `_thisOrigin`: *(STRING)* - The name of the previous state.\n    - `_thisTransition`: *(STRING)* - The name of the transition that was completed.\n    - `_thisTarget`: *(STRING)* - The name of the state that was entered."
+                        },
+                        {
+                            "name": "_thisTransition",
+                            "description": "*(STRING)* Default: `\"MANUAL\"` - The name of this transition."
+                        }
+                    ],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\n[\n    _stateMachineMap,\n    \"initial\",\n    \"end\",\n    {\n        systemChat format [\n            \"%1 transitioned from %2 to %3 manually.\",\n            _this, _thisOrigin, _thisTarget\n        ];\n    },\n    \"dummyTransition\"\n] call KISKA_fnc_stateMachine_manualTransition;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    _stateMachineMap,\n    \"initial\",\n    \"end\",\n    {\n        systemChat format [\n            \"%1 transitioned from %2 to %3 manually.\",\n            _this, _thisOrigin, _thisTarget\n        ];\n    },\n    \"dummyTransition\"\n] call KISKA_fnc_stateMachine_manualTransition;\n```"
+                }
+            ],
+            "description": "Copied function `CBA_statemachine_fnc_manualTransition` from CBA.\n\nGets the current state of the given item in the state machine."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_manualTransition",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/StateMachine/fn_stateMachine_onEachFrame.sqf",
+            "syntaxes": [
+                {
+                    "outline": "call `KISKA_fnc_stateMachine_onEachFrame`",
+                    "parameters": [],
+                    "returns": "NOTHING\n\nExample:\n\n```sqf\nSHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nSHOULD NOT BE CALLED DIRECTLY\n```"
+                }
+            ],
+            "description": "Copied function `CBA_stateMachine_fnc_clockwork` from CBA.\n\nLoops through all stateMachines within in a given frame and executes their state."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_stateMachine_onEachFrame",
             "grammarType": "function"
         }
     },
