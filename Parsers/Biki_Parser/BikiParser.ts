@@ -49,7 +49,7 @@ enum BikiPageDetailType {
 interface BikiPageDetail {
     type: BikiPageDetailType;
     orginal: string;
-    content: string;
+    content?: string;
     fullName: string;
     name: string;
 }
@@ -268,7 +268,7 @@ class BikiParser implements DocParser {
     private parseSyntax(bikiSyntax: BikiSyntax): SQFSyntaxConfig | null {
         const syntax: SQFSyntaxConfig = { parameters: [] };
         const syntaxExample = this.textInterpreter.convertTextToMarkdown(
-            bikiSyntax.syntaxDetail.content
+            bikiSyntax.syntaxDetail?.content
         );
 
         if (syntaxExample) {
@@ -286,7 +286,7 @@ class BikiParser implements DocParser {
         });
 
         const returnText = this.textInterpreter.convertTextToMarkdown(
-            bikiSyntax.returnDetail.content
+            bikiSyntax.returnDetail?.content
         );
         if (returnText) {
             syntax.returns = returnText;
