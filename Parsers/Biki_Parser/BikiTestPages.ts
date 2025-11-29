@@ -13,7 +13,7 @@ export const BikiTestPages: {
                         text: "```sqf\nprivate _isInside = [100, 100, 0] inPolygon [[0, 0, 0], [1000, 1000, 0], [1000, 0, 0]];\n```",
                     },
                     {
-                        text: '```sqf\n\nprivate _markerName = "_USER_DEFINED #0/0/1";\n\nprivate _xy2DPositions = markerPolyline _markerName;\nprivate _positions = [];\n\n// let\'s convert these x,y coordinates to "normal" position arrays\nfor "_i" from 0 to count _xy2DPositions - 1 step 2 do\n{\n\t_positions pushBack [_xy2DPositions select _i, _xy2DPositions select (_i + 1), 0];\n};\n\nplayer inPolygon _positions; // true if in the drawn shape, false if not\n\n```',
+                        text: '```sqf\nprivate _markerName = "_USER_DEFINED #0/0/1";\n\nprivate _xy2DPositions = markerPolyline _markerName;\nprivate _positions = [];\n\n// let\'s convert these x,y coordinates to "normal" position arrays\nfor "_i" from 0 to count _xy2DPositions - 1 step 2 do\n{\n\t_positions pushBack [_xy2DPositions select _i, _xy2DPositions select (_i + 1), 0];\n};\n\nplayer inPolygon _positions; // true if in the drawn shape, false if not\n```',
                     },
                 ],
                 syntaxes: [
@@ -92,7 +92,7 @@ player inPolygon _positions; // true if in the drawn shape, false if not
                         text: '```sqf\n_soldier action ["Eject", vehicle _soldier];\n```',
                     },
                     {
-                        text: '```sqf\n\nplayer action ["UseWeapon", player, player, 7]; // plays pick up animation before throwing grenade\naction ["UseWeapon", player, player, 7]; // normal grenade throw\n\n```',
+                        text: '```sqf\nplayer action ["UseWeapon", player, player, 7]; // plays pick up animation before throwing grenade\naction ["UseWeapon", player, player, 7]; // normal grenade throw\n```',
                     },
                 ],
                 syntaxes: [
@@ -305,7 +305,7 @@ if (count _array == 0 || { (_array select 0) != player }) then
                         text: '```sqf\nif (OBJ1 || _enemycount == 0) then { hint "you win !" };\n```',
                     },
                     {
-                        text: '```sqf\n\nif (count _array == 0 || { (_array select 0) != player }) then\n{\n\thint "It works! Without lazy evaluation it would throw an error if array was empty.";\n};\n\n```',
+                        text: '```sqf\nif (count _array == 0 || { (_array select 0) != player }) then\n{\n\thint "It works! Without lazy evaluation it would throw an error if array was empty.";\n};\n```',
                     },
                 ],
                 syntaxes: [
@@ -413,10 +413,10 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                         text: "Apply force [0,1000,0] defined in model space (relative to object) to object position [1,0,0]:\n\n```sqf\n_object addForce [_object vectorModelToWorld [0,1000,0], [1,0,0]];\n```",
                     },
                     {
-                        text: 'Can be used on units since Arma 3 v2.04:\n\n```sqf\n\nif (local bob) then\n{\n\t0 spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition "rightfoot"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n\n```',
+                        text: 'Can be used on units since Arma 3 v2.04:\n\n```sqf\nif (local bob) then\n{\n\t0 spawn \n\t{\n\t\tbob addForce [bob vectorModelToWorld [0,-200,0], bob selectionPosition "rightfoot"];\n\t\tsleep 5;\n\t\tbob setUnconscious false;\n\t};\n};\n```',
                     },
                     {
-                        text: "```sqf\n\nplayer addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not unconscious\n\n```",
+                        text: "```sqf\nplayer addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not unconscious\n```",
                     },
                 ],
                 syntaxes: [
@@ -578,7 +578,7 @@ allAddonsInfo
                 description: "Returns the list of all loaded addons.",
                 examples: [
                     {
-                        text: '```sqf\n\nallAddonsInfo\n/*\n\t[\n\t\t["bin","150301",false,-1,"66b6d1a87da30e0386fec881504c14a0a6025cb1"],\n\t\t["core","129618",false,-1,"49e1b8da67de848c8ea058fd8512c222ccb6d919"],\n\t\t["Languagecore_F","150376",false,-1,"2ee7b09d60f916d7e56934632f55683a14a636b7"],\n\t\t["a3anims_f_aow","149768",false,0,"59df21ad1fc6939c460a555b3af662f725564b37"],\n\t\t["a3dubbing_radio_f_enoch","150070",false,1,"5ca436c61a634fcbd28ca9480a4c8249c5b0e4bd"],\n\t\t["a3armor_f_tank","150292",false,2,"6d0ea8b45ff4cd316b3d6c5575def9dd048e198e"],\n\t\t["a3music_f_tacops","124064",false,3,"435c2b0338fe6bec7685002dca7c47778abf44ee"],\n\t\t...\n\t]\n*/\n\n```',
+                        text: '```sqf\nallAddonsInfo\n/*\n\t[\n\t\t["bin","150301",false,-1,"66b6d1a87da30e0386fec881504c14a0a6025cb1"],\n\t\t["core","129618",false,-1,"49e1b8da67de848c8ea058fd8512c222ccb6d919"],\n\t\t["Languagecore_F","150376",false,-1,"2ee7b09d60f916d7e56934632f55683a14a636b7"],\n\t\t["a3anims_f_aow","149768",false,0,"59df21ad1fc6939c460a555b3af662f725564b37"],\n\t\t["a3dubbing_radio_f_enoch","150070",false,1,"5ca436c61a634fcbd28ca9480a4c8249c5b0e4bd"],\n\t\t["a3armor_f_tank","150292",false,2,"6d0ea8b45ff4cd316b3d6c5575def9dd048e198e"],\n\t\t["a3music_f_tacops","124064",false,3,"435c2b0338fe6bec7685002dca7c47778abf44ee"],\n\t\t...\n\t]\n*/\n```',
                     },
                 ],
                 syntaxes: [
@@ -653,10 +653,10 @@ if (_someString in allMapMarkers) then
                         text: '```sqf\n_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]\n```',
                     },
                     {
-                        text: '```sqf\n\n{\n\tprivate "_a";\n\t_a = toArray _x;\n\t_a resize 15;\n\tif (toString _a == "_USER_DEFINED #") then\n\t// or if (_x select [0, 15] == "_USER_DEFINED #") since {{arma3}} v1.28\n\t{\n\t\tdeleteMarker _x;\n\t};\n} forEach allMapMarkers;\n\n```',
+                        text: '```sqf\n{\n\tprivate "_a";\n\t_a = toArray _x;\n\t_a resize 15;\n\tif (toString _a == "_USER_DEFINED #") then\n\t// or if (_x select [0, 15] == "_USER_DEFINED #") since {{arma3}} v1.28\n\t{\n\t\tdeleteMarker _x;\n\t};\n} forEach allMapMarkers;\n```',
                     },
                     {
-                        text: '```sqf\n\nif (_someString in allMapMarkers) then\n{\n\thint (_someString + " is an existing marker");\n};\n\n```',
+                        text: '```sqf\nif (_someString in allMapMarkers) then\n{\n\thint (_someString + " is an existing marker");\n};\n```',
                     },
                 ],
                 syntaxes: [
@@ -882,19 +882,19 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
         parsed: {
             documentation: {
                 description:
-                    'Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n<sqf inline>showHUD false will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position#Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for **`activeWidth`** and **`activeHeight`** set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2) and half the screen tall (<sqf inline>safeZoneH / 2), divide these by the according config values: \n```sqf\n\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");\n\n```',
+                    'Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n<sqf inline>showHUD false will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position#Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for **`activeWidth`** and **`activeHeight`** set in config. So for example, if one needs to create an icon half the screen wide (<sqf inline>safeZoneW / 2) and half the screen tall (<sqf inline>safeZoneH / 2), divide these by the according config values: \n```sqf\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");\n```',
                 examples: [
                     {
-                        text: 'Icon and text:\n\n```sqf\n\naddMissionEventHandler ["Draw3D", {\n\tdrawIcon3D ["targetIcon.paa", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, "Target", 1, 0.05, "TahomaB"];\n}];\n\n```',
+                        text: 'Icon and text:\n```sqf\naddMissionEventHandler ["Draw3D", {\n\tdrawIcon3D ["targetIcon.paa", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, "Target", 1, 0.05, "TahomaB"];\n}];\n```',
                     },
                     {
-                        text: 'Just text:\n\n```sqf\n\naddMissionEventHandler ["Draw3D", {\n\tdrawIcon3D ["", [1,0,0,1], ASLToAGL getPosASLVisual cursorTarget, 0, 0, 0, "Target", 1, 0.05, "PuristaMedium"];\n}];\n\n```',
+                        text: 'Just text:\n```sqf\naddMissionEventHandler ["Draw3D", {\n\tdrawIcon3D ["", [1,0,0,1], ASLToAGL getPosASLVisual cursorTarget, 0, 0, 0, "Target", 1, 0.05, "PuristaMedium"];\n}];\n```',
                     },
                     {
-                        text: '```sqf\n\niconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t"COMPASS",\n\t\t0,\n\t\t0.3,\n\t\t"PuristaMedium",\n\t\t"center",\n\t\ttrue\n\t];\n}];\n\n```',
+                        text: '```sqf\niconPos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[0,0,1,1],\n\t\ticonPos,\n\t\t5,\n\t\t5,\n\t\tgetDirVisual player,\n\t\t"COMPASS",\n\t\t0,\n\t\t0.3,\n\t\t"PuristaMedium",\n\t\t"center",\n\t\ttrue\n\t];\n}];\n```',
                     },
                     {
-                        text: 'Since (**Arma 3 v2.04**)\n\n```sqf\n\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t"RobotoCondensed",\n\t\t"right",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n\n```',
+                        text: 'Since (**Arma 3 v2.04**)\n```sqf\npos = player getPos [10, 0] vectorAdd [0,0,2];\naddMissionEventHandler ["draw3D",\n{\n\t_k = 10 / (player distance pos);\n\tdrawIcon3D\n\t[\n\t\t"\\a3\\ui_f\\data\\IGUI\\Cfg\\Radar\\radar_ca.paa",\n\t\t[1,0,0,1],\n\t\tpos,\n\t\t1 * _k,\n\t\t1 * _k,\n\t\t0,\n\t\tname player,\n\t\t0,\n\t\t0.04 * _k,\n\t\t"RobotoCondensed",\n\t\t"right",\n\t\ttrue,\n\t\t0.005 * _k,\n\t\t-0.035 * _k\n\t];\n}];\n```',
                     },
                 ],
                 syntaxes: [
@@ -1146,10 +1146,10 @@ call BIS_fnc_setRain;
                         text: "```sqf\n60 setRain 1;\n```",
                     },
                     {
-                        text: "Force no rain:\n\n```sqf\n\n0 setRain 0;\nforceWeatherChange;\n999999 setRain 0;\n\n```",
+                        text: "Force no rain:\n\n```sqf\n0 setRain 0;\nforceWeatherChange;\n999999 setRain 0;\n```",
                     },
                     {
-                        text: "Snow-like effect (Since Arma 3 v2.08):\n\n```sqf\n\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\nsetRain [\n\t\"a3\\data_f\\rainnormal_ca.paa\",\t// rainDropTexture\n\t1,\t\t\t\t// texDropCount\n\t0.01,\t\t\t// minRainDensity\n\t15,\t\t\t\t// effectRadius\n\t0.1,\t\t\t// windCoef\n\t2,\t\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.02,\t\t\t// dropWidth\n\t0.02,\t\t\t// dropHeight\n\t[0.1, 0.1, 0.1, 1],\t// dropColor\n\t0.1,\t\t\t// lumSunFront\n\t0.1,\t\t\t// lumSunBack\n\t5.5,\t\t\t// refractCoef\n\t0.3,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n];\n\n```\n\n\nSee also `BIS_fnc_setRain` since Arma 3 v2.10:\n\n```sqf\n\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\n[\n\t\"a3\\data_f\\snowflake4_ca.paa\",\t// rainDropTexture\n\t4,\t\t\t\t// texDropCount\n\t0.01,\t\t\t// minRainDensity\n\t25,\t\t\t\t// effectRadius\n\t0.05,\t\t\t// windCoef\n\t2.5,\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.07,\t\t\t// dropWidth\n\t0.07,\t\t\t// dropHeight\n\t[1, 1, 1, 0.5],\t// dropColor\n\t0.0,\t\t\t// lumSunFront\n\t0.2,\t\t\t// lumSunBack\n\t0.5,\t\t\t// refractCoef\n\t0.5,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n]\ncall BIS_fnc_setRain;\n\n```",
+                        text: "Snow-like effect (Since Arma 3 v2.08):\n\n```sqf\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\nsetRain [\n\t\"a3\\data_f\\rainnormal_ca.paa\",\t// rainDropTexture\n\t1,\t\t\t\t// texDropCount\n\t0.01,\t\t\t// minRainDensity\n\t15,\t\t\t\t// effectRadius\n\t0.1,\t\t\t// windCoef\n\t2,\t\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.02,\t\t\t// dropWidth\n\t0.02,\t\t\t// dropHeight\n\t[0.1, 0.1, 0.1, 1],\t// dropColor\n\t0.1,\t\t\t// lumSunFront\n\t0.1,\t\t\t// lumSunBack\n\t5.5,\t\t\t// refractCoef\n\t0.3,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n];\n```\n\nSee also `BIS_fnc_setRain` since Arma 3 v2.10:\n\n```sqf\n0 setOvercast 1;\n0 setRain 1;\n0 setFog 0.1;\t\t// snow affects visibility at distance\nsetHumidity 0.9;\t// don't want to see dust clouds\nenableEnvironment [false, true];\t// don't want to see snakes and butterflies either\nforceWeatherChange;\n[\n\t\"a3\\data_f\\snowflake4_ca.paa\",\t// rainDropTexture\n\t4,\t\t\t\t// texDropCount\n\t0.01,\t\t\t// minRainDensity\n\t25,\t\t\t\t// effectRadius\n\t0.05,\t\t\t// windCoef\n\t2.5,\t\t\t// dropSpeed\n\t0.5,\t\t\t// rndSpeed\n\t0.5,\t\t\t// rndDir\n\t0.07,\t\t\t// dropWidth\n\t0.07,\t\t\t// dropHeight\n\t[1, 1, 1, 0.5],\t// dropColor\n\t0.0,\t\t\t// lumSunFront\n\t0.2,\t\t\t// lumSunBack\n\t0.5,\t\t\t// refractCoef\n\t0.5,\t\t\t// refractSaturation\n\ttrue,\t\t\t// snow\n\tfalse\t\t\t// dropColorStrong\n]\ncall BIS_fnc_setRain;\n```",
                     },
                 ],
                 syntaxes: [

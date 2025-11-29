@@ -746,7 +746,9 @@ export class BikiTextInterpreter {
 
         // code blocks are seperated to ensure that any code formatting is not overwritten
         // during formatting
-        const sqfCodeBlockMatches = convertedText.matchAll(/(<sqf>\s*)([\s\S]*?)(\s*<\/sqf>)/gi);
+        const sqfCodeBlockMatches = convertedText.matchAll(
+            /(\s*<sqf>\s*)([\s\S]*?)(\s*<\/sqf>\s*)/gi
+        );
         const convertedCodeExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
             const matchString = match[0];
@@ -836,11 +838,13 @@ export class BikiTextInterpreter {
         for (const convertedExample of convertedCodeExamples) {
             convertedText = convertedText.replace(
                 "<SQFCodeToReplace>",
-                ["\n```sqf", convertedExample, "```\n"].join("\n")
+                convertedExample
+                    .replaceAll(/\s*\<sqf\>\s*/gi, "\n\n```sqf\n")
+                    .replaceAll(/\s*\<\/sqf\>\s*/gi, "\n```\n\n")
             );
         }
-
-        return convertedText.replaceAll("<sqf>", "").replaceAll("</sqf>", "").trim();
+        
+        return convertedText.trim();
     }
 
     /* ----------------------------------------------------------------------------
