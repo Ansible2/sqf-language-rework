@@ -749,12 +749,23 @@ export class BikiTextInterpreter {
         const sqfCodeBlockMatches = convertedText.matchAll(
             /(\s*<sqf>\s*)([\s\S]*?)(\s*<\/sqf>\s*)/gi
         );
-        const convertedCodeExamples: string[] = [];
+        const CODE_BLOCK_MARKER = "<SQFCodeBlockToReplace>";
+        const grabbedCodeBlockExamples: string[] = [];
         for (const match of sqfCodeBlockMatches) {
             const matchString = match[0];
             if (!matchString) continue;
-            convertedCodeExamples.push(matchString);
-            convertedText = convertedText.replace(matchString, "<SQFCodeToReplace>");
+            grabbedCodeBlockExamples.push(matchString);
+            convertedText = convertedText.replace(matchString, CODE_BLOCK_MARKER);
+        }
+
+        const grabbedInlineCodeExamples: string[] = [];
+        const INLINE_CODE_MARKER = "<SQFInlineCodeToReplace>";
+        const sqfInlineMatches = convertedText.matchAll(/(<sqf inline>)([\s\S]*?)(<\/sqf>)/gi);
+        for (const match of sqfInlineMatches) {
+            const matchString = match[0];
+            if (!matchString) continue;
+            grabbedInlineCodeExamples.push(matchString);
+            convertedText = convertedText.replace(matchString, INLINE_CODE_MARKER);
         }
 
         const dataTypeMatches = text.matchAll(
@@ -835,15 +846,24 @@ export class BikiTextInterpreter {
         // images
         // Tables - {{{!}}}...
 
-        for (const convertedExample of convertedCodeExamples) {
+        for (const codeBlock of grabbedCodeBlockExamples) {
             convertedText = convertedText.replace(
-                "<SQFCodeToReplace>",
-                convertedExample
+                CODE_BLOCK_MARKER,
+                codeBlock
                     .replaceAll(/\s*\<sqf\>\s*/gi, "\n\n```sqf\n")
                     .replaceAll(/\s*\<\/sqf\>\s*/gi, "\n```\n\n")
             );
         }
-        
+
+        for (const inlineCode of grabbedInlineCodeExamples) {
+            convertedText = convertedText.replace(
+                INLINE_CODE_MARKER,
+                inlineCode
+                    .replaceAll(/\s*\<sqf inline\>\s*/gi, "`")
+                    .replaceAll(/\s*\<\/sqf\>\s*/gi, "`")
+            );
+        }
+
         return convertedText.trim();
     }
 
