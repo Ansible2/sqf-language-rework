@@ -473,6 +473,7 @@ export class BikiTextInterpreter {
         gameVersionIcon?: boolean;
         feature?: boolean;
         icon?: boolean;
+        block?: boolean;
     }> = {
         // collected from https://community.bistudio.com/wiki/Category:Templates
         ofp: {
@@ -527,14 +528,17 @@ export class BikiTextInterpreter {
         important: {
             text: "IMPORTANT",
             feature: true,
+            block: true,
         },
         informative: {
             text: "NOTE",
             feature: true,
+            block: true,
         },
         warning: {
             text: "WARNING",
             feature: true,
+            block: true,
         },
         localargument: {
             text: "Local Argument",
@@ -820,6 +824,9 @@ export class BikiTextInterpreter {
                         const featureMessage = match[1];
                         if (featureMessage) {
                             newText = `**${replacementText}**: ${featureMessage}`;
+                            if (templateInfo.block) {
+                                newText = `\n${newText.trim()}`
+                            }
                         } else {
                             newText = `**(${replacementText})**`;
                         }

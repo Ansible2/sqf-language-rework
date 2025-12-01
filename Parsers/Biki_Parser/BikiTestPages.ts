@@ -83,7 +83,7 @@ player inPolygon _positions; // true if in the drawn shape, false if not
         parsed: {
             documentation: {
                 description:
-                    'Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/:Category:Actions) for action names and syntaxes.\n**Arma 3**: \nSince Arma 3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, `player action ["GetInDriver", car];` executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.',
+                    'Make a unit perform an action. See [:Category:Actions](https://community.bistudio.com/wiki/:Category:Actions) for action names and syntaxes.\n**Arma 3**: \nSince Arma 3 2.18 it is possible to use `actionNow` to perform some actions immediately without any animation.\nHowever, note that some actions do require animations (for example, opening inventory while on foot), otherwise they will get cancelled.\n\n\n**NOTE**: \n* in singleplayer, when user Alt-Tabs the simulation is paused and so the action will also halt until user returns to the game. For example, `player action ["GetInDriver", car];` executed while user is Alt-Tabbed will result in the user seeing the action happening when he returns to the game screen. This does not happen in Multiplayer.\n* the alternative syntax creates a temporary Logic entity in place of _unit_.',
                 examples: [
                     {
                         text: '```sqf\nplayer action ["SitDown", player];\n```',
@@ -404,7 +404,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
         parsed: {
             documentation: {
                 description:
-                    "Applies impulse force to unit or given PhysX object at given position.\n**NOTE**: For more information see [NVIDIA docs](http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html).",
+                    "Applies impulse force to unit or given PhysX object at given position.\n\n**NOTE**: For more information see [NVIDIA docs](http://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/apireference/files/classPxRigidBody.html).",
                 examples: [
                     {
                         text: "Apply force [0,1000,0] defined in world space (not factoring object actual positioning) to object position [1,0,0]:\n\n```sqf\n_object addForce [[0,1000,0], [1,0,0]];\n```",
@@ -514,7 +514,7 @@ player addForce [player vectorModelToWorld [0, -1, 0], [0, 1, 0], false]; // not
                             {
                                 name: "expression",
                                 description:
-                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the **`_this`** variable\n* (**Arma 3 v1.64**) the event handler's handle is stored in **`_thisEventHandler`** variable and is available during event handler code execution\n* (**Arma 3 v2.04**) it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n**IMPORTANT**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load.\n* (**Arma 3 v2.06**) the event's name is available from **`_thisEvent`** variable",
+                                    "`Code` or `String` - expression that will be executed in `missionNamespace` when event handler fires.\n* If the event handler has some data to return upon activation they are stored in the **`_this`** variable\n* (**Arma 3 v1.64**) the event handler's handle is stored in **`_thisEventHandler`** variable and is available during event handler code execution\n* (**Arma 3 v2.04**) it is possible to pass additional arguments to the EH code via optional param. The _args_ are stored in **`_thisArgs`** variable\n\n**IMPORTANT**: Only arguments of simple types get proper serialization. `Object`s, `Group`s etc will not serialize and appear as NULLs on game load.\n* (**Arma 3 v2.06**) the event's name is available from **`_thisEvent`** variable",
                             },
                             {
                                 name: "arguments",
@@ -647,7 +647,7 @@ if (_someString in allMapMarkers) then
         parsed: {
             documentation: {
                 description:
-                    'Returns all map marker names, including user-placed markers.\n\n**NOTE**: \n* (**Arma 3 v1.58**) User-defined markers have the following name format: **`_USER_DEFINED #<PlayerID>/<MarkerID>/<ChannelID>`**, where:\n** <PlayerID> - unique network id of the player in `String` format, also available as `String` in the 6th param in ["PlayerConnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerConnected) and ["PlayerDisconnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerDisconnected) Event Handlers\n** <MarkerID> - an incrementing marker counter id\n** <ChannelID> - id of the chat channel in which the marker was placed (see `currentChannel`)\n* To obtain the custom waypoint\'s (set with LShift + LMB) position, see `customWaypointPosition`.',
+                    'Returns all map marker names, including user-placed markers.\n\n\n**NOTE**: \n* (**Arma 3 v1.58**) User-defined markers have the following name format: **`_USER_DEFINED #<PlayerID>/<MarkerID>/<ChannelID>`**, where:\n** <PlayerID> - unique network id of the player in `String` format, also available as `String` in the 6th param in ["PlayerConnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerConnected) and ["PlayerDisconnected"](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#PlayerDisconnected) Event Handlers\n** <MarkerID> - an incrementing marker counter id\n** <ChannelID> - id of the chat channel in which the marker was placed (see `currentChannel`)\n* To obtain the custom waypoint\'s (set with LShift + LMB) position, see `customWaypointPosition`.',
                 examples: [
                     {
                         text: '```sqf\n_markers = allMapMarkers; // returns e.g ["marker1", "_USER_DEFINED #2/0"]\n```',
@@ -882,7 +882,7 @@ Tested with +100 units, equally spread on a disk. (Note: FPS depend also on envi
         parsed: {
             documentation: {
                 description:
-                    'Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n`showHUD false` will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position#Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for **`activeWidth`** and **`activeHeight`** set in config. So for example, if one needs to create an icon half the screen wide (`safeZoneW / 2`) and half the screen tall (`safeZoneH / 2`), divide these by the according config values:\n\n```sqf\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");\n```',
+                    'Draws an icon at the given position in the game world. This command has to be executed every frame. Use the [Draw3D](https://community.bistudio.com/wiki/Arma_3:_Mission_Event_Handlers#Draw3D) Mission Event Handler (which is executed every frame if the user can see the icon).\n\nIn order for the results of this command to be visible through a [custom camera](https://community.bistudio.com/wiki/camCreate), enable HUD with `cameraEffectEnableHUD`.\n\n`showHUD false` will hide the icon drawn by this command.\n\nIn order for arrows to appear, the icon texture should exist. The arrow size is proportionate to the icon size.\n\n\n**NOTE**: \n* To avoid flickering and ensure visual fidelity, always use the [visual](https://community.bistudio.com/wiki/Position#Formats) (render time scope) variant of position commands, such as `getPosASLVisual`.\n* The _width_ and _height_ parameters are multipliers for **`activeWidth`** and **`activeHeight`** set in config. So for example, if one needs to create an icon half the screen wide (`safeZoneW / 2`) and half the screen tall (`safeZoneH / 2`), divide these by the according config values:\n\n```sqf\nprivate _iconWidth = (safeZoneW / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeWidth");\nprivate _iconHeight = (safeZoneH / 2) / getNumber (configFile >> "CfgInGameUI" >> "Cursor" >> "activeHeight");\n```',
                 examples: [
                     {
                         text: 'Icon and text:\n\n```sqf\naddMissionEventHandler ["Draw3D", {\n\tdrawIcon3D ["targetIcon.paa", [1,1,1,1], ASLToAGL getPosASLVisual cursorTarget, 1, 1, 45, "Target", 1, 0.05, "TahomaB"];\n}];\n```',
@@ -1140,7 +1140,7 @@ call BIS_fnc_setRain;
         parsed: {
             documentation: {
                 description:
-                    "Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.\nA rain density of zero is no rain, one is maximum rain. Rain is not possible when `overcast` is less than 0.7.\n\n**Arma 3**: \nSince Arma 3 this command is multiplayer-synchronised:\n* if executed on the server, the changes will propagate globally.\n* if executed on a client, the effect is local, temporary and will soon change to the server setting.\nMinimum `overcast` needed for rain in Arma 3 is **0.5**.\n\n\n**IMPORTANT**: \nAlternative syntaxes (_Syntax 2_ and _Syntax 3_):\n* set rain particle params. Rain particles params are client-side params and are ignored on dedicated server. Use helper function `BIS_fnc_setRain` if sync is needed in Multiplayer\n* have a **[local](https://community.bistudio.com/wiki/Multiplayer_Scripting#Locality)** (**Local Effect**) effect",
+                    "Sets rain density smoothly over the given transition time. A transition time of zero means an immediate change.\nA rain density of zero is no rain, one is maximum rain. Rain is not possible when `overcast` is less than 0.7.\n\n**Arma 3**: \nSince Arma 3 this command is multiplayer-synchronised:\n* if executed on the server, the changes will propagate globally.\n* if executed on a client, the effect is local, temporary and will soon change to the server setting.\nMinimum `overcast` needed for rain in Arma 3 is **0.5**.\n\n\n\n**IMPORTANT**: \nAlternative syntaxes (_Syntax 2_ and _Syntax 3_):\n* set rain particle params. Rain particles params are client-side params and are ignored on dedicated server. Use helper function `BIS_fnc_setRain` if sync is needed in Multiplayer\n* have a **[local](https://community.bistudio.com/wiki/Multiplayer_Scripting#Locality)** (**Local Effect**) effect",
                 examples: [
                     {
                         text: "```sqf\n60 setRain 1;\n```",
@@ -1289,7 +1289,7 @@ if (not _isAlive) then
         parsed: {
             documentation: {
                 description:
-                    "Can be used to count:\n* The number of elements in an array (returns the already internally known array size)\n* The number of elements in an array matching the condition\n* The number of sub-entries in a config entry\n* (**Arma 3 v1.28**) The number of characters in an ANSI string **NOTE**: If Unicode support is desired, see `forceUnicode`.",
+                    "Can be used to count:\n* The number of elements in an array (returns the already internally known array size)\n* The number of elements in an array matching the condition\n* The number of sub-entries in a config entry\n* (**Arma 3 v1.28**) The number of characters in an ANSI string \n**NOTE**: If Unicode support is desired, see `forceUnicode`.",
                 examples: [
                     {
                         text: "```sqf\ncount [0, 0, 1, 2]; // returns 4\ncount units group player; // returns number of units in player group\n```",
@@ -1472,6 +1472,147 @@ createDialog "RscFunctionsViewer";
 { lbAdd [292901, _x]; } count ["first", "second", "third"];
 </sqf>
 [[lbAdd]] returns a number, so this throws "Error Type Number, expected Bool". Tested in A2OA 1.63.131129
+}}`,
+    },
+    inArea: {
+        parsed: {
+            documentation: {
+                description:
+                    "Checks whether given position or object is inside given area. Use `inAreaArray` to check multiple positions/objects within area.\n\n**IMPORTANT**:  By default all positions given as `Array` or as objects are treated as `PositionAGL`. Since (**Arma 3 v2.20**) there is an option to force them to `PositionWorld` format.\n\n**NOTE**: This command also supports hexagon area which can be created from ellipse when both a and b are negative.\nHexagon ellipses are also supported by both marker creation and `drawEllipse`.",
+                examples: [
+                    {
+                        text: "```sqf\n_playerIsInside = player inArea _myTrigger;\n```",
+                    },
+                    {
+                        text: "```sqf\n_positionIsInside = _myPosition inArea [[100, 100, 0], 20, 30, 45, false];\n```",
+                    },
+                ],
+                syntaxes: [
+                    {
+                        parameters: [
+                            {
+                                name: "position",
+                                description:
+                                    "`Object` or `Array` in format [Position2D](https://community.bistudio.com/wiki/Position#Introduction) or [Position3D](https://community.bistudio.com/wiki/Position#Introduction) (must be [PositionAGL](https://community.bistudio.com/wiki/Position#PositionAGL) if area is checked in 3D)",
+                            },
+                            {
+                                name: "area",
+                                description:
+                                    "`Object`, `String`, `Location`\n* `Object` - trigger\n* `String` - marker name\n* `Location` - location",
+                            },
+                        ],
+                        outline: "position `inArea` area",
+                        returns: "`Boolean`",
+                    },
+                    {
+                        parameters: [
+                            {
+                                name: "position",
+                                description:
+                                    "- `Object` and/or `Position` to check. `Position` must be [PositionAGL](https://community.bistudio.com/wiki/Position#PositionAGL) if area is checked in 3D (see note in description)",
+                            },
+                            {
+                                name: "center",
+                                description:
+                                    "`Array` or `Object` - center of the area in format [Position2D](https://community.bistudio.com/wiki/Position#Introduction), [Position3D](https://community.bistudio.com/wiki/Position#Introduction) (must be [PositionAGL](https://community.bistudio.com/wiki/Position#PositionAGL) if area is checked in 3D), `Object` or `Group`",
+                            },
+                            {
+                                name: "a",
+                                description: "`Number` - x axis (x / 2)",
+                            },
+                            {
+                                name: "b",
+                                description: "`Number` - y axis (y / 2)",
+                            },
+                            {
+                                name: "angle",
+                                description:
+                                    "`Number` - (Optional since 2.20, Default: 0) rotation angle",
+                            },
+                            {
+                                name: "isRectangle",
+                                description:
+                                    "`Boolean` - (Optional since 2.20, Default: false) `true` if rectangle, `false` if ellipse",
+                            },
+                            {
+                                name: "c",
+                                description:
+                                    "`Number` - (Optional, default -1 (unlimited)) z axis (z / 2)",
+                            },
+                            {
+                                name: "usePosWorld",
+                                description:
+                                    "`Boolean` - (Optional, default `false`) set to `true` to treat all positions as `PositionWorld`",
+                            },
+                        ],
+                        outline:
+                            "position `inArea` [center, a, b, angle, isRectangle, c, usePosWorld]",
+                        returns: "`Boolean`",
+                    },
+                ],
+                documentationLink: "https://community.bistudio.com/wiki/inArea",
+            },
+            configuration: {
+                label: "inArea",
+                grammarType: "command",
+            },
+        },
+        unparsed: `{{RV|type=command
+
+|game1= arma3
+|version1= 1.58
+
+|gr1= Triggers
+
+|gr2= Markers
+
+|gr3= Locations
+
+|gr4= Positions
+
+|descr= Checks whether given position or object is inside given area. Use [[inAreaArray]] to check multiple positions/objects within area.
+{{Feature|important| By default all positions given as [[Array]] or as objects are treated as [[PositionAGL]]. Since {{GVI|arma3|2.20|size= 0.75}} there is an option to force them to [[PositionWorld]] format.}}
+{{Feature|informative|This command also supports hexagon area which can be created from ellipse when both a and b are negative.
+Hexagon ellipses are also supported by both marker creation and [[drawEllipse]].}}
+
+|s1= position [[inArea]] area
+
+|p1= position: [[Object]] or [[Array]] in format [[Position#Introduction|Position2D]] or [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D)
+
+|p2= area: [[Object]], [[String]], [[Location]]
+* [[Object]] - trigger
+* [[String]] - marker name
+* [[Location]] - location
+
+|r1= [[Boolean]]
+
+|s2= position [[inArea]] [center, a, b, angle, isRectangle, c, usePosWorld]
+
+|p21= position: - [[Object]] and/or [[Position]] to check. [[Position]] must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D (see note in description)
+
+|p22= center: [[Array]] or [[Object]] - center of the area in format [[Position#Introduction|Position2D]], [[Position#Introduction|Position3D]] (must be [[Position#PositionAGL|PositionAGL]] if area is checked in 3D), [[Object]] or [[Group]]
+
+|p23= a: [[Number]] - x axis (x / 2)
+
+|p24= b: [[Number]] - y axis (y / 2)
+
+|p25= angle: [[Number]] - (Optional since 2.20, Default: 0) rotation angle
+
+|p26= isRectangle: [[Boolean]] - (Optional since 2.20, Default: false) [[true]] if rectangle, [[false]] if ellipse
+
+|p27= c: [[Number]] - (Optional, default -1 (unlimited)) z axis (z / 2)
+|p27since= arma3 1.60
+
+|p28= usePosWorld: [[Boolean]] - (Optional, default [[false]]) set to [[true]] to treat all positions as [[PositionWorld]]
+|p28since= Arma3 2.20
+
+|r2= [[Boolean]]
+
+|x1= <sqf>_playerIsInside = player inArea _myTrigger;</sqf>
+
+|x2= <sqf>_positionIsInside = _myPosition inArea [[100, 100, 0], 20, 30, 45, false];</sqf>
+
+|seealso= [[inAreaArray]] [[triggerArea]] [[in]] [[inPolygon]] [[drawEllipse]] [[drawRectangle]] [[createTrigger]] [[createMarker]] [[createLocation]]
 }}`,
     },
 };
