@@ -2,6 +2,8 @@ import { IRawGrammar } from "vscode-textmate";
 import { SQFGrammarType, SQFItemConfig } from "./sqf.namespace";
 import { getSqfItemConfigs } from "./config";
 
+const ALL_WHITESPACE = "[\\s\\r\\n \\t]";
+
 const accessModifiers: string[] = [];
 const manipulativeOperators: string[] = [];
 const functions: string[] = [];
@@ -111,7 +113,7 @@ function getSingleWordRegexSpecialStart(words: string | string[]): string {
         words = words.join("|");
     }
 
-    return `(?i)(?<=(\\s+|^))(${words})\\b`;
+    return `(?i)(?<=(${ALL_WHITESPACE}+|^))(${words})\\b`;
 }
 
 type IRawRepository = IRawGrammar["repository"];
@@ -288,11 +290,13 @@ const grammarRepo: IRawRepository = {
         ],
     },
     "var-local": {
-        match: getSingleWordRegex("\\b(_+\\w+)"),
+        match: "\\b(_+\\w+)",
+        // match: getSingleWordRegex("\\b(_+\\w+)"),
         name: "variable.other.local",
     },
     "var-global": {
-        match: getSingleWordRegex("\\b([a-z]\\w*)"),
+        match: "\\b([a-z]\\w*)",
+        // match: getSingleWordRegex("\\b([a-z]\\w*)"),
         name: "variable.other.global",
     },
     functions: {
@@ -334,7 +338,7 @@ const grammarRepo: IRawRepository = {
         ],
     },
     "var-declaration-global": {
-        begin: "(?i)\\b([a-z]\\w+)(\\s*)(=)",
+        begin: `(?i)\\b([a-z]\\w+)(${ALL_WHITESPACE}*)(=)`,
         beginCaptures: {
             "1": { name: "variable.other.global.declaration.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
@@ -344,7 +348,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.variable.global.sqf",
     },
     "var-declaration-local": {
-        begin: "(?i)\\b(_+\\w+)(\\s*)(=)",
+        begin: `(?i)\\b(_+\\w+)(${ALL_WHITESPACE}*)(=)`,
         beginCaptures: {
             "1": { name: "variable.other.local.declaration.sqf" },
             "3": { name: "keyword.operator.assignment.sqf" },
@@ -354,7 +358,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.variable.local.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(\\s*)(=)(\\s*)(${stringCompilerWords.concat("{").join("|")})`,
+        begin: `(?i)\\b(\\w+)(${ALL_WHITESPACE}*)(=)(${ALL_WHITESPACE}*)(${stringCompilerWords.concat("{").join("|")})`,
         beginCaptures: {
             // TODO: the lack of concretes here (regex without *)
             // seems to be causing w* to be used over other things
@@ -367,7 +371,7 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.function.sqf",
     },
     "fnc-execute": {
-        begin: `(\\s*)(${codeExecutors.join("|")})(\\s+)(\\w+|{)`, // TODO: check if s+ is needed
+        begin: `(${ALL_WHITESPACE}*)(${codeExecutors.join("|")})(${ALL_WHITESPACE}+)(\\w+|{)`,
         beginCaptures: {
             "2": { name: "keyword.control.executeCode.sqf" },
             "4": { name: "support.function.sqf" },
