@@ -358,7 +358,9 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.variable.local.sqf",
     },
     "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(${ALL_WHITESPACE}*)(=)(${ALL_WHITESPACE}*)(${stringCompilerWords.concat("{").join("|")})`,
+        begin: `(?i)\\b(\\w+)(${ALL_WHITESPACE}*)(=)(${ALL_WHITESPACE}*)(${stringCompilerWords
+            .concat("{")
+            .join("|")})`,
         beginCaptures: {
             // TODO: the lack of concretes here (regex without *)
             // seems to be causing w* to be used over other things
@@ -371,13 +373,15 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.function.sqf",
     },
     "fnc-execute": {
-        begin: `(${ALL_WHITESPACE}*)(${codeExecutors.join("|")})(${ALL_WHITESPACE}+)(\\w+|{)`,
+        begin: `${getSingleWordRegex(codeExecutors)}`,
         beginCaptures: {
-            "2": { name: "keyword.control.executeCode.sqf" },
-            "4": { name: "support.function.sqf" },
+            "1": { name: "keyword.control.executeCode.sqf" },
         },
-        end: " |;|{|}|(|)",
-        endCaptures: { "1": { name: "keyword.operator.sqf" } },
+        end: "(?:(\\w+)|({))",
+        endCaptures: {
+            "1": { name: "support.function.sqf" },
+            "2": { name: "meta.brace.curly.sqf" },
+        },
         name: "meta.declaration.function.execute.sqf",
     },
 
