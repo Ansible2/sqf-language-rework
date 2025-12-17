@@ -8,7 +8,7 @@ const accessModifiers: string[] = [];
 const manipulativeOperators: string[] = [];
 const functions: string[] = [];
 const controlStatements: string[] = [];
-const conditionOperators: string[] = [];
+const conditionKeywords: string[] = [];
 const comparisonOperators: string[] = [];
 const reservedLiterals: string[] = [];
 const booleanLiterals: string[] = [];
@@ -60,7 +60,7 @@ getSqfItemConfigs().forEach((itemConfig: SQFItemConfig) => {
             break;
         }
         case SQFGrammarType.ConditionOperator: {
-            conditionOperators.push(itemName);
+            conditionKeywords.push(itemName);
             break;
         }
         case SQFGrammarType.ComparisonOperator: {
@@ -127,8 +127,8 @@ const grammarRepo: IRawRepository = {
     },
 
     /* ----------------------------------------------------------------------------
-		expression
-	---------------------------------------------------------------------------- */
+        expression
+    ---------------------------------------------------------------------------- */
     expression: {
         name: "meta.expression.sqf",
         patterns: [
@@ -182,7 +182,7 @@ const grammarRepo: IRawRepository = {
         name: "keyword.operator.comparison.sqf",
     },
     "condition-operator": {
-        match: getSingleWordRegex(conditionOperators),
+        match: getSingleWordRegex(conditionKeywords),
         name: "keyword.operator.condition.sqf",
     },
     "control-statement": {
@@ -198,8 +198,8 @@ const grammarRepo: IRawRepository = {
         name: "keyword.control.compileString.sqf",
     },
     /* ------------------------------------
-		comment
-	------------------------------------ */
+        comment
+    ------------------------------------ */
     comment: {
         name: "comment.sqf",
         patterns: [{ include: "#comment-block" }, { include: "#comment-line" }],
@@ -214,8 +214,8 @@ const grammarRepo: IRawRepository = {
         name: "comment.line.sqf",
     },
     /* ------------------------------------
-		literal
-	------------------------------------ */
+        literal
+    ------------------------------------ */
     literal: {
         name: "literal.sqf",
         patterns: [
@@ -266,8 +266,8 @@ const grammarRepo: IRawRepository = {
     },
 
     /* ----------------------------------------------------------------------------
-		preprocessor
-	---------------------------------------------------------------------------- */
+        preprocessor
+    ---------------------------------------------------------------------------- */
     "preprocessor-commands": {
         name: "meta.expression.sqf",
         patterns: [{ include: "#basic-preprocess" }],
@@ -278,8 +278,8 @@ const grammarRepo: IRawRepository = {
     },
 
     /* ----------------------------------------------------------------------------
-		Statements
-	---------------------------------------------------------------------------- */
+        Statements
+    ---------------------------------------------------------------------------- */
     statements: {
         name: "meta.expression.sqf",
         patterns: [
@@ -309,8 +309,8 @@ const grammarRepo: IRawRepository = {
     },
 
     /* ----------------------------------------------------------------------------
-		Other
-	---------------------------------------------------------------------------- */
+        Other
+    ---------------------------------------------------------------------------- */
     other: {
         name: "meta.expression.sqf",
         patterns: [{ include: "#access-modifier" }, { include: "#property-accessor" }],
@@ -326,8 +326,8 @@ const grammarRepo: IRawRepository = {
     },
 
     /* ----------------------------------------------------------------------------
-		declaration
-	---------------------------------------------------------------------------- */
+        declaration
+    ---------------------------------------------------------------------------- */
     declaration: {
         name: "meta.declaration.sqf",
         patterns: [
@@ -348,13 +348,12 @@ const grammarRepo: IRawRepository = {
         name: "meta.declaration.variable.global.sqf",
     },
     "var-declaration-local": {
-        begin: `(?i)\\b(_+\\w+)(${ALL_WHITESPACE}*)(=)`,
+        begin: `(?i)\\b(_+\\w+)`,
         beginCaptures: {
             "1": { name: "variable.other.local.declaration.sqf" },
-            "3": { name: "keyword.operator.assignment.sqf" },
         },
-        end: " |;|{|}|\t|=|(|)|[|]", // TODO: check if needed
-        endCaptures: { "1": { name: "meta.brace.curly.sqf" } }, // TODO: check if needed
+        patterns: [{ include: "#expression" }],
+        end: ";",
         name: "meta.declaration.variable.local.sqf",
     },
     "fnc-declaration": {
@@ -386,8 +385,8 @@ const grammarRepo: IRawRepository = {
     },
 
     /* ----------------------------------------------------------------------------
-		String
-	---------------------------------------------------------------------------- */
+        String
+    ---------------------------------------------------------------------------- */
     string: {
         name: "string.sqf",
         patterns: [
@@ -413,10 +412,233 @@ const grammarRepo: IRawRepository = {
     },
 };
 
+const newGrammarRepo: IRawRepository = {
+    $base: {},
+    $self: {},
+
+    nestable: {
+        name: "meta.nestable.sqf",
+        patterns: [
+            { include: "#comment" },
+            { include: "#string" },
+            { include: "#brace" },
+            { include: "#preprocess-literal" },
+            { include: "#literal" },
+            { include: "#access" },
+        ],
+    },
+
+    /* ----------------------------------------------------------------------------
+        comment
+    ---------------------------------------------------------------------------- */
+    comment: {
+        name: "comment.sqf",
+        patterns: [{ include: "#comment-block" }, { include: "#comment-line" }],
+        repository: {
+            $base: {},
+            $self: {},
+            "comment-block": {
+                begin: "/\\*",
+                end: "\\*/",
+                name: "comment.block.sqf",
+            },
+            "comment-line": {
+                match: "\\/\\/[\\S\\s]*",
+                name: "comment.line.sqf",
+            },
+        },
+    },
+
+    /* ----------------------------------------------------------------------------
+        String
+    ---------------------------------------------------------------------------- */
+    string: {
+        name: "string.sqf",
+        patterns: [
+            { include: "#qstring-single" },
+            { include: "#qstring-double" },
+            { include: "#qstring-triple" },
+        ],
+        repository: {
+            $base: {},
+            $self: {},
+            "qstring-triple": {
+                begin: '"""',
+                end: '"""',
+                name: "string.triple.sqf",
+            },
+            "qstring-double": {
+                begin: '"',
+                end: '"',
+                name: "string.double.sqf",
+            },
+            "qstring-single": {
+                begin: "'",
+                end: "'",
+                name: "string.single.sqf",
+            },
+        },
+    },
+
+    /* ----------------------------------------------------------------------------
+        Brace
+    ---------------------------------------------------------------------------- */
+    brace: {
+        name: "brace.sqf",
+        patterns: [
+            { include: "#parens" },
+            { include: "#array-literal" },
+            { include: "#code-block" },
+        ],
+        repository: {
+            $base: {},
+            $self: {},
+            parens: {
+                name: "meta.parens.sqf",
+                begin: "\\(",
+                beginCaptures: { "0": { name: "meta.brace.paren.start.sqf" } },
+                patterns: [{ include: "#nestable" }],
+                end: "\\)",
+                endCaptures: { "0": { name: "meta.brace.paren.end.sqf" } },
+            },
+            "array-literal": {
+                name: "meta.array.literal.sqf",
+                begin: "\\[",
+                beginCaptures: {
+                    "0": {
+                        name: "meta.brace.square.start.sqf",
+                    },
+                },
+                patterns: [{ include: "#nestable" }],
+                end: "\\]",
+                endCaptures: {
+                    "0": {
+                        name: "meta.brace.square.end.sqf",
+                    },
+                },
+            },
+            "code-block": {
+                name: "meta.block.sqf",
+                begin: "\\{",
+                beginCaptures: {
+                    "0": {
+                        name: "meta.brace.curly.sqf",
+                    },
+                },
+                patterns: [{ include: "#nestable" }],
+                end: "\\}",
+                endCaptures: {
+                    "0": {
+                        name: "meta.brace.curly.sqf",
+                    },
+                },
+            },
+        },
+    },
+
+    /* ----------------------------------------------------------------------------
+        preprocessor
+    ---------------------------------------------------------------------------- */
+    // TODO: in the future this should be expanded for specific captures of
+    // blocks such as with `#if` needing to be closed with `#endIf`
+    "preprocess-literal": {
+        match: getSingleWordRegexSpecialStart(preprocessorCommands),
+        name: "keyword.control.preprocessor",
+    },
+
+    /* ----------------------------------------------------------------------------
+        literal
+    ---------------------------------------------------------------------------- */
+    literal: {
+        name: "literal.sqf",
+        patterns: [
+            { include: "#null-literal" },
+            { include: "#boolean-literal" },
+            { include: "#numeric-literal" },
+            { include: "#namespace-literal" },
+            { include: "#reserved-literal" },
+            { include: "#condition-keyword" },
+            { include: "#comparison-operator" },
+            { include: "#condition-operator" },
+        ],
+        repository: {
+            $base: {},
+            $self: {},
+            "boolean-literal": {
+                match: getSingleWordRegex(booleanLiterals),
+                name: "constant.language.boolean.sqf",
+            },
+            "namespace-literal": {
+                match: getSingleWordRegex(namespaceLiterals),
+                name: "constant.language.namespace.sqf",
+            },
+            "null-literal": {
+                match: getSingleWordRegex(nullLiterals),
+                name: "constant.language.null.sqf",
+            },
+            "numeric-literal": {
+                match: "(?i)(?<![a-z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-z])|((\\$|0x)[0-9a-f]+))",
+                name: "constant.numeric.sqf",
+            },
+            "reserved-literal": {
+                match: getSingleWordRegex(reservedLiterals),
+                name: "constant.language.reserved.sqf",
+            },
+            "condition-keyword": {
+                match: getSingleWordRegex(conditionKeywords),
+                name: "keyword.operator.condition.sqf",
+            },
+            "comparison-operator": {
+                match: "==|!=|>|<",
+                name: "keyword.operator.comparison.sqf",
+            },
+            "condition-operator": {
+                match: "!|&&|\\|\\|",
+                name: "keyword.operator.condition.sqf",
+            },
+        },
+    },
+
+    /* ----------------------------------------------------------------------------
+        access
+    ---------------------------------------------------------------------------- */
+    access: {
+        name: "accessor.sqf",
+        patterns: [{ include: "#access-modifier" }, { include: "#property-accessor" }],
+        repository: {
+            $base: {},
+            $self: {},
+            // "#" may need extra backslashes to be literal (\\#)
+            "property-accessor": {
+                match: getSingleWordRegex(propertyAccessors),
+                name: "storage.type.property.sqf",
+            },
+            "access-modifier": {
+                match: getSingleWordRegex(accessModifiers),
+                name: "storage.modifier.sqf",
+            },
+        },
+    },
+
+    /* ----------------------------------------------------------------------------
+        control statements
+    ---------------------------------------------------------------------------- */
+    // TODO
+};
+
 export const sqfGrammar: IRawGrammar = {
     scopeName: "source.sqf",
     fileTypes: ["sqf"],
     name: "sqf",
-    patterns: [{ include: "#expression" }],
-    repository: grammarRepo,
+    // patterns: [{ include: "#expression" }],
+    // repository: grammarRepo,
+    patterns: [
+        { include: "#comment" },
+        { include: "#string" },
+        { include: "#brace" },
+        { include: "#preprocess-literal" },
+        { include: "#literal" },
+        { include: "#access" },
+    ],
+    repository: newGrammarRepo,
 };
