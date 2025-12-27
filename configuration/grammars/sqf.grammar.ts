@@ -121,300 +121,6 @@ const grammarRepo: IRawRepository = {
     $base: {},
     $self: {},
 
-    "assignment-operator": {
-        match: "=",
-        name: "keyword.operator.assignment.sqf",
-    },
-
-    /* ----------------------------------------------------------------------------
-        expression
-    ---------------------------------------------------------------------------- */
-    expression: {
-        name: "meta.expression.sqf",
-        patterns: [
-            { include: "#comment" },
-            { include: "#string" },
-            { include: "#preprocessor-commands" },
-            { include: "#literal" },
-            { include: "#paren-expression" },
-            { include: "#other" },
-            { include: "#block" },
-            { include: "#comparison-operator" },
-            { include: "#condition-operator" },
-            { include: "#assignment-operator" },
-            { include: "#control-statement" },
-            { include: "#file-compiler" },
-            { include: "#string-compiler" },
-            { include: "#fnc-file-execution" },
-            { include: "#declaration" },
-            { include: "#statements" },
-        ],
-    },
-    block: {
-        begin: "\\{",
-        beginCaptures: {
-            "0": {
-                name: "meta.brace.curly.sqf",
-            },
-        },
-        end: "\\}",
-        endCaptures: {
-            "0": {
-                name: "meta.brace.curly.sqf",
-            },
-        },
-        name: "meta.block.sqf",
-        patterns: [{ include: "#expression" }],
-    },
-    "paren-expression": {
-        begin: "\\(",
-        beginCaptures: { "0": { name: "meta.brace.paren.sqf" } },
-        end: "\\)",
-        endCaptures: { "0": { name: "meta.brace.paren.sqf" } },
-        patterns: [{ include: "#expression" }],
-    },
-    "fnc-file-execution": {
-        match: getSingleWordRegex(fileExecutors),
-        name: "keyword.control.call.string",
-    },
-    "comparison-operator": {
-        match: `${comparisonOperators.join("|")}`,
-        name: "keyword.operator.comparison.sqf",
-    },
-    "condition-operator": {
-        match: getSingleWordRegex(conditionKeywords),
-        name: "keyword.operator.condition.sqf",
-    },
-    "control-statement": {
-        match: getSingleWordRegex(controlStatements),
-        name: "keyword.control.sqf",
-    },
-    "file-compiler": {
-        match: getSingleWordRegex(fileCompilers),
-        name: "keyword.control.fileCompiler.sqf",
-    },
-    "string-compiler": {
-        match: getSingleWordRegex(stringCompilerWords),
-        name: "keyword.control.compileString.sqf",
-    },
-    /* ------------------------------------
-        comment
-    ------------------------------------ */
-    comment: {
-        name: "comment.sqf",
-        patterns: [{ include: "#comment-block" }, { include: "#comment-line" }],
-    },
-    "comment-block": {
-        begin: "/\\*",
-        end: "\\*/",
-        name: "comment.block.sqf",
-    },
-    "comment-line": {
-        match: "(?<=^.*)(\\/\\/).*\\n?",
-        name: "comment.line.sqf",
-    },
-    /* ------------------------------------
-        literal
-    ------------------------------------ */
-    literal: {
-        name: "literal.sqf",
-        patterns: [
-            { include: "#array-literal" },
-            { include: "#null-literal" },
-            { include: "#boolean-literal" },
-            { include: "#numeric-literal" },
-            { include: "#namespace-literal" },
-            { include: "#reserved-literal" },
-        ],
-    },
-    "array-literal": {
-        begin: "\\[",
-        beginCaptures: {
-            "0": {
-                name: "meta.brace.square.sqf",
-            },
-        },
-        end: "\\]",
-        endCaptures: {
-            "0": {
-                name: "meta.brace.square.sqf",
-            },
-        },
-        name: "meta.array.literal.sqf",
-        patterns: [{ include: "#expression" }],
-    },
-    "boolean-literal": {
-        match: getSingleWordRegex(booleanLiterals),
-        name: "constant.language.boolean.sqf",
-    },
-    "namespace-literal": {
-        match: getSingleWordRegex(namespaceLiterals),
-        name: "constant.language.namespace.sqf",
-    },
-    "null-literal": {
-        match: getSingleWordRegex(nullLiterals),
-        name: "constant.language.null.sqf",
-    },
-    "numeric-literal": {
-        // TODO seperate if possible
-        match: "(?i)(?<![a-z.]\\d*)((\\d+.{0,1})?(\\d+e[+-]{0,1}?\\d+)(?!\\d*\\.\\d*)|(\\d+\\.{0,1}\\d*|\\.\\d+)(?!\\d*[a-z])|((\\$|0x)[0-9a-f]+))",
-        name: "constant.numeric.sqf",
-    },
-    "reserved-literal": {
-        match: getSingleWordRegex(reservedLiterals),
-        name: "constant.language.reserved.sqf",
-    },
-
-    /* ----------------------------------------------------------------------------
-        preprocessor
-    ---------------------------------------------------------------------------- */
-    "preprocessor-commands": {
-        name: "meta.expression.sqf",
-        patterns: [{ include: "#basic-preprocess" }],
-    },
-    "basic-preprocess": {
-        match: getSingleWordRegexSpecialStart(preprocessorCommands),
-        name: "keyword.control.preprocessor",
-    },
-
-    /* ----------------------------------------------------------------------------
-        Statements
-    ---------------------------------------------------------------------------- */
-    statements: {
-        name: "meta.expression.sqf",
-        patterns: [
-            { include: "#commands" },
-            { include: "#functions" },
-            { include: "#var-local" },
-            { include: "#var-global" },
-        ],
-    },
-    "var-local": {
-        match: "\\b(_+\\w+)",
-        // match: getSingleWordRegex("\\b(_+\\w+)"),
-        name: "variable.other.local",
-    },
-    "var-global": {
-        // match: getSingleWordRegex("\\b([a-z]\\w*)"),
-        name: "variable.other.global",
-    },
-    functions: {
-        match: getSingleWordRegex(functions),
-        name: "variable.language.knownFunction.sqf",
-    },
-    commands: {
-        match: getSingleWordRegex(commands),
-        name: "entity.name.function.sqf",
-    },
-
-    /* ----------------------------------------------------------------------------
-        Other
-    ---------------------------------------------------------------------------- */
-    other: {
-        name: "meta.expression.sqf",
-        patterns: [{ include: "#access-modifier" }, { include: "#property-accessor" }],
-    },
-    // "#" may need extra backslashes to be literal (\\#)
-    "property-accessor": {
-        match: getSingleWordRegex(propertyAccessors),
-        name: "storage.type.property.sqf",
-    },
-    "access-modifier": {
-        match: getSingleWordRegex(accessModifiers),
-        name: "storage.modifier.sqf",
-    },
-
-    /* ----------------------------------------------------------------------------
-        declaration
-    ---------------------------------------------------------------------------- */
-    declaration: {
-        name: "meta.declaration.sqf",
-        patterns: [
-            { include: "#fnc-execute" },
-            { include: "#fnc-declaration" },
-            { include: "#var-declaration-local" },
-            { include: "#var-declaration-global" },
-        ],
-    },
-    "var-declaration-global": {
-        begin: `(?i)\\b([a-z]\\w+)(${ALL_WHITESPACE}*)(=)`,
-        beginCaptures: {
-            "1": { name: "variable.other.global.declaration.sqf" },
-            "3": { name: "keyword.operator.assignment.sqf" },
-        },
-        end: " |;|{|}|\t|=|(|)|[|]", // TODO: check if needed
-        endCaptures: { "1": { name: "meta.brace.curly.sqf" } }, // TODO: check if needed
-        name: "meta.declaration.variable.global.sqf",
-    },
-    "var-declaration-local": {
-        begin: `(?i)\\b(_+\\w+)`,
-        beginCaptures: {
-            "1": { name: "variable.other.local.declaration.sqf" },
-        },
-        patterns: [{ include: "#expression" }],
-        end: ";",
-        name: "meta.declaration.variable.local.sqf",
-    },
-    "fnc-declaration": {
-        begin: `(?i)\\b(\\w+)(${ALL_WHITESPACE}*)(=)(${ALL_WHITESPACE}*)(${stringCompilerWords
-            .concat("{")
-            .join("|")})`,
-        beginCaptures: {
-            // TODO: the lack of concretes here (regex without *)
-            // seems to be causing w* to be used over other things
-            "1": { name: "support.function.sqf" },
-            "3": { name: "keyword.operator.assignment.sqf" },
-            "5": { name: "keyword.control.compileString.sqf" },
-        },
-        end: " |;|{|}|\t", // TODO: check if needed
-        endCaptures: { "1": { name: "meta.brace.curly.sqf" } },
-        name: "meta.declaration.function.sqf",
-    },
-    "fnc-execute": {
-        begin: `${getSingleWordRegex(codeExecutors)}`,
-        beginCaptures: {
-            "1": { name: "keyword.control.executeCode.sqf" },
-        },
-        end: "(?:(\\w+)|({))",
-        endCaptures: {
-            "1": { name: "support.function.sqf" },
-            "2": { name: "meta.brace.curly.sqf" },
-        },
-        name: "meta.declaration.function.execute.sqf",
-    },
-
-    /* ----------------------------------------------------------------------------
-        String
-    ---------------------------------------------------------------------------- */
-    string: {
-        name: "string.sqf",
-        patterns: [
-            { include: "#qstring-single" },
-            { include: "#qstring-double" },
-            { include: "#qstring-triple" },
-        ],
-    },
-    "qstring-triple": {
-        begin: '"""',
-        end: '"""',
-        name: "string.triple.sqf",
-    },
-    "qstring-double": {
-        begin: '"',
-        end: '"',
-        name: "string.double.sqf",
-    },
-    "qstring-single": {
-        begin: "'",
-        end: "'",
-        name: "string.single.sqf",
-    },
-};
-
-const newGrammarRepo: IRawRepository = {
-    $base: {},
-    $self: {},
-
     nestable: {
         name: "meta.nestable.sqf",
         patterns: [
@@ -595,7 +301,7 @@ const newGrammarRepo: IRawRepository = {
                 name: "keyword.operator.comparison.sqf",
             },
             "condition-operator": {
-                match: "!|&&|\\|\\|",
+                match: "!(?!=)|&&|\\|\\|",
                 name: "keyword.operator.condition.sqf",
             },
         },
@@ -663,10 +369,25 @@ const newGrammarRepo: IRawRepository = {
     ---------------------------------------------------------------------------- */
     declaration: {
         name: "meta.declaration.sqf",
-        patterns: [{ include: "#declaration-var-local" }, { include: "#declaration-var-global" }],
+        patterns: [
+            { include: "#fnc-execute" },
+            { include: "#declaration-var-local" },
+            { include: "#declaration-var-global" },
+        ],
         repository: {
             $base: {},
             $self: {},
+            "fnc-execute": {
+                name: "meta.declaration.function.execute.sqf",
+                begin: `${getSingleWordRegex(codeExecutors)}`,
+                beginCaptures: {
+                    "0": { name: "keyword.control.execute.sqf" },
+                },
+                end: "(?:(?<=\\s+|^)(\\w+))|{",
+                endCaptures: {
+                    "1": { name: "support.function.execute.sqf" },
+                },
+            },
             assignment: {
                 name: "meta.assignment.sqf",
                 begin: "(?<!=)=(?!=)",
@@ -734,5 +455,5 @@ export const sqfGrammar: IRawGrammar = {
         { include: "#support" },
         { include: "#declaration" },
     ],
-    repository: newGrammarRepo,
+    repository: grammarRepo,
 };
