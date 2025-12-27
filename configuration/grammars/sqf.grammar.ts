@@ -425,8 +425,8 @@ const newGrammarRepo: IRawRepository = {
             { include: "#literal" },
             { include: "#access" },
             { include: "#control" },
-            // { include: "#declaration" },
-            { include: "#expression" },
+            { include: "#support" },
+            { include: "#declaration" },
         ],
     },
 
@@ -668,65 +668,52 @@ const newGrammarRepo: IRawRepository = {
             $base: {},
             $self: {},
             assignment: {
+                name: "meta.assignment.sqf",
                 begin: "(?<!=)=(?!=)",
                 beginCaptures: { "0": { name: "keyword.operator.assignment.sqf" } },
                 patterns: [{ include: "source.sqf#nestable" }],
                 end: "(?=;)",
             },
             "declaration-var-local": {
-                name: "meta.declaration.variable.local.sqf",
+                name: "variable.other.local.sqf",
                 begin: "(?i)\\b_+\\w+\\b",
                 beginCaptures: {
                     "0": { name: "variable.other.local.declaration.sqf" },
                 },
                 patterns: [{ include: "#assignment" }],
-                end: ";",
-                endCaptures: { "0": { name: "punctuation.terminator.statement.sqf" } },
+                end: "(?=,|;|{|}|[|]|(|)|\\s+[\\d\\w])",
             },
             "declaration-var-global": {
-                name: "meta.declaration.variable.global.sqf",
-                begin: `(?i)\\b[a-z]\\w*\\b`,
+                name: "variable.other.global.sqf",
+                begin: "(?i)\\b[a-z]\\w*\\b",
                 beginCaptures: {
                     "0": { name: "variable.other.global.declaration.sqf" },
                 },
                 patterns: [{ include: "#assignment" }],
-                end: ";",
-                endCaptures: { "0": { name: "punctuation.terminator.statement.sqf" } },
+                end: "(?=,|;|{|}|[|]|(|)|\\s+[\\d\\w])",
             },
         },
     },
 
     /* ----------------------------------------------------------------------------
-        expression
+        support
     ---------------------------------------------------------------------------- */
-    expression: {
-        name: "meta.expression.sqf",
-        patterns: [
-            // { include: "#commands" },
-            // { include: "#functions" },
-            { include: "#var-local" },
-            { include: "#var-global" },
-        ],
+    support: {
+        name: "meta.support.sqf",
+        patterns: [{ include: "#commands" }, { include: "#functions" }],
         repository: {
             $base: {},
             $self: {},
-            "var-local": {
-                // match: "\\b(_+\\w+)",
-                match: getSingleWordRegex("(_+\\w+)"),
-                name: "variable.other.local",
-            },
-            "var-global": {
-                // match: "\\b([a-z]\\w*)",
-                match: getSingleWordRegex("([a-z]\\w*)"),
-                name: "variable.other.global",
-            },
             functions: {
                 match: getSingleWordRegex(functions),
-                name: "variable.language.knownFunction.sqf",
+                // FUTURE: This should be support.variable, but waiting until
+                // a theme is included here to give this proper coloring
+                // name: "support.variable.sqf",
+                name: "support.class.sqf",
             },
             commands: {
                 match: getSingleWordRegex(commands),
-                name: "entity.name.function.sqf",
+                name: "support.function.sqf",
             },
         },
     },
@@ -736,8 +723,6 @@ export const sqfGrammar: IRawGrammar = {
     scopeName: "source.sqf",
     fileTypes: ["sqf"],
     name: "sqf",
-    // patterns: [{ include: "#expression" }],
-    // repository: grammarRepo,
     patterns: [
         { include: "#comment" },
         { include: "#string" },
@@ -746,8 +731,8 @@ export const sqfGrammar: IRawGrammar = {
         { include: "#literal" },
         { include: "#access" },
         { include: "#control" },
+        { include: "#support" },
         { include: "#declaration" },
-        { include: "#expression" },
     ],
     repository: newGrammarRepo,
 };
