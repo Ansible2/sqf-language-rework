@@ -3,7 +3,7 @@
     "displayName": "SQF Language Rework",
     "publisher": "KISKA-Factory",
     "description": "",
-    "version": "0.0.42",
+    "version": "0.0.43",
     "engines": {
         "vscode": "^1.70.0"
     },
