@@ -1771,6 +1771,33 @@ export const configs: SQFItemConfig[] = [
     },
     {
         "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_getPerFrameHandlerDelay.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_handle] call `KISKA_fnc_CBA_getPerFrameHandlerDelay`",
+                    "parameters": [
+                        {
+                            "name": "_handle",
+                            "description": "*(NUMBER)* - The existing perFrameHandler's ID."
+                        }
+                    ],
+                    "returns": "*(NUMBER)* - Current Delay of perFrameHandler. Will return `-1` if failed.\n\nExample:\n\n```sqf\nprivate _currentDelay = [_handle] call KISKA_fnc_CBA_getPerFrameHandlerDelay;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _currentDelay = [_handle] call KISKA_fnc_CBA_getPerFrameHandlerDelay;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA system that enables `CBA_fnc_getPerFrameHandlerDelay`.\n\nReturns the current delay of an existing perFrameHandler."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_getPerFrameHandlerDelay",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_getPos.sqf",
             "syntaxes": [
                 {
@@ -1933,19 +1960,11 @@ export const configs: SQFItemConfig[] = [
             "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_removePerFrameHandler.sqf",
             "syntaxes": [
                 {
-                    "outline": "[_function, _delay, _args] call `KISKA_fnc_CBA_removePerFrameHandler`",
+                    "outline": "[_handle] call `KISKA_fnc_CBA_removePerFrameHandler`",
                     "parameters": [
                         {
-                            "name": "_function",
-                            "description": "*(CODE)* - Code that will execute that the given interval."
-                        },
-                        {
-                            "name": "_delay",
-                            "description": "*(NUMBER)* Default: `0` - The number of seconds between each execution. If `0`, the code will be executed every frame."
-                        },
-                        {
-                            "name": "_args",
-                            "description": "*(ANY)* Default: `[]` - Parameters passed to the function executing. This will be the same reference every execution."
+                            "name": "_handle",
+                            "description": "*(NUMBER)* - The function handle you wish to remove."
                         }
                     ],
                     "returns": "*(BOOL)* - `true` if removed successful, `false` otherwise.\n\nExample:\n\n```sqf\n0 spawn {\n    private _handle = [\n        {\n            player sideChat format[\"every frame! _this: %1\", _this];\n        },\n        0,\n        [\"some\",\"params\",1,2,3]\n    ] call KISKA_fnc_CBA_addPerFrameHandler;\n\n    sleep 10;\n\n    _handle call KISKA_fnc_CBA_removePerFrameHandler;\n};\n```"
@@ -1960,6 +1979,37 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_CBA_removePerFrameHandler",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/CBA/fn_CBA_setPerFrameHandlerDelay.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_handle, _delay] call `KISKA_fnc_CBA_setPerFrameHandlerDelay`",
+                    "parameters": [
+                        {
+                            "name": "_handle",
+                            "description": "*(NUMBER)* - The existing perFrameHandler's ID."
+                        },
+                        {
+                            "name": "_delay",
+                            "description": "*(NUMBER)* Default: `0` - The number of seconds between each execution. If `0`, the code will be executed every frame."
+                        }
+                    ],
+                    "returns": "*(BOOL)* - `true` if successful, `false` otherwise\n\nExample:\n\n```sqf\nprivate _wasSuccessful = [\n    _handle,\n    _newDelay\n] call KISKA_fnc_CBA_setPerFrameHandlerDelay;\n```"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _wasSuccessful = [\n    _handle,\n    _newDelay\n] call KISKA_fnc_CBA_setPerFrameHandlerDelay;\n```"
+                }
+            ],
+            "description": "Copied version of the CBA system that enables `CBA_fnc_setPerFrameHandlerDelay`.\n\nUpdates the delay of an existing perFrameHandler.\n\nIf the new delay is shorter then the previous delay and the next iteration would have happend in the past, it will execute now and the following iteration will be executed based on current time + new delay."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_CBA_setPerFrameHandlerDelay",
             "grammarType": "function"
         }
     },
@@ -13594,6 +13644,360 @@ export const configs: SQFItemConfig[] = [
         },
         "configuration": {
             "label": "KISKA_fnc_timeline_stop",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_addArea.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _area] call `KISKA_fnc_trackArea_addArea`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_area",
+                            "description": "*(OBJECT, LOCATION, STRING, ARRAY, NUMBER[][])* - The area to add to the tracked list. This must be compatible with the right-side area arguement of\n    `inAreaArray`."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[_trackAreaId, MyTrigger] call KISKA_fnc_trackArea_addArea;\n```"
+                }
+            ],
+            "description": "Adds an area to track whether or not one of the tracked objects is inside of.\n\nAreas cannot be duplicated within a single tracker only so far as can be enforced by the use of `pushBackUnique` to the list of areas."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_addArea",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_addObject.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _object] call `KISKA_fnc_trackArea_addObject`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_object",
+                            "description": "*(OBJECT)* - An object that will be tracked."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[_trackAreaId, player] call KISKA_fnc_trackArea_addObject;\n```"
+                }
+            ],
+            "description": "Adds an object to the given tracker to that will continously check whether it is inside the tracker's defined areas. Duplicate entries will be filtered from the list of tracked objects."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_addObject",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_checkFrequency.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _newFrequency] call `KISKA_fnc_trackArea_checkFrequency`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_newFrequency",
+                            "description": "*(NUMBER)* - The delay in seconds to wait between area checks."
+                        }
+                    ],
+                    "returns": "*(NUMBER or NIL)* - The frequency of checks or `nil` if the area tracker does not exist for the given id."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newFrequency = [\n    \"KISKA_trackArea_uid_0_0\",\n    1 // set to 1 second between checks\n] call KISKA_fnc_trackArea_checkFrequency;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _currentFrequency = [\"KISKA_trackArea_uid_0_0\",] call KISKA_fnc_trackArea_checkFrequency;\n```"
+                }
+            ],
+            "description": "Gets or sets the delay in seconds between each check of a given area tracker."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_checkFrequency",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_create.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_areas, _trackedObjects, _checkFrequency, _onExited, _onReturned, _start] call `KISKA_fnc_trackArea_create`",
+                    "parameters": [
+                        {
+                            "name": "_areas",
+                            "description": "*(OBJECT, LOCATION, STRING, ARRAY, NUMBER[][])* - An array of areas to add to the tracked list. These must be compatible with the right-side area arguement of `inAreaArray`."
+                        },
+                        {
+                            "name": "_trackedObjects",
+                            "description": "*(OBJECT[])* Default: `[]` - A list of objects to track whether they are in the given areas."
+                        },
+                        {
+                            "name": "_checkFrequency",
+                            "description": "*(NUMBER)* Default: `1` - The delay in seconds to wait between area checks."
+                        },
+                        {
+                            "name": "_onExited",
+                            "description": "*(CODE, STRING, [ANY,CODE], [ANY,STRING])* Default: `{}` -\n    Code that will be executed once it is discovered that one or more tracked objects has left the area. (see `KISKA_fnc_callBack` for type examples).\n\n    Parameters:\n    - 0: *(OBJECT[])* - The objects that have left the area.\n    - 1: *(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_onReturned",
+                            "description": "*(CODE, STRING, [ANY,CODE], [ANY,STRING])* Default: `{}` -\n    Code that will be executed once it is discovered that one or more tracked objects has returned to the area.\n    (see `KISKA_fnc_callBack` for type examples).\n\n    Parameters:\n    - 0: *(OBJECT[])* - The objects that have left the area.\n    - 1: *(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_start",
+                            "description": "*(BOOL)* Default: `true` - Whether or not to immediately start the area tracker."
+                        }
+                    ],
+                    "returns": "*(STRING)* - The ID of the track area."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[\n    [trigger_1,trigger_2],\n    [player],\n    1,\n    {\n        params [\"_objects\"];\n        hint str [\"objects that left\",_objects];\n    },\n    {\n        params [\"_objects\"];\n        hint str [\"objects that returned\",_objects];\n    }\n] call KISKA_fnc_trackArea_create;\n```"
+                }
+            ],
+            "description": "Defines an area that a list of objects will be tracked whether or not they are within the defined area."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_create",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_delete.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId] call `KISKA_fnc_trackArea_delete`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID to delete."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n_trackAreaId call KISKA_fnc_trackArea_delete;\n```"
+                }
+            ],
+            "description": "Fully removes a tracked area and it's associated reference information from track area global variables."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_delete",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_onExited.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _onExited] call `KISKA_fnc_trackArea_onExited`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_onExited",
+                            "description": "*(CODE, STRING, [ANY,CODE], [ANY,STRING])* - Code that will be executed once it is discovered that one or more tracked objects has left the area.\n    (see `KISKA_fnc_callBack` for type examples).\n\n    Parameters:\n    - 0: *(OBJECT[])* - The objects that have left the area.\n    - 1: *(STRING)* - The area tracker ID."
+                        }
+                    ],
+                    "returns": "*(CODE, STRING, [ANY,CODE], [ANY,STRING], or NIL)* - The code to run for the event, or `nil` if the area tracker does not exist for the given id."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newEventCode = [\n    \"KISKA_trackArea_uid_0_0\",\n    {\n        params [\"_objectsThatHaveLeft\",\"_trackerId\"];\n    }\n] call KISKA_fnc_trackArea_onExited;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _currentEventCode = [\n    \"KISKA_trackArea_uid_0_0\",\n] call KISKA_fnc_trackArea_onExited;\n```"
+                }
+            ],
+            "description": "Gets or sets the code that is executed when at least one tracked object leaves the tracked area."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_onExited",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_onReturned.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _onReturned] call `KISKA_fnc_trackArea_onReturned`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_onReturned",
+                            "description": "*(CODE, STRING, [ANY,CODE], [ANY,STRING])* - Code that will be executed once it is discovered that one or more tracked objects has returned to the area.\n    (see `KISKA_fnc_callBack` for type examples).\n\n    Parameters:\n    - 0: *(OBJECT[])* - The objects that have left the area.\n    - 1: *(STRING)* - The area tracker ID."
+                        }
+                    ],
+                    "returns": "*(CODE, STRING, [ANY,CODE], [ANY,STRING], or NIL)* - The code to run for the event, or `nil` if the area tracker does not exist for the given id."
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\nprivate _newEventCode = [\n    \"KISKA_trackArea_uid_0_0\",\n    {\n        params [\"_objectsThatHaveReturned\",\"_trackerId\"];\n    }\n] call KISKA_fnc_trackArea_onReturned;\n```"
+                },
+                {
+                    "text": "```sqf\nprivate _currentEventCode = [\n    \"KISKA_trackArea_uid_0_0\",\n] call KISKA_fnc_trackArea_onReturned;\n```"
+                }
+            ],
+            "description": "Gets or sets the code that is executed when at least one tracked object returns to the tracked area."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_onReturned",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_removeArea.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _area] call `KISKA_fnc_trackArea_removeArea`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_area",
+                            "description": "*(OBJECT, LOCATION, STRING, ARRAY, NUMBER[][])* - The area to remove from the tracked list."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[_trackAreaId, MyTrigger] call KISKA_fnc_trackArea_removeArea;\n```"
+                }
+            ],
+            "description": "Removes an area to track whether or not one of the tracked objects is inside of.\n\nProvided area to remove will be searched for removal using the `find` command."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_removeArea",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_removeObject.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId, _object] call `KISKA_fnc_trackArea_removeObject`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        },
+                        {
+                            "name": "_object",
+                            "description": "*(OBJECT)* - The object to remove from the tracking list."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n[_trackAreaId, player] call KISKA_fnc_trackArea_removeObject;\n```"
+                }
+            ],
+            "description": "Removes an object to track from the given area tracker."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_removeObject",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_startTracking.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId] call `KISKA_fnc_trackArea_startTracking`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n_trackAreaId call KISKA_fnc_trackArea_startTracking;\n```"
+                }
+            ],
+            "description": "Begins the looping process of actually checking what tracked objects are within the tracked areas or not."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_startTracking",
+            "grammarType": "function"
+        }
+    },
+    {
+        "documentation": {
+            "documentationLink": "https://github.com/Ansible2/Kiska-Function-Library/blob/master/addons/Kiska_Functions/Functions/TrackArea/fn_trackArea_stopTracking.sqf",
+            "syntaxes": [
+                {
+                    "outline": "[_trackAreaId] call `KISKA_fnc_trackArea_stopTracking`",
+                    "parameters": [
+                        {
+                            "name": "_trackAreaId",
+                            "description": "*(STRING)* - The area tracker ID."
+                        }
+                    ],
+                    "returns": "NOTHING"
+                }
+            ],
+            "examples": [
+                {
+                    "text": "```sqf\n_trackAreaId call KISKA_fnc_trackArea_stopTracking;\n```"
+                }
+            ],
+            "description": "Stops the looping process of actually checking what tracked objects are within the tracked areas or not.\n\nThis can effectively be used to pause checks without destroying the whole tracked area's information."
+        },
+        "configuration": {
+            "label": "KISKA_fnc_trackArea_stopTracking",
             "grammarType": "function"
         }
     },
