@@ -3,7 +3,7 @@
     "displayName": "SQF Language Rework",
     "publisher": "KISKA-Factory",
     "description": "",
-    "version": "0.0.40",
+    "version": "0.0.41",
     "engines": {
         "vscode": "^1.70.0"
     },
@@ -67,7 +67,11 @@
                 "extensions": [
                     ".sqf"
                 ],
-                "configuration": "./configuration/language-configs/sqf.configuration.json"
+                "configuration": "./configuration/language-configs/sqf.configuration.json",
+                "icon": {
+                    "light": "./icons/sqf-file-icon.svg",
+                    "dark": "./icons/sqf-file-icon.svg"
+                }
             },
             {
                 "id": "ext",
@@ -80,7 +84,11 @@
                     ".bikb",
                     ".sqm"
                 ],
-                "configuration": "./configuration/language-configs/ext.configuration.json"
+                "configuration": "./configuration/language-configs/ext.configuration.json",
+                "icon": {
+                    "light": "./icons/ext-file-icon.svg",
+                    "dark": "./icons/ext-file-icon.svg"
+                }
             }
         ],
         "grammars": [

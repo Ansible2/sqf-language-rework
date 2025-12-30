@@ -62,6 +62,7 @@ const build = async () => {
     createDirectory(outPaths.directories.extension);
     createDirectory(outPaths.directories.client);
     createDirectory(outPaths.directories.server);
+    createDirectory(outPaths.directories.icons);
 
     // empty space
     console.log();
@@ -113,6 +114,8 @@ const build = async () => {
         inPaths.files.changelog,
         outPaths.files.changelog
     );
+    const copySqfFileIcon = copyFileTo(inPaths.files.sqfFileIcon, outPaths.files.sqfFileIcon);
+    const copyExtFileIcon = copyFileTo(inPaths.files.extFileIcon, outPaths.files.extFileIcon);
 
     await Promise.all([
         copyExtConfig,
@@ -123,6 +126,8 @@ const build = async () => {
         copyPackageJSON,
         writeSqfGrammar,
         writeExtGrammar,
+        copySqfFileIcon,
+        copyExtFileIcon,
     ]);
 };
 
